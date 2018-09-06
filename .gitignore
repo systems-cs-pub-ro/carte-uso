@@ -1,0 +1,23 @@
+# Temporary files
+*~
+*swp
+*swo
+
+# macOS files
+.DS_Store
+
+# LaTeX output files
+*.log
+*.lot
+*.lof
+*.blg
+*.bbl
+*.out
+*.toc
+*.aux
+*.idx
+*.ilg
+*.ind
+
+# Main PDF file
+/book/uso.pdf

@@ -1,0 +1,79 @@
+\documentclass{book.cs.pub.ro}
+\makeindex
+
+
+% Justify without hyphenation
+% http://sumanta679.wordpress.com/2009/05/20/latex-justify-without-hyphenation/
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
+\begin{document}
+
+%\input{meta/global}
+
+\frontmatter % roman numbering
+
+%\maketitle
+%\input{template/titlepage.ro}
+%\input{template/titlepage.en}
+
+%\input{src/base/preface}
+
+%\begin{acknowledgements}
+%\input{src/base/acknowledgements}
+%\end{acknowledgements}
+
+%\begin{abstract}
+%\input{src/base/abstract}
+%\end{abstract}
+
+% Contents
+
+\cleardoublepage
+\phantomsection
+\pdfbookmark[0]{\contentsname}{\contentsname}
+\tableofcontents
+\newpage
+
+%\listoffigures
+%\newpage
+
+%\listoftables
+%\newpage
+
+%\renewcommand\lstlistlistingname{List of Listings}
+%\lstlistoflistings
+
+\printabbrev
+
+\mainmatter % end roman numbering
+
+% 1.5 linespacing for the contents
+% \onehalfspacing
+
+\input{chapters/main}
+
+%\appendix
+%\input{src/appendix/index}
+
+% make Bibliography appear in Contents
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{\bibname}
+
+\bibliography{uso}
+\bibliographystyle{plain}
+
+% make all bibliography entries show in document
+\nocite{*}
+
+
+% make Index appear in Contents
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{\indexname}
+\printindex
+
+\end{document}
