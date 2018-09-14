@@ -19,7 +19,7 @@
 % Use UTF8 file encoding when writing .tex files in Romanian
 % Romanian Language support
 \usepackage{ucs}
-\usepackage[utf8x]{inputenc}
+\usepackage[utf8]{inputenc}
 \usepackage[english,romanian]{babel}
 
 % float names for Romanian
