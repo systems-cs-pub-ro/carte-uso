@@ -1,1 +1,1815 @@
 \chapter{Utiliarea sistemului de fișiere}
+
+\section{Noțiuni de bază}
+
+Sistemele de fișiere par banale datorită familiarității lor. În fiecare zi
+lucrăm cu diverse fișiere, precum poze, texte sau melodii. De exemplu, le
+căutăm prin directoare, le deschidem, le modificăm, le închidem, le ștergem, le
+scoatem apoi din Recycle Bin deoarece le șterseserăm din greșeală, și așa mai
+departe. Dar sistemul de fișiere este una dintre componentele centrale ale
+sistemului de operare, care ne ajută să ne orientăm eficient printre cantități
+impresionante de informații, procese și colaboratori.
+
+\begin{itemize}
+	\item În primul rând, oferă posibilitatea \textbf{controlului unei
+		cantități tot mai mari de documente}, permițându-ne să găsim un
+		anumit fișier printre mii, milioane sau chiar miliarde de alte
+		fișiere, în sistemele distribuite. Această contribuție este
+		detaliată în secțiunea privind structura ierarhică.
+	\item În al doilea rând, sistemele de fișiere \textbf{asigură separarea
+		resurselor între utilizatorii multipli ai unui sistem de
+		calcul}, fie cei umani sau non-umani. Vom discuta importanța
+		acestei trăsături în secțiunea dedicată permisiunilor.
+\end{itemize}
+
+Sistemele de fișiere sunt diverse, \textbf{construite și optimizate pentru
+diferite contexte de utilizare și provocări}. Nu există un sistem de fișiere
+optim pentru toată lumea. Pentru a alege un sistem de fișiere trebuie să știm
+care sunt prioritățile în funcționarea sistemului și să acceptăm anumite
+compromisuri între cerințe contradictorii. De exemplu, creșterea resurselor de
+stocare a dus la dispariția crizelor de spațiu și a problematicii comprimării în
+sistemele personale; aceasta este însă tot mai relevantă în arhitecturile
+\textit{cloud}. Cerința integrității datelor este foarte importantă în sistemele
+ce lucrează cu date critice, dar mai puțin importantă în sistemele personale,
+care au mai multă nevoie de simplitate și flexibilitate. Printre criteriile după
+care putem compara și alege sistemele de fișiere se numără:
+
+\begin{itemize}
+	\item Asigurarea integrității datelor;
+	\item Separarea eficientă a resurselor între diferiți utilizatori;
+	\item Securizarea datelor prin setarea permisiunilor diferențiate de acces;
+	\item Volumul gestionat: facilitatea în lucrul cu fișiere foarte mari
+		sau cu un număr foarte mare de fișiere;
+	\item Comprimarea fișierelor (\textit{file compression}) pentru a
+		maximiza spațiul de stocare pe disc (comprimarea înseamnă că
+		aceleași date vor ocupa mai puțin spațiu, dar vor necesita
+		efortul procesorului pentru a le decomprima la fiecare
+		utilizare);
+	\item Optimizarea spațiului de stocare prin gestiunea fișierelor
+		duplicate și a zonelor ineficient scrise pe disc;
+	\item Gestiunea posibilelor erori prin jurnalizare și reversibilitate,
+		adică menținerea unei liste a modificărilor ce permite revenirea
+		la o stare anterioară în cazul apariției unei erori.
+\end{itemize}
+
+\subsection{Ce este un sistem de fișiere}
+
+Știm, intuitiv, ce sunt fișierele: ele sunt documentele noastre electronice,
+precum pozele, melodiile, proiectele pentru facultate sau programele
+executabile. Fișierul (\textit{file}) reprezintă \textbf{o formă de organizare
+digitală a informațiilor, având forma unei înșiruiri de octeți}.
+
+\begin{itemize}
+	\item Informațiile sunt organizate în \textbf{fișiere} în vederea
+		utilizării lor printr-o aplicație și a stocării lor de durată.
+		În afara fișierelor create de utilizatorii umani, există și
+		fișiere create de utilizatori automați. Unele dintre acestea
+		sunt esențiale pentru funcționarea sistemului de calcul și sunt
+		astfel ascunse de
+		utilizatorii obișnuiți.
+	\item Fișierele sunt organizate la rândul lor în \textbf{directoare}. Un
+		director (\textit{folder} sau \textit{directory}) reprezintă o
+		\textbf{colecție de fișiere și subdirectoare, identificată
+		printr-un nume}.
+\end{itemize}
+
+Dacă putem înțelege un fișier prin analogie cu o \textbf{foaie} pe care sunt
+scrise informații, putem înțelege un director prin analogie cu un \textbf{dosar}
+care conține file de hârtie dar și alte dosare. Un director, ca și un dosar,
+poate fi și gol.
+
+Această analogie este utilă dar poate fi și înșelătoare. În anumite situații, de
+exemplu în Linux, directoarele sunt și ele tot fișiere. Ele nu „conțin” efectiv
+fișierele pe care le organizează, așa cum un dosar conține foi, ci doar numele
+lor - fiind similare cu o foaie pe care am scris o listă de documente. Prin
+urmare, directoarele în Linux sunt niște fișiere speciale care servesc
+organizării altor fișiere și directoare.
+
+Conceptul mai general de „folder”, preluat din engleză și în limbajul nostru, se
+poate referi la forme de organizare a informațiilor care nu au corespondent în
+sistemul de fișiere. De exemplu, interfețele de email pot permite organizarea
+mesajelor pe „foldere”. Acestea nu vor fi regăsite în structura ierarhică a
+sistemului de fișiere, rămânând accesibile doar prin intermediul interfeței în
+care au fost create.
+
+Fișierele reprezintă informații digitale inscripționate pe mediile fizice de
+stocare (hard disk, USB stick, DVD etc). Mediile de stocare pot fi considerate
+spații continue de octeți, pe care putem înscrie multe fișiere, de dimensiuni
+variabile. Pentru a putea citi sau scrie fișiere pe un mediu de stocare este
+necesar să cunoaștem sistemul de fișiere utilizat pentru organizarea acestuia.
+
+\textbf{Sistemul de fișiere} este o parte a sistemului de operare ce se ocupă cu
+numele și atributele fișierelor, pe care le stochează într-o structură
+ierarhică. Sistemul de fișiere oferă o metodă de organizare fizică și logică a
+fișierelor într-un mediu de stocare:
+
+\begin{itemize}
+	\item Stocarea fișierelor ca o înșiruire de octeți reprezintă
+		organizarea fizică.
+	\item Modul în care sunt adresate fișierele reprezintă organizarea
+		logică.
+\end{itemize}
+
+Fișierele sunt folosite de către sistemul de operare pentru a organiza atât
+datele provenite de la utilizator, cât si cele generate de sistem.
+
+Spre exemplu, în Linux și în Mac OS, orice informație se găsește într-un fișier.
+Intuitiv, datele sunt organizate in fișiere, insă aici si directoarele sunt
+considerate fișiere, dar cu atributul de director. În plus, toate dispozitivele
+(mouse, placă video) sunt și ele accesate prin fișiere.
+
+În comparație cu cele două sisteme de operare, Windows-ul are o structură ce nu
+se suprapune peste structura fișierelor, însă intern folosește un model
+asemănător pentru a denumi dispozitivele.
+
+Deoarece este important ca utilizatorii să poată accesa fișierele stocate,
+sistemul de operare pune la dispoziție o interfață pentru a putea lucra cu
+sistemul de fișiere. In funcție de preferințe, există două tipuri de interfețe:
+de tip text (exemplu: interpretorul de comenzi) sau de tip grafic (exemplu:
+Windows File Explorer)
+
+\subsection{Structura ierarhică a sistemului de fișiere}
+
+De la an la an avem tot mai multe fișiere pe calculatoare și telefoane. Acumulăm
+poze, video-uri, melodii, precum și documente de la școală sau de la birou.
+Ce-ar însemna să găsim o poză într-o colecție de un milion de poze? Sistemul de
+fișiere ne vine într-ajutor printr-o inovație, și anume structurarea ierarhică a
+informației, înlocuind structura plată.
+
+Vorbim despre o \textbf{structură plată} atunci când toate fișierele sunt
+într-un singur loc, adică un singur director. De exemplu, dacă un utilizator
+salvează toate documentele pe desktop, avem o structură plată. O structură
+\textbf{ierarhică}, sau arborescentă, apare atunci când fișierele sunt
+organizate în directoare (en. \textit{folders}). Un director poate conține mai
+multe fișiere dar și alte directoare, fiecare dintre care poate conține mai
+multe fișiere dar și alte directoare și tot așa, până când  ultimul director va
+conține doar fișiere sau va fi gol. Un director este analog unei crengi dintr-un
+arbore, pe care pot crește alte crengi dar și frunze (fișierele). Pe frunze nu
+crește nimic.
+
+Să examinăm următorul exemplu. Pentru a găsi o poză anume (de exemplu,
+selfiecumotanul-mai2018.jpg) într-o colecție de 1.000.000 de poze, utilizatorul
+ar trebui să ceară sistemului de fișiere să parcurgă toate pozele până când
+găsește numele fișierului căutat. În cel mai rău caz, va trebui să parcurgă
+toate cele 1.000.000 de nume.
+
+Ce se întâmplă însă dacă apelăm la o organizare pe trei niveluri, grupând pozele
+câte 100? Pe primul nivel, vom avea 100 de directoare. În fiecare dintre ele,
+includem 100 de subdirectoare. Apoi, în fiecare subdirector includem 100 de
+poze. Astfel, am stocat într-o ierarhie cu trei niveluri:
+
+100 directoare * 100 subdirectoare * 100 poze = 1.000.000 poze
+
+Figura.... Exemplu de organizare ierarhică pe 3 niveluri a unui set de 1.000.000
+poze
+
+Cum putem găsi acum poza? Adresa ei ne va indica unde anume se află, în arborele
+de fișiere. De exemplu, dacă adresa sa completă este: Directorul
+99/Subdirectorul 98/selfiecumotanul-mai2018.jpg, sistemul de fișiere va căuta
+întâi Directorul 99 printre cele 100 de directoare de pe primul nivel.  Apoi, va
+căuta Subdirectorul 98 printre cele 100 de subdirectoare din directorul 99.
+Apoi, în cele din urmă, va căuta poza dorită. În cel mai rău caz, sistemul de
+fișiere va realiza, de trei ori la rând, o căutare între 100 de elemente.
+
+Prin structura arborescentă cu 3 niveluri am înlocuit deci o căutare într-un sac
+cu 1.000.000 elemente, pe care o singură persoană o realizează în ore dacă nu
+zile, cu o căutare în trei punguțe cu 100 de elemente fiecare, care este ușor de
+realizat chiar și manual, de către o singură persoană.
+
+Prin organizarea arborescentă pe directoare, cantități impresionante de fișiere
+devin gestionabile la nivelul unei singure persoane. Sistemul de fișiere
+transformă astfel complexitatea volumului imens de informații și o face
+accesibilă pentru noi, ca utilizatori umani. Mai mult despre găsirea fișierelor
+se află în secțiunea privind comenzile de căutare (\cmd{find}, \cmd{locate},
+\cmd{whereis}, \cmd{which} și \cmd{type}).
+
+Există însă un cost pe care îl plătim pentru acest control sporit al
+complexității. Fiecare director este un element suplimentar, creat de sistemul
+de fișiere, care trebuie să fie și el stocat undeva și ocupă astfel resurse.
+Aceste directoare nu există în structura plată, în care economisim astfel
+spațiu. În exemplul de mai sus, în structura ierarhică avem în total
+100*100=10.000 directoare, create special pentru a organiza cele 1.000.000 de
+poze. Prin urmare, raportându-ne la numărul inițial de fișiere, pentru a
+controla mai bine informațiile plătim un cost de 10.000 / 1.000.000 = 1\%.
+
+
+În tabela de mai jos este prezentată structura ierarhică în Linux:
+
+\begin{table}[htb]
+\caption{Ierarhia într-un sistem de fișiere din mediul Linux}
+\begin{center}
+	\begin{tabular}{ | p{0.25\textwidth} | p{0.65\textwidth} | }
+	\hline
+		\textbf{Director} & \textbf{Conținut} \\
+	\hline
+		\file{/} & directorul rădăcină (en. root) - directorul cel mai
+		cuprinzător, care conține celelalte directoare, considerate
+		analoage trunchiului și ramurilor. \\
+	\hline
+		\file{/bin} & comenzi esențiale necesare bootării, întreținerii
+		și depanării sistemului\\
+	\hline
+		\file{/boot} & fișiere necesare bootării, precum imaginea
+		kernel-ului\\
+	\hline
+		\file{/dev} & fișiere speciale utilizate pentru accesul direct
+		la dispozitivele hardware sau logice ale sistemului\\
+	\hline
+		\file{/etc} & fișiere pentru configurarea sistemului, precum
+		inittab, fstab și hosts\\
+	\hline
+		\file{/home} & fișierele fiecărui utilizator din sistem - datele
+		unui utilizator se găsesc în \file{/home/username}\\
+	\hline
+		\file{/media} & subdirectoare în care se montează unitățile
+		optice, floppy etc.\\
+	\hline
+		\file{/mnt} & subdirectoare în care se montează alte sisteme de
+		fișiere\\
+	\hline
+		\file{/opt} & pachete de aplicații de dimensiuni mari,
+		accesibile tuturor utilizatorilor\\
+	\hline
+		\file{/proc} & sistem virtual de fișiere din care se obțin
+		informații despre sistem și aplicațiile care rulează la un
+		moment dat\\
+	\hline
+		\file{/root} & directorul home al utilizatorului root\\
+	\hline
+		\file{/sbin} & comenzi de bază accesibile numai utilizatorului root\\
+	\hline
+		\file{/tmp} & fișiere temporare\\
+	\hline
+		\file{/usr} & aplicații pentru uzul normal al sistemului de
+		operare - \file{/usr/local} conține aplicațiile
+		instalate/compilate de utilizator\\
+	\hline
+		\file{/var} & fișiere al căror conținut se schimbă foarte des,
+		precum log-uri, fișiere temporare, cache (date reutilizabile),
+		spool (date neprocesate)\\
+	\hline
+	\end{tabular}
+\end{center}
+\end{table}
+%	Figura.... Ierarhia într-un sistem de fișiere din mediul Linux
+%
+
+Mai jos puteți vedea cum arată grafic o ierarhie a sistemului de fișiere:
+
+Figura .... - Ierarhia sistemului de fișiere în Linux TODO
+
+Observăm în grafic că în rădăcină se află directoarele home, bin, usr etc. În
+home se află ubuntu și myuser ș.a.m.d.
+
+Structura fișierelor în Windows diferă față de cea din Linux. Aceasta este mai
+simplă și majoritatea directoarelor importante se află în
+C:\textbackslash{}Windows.
+
+\begin{table}[htb]
+\caption{Ierarhia într-un sistem de fișiere din Windows}
+\begin{center}
+	\begin{tabular}{ | p{0.35\textwidth} | p{0.65\textwidth} | }
+	\hline
+		\textbf{Director} & \textbf{Conținut} \\
+	\hline
+		\file{C:\textbackslash{}} & directorul rădăcină \\
+	\hline
+		\file{C:\textbackslash{}Windows} & Windows-ul și fișierele
+		aferente \\
+	\hline
+		\file{C:\textbackslash{}Documents and Settings} & configurările
+		utilizatorilor și date specifice acestora \\
+	\hline
+		\file{C:\textbackslash{}Program Files} & aplicații \\
+	\hline
+		\file{C:\textbackslash{}Windows\textbackslash{}System32} &
+		drivere și fișiere de configurare Windows \\
+	\hline
+		\file{C:\textbackslash{}Documents and
+		Settings\textbackslash{}username\textbackslash{}My Documents} &
+		datele unui utilizator (aceasta este calea implicită, ea poate
+		fi modificată) \\
+	\hline
+	\end{tabular}
+\end{center}
+\end{table}
+
+%	Figura... Ierarhia într-un sistem de fișiere din Windows
+%
+%
+Deși în Linux și în Mac OS  avem un singur director rădăcină, Windows are
+simultan pentru fiecare sistem de fișiere câte un director rădăcină:
+
+\begin{itemize}
+	\item \file{A}, \file{B}: de obicei sunt rezervate pentru floppy disk-uri
+	\item \file{C}: partiția de pe hard disk; pot exista mai multe, cărora
+		li se asociază litere în ordine
+	\item \file{D} (sau următoarea literă disponibilă după partițiile de pe
+		hard disk-uri): se referă la CD-ROM/DVD-Rom
+\end{itemize}
+
+Windows-ul alocă literele în funcție de partiții, nu după sistemul de fișiere.
+Dacă se modifică sistemul de fișiere de pe o partiție, litera asignată partiției
+va rămâne aceeași. Pe o partiție se poate afla la un moment dat un singur sistem
+de fișiere.
+
+În tabelul de mai jos avem o comparație între căile importante din sistemele de
+operare cele mai cunoscute:
+
+\begin{table}[htb]
+\caption{Comparație între căile sistemelor de operare}
+\begin{center}
+	\begin{tabular}{ | p{0.25\textwidth} | p{0.25\textwidth} | p{0.25\textwidth} | p{0.25\textwidth} | }
+	\hline
+	\textbf{Descriere} & \textbf{Windows} & \textbf{Linux} & \textbf{Mac OS} \\
+	\hline
+		rădăcină & \file{C:} & \file{/} & \file{/} \\
+	\hline
+		director home & \file{C:\textbackslash{}Documents and
+		Settings\textbackslash{}username} & \file{/home/username} &
+		\file{/Users/username} \\
+	\hline
+		aplicații & \file{C:\textbackslash{}Program Files} &
+		\file{/bin}; \file{/sbin}; \file{/usr/bin}; \file{/usr/sbin};
+		\file{/usr/local/bin}; & \file{/opt/*/bin} \file{/Applications};
+		\file{/bin}; \file{/sbin} \\
+	\hline
+		configurări ale sistemului & Windows Registry & directoare
+		specifice fiecărei \ aplicații, aflate în home-ul
+		utilizatorului; \file{/etc} & \file{/Users}\file{/username}/
+Library; \file{/etc} \\
+	\hline
+	\end{tabular}
+\end{center}
+\end{table}
+
+Observăm că în Linux înșiruirea de directoare este separată de “\file{/}”
+(slash), în timp ce în mediile Windows se folosește “\file{\textbackslash{}}”
+(backslash).
+
+\subsection{Căi relative și căi absolute}
+
+Revenind la exemplul de mai sus, dorim să găsim poza
+\file{selfiecumotanul-mai2018.jpg}, care se află în subdirectorul \file{98}, în
+directorul \file{99}. Pentru a putea accesa poza, avem două posibilități: putem
+sa folosim o cale relativă sau o cale absolută. Alegerea căii pe care o vom
+folosi depinde de unde ne aflăm în momentul respectiv în ierarhia de fișiere și
+unde se află fișierul căutat.
+
+\textbf{O cale absolută} reprezintă adresa completă a fișierului, începând cu
+directorul rădăcină. Astfel, o cale absolută va începe cu “\file{/}” sau
+“\file{\textasciitilde{}}” în cazul Linux/MacOs sau cu “\file{C:}”, “\file{D:}”
+etc, în cazul Windows.
+
+Simbolul “\file{\textasciitilde{}}” este o prescurtare pentru \file{/home/<username>}.
+
+Calea relativă este o cale ce pornește din directorul curent, similară unei scurtături.
+
+În fiecare director se găsesc \textbf{două directoare speciale}: „\file{.}”
+(punct) și „\file{..}” (două puncte).
+
+\begin{itemize}
+	\item „\file{.}” indică spre același director.
+	\item „\file{..}” indică spre directorul părinte.
+\end{itemize}
+
+Pentru a ne întoarce în ierarhia de fișiere pas cu pas, ne folosim de
+“\file{..}” pentru a ajunge în directorul părinte. Putem să înlănțuim mai multe
+grupări “\file{..}” (ex. \file{../../..}) pentru a ne întoarce mai sus în
+ierarhie.
+
+Spre exemplu:
+
+\begin{screen}
+ubuntu@ubuntu:~/cs/uso$ pwd
+/home/ubuntu/cs/uso
+ubuntu@ubuntu:~/cs/uso$ cd ../../..
+ubuntu@ubuntu:/home$ pwd
+/home
+\end{screen}
+
+Explicații:
+
+\begin{itemize}
+	\item folosim pwd pentru a afla în ce director ne aflăm;
+	\item folosim comanda \cmd{cd ../../..} pentru a ne muta din directorul
+		în care ne aflăm în părintele-părintelui-părintelui directorului
+		curent (cale relativă).
+\end{itemize}
+
+Până acum am explicat doar când folosim directorul special “\file{..}”
+
+Folosim gruparea “\file{.}”, care indică directorul curent, pentru comenzi ce
+execută script-uri/programe din acel director.
+
+Exemplu:
+
+\cmd{\$ ./program_din_directorul_curent} - execută fișierul
+“program_din_directorul_curent” (doar dacă utilizatorul are permisiuni asupra
+lui).
+
+\subsection{Căile stocate în variabila de mediu PATH}
+
+Pentru a economisi timp atunci când lucrăm cu programe frecvent folosite, nu
+este necesar să indicăm mereu calea absolută sau relativă, ci putem să folosim
+niște prescurtări speciale numite variabile de mediu (environment variables).
+
+\textbf{PATH este o variabilă de mediu care conține lista căilor uzuale unde se
+găsesc programe}.  Astfel, orice program care se găsește în oricare din căile
+din PATH se poate executa direct, fără a fi necesar să se precizeze calea.
+Comanda pentru a afișa variabilele de mediu pentru Linux/MacOS este:
+
+\begin{screen}
+$ echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+\end{screen}
+
+Căile din listă sunt despărțite de “\file{:}”.
+
+Comanda pentru Windows este:
+
+\begin{screen}
+C:> echo \%PATH\%
+C:\textbackslash{}WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem
+\end{screen}
+
+\section{Formatul fișierelor}
+
+Din perspectiva utilizatorului, fișierele se împart în diverse categorii, precum
+muzică, poze, jocuri și altele. Toate acestea sunt văzute de calculator ca o
+colecție de biți ce trebuie prelucrați pentru a putea fi redați. Calculatorul
+prelucrează fișierele în funcție de \textbf{formatul} acestora, pentru a ști ce
+programe sunt necesare pentru a le putea deschide și pentru a putea lucra cu
+ele.
+
+Pentru început, putem clasifica fișierele în două mari categorii: fișiere de tip
+text (text file) și fișiere binare (binary file).
+
+\begin{itemize}
+	\item \textbf{Fișierele de tip text} conțin linii compuse din caractere,
+		fără să conțină elemente ce trebuie să fie interpretate de un
+		program (precum grafice, cod executabil etc).  Fișierele text
+		pot conține text simplu (\textit{plain text}), având extensia
+		.txt, sau text formatat / îmbogățit (\textit{rich text}), care
+		include și informație stilistică, precum forma și culoarea
+		fontului, tipul de font sau hyperlink-uri în HTML;
+	\item \textbf{Fișierele binare} sunt toate fișierele care nu sunt de tip
+		text, putând reprezenta: imagini, programe executabile, melodii,
+		fișiere comprimate etc.
+\end{itemize}
+
+\textbf{Formatul (sau tipul)} fișierelor se referă la modalitatea standard de
+codificare a informației în fișier, care permite apoi redarea sau utilizarea
+informației prin intermediul unei interfețe sau a unei aplicații. Formatul
+fișierului specifică felul în care informația va fi codificată în biți, în
+mediul digital.
+
+Formatul fișierului este de regulă asociat cu \textbf{extensia} acestuia.
+Extensia reprezintă sufixul de la finalul numelui fișierului, separat de numele
+fișierului printr-un punct. Exemple de extensii frecvent folosite sunt: .txt
+(fișiere text), .rtf (documente formatate cu text îmbogățit, sau rich text
+format), .tex (document sursă LaTeX), .mp3 (audio format mp3), .bmp (imagine tip
+bitmap), .png (imagine tip Portable Network Graphic), etc [5].
+
+Este important să remarcăm că, \textbf{dacă schimbăm manual extensia unui
+fișier, nu înseamnă că i-am schimbat tipul}. Formatul fișierului ține de
+proprietățile conținutului acestuia și nu se schimbă dacă modificăm numele sau
+extensia. Dacă, de exemplu, avem un fișier text în care am pus versurile
+cântecului “The Kinslayer” al formației Nightwish, și schimbăm extensia
+fișierului \file{kinslayer.txt} în \file{kinslayer.mp3}, fișierul text nu devine
+dintr-o dată cântec și, desigur, nu îl vom putea deschide cu o aplicație mp3
+player.
+
+Fișierele pot fi convertite dintr-un format într-altul, de regulă în interiorul
+categoriilor mari de conținut. De exemplu, putem converti un .wav într-un .mp3,
+sau un .bmp într-un .png, sau un .rtf într-un .pdf. Este posibil să convertim și
+fișiere în formaturi ce par foarte diferite, de exemplu un .rtf într-un .mp3,
+apelând la soluții automate text-to-speech (TTS) [6]. Convertirea se realizează
+nu prin schimbarea manuală a extensiei, ci prin intermediul unei aplicații cu
+care deschidem fișierul și îl transformăm în formatul dorit.
+
+\subsection{Detecția formatului fișierelor}
+
+Pe sistemele Windows fiecare fișier are o extensie, ce ne indică formatul
+acestuia și astfel ajută sistemul de operare să determine ce aplicație să
+utilizeze pentru a deschide fișierul. Sistemele Linux folosesc comanda file
+pentru a afla formatul unui fișier. File lucrează independent de extensia
+fișierului. Acest lucru este avantajos deoarece extensia poate să fie atribuită
+greșit de către utilizator, precum putem vedea și în exemplul de mai jos.
+
+\begin{screen}
+$ file photo.jpg
+photo.jpg: JPEG image data, JFIF standard 1.01
+$ mv photo.jpg fisier.txt # schimbarea numelui din photo.jpg in fisier.txt (schimba extensia din jpg in txt la nivel superficial
+$ file fisier.txt
+fisier.txt: JPEG image data, JFIF standard 1.01
+\end{screen}
+
+\subsection{Atributele fișierelor}
+
+Pentru a controla funcționarea sistemelor de fișiere este importantă distincția
+dintre \textbf{date și meta-date}. Un fișier conține efectiv informații sau
+date, precum muzică, versuri, imagini sau bilete de avion. \textbf{Meta-datele
+sunt informații despre informații}, precum: cantitatea informațiilor, data
+ultimei accesări, cine le-a creat, cine le-a modificat, unde anume au fost
+editate ultima dată.
+
+Această distincție este des utilizată datorită controverselor tot mai dure
+privind uzul, abuzul și protecția datelor personale. Momentul absolut de glorie
+al metadatelor a fost, probabil, interviul din 2014 cu generalul Michael Hayden,
+fostul director al National Security Agency și al Central Intelligence Agency
+ale Statelor Unite, în care acesta a declarat: „We kill people based on
+metadata” [4]. Folosirea în domeniul militar și al securității naționale este
+doar un exemplu al uzului și abuzului meta-datelor în profilarea diferitelor
+persoane individuale sau a tipurilor de cetățeni și clienți.
+
+Sistemele de fișiere se bazează și ele pe crearea și gestionarea meta-datelor referitoare la
+fișiere. Aceste meta-date poartă denumirea de \textbf{atribute}. Ele fac posibilă accesarea
+eficientă și securizată a informațiilor.
+
+Atributele sunt stări în care un fișier există. Ele pot fi \textbf{activate sau
+dezactivate}, similar setării on sau off.
+
+Cele mai simple atribute ale unui fișier sunt numele, dimensiunea și tipul.
+Tipul fișierului este indicat de primul caracter din output-ul instructiunii
+\cmd{ls}, și poate fi:
+
+
+\begin{itemize}
+	\item \texttt{-} = Regular file
+	\item \texttt{b} = Block special file
+	\item \texttt{c} = Character special file
+	\item \texttt{d} = Directory
+	\item \texttt{l} = Symbolic link
+	\item \texttt{n} = Network file
+	\item \texttt{p} = FIFO
+	\item \texttt{s} = Socket
+\end{itemize}
+
+
+Alte atribute importante descriu permisiunile, adică operațiile pe care diferite
+tipuri de utilizatori le pot realiza asupra respectivului fișier. Informații
+detaliate privind \textbf{tipurile de utilizatori} și configurarea permisiunilor
+acestora se regăsesc în capitolul 5 dedicat Utilizatorilor. TODO
+
+
+\begin{itemize}
+	\item \texttt{r} = Permisiunea de a citi fișierul
+	\item \texttt{w} = Permisiunea de a scrie în fișier
+	\item \texttt{x} = Permisiunea de a executa fișierul
+	\item \texttt{a} = Bit-ul Archive este setat (fișierul nu a fost arhivat)
+	\item \texttt{c} = Fișier comprimat
+	\item \texttt{s} = Fișier de sistem
+	\item \texttt{h} = Fișier ascuns
+	\item \texttt{t} = Fișier temporar.
+\end{itemize}
+
+\section{Operații uzuale asupra fișierelor și directoarelor}
+
+Sistemul de fișiere ne permite realizarea mai multor tipuri de operațiuni asupra
+fișierelor.  \textbf{Operațiile uzuale} asupra fișierelor includ: afișarea și
+schimbarea directorului, afișarea conținutului fișierului, listarea fișierelor
+dintr-un director, crearea fișierelor sau a directoarelor, copierea, mutarea,
+redenumirea sau ștergerea acestora, precum și arhivarea/dezarhivarea și
+realizarea unei versiuni de backup.
+
+O problemă poate apărea dacă doi utilizatori doresc să citească sau să modifice
+același fișier simultan, deoarece nu este clar dacă acțiunile celor doi nu se
+vor încurca reciproc. De aceea, una dintre responsabilitățile sistemului de
+fișiere este să mențină \textbf{separarea resurselor}.
+
+Pentru a ilustra această problemă:  dacă doi utilizatori doresc să citească și
+să modifice simultan un fișier, apare \textbf{problema update-urilor
+intercalate} (interceding update), denumită și problema cursei (race condition).
+În acest scenariu, doi utilizatori intră într-o cursă a modificărilor succesive
+pe același fișier. Să presupunem că utilizatorul A deschide un fișier care
+conține fondurile disponibile în contul unui client (1000 de lei). Utilizatorul
+B deschide și el același fișier și creează o copie, pentru a lucra cu ea.
+Utilizatorul A realizează o tranzacție de -200 de lei și fondurile scad (800 de
+lei); utilizatorul A actualizează fișierul și îl închide (800 de lei în cont).
+Utilizatorul B nu știe că fondurile au scăzut între timp, având în propria copie
+o valoare expirată (cei 1000 de lei inițiali). Dacă utilizatorul B realizează și
+el o tranzacție de -20 de lei care modifică fondurile (980 de lei), apoi închide
+fișierul și suprascrie în fișierul original valoarea sa finală (980 de lei),
+tranzacția realizată de utilizatorul A este pierdută.  Desigur, un astfel de
+scenariu ar fi catastrofic nu doar pentru industria online banking, ci pentru
+orice altă activitate care depinde de accesul mai multor părți la o bază de date
+comună sau la un document comun.
+
+Cele mai multe sisteme de fișiere vor gestiona astfel de conflicte prin
+\textbf{blocarea} fișierului (l\textit{ocking}) și deci blocarea accesului unuia
+dintre utilizatori, până când celălalt finalizează operațiunea proprie. Alte
+sisteme de fișiere sunt construite pentru a permite aplicațiilor lucrul
+colaborativ cu fișiere, de exemplu salvând versiuni succesive ale aceluiași
+fișier (adică prin versionare).
+
+\textbf{Blocarea} (\textit{locking}) se referă la faptul că un fișier, odată
+deschis de un proces, acesta nu va putea fi accesat de un alt proces până când
+primul nu și-a terminat modificările.  Există diferite metode de realizare în
+practică a blocării. Pot fi blocate fișierele integral, sau doar anumite câmpuri
+din ele. Diferite blocaje pot avea niveluri mai mari sau mai mici de prioritate,
+fiind marcate ca obligatorii sau doar preferabile.
+
+O a doua abordare, \textbf{versionarea}, se referă la salvarea unor copii
+diferite ale documentului pentru fiecare utilizator care a modificat fișierul,
+păstrând controlul asupra numărului acestor copii și asupra coerenței
+documentului. Versionarea este realizată de aplicațiile care gestionează efectiv
+fișierele, la inițiativa utilizatorilor sau automat, dar necesită sprijin din
+partea sistemului de fișiere.
+
+\subsection{Afișarea și schimbarea directorului curent}
+
+Pentru a afișa directorul curent folosim comand \cmd{pwd} (\textit{print working
+directory}). De asemenea, dacă nu s-au efectuat manual schimbări asupra
+prompt-ului bash, aceste va afișa implict directorul în care ne aflăm. Dacă
+dorim să ne mutăm în alt director, vom folosi comanda \cmd{cd <cale>}. Comanda
+\cmd{cd} are ca parametru o cale absolută sau relativă către destinația în care
+vrem să ajungem.
+
+Pentru a înțelege mai bine cum funcționează cele două comenzi - \cmd{pwd} și
+\cmd{cd} - avem următorul exemplu, mai jos. Urmăriți modificările prompt-ului
+bash atunci când schimbăm directorul:
+
+
+\begin{screen}
+ubuntu@ubuntu:~$ pwd
+/home/ubuntu
+ubuntu@ubuntu:~$ cd ..
+ubuntu@ubuntu:/home$ pwd
+/home
+ubuntu@ubuntu:/home$ cd ../usr/bin
+ubuntu@ubuntu:/usr/bin$ pwd
+/usr/bin
+ubuntu@ubuntu:/usr/bin$ cd .
+ubuntu@ubuntu:/usr/bin$ cd /
+ubuntu@ubuntu:/$ cd
+ubuntu@ubuntu:~$ pwd
+/home/ubuntu
+ubuntu@ubuntu:~$ cd /usr/bin
+ubuntu@ubuntu:/usr/bin$ cd /home
+ubuntu@ubuntu:/home$ cd -
+/usr/bin
+ubuntu@ubuntu:/usr/bin$ cd ~
+ubuntu@ubuntu:~$ pwd
+/home/ubuntu
+ubuntu@ubuntu:~$ cd ././././
+ubuntu@ubuntu:~$ cd ../..
+ubuntu@ubuntu:/$ pwd
+/
+ubuntu@ubuntu:/$
+\end{screen}
+
+Observații:
+\begin{itemize}
+	\item \cmd{cd ..} (comanda de la linia 1) ne întoarce în directorul
+		părinte
+	\item \cmd{cd ../usr/bin} (comanda de la linia  6) este o cale
+		relativă care pornește din directorul părinte al directorului
+		curent
+	\item \cmd{cd .} (comanda de la linia  9) nu modifică directorul,
+		deoarece “.” face referire la directorul curent
+	\item \cmd{cd \textasciitilde} (comanda de la linia  18) ne deplasează
+		în directorul home al utilizatorului curent;  “\textasciitilde”
+		este echivalentul directorului home pentru utilizatorul curent
+	\item \cmd{cd} (comanda de la linia  11) schimbă directorul tot în
+		directorul home
+	\item \cmd{cd -} (comanda de la linia  16) ne întoarce în directorul
+		în care ne aflam anterior
+\end{itemize}
+
+
+\subsection{Listarea fișierelor}
+
+Acum că știm să navigăm dintr-un director în altul, ne interesează să afișăm
+conținutul acestora.  Comanda pe care o folosim este “\cmd{ls [opțiuni]
+<cale>}”. Dacă dorim să listăm conținutul directorului curent, executăm comanda
+\cmd{ls} fără a mai fi nevoie să specificăm calea.
+
+În continuare găsim opțiunile folosite frecvent pentru această comandă:
+
+
+\begin{itemize}
+	\item -\texttt{l}  = afișează detalii despre fiecare director/fișier,
+		precum dimensiunea, utilizator, grup, data modificare, drepturi
+		de acces
+	\item \texttt{-a} = afișează toate fișierele, inclusiv cele ascunse (cele
+		care încep cu “.” - caracterul punct)
+	\item \texttt{-h} = afișează dimensiunea fișierelor în format
+		human-readable, respectiv dimensiunea în octeți este înlocuită
+		cu dimensiunea în Kocteți/Mocteți/Gocteți dacă depășește un
+		anumit ordin de mărime.
+\end{itemize}
+
+
+Exemplu de output atunci când utilizăm opțiunea \texttt{-l}:
+
+\begin{screen}
+$ ls -l /home/myuser/myapp
+-rwxr----- 1 myser users 1176348 2007-03-03 20:28 /home/myuser/myapp
+\end{screen}
+
+Explicații privind formatul de output:
+
+\begin{itemize}
+	\item primul caracter ne spune tipul fișierului;
+	\begin{itemize}
+		\item \texttt{-} = fișier normal
+		\item \texttt{d} = director
+		\item \texttt{p} = pipe
+		\item \texttt{b} = dispozitiv bloc
+		\item \texttt{c} = dispozitiv caracter
+		\item \texttt{l} = legătură simbolică
+	\end{itemize}
+	\item următoarele 3 grupuri de caractere (\texttt{rwx}) reprezintă
+		drepturile de acces pentru utilizatorul \texttt{myuser} (cel
+		căruia îi aparține fișierul), pentru utilizatorii din grupul
+		\texttt{users} (din care face parte fișierul) și pentru
+		utilizatorii care nu fac parte din grup și nici nu sunt
+		\texttt{myuser} - mai multe detalii despre drepturile de acces
+		se găsesc în capitolul privind utilizatorii
+	\item \texttt{1} reprezintă numărul de link-uri hard către fișier
+	\item \texttt{myuser} este owner-ul fișierului
+	\item \texttt{users} este grupul de care aparține fișierul
+	\item \texttt{1176348} este dimensiunea fișierului
+	\item \texttt{2007-03-03} este data fișierului
+	\item \texttt{20:28} este ora ultimei modificări
+	\item \texttt{/home/myuser/myapp} este numele fișierului
+\end{itemize}
+
+
+Exemplele următoare conțin câteva modele de funcționare a comenzii \cmd{ls}:
+
+\begin{screen}
+ubuntu@ubuntu:~$ ls
+Desktop
+ubuntu@ubuntu:~$ ls ~
+Desktop
+ubuntu@ubuntu:~$ ls -l ~
+total 0
+drwxr-xr-x 2 ubuntu ubuntu 100 2007-09-03 13:15 Desktop
+ubuntu@ubuntu:~$ ls -alh
+total 56K
+drwxr-xr-x 7 ubuntu ubuntu  580 2007-09-03 19:58 .
+drwxr-xr-x 3 root   root         60 2007-09-03 06:14 ..
+-rw------- 1 ubuntu ubuntu   34 2007-09-03 19:58 .bash_history
+-rw-r--r-- 1 ubuntu ubuntu 2.3K 2007-09-03 06:14 .bashrc
+drwxr-xr-x 2 ubuntu ubuntu  100 2007-09-03 13:15 Desktop
+-rw-r--r-- 1 ubuntu ubuntu  566 2007-09-03 06:14 .profile
+-rw------- 1 ubuntu ubuntu 9.5K 2007-09-03 17:40 .xsession-errors
+ubuntu@ubuntu:~$ ls ../../
+bin        dev   initrd          media  proc  sbin  tmp  vmlinuz
+boot   etc   initrd.img  mnt        rofs  srv   usr
+cdrom  home  lib             opt        root  sys   var
+ubuntu@ubuntu:~$ ls -a /
+.        boot   etc         initrd.img  mnt   rofs  srv  usr
+..   cdrom  home        lib             opt   root  sys  var
+bin  dev    initrd  media           proc  sbin  tmp  vmlinuz
+\end{screen}
+
+Observații:
+
+\begin{itemize}
+	\item comanda de la linia 8 afișează toate informațiile (\texttt{-l}) ale
+		tuturor fișierelor, ascunse și neascunse, din directorul curent;
+		dimensiunea fișierelor este afișată în format “human-readable”
+		(\texttt{-h}); a se observa ca sunt afișate si directoarele
+		standard \file{.} și \file{..}
+	\item comanda de la linia 17 primește o cale relativă pentru a-i afișa
+		conținutul
+	\item comanda de la linia 21 afişează toate fișierele, ascunse si
+		neascunse, din root (\file{/})
+\end{itemize}
+
+O altă opțiune folosită este \texttt{-R}, care afișează directoarele și fișierele
+ce au ca rădăcină directorul dat ca parametru:
+
+\begin{screen}
+$ ls -R dir1
+dir1:
+dir2  fisier1  fisier2
+dir1/dir2:
+fisier3  fisier4
+\end{screen}
+
+
+Dacă dorim să folosim alte opțiuni, putem sa consultăm \cmd{man ls} sau \cmd{ls
+--help}.
+
+Pentru mai multe opțiuni se poate consulta \cmd{ls --help} sau \cmd{man ls}.
+
+\subsection{Afișarea conținutului fișierelor}
+
+Pentru a putea vedea ce conține un fișier, folosim comanda \cmd{cat <nume
+fișier>}. Un exemplu de utilizare găsiți mai jos:
+
+\begin{screen}
+$ cat /etc/resolv.conf
+# Generated by dhcpcd for interface eth0
+search localdomain
+nameserver 192.168.0.1
+\end{screen}
+
+Comanda va întoarce conținutul întregului fișier, indiferent de lungime. Pentru
+ca utilizatorul să poată naviga prin tot output-ul comenzii, se pot folosi
+comenzile \cmd{more} și \cmd{less}. Comanda more permite vizualizarea doar
+într-o singură direcție (de la început către sfârșitul fișierului).  În schimb,
+comanda \cmd{less} are o interfață asemănătoare cu cea a editorului \cmd{vim} și
+permite navigarea în ambele direcții, linie cu linie. Găsiți mai jos un exemplu:
+
+\begin{screen}
+$ cat /etc/X11/xorg.conf | more
+$ cat /etc/X11/xorg.conf | less
+\end{screen}
+
+\subsection{Crearea fișierelor/directoarelor}
+
+\begin{table}[htb]
+\caption{Comenzi pentru crearea fișierelor}
+\begin{center}
+  \begin{tabular}{ | p{0.3\textwidth} | p{0.6\textwidth} | }
+    \hline
+    \textbf{Entitate} & \textbf{Comandă} \\
+    \hline
+    Fișier normal & \cmd{touch \textless{}nume_fișier>} sau \cmd{>
+\textless{}nume_fișier>} \\
+    \hline
+    Director & \cmd{mkdir \textless{}nume_director>} \\
+    \hline
+    Legături (link-uri) & \cmd{ln -s \textless{}destinatie> [\textless{}nume_legătură>]} \\
+    \hline
+    Pipe-uri cu nume & \cmd{mkfifo \textless{}nume_pipe>} \\
+    \hline
+   \end{tabular}
+   \label{table:creare-fisiere}
+\end{center}
+\end{table}
+
+Există doua metode pentru a crea un fișier gol. Prima metoda este utilizarea
+comenzii \cmd{touch <nume fișier>}, iar a doua se bazează pe o funcționalitate
+bash numită redirectare în fișier:
+
+\begin{screen}
+$ touch fisier1
+$ > fisier2
+\end{screen}
+
+Observații:
+
+\begin{itemize}
+	\item comanda de la linia 1 folosește prima metodă; creează un fișier
+		gol cu numele \file{fișier1} în directorul curent
+	\item comanda de la linia 2 folosește a doua metodă; redirectează
+		(\texttt{>}) ieșirea unei comenzi nule într-un fișier, creând
+		fișierul gol \file{fișier2}
+\end{itemize}
+
+Comanda touch poate fi folosită și pentru a actualiza data ultimei accesări sau
+modificări asupra fișierului. Astfel, dacă utilizăm opțiunea \texttt{-a} se
+actualizează data ultimei accesări, iar pentru a actualiza data ultimei
+modificări folosim optiunea \texttt{m}. Dacă folosim \file{touch} fără niciuna
+dintre cele două opțiuni, atunci se vor modifica ambele date.
+
+\begin{screen}
+$ ls -al
+-rw-r--r--  1 root     root           15 2009-08-21 17:03 fisier1
+$ touch fisier1
+$ ls -al
+-rw-r--r--  1 root     root           15 2009-08-21 17:11 fisier1
+\end{screen}
+
+Exemplele următoare prezintă crearea directoarelor (prima comandă) și a
+pipe-urilor cu nume (a doua comandă):
+
+\begin{screen}
+$ mkdir dir1
+$ mkfifo fifo1
+$ ls -l
+total 0
+drwxr-xr-x 2 mircea users 40 2007-09-20 10:26 dir1
+prw-r--r-- 1 mircea users  0 2007-09-20 10:30 fifo1
+-rw-r--r-- 1 mircea users  0 2007-09-20 10:26 fisier1
+-rw-r--r-- 1 mircea users  0 2007-09-20 10:26 fisier2
+\end{screen}
+
+Exemplele următoare prezintă crearea legăturilor:
+
+\begin{screen}
+$ ln fisier1 hardlink
+$ ln -s fisier2 softlink
+$ ls -l
+total 0
+drwxr-xr-x 2 mircea users 40 2007-09-20 10:26 dir1
+prw-r--r-- 1 mircea users  0 2007-09-20 10:30 fifo1
+-rw-r--r-- 2 mircea users  0 2007-09-20 10:26 fisier1
+-rw-r--r-- 1 mircea users  0 2007-09-20 10:26 fisier2
+-rw-r--r-- 2 mircea users  0 2007-09-20 10:26 hardlink
+lrwxrwxrwx 1 mircea users  7 2007-09-20 10:32 softlink -> fisier2
+\end{screen}
+
+Atât legăturile simbolice, cât și legăturile hard sunt create prin comanda
+\cmd{ln}, diferența dintre cele două fiind dată de parametrul \texttt{-s} folosit
+în cazul creării unei legături hard.
+
+\subsection{Copiere / mutare / redenumire / ștergere}
+
+Copierea și mutarea primesc 2 parametri:
+
+\begin{itemize}
+	\item primul parametru reprezintă sursa de unde dorim să copiem/mutăm
+	\item al doilea parametru reprezintă destinația unde dorim să copiem/mutăm
+\end{itemize}
+
+
+Observație:
+
+<sursa> comenzilor din acest subcapitol poate fi reprezentată și
+prin expresii regulate (vezi TODO)
+
+\subsubsection{Copierea}
+Comanda folosită pentru a copia un fișier este \cmd{cp [opțiuni] <sursa> <destinație>}.
+
+Opțiunile cele mai des folosite cu aceasta comandă sunt:
+
+\begin{itemize}
+	\item \texttt{-R}: necesar pentru a copia recursiv tot ce conține
+		directorul <sursa>, dacă este cazul
+	\item \texttt{-p}: folosit pentru păstrarea atributelor fișierului <sursa>
+		(permisiuni, dată etc)
+	\item \texttt{-u}: se copiază doar dacă fișierul <destinație> nu există sau
+		dacă acesta este mai vechi decât fișierul <sursa>
+\end{itemize}
+
+\begin{screen}
+$ touch f1.txt
+$ ls
+f1.txt
+$ cp f1.txt f2.txt
+$ ls
+f1.txt  f2.txt
+\end{screen}
+\subsubsection{Mutarea}
+
+Comanda folosită pentru a muta un fișier este \cmd{mv [opțiuni] <sursa>
+<destinație>}. Mutarea se va face implicit recursiv și va păstra toate
+atributele fișierelor. Când se execută  comanda \cmd{mv}, se schimbă doar
+părintele fișierului pe care îl mutăm.
+
+\begin{screen}
+$ pwd
+/tmp/q
+$ ls
+f1.txt  f2.txt
+$ mv f1.txt /tmp/r
+$ ls
+f2.txt
+$ ls /tmp/r/
+f1.txt
+\end{screen}
+
+\subsubsection{Redenumirea}
+
+Redenumirea unui fișier se realizează cu comanda mv sau cu cp astfel:
+
+\begin{itemize}
+	\item dacă folosim comanda \cmd{mv <sursa> <destinație>} și destinația
+		nu există ca director, atunci se realizează mutarea sursei cu
+		schimbarea numelui în numele <destinatiei>
+	\item dacă folosim comanda \cmd{cp <sursa> <destinație>} si la fel
+		destinația nu există ca director, se execută ca la comanda
+		precedentă, doar că aici se pastrează si fișierul <sursa>
+		original
+\end{itemize}
+
+\begin{screen}
+$ ls
+f2.txt
+$ mv f2.txt f3.txt
+$ ls
+f3.txt
+\end{screen}
+
+\subsubsection{Stergerea fișierelor/directoarelor}
+
+Comanda cea mai folosită pentru ștergerea fișierelor și directoarelor este
+\cmd{rm [opțiuni] <cale>}.
+
+Opțiunile cele mai des folosite pentru această comandă sunt:
+
+\begin{itemize}
+	\item \texttt{-r/-R}: se utilizează atunci când se dorește ștergerea
+		recursivă a unui director
+	\item \texttt{-f}: se utilizează pentru a șterge forțat fișierele
+\end{itemize}
+
+Este important să fim atenți când folosim această comandă și opțiunile ei,
+pentru a nu șterge informații utile din greșeală și apoi să nu le mai putem
+recupera. Una dintre cele mai întâlnite erori este \cmd{rm -rf /}, care șterge
+recursiv toate fișierele începând cu rădăcina.
+
+Observație: dacă dorim să ștergem un director gol, putem să folosim comanda
+\cmd{rmdir <director_gol>}
+
+\subsubsection{Redirectarea intrării sau ieșirii pentru o aplicație}
+
+Există 3 \textbf{fișiere speciale} utilizate de programele în execuție pentru a
+interacționa cu utilizatorii:
+
+\begin{itemize}
+	\item standard input (\textbf{stdin}): acesta reprezintă locul de unde
+		se citesc datele de intrare de către program (de obicei
+		tastatura)
+	\item standard output (\textbf{stdout}): acesta este fișierul în care se
+		scriu datele de ieșire (de obicei este consola curentă)
+	\item standard error (\textbf{stderr}): în acest fișier se scriu
+		mesajele de eroare de către program (de obicei tot în consola
+		curentă)
+\end{itemize}
+
+Un descriptor de fișier reprezintă un indice asociat unui fișier deschis de o
+aplicație Linux. Cele 3 fișiere speciale de mai sus au următorii descriptori de
+fișier:
+
+\begin{itemize}
+	\item stdin = 0
+	\item stdout = 1
+	\item stderr = 2
+\end{itemize}
+
+Restul fișierelor deschise de aplicații au un descriptor de fișier mai mare sau
+egal cu 3.  În C/C++ există 3 variabile FILE* cu numele stdin, stdout, stderr.
+Ele au același rol ca cele descrise mai sus și sunt folosite ca orice alte
+variabilă de tip FILE*.
+
+În unele situații, utilizatorul poate dori să modifice intrarea sau ieșirea
+pentru o aplicație. De exemplu, utilizatorul își poate dori ca în loc să obțină
+datele de intrare de la tastatură pentru un program, să le obțină dintr-un
+fișier. Aceste operații se pot realiza doar la nivelul descriptorilor. În
+shell-ul bash sunt permise comenzi cu o sintaxă specială asupra descriptorilor
+standard modificați; putând fi întâlnite următoarele cazuri:
+
+\begin{table}[htb]
+\caption{Metode te redirectare}
+\begin{center}
+	\begin{tabular}{ | p{0.2\textwidth} | p{0.2\textwidth} | p{0.5\textwidth} |}
+	\hline
+		\textbf{Sursă} & \textbf{Destinație} & \textbf{Exemplu comandă} \\
+	\hline
+		intrare (stdin) & Fișier & \cmd{./program <fișier_intrare} \\
+	\hline
+		ieșire (stdout) & Fișier & \cmd{./program >fișier_ieșire} \\
+	\hline
+		eroare (stderr) & Fișier & \cmd{./program 2>fișier_erori} \\
+	\hline
+		eroare (stderr) & iesire (stdout) & \cmd{./program 2>\&1} \\
+	\hline
+		eroare \& iesire & Fișier & \cmd{./program 2>\&1 >fișier_ieșire_și_erori} \\
+	\hline
+	\end{tabular}
+	\label{table:redirectare-fisiere}
+\end{center}
+\end{table}
+
+Pentru a redirecta ieșirea (către exteriorul programului) se folosește semnul
+\textit{mai mare}, în timp ce pentru a redirecta intrarea se folosește semnul
+\textit{mai mic} (către program), iar pentru redirectarea ieșirii de erori se
+folosește descriptorul \texttt{2} de fișier. Sintaxa \texttt{\&1} se folosește
+atunci când se dorește redirectarea către ieșirea standard (\textit{stdout}).
+
+Astfel, dacă dorim redirectarea ieșirii de erori și a ieșirii standard către un
+fișier trebuie să redirectăm mai întâi ieșirea de erori către stdout
+(\texttt{2>\&1}) și apoi să redirectăm ieșirea standard într-un fișier
+(\file{>fișier_erori_și_ieșiri}).
+
+În cazul în care redirectările sunt făcute în ordine inversă, nu va fi obținut
+efectul dorit.
+
+Exemplu de redirectare a intrării:
+
+\begin{screen}
+$ mail user1 < continut_mail
+\end{screen}
+
+În comanda anterioară intrare pentru comanda mail este redirectată la conținutul
+fișierului.  Utilizatorului user1 i se va trimite un email cu informațiile din
+fișier.
+
+Comanda următoare va scrie în fișierul listare toate fișierele și directoarele
+ce se află în directorul curent.
+
+\begin{screen}
+$ ls > listare
+$ cat listare
+fisier1
+\end{screen}
+
+Pentru a adăuga la sfârșitul fișierului rezultatul unei comenzi, următoarea
+comandă este folosită:
+
+\begin{screen}
+$ date >> listare
+$ cat listare
+fisier1
+Sat Aug 22 16:07:50 EEST 2018
+\end{screen}
+
+Comanda următoare încearcă să copieze un fișier fără a spune unde dorește să-l
+copieze, comandă ce va genera o eroare care va fi redirectată în fișierul erori:
+
+\begin{screen}
+$ cp fisier1 2> erori
+$ cat erori
+cp: missing destination file operand after `fisier1'
+Try `cp --help' for more information.
+\end{screen}
+
+Asemănător cazului anterior, pentru a scrie erorile la sfârșitul fișierului se
+va folosi comanda:
+
+\begin{screen}
+$ cp fisier4 2>> erori
+$ cat erori
+cp: missing destination file operand after `fisier1'
+Try `cp --help' for more information.
+cp: missing destination file operand after `fisier4'
+Try `cp --help' for more information.
+\end{screen}
+
+Comanda următoare va scrie atât erorile cât și rezultatele comenzii \cmd{ls} în
+fișierul specificat:
+
+\begin{screen}
+$ ls fisier1 fisier4 2>&1 > rezultate
+\end{screen}
+
+sau mai simplu:
+
+\begin{screen}
+$ ls fisier1 fisier4 >& rezultate
+$ cat rezultate
+ls: cannot access fisier4: No such file or directory
+fisier1
+\end{screen}
+
+Tabelul următor prezintă câteva redirectări folosind fișiere speciale:
+
+\begin{table}[htb]
+\caption{Redirectări folosind fișiere speciale}
+\begin{center}
+	\begin{tabular}{ | p{0.3\textwidth} | p{0.5\textwidth} |}
+	\hline
+		\textbf{Comanda} & \textbf{Efect} \\
+	\hline
+		./program 2>/dev/null & mesajele de la ieșirea de erori nu sunt
+		afișate \\
+	\hline
+		./program 2>\&1 >/dev/null & nici un mesaj nu este afișat \\
+	\hline
+		> nume_fișier & crează un fișier gol cu numele “nume_fișier” \\
+	\hline
+		cat /dev/null > nume_fișier & crează un fișier cu același
+		conținut ca și /dev/null , adică un fișier gol \\
+	\hline
+	\end{tabular}
+	\label{table:redirectari-speciale}
+\end{center}
+\end{table}
+\subsection{Căutarea fișierelor}
+\subsubsection{Comanda find}
+
+Pentru căutarea în arborele de directoare al fișierelor se folosește comanda
+find ce are la bază abordarea brute-force. Comanda permite căutarea folosind
+diferite criterii, precum numele fișierului, utilizator, grup, tip, permisiuni,
+dimensiune, dată și altele. Exemple de criterii de căutare:
+
+\begin{itemize}
+	\item \texttt{name} - căutare după numele fișierelor
+	\item \texttt{perm} - căutare după permisiunile fișierelor
+	\item \texttt{size} - căutare după dimensiunea fișierelor
+\end{itemize}
+
+Pentru a căuta toate fișierele ce au numele stat se folosește comanda find astfel:
+
+\begin{screen}
+$ find /usr -name stat
+/usr/src/linux-headers-2.6.24-19-generic/include/config/cpu/freq/stat
+/usr/bin/stat
+\end{screen}
+
+Pentru a căuta fișierele ce au permisiunile 644, se scrie comanda următoare:
+
+\begin{screen}
+$ find /usr -perm 644
+/usr/local/include/glib-2.0/glib.h
+/usr/local/include/glib-2.0/gobject/gsourceclosure.h
+/usr/local/include/glib-2.0/gobject/gtypeplugin.h
+[...]
+\end{screen}
+
+Pentru a găsi fișierele ce au o mărime mai mare de 500Mb, se poate folosi una
+dintre comenzile următoare:
+
+\begin{screen}
+$ find /usr -size +500000
+$ find /usr -size +500k
+/usr/local/lib/libgio-2.0.so.0.1800.4
+/usr/local/lib/libgobject-2.0.so.0.1800.4
+/usr/local/lib/libglib-2.0.so.0.1800.4
+[...]
+\end{screen}
+
+\subsubsection{Comanda locate}
+
+Comanda \cmd{locate} indexează toate fișierele într-o bază de date locală, fiind
+mai rapidă decât comanda \cmd{find}, însă cu costul de a avea doar numele
+fișierului drept criteriu de căutare și cu nevoia de reactualizare periodică a
+bazei de date pentru a include informații despre noile fișiere create în sistem.
+Rezultatul comenzii este o listă cu toate fișierele care conțin șirul de
+caractere trimis ca argument.
+
+În exemplul următor se caută toate fișierele care conțin \cmd{pwd}:
+
+\begin{screen}
+$ locate pwd
+/bin/pwd
+/etc/.pwd.lock
+/sbin/unix_chkpwd
+/usr/bin/pwdx
+/usr/include/pwd.h
+/usr/lib/python2.5/lib-dynload/spwd.so
+/usr/share/man/man1/pwd.1.gz
+/usr/share/man/man1/pwdx.1.gz
+/usr/share/man/man8/unix_chkpwd.8.gz
+/usr/share/perl/5.8.8/pwd.pl
+\end{screen}
+
+Unele distribuții de Linux folosesc comanda \cmd{slocate} în locul comenzii
+\cmd{locate}, care afișează doar fișierele din directoarele în care utilizatorul
+curent are drepturi de acces.
+
+\subsubsection{Comanda whereis}
+
+Comanda este utilizată pentru căutarea în anumite locații din sistem, de exemplu
+directoarele cu fișiere binare sau directoarele cu pagini \cmd{man}. Însă
+comanda \cmd{whereis} nu se poate folosi pentru căutarea în directoarele
+utilizatorului. Aceasta va căuta fișierele a căror nume începe cu șirul de
+caractere primit ca argument.
+
+De exemplu, pentru a localiza comanda \cmd{ls}, folosim următoarea comandă:
+
+\begin{screen}
+$ whereis ls
+ls: /bin/ls /usr/share/man/man1/ls.1.gz
+\end{screen}
+
+Comanda afișează calea atât către executabil, cât si către pagina de \cmd{man} a
+comenzii.
+
+\subsubsection{Comanda which}
+
+Folosirea comenzii \cmd{which} duce la obținerea căii către executabilele care
+au posibilitatea de a fi rulate din linia de comandă. Pentru a returna lista
+completă a potrivirilor se folosește opțiunea \texttt{-a}, altfel se va returna
+doar prima potrivire.
+
+De exemplu, comanda următoare returnează prima potrivire găsită pentru chmod.
+
+\begin{screen}
+$ which chmod
+/bin/chmod
+\end{screen}
+
+\subsubsection{Comanda type}
+
+Utilizarea comenzii \cmd{type} duce la determinarea modului de interpretare a
+altei comenzi, de exemplu comandă integrată în shell, comandă externă sau alias.
+
+Un exemplu de comandă integrată in shell este:
+
+\begin{screen}
+$ type cd
+cd is a shell builtin
+\end{screen}
+
+Pentru o comandă externă rezultatul este calea către executabil:
+
+\begin{screen}
+$ type cat
+cat is /bin/cat
+\end{screen}
+
+În cazul unui alias se va afișa comanda echivalentă:
+
+\begin{screen}
+$ type ls
+ls is aliased to 'ls --color'
+\end{screen}
+
+\subsection{Arhivarea fișierelor și dezarhivarea}
+
+Prin procesul de arhivare, mai multe fișiere și directoare sunt strânse la un
+loc într-un fișier unic, realizându-se astfel și reducerea dimensiunii, deoarece
+se elimină datele care apar de mai multe ori și se înlocuiesc cu niște serii de
+codificări.
+
+După arhivare se creează un dicționar care conține secvențe de octeți care se
+repetă mai des și codificarea lor pe mai puțini octeți. Pe lângă dicționar, în
+arhivă este conținut și cuprinsul fișierelor. Fiind folosite referințele către
+dicționar a secvențelor lungi, se realizează astfel o economie de spațiu. Cu cât
+fișierele conțin mai multe date repetitive, cu atât dimensiunile arhivei scad.
+
+Cele două etape importante ale procesului de arhivare sunt:
+
+\begin{itemize}
+	\item concatenarea sau lipirea fișierelor într-unul mai mare, de unde
+		există posibilitatea de retragere a tuturor fișierelor și
+		informațiilor aferente acestora;
+	\item compresia fișierului mare, astfel reducându-se dimensiunea lui,
+		fără pierderi de informații.
+\end{itemize}
+
+Utilitarele de arhivare din Linux se pot ocupa doar de una dintre etape sau de
+amândouă.  Pentru prima etapă este folosită comanda tar, numele acesteia
+(\textit{tape archiver}) venind de la faptul că, la origine, rezultatul era
+transferat pe benzi magnetice. Fișierele .tar au în componență fișierele
+inițiale necompresate precum și informațiile legate de modul lor de extragere
+(spre exemplu: de unde până unde se găsește un fișier în cadrul arhivei). Din
+această cauză fișierele .tar au o dimensiune mai mare decât suma dimensiunilor
+fișierelor care îl alcătuiesc.
+
+Pentru a crea o arhiva tar, folosim comanda:
+
+\begin{screen}
+$ tar cvf nume_arhiva.tar <cale>
+\end{screen}
+
+ce are următorii parametri:
+
+\begin{itemize}
+	\item \texttt{c}: pentru a crea arhiva
+	\item \texttt{v}: arată ce se va arhiva
+	\item \texttt{f nume_arhiva.tar}: numele arhivei
+	\item \texttt{<cale>}: ce dorim să arhivăm
+\end{itemize}
+
+
+Pentru dezarhivare utilizăm:
+
+\begin{screen}
+$ tar xvf nume_arhiva.tar [<cale_destinatie>]
+\end{screen}
+
+\begin{itemize}
+	\item \texttt{x}: dezarhivează (eXtract)
+	\item \texttt{v}: afișează ce dezarhivăm
+	\item \texttt{f nume_arhiva.tar}: numele arhivei ce se dezarhivează
+	\item \texttt{[<cale_destinatie>]}: opțional, locul unde dorim dezarhivarea
+\end{itemize}
+
+\textbf{Observație:}
+
+\texttt{f} și \texttt{nume_arhiva.tar} reprezintă un singur parametru – astfel,
+când folosim
+\texttt{f} pentru a indica un fișier, acesta trebuie să se afle ultimul în lista
+de parametri
+
+
+Cele mai folosite utilitare care realizează compresarea unui fișier sunt:
+
+\begin{itemize}
+	\item \cmd{gzip}: are o rapiditate mai ridicată, dar o rată de
+		compresare mai scăzută
+	\item \cmd{bzip2}: are o rapiditate mai scăzută, dar o rată de
+		compresare mai ridicată
+\end{itemize}
+
+Comanda \cmd{tar} este capabilă să utilizeze oricare dintre programele de
+compresie de mai sus și se folosește de parametrul \texttt{z} pentru gzip și
+\texttt{j} pentru bzip2 astfel:
+
+\begin{table}[htb]
+\begin{center}
+	\begin{tabular}{ | p{0.1\textwidth} | p{0.3\textwidth} |  p{0.3\textwidth} |}
+	\hline
+	 & \textbf{Compresie} & \textbf{Decompresie} \\
+	\hline
+		Gzip & tar czvf fisier.tar.gz dir/ & tar xzvf fisier.tar.gz \\
+	\hline
+		bzip2 & tar cjvf fisier.tar.bz2 dir/ & tar xjvf fisier.tar.bz2 \\
+	\hline
+	\end{tabular}
+	\label{table:exemple-arhivare}
+\end{center}
+\end{table}
+
+Există, de asemenea, posibilitatea folosirii și a altor opțiuni, în afară de
+cele de compresare și arhivare, cele mai utilizare fiind \texttt{--preserve},
+care poate determina păstrarea drepturilor de acces la arhivare și la
+dezarhivare. Mai jos este prezentat un exemplu unde comanda \cmd{tar} este
+utilizată pentru compresie și decompresie:
+
+\begin{screen}
+[ubuntu@ubuntu:/tmp/q]$ ls
+f1.txt  f2.txt  f3.txt
+[ubuntu@ubuntu:/tmp/q]$ tar cvf arhiva.tar f*.txt
+f1.txt
+f2.txt
+f3.txt
+[ubuntu@ubuntu:/tmp/q]$ file arhiva.tar
+arhiva.tar: POSIX tar archive (GNU)
+[ubuntu@ubuntu:/tmp/q]$ gzip arhiva.tar
+[ubuntu@ubuntu:/tmp/q]$ ls
+arhiva.tar.gz  f1.txt  f2.txt  f3.txt
+[ubuntu@ubuntu:/tmp/q]$ file arhiva.tar.gz
+arhiva.tar.gz: gzip compressed data, was "arhiva.tar", from Unix, last modified: Thu Sep 20 11:37:30 2007
+[ubuntu@ubuntu:/tmp/q]$ ls
+arhiva.tar.gz  f1.txt  f2.txt  f3.txt
+[ubuntu@ubuntu:/tmp/q]$ mv arhiva.tar.gz fisier.txt
+[ubuntu@ubuntu:/tmp/q]$ file fisier.txt
+fisier.txt: gzip compressed data, was "arhiva.tar", from Unix, last modified: Thu Sep 20 11:37:30 2007
+[ubuntu@ubuntu:/tmp/q]$ ls
+f1.txt  f2.txt  f3.txt
+[ubuntu@ubuntu:/tmp/q]$ tar czvf new.tar.gz f*
+f1.txt
+f2.txt
+f3.txt
+[ubuntu@ubuntu:/tmp/q]$ ls
+f1.txt  f2.txt  f3.txt  new.tar.gz
+[ubuntu@ubuntu:/tmp/q]$ file new.tar.gz
+new.tar.gz: gzip compressed data, from Unix, last modified: Thu Sep 20 11:40:02 2007
+[ubuntu@ubuntu:/tmp/q]$ mkdir tmp
+[ubuntu@ubuntu:/tmp/q]$ mv new.tar.gz tmp/
+[ubuntu@ubuntu:/tmp/q]$ cd tmp/
+[ubuntu@ubuntu:/tmp/q/tmp]$ tar xvf new.tar.gz
+f1.txt
+f2.txt
+f3.txt
+[ubuntu@ubuntu:/tmp/q/tmp]$ ls
+f1.txt  f2.txt  f3.txt  new.tar.gz
+\end{screen}
+
+\subsection{Backup}
+
+Backup-ul este utilizat pentru a păstra într-un loc separat o copie a datelor ce
+poate fi folosită pentru a le recupera în cazul în care, din diferite motive,
+suportul original nu mai poate fi folosit. Adesea omitem sau amânăm realizarea
+unei versiuni de backup a datelor, putând ajunge la pierderea informațiilor în
+situații de defecțiune. De aceea, în ultimii ani sunt foarte populare soluțiile
+de backup automat în Cloud. Astfel, utilizatorii pot folosi soluții precum
+Google Drive, Dropbox, Microsoft OneDrive pentru a sincroniza automat conținutul
+directoarelor în care lucrează cu un spațiu de stocare cloud. Dacă utilizatorul
+lucrează pe mai multe dispozitive (desktop, laptop, mobil etc) poate fi
+configurată sincronizarea tuturor acestor dispozitive cu cloud-ul, facilitând
+astfel transferul documentelor.
+
+Chiar dacă realizăm sincronizarea automată prin Cloud, este util să creăm și
+backup-uri periodice pe alte suporturi fizice. De exemplu, în cazul în care
+datele noastre sunt afectate de erori grave, datorită malware sau ștergerii
+accidentale, aceste erori se pot propaga și în Cloud, dar versiunile salvate
+anterior pe suporturi fizice distincte vor fi protejate.
+
+Tabelul următor prezintă câteva metode de backup și situațiile când sunt ele
+potrivite.
+
+\begin{table}[htb]
+\begin{center}
+	\begin{tabular}{ | p{0.2\textwidth} | p{0.7\textwidth} | }
+	\hline
+		\textbf{Metoda} & \textbf{Descriere} \\
+	\hline
+		tar + gzip/bzip2 & Metodă foarte simplu de aplicat. Devine greu
+		de folosit pentru dimensiuni mari de date. Permite compresia
+		datelor. \\
+	\hline
+		dd & Metoda simplu de folosit și independentă de sistemul de
+		fișiere. Permite păstrarea intactă a structurii sistemului de
+		fișiere. Inflexibilă când vine vorba de recuperarea datelor.
+		Utilă pentru cantități mari de date. \\
+	\hline
+		rsync & E asemănătoare comenzii cp dar la care s-a adăugat
+		suport de sincronizare intre mai multe computere. Permite
+		replicarea structurii de fișiere (inclusiv permisiuni) între 2
+		computere. \\
+	\hline
+		rdiff-backup & Este un wrapper peste rsync. Adaugă suport pentru
+		backup-uri incrementale, adică: la un moment dat se realizează
+		un backup complet pentru un director (asemănător rsync-ului);
+		backup-urile incrementale salvează doar modificările ce s-au
+		făcut de la ultimul backup pana în prezent, indiferent de tipul
+		backup-ului; în acest fel se poate reveni la orice stare
+		anterioara, în măsura în care s-a realizat cel puțin un backup
+		incremental la acea stare. \\
+	\hline
+	\end{tabular}
+	\label{table:metode-backup}
+\end{center}
+\end{table}
+
+\section{Tipuri de sisteme de fișiere}
+
+În timp au apărut mai multe tipuri de sisteme de fișiere, majoritatea
+dezvoltându-se în mediul open-source. Utilizatorii au opțiunea de a alege
+sistemul de fișiere preferat cu care doresc să lucreze, mai ales în cazul în
+care folosesc partiții multiple pentru mai multe sisteme de operare.
+
+Pentru mai multe informații despre crearea, montarea și repararea unui sistem de
+fișiere, precum și lucrul cu partiții, citiți capitolul dedicat Administrării
+spațiului de stocare.
+
+În tabelul de mai jos se găsesc unele dintre cele mai importante sisteme de
+fișiere utilizate în prezent, alături de sistemele de operare în care operează:
+
+\begin{table}[htb]
+\caption{Sisteme de operare și sisteme de fișiere suportate}
+\begin{center}
+	\begin{tabular}{ | p{0.2\textwidth} | p{0.2\textwidth} | p{0.2\textwidth} | p{0.3\textwidth} | }
+	\hline
+		\textbf{SO} & \textbf{Windows} & \textbf{Linux} & \textbf{Mac OS} \\
+		\textbf{Sistem fișiere} & & & \\
+	\hline
+		FAT32 & Nativ & Nativ & Nativ \\
+	\hline
+		NTFS & Nativ (dupa WinNT) & prin ntfs-3g[1] & prin ntfs-3g \\
+	\hline
+		Ext2/Ext3 & Driver third-party[2] & Nativ & - \\
+	\hline
+		ReiserFS & Aplicație third-party[3] & Nativ & - \\
+	\hline
+		HFS+ & - & Nativ & Nativ \\
+	\hline
+		ISO9660 & Nativ & Nativ & Nativ \\
+	\hline
+		UDF & Nativ & Nativ & Nativ \\
+	\hline
+	\end{tabular}
+	\label{table:metode-backup}
+\end{center}
+\end{table}
+
+Termenul “nativ” semnifică faptul că suportul este oferit de driverele ce
+însoțesc sistemul de operare.
+
+Sistemele de fișiere pot fi clasificate după locul în care datele sunt stocate.
+
+Tabelul următor prezintă succint această clasificare:
+
+\begin{table}[htb]
+\caption{Clasificarea sistemelor de fișiere după suportul datelor}
+\begin{center}
+	\begin{tabular}{ | p{0.3\textwidth} | p{0.3\textwidth} | p{0.4\textwidth} | }
+	\hline
+		\textbf{Tip} & \textbf{Exemplu} & \textbf{Descriere} \\
+	\hline
+		sisteme de fișiere cu suport fizic & 	FAT32, NTFS, Ext3, ReiserFS, HFS+ & se
+		regăsesc de obicei pe un mediu de stocare \\
+	\hline
+		sisteme de fișiere virtuale & 	procfs, devfs SSHFS & conțin fișiere/date generate
+		de SO (informații despre sistem) sau de o altă componentă software (alte surse) \\
+	\hline
+		sisteme de fișiere pentru rețea & 	NFS, SMB & utilizate pentru accesul la
+		fișiere aflate în rețea \\
+	\hline
+	\end{tabular}
+	\label{table:fs-clasificare}
+\end{center}
+\end{table}
+
+\subsection{Integritatea datelor}
+
+Cărțile din bibliotecă se îngălbenesc, caietele se șifonează și scrisul își
+pierde conturul.  Fișierele digitale se pot și ele degrada, datorită unor erori.
+Sistemele de fișiere au un rol vital în asigurarea integrității datelor
+(\textit{data integrity}), adică în prevenirea, detectarea și remedierea
+coruperii datelor. Coruperea datelor (\textit{data corruption}) se referă la
+degradarea neintenționată a datelor datorită erorilor umane, erorilor de
+transmisie, defecțiunilor mediului fizic de stocare sau a diferitelor deficiențe
+în procesare. Securizarea datelor (\textit{data security}) se referă la
+prevenirea atacurilor intenționate asupra datelor și de asemenea necesită
+sprijinul sistemului de fișiere.
+
+Un exemplu de metodă prin care sistemele de fișiere pot asigura integritatea
+datelor se referă la calcularea unei sume de control (\textit{check-sum}).
+Pentru un anumit set de date, o sumă de control este un număr care descrie pe
+scurt acel set, diferențiindu-l suficient de mult de un set foarte similar dar
+un pic diferit. De exemplu, o sumă de control poate consta efectiv în însumarea
+valorilor numerice asociate cu caracterele respective într-un cod, precum
+valorile lor numerice din codul ASCII. Dacă se modifică o literă din greșeală,
+suma va diferi și eroarea va fi detectată. ZFS este unul dintre sistemele de
+fișiere renumit pentru performanțele sale în asigurarea integrității datelor [1]
+[2].
+
+Sistemul de fișiere trebuie să fie capabil să păstreze integritatea datelor și
+în situația unui eșec (failure). În cele mai multe cazuri această
+funcționalitate se implementează prin \cmd{jurnalizare}, care permite și
+aducerea sistemului la o stare anterioară eșecului. Prin această activitate se
+creează un jurnal unde sunt păstrate toate modificările efectuate asupra unui
+sistem de fișiere, fiecare dintre aceste modificări fiind mai întâi scrisă în
+jurnal și apoi realizată (modificările putând apărea în mai multe locuri din
+sistemul de fișiere).
+
+Operațiile din jurnal sunt executate la diferite intervale de timp de către
+driver-ul sistemului pentru actualizarea stării discului. După ce toate
+modificările asociate unei operații sunt executate, aceasta se șterge din
+jurnal, astfel că, la apariția unui eșec (cum ar fi întreruperile de curent,
+defecțiunile fizice ale dispozitivului etc.), vor  putea fi executate operațiile
+care au fost începute, dar s-au întrerupt, deoarece ele sunt încă prezente în
+jurnal, urmând să fie reexecutate în întregime.
+
+\subsection{Alegerea unui sistem de fișiere}
+
+Atunci când alegem un sistem de fișiere, criteriile cele mai căutate sunt:
+
+\begin{itemize}
+	\item disponibilitatea: dacă sistemul respectiv poate fi folosit în mai
+		multe sisteme de operare, sau doar în unul singur;
+	\item gradul de siguranță: dacă asigură jurnalizare sau nu – majoritatea
+		sistemelor din prezent folosesc jurnalizarea, alte măsuri luate
+		pentru a permite integritatea datelor;
+	\item restricții speciale date de modul în care datele din sistemul de
+		fișiere sunt organizate;de exemplu: FAT32 folosește doar 32 biți
+		pentru stocarea dimensiunii unui fișier, deci dimensiunea maximă
+		a unui fișier este 4GB (mai puțin decât o imagine de DVD, fapt
+		ce îl face nepractic pentru o parte din aplicațiile multimedia)
+	\item optimizări de performanță, ce sunt realizate în funcție ori de
+		tipul suportului de stocare, ori de dimensiunea fișierelor etc.
+\end{itemize}
+
+Tabelul următor realizează o analiză sumară a caracteristicilor sistemelor de
+fișiere. Unitatea TiB reprezintă un tebibyte, adică $2^{40}$ octeți, iar un EiB
+reprezintă un exbibyte, adică $2^{60}$ octeți.
+
+\begin{table}[htb]
+\caption{Caracteristici ale sistemelor de fișiere mai cunoscute}
+\begin{center}
+	\begin{tabular}{ | p{0.1\textwidth} | p{0.2\textwidth} |  p{0.1\textwidth} |  p{0.1\textwidth} | p{0.4\textwidth} | }
+	\hline
+		\textbf{Tip sistem de fișiere} & \textbf{Sisteme de operare} &
+		\textbf{Dimensiune maximă fișier} & \textbf{Jurnalizare} &
+		\textbf{Observații} \\
+	\hline
+		FAT32 & Windows / Linux / Mac OS & 4 GB & nu & Cel mai folosit
+		sistem de fișiere - întâlnit în mod special pe USB stick-uri,
+		fără drepturi de acces; Windows-ul limitează la creare
+		dimensiunea unei partiții la 32GB, dar poate citi partiții mai
+		mari realizate și formatate cu aplicații third-party folosit
+		pentru a asigura compatibilitatea cu dispozitive sau sisteme mai
+		vechi \\
+	\hline
+		NTFS & Windows / Linux / Mac OS & 16TiB & da & Singurul sistem
+		de fișiere pentru Windows recomandat de Microsoft. Singurul
+		sistem de fișiere pentru Windows cu securitate. \\
+	\hline
+		Ext2/Ext3 & Linux / Windows & 16GiB - 64TiB & ext2-nu ext3-da &
+		Sistemul de fișiere considerat cel mai stabil datorită unei
+		istorii de dezvoltare foarte lungi; ext3 e compatibil cu
+		versiunea anterioară ext2, aduce jurnalizare față de ext2 \\
+	\hline
+		Ext4 & Linux / Windows / MacOS & 16TiB & da & Succesorul lui
+		Ext3, îmbunătățind performanța, stabilitatea și capacitatea de
+		stocare. Este adecvat și pentru stocarea datelor critice,
+		datorită preciziei ridicate ale marcajelor temporale. \\
+	\hline
+		ReiserFS & Linux & 8 TiB & da & Cunoscut pentru o viteză mai
+		mare decât ext3-ul la lucrul cu multe fișiere de dimensiune mică
+		\\
+	\hline
+		HFS+ & Mac OS / Linux & 16 EiB & da* & * în Linux, HFS+ este
+		suportat fără jurnalizare \\
+	\hline
+		AppleFS & MacOS, iOS & 8 EiB & da & Este optimizat pentru
+		dispozitivele de stocare tip flash și solid drive, și pune
+		accentul pe criptare. \\
+	\hline
+		ISO9660 & Win / Linux / Mac OS & În funcție de implementare & nu
+		& Sistem de fișiere utilizat în principal pe CD-uri, organizare
+		internă concepută pentru ca datele să fie citibile ușor \\
+	\hline
+		UDF & Win / Linux / Mac OS & 16 EiB & da & Sistem de fișiere
+		utilizat în principal pe mediile optice, cu suport atât pentru
+		scriere cât și pentru citire \\
+	\hline
+	\end{tabular}
+	\label{table:fs-detalii}
+\end{center}
+\end{table}
+
+\subsection{Numele fișierelor}
+
+Deși pe dispozitivul de stocare există un spațiu bine definit ocupat de către
+fișiere, utilizatorul nu poate adresa direct poziția fizică a unui fișier pe
+dispozitivul de stocare. Astfel, pentru a adresa un fișier, utilizatorii
+folosesc \textbf{nume}, exprimate prin caractere. Fiecare sistem de fișiere
+prezintă o serie de restricții în alegere numelor.
+
+\textbf{Caracterele} ce alcătuiesc numele fișierelor sunt codificate după
+standardul Unicode (de obicei UTF-8 sau UTF-16)
+
+În subcapitolul privind atributele fișierelor, am discutat despre faptul că
+majoritatea fișierelor au o “extensie”, ce ajută la identificarea tipului
+acestora. Extensia are de obicei 3 litere și se găsește la finalul numelui:
+“nume.ext”. Sistemele de operare tip Windows folosesc extensia pentru a ști cu
+ce aplicație să deschidă fișierele, în tip ce în sistemele de operare tip Linux
+extensia lipsește, identificarea bazându-se integral pe conținutul fișierului.
+
+\begin{table}[htb]
+\caption{Restricții asupra numelor fișierelor}
+\begin{center}
+	\begin{tabular}{ | p{0.1\textwidth} | p{0.2\textwidth} |  p{0.1\textwidth} |  p{0.1\textwidth} | p{0.4\textwidth} | }
+	\hline
+		\textbf{Sistem de fișiere} & \textbf{Case sensitive} & \textbf{Lungime nume} &
+		\textbf{Lungime cale} & \textbf{Observații} \\
+	\hline
+		FAT32 & nu & “8.3” sau 255 caractere cu LFN & nedefinit &
+		Inițial limitat la 8 caractere pentru numele fișierului și 3
+		caractere pentru extensie, FAT32 a căpătat suport și pentru nume
+		lungi Long Filename – LFN) – pentru un fișier, FAT32 reține atât
+		numele lung cât și versiunea scurta în format 8.3 \\
+	\hline
+		NTFS & da[5] & 254 caractere + “.” & 32767 octeți & Orice
+		caracter Unicode poate fi folosit, mai puțin caracterele: NULL,
+		· " / \ * ? < > | : (utilizate în general pentru adresarea
+		fișierelor) \\
+	\hline
+		Ext3, Ext4 & da & 255 octeți & nedefinit & Orice byte mai puțin
+		NULL și “/” poate fi folosit în numele fișierului \\
+	\hline
+		ReiserFS & da & 4,032 octeți / 255 caractere & nedefinit & Orice
+		octet mai puțin NULL poate fi folosit în numele fișierului \\
+	\hline
+		HFS+ & nu[6] & 255 caractere UTF-16 & nedefinit & Orice caracter
+		Unicode este permis, inclusiv NULL. \\
+	\hline
+		AppleFS & nu & 255 caractere UTF-8 & nedefinit & Orice caracter
+		Unicode 9.0 din UTF-8 \\
+	\hline
+		ISO9660 & nu & “8.3” sau Joliet: 128 octeți & adâncime maximă a
+		căii: 8 niveluri & Există mai multe niveluri pentru standard,
+		fiecare cu restricțiile lui \\
+	\hline
+		UDF & da & 255 octeți & 1023 octeți & Orice octet mai puțin NULL
+		poate fi folosit în numele fișierului \\
+	\hline
+	\end{tabular}
+	\label{table:fs-nume}
+\end{center}
+\end{table}
+
+Ne reamintim că pentru a vedea de ce tip este un fișier in Linux folosim
+următoarea comandă: \cmd{file <nume_fisier>}
+
+\textbf{Exemplu :}
+
+\begin{screen}
+$ file /boot/kernel26.img
+/boot/kernel26.img: gzip compressed data, from Unix, last modified: Sat Mar 3 20:28:37 2018, max compression
+\end{screen}
+
+\section{Studii de caz}
+
+\subsection{Comenzi pentru lucrul cu fișiere în Windows}
+
+\begin{table}[htb]
+\begin{center}
+	\begin{tabular}{ | p{0.1\textwidth} | p{0.2\textwidth} |  p{0.3\textwidth} | }
+	\hline
+		\textbf{Comanda Linux} & \textbf{Comanda Windows} & \textbf{Descriere} \\
+	\hline
+		comanda --help & comanda /? & afișează informații despre comandă \\
+	\hline
+		cd & cd & schimbă directorul curent \\
+	\hline
+		pwd & chdir & afișează directorul curent \\
+	\hline
+		clear & cls & șterge ecranul consolei curente \\
+	\hline
+		cp & copy & copiază un fișier \\
+	\hline
+		rm & del & șterge un fișier \\
+	\hline
+		ls & dir & afișează conținutul directorului curent \\
+	\hline
+		vim & edit & editează un fișier text \\
+	\hline
+		exit & exit & închide shell-ul curent \\
+	\hline
+		diff & fc & compară două fișiere și afișează diferențele între ele \\
+	\hline
+		find & find & caută fișiere \\
+	\hline
+		mkfs (mke2fs) & format & formatează un disc \\
+	\hline
+		free & mem & afișează informații despre memoria liberă și cea ocupată \\
+	\hline
+		mkdir & mkdir & creează un nou director \\
+	\hline
+		mv & move & mută un fișier \\
+	\hline
+		mv & ren & redenumește un fișier \\
+	\hline
+		date & time & afișează ora sistemului \\
+	\hline
+		diff & fc & afișează diferențele dintre două fișiere \\
+	\hline
+	\end{tabular}
+	\label{table:fs-studiu-caz}
+\end{center}
+\end{table}
