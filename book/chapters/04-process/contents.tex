@@ -1,1 +1,1355 @@
 \chapter{Procese}
+
+La nivelul sistemului de operare, aceste aplicații sau comenzi pornite de
+utilizator sunt procese.  Atunci când o aplicație sau un program rulează, spunem
+că face acest lucru în contextul unui proces.  Spunem despre procese că
+\textbf{rulează} sau că \textbf{se execută} sau că \textbf{se află în execuție}.
+Procesele sunt entități active care, atunci când rulează, folosesc resursele
+sistemului: procesor, memorie, sistem de fișiere.
+
+Înțelegerea proceselor este esențială pentru orice utilizator pentru a asigura
+buna funcționare a sistemului; atunci când sistemul nu este responsiv, cauza
+probabil este un proces care consumă excesiv resursele sistemului. Un
+dezvoltator de aplicații va folosi cunoștințe despre procese pentru a proiecta
+aplicații performante care să folosească cât mai eficient resursele sistemului.
+Un inginer de sistem va monitoriza procesele sistemului pentru a se asigura de
+buna funcționare a acestuia și pentru a preveni atacuri de securitate sau abuz
+de resurse.
+
+O parte dintre procese sunt pornite la acțiuni ale utilizatorilor, precum
+rularea unei aplicații grafice sau a unei comenzi. Numim aceste procese
+\textbf{interactive} pentru că interacționează cu utilizatorul pe parcursul rulării lor.
+Alte procese sunt pornite de sistem și nu interacționează cu utilizatorul;
+acestea au rol în gestiunea sistemului sau oferirea de servicii: de exemplu
+conectarea la rețea în momentul în care există o rețea wireless disponibilă sau
+actualizarea ceasului sistemului sau indexarea fișierelor pentru căutare rapidă.
+Aceste procese sunt \textbf{neinteractive}. Le numim \textbf{servicii} sau, pe Unix, procese
+\textbf{daemon}. Vom discuta mai în detaliu în Secțiunea TODO: Procese pdaemon.
+
+Unele aplicații pot fi compuse din mai multe procese. De exemplu, un navigator
+web precum Google Chrome pornește un proces pentru fiecare tab; un server web
+care servește cereri în rețea poate avea mai multe procese care fac servirea; o
+fereastră de terminal are un proces shell deschis pentru fiecare tab[o][p][q];
+mai mult, într-o fereastră de terminal pot rula mai multe procese așa cum vom
+vedea în Secțiunea TODO: Foreground și background. Altfel spus, când folosim
+interfața grafică, o fereastră de aplicație care rulează poate avea în spate mai
+multe procese. Sistemul de operare folosește noțiunea de proces; este
+preocuparea dezvoltatorului de aplicații dacă o aplicație folosește, când
+rulează, unul sau mai multe procese.
+
+NOTĂ: Esențial este că orice aplicație care rulează folosește unul sau mai multe procese pentru a satisface cerințele utilizatorului.
+
+TODO diagramă cu utilizator + aplicație + 1 sau mai multe procese + resurse sistem
+
+Pentru utilizator și sistemul de operare, procesele sunt necesare ca formă de
+încapsulare. Un proces execută o anumită acțiune fără a afecta negativ alt
+proces. În general, procesele au resurse proprii oferite de sistemul de operare,
+dar pot și partaja anumite resurse. Acest lucru este util pentru a realiza
+acțiuni ce nu pot fi obținute cu un singur proces. De exemplu, un proces
+descărcă un fișier video, alt procese îl convertește într-un format adecvat, alt
+proces îl vizualizează. Vom vedea mai multe despre comunicarea și interacțiunea
+între procese în Secțiunea TODO: Operații cu procese. Interacțiunea între
+procese.
+
+Concret, sistemul de operare oferă:
+
+\begin{itemize}
+	\item izolare a resurselor proceselor, asigurându-se că, în mod normal,
+		un proces nu poate accesa sau corupe resursele altui proces. În
+		acest fel sistemul este menținut integru și fiecare proces se
+		execută corespunzător.
+	\item arbitrare a accesului la resurse partajate: dacă două sau mai
+		multe procese accesează o resursă comună (de exemplu un fișier),
+		atunci accesele trebuie să fie bine ordonate și, de exemplu, să
+		nu suprascrie un proces informațiile celuilalt.
+	\item mecanisme explicite de comunicare între procese: procesele
+		comunică între ele pentru realizarea unei acțiuni mai complexe.
+		Vom discuta mai târziu în capitol despre semnale și pipe-uri,
+		două mecanisme de bază de comunicare între procese.
+	\item comportament echitabil al proceselor, prin asigurarea că un proces
+		nu utiliza prea multe resurse: un proces poate utiliza foarte
+		multă memorie sau foarte mult procesor și împiedica alte procese
+		să ruleze, iar sistemul de operare are grijă să aloce fiecărui
+		proces resurse în mod echitabil
+\end{itemize}
+
+\section{Programe și procese}
+
+Am precizat mai sus că un proces rulează și folosește resursele sistemului
+pentru un anumit rezultat. Pentru aceasta, un proces stochează în memorie
+instrucțiunile pe care trebuie să le execute. Cum ajung aceste instrucțiuni în
+memorie?
+
+Instrucțiunile (numite și codul) executate de un proces sunt puse în memoria sa
+în momentul creării sale. Un proces este creat dintr-un program; un program este
+un fișier executabil care conține codul ce va fi executat. În momentul în care
+pornim o aplicație sau rulăm o comandă, un program este încărcat
+(\textit{loaded}) în memorie și se obține un proces. Încărcarea programului
+înseamnă, așadar, copierea instrucțiunilor ce vor fi executate din fișierul
+executabil în memoria viitorului proces și pornirea procesului. Mai multe
+informații despre magia din spatele acțiunii de încărcare (\textit{loading}) se
+găsesc în Secțiunea TODO: Use case: Internele pornirii unui proces. Loading.
+
+De exemplu, atunci când pornim navigatorul web Firefox, se creează un proces cu
+care interacționăm. Putem vedea acest proces pe Linux/Unix/macOS folosind
+utilitarul ps sau putem să-l vizualizăm pe Windows folosind Task Manager; în
+momentul vizualizării putem să vedem care este programul (fișierul executabil)
+din care a fost creat procesul Firefox, așa cum se vede mai jos:
+
+* snippet cu ps pe Linux, macOS și imagine cu Task Manager (sau PowerShell) pe Winows cu afișarea și a executabilului
+
+\begin{definition}{proces}
+	Un proces este, așadar, un program în execuție care folosește resursele
+	sistemului de calcul pentru a realiza una sau mai multe acțiuni. Mai
+	spunem că un proces este un program căruia i s-a atașat un context de
+	execuție. Un program este o entitate statică, un fișier executabil în
+	sistemul de fișiere. Un proces este, pe de altă parte, o entitate[r][s]
+	dinamică, una care rulează și care folosește resursele sistemului.
+\end{definition}
+
+Pentru un proces spunem că programul executabil din care a fost creat este
+imaginea sa (\textit{process image}). Mai multe procese pot fi create din același program
+executabil. De exemplu, în Google Chrome orice tab este un proces creat din
+același program, orice tab de terminal creează un nou proces shell, un
+utilizator poate porni un proces Vim într-un terminal și un proces Vim în alt
+terminal. În toate aceste situații, se vor crea procese distincte pronind de la
+același executabil, adică procese ce au aceeași imagine.
+
+Diagrama de mai jos arată cum unul sau mai multe procese sunt create dintr-un
+fișier executabil (imaginea procesului):
+
+* diagramă cu procese create din același executabil
+
+Întrucât mai multe procese pot fi create din același fișier executabil, este
+tehnic incorect să ne referim la procesul Firefox sau procesul Apache. Putem
+folosi termenul \textit{un} proces Firefox sau \textit{un} proces Apache. Numele unui proces
+identifică imaginea de proces, executabil din care a fost creat; numele nu este
+folosit pentru a identifica în mod unic un proces. Procesul este identificat la
+nivelul sistemului de un număr unic, numit Process Id sau PID. Prezentăm mai
+multe despre atributele unui proces, inclusiv identificatorul său, în secțiunea
+următoare.
+
+\section{Resursele și atributele unui proces}
+
+Un proces rulează și folosește resursele sistemului de calcul: memorie,
+procesor, elemente de input/output (I/O): disc, rețea, tastatură etc. Un proces
+folosește memoria sistemului pentru a stoca instrucțiunile din executabil și a
+stoca date prelucrate. Instrucțiunile sunt apoi executate pe procesor, iar
+procesorul operează cu date din memorie. Pe parcursul execuției procesul
+comunică și cu elemente de I/O sau cu alte procese. Diagrama de mai jos arată
+modul în care un proces folosește resursele sistemului:
+
++ diagramă CPU, memorie, I/O, proces (procesul în centru, fluxuri)
+
+Unui proces i se alocă resurse (de exemplu zone de memorie) în momentul creării
+(încărcării sale, numit și load-time) și în momentul rulării (numit și
+run-time). Aceste zone pot fi modificate la run-time, la cererea procesului
+însuși, prin alocare dinamică (de exemplu malloc()). Pe măsură ce rulează, unui
+proces îi sunt alocate alte resurse. De exemplu un proces deschide și lucrează
+cu fișiere sau canale de comunicare în rețea sau mecanisme de comunicare cu alte
+procese.
+
+Este important să putem investiga și monitoriza resursele folosite de un proces
+pentru a identifica procesele care acaparează resurse excesiv și care pot
+îngreuna sistemul. Putem modifica parametri și atribute ale proceselor pentru a
+afecta cât de multe resurse utilizează. De aceea sistemele de operare oferă
+primitive de listare și monitorizare a proceselor, precum utilitare ps și top pe
+Linux sau Task Manager pe Windows. Mai jos avem exemple de rulare a comenzii ps
+și screenshot-uri cu rularea top și Task Manager care prezintă resursele de
+procesor, memorie și I/O (de obicei disc) folosite de proces.
+
+* snippet și diagramă cu ps, top și Task Manager
+
+Mai multe informații despre investigarea proceselor și monitorizarea resurselor
+utilizate se găsesc în Secțiunea TODO: Investigarea Proceselor.
+
+\subsection{Atributele unui proces}
+
+Un proces are atribute în mod normal stabilite la pornirea sa (la load-time):
+identificatorul procesului, procesul părinte, utilizatorul, prioritatea de
+rulare. Unele atribuite sunt stabilite sau modificate la run-time. De exemplu,
+prioritatea unui proces poate fi modificată pentru a afecta accesul la resurse;
+un proces cu prioritate mai bună va avea acces mai des la procesor sau la disc
+decât procese cu prioritate mai slabă.
+
+Atributele unui proces au rolul de identifica un proces, de a stabili ce și cât
+de multe resurse poate folosiși de a contabiliza resursele utilizate. O listă de
+atribute de bază ale unui proces împreună cu o descriere a lor se găsește în
+tabelul de mai jos:
+
+* tabel: atribut, rol, când e atribuit, modificabil
+
+Atributul PID este identificatorul unic al procesului la nivelul sistemului de
+operare. Fiecare proces primește un identificator în momentul creării, atribut
+ce nu se schimbă pe parcursul rulării. În general, comenzile sau funcțiile care
+lucrează cu un proces primesc ca argument PID-ul acestui proces. De exemplu,
+dacă vrem să omorâm un proces, vom folosi comanda kill cu parametru PID-ul
+acelui proces:
+
+* snippet cu kill 9898
+
+Atributul UID este identificatorul utilizatorului ce deține procesul. Un proces
+cu un anumit UID va avea acces la resursele acelui utilizator. În mod normal,
+procesele aceluiași utilizator au acces la aceleași resurse. Utilizatorii sunt
+modul principal de separare/izolare între procese. Mai multe detalii vom
+prezenta în Capitolul TODO: Utilizatori.
+
+\subsection{Utilitare pentru urmărirea proceselor}
+
+Sistemul de operare pune la dispoziție utilitare și comenzi pentru a afișa
+procese și pentru a urmări atributele și resursele lor.
+
+Utilitarele din această categorie sunt de două tipuri:
+
+\begin{itemize}
+	\item cele care afișează un snapshot al momentului (procese active în
+		acest moment și atribute ale lor)
+	\item cele care monitorizează procesele sistemului
+\end{itemize}
+
+Din prima categorie fac parte, pe Linux, utilitarele ps, pgrep, pidof, pstree,
+pmap, lsof. Din a doua categorie fac parte top, htop, iotop, sysstat. Pe Windows
+utilitarele precum Task Manager, Process Explorer monitorizează procesele
+sistemului.
+
+Mai jos sunt prezentate screenshot-uri cu utilitarele top, htop, Task Manager și
+Process Explorer, utilitare de monitorizare a proceselor. Monitorizarea
+proceselor e utilă pentru a urmări procesele din sistem, a observa tendințe, a
+vedea consumul de resurse și pentru a investiga de ce sistemul sau un proces
+funcționează anevoios. Mai multe informații despre monitorizarea și investigarea
+proceselor vom prezenta în Secțiunea TODO: Investigarea proceselor.
+
+* screenshot cu TaskManager și ProcessExplorer
+
+Mai jos sunt descrise utilitarele pentru afișarea de informații de tip snapshot
+despre procese:
+
+\begin{itemize}
+	\item ps este principalul utilitar de afișare de informații despre
+		procese. La o rulare simplă afișează procesele din terminalul
+		curent. Poate afișa selectiv procese și atribute ale acestora.
+	\item pidof afișează PID-ul proceselor care au un anumit program
+		(imagine de proces)
+	\item pgrep are funcționalitatea lui pidof extinsă: afișează procesele
+		care corespund unei anumite condiții. Condiția poate fi
+		“aparține unui anumit utilizator”, “are un anumit program ca
+		imagine”, “are un anumit proces părinte”, “rulează într-un
+		anumit terminal”, la fel ca în exemplele de mai jos.
+	\item pstree afișează ierarhia de procese a sistemului, îl vom detalia
+		în Secțiunea TODO: Ierarhia de procese pe Linux/Unix.
+	\item pmap (\textit{process map}) afișează harta memoriei unui proces, adică
+		zonele de memorie ocupate de acesta. Este un utilitar adecvat în
+		special pentru programatori și pentru cei care sunt interesați
+		de internele sistemelor de operare, nu insistăm pe el.
+	\item lsof (\textit{list open files}) este utilitarul care afișează fișierele
+		deschise de un proces. Îl vom folosi în Secțiunea TODO: Procese
+		și fișiere.
+\end{itemize}
+
+Așa cum am precizat, utilitarul ps este utilitarul principal pentru listarea
+proceselor și a atributelor acestora. Mai jos prezentăm scenarii frecvente de
+folosire a comenzii ps cu argumentele aferente:
+
+\begin{itemize}
+	\item listarea tuturor proceselor din sistem
+	\item listarea tuturor proceselor fără afișarea capului de tabel
+	\item listarea cu mai multe atribute a proceselor din sistem
+	\item listarea proceselor ce aparțin unui utilizator
+	\item listarea proceselor ce nu aparțin unui utilizator
+	\item listarea proceselor ce au un anumit program ca imagine
+	\item listarea doar a PID-urilor, comenzii de pornire, procentul de
+		procesor acaparat și memorie utilizate pentru toate procesele
+	\item listarea doar a PID-urilor, comenzii de pornire și a stării pentru
+		procesele ce aparțin unui utilizator
+	\item listarea  doar a PID-urilor, comenzii de pornire, procentul de
+		procesor acaparat și memorie utilizate pentru toate procesele
+		sortate după procentul de procesor acaparat
+\end{itemize}
+
+NOTĂ (Best practice): Dacă la un moment dat avem nevoie de PID-urile proceselor
+care au un anumit program ca imagine, vom folosi comanda:
+
+\begin{screen}
+ps -C apache2 -o pid
+\end{screen}
+
+La fel, dacă avem nevoie de PID-urile proceselor unui anumit utilizator, vom
+folosi comanda
+
+\begin{screen}
+ps -u student -o pid
+\end{screen}
+
+Observăm că avem inclusiv antetul afișării, deși ne dorim doar PID-urile. Pentru
+aceasta, folosim caracterul = după numele atributului pid, în forma pid= care
+dezactivează afișarea header-ului:
+
+\begin{screen}
+ps -C apache2 -o pid=
+ps -u student -o pid=[t][u]
+\end{screen}
+
+De avut în vedere că același lucru poate fi obținut, mai simplu, folosind
+comanda pidof:
+
+\begin{screen}
+pgrep -u student
+pgrep apache2
+\end{screen}
+
+Atunci când dorim să obținem doar PID-urile anumitor procese, este mai simplu să
+folosim pgrep în loc de ps.
+
+\subsection{Starea proceselor}
+
+Într-unul din exemplele de folosire a utilitarului ps de mai sus am vorbit
+despre starea unui proces. Un proces are o stare care arată dacă acesta rulează
+sau nu pe procesor.
+
+Un proces are nevoie de unul sau mai multe procesoare pentru a rula. Întrucât,
+de cele mai multe ori, sunt mai multe procese decât procesoare, nu toate
+procesele pot rula. Astfel unele procese rulează pe procesor, altele așteaptă să
+ruleze pe procesor; când un proces ajunge să ruleze pe un procesor spunem că
+este planificat (\textit{scheduled}) să ruleze pa acel procesor. Iar unele procese pot fi
+blocate (\textit{sleeping}) în așteptarea unei operații de input/output. Simplificat,
+avem schema de mai jos:
+
+* diagramă cu starea proceselor
+
+Putem investiga starea proceselor cu utilitare de urmărire și monitorizare.
+Acest lucru este util pentru a vedea dacă un proces este blocat și pentru ca
+apoi să investigam cauza pentru care este blocat. Sau să vedem cât de multe
+procese sunt active, gata să ruleze. În exemplu de mai jos, am afișat PID-ul,
+imaginea, starea, timpul de rulare și procentul curent de procesor ocupat pentru
+toate procesele din sistem:
+
+* exemplu ps
+
+În rezultatul comenzii ps, R înseamnă runnable (nu running), adică rulează
+atunci pe procesor (starea running) sau poate fi pregătit să ruleze (starea
+ready).
+
+Un sistem este cu atât mai încărcat cu cât are mai multe procese gata să ruleze,
+dar care nu au fost planificate. Aceste procese se cheamă ready sau runnable așa
+cum sunt prezente în diagrama de mai sus. Când multe procese sunt ready înseamnă
+că vor acapara un procesor imediat ce acesta devine disponibil și vor ține
+procesorul și sistemul încărcat.
+
+Noțiunea de încărcare a unui sistem (numită și load) este dată de numărul de
+procese ready. Utilitarul uptime ne afișează încărcarea unui sistem în ultimul
+minut, în ultimele 5 minute și în ultimele 15 minute:
+
+* exemplu uptime
+
+Utilitarul top afișează, în partea superioară, informații despre încărcarea
+sistemului:
+
+* exemplu parte superioară top
+
+\subsection{Prioritatea proceselor}
+
+Procesele concurează la folosirea procesorului. Sistemul de operare planifică un
+proces ready pe procesor ținând cont de prioritatea sa. Procesele cu prioritate
+mai bună sunt planificate mai des și rulează mai mult timp pe procesor.
+Prioritatea unui proces este afectată de comportamentul acestuia (procesele mai
+“flămânde” primesc o prioritate mai slabă) și poate fi afectată de utilizator.
+
+În Windows, utilizatorul poate afecta prioritatea unui proces TODO
+
+* screenshot cu Task Manager și afectarea priorității
+
+În Linux, putem altera prioritatea unui proces prin alterarea valorii nice a
+unui proces. Valorea “nice” arată cât de “drăguț” este acel proces cu alte
+procese. O valoare mai mare a “nice” înseamnă că procesul este mai drăguț, deci
+lasă alte procese să fie planificate; o valoare mai mică a “nice” înseamnă că
+procesul nu este drăguț, deci “va lua fața” altor procese. Aceste lucru înseamnă
+că o valorea nice mică înseamnă un proces cu prioritate mai bună, iar o valoare
+nice mare înseamnă un proces cu prioritate mai slabă.
+
+NOTĂ: Din cauză că există această inconsecvență între valoarea nice și
+prioritate folosim exprimarea “prioritate mai bună” și “prioritate mai slabă”.
+Folosirea exprimării “prioritate mai mare” și “prioritate mai mică” ar putea
+produce confuzie între prioritate și valoarea nice.
+
+În mod implicit un proces pornește cu valoarea nice 0, o valoare neutră.
+Valoarea poate fi modificatăla pornirea procesului (load-time) sau în timp ce
+rulează (run-time). Un utilizator obișnuit (neprivilegiat) poate doar crește
+valoarea “nice” a unui proces pe care îl deține, adică în sensul slăbirii
+priorității procesului. Doar un utilizator privilegiat poate scădea valoarea
+nice a unui proces, adică în sensul îmbunătățirii priorității procesului.
+
+Pentru a altera prioritatea unui proces la pornire (load-time) folosim
+utilitarul nice. Pentru a modifica prioritatea unui proces la rulare (run-time)
+folosim utilitarul renice. Mai jos sunt prezentate exemple de comenzi care
+alterează prioritatea unui proces; după fiecare comandă nice/renice folosim ps
+pentru a vedea acum noua prioritate a procesului:
+
+* exemple de folosire nice / renice
+
+TODO: despre ionice
+
+Prioritatea unui proces este principalul mijloc prin care un proces poate folosi
+mai mult sau mai puțin procesorul unui sistem. Dacă vrem ca un proces să
+folosească mai mult resurse sistemului, vom îmbunătăți prioritatea acestuia;
+dacă un proces utilizează multe resurse (\textit{resource hog}) și vrem să-l
+“temperăm” îi slăbim prioritatea; la nevoie un astfel de proces este omorât.
+
+\section{Ierarhia de procese}
+
+Un proces este creat la comanda utilizatorului sau la un eveniment de declanșare
+(o nouă conexiune în rețea, expirarea unui interval de timp). Crearea unui
+proces are loc dintr-un fișier executabil (numit imagine de proces); după creare
+procesului îi sunt alocate resurse (precum timp de procesor și zone de memorie)
+și rulează. Crearea unui proces dintr-un executabil se mai numește
+\textit{loading} (încărcare executabilului în memorie).
+
+Un proces este creat prin intermediul unui alt proces, numit proces părinte. Un
+proces poate crea oricâte procese copil, în limita resurselor sistemului. Un
+proces poate avea, însă, un singur proces părinte. Pentru crearea unui proces,
+procesul părinte folosește o interfață specifică a sistemului de operare:
+folosește grupul de apeluri fork() + exec() pe Linux și CreateProcess() pe
+Windows. Nu insistăm pe aceste apeluri în această carte; câteva detalii găsiți
+în Secțiunea TODO din capitolul TODO Interfața în linia de comandă. Vizual,
+crearea unui proces este indicată în diagrama de mai jos:
+
++     diagramă cu crearea unui proces: părinte, executabil/program, proces copil
+
+În general, procesul care creează un nou process este un shell. Shell-ul poate
+fi grafic (precum Windows Explorer) sau poate fi în linia de comandă (precum
+Bash). De exemplu, în mediul grafic, atunci când folosim dublu click pe o icoană
+de pe ecran, pornim un proces; acel proces este creat de shell-ul grafic, care
+define procesul părinte al noului proces. Altfel, în linia de comandă, shell-ul
+creează un proces nou la introducerea unei comenzi. Prezentăm mai multe detalii
+în capitolul TODO Interfața în linia de comandă.
+
+Legătura proces părinte-proces copil este utilă pentru a afla informații legate
+de încheierea unui proces. Un proces își poate încheia execuția în mai multe
+moduri: ajunge la sfârșitul zonei de execuție, este omorât de alt proces,
+execută o acțiune nevalidă.Procesul părinte este cel care poate furniza
+informații despre condițiile de încheiere ale unui proces copil.
+
+\subsection{Ierarhia de procese în Linux/Unix}
+
+În Linux, întrucât un proces creează alt proces care la rândul său poate crea
+alt proces, procesele sunt organizate într-o ierarhie de procese, într-o
+aborescență. De exemplu la o rulare a comenzii pstree putem vedea ierarhia de
+procese în Linux:
+
++ snippet cu pstree și pstree -p
+
+Cu opțiunea -p, pstree afișează și PID-ul proceselor.
+
+Observăm că în vârful ierarhie, rădăcina proceselor, este procesul init,
+procesul cu PID-ul 1. Acesta este primul proces al sistemului, procesul care
+pornește serviciile sistemului și procesele de bază. De asemenea, observăm că un
+proces are un singur proces părinte și oricâte procese copil. Ierarhia nu are
+foarte multe niveluri. În general procesul init creează servicii de bază și
+shell-uri, iar shell-urile creează alte procese. Detalii despre procesul init
+prezentăm în Secțiunea TODO.
+
+În mod obișnuit, un proces dat are, de la creare până la încheiere, un proces
+părinte. Se poate întâmpla însă ca un proces să rămână "orfan" adică procesul
+părinte să își încheie execuția înaintea sa. În acest caz, în Linux, procesul
+init "adoptă" procesul rămas orfan și devine noul proces părinte. Vom prezenta
+detalii în Secțiunea TODO.
+
+\subsection{Ierarhia de procese în Windows}
+
+În Windows, în mod similar, un proces creează alt proces. Cu toate acestea
+ierarhia de procese în Windows este o ierarhie cu legături mai slabe. În vreme
+ce în Linux, un porces părinte are privilegii specifice de comunicare cu un
+proces copil (TODO: explicații concrete), în Windows un proces poate comunica în
+același mod cu un proces părinte și cu un proces cu care nu este conectat
+ierarhic. Mai mult, în Windows orice proces poate obține informații despre
+încheierea unui alt proces, spre deosebire de Linux unde doar procesul părinte
+poate obține informații.
+
+O imagine a ierarhiei de procese în Windows putem obține folosind utilitarul
+Process Explorer, în Figura TODO + screenshot cu process explorer
+
+TODO: Observăm că în Windows, în vârful ierarhiei se găsește procesul TODO.
+Shell-ul Windows este un shell grafic reprezentat de procesul Explorer. Acest
+proces creează aplicațiile/procesele pornite în mediul grafic în Windows.
+
+TODO: Ce se întâmplă când un proces “părinte” moare.[1]
+
+\subsection{Foreground și background}
+
+Un proces shell în linia de comandă creează procese în momentul introducerii de
+comenzi din partea utilizatorului. Procesul nou creat și shell-ul folosesc
+simultan terminalul, adică modul în care utilizatorul poate transmite informații
+la ieșirea standard și modul în care se afișează mesaje la ieșirea standard.
+Dacă atât procesul nou creat cât și shell-ul afișează informații la ieșirea
+standard, aceste afirmații vor fi agregate și afișate la terminal. Dacă însă
+trimitem informații la intrarea standard, prin terminal, doar procesul nou creat
+la va accesa.
+
+Spunem că în cadrul terminalului avem un singur proces care deține controlul
+intrării standard, adică un singur proces care este în \textbf{foreground}. În mod
+obișnuit, modul de funcționare a shell-ului, detaliat în Capitolul TODO:
+Interfața în linia de comandă este:
+
+\begin{enumerate}
+	\item shell-ul citește de la intrarea standard (din terminal) comenzi și
+		opțiuni ale utilizatorului
+	\item shell-ul creează un nou proces pornind de la comanda introdusă
+	\item procesul nou creat rulează în foreground și are controlul
+		terminalului (și a intrării acestuia)
+	\item procesul nou creat își încheie execuția; shell, în calitate de
+		proces părinte, reține informații despre încheierea execuției
+	\item shell-ul redobândește controlul terminalului și reîncepem acțiunea
+		de la punctul 1
+\end{enumerate}
+
+Acest mod de funcționare devine problematic în momentul în care procesul nou
+creat nu își încheie rapid execuția: fie rulează mai mult, fie este o aplicație
+grafică folosită interactiv de utilizartor. În această situație, procesul nou
+creat "acaparează" terminalul și împiedică shell-ul să citească noi comenzi și
+să creeze noi proces. De exemplu dacă introducem comanda firefox, shell-ul va
+crea un proces firefox care va acapara terminalul.
+
+Pentru a trece de această problemă și pentru a permite shell-ului rularea
+continuă de comenzi și crearea de mai multe procese, există un mod de folosire a
+terminalului numit \textbf{background}. Background este modul în care un proces cedează
+accesul la intrarea terminalului curent; procesul poate rula în continuare dar
+nu mai are acces la informații furnizate de utilizator.
+
+Întrucât un singur proces poate avea acces la intrarea terminalului, putem avea
+un singur proces în foreground. Putem avea însă oricâte procese în background.
+În background procesle se pot găsi în două stări: rulând (running) sau
+suspendate (stopped, suspeneded, paused). Decizia de a suspenda și de a scoate
+un proces din starea suspendat aparține utilzatorului. Un proces suspendat nu se
+poate găsi în foreground, ci doar în background.
+
+Un proces poate rula de la început în background sau poate fi transferat în
+background după pornire. De exemplu, pentru a rula un proces în background
+folosim operatorul \& imediat după comanda aferentă și parametrii acesteia. Mai
+jos, în prima rulare a comenzii procesul firefox a fost pornit în foreground,
+iar apoi, folosind operatorul \&, procesul firefox a fost pornit în background.
+
++ exemplu firefox \&
+
+Comanda jobs este folosită pentru a afișa job-urile din shell-ul curent, adică
+procesele care se găsesc în background.
+
+În cazul rulării unei comenzi în mod simplu, fără operatorul \&, procesul
+pornește în foreground. Poate fi adus ulterior în background folosind combinația
+de taste Ctrl+z. Această combinație de taste are ca efect suspendarea
+procesului. Întrucât procesul nu poate rula suspendat în foreground, este trecut
+în background. Avem mai jos un exemplu:
+
++ exemplu cu Ctrl+z
+
+Observăm așadar că folosirea operatorului \& duce un proces în background în
+starea rulând, pe când folosirea combinației de taste Ctrl+z duce un proces în
+background în starea suspendat. O dată dus un proces în background acesta poate
+fi readus în foreground folosind comanda fg, ca în exemplu de mai jos:
+
++ exemplu cu fg
+
+În exemplu de mai sus, rulăm o comandă obișnuit și procesul rezultat rulează în
+background. Ulterior, folosim Ctrl+z pentru a plasa procesul în background. Apoi
+folosim Ctrl+z pentru a-l readuce în foreground.
+
+Un proces dus în background în starea suspendat folosind combinația de taste
+Ctrl+z poate fi apoi trecut în starea running, tot în background. Facem acest
+lucru folosind comanda bg, ca în exemplul de mai jos:
+
++ exemplu cu bg
+
+Sumarizând, diagrama de mai jos prezintă modul în care poate rula un proces în
+background/foreground: ce comenzi și operatori sunt folosiți în fiecare caz, ce
+stări au procesele și cum pot tranzita între stări (running, stopped) și între
+moduri de rulare (foreground, background):
+
++ diagramă cu foreground și background, \&, Ctrl+z, bg, fg
+
+Am precizat că mai multe procese pot rula în background. Procesele care rulează
+în background se numesc job-uri și au un identificator de job pentru shell-ul
+curent. Dacă  avem mai multe job-uri dorim să controlăm starea unui job folosind
+comenzile fg și bg, atunci vom adăuga ca parametru către aceste comenzi
+identificatorul job-ului, așa cum facem în exemplul de mai jos:
+
++ snippet-uri de comenzi de interacțiune: bg, fg, jobs
+
+Un scenariu util pentru trecerea unui proces în background este când pornim un
+proces GUI din shell și pierdem în shell accesul la terminal. De exemplu am
+pornit procesul Emacs (grafic) în foreground. Pentru a putea readuce shell-ului
+controlul terminalului, vom trece procesul Emacs în background (suspendat)
+folosind combinația de taste Ctrl+z și vom muta apoi procesul din starea
+supendat în starea running folosind comanda bg. Adică la fel în eemplu de mai
+jos:
+
++ exemplu cu enumerare pași cu pornire emacs, Ctrl+z și bg
+
+În mod obișnuit, dacă un shell se închide (se rulează comanda exit sau
+combinația Ctrl+d sau este închisă fereastra terminalului în care rulează),
+procesele active în terminalul respectiv sunt, de asemenea, omorâte. Sunt
+omorâte procesele aflate în background și, eventual, procesul aflat în
+foreground. Dacă dorim să menținem anumite procese active după încheierea
+procesului shell, avem opțiuni; vom discuta despre aceste optiuni  în Secțiunea
+TODO: “Procese daemon”.
+
+\subsection{Procesul init}
+
+După cum am indicat în Secțiunea TODO: Ierarhia de procese în Linux, în vârful
+ierarhiei proceselor din Linux se găsește procesul init. Acesta este primul
+proces al sistemului și creatorul primelor procese. Serviciile de bază ale
+sistemului, shell-urile inițiale, mediul grafic sunt pornite direct sau indirect
+din procesul init. Spunem că un sistem Linux a bootat în momentul creării
+procesului init. În această secțiune discutăm minimal despre init, cu accent pe
+rolul său în gestiunea proceselor sistemului. Detalii despre pornirea sistemului
+până la pornirea init, și detalii despre init și configurarea sa prezentăm în
+capitolul TODO: Pornirea sistemului.
+
+Pe lângă rolul în pornierea proceselor inițiale, init are și rol în întreținerea
+sistemului prin adoptarea proceselor orfane. Un proces orfan este un proces al
+cărui proces părinte și-a încheiat execuția. Pentru a menține ierarhia de
+procese, acest proces trebuie să aibă un proces părinte; acest proces părinte
+este procesul init. Mai jos este un exemplu în care creăm un proces care apoi
+creează alt proces. În momentul în care omorâm primul proces creat, al doilea
+proces va fi adoptat de init:
+
++ exemplu cu proces adoptat de init
+
+Procesul init este un proces esențial în Linux, vârful ierarhiei de procese. De
+aceea, dacă dintr-un motiv sau altul procesul init moare sau este omorât,
+sistemul de operare devine neutilizabil.
+
+Pentru a evita ca un singur proces să aibă rolurile procesului init, pe
+sistemele Ubuntu a apărut soluția folosirii mai multor procese init: câte un
+proces init pentru fiecare sesiune. Când o sesiune dată este creată, se creează
+un proces init dedicat acelei sesiuni, care va fi vârful ierarhiei de procese
+din acea sesiune. Acest proces init de sesiune adoptă procesele orfane din acea
+sesiune.
+
+\section{Procese și fișiere}
+
+Așa cum am precizat în Capitolul TODO: Utilizarea sistemului de fișiere,
+fișierele sunt componenta cea mai vizibilă din sistemul de operare. Fișierele
+sunt folosite pentru a stoca informații care sunt ulterior accesate, prelucrate
+sau transferate.
+
+Accesul de orice fel la fișiere se realizează prin intermediul unui proces. O
+comandă precum cat f.txt duce la crearea unui proces din executabilul /bin/cat,
+proces care apoi accesează fișierul f.txt și îi afișează conținutul. Procesele
+folosesc foarte des fișiere: pentru configurare, pentru a scrie informațiile
+generate, pentru a citi informații pe care să le prelucreze. De exemplu un
+proces al unui joc va citi datele despre scenariul care se va juca și informații
+despre un personaj dintr-un fișier. Un compilator va deschide fișiere cod sursă
+pentru a le compila și fișiere obiect unde să stocheze codul obiect generat.
+
+Când un proces deschide un fișier (de exemplu folosind apelul fopen() în C),
+primește un handle către acel fișier. Un handle (reprezentat de FILE * în C)
+este interfața prin care procesul poate lucra cu fișierul. Acel handle este
+identificat de o intrare într-o tabelă a procesului numită tabela descriptorilor
+de fișiere. Aceasta este tabela prin care un proces gestionează fișierele pe
+care le folosește. Mai jos este o diagramă:
+
++ diagramă cu tabela de descriptori de fișier
+
+Fiecare fișier folosit de un proces este gestionat prin intermediul unei intrări
+din această tabelă, tabela descriptorilor de fișiere. Indexul intrării din acea
+tabelă este numit descriptor de fișier și este identificatorul folosirii
+fișierului în cadrul procesului.
+
+\subsection{Descriptori de fișiere}
+
+Un descriptor de fișiere identifică pentru un proces fișierul pe care îl
+operează. Pornind de la descriptorul de fișiere, procesul accesează intrarea
+aferentă în tabela de descriptori de fișiere și folosind informațiile de acolo
+folosește procesul. În mod uzual folosit pentru fișiere, un descriptor de fișier
+poate referi și alte tipuri de intrări: poate referi un dispozitiv de terminal
+sau poate referi un socket pentru comunicare în rețea.
+
+Tabela de descriptori de fișiere are o dimensiune limitată (pe Linux 1024 de
+intrări) astfel că un proces nu poate deschide un număr infinit de fișiere.
+Acesta e un mod care să prevină folosirea abuzivă de resurse ale sistemului
+deschizând foarte multe fișiere din cadrul unui proces; adică să prevină un atac
+de tipul denial of service. În momentul deschiderii unui fișier i se alocă o
+intrare din tabelă, iar fișierul va fi referit prin indexul din tabelă, acela
+devenind descriptorul său. În momentul închiderii unui fișier, intrarea
+respectivă va fi eliberată.
+
+Pentru a investiga tabela de descriptori de fișiere a unui proces folosim
+comanda lsof ca mai jos:
+
++ exemplu lsof
+
+Primele 3 intrări în tabelă (0, 1 și 2) sunt întotdeauna alocate pentru
+descriptorii standard de interacțiune cu procesul: intrarea standard (standard
+input), ieșirea standard (standard output) și ieșirea de eroare standard
+(standard error). Din acest motiv primul descriptor de fișier folosibil este
+descriptorul 3; în momentul în care un proces deschide primul său fișier,
+acestuia îi va fi alocat descriptorul 3. Astfel că primul fișier deschis va avea
+indexul 3. Alocarea și eliberarea indecșilor (adică descriptorilor de fișier)
+este descrisă în diagrama de mai jos:
+
++     diagramă cu alocarea și eliberarea indecșilor
+
+Fiecare proces are o tabelă de descriptori de fișier proprie. Astfel că o
+intrare 3 într-o tabelă va referi alt fișier decât o intare 3 din tabela altui
+proces. Descriptorii standard referă, în general, terminalul curent al
+procesului, care poate diferi între procese distincte.
+
+Când folosim un editor, vom considera natural ca procesul corespunzător
+editorului să aibă o referință în tabela de descriptori pentru fișierul pe care
+îl editează. Adică dacă folosim comanda vim message.txt pentru a edita fișierul
+message.txt folosind editorul vim, bănuim că procesul corespunzător va avea
+referință către fișier. Dacă investigăm folosind comanda lsof, obținem scenariul
+de mai jos:
+
++ exemplu vim + lsof
+
+Observăm că nu există o referință în vim la acel fișier. În general editoarele
+nu folosesc referințe la fișiere; editoarele citesc conținutul fișierelor în
+memorie și acțiunile de editare ale utilizatorului se traduc în modificări în
+memorie, nu în fișierul de pe disc; doar la comenzi de salvare sunt deschise
+fișierele, scrise informațiile pe disc, iar apoi iar se închide referința la
+fișier. Acest lucru se întâmplă pentru a avea viteză sporită în lucrul cu
+editorul: discul este mult mai lent ca memoria și este mai eficient să fie
+folosită memoria în editare. Spunem că un editor creează un buffer de memorie
+pentru fiecare fișier deschis, buffer al cărui conținut este transferat periodic
+către fișier: fie la acțiuni explicite de salvare din partea utilizatorului fie,
+dacă este cazul, la acțiuni de salvare automată (\textit{autosave}).
+
+\subsection{Redirectarea în/din fișiere}
+
+Am văzut că descriptorii de fișiere pot să refere terminalul, cum este cazul
+descriptorilor standard (0, 1 și 2) sau pot să refer fișiere. Legăturile
+descriptorilor standard cu terminalul nu sunt fixe, pot fi modificate.
+Modificarea referinței unui descriptor poartă numele de "redirectare" sau
+"redirectarea unui descriptor de fișier" (\textit{redirecting a file descriptor}).
+
+În mod uzual, redirectarea înseamnă modificarea descriptorilor standard să
+refere un fișier (sau altceva) în loc de terminal. De exemplu, redirectăm
+descriptorul 1 (ieșirea standard) a unui proces să nu mai refere terminalul ci
+fișierul ls.out, cum este cazul comenzii de mai jos:
+
++ exemplu cu lshw > lshw.out
+
+Această operație, de redirectare, este utilă pentru a putea salva ieșirea unei
+comenzi pentru prelucrarea ulterioară sau pentru a transfera un fișier către
+intrarea unei comenzi. A fost cazul exemplului de mai sus când am dorit să
+salvăm ieșirea comenzii de investigare a hardware-ului unui sistem.
+
+În general redirectările apar în comenzi înlănțuite, mai ample, numite
+one-linere, în cadrul cărora rezultatul unei comenzi ajunge intrare pentru
+altul, așa cum vom vedea în secțiunea TODO: Comunicarea prin pipe-uri.
+
+Putem urmări redirectarea descriptorilor cu ajutorul comenzii lsof, așa cum apare mai jos:
+
+\section{Operații cu procese. Interacțiunea între procese}
+
+Un proces ia naștere dintr-un executabil (un program) prin intermediul unui alt
+proces, de obicei shell-ul, care este procesul părinte. În linia de comanda
+folosim comenzi care vor conduce la crearea de procese. Shell-ul folosește o
+interfață specifică a sistemului de operare pentru a crea un proces și devine
+părintele acelui proces. Apoi procesul rulează până la încheierea sa, folosind
+resurse puse la dispoziție de sistemul de operare.
+
+\subsection{Încheierea unui proces}
+
+Un proces își încheie execuția din diferite cauze. Poate fi o încheiere a
+codului aferent programului (a ajuns la sfârșitul programului), poate fi o
+condiție anormală sau poate fi omorât de alt proces. Există următoarele situații
+pentru încheierea unui proces:
+
+\begin{itemize}
+	\item atingerea sfârșitului programului (încheierea funcției main() în C)
+	\item apelul unei rutine de încheiere (precum funcția exit() în C)
+	\item întâlnirea unei condiții neașteptate: accesarea unei zone nevalide
+		de memorie, rularea unei intrucțiuni nevalide
+	\item omorârea sa de un alt proces
+\end{itemize}
+
+Omorârea unui proces se realizează de un alt proces care are permisiuni; în
+general, acest lucru înseamnă un proces care aparține aceluiași utilizator sau
+utilizatorului administrativ. În Windows omorârea unui proces are rol prin
+transmiterea unei notificări, numite excepție, de la un proces la altul. În mod
+similar, în Linux, o morârea unui proces are loc prin transmiterea unui semnal
+către acesta. Primirea unui semnal duce, în multe situații (nu toate), la
+omorârea procesului. Transmiterea unui semnal se face prin intermediul
+comenzilor din familia kill, ca în exemplul de mai jos:
+
++ exemplu care folosește kill
+
+După folosirea comenzii kill procesul creat a fost omorât. Vom detalia semnale
+și folosire comenzii kill în Secțiunea TODO: Semnale.
+
+Indiferent de situație, procesul transmite către procesul părinte informații
+despre cum și-a încheiat execuția (\textit{exit status}) și un cod de ieșire
+(\textit{exit code}).  În Linux, un cod de ieșire 0 înseamnă că programul s-a
+încheiat cu succes, în vreme ce alt cod de ieșire înseamnă încheiere cu insucces
+sau eroare. Mai jos prezentăm exemple de investigare a codului de eroare după
+încheierea unui proces:
+
++  exemplu cu grep
+
++  exemple din arhivă cu programe scrise în C care se încheie în diferite moduri
+și cu diferite coduri de eroare
+
+\subsection{Semnale}
+
+Semnalele sunt, în Linux, mecanisme de interacțiune între procese. Un proces
+trimite un semnal unui alt proces pentru a-i semnaliza acestuia o situație
+deosebită. Pentru ca un proces să poată trimită semnale altui proces trebuie să
+aibă permisiuni adecvate; în mod normal acest lucru înseamnă să aparțină
+aceluiași utilizator ca cel al procesului care primește semnalul sau să aparțină
+utiizatorului root.
+
+Semnalele sunt la bază mecanisme de notificare din partea unui proces către
+altul, dar sunt folosite în multe situații pentru omorârea unui proces. De
+exemplu semnalul SIGSTP suspendă un proces (și îl trece în background), iar
+semnalul SIGTERM îl omoară:
+
++  snippet cu kill -STP și kill -TERM
+
+Un semnal este identificat de un număr sau de un nume. Atunci când se folosește
+la comanda kill poate fi folosit atât numele cât și numărul:
+
++  snippet cu kill -l
++  snippet cu kill -KILL și kill -9
+%
+Un semnal are asociat o acțiune pe care o întreprinde procesul care-l
+recepționează. Am văzut mai sus că această acțiuni este suspendarea procesului
+în cazul semnalului SIGSTP și omorârea procesului în cazul SIGTERM. Aceată
+acțiune implicită poate fi modificată programatic pentru un proces dat; nu vom
+discuta acest lucru aici, vedeți câteva informații în pagina de manual man 7
+signal. De exemplu, un proces poate alege să ignore anumite semnale. Cu toate
+acestea, două semnale nu pot fi ignorate: semnalul SIGSTP și semnalul SIGKILL
+care duc, respectiv, la suspendarea și omorârea procesului.
+
+Dacă dorim să transmitem semnale mai multor procese putem folosi comanda pkill.
+Aceasta permite transmiterea proceselor cu un anumit atribut, de exemplu create
+dintr-un anumit proces sau care țin de un anumit utilizator:
+
++     snippet cu pkill
+
+Pe anumite platforme Unix există și comenzile killall sau skill. Acestea pot fi
+folosite, de asemenea, pentru a transmite semnale (sau a omorî) mai multe
+procese, cu opțiuni mai reduse decât cele ale comenzi pkill.
+
+Un semnal este transmis de un proces altui proces pentru notificare sau de
+sistemul de operare altui proces pentru semnalizarea unei condiții speciale.
+Dacă dorim să trimitem un semnal unui proces din linia de comandă, avem două
+opțiuni: folosirea comenzilor din familia kill (kill, pkill, skill, killall) sau
+folosirea unor combinații de taste în terminalul curent. Există trei combinații
+de taste care transmit semnale procesului aflat în foreground în terminalul
+curent:
+
+\begin{itemize}
+	\item Ctrl+c: transmite semnalul SIGINT (interrupt), cu rolul de a
+		întrerupe execuția procesului curent
+	\item Ctrl+z: transmite semnalul SIGSTP, cu rolul de a suspenda execuția
+		procesului curent și de a-l trece în background
+	\item Ctrl+textbackslash{}: transmite semnalul SIGQUIT, cu rol similar semnalului
+		SIGINT, de a întreruper execuția procesului curent
+\end{itemize}
+
+Semnalele SIGQUIT și SIGINT au rol similar, diferența fiind că semnalul SIGQUIT
+(transmis folosind combinația de taste Ctrl+\textbackslash{}) este mai puternic
+decât semnalul SIGINT (transmis folosind combinația de taste Ctrl+c). Mai
+puternic înseamnă că pot exista procese care ignoră semnalul SIGINT dar nu
+semnalul SIGQUIT; astfel că dacă folosim combinația de taste Ctrl+c și nu are
+loc terminarea procesului, vom folosi combinația de taste Ctrl+\textbackslash{} cu șanse mai
+mari de reușit.
+
+Pe scurt, atunci când vrem să omorâm un proces aflat în foreground folosim, în
+ordine:
+
+\begin{itemize}
+	\item combinația de taste Ctrl+c
+	\item combinația de taste Ctrl+\textbackslash{}
+	\item trimiterea semnalului SIGKILL din alt terminal
+\end{itemize}
+
+Adică pornim de la prima opțiune și, dacă aceea nu merge, încercăm pe a doua și
+apoi pe treia.
+
+NOTĂ: Rețineți să folosiți Ctrl+c pentru a omorî un proces aflat în foreground.
+
+Nu folosiți Ctrl+z pentru că atunci procesul ajunge în background și rămâne în
+viață, consumând resurse ale sistemului.
+
+\subsection{Înlănțuirea comenzilor}
+
+În unele situații dorim să rulăm mai multe procese unul după altul și să folosim
+o singură linie de comandă. De exemplu să compilăm o aplicație și apoi să o
+instalăm și apoi să o rulăm. Pentru aceasta, shell-ul ne pune la dispoziție
+operatori de înlănțuire de comenzi.
+
+Cel mai simplu operator este cel de înlănțuire necondiționată (;). Acesta
+rulează două comenzi una după alta indiferent de codul de ieșire. Alți doi
+operatori sunt cei de înlănțuire condiționată, care condiționează rularea celei
+de-a doua comenzi de codul de ieșire al primei. Astfel:
+
+\begin{itemize}
+	\item comm1 || comm2 rulează comanda comm2 doar dacă comm1 s-a încheiat cu insuccess
+	\item comm1 \&\& comm2 rulează comanda comm2 doar dacă comm1 s-a încheiat cu succes
+\end{itemize}
+
++ exemple de folosire operatori de înlănțuire (practice, utile)
+
+\subsection{Comunicarea prin pipe-uri}
+
+Atunci când înlănțuim comenzi urmărim, de obicei, transferul de informație de la
+o comandă la alta: rezultatul unei comenzi să fie folosit de altă comandă.
+Transferul de informație se poate face în mod simplu, printr-un fișier: o
+comandă redirectează ieșirea într-un fișier iar altă comandă redirectează
+intrarea din acel fișier, ca mai jos:
+
++     exemplu practic și util cu comm1 > f ; comm2 < f
+
+Același lucru poate fi obținut cu ajutorul operatorului | (pipe) din shell.
+Acest operator transferă ieșirea standard a unei comenzi către intrarea standard
+a altei comenzi. Adică, în loc de exemplul de mai sus să avem:
+
++     același exemplu practic și util cu comm1 | comm2
+
+În unele situații avem mai multe comenzi înlănțuite prin operatorul pipe într-o
+singură linie de comandă, ca în exemplul de mai jos:
+
++     exemplu de comandă utilă cu mai multe pipe-uri
+
+Astfel de comenzi înlănțuite care pot folosi și redirectări și alți operatori de
+înlănțuire sunt numite \textbf{one-linere}. Sunt un mod rapid de a combina mai multe
+comenzi existente pentru un efect nou. Vom discuta în detaliu despre one linere
+în Secțiunea TODO din Capitolul TODO: Interfața în linia de comandă.
+
+NOTE: Înlănțuirea comenzilor face parte din filozofia Unix: “Do one thing, do
+one thing well!”. Un proces face un singur lucru și îl face bine. Pentru acțiuni
+mai complexe sunt combinate comenzi/procese într-un one-liner.
+
+\section{Interactivitatea proceselor}
+
+Din punctul de vedere al interacțiunii cu utilizator clasificăm procesele în
+interactive și neinteractive. Procesele interactive au nevoie de date de intrare
+de la utilizator (de la tastatură sau de la mouse) și oferă informații pe ecran.
+Cele neinteractive rulează fără intervenția utilizatorului, le mai numim procese
+batch. Procesele interactive sunt utile pentru a prelua comenzi de la
+utilizator; cele neinteractive sunt utile pentru gestiunea și buna funcționare a
+sistemului (de exemplu obținerea adresei de rețea sau actualizarea timpului
+sistemului), pentru oferirea de servicii (de exemplu un server web) sau pentru
+automatizarea sarcinilor (de exemplu să fie indexate pentru căutare fișierele
+din sistem la un moment de timp).
+
+Unul dintre cele mai importante tipuri de procese interactive dintr-un sistem
+este shell-ul, adică procesul ce primește intrare de la utilizator și comandă
+apoi sistemul de operare. Un shell poate fi grafic sau în linia de comandă. Un
+shell în linia de comandă (numit interpretor de comenzi) va primi un șir de la
+intrare de la utilizator, va interpreta acel șir într-o comandă (sau mai multe
+comenzi înlănțuite) și va crea un proces sau mai multe procese. Vom detalia
+funcționarea shell-ului în capitolul TODO: Interfața în linia de comandă.
+
+\subsection{Terminale}
+
+Un shell rulează în cadrul unui terminal, care este interfața acestuia de
+interacțiune cu utilizatorul. Descriptorii standard ai shell-ului (intrarea
+standard, ieșirea standard, ieșirea de eroare standard) referă terminalul.
+Altfel spus, când transmitem comenzi shell-ului, le tastăm la terminal, care
+este asociat descriptorului de intrare standard al shell-ului, care apoi
+interpretează șirul introdus. Terminalul este, așadar, un dispozitiv care
+intermediază transmiterea intrării și ieșirii de la tastatură/monitor către
+shell.
+
+* diagramă cu utilizator, terminal, shell
+
+Terminalul este identificat printr-un nume și are asociată, în Linux, o intrare
+în directorul /dev. Comanda tty ne indică terminalul curent pentru un shell.
+Putem să identificăm terminalul unui proces (inclusiv shell-ul) folosind comanda
+ps, ca în exemplul de mai jos:
+
+* Exemplu cu tty
+
+* Exemplu cu ps cu afișarea terminalului
+
+Procesele create dintr-un shell, adică procesele copil ale shell-ului, vor
+moșteni acest terminal. Procesele care se află la un moment dat în rulare în
+acel shell vor partaja ieșirea standard. Dar doar procesul aflat în foreground
+(shell-ul sau altul) va avea acces la intrarea standard. Așa cum am precizat în
+Secțiunea TODO: Foreground și background, procesul din foreground “acaparează”
+intrarea standard dată de terminal.
+
+În exemplul de mai jos arătăm cum procesele create din shell-ul curent au
+același terminal:
+
+* exemplu de rulare ps cu afișarea terminalului pentru un proces shell și pentru
+procese create din el
+
+\subsection{Procese neinteractive}
+
+Am precizat mai sus că procesele neinteractive nu au nevoie de interacțiune cu
+utilizatorul și servesc bunei funcționări a sistemului și automatizării
+sarcinilor. Nu există definiții și clasificări unanim acceptate pentru procesele
+neinteractive, așa că facem aici o trecere în revistă a principalelor denumiri.
+
+Un proces care rulează în background (background process) este un proces care nu
+are acces la terminal pentru intrarea standard. Acesta rulează în general
+neinteractiv. Procesul care rulează în background poate fi readus în foreground
+și recuperează accesul la terminal și la intrarea standard.
+
+Un proces care rulează în background poate fi detașat de la terminal. Detașarea
+de terminal înseamnă că acel proces pierde orice legătură cu terminalul dat,
+legătură ce nu poate fi restaurată. Descriptorii standard ai unui proces detașat
+de terminal nu mai referă terminalul, ci referă fișiere sau alte tipuri de
+intrări (pipe, sockeți). În listarea proceselor sistemului putem observa că
+anumite procese nu au terminal asociate. Acestea sunt procese neinteractive,
+care rulează în background, detașate de terminal.
+
+\subsection{Procese daemon}
+
+O bună parte dintre procesele care rulează neinteractiv, în background, detașate
+de terminal se numesc procese daemon. În anumite descrieri, orice proces care
+rulează neinteractiv, în background, detașat de terminal este un proces daemon.
+Într-o definiție mai riguroasă, un proces daemon are ca proces părinte procesul
+init, descriptorii săi standard referă intrarea /dev/null în Linux și oferă un
+anumit serviciu în sistem (de exemplu procesul daemon atd este folosit pentru
+planificarea execuției unui proces la un moment dat). Din acest motiv, procesele
+daemon se mai numesc servicii; în Windows procesele care rulează neinteractiv,
+în background, detașate de terminal, se numesc servicii. De asemenea, în Linux,
+gestiunea serviciilor se face folosind comanda service, așa cum vom prezenta în
+Capitolul TODO: Pornirea sistemului.
+
+Interacțiunea cu aceste procese se face prin intermediul semnalelor, fișierelor
+de configurare și fișierelor de tip jurnal (log). Exemple de procese daemon
+sunt:
+
+\begin{itemize}
+	\item procesul init
+	\item procese de tip servicii: cron, servicii de rețea
+	\item alte procese rulate de utilizator pentru a rula fără un terminal asociat
+\end{itemize}
+
+Concluzionând, în general un proces daemon are următoarele caracteristici:
+
+\begin{itemize}
+	\item rulează în background, fără o formă de interacțiune directă cu utilizatorul
+	\item oferă un serviciu sistemului: planificare, indexare de fișiere
+	\item nu are un terminal asociat
+	\item are ca proces părinte init
+\end{itemize}
+
+Pentru a lista procesele daemon într-un sistem Linux, rulăm comanda:
+
+* rulare comandă ps --tty ? --ppid 1 (ceva de genul)
+
+Aplicațiile din mediul grafic nu au un terminal asociat dar nu le putem numi
+procese daemon întrucât au o interfață (grafică) de interacțiune cu
+utilizatorul, deci sunt procese interactive.
+
+\subsection{Detașarea de terminal}
+
+În mod uzual procesele daemon sunt create la pornirea sistemului, în general de
+procesul init. Pe lângă serviciile pornite de init/sistem, un utilizator poate
+decide să transforme un proces în proces daemon: neinteractiv, detașat de
+terminal. În felul acesta un utilizator va permite unui proces să ruleze
+independent de shell-ul curent iar dacă shell-ul curent este închis, acel proces
+continuă să ruleze. Numim această acțiune daemonizarea unui proces.
+
+Un caz de utilizare pentru daemonizarea unui proces este rularea unei comenzi
+complexe la distanță. Să presupunem că ne dorim să pornim o descărcare de fișier
+prin Bittorrent pe un server la distanță, accesat prin SSH. Vom urma pașii:
+
+\begin{enumerate}
+	\item Ne conectăm prin SSH la serverul de la distanță.
+	\item Pornim procesul bittorrent detașat de terminal.
+	\item Închidem conexiunea la shell-ul curent. Procesul bittorrent
+		continuă execuția.
+	\item Ulterior ne reconectăm prin SSH și putem investiga rularea
+		procesului.
+\end{enumerate}
+
+Partea dificilă este punctul 3 în care închiderea shell-ului nu duce la
+închiderea execuției procesului bittorrent. Pentru a realiza acest lucru sunt
+două opțiuni:
+
+\begin{itemize}
+	\item Daemonizarea procesului bittorrent: rulare în background, detașat de terminal
+	\item Folosirea unui utilitar care să creeze o sesiune de terminal detașabilă în care procesul rulează în continuare interactiv
+\end{itemize}
+
+În prima categorie sunt utilitarele nohup, disown, despre care vom discuta în
+continuare. În a doua categorie sunt utilitarele screen, tmux, byobu, dtach
+despre care vom discuta în secțiunea TODO: screen, tmux, byobu, dtach.
+
+\subsubsection{nohup, disown}
+
+Utilitarele nohup și disown permit daemonizarea unui proces pornit din shell.
+Strict tehnic, după cum vom vedea, procesele create nu sunt daemoni pentru că nu
+au neapărat descriptorii standard direcționați către intrarea /dev/null și nu au
+că părinte procesul init de la început. Însă, după cum am precizat, denumirile
+în zona proceselor neinteractive sunt mai relaxate, așa că vom folosi termenul
+de daemonizare.
+
+Pentru a înțelege funcționarea utilitarelor nohup și disown, e nevoie de
+cunoașterea pașilor din momentul închiderii unui proces shell. Atunci când
+terminalul aferent unui shell este închis, și shell-ul își încheie execuția.
+Atunci shell-ul trimite semnalul SIGHUP proceselor aflate în background, iar
+procesele își încheie execuția la primirea acestui semnal. Pentru a preveni ca
+un proces aflat în background să își încheie execuția în momentul închiderii
+terminalului, trebuie ca acesta să ignore semnalul SIGHUP.
+
+* arhivă cu script sigtracer care capturează semnalele transmise + demo video
+
+Pentru ignorarea semnalului SIGHUP de un proces, putem folosi utilitarul nohup.
+Comanda nohup prefixează o altă comandă care creează un proces ce ignoră
+semnalul SIGHUP. În exemplul de mai jos, rulăm comanda sleep 100 folosind
+utilitarul nohup:
+
+* Exemplu nohup sleep 100
+
+Acum procesul sleep nou creat va ignora semnalul SIGHUP și închiderea
+terminalului și shell-ului nu va duce la încheierea execuției sale. După
+închiderea shell-ului, procesul este adoptat de init, care devine noul părinte
+al procesului.
+
+Întrucât procesul rulat sub nohup va pierde controlul terminalului, nu poate
+folosi terminalul pentru ieșirea standard sau ieșirea de eroare standard. Dacă
+nu precizăm explicit redirectare, ieșirea standard și ieșirea de eroare standard
+vor fi redirectate în fișierul nohup.out. Altfel, putem explicit preciza locul
+unde dorim redirectarea ieșirii standard și ieșirii de eroare standard, de multe
+ori fiind vorba de /dev/null. În exemplul de mai jos rulăm un client bittorrent
+folosind nohup cu redirectarea ieșirii standard și a ieșirii de eroare standard
+în /dev/null:
+
+* exemplu rulare nohup, afișare descriptori
+
+Dacă am uitat să pornim un proces folosind comanda nohup, putem în continuare
+configura shell-ul să nu îi trimită acestuia semnalul SIGHUP folosind comanda
+disown. Practic comanda nohup afectează procesul nou creat și acesta ignoră
+semnalul SIGHUP, pe când comanda disown afectează shell-ul și nu trimite
+semnalul unui proces din background. Mai jos prezentăm un exemplu de folosire a
+comenzii disown.
+
+* exemplu rulare disown
+
+\subsection{screen, tmux, byobu, dtach}
+
+Folosirea nohup și disown are dezavantajul pierderii interactivității. Se
+creează procese daemon, detașate de terminal și care rulează în background.
+Uneori avem nevoie să rulăm o aplicație interactivă de la care să ne
+“deconectăm” și la care să ne reconectăm din nou. Acest lucru îl putem realiza
+folosind utilitarele screen, tmux, byobu sau dtach.
+
+screen, tmux, byobu sunt numite multiplexoare de terminal. Au două roluri:
+posibilitatea creării de “subferestre de terminal” într-o singură sesiune și
+posibilitatea detașării de la sesiunea de terminal și apoi reatașarea la
+aceasta. În acest capitol ne interesează al doilea rol. Când pornim utilitarele
+se creează o sesiune de terminal de la care ne putem detașa și la care apoi ne
+putem reatașa. Mai jos este un exemplu de folosire a tmux pentru a crea o
+sesiune de terminal și apoi pentru a ne detașa de la ea:
+
+* exemplu simplu cu tmux, tmux -ls
+
+screen, tmux, byobu sunt utilitare similare cu diverse caracteristici, dar cu
+rulare similară în ceea ce privește pornirea unui proces interactiv și detașarea
+de la terminal. Uzual, urmăm pașii de mai jos:
+
+\begin{enumerate}
+	\item Se pornește o sesiune de terminal folosind screen, tmux sau byobu.
+	\item Se rulează comenzile în acel terminal.
+	\item Se face detașarea de la terminal.
+	\item Se poate, ulterior, realizare reconectarea la terminal.
+\end{enumerate}
+
+Shell-ul în care a fost pornit terminalul screen, tmux sau byobu poate fi
+închis, terminalul rămânând activ. Apoi din alt shell se poate face
+reconectarea. Acest lucru este foarte util pentru scenariul precizat mai sus, al
+pornirii unui client bittorrent la distanță, într-o conexiune SSH.
+
+Mai jos sunt prezentate cele mai frecvente comenzi tmux, byobu și echivalentul
+lor screen. tmux și byobu sunt aplicații mai bogate în funcționalități și le
+recomandăm în defavoarea screen.
+
+* Tabel cu antetul “funcție, screen, tmux, byobu”
+
+Dacă ne interesează strict rularea unei sesiuni de terminal, nu și partea de
+multiplexare și subferestre, putem folosi comanda dtach. Comanda creează o
+sesiune de terminal și rulează o comandă în cadrul ei (uzual shell-ul) și apoi
+ne putem deconecta din acea sesiune. Mai jos este un exemplu de folosire,
+detalii găsiți în pagina de manual a comenzii:
+
+* Exemplu cu dtach
+
+\section{Investigarea proceselor}
+
+Procesele folosesc resursele sistemului de calcul pentru realizarea unor
+acțiuni. Se poate întâmpla să avem nevoie să eliberăm resurse sau ca sistemul
+sau un proces să funcționeze anevoios. În această situație e util să investigăm
+procesele sistemului și să identificăm procesele care consumă resurse. Apoi
+aceste procese pot fi omorâte, sau analizate sau li se pot actualiza
+prioritățile.
+
+Un prim mod de a investiga procesele sistemului este cu ajutorul utilitarelor de
+listare a proceselor sau monitorizare a lor. Utilitarul ps este utilitar de bază
+în Linux. Pentru monitorizare folosim top sau htop. Pe Windows putem folosi Task
+Manager sau Process Explorer.
+
+Folosind ps și top/htop putem monitoriza procesele și resursele folosite de
+acestea. Mai jos sunt exemple de folosire a utilitarului ps:
+
+* exemple de folosire ps, cu cele mai frecvente opțiuni
+
+Utilitarele top și htop oferă o interfață interactivă de afișare periodică a
+informațiilor despre procese. Sun utile pentru o privire dinamică a proceselor
+sistemului. Simpla rulare a comenzilor top sau htop duce la afișarea unui ecran.
+În acel ecran putem folosi apoi diferite opțiuni pentru a selecta anumite
+procese sau anumite atribute sau moduri de sortare.
+
+Similar utilitarelor top și htop de investigare a folosirii procesorului și
+memoriei, putem folosi utilitarul iotop pentru investigarea folosirii discului:
+
+* exemplu de folosire iotop
+
+Atunci când dorim să investigăm fișierele sau sockeții deschiși de un proces,
+putem folosi utilitarul lsof, pe care l-am prezentat și în secțiunea TODO:
+Procese și fișiere.
+
+Pentru monitorizarea folosirii resurselor unui proces, în afara utilitarului
+top, putem folosi utilitarele din familia sysstat. Acestea afișează periodic
+informații despre procentul de procesor ocupat, procentul de memorie ocupată,
+utilizarea de I/O. Monitorizarea (continuă) este utilă pentru a verifica
+trenduri în utilizarea resurselor. Monitorizarea este o formă de asigurare a
+securității unui sistem de calcul, așa cum vom prezenta în Capitolul TODO:
+Securizarea sistemului.
+
+În cazul în care dorim o investigare amănunțită a funcționării unui
+program/proces putem urmări apelurile de bibliotecă sau de sistem realizate.
+Pentru aceasta folosim, respectiv, utilitarele ltrace și strace. Utilitarele pot
+rula un program pentru a crea un proces nou și a-l investiga, și pot fi atașate
+unui proces existent. De exemplu
+
+* exemple de folosire ltrace/strace
+
+\section{Anexă: Sistemul de fișiere /proc}
+
+În Linux, utilitarele de lucru cu procese își iau informațiile din sistemul de
+fișiere virtual procfs, accesibil din /proc. Un sistem de fișiere virtual este
+un sistem de fișiere care nu are suport pe disc, ci rezidă în memorie. procfs
+este o interfață oferită de sistemul de operare în forma unor fișiere de unde
+pot fi obținute informații despre procese. Un indiciu că este folosit este
+numele pachetului ce conține utilitarele ps, pgrep etc.: procps.
+
+NOTĂ: Acest sistem de fișiere se găsește doar în Linux, nu și pe alte Unix-uri.
+
+La o listare a /proc observăm că este compus din fișiere și directoare format numeric:
+
+* exemplu listare /proc
+
+Fiecare director cu format numeric corespunde unui proces, numărul reprezentând
+PID-ul procesului. În cadrul fiecărui acest director se găsesc fișiere și
+subdirectoare ce conțin informații despre procesul respectiv așa cum se poate
+observa mai jos:
+
+* exemplu listare /proc/<PID>
+
+Dintre intrările de mai sus, selectăm câteva și rolurile lor:
+
+* TODO
+* TODO
+* TODO
+
+Un utilizator poate, astfel, obține informații despre procese fie investigând
+fișierele din /proc fie folosind utilitarele ps, pgrep, top, lsof. De avut în
+vedere că /proc se găsește doar pe Linux, pe când utilitarele sunt disponibile,
+într-un mod sau altul pe majoritatea Unix-urilor.
+
+În afara directoarelor aferente, /proc deține și alte intrări pentru investigarea sistemului. De exemplu:
+
+\begin{itemize}
+	\item filesystems
+	\item interrupts
+	\item Ioports
+	\item sys/
+	\item cmdline
+	\item cpuinfo
+	\item Meminfo
+\end{itemize}
+
+Aceste intrări sunt consultate de utilitare puse la dispoziție în Linux precum
+mount, lscpu, free, df, lsblk și altele.
+
+NOTE: Dacă, pe Linux, doriți să aflați sau să prelucrați informații despre
+procese sau despre sistem și utilitarele existente nu vă ajută, puteți să
+urmăriți intrările din /proc.
+
+\section{Anexă: Internele pornirii unui proces. Loading}
+
+Un proces este creat de un alt proces (de obicei un proces shell) dintr-un
+program executabil. Spunem că procesul este un program aflat în execuție, iar
+programul este imaginea procesului. Crearea unui proces dintr-un program
+executabil poartă numele de loading. Momentul în care are loc loading-ul se
+cheamă load time. Iar crearea procesului este facilitată de o componentă a
+sistemului de operare numită loader.
+
+Loader-ul interpretează programul executabil, apoi alocă memoria aferentă pentru
+proces și copiază din programul executabil datele și instrucțiunile în memorie.
+În același timp loader-ul face legătura cu biblioteci dinamice și le încarcă la
+nevoie în memorie, pentru rularea corespunzătoare a procesului. După aceasta se
+stabilește ca procesul să înceapă execuția de la punctul de intrare (entry
+point) care este o funcție similară funcției main. Și alocă o stivă pentru
+proces. Apoi procesul începe să ruleze din momentul în care este planificat pe
+un procesor.
+
+Acțiunille unui loader sunt prezentate în diagrama de mai jos:
+
+* diagramă cu acțiunile unui loader
+
+Două sau mai multe procese pot fi rulate din același program executabil.
+Funcționarea acestora diferă însă încă de la load-time în funcție de doi
+factori: argumentele programului și variabilele de mediu. Argumentele sunt
+transmise de utilizator/shell în momentul rulării unei comenzi. Iar variabilele
+de mediu sunt variabile proprii shell-ului care sunt moștenite de procesele
+create de acesta. Mai multe informații vom prezenta în Capitolul TODO: Interfața
+în linia de comandă.
+
+Astfel, pe lângă pașii descriși mai sus, loader-ul plasează pe stiva procesului
+(accesibil funcției main) argumentele programului și variabilele de mediu.
+Acestea sunt apoi disponibile programului din argumentele funcției main (în C):
+
+* exemplificare cum argc, argv, și envp permit accesarea argumentelor programului și variabilelor de mediu (arhivă de capitol)
+
+După load-time, în momentul în care procesul rulează intră în faza run-time.
+Aici procesul folosește resursele sistemului, comunică cu exteriorul și cu alte
+procese și poate fi monitorizat și controlat de utilizator.
+
+\section{Sumar}
+
+Pe un sistem de calcul procesele sunt necesare pentru realizarea acțiunilor
+utilizatorilor.
+
+Un proces execută o acțiune izolată de alte procese și folosește resursele
+sistemului (procesor, memorie, I/O) pentru realizarea acțiunii.
+
+Un proces este creat dintr-un program executabil, numit imaginea procesului. Mai
+multe procese pot fi create din aceeași imagine de executabil.
+
+Procesele au atribute de identificare, de contabilizare a resurselor folosite și
+de stabilire a ce resurse și cât de mult pot folosi. Un proces aparține unui
+utilizator și poate folosi resursele acelui utilizator.
+
+Există o ierarhie de procese, shell-ul creează majoritatea proceselor. Un proces
+poate avea mai multe procese copil și un singur proces părinte. În vârful
+ierarhiei este procesul init.
+
+În cadrul unei sesiuni de shell putem avea un proces în foreground și mai multe
+procese în background.
+
+Procesele comunică/interacționează pentru a realiza o acțiune. Putem redirecta
+ieșirea și intarea unui proces în fișiere. Și putem redirecta ieșirea unui
+proces la intrarea altui proces folosind pipe-uri.
+
+Procesele își încheie execuția de la sine, sau pot fi omorâte de alte procese.
+În Linux, procesele sunt omorâte de alte procese prin intermediul semnalelor.
+
+Unele procese sunt interactive, altele sunt batch/daemoni/servicii. Daemonii nu
+au un terminal atașat și rulează în mod neinteractiv, independent de procesele
+shell existente.
+
+Este util să monitorizăm procesele și resursele folosite de acestea pentru a
+detecta abuzuri de folosire a resurselor sau pentru a identifica sursele de
+încărcare ale sistemului.
+
+Pe Linux, informațiile despre procese se găsesc în sistemul de fișiere /proc. De
+aici sunt interpretate de utilitarele de lucru cu procese.
