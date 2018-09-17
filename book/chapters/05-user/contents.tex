@@ -1,1 +1,1240 @@
 \chapter{Utilizatori}
+
+Sistemul de operare oferă resurse pe care utilizatorii să le poată folosi. În
+mod tipic utilizatorii creează procese (aplicații) care folosesc resursele
+sistemului (proceselor[o], memorie, I/O) pentru a realiza o activitate.
+Utilizatorii stochează și transferă date în/din sistemul de calcul, de exemplu
+folosind sistemul de fișiere sau rețeaua.
+
+Accesul la un sistem de calcul se realizează prin intermediul unui cont de
+utilizator (\textit{user account}). Un utilizator fizic (o persoană) folosește
+un cont de utilizator pentru a se identifica în sistem,pentru a rula procese[p]
+și pentru a folosi resurse cu permisiunile aferente acelui cont de utilizator.
+În ceea ce urmează vom folosi, în general, termenul de utilizator ca fiind un
+cont de utilizator pe un sistem de calcul.
+
+Sistemele de operare moderne sunt în general multi-utilizator
+(\textit{multi-user}), adică permit existența mai multor conturi de utilizator
+pe un sistem și rularea simultană de mai multe[q] procese aparținând diferiților
+utilizatori. Mai mulți utilizatori pot simultan rula shell-uri și porni comenzi
+pe un sistem prin conexiuni de rețea la sistem, precum folosind SSH (Secure
+Shell, referință înainte la capitolul 10). Un cont de utilizator este separat de
+alt cont astfel că procesele unui utilizator sunt separate/izolate de procesele
+altuia, la fel și resursele (precum fișierele).[r]
+
+Informațiile despre conturile de utilizatori sunt utile nu doar utilizatorilor
+avansați, ci și utilizatorilor obișnuiți. Deși utilizatorul obișnuit are în
+general un singur cont pe sistemul propriu, informațiile despre conturile de
+utilizator îi sunt necesare pentru a înțelege ce acțiuni poate executa pe
+sistemul de operare, pentru ce acțiuni are nevoie de accesul la un cont
+privilegiat. De asemenea, poate să creeze la nevoie un cont pentru un prieten
+sau o rudă pe un sistem al său. Sau se poate autentifica pe sistemul altcuiva și
+va trebui să aibă grijă ce informații lasă pe acel sistem. Pentru un utilizator
+[s]cu permisiuni speciale (\textit{power user}) sau un administrator,
+informațiile despre și operațiile cu utilizatori sunt esențiale pentru a
+asigur[t]a accesul mai multor utilizatori fizici la un sistem dat, pentru a se
+asigura de separarea resurselor între aceștia și între procesele acestora și, în
+general, pentru a garanta securitatea sistemului.[u]
+
+Din punctul de vedere al sistemului de operare, un cont de utilizator este
+reprezentat de obicei sub forma unui nume de utilizator (\textit{username}).
+Acesta este un șir de caractere cu care este identificat utilizatorul. Pentru a
+permite accesul în sistem acestui nume de utilizator i se asociază o formă de
+autentificare, precum parolă sau autentificare biometrică. Dacă utilizatorul
+fizic furnizează în interfața de acces la sistem un nume de utilizator valid și
+forma de autentificare corectă i se permite accesul în sistem.
+
+Până acum am prezentat conturi de utilizator de sistem, adică acele conturi care
+permit crearea de procese și dețin resurse precum fișiere. Există și conturi de
+utilizatori de aplicații, precum conturile de utilizatori de aplicații web.
+Aceste conturi permit accesul la resurse care sunt gestionate de aplicație, nu
+de sistemul de operare. De asemenea, aceste conturi nu permit crearea de procese
+sau accesul la resursele sistemului; permit doar accesul gestionat de aplicație
+la resursele aplicației.
+
+Indiferent de tipul de cont de utilizator (de sistem sau de aplicație)
+principiul de folosire este același: se folosește un nume de utilizator și o
+formă de autentificare pentru a permite accesul la resursele sistemului sau
+aplicației. Toate numele de utilizator și formele de autentificare valide sunt
+menținute într-o bază de date. Când un utilizator fizic transmite aceste date,
+sistemul sau aplicația le validează[v] dacă sunt prezente în baza de date; în
+caz afirmativ se oferă accesul la resurse. Acest mod de folosire este descris în
+diagrama de mai jos:
+
++ diagramă cu acces, bază de date, resurse
+
+În continuare ne vom referi în special la conturile de utilizator de sistem, cu
+precizarea că multe concepte se aplică și la conturile de utilizator de
+aplicație.
+
+\section{Utilizatori de sistem}
+
+Așa cum am precizat mai sus conturile de utilizator de sistem sunt folosite
+pentru a obține acces la resursele gestionate de sistemul de operare. Conturile
+de utilizator permit obținerea unui shell și rularea de comenzi care creează
+procese.
+
+De obicei un sistem de operare oferă un prompt grafic sau text de autentificare
+unde vor fi completate numele de utilizator și apoi, uzual, parola.
+
+* imagini cu prompturi de login Linux + Windows
+
+În momentul autentificării unui utilizator de sistem, acesta are acces complet
+la o parte din sistemul de fișiere numită directorul home al utilizatorului,
+reprezentând directorul personal al acestuia. Fiecare sistem de operare are, în
+general, un astfel de director pentru utilizatorul (\file{/home/student} pe
+Linux, C:\textbackslash{}Users\textbackslash{}student pe Windows,
+\file{/Users/student} pe macOS). Apoi utilizatorul poate crea procese care pot
+accesa fișiere sau alte resurse ale utilizatorului.
+
+\subsection{Permisiuni și privilegii}
+
+O dată autentificat în sistem (sau în aplicație) un utilizator are anumite
+permisiuni de folosire a sistemului. De exemplu, un utilizator obișnuit poate
+crea fișiere doar în directorul său home[w], dar nu poate instala pachete. Un
+alt utilizator poate avea permisiunea de a instala pachete. Sistemul de operare,
+pe baza unor configurări aferente, permite unui utilizator anumite acțiuni.
+
+În unele sisteme și aplicații există noțiunea de rol. Un utilizator poate avea
+un rol care îi conferă anumite permisiuni. De exemplu, rolul de Administrator
+înseamnă, în general, într-o instalare de platformă precum Moodle
+(http://www.moodle.org) permisiuni complete în cadrul platformei; un rol de
+Profesor înseamnă controlul conținutului pe cursurile aferente; un rol de
+Student înseamnă posibilitatea accesării conținutului.
+
+Spunem că, [x]în general, sistemele oferă anumite permisiuni utilizatorilor.
+Structurarea acestor permisiuni este esențială pentru asigurarea securității
+sistemului. Dacă un utilizator are mai multe permisiuni decât are nevoie, acesta
+va putea abuza sau exploata sistemul. Dacă un atacator din exterior obține
+permisiunile unui utilizator (impersonează utilizatorul) pagubele pe care le
+provoacă vor fi proporționale cu permisiunile utilizatorului.
+
+Din punctul de vedere al conceptelor de securitate, utilizatorul este un agent
+iar resursele puse la dispoziție de sistem sunt obiecte. Politica de securitate
+(\textit{security policy}) a sistemului precizează permisiunile și dictează ce
+agenți au acces la ce obiecte. În acest context apar adesea termenele de
+permisiune și privilegiu. În general, spunem că permisiunile sunt informații
+aferente obiectului care stabilesc ce agenți pot face tipuri de acțiuni, în
+vreme ce privilegiile sunt certificate aferente agentului care stabilesc ce
+acțiuni ce poate acesta întreprinde. Mai multe informații găsiți în Capitolul
+11: Securizarea sistemului.
+
+În sistemele de operare de uz general (Linux/Unix, Windows, macOS) există, în
+general, utilizatori obișnuiți (neprivilegiați) și utilizatori privilegiați.
+Utilizatorii neprivilegiați au acces complet la o parte din sistemul de fișiere
+(directorul home) și pot crea procese care folosesc aceste resurse. Utilizatorii
+privilegiați pot face acțiuni care afectează starea globală a sistemului:
+instalare de pachete, adăugare/ștergere de utilizatori, repornirea sistemului,
+configurarea datei sistemului, schimbarea permisiunilor sistemului, configurarea
+rețelei etc.
+
+În general, există un utilizator al sistemului care are permisiuni complete.
+Acesta este referit[y], de obicei, ca \textit{superuser}. Pe sistemele
+Linux/Unix este numit root, în vreme ce pe sistemele Windows este numit
+\textit{Administrator}. În multe situații, pentru realizarea unei operații
+privilegiate, se accesează contul de superuser.
+
+\section{Utilizatorul administrativ (superuser)}
+
+Utilizatorul administrativ, superuser-ul, deține controlul complet al
+sistemului. Toate operațiile privilegiate, inaccesibile unui utilizator obișnuit
+neprivilegiat, sunt permise acestuia. Un utilizator obișnuit va accesa acest
+cont special (dacă știe parola sau forma de autentificare a acestuia) pentru a
+realiza o operație privilegiată.
+
+Faptul că superuser-ul are acces complet la sistem îl face foarte periculos de
+folosit. Dacă un atacator obține acces neautorizat la contul de superuser,
+atunci sistemul este compromis. La fel, dacă rulăm greșit o comandă
+privilegiată, aceasta poate afecta iremediabil sistemul.
+
+NOTĂ (amuzant): Despre rm -fr / rulat ca root și mijloace de prevenire
+
+De aceea, sistemele de operare moderne pun la dispoziția utilizatorul metode de
+realizare de acțiuni privilegiate care să nu necesite accesarea directă a
+contului privliegiat. Astfel că, în folosirea superuser-ului, există următoarele
+recomandări de folosire:
+
+\begin{itemize}
+	\item Să fie folosit contul doar când este absolută nevoie, pentru
+		operații privilegiate. Nu vă autentificați ca superuser pe
+		interfața grafică.
+	\item Să fie o parolă și formă de autentificare cât mai greu de accesat
+		în mod neautorizat.
+	\item Să fie evitată folosirea superuser-ului când există forme
+		alternative de executare de acțiuni privilegiate.
+\end{itemize}
+
+Sistemele de operare moderne oferă opțiuni alternative de executare de acțiuni
+privilegiate. În Linux/Unix se poate folosi sudo, bitul setuid, capabilități; le
+vom prezenta în Secțiunea TODO: Alternative la root în Linux.
+
+În Windows, începând cu Windows Vista se folosește User Account Control (UAC).
+User Account Control este o tehnologie care oferă un prompt care trebuie
+confirmat ori de câte ori un se dorește realizarea unei acțiuni privilegiate.
+Doar utilizatorilor configurați specific li se permite rularea de acțiuni
+privilegiate prin User Account Control.
+
+* screenshot cu user account control
+
+\subsection{Utilizatorul administrativ în Linux (root)}
+
+Utilizatorul administrativ în Linux este numit \texttt{root}. Utilizatorul root
+are acces complet la resursele sistemului și poate face orice operații. În
+general, accesarea contului de root este evidențiată în linia de comandă prin
+prezența simbolului \# (diez) în cadrul promptului:
+
+* exemplu prompt de utilizator neprivilegiat și root
+
+Accesarea unui cont (inclusiv a contului root) se poate face în două moduri:
+
+\begin{itemize}
+	\item autentificarea în sistem cu acel cont (la un prompt de login în
+		linia de comandă sau în interfața grafică)
+	\item schimbarea utilizatorului curent în linia de comandă prin
+		folosirea comenzii \cmd{su} (substitute user)
+\end{itemize}
+
+În general, nu este recomandată autentificarea în sistemul folosind contul de
+root. Orice aplicație care va fi lansată din acest cont va avea acces complet
+asupra resurselor sistemului devenind astfel o posibilă zonă de atac a acestuia.
+Este recomandat să folosiți comanda su pentru schimbarea (temporară a
+utilizatorului) și obținerea unui shell de root, folosirea comenzilor
+privilegiate și apoi revenirea în consola utilizatorului neprivilegiat folosind
+comanda exit, așa cum este ilustrat mai jos:
+
+* listare de comenzi folosind su pentru obținerea unui cont de root și instalarea unui pachet (operație privilegiată)
+
+\subsection{Utilitarul su}
+
+Utilitarul su este folosit pentru schimbarea utilizatorului, nu neapărat în
+root. Dacă su nu primește nici un argument sau primește ca argument root, va
+schimba utilizatorul în root. Altfel va schimba în utilizatorul primit ca
+parametru. La rularea comenzii su se cere parola noului utilizator; fără
+introducerea parolei acelui utilizator nu se poate schimba utilizatorul.
+
+* listare de comenzi cu su
+
+O formă uzuală de rulare a su este cu opțiunea -l sau - care schimbă mediul de
+lucru al viitoarei comenzi, incluzând directorul home:
+
+* listare cu su - sau su -l
+
+Utilitarul su permite rularea unei comenzi fără a deschide un shell prin
+intermediul opțiunii -c. În felul acesta se rulează direct comanda primită ca
+argument și apoi se revine la shell-ul utilizatorului curent, fără a se deschide
+un shell al noului utilizator:
+
+* listare cu su -c
+
+\subsection{Alternative la root în Linux}
+
+Așa cum am precizat anterior, utilizatorul root deține controlul întregului
+sistem. Dacă un atacator obține acces neautorizat la contul root, sistemul va fi
+compromis. Pe de altă parte privilegiile pe care le deține utilizatorul root
+sunt necesare pentru administrarea sau funcționarea sistemului, precum
+configurarea unei interfețe de rețea. De aceea sisteme de operare moderne oferă
+opțiuni de granularizare a privilegiilor. În Linux există câteva astfel de
+opțiuni printre care amintim bitul setuid, capabilități și utilitarul sudo.
+
+Bitul setuid (\textit{set-user-id-on-execution}) este un bit asociat unui fișier
+executabil. Atunci când executăm acel fișier procesul nou creat nu va aparține
+utilizatorului care a rulat comanda, ci utilizatorului care deține fișierul, în
+mod obișnuit utilizatorul root. În listarea de mai jos avem un exemplu de
+folosire a bitului setuid:
+
+* exemplu cu setuid
+
+Prezența bitului setuid pe un executabil deținut de root (de exemplu passwd, su,
+sudo) înseamnă că acele comenzi pot fi rulate de orice utilizator pentru a crea
+procese privilegiate. Vom explica în Secțiunea TODO: Autentificare. Gestiunea
+parolelor de ce aceste comenzi sunt privilegiate.
+
+Bitul de setuid are dezavantajul că procesul nou creat rulează cu privilegii
+complete de root. Dacă acel proces este exploatat, atacatorul va deține un
+proces cu permisiuni de root și sistemul va fi compromis. De aceea, pe Linux
+există un alt mecanism numit capabilități. Capabilitățile sunt un concept de
+bază în sisteme de operare (TODO: citare) însemnând atașarea unui privilegiu
+unui agent (unui obiect). De exemplu, pe sistemele Linux moderne, executabilul
+aferent utilitarului ping are atașată capabilitatea cap_net_raw. Această
+capabilitate înseamnă că procesele create din executabilul ping vor avea
+privilegiul de a crea sockeți raw, necesari utilitarului ping.
+
+NOTĂ: Discuția despre sockeți raw depășește cadrul acestei cărți. Pentru detalii
+consultați TODO: Richard Stevens: Unix Network Programming.
+
+Spre deosebire de bitul de setuid, capabilitățile sunt granulare. Privilegiile
+aferente contului root sunt separate în capabilități. Un proces are atașate, la
+nevoie, doar capabilitățile de care are nevoie; dacă acel proces este exploatat
+atunci acțiunile posibile ale atacatorului sunt limitate la ce privilegii oferă
+capabilitățile, nu la toate privilegiile contului de root.
+
+Exemple de privilegii pe Linux sunt:
+
+\begin{itemize}
+	\item cap_net_raw
+	\item cap_net_admin
+	\item cap_fowner
+	\item cap_kill
+\end{itemize}
+
+Găsiți o listă completă de capabilitați în pagina de manual man 7 capabilities.
+
+NOTĂ: Suportul de capabilități este o componentă avansată a sistemului de
+operare, care permite dezvoltatorilor de aplicații configurarea de privilegii
+granulare. Pentru mai multe detalii urmăriți TODO.
+
+\subsubsection{Utilitarul sudo}
+
+Bitul setuid și capabilitățile sunt mecanisme care oferă privilegii anumitor
+executabile și procese[z]. Nu permit ușor atașarea de privilegii unui utilizator
+sau configurarea personalizată (\textit{custom}) a acțiunilor care pot fi
+executate de acel utilizator. Pentru aceasta, soluția folosită pe sistemele Unix
+este sudo.
+
+sudo este un utilitar care permite rularea unor comenzi în numele altui
+utilizator, în general root. sudo are o configurare granulară și permite
+precizarea explicită a ce comenzi să fie rulate. Spre deosebire de utilitarul
+su, la rularea utilitarului sudo nu este nevoie de cunoașterea parolei noului
+utilizator, ci a utilizatorului curent.
+
+În mod tipic, când rulăm sudo, îl succedăm de[aa] comanda pe care vrem să o
+executăm ca root, ca în exemplele de mai jos:
+
+* exemple de folosire sudo pentru acțiuni privilegiate
+
+Adesea dorim obținerea unui shell de root pentru a rula mai multe comenzi
+privilegiate. Pentru aceasta rulăm tipic una dintre cele două comenzi de mai
+jos:
+
+* rulare sudo su și sudo bash
+
+Utilitarul sudo permite unui utilizator să ruleze comenzi ca root (sau ca alt
+utilizator) printr-o configurație din fișierul de configurare
+\file{/etc/sudoers}. De exemplu, utilizatorul student poate rula comenzi ca root
+cu ajutorul unei linii de configurare precum cea de mai jos:
+
+* exemplu de linie din /etc/sudoers
+
+În mod uzual, fișierul /etc/sudoers are linii de configurare care permit
+utilizatorilor din grupul admin sau grupul sudo să poată rula comenzi ca root.
+În acea situație, dacă dorim ca un utilizator să poată rula comenzi ca root îl
+adăugăm în grupul admin sau în grupul sudo, nu este nevoie de editarea
+fișierului /etc/sudoers:
+
+\begin{screen}
+# Allow members of group admin to execute any command.
+%admin  ALL=(ALL) ALL
+# Allow members of group sudo to execute any command.
+%sudo        ALL=(ALL) ALL
+\end{screen}
+
+NOTĂ: E important când e folosit root si când se obține consolă de root și ce
+utilizatori au acces la sudo. Avem grijă când acordăm unui utilizator
+“permisiuni de sudo”, adică posibilitatea de a rula comenzi ca root, lucru care
+poate duce la compromiterea sistemului.
+
+sudo permite configurări mai avansate în fișierul /etc/sudoers; de exemplu linia
+de configurare de mai jos permite utilizatorul alin rularea doar a comenzii cat
+ca root, permițând vizualizarea tuturor fișierelor din sistem:
+
+* exemplu de linie și rularea comenzii aferente
+
+Fișierul /etc/sudoers este un fișier important în sistem și de aceea există mai
+multe restricții și convenții pentru accesarea acestuia. Astfel, deoarece
+configurația sa afectează întreg sistemul de operare, editarea fișierului este
+permisă numai utilizatorului privilegiat. De asemenea, pentru a preveni editarea
+eronată (ce poate duce sistemul într-o stare de eroare imposibil de rezolvat),
+se recomandă folosirea comenzii visudo pentru editare.. Pentru editarea sa, fie
+rulăm comanda visudo ca root, fie comanda sudo visudo.
+
+NOTĂ: Fișierul /etc/sudoers permite configurări avansate. Puteți parcurge pagina
+de manual man sudoers sau TODO: link articol.
+
+\paragraph{sudo și redirectare}
+
+O situație frecventă este să redirectăm un output într-un fișier privilegiat (la
+care nu avem de obicei acces). De exemplu, dacă dorim să activăm rutarea pe un
+sistem Linux vom rula, ca root, comanda:
+
+\begin{screen}
+echo 1 > /proc/sys/net/ipv4/ip_forward
+\end{screen}
+
+În momentul care folosim un utilizator neprivilegiat dar care poate folosi sudo,
+am fi tentați să încercăm să rulăm comanda:
+
+\begin{screen}
+sudo echo 1 > /proc/sys/net/ipv4/ip_forward
+\end{screen}
+
+Acest lucru însă nu funcționează pentru că deși comanda echo 1 rulează ca root,
+comanda sudo, al cărei output este redirectat, rulează ca utilizator
+neprivilegiat. Adică redirectarea cu operatorul > are loc pentru comanda sudo,
+rulată de utilizator neprivilegiat, și nu va reuși.
+
+Soluția la această situație este să nu folosim redirectare ci să folosim o
+comandă care primește ca argument acel fișier, iar comanda să ruleze privilegiat
+ca sudo. Adică soluția este folosirea comenzii:
+
+\begin{screen}
+echo 1 | sudo tee /proc/sys/net/ipv4/ip_forward
+\end{screen}
+
+În forma de mai sus comanda tee este rulată ca root prin intermediul
+utilitarului sudo. Comanda scrie informația primită la intrarea standard (adică
+“1”) în fișierul primit ca argument (/proc/sys/netc/ipv4/ip_forward) în mod
+privilegiat.
+
+NOTĂ: Atunci când dorim să scriem într-un fișier privilegiat fără a accesa o
+consolă de root, folosim comanda tee cu sudo. Comanda tee are și opțiunea -a
+pentru adăuga informație la sfârșitul fișierului (append); în mod obișnuit
+comanda suprascrie conținutul fișierului primit ca argument.
+
+\section{Operații cu utilizatori}
+
+În sistemul de operare un utilizator este reprezentat de procesele și resursele
+acestuia. Procesele și resursele (de exemplu fișierele) sunt marcate ca
+aparținând utilizatorului.
+
+Pentru un utilizator fizic (o persoană) un utilizator este identificat printr-un
+nume de utilizator (username); atunci când ne autentificăm, pentru acces folosim
+numele de utilizator. La nivelul sistemului de operare, însă, un utilizator este
+identificat printr-un număr, numit în mod uzual \textit{user identifier} sau
+UID, similar cum un proces este identificat printr-un process identifier (PID).
+
+Procesele și fișierele unui utilizator au în atributele acestora câmpul UID.
+Pentru procese, acest câmp oferă imformații despre ce operații asupra resurselor
+sistemului de operare pot fi executate de proces, în timp ce câmpul UID al
+fișierelor identifică utilizatorul care le deține. În exemplul de mai jos listăm
+UID-ul proceselor folosind comanda ps și listăm UID-ul unui fișier folosind
+comand stat:
+
+* TODO: listare
+
+De obicei, un proces poate avea acces la o resursă dacă UID-ul procesului este
+marcat în cadrul resursei ca având acces.
+
+\subsection{Atribute ale utilizatorilor. Informații despre utilizatori}
+
+Un utilizator are atribute care îi permit identificarea în sistem,
+autentificarea și accesul la resurse. Așa cum am precizat mai sus cele mai
+importante două atribute sunt numele de utilizator (username) și identificatorul
+de utilizator (\textit{user identifier}, UID).
+
+Un utilizator de sistem are acces la un director home, un subdirector în
+sistemul de fișiere unde are acces complet. Pentru utilizatorul student acesta
+este, în mod uzual, /home/student pe Linux, /Users/student pe macOS și
+C:\textbackslash{}Users\textbackslash{}student pe Windows.
+
+Pentru autentificare, un utilizator are asociată o parolă sau o altă formă de
+autentificare. Aceasta trebuie furnizată la un prompt de login (interfață în
+linia de comandă sau grafică) pentru a fi permis accesul în sistem în contul
+acelui utilizator.
+
+Pe sistemele Unix, un utilizator are asociat un shell de autentificare (login
+shell). Este programul care este rulat în momentul autentificării utilizatorului
+pe un sistem; programul este, de obicei un shell.
+
+Pentru gestiunea mai flexibilă a accesului la resurse, utilizatorii sunt
+grupați. Un utilizator face parte din unul sau mai multe grupuri. Astfel că un
+administrator care dorește ca mai mulți utilizatori să aibă acces la o anumită
+resursă va crea un grup, va adăuga utilizatorii la acel grup și va oferi
+grupului permisiuni asupra resursei respective. Un grup poate conține 0 sau mai
+mulți utilizatori, iar un utilizator poate aparține unui sau mai multor grupuri,
+așa cum este indicat în figura de mai jos: TODO figură:
+
++ figură în care arătăm folosind un mod de diagrame Venn asocierea multi-multi utilizator-grupuri
+
+De exemplu, în Windows, există grupul Administrators. Un utilizator care este
+parte din grupul Administrators are acces complet la sistem.
+
+Aceste atribute sunt definite în fișiere de configurare sau de tip bază de date.
+Aceste atribute pot fi, de obicei, vizualizate de orice utilizator, dar
+modificate doar de un utilizator privilegiat. Mai multe informații prezentăm în
+Secțiunea TODO: Obținerea de informații despre utilizatori.
+
+\subsection{Obținerea de informații despre utilizatori}
+
+Informațiile despre utilizatori (nume de utilizator, identificator de
+utilizator, director home) le putem obține[ab] folosind interfețele grafice
+aferente unui sistem de operare sau distribuții sau folosind utilitare în linia
+de comandă.
+
+În Windows, pentru obținerea de informații de utilizatori folosim în mod
+obișnuit interfața grafică din Control Panel -> TODO -> TODO.
+
+\subsubsection{Obținerea de informații despre utilizatori în Linux}
+
+În Linux, informațiile despre utilizatori sunt stocate în fișiere de configurare
+dedicate. În scenarii de administrare mai complexe, care nu fac subiectul
+acestei cărți, aceste informații sunt stocate într-o baza de date. Fișierele de
+configurare în care sunt reținute informații despre utilizatori sunt indicate în
+tabelul de mai jos:
+
++ tabel cu antetul: fișier de configurare, rol, informații reținute
+
+Fișierele de configurare au formă tabelară cu coloane: fiecare linie este o
+intrare în tabel iar fiecare coloană este un atribut al acelei intrări. Mai jos
+sunt prezentate câteva linii din fiecare fișier de configurare și explicațiile
+pentru rolul acestora. Detalii despre fișierele /etc/passwd și /etc/shadow
+prezentăm în secțiunea TODO: Autentificare. Gestiunea parolelor.
+
+Putem obține informații despre utilizatori direct din fișierele de configurare
+de mai sus, așa cum facem mai jos:
+
++ snippet cu comenzi de investigații de fișiere de configurare de utilizatori
+
+Altfel, informații despre utilizatori obținem folosind utilitare precum cele din
+tabelul de mai jos. Aceste utilitare investighează fișierele de configurare de
+mai sus:
+
++ tabel cu antetul: utilitar, rol, fișiere investigate
+
+Mai jos sunt câteva exemple de folosire ale comenzilor de mai sus și
+explicațiile aferente exemplele:
+
++ exemple de folosire id, groups, users, whoami, who, finger, pinky
+
+În Linux, anumiți utilizatori au configurat ca shell de login /bin/false sau
+/bin/nologin. Aceasta înseamnă că acești utilizatori nu se pot autentifica în
+sistem și obține un shell de login. Aceși utilizatori mai sunt numiți și
+utilizatori de sistem, iar ceilalți sunt numiți utilizatori interactivi.
+Utilizatorii de sistem sunt cei care pot avea procese dar nu pot obține shell de
+login. Cei interactivi pot obține shell și pot rula apoi comenzi. La o instalare
+simplă, o foarte bună parte dintre utilizatorii unui sistem Linux sunt
+utilizatori de sistem:
+
++ afișare utilizatori din /etc/passwd care au shell de login /bin/false sau /bin/nologin
+
+\subsection{Gestiunea utilizatorilor și grupurilor}
+
+Gestiunea utilizatorilor și grupurilor, însemnând crearea, ștergerea sau
+modificarea utilizatorilor și grupurilor poate fi făcută, în mod normal, doar de
+un utilizator privilegiat. Operațiile de gestiune a utilizatorilor sunt:
+
+\begin{itemize}
+	\item crearea unui utilizator: un nou cont de utilizator, identificat de
+		un nume de utilizator (username) și un identificator de
+		utilizator (UID) este disponibil în sistem
+	\item ștergerea unui utilizator: un cont de utilizator este șters din
+		sistem, nu mai pot fi create procese cu acest utilizator
+	\item crearea unui grup: este creat un grup nou în care pot fi adăugați utilizatori
+	\item ștergerea unui grup: este șters un grup existent
+	\item adăugarea unui utilizator la un grup
+	\item ștergerea unui utilizator dintr-un grup
+	\item schimbarea parolei unui utilizator
+	\item modificarea atributelor unui utilizator: username, login shell,
+		director home
+\end{itemize}
+Aceste operații de gestiune duc la modificarea fișierelor de configurare sau de
+tip baze de date din sistem care rețin informațiile despre grupuri și
+utilizatori. Operațiile sunt realizate prin utilitare specifice fie din
+interfața grafică fie din linie de comandă, ca mai jos.
+
+\subsection{Gestiunea utilizatorilor și grupurilor în Windows}
+
+În Windows, gestiunea utilizatorilor și grupurilor o facem din interfața din
+panoul de control. Aceasta este uzual accesibilă din Control Panel -> TODO ->
+TODO.
+
++ figură cu interfața control panel din Windows pentru gestiunea utilizatorilor
+
+Pe lângă interfața grafică, uzuală, Windows oferă și utilitare în linia de
+comandă pentru gestiunea utilizatorilor folosind interfața netsh: TODO.
+
+\subsubsection{Gestiunea utilizatorilor și grupurilor în Linux}
+
+În Linux există interfețe grafice pentru gestiunea utilizatorilor în funcție de
+mediul desktop folosit (GNOME, KDE, XFCE etc.) În mod tradițional, gestiunea se
+face în linia de comandă cu ajutorul utilitarelor specifice, indicate în tabelul
+de mai jos:
+
++ tabel cu antentele: operație, utilitar, fișiere modificate
+
+Pe distribuțiile bazate pe Debian (Debian, Ubuntu, Linux Mint etc.) există un
+set de utilitare mai ușor de folosit care înglobează comenzile de mai sus,
+indicate în tabelul de mai jos:
+
++ tabel cu antetele: utilitar wrapper Debian, utilitar de bază
+
+În Linux/Unix există două tipuri de grupuri: primare și secundare. Un utilizator
+aparține unui singur grup primar și oricâtor grupuri secundare. Când un
+utilizator este creat, i se precizează grupul primar aferent. Utilitarul usermod
+poate fi folosit pentru modificarea grupurilor din care face parte un utilizator
+într-un grup; utilitarul are opțiuni distincte pentru modificarea grupului
+primar și pentru modificarea grupurilor secundare.
+
+Un utilizator neprivilegiat are posibilitatea de a-și modifica anumite
+informații proprii: shell-ul de login, numele de utilizator, datele personale,
+parola. Pentru aceasta folosește utilitarele din tabelul de mai jos:
+
++ tabel cu antetele: operație, utilitar
+
+TODO: ce se întâmplă când ștergem un grup care are în el utilizatori?
+
+Mai jos prezentăm un scenariu de lucru cu utilizatori și grupuri în care sunt
+folosite comenzile de gestiune din Linux:
+
++ snippet cu comenzi și apoi în continuare explicațiile pentru acestea
+
+Gestiunea parolelor este o componentă critică a sistemului de operare și o vom
+prezenta în secțiunea de mai jos.
+
+\section{Autentificare. Gestiunea parolelor}
+
+Atunci când un utilizator dorește accesul la sistemul de operare trebuie să se
+autentifice. Autentificarea presupune, în mod tipic, furnizarea unui nume de
+utilizator (username) și a unei parole (password). Acest lucru este valabil și
+pentru aplicații (aplicații web, jocuri, aplicații de baza de date, conturi
+bancare). Există și alte moduri de autentificare precum folosirea de informații
+biometrice (amprentă digitală, retină), dispozitiv de tip token de
+autentificare, autentificare cu cheie publică. În această secțiune vom prezenta
+doar autentificarea pe bază de parole.
+
+\subsection{Baza de date de parole}
+
+Pentru ca autentificarea să reușească, adică utilizatorului să îi fie permis
+accesul în sistem, trebuie ca numele de utilizator și parola să fie valide.
+Sistemul de operare deține o bază de date cu perechi <nume de utilizator,
+parolă>. Autentificarea reușește dacă numele de utilizator și parola introduse
+de utilizator se găsesc în baza de date.
+
+Baza de date de parole este modificată de acțiunile de lucru cu utilizatori. Adică:
+
+\begin{itemize}
+	\item Se adaugă o nouă intrare în baza de date de parole, adică o nouă
+		pereche <nume de utilizator, parolă> în momentul adăugării unui
+		utilizator nou în sistem.
+	\item Se șterge o intrare existentă în baza de date de parole în
+		momentul ștergerii unui utilizator în sistem.
+	\item Se modifică o intrare existentă în baza de date atunci când un
+		utilizator își schimbă parola.
+\end{itemize}
+
+Baza de date de parola este o componentă critică a sistemului iar accesul la
+aceasta trebuie să fie permis numai pentru acțiuni bine definite: autentificare,
+adăugarea/ștergerea unui utilizator, schimbarea parolei. Altfel, dacă ar fi
+permise și alte acțiuni, un utilizator neprivilegiat ar accesa baza de date și
+ar afla parolele altor utilizatori și ar putea folosi conturile acestora, cel
+mai periculos fiind folosirea conturilor de utilizatori privilegiați. De aceea,
+accesul la baza de date este controlat strict.
+
+Chiar și cu un control strict, se poate întâmpla ca un defect în sistem să
+permită unui utilizator neprivilegiat accesul la baza de date de parole. De
+aceea parolele nu sunt reținute în format citibil (plain text) ci sunt criptate.
+Dacă un atacator obține în mod nevalid accesul la baza de date de parole, acesta
+va trebui să decripteze parolele, lucru dificil de realizat. Atacuri celebre în
+lume au avut ca rezultat obținerea bazelor de date de parole[1], deci criptarea
+acestora e foarte importantă.
+
+În Linux, baza de date de utilizatori este reprezentată de fișierul /etc/passwd.
+Întrucât multe comenzi au nevoie de accesul la acest fișier pentru a obține
+UID-ul când se știe numele de utilizator sau pentru a afla shell-ul
+utilizatorului curent, acest fișier nu poate reține parola. Dacă ar fi așa,
+orice comenzi uzuale ar putea obține parolele utilizatorilor. Baza de date de
+parole este reprezentată în Linux de fișierul /etc/shadow. Fișierul /etc/shadow
+poate fi accesat doar de utilizatori privilegiați așa cum putem vedea în
+listarea de mai jos:
+
+* ls -l /etc/passwd, ls -l /etc/shadow
+
+O intrare în fișierul /etc/shadow conține numele de utilizator, parola criptată
+și informații legate de gestiunea parolei:
+
+* Intrare din fișierul /etc/shadow
+
+Pentru informații detaliate despre formatul intrării și al parolei criptate, consultați pagina de manual man shadow și man crypt.
+
+În Windows, baza de date de parole se numește Security Account Manager (SAM), și
+se găsește în \%SystemRoot\%/system32/config/SAM. Accesul la SAM are loc prin
+intermediul Windows Registry și este, similar cu /etc/shadow, permis numai
+acțiunilor bine definite. Similar cu /etc/shadow, parolele sunt reținute
+criptate.
+
+\subsection{Gestiunea parolelor}
+
+Un utilizator își poate gestiona parola proprie, iar un utilizator administrativ poate gestiona parola tuturor utilizatorilor. Gestiunea parolelor înseamnă în mod uzual schimbarea lor dar sunt și alte acțiuni. O parolă are asociată o durată de viață după care expiră; o dată expirată, o parolă trebuie să fie schimbată. Altă acțiune legată de parole este blocarea parolei, astfel încât autentificarea cu parolă devine inaccesibilă. Sumarizând, există următoarele acțiuni de gestiune a parolelor:
+
+\begin{itemize}
+	\item schimbarea parolei
+	\item stabilirea duratei de viață a unei parole
+	\item blocarea parolei
+\end{itemize}
+
+În Windows se folosește interfața grafică pentru gestiunea parolelor. Se
+accesează Control Panel -> User Accounts -> .. ca în figura de mai jos.
+
+* diagramă Windows cu ecran cu schimbarea parolei
+
+În Linux, modul uzual de gestiune a parolei este prin linia de comandă folosind
+utilitarul passwd. Cu ajutorul utilitarului passwd, un utilizator neprivilegiat
+își poate gestiona parola proprie iar unul privilegiat parola tuturor
+utilizatorilor. Atunci când un utilizator neprivilegiat își gestionează parola
+folosind utilitarul passwd trebuie să introducă parola la prompt-ul afișat. Mai
+jos avem exemple de folosire a comenzii passwd pentru gestiunea conturilor:
+
+* exemple de folosire passwd
+
+Expirarea parolelor și blocarea parolelor poate fi utilă pentru crearea de
+conturi temporare. Cineva primește un cont și apoi nu mai poate să acceseze prin
+parolă acel cont pentru că nu mai este parte a unui organizații, are de plătit o
+sumă de bani sau altă situație.
+
+De avut în vedere că o parolă blocată nu înseamnă că acel cont nu poate fi
+folosit. Un utilizator se poate autentifica la acel cont folosind alte forme de
+autentificare, precum autentificare cu chei publice SSH. Dacă dorim să
+dezactivăm acel cont și să nu mai poată fi folosit cu nici o formă de
+autentificare, putem folosi comanda usermod ca mai jos:
+
+\begin{screen}
+usermod --expirydate 1 alice
+\end{screen}
+
+Comanda configurează contul să expire la 1 ianuarie 1970 făcându-l, astfel,
+inutilizabil.
+
+Utilitarul passwd este utilitar interactiv, necesită intrarea de la utilizator.
+Ceea ce îl face dificil de folosit pentru automatizare; de exemplu, dacă dorim
+să creăm 100 de conturi pe un sistem cu anumite parole. Pentru aceasta putem
+folosi utilitarul chpasswd, ca în exemplu de mai jos:
+
+* Exemplu chpasswd
+
+Utilitarul chapasswd primește la intrarea standard linii de forma
+username:password și le schimbă în mod neinteractiv, folosibil în scripturi. Mai
+sus am schimbat parola utilizatorului gabriel la valoarea “Aethee9epiw8”.
+
+Dincolo de folosirea lor într-un sistem de operare, pentru o persoană, parolele
+sunt importante și trebuie avut grijă cum se folosesc. Așa cum vom discuta
+detaliat în Secțiunea TODO din Capitolul TODO: Securitatea sistemului, folosirea
+parolelor poate fi problematică pentru că:
+
+\begin{itemize}
+	\item folosim foarte multe parole și, în mod ideal, trebuie să fie
+		diferite între ele
+	\item parolele pot fi slabe și ușor de ghicit
+	\item parolele trebuie să fie schimbate periodic altfel șansele de fi
+		ghicite/decriptate cresc
+	\item folosim parolele de pe dispozitive multiple: desktop, laptop,
+		dispozitiv mobil
+\end{itemize}
+
+Pentru o gestiune corespunzătoare a parolelor există următoarele recomandări:
+
+\begin{itemize}
+	\item Parolele să fie lungi (cel puțin 10 caractere) și să conțină
+		caractere diferite. Puteți apela la un generator de parole
+		precum utilitarul pwgen.
+	\item Nu notați parolele în clar pe hârtii sau în fișiere de unde pot fi
+		ușor citite.
+	\item Folosiți un utilitar de tipul password manager care să rețină
+		parolele și să minimizeze riscul expunerii lor la un atacator.
+		În același timp să ajute să fie accesibile pe dispozitive
+		multiple.
+\end{itemize}
+
+\subsection{Autentificare centralizată}
+
+De multe ori în cadrul unei organizații există mai multe tipuri de aplicații și
+interfețe pe care le folosiți: un site web, un wiki, un cont Linux, un site
+pentru cursuri, un sistem de gestiune a codului sursă. Este problematic pentru
+un utilizator să aibă un cont și o parolă diferită pentru fiecare acest tip de
+aplicație; utilizatorul poate uita din parole, poate le va nota undeva, sau le
+va face simple ca să le țină minte.
+
+Soluția la aceasta situație este autentificarea centralizată. Autentificarea
+centralizată presupune existența unui serviciu de autentificare care gestionează
+baza de date de parole, serviciu accesat de diferitele aplicații, ca în diagrama
+de mai jos:
+
+* Diagramă cu aplicații + serviciu de autentificare centralizată + bază de date parole
+
+În situația autentificării centralizate, un utilizator folosește același nume de
+utilizator și aceeași parolă pentru toate aplicațiile. Aplicațiile trimit mai
+departe numele de utilizator și parola către serviciul de autentificare și, dacă
+intrările respective sunt valide în baza de date, oferă accesul utilizatorului
+la aplicație.
+
+În lumea Windows autentificarea centralizată se bazează pe serviciul AD (Active
+Directory) iar în lumea Linux se bazează pe serviciul LDAP (Lightweight
+Directory Access Protocol). Aceste subiecte sunt avansate și nu fac subiectul
+acestei cărți. Important este înțelegerea nevoii de autentificare centralizată
+și principalele soluții pentru asigurarea acesteia.
+
+\section{Accesul la sistemul de fișiere}
+
+Conturile de utilizator sunt folosite în sistemul de calcul[ac] pentru a separa
+resursele la care acces fiecare utilizator. Una dintre cele mai folosite resurse
+este sistemul de fișiere; fiecare utilizator dispune de un director home la care
+are permisiuni complete.
+
+În general, unui utilizator i se asociază permisiuni pentru o anumită resursă.
+De exemplu, utilizatorul ana[ad] poate modifica fișierul note.xls dacă îi sunt
+asociate permisiuni de modificare a acelui fișier. La nivel conceptual, un agent
+sau un subiect are anumite permisiuni de acces al unei resurse sau un obiect,
+așa cum este descris în diagrama de mai jos:
+
++ diagramă cu agent, permisiuni, resursă
+
+Schema de mai sus este o schemă generală. În cazul particular al secțiunii
+curente, agentul este utilizatorul, iar resursa este fișierul. Mai precis,
+agentul este un proces aparținând unui utilizator. Spunem că un proces poate
+accesa un anumit fișier dacă utilizatorul căruia aparține procesul are
+permisiunile aferente la acel fișier.
+
+În sistemele de operare curente, informațiile despre permisiuni sunt reținute în
+fiecare fișier. În cadrul fișierului se rețin metadate printre care și
+permisiunile de access pentru utilizatori. Modul în care sunt structurate aceste
+metadate ține de sistemul de operare.
+
+\subsection{Gestiunea permisiunilor în Windows}
+
+
+În Windows permisiunile sunt reținute în forma unor liste de access (access
+control lists, ACL). Adică se creează o listă de utilizatori sau grupuri de
+utilizatori și permisiuni aferente, pe modelul diagramei de mai jos:
+
++ listă cu utilizator1, utilizator2, grup1, grup2 și permisiuni
+
+În momentul accesului unui fișier de către un proces, se obține utilizatorul
+căruia aparține procesul. Apoi se caută utilizatorul în lista de acces a
+fișierului. Dacă există și are asociate permisiuni adecvate, atunci se permite
+accesul procesului la fișier. Dacă nu există sau dacă nu are permisiuni, accesul
+nu este permis. De obicei în Windows, există o intrare în lista de acces numită
+"Everyone" care precizează permisiunile pentru toți utilizatorii. Dacă, în urma
+căutării, un utilizator nu este găsit în listă, atunci se folosesc permisiunile
+pentru intrarea "Everyone". Diagrama de mai jos descrie modul în care sunt
+analizate permisiunile în Windows.
+
++ diagramă cu pașii de verificare a permisiunilor în Windows
+
+În Windows permisiunile sunt prezente doar pe sistemul de fișiere NTFS, nu și pe
+FAT32. Permisiunile sunt în mod tipic configurate folosind interfața grafică:
+click dreapta pe fișier -> Properties -> Security, obținând o fereastră ca cele
+de mai jos:
+
++ fereastră cu permisiuni Windows NTFS
+
+Pentru un utilizator dat pot fi precizate mai multe tipuri de permisiuni dintre
+care amintim:
+
+\begin{itemize}
+	\item List Folder/Read Data: utilizatorul poate lista conținutul unui
+		director și datele unui fișier
+	\item Create Files/Write Data: utilizatorul poate crea fișiere într-un
+		director și poate scrie date într-un fișier
+	\item Traverse Folder/Execute File: utilizatorul poate traversa un
+		director și poate executa un fișier
+\end{itemize}
+
+Aceste permisiuni sunt similare permsiunilor read, write și execute pe care le
+vom prezenta în continuare pentru Linux. O listă completă a permisiunilor în
+Windows, pentru NTFS, găsiți pe site-ul care prezintă sistemul de fișiere NTFS
+(http://www.ntfs.com/ntfs-permissions-file-folder.htm)
+
+\subsection{Gestiunea permisiunilor în Linux}
+
+În Linux fiecare fișiere are metadate. Metadatele relevante pentru permisiuni sunt:
+
+\begin{itemize}
+	\item user (utilizator): utilizatorul fișierului
+	\item group (grup): grupul fișierului
+	\item permisiuni: informații despre ce tipuri accese sunt permise și cui
+\end{itemize}
+
+În Linux permisiunile sunt reținute într-un mod simplificat. Există 3 entități
+pentru care se pot configura permisiuni și 3 tipuri de permisiuni, ținând cont
+de metadatele fișierului. Entitățile sunt:
+
+\begin{itemize}
+	\item user (utilizator): utilizatorul fișierului
+	\item group (grup): grupul fișierului
+	\item others (ceilalți): ceilalți utilizatori, diferiți de utilizatorul
+		fișierului și care nu fac parte din grupul fișierului
+\end{itemize}
+
+Permisiunile în Linux sunt, de asemenea, simplificate la 3 tipuri:
+
+\begin{itemize}
+	\item read (citire): fișierul poate fi citit, directorul poate fi listat
+	\item write (scriere): fișierul poate fi modificat, pot fi adăugate
+		șterse intrări în director
+	\item execute (execuție): fișierul poate fi executat, directorul poate
+		fi parcurs
+\end{itemize}
+
+Permisiunile în Linux sunt verificate în cazul în care un proces accesează un fișier urmând pașii:
+
+\begin{enumerate}
+	\item Se obține utilizatorul procesului care accesează fișierul.
+	\item Se compară utilizatorul procesului cu utilizatorul fișierului.
+		Dacă sunt aceleași atunci se obțin permisiunile pentru user
+		(utilizator) și se verifică dacă acțiunea procesului este
+		acceptată de permisiuni. Dacă da, accesul este permis; dacă nu,
+		se trece la pasul următor.
+	\item Se obțin toate grupurile din care face parte utilizatorul
+		procesului. Se compară, pe rând, fiecare dintre aceste grupuri
+		cu grupul fișierului. Dacă există un grup care să corespundă
+		grupului fișierului, atunci se obțin permisiunile pentru group
+		(grup) și se verifică dacă acțiunea procesului este acceptată de
+		permisiuni. Dacă da, accesul este permis; dacă nu, se trece la
+		pasul următor.
+	\item Se obțin permisiunile pentru others (ceilalți) și se verifică dacă
+		acțiunea procesului este acceptată de permisiuni. Dacă da,
+		accesul este permis; dacă nu, se trece la pasul următor.
+\end{enumerate}
+
+Fie următoarea situație de metadate pentru un fișier curs.txt:
+
+\begin{itemize}
+	\item utilizator: ana
+	\item grup: students
+	\item permisiuni: citire, scriere pentru utilizator, citire pentru grup,
+		nici o permisiune pentru ceilalți
+\end{itemize}
+
+Utilizatorul corina[ae] încearcă accesarea pentru citire a fișierului folosind
+comanda cat curs.txt[af]. Se urmează pașii:
+
+\begin{enumerate}
+	\item Se obține utilizatorul procesului care accesează procesul: corina.
+	\item Se compară utilizatorul procesului (corina) cu utilizatorul
+		fișierului (ana). Nu corespund. Se trece la pasul următor.
+	\item Se obțin toate grupurile din care face parte utilizatorul
+		procesului (corina). Prespunem că utilizatorul corina aparține
+		mai multe grupuri între care și students, grupul fișierului
+		curs.txt. În această situație verificăm dacă acțiunea este
+		permisă. Acțiunea este de citire, se găsește în permisiunile
+		pentru grup (citire), și atunci comanda cat curs.txt reușește.
+\end{enumerate}
+
+În situația de mai sus dacă am fi rulat o comandă care modifica fișierul
+curs.txt, nu am fi reușit, pentru că permisiunile pentru grup nu includeau
+"scriere".
+
+Mai jos prezentăm ce permisiuni sunt necesare pentru a putea rula comenzi de
+lucru cu sistemul de fișiere:
+
+\begin{itemize}
+	\item Pentru a putea traversa un director, pentru ca acesta să fie parte
+		a unei căi este suficient ca acesta să aibă permisiuni de
+		execuție. Adica dacă dorim să funcționeze comanda 'cd
+		/a/b/c/d/', trebuie ca directoarele 'a', 'b' și 'c', 'd' să aibă
+		permisiuni de execuție.
+	\item Pentru a putea lista conținutul unui director, adică folosirea
+		comenzii 'ls', trebuie ca acel director să aibă permisiuni de
+		citire și de execuție. Pe un director care are doar permisiuni
+		de citire nu se poate folosi comanda 'ls'.
+	\item Pentru a putea afișa conținutul unui fișier, trebuie ca acel
+		fișier să aibă permisiuni de citire iar directorul care-l
+		conține să aibă permisiuni de execuție.
+	\item Pentru a putea edita un fișier, trebuie ca acel fișier să aibă
+		permsiuni de scriere (nu neapărat și de citire) iar directorul
+		care-l conține să aibă permisiuni de execuție.
+	\item Pentru a putea șterge un fișier sau un director, trebuie ca acel
+		fișier sau director să se găsescă într-un director care să aibă
+		permisiuni de scriere și execuție.
+	\item Pentru a putea crea un fișier sau un director, trebuie ca acel
+		fișier sau director să fie create într-un director care să aibă
+		permisiuni de scriere și execuție.
+	\item Pentru a putea rula un fișier executabil, trebuie ca acel fișier
+		să aibă permisiuni de citire și execuție iar directorul care-l
+		conține să aibă permisiuni de execuție.
+\end{itemize}
+
+\subsubsection{Formatul permisiunilor}
+
+În mod uzual, permisiunile sunt listate pentru un fișier dat în forma din
+diagrama de mai jos:
+
++ diagramă cu 9 permisiuni pentru user, group others (rwx, rwx, rwx)
+
+Adică permisiunile sunt listate ca un șir de 9 caractere:
+
+\begin{itemize}
+	\item primele trei caractere sunt permisiunile pentru user (utilizator)
+	\item următoarele trei caractere sunt permisiunile pentru group (grup)
+	\item ultimele trei caracterse sunt permisiunile pentru others (ceilalți)
+\end{itemize}
+
+Astfel, în listarea de mai jos avem următorele:
+
+\begin{itemize}
+	\item fișierul 'invoice.pdf' are:
+	\begin{itemize}
+		\item permisiuni de citire și scriere pentru user, adică pentru
+			utilizatorul dan
+		\item permisiuni de citire și scriere pentru group, adică pentru
+			grupul staff
+		\item permisiuni de citire pentru ceilalți
+	\end{itemize}
+	\item fișierul 'myscript' are:
+	\begin{itemize}
+		\item permisiuni de citire, scriere și execuție pentru user,
+			adică pentru utilizatorul dan
+		\item permisiuni de citire și execuție pentru group, adică
+			pentru grupul adm
+	\end{itemize}
+	\item nici o permisiune pentru ceilalți
+\end{itemize}
+
++ exemplu listare cu permisiuni
+
+Pentru gestiunea mai rapidă a permisiunilor acestea sunt gestionate în format pe
+biți. Adică fiecare dintre cele 9 caractere de permisiuni ocupă un bit; bitul
+este 1 dacă permisiunea este activă și pe 0 dacă este inactivă. Adică avem
+corespondențe de forma:
+
+\begin{itemize}
+	\item rw-r--r-- corespunde 110100100
+	\item rwxr-x--- corespunde 111101000
+	\item rw-rw---- corespunde 110110000
+\end{itemize}
+
+Pentru a fi mai rapid grupurile de biți se grupează câte 3 (3 biți pentru user,
+3 biți pentru group, 3 bițî pentru others) și cei trei biți se transformă într-o
+cifră în octal (baza 8); de aceea mai numim reprezentarea octală. Avem, așadar,
+corespondența:
+
+\begin{itemize}
+	\item rw-r--r-- corespunde 110100100, adică 644 în octal
+	\item rwxr-x--- corespunde 111101000, adică 750 în octal
+	\item rw-rw---- corespunde 110110000, adică 660 în octal
+\end{itemize}
+
+Pentru că sunt[ag] ușor de modificat și rapid de folosit gestiunea permisiunilor
+se face adesea, în format octal.
+
+\subsection{Comenzi pentru gestiunea permisiunilor}
+
+Pentru gestiunea permisiunilor avem comenzi de afișare a metadatelor de
+permisiuni (utilizator, grup și permisiuni) și comenzi de modificare a
+metadatelor.
+
+Pentru afișarea metadatelor, cele două comenzi folosite sunt `ls -l` și `stat`
+ca în exemplele de mai jos:
+
++ exemplu folosire ls -l și stat
+
+În rezultatul rulării comenzilor avem utilizatorul, grupul și permisiunile.
+
+Comenzile de modificare sunt chown, chgrp și chmod. Primele două comenzi (chown
+și chgrp) modifică utilizatorul și grupul, chmod modifică permisiunile. Comanda
+chown poate modifica și utilizatorul și grupul unui fișier, comanda chgrp doar
+grupul. Cele două comenzi pot fi rulate doar de utilizatorul privilegiat; doar
+acesta poate modifica utilizatorul și grupul unui fișier. Mai jos sunt exemple
+de comenzi chown și chgrp:
+
++ exemple chown și chgrp
+
+Comanda chmod modifică permisiunile fișierelor. Comanda poate fi rulată de
+utilizatorul privilegiat sau de cel ce deține fișierul (owner) adică
+utilizatorul fișierului; altfel spus, un utilizator își poate modifica
+permisiunile fișierelor proprii. Comanda de modificare primește o construcție de
+modificare a permsiunilor și numele fișierului/fișierelor pentru care dorim
+schimbarea permisiunilor. Avem exemple mai jos:
+
++ exemple de folosire chmod
+
+Forma în octal a permisiunilor la chmod este preferată atunci când vrem să
+configurăm un nou set de permisiuni unui fișier. Când vrem să actualizăm
+permisiunile și modificările sunt mici, este de preferat să folosim forma în
+octal a permisiunilor.
+
+\subsubsection{Permisiuni de creare pentru fișiere}
+
+Atunci când creăm un fișier sau director, folosind, de exemplu, comenzile touch
+și mkdir, le sunt asociate metadate implicite la creare. Utilizatorul și grupul
+fișierului vor fi utilizatorul și grupul procesului, care sunt, de obicei,
+utilizatorul și grupul primar al utilizatorului care a lansat comanda.
+Stabilirea permisiunilor la creare ține de masca de creare a shell-ului.
+
+Masca de creare a shell-ului este o valoare pe biți care este folosită astfel:
+
+\begin{itemize}
+	\item Pentru fișiere se face un ȘI logic între valoarea 666 (octal) și
+		masca inversată.
+	\item Pentru directoare se face un ȘI logic între valoarea 777 (octal)
+		și masca inversată.
+\end{itemize}
+
+Diferența este pentru că directoarele au nevoie de permisiuni de execuție pentru
+toate operațiile. Iar fișierele nu au nevoie de permisiuni de execuție; dacă
+este cazul acestea trebuie acordate explicit.
+
+Exemple sunt prezente în tabelul de mai jos:
+
++ tabel cu mască de creare, mască inversată, permisiuni de creare fișier, permisiuni de creare fișier
+
+Afișarea și modificarea măștii shell-ului se face folosind comanda umask. Fără
+parametru această comandă afișează masca de creare, iar cu parametru modifică
+masca de creare, ca în exemplul de mai jos:
+
++ exemplu cu umask
+
+Mai jos sunt exemple de modificare a umask-ului și crearea de fișiere și
+directoare pentru a vedea cum modificarea valorii umask duce la modificarea
+măștii de creare a shell-ului și, astfel, a permisiunilor de creare pentru
+fișiere și directoare.
+
+\subsection{Biți speciali de acces: setuid, setgid, sticky}
+
+Atunci când afișăm masca de creare a shell-ului, observăm că sunt 4 cifre octale
+afișate. În mod normal ar trebuie să fie 3 cifre afișate, cu permisiuni pentru
+user, group și others. Prima cifră afișată reprezintă un set special de 3 de
+biți numiți setuid, setgid și sticky, și sunt activați în această ordine.
+Astfel, pentru permisiunile de mai jos avem explicațiile:
+
+\begin{itemize}
+	\item 4755: este activat bitul setuid, utilizatorul are permisiuni
+		complete, grupul are permisiuni de citire și execuție, ceilalți
+		au permisiuni de citire și execuție
+	\item 2755: este activat bitut setgid, celelalte permisiuni sunt ca mai sus
+	\item 1755: este activat bitul sticky, celelalte permisiuni rămân la fel
+\end{itemize}
+
+Bitul setuid are sens când este folosit pe fișiere executabile. Adaugă
+funcționalitatea de set user ID on execution. Când un fișier executabil are
+activat bitul setuid, procesul creat din acest fișier executabil va avea
+utilizatorul ale acestui fișier (de obicei root) nu al utilizatorului care a
+rulat comanda. Mai concret, dacă rulăm ca utilizator student executabilul myexec
+care are activat bitul setuid și are ca utilizator root, atunci procesul creat
+din executabilul myexec va rula ca utilizatorul root.
+
+Bitul setuid este folosit atunci când anumite utilitare necesită privilegii
+pentru accesarea unor fișiere speciale atunci când rulează. De exemplu,
+executabilul /usr/bin/passwd are activat bitul setuid pentru că procesul creat
+va trebui să acceseze fișierul /etc/shadow, fișier accesibil doar utilizatorilor
+privilegiați:
+
+\begin{screen}
+student@uso:~$ ls -l /usr/bin/passwd
+-rwsr-xr-x 1 root root 59640 Jan 25  2018 /usr/bin/passwd
+student@uso:~$ stat /usr/bin/passwd
+  File: /usr/bin/passwd
+  Size: 59640             Blocks: 120        IO Block: 4096   regular file
+Device: 801h/2049d        Inode: 656195      Links: 1
+Access: (4755/-rwsr-xr-x)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-08-21 11:41:23.741306286 +0300
+Modify: 2018-01-25 17:09:22.000000000 +0200
+Change: 2018-08-06 17:34:29.848000000 +0300
+ Birth: -
+\end{screen}
+
+Vedem în ieșire comenzilor prezența cifrei 4 pe prima poziție în forma octală a
+permisiunilor și a caracterului s în forma literală a permisiunilor în locul
+caracterului de execuție pentru utilizator.
+
+Bitul setgid are sens când este folosit pe executabile și pe directoare. Adaugă
+funcționalitatea de \textit{set group ID on execution}. Pe executabile are
+același efect ca bitul setuid doar că pentru grup.
+
+Când un director are activat bitul setgid, viitoare subdirectoare și fișiere ale
+acestuia vor avea ca grup în metadate grupul directorului, nu grupul
+utilizatorului care a rulat comanda. Viitoare subdirectoare vor moșteni bitul
+setgid astfel că ce se creează nou în ierarhie va avea mereu același grup. Este
+util pentru a crea un spațiu partajat în care diferiți utilizatori să creeze
+fișiere dar să rămână accesibile între ei câtă vreme fac parte din același grup.
+Mai concret, dacă directorul top are grupul “heroes” și are activat bitul
+setgid, viitoare fișiere și subdirectoare vor avea tot grupul “heroes”
+indiferent ce utilizatori creau intrări.
+
+În exemplul de mai jos arătăm cum activarea bitului setgid pe un director duce
+la crearea de intrări care moștenesc grupul directorului:
+
+* Exemplu cu setgid
+
+Bitul sticky are sens când este folosit pe directoare la care au acces de
+scriere mai mulți utilizatori, de exemplu directorul /tmp. Adaugă
+funcționalitatea de restricted deletion flag. Acest lucru înseamnă că un
+utilizator nu poate șterge fișierele altui utilizator deși are permisiuni de
+scriere pe director care conține acele fișiere.
+
+Directorul /tmp este cel care are activat bitul sticky pentru că oferă
+permisiuni complete tuturor utilizatorilor. Deși un utilizator are permisiuni
+complete pe acel director nu poate șterge fișiere care nu-i aparțin, așa cum
+avem prezentat în exemplul de mai jos:
+
+* Exemplu cu sticky
+
+\section{Anexă: Resetarea parolei în Linux}
+
+Se poate întâmpla să fie uitată parola administrativă pe un sistem care rulează
+Linux. În această situație este nevoie de resetarea parolei contului root.
+Pentru aceasta avem două opțiuni:
+
+\begin{itemize}
+	\item modificarea procesului de boot și înlocuirea procesului init
+	\item folosirea unui stick USB sau CD bootabil
+\end{itemize}
+
+În prima variantă, în ecranul bootloader-ului GRUB edităm linia de boot și
+adăugăm șirul init=/bin/bash, ca mai jos:
+
+* screenshot cu editarea liniei de boot
+
+Apoi folosim combinația de taste Ctrl+x pentru a boota sistemul de operare. În
+această situație primul proces pornit de sistem nu va fi init ci va fi un shell
+cu permisiuni de root. În acest shell vom rula comenzile de mai jos pentru
+schimbarea parolei utilizatorului root:
+
+* lanț de comenzi
+
+Mai sus am folosit comanda mount pentru a remonta sistemul de fișiere rădăcină
+în modul read-write și a putea astfel modifica fișierul /etc/shadow cu ajutorul
+comenzii passwd.
+
+Apoi repornim sistemul fie din buton, fie folosind combinația de taste
+Ctrl+Alt+Del. Nu vom putea folosi comenzi precum reboot sau poweroff.
+
+În a doua variantă, folosim un CD/stick USB bootabil cu o distribuție Linux live
+(precum Ubuntu). După ce sistemul a porni distribuția live, vom realiza
+următorii pași:
+
+\begin{enumerate}
+	\item Montăm sistemul de fișiere rădăcină al sistemului Linux instalat
+		(pentru care vrem să resetăm parola contului root).
+	\item Folosim comanda chroot pentru a modifica sistemul de fișiere
+		rădăcină în care rulăm în sistemul de fișiere al sistemului
+		Linux instalat
+	\item Folosim comanda passwd pentru a schimba parola contului root în
+		sistemul de fișiere rădăcină al sistemului Linux instalat.
+	\item Revenim la sistemul de fișiere al sistemului live, părăsind
+		shell-ul obținut prin chroot.
+	\item Demontăm sistemul de fișiere rădăcină al sistemului Linux instalat.
+	\item Repornim sistemul.
+\end{enumerate}
+
+Pașii de mai sus sunt reproduși în comenzile de mai jos:
+
+* Comenzile de resetare a parolei după ce am bootat cu un CD/stick USB live
+
+\section{Use case: Resetarea parolei în Windows}
+
+Pentru resetarea parolei unui utilizator în Windows, cel mai important fiind
+utilizatorul Administrator, se poate folosi utilitarul chntpw (de la change NT
+password). Acesta este inclus în mai multe CD-uri de recuperare (rescue CDs).
+
+O opțiune este folosirea Ultimate Boot CD[2], un CD bootabil cu utilitare
+diverse de diagnostic și reparație la nivelul sistemului de operare. Ultimate
+Boot CD conține PartedMagic[3] care, la rândul său, conține utilitarul chntpw.
+Utilitarul chntpw oferă interfață în linia de comandă pentru modificarea
+parolelor utilizatorilor în Windows.
+
+Pentru a nu ocupa spațiu din această carte cu detalii, recomandăm să parcurgeți
+tutorial cu screenshot-uri de aici
+(https://www.top-password.com/blog/reset-forgotten-windows-password-with-ultimate-boot-cd/)
+despre folosirea Ultimate Boot CD pentru resetarea parole în Windows.
+
+\section{Sumar}
+
+Sisteme multi-user, utilizatori simultan pe un sistem, procesele rulează cu
+permisiunile unui utilizator
+
+Utilizatori de aplicație sau de sistem, bază de date de autentificare
+
+Există utilizator privilegiat sau forme de accesare a privilegiilor
+
+Utilizatorul privilegiat gestionează utilizatorii
+
+Modul uzual de acces este prin parolă, parola poate fi resetată
