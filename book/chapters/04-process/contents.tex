@@ -19,24 +19,25 @@ de resurse.
 
 O parte dintre procese sunt pornite la acțiuni ale utilizatorilor, precum
 rularea unei aplicații grafice sau a unei comenzi. Numim aceste procese
-\textbf{interactive} pentru că interacționează cu utilizatorul pe parcursul rulării lor.
-Alte procese sunt pornite de sistem și nu interacționează cu utilizatorul;
-acestea au rol în gestiunea sistemului sau oferirea de servicii: de exemplu
-conectarea la rețea în momentul în care există o rețea wireless disponibilă sau
-actualizarea ceasului sistemului sau indexarea fișierelor pentru căutare rapidă.
-Aceste procese sunt \textbf{neinteractive}. Le numim \textbf{servicii} sau, pe Unix, procese
-\textbf{daemon}. Vom discuta mai în detaliu în Secțiunea TODO: Procese pdaemon.
+\textbf{interactive} pentru că interacționează cu utilizatorul pe parcursul
+rulării lor.  Alte procese sunt pornite de sistem și nu interacționează cu
+utilizatorul; acestea au rol în gestiunea sistemului sau oferirea de servicii:
+de exemplu conectarea la rețea în momentul în care există o rețea wireless
+disponibilă sau actualizarea ceasului sistemului sau indexarea fișierelor pentru
+căutare rapidă.  Aceste procese sunt \textbf{neinteractive}. Le numim
+\textbf{servicii} sau, pe Unix, procese \textbf{daemon}. Vom discuta mai în
+detaliu în \labelindexref{secțiunea}{sec:procese-interactivitate-daemon}.
 
 Unele aplicații pot fi compuse din mai multe procese. De exemplu, un navigator
 web precum Google Chrome pornește un proces pentru fiecare tab; un server web
 care servește cereri în rețea poate avea mai multe procese care fac servirea; o
 fereastră de terminal are un proces shell deschis pentru fiecare tab[o][p][q];
 mai mult, într-o fereastră de terminal pot rula mai multe procese așa cum vom
-vedea în Secțiunea TODO: Foreground și background. Altfel spus, când folosim
-interfața grafică, o fereastră de aplicație care rulează poate avea în spate mai
-multe procese. Sistemul de operare folosește noțiunea de proces; este
-preocuparea dezvoltatorului de aplicații dacă o aplicație folosește, când
-rulează, unul sau mai multe procese.
+vedea în \labelindexref{secțiunea}{sec:procese-ierarhie-foreground-background}.
+Altfel spus, când folosim interfața grafică, o fereastră de aplicație care
+rulează poate avea în spate mai multe procese. Sistemul de operare folosește
+noțiunea de proces; este preocuparea dezvoltatorului de aplicații dacă o
+aplicație folosește, când rulează, unul sau mai multe procese.
 
 NOTĂ: Esențial este că orice aplicație care rulează folosește unul sau mai multe procese pentru a satisface cerințele utilizatorului.
 
@@ -49,8 +50,8 @@ dar pot și partaja anumite resurse. Acest lucru este util pentru a realiza
 acțiuni ce nu pot fi obținute cu un singur proces. De exemplu, un proces
 descărcă un fișier video, alt procese îl convertește într-un format adecvat, alt
 proces îl vizualizează. Vom vedea mai multe despre comunicarea și interacțiunea
-între procese în Secțiunea TODO: Operații cu procese. Interacțiunea între
-procese.
+între procese în \labelindexref{secțiunea}{sec:procese-operatii}. Interacțiunea
+între procese.
 
 Concret, sistemul de operare oferă:
 
@@ -90,7 +91,7 @@ pornim o aplicație sau rulăm o comandă, un program este încărcat
 înseamnă, așadar, copierea instrucțiunilor ce vor fi executate din fișierul
 executabil în memoria viitorului proces și pornirea procesului. Mai multe
 informații despre magia din spatele acțiunii de încărcare (\textit{loading}) se
-găsesc în Secțiunea TODO: Use case: Internele pornirii unui proces. Loading.
+găsesc în \labelindexref{secțiunea}{sec:procese-loading}.
 
 De exemplu, atunci când pornim navigatorul web Firefox, se creează un proces cu
 care interacționăm. Putem vedea acest proces pe Linux/Unix/macOS folosind
@@ -164,7 +165,7 @@ procesor, memorie și I/O (de obicei disc) folosite de proces.
 * snippet și diagramă cu ps, top și Task Manager
 
 Mai multe informații despre investigarea proceselor și monitorizarea resurselor
-utilizate se găsesc în Secțiunea TODO: Investigarea Proceselor.
+utilizate se găsesc în \labelindexref{secțiunea}{sec:procese-investigare}.
 
 \subsection{Atributele unui proces}
 \label{sec:procese-resurse-atribute}
@@ -196,7 +197,7 @@ Atributul UID este identificatorul utilizatorului ce deține procesul. Un proces
 cu un anumit UID va avea acces la resursele acelui utilizator. În mod normal,
 procesele aceluiași utilizator au acces la aceleași resurse. Utilizatorii sunt
 modul principal de separare/izolare între procese. Mai multe detalii vom
-prezenta în Capitolul TODO: Utilizatori.
+prezenta în \labelindexref{capitolul}{chapter:users}.
 
 \subsection{Utilitare pentru urmărirea proceselor}
 \label{sec:procese-resurse-monitorizare}
@@ -222,7 +223,7 @@ Process Explorer, utilitare de monitorizare a proceselor. Monitorizarea
 proceselor e utilă pentru a urmări procesele din sistem, a observa tendințe, a
 vedea consumul de resurse și pentru a investiga de ce sistemul sau un proces
 funcționează anevoios. Mai multe informații despre monitorizarea și investigarea
-proceselor vom prezenta în Secțiunea TODO: Investigarea proceselor.
+proceselor vom prezenta în \labelindexref{secțiunea}{sec:procese-investigare}.
 
 * screenshot cu TaskManager și ProcessExplorer
 
@@ -241,14 +242,14 @@ despre procese:
 		imagine”, “are un anumit proces părinte”, “rulează într-un
 		anumit terminal”, la fel ca în exemplele de mai jos.
 	\item pstree afișează ierarhia de procese a sistemului, îl vom detalia
-		în Secțiunea TODO: Ierarhia de procese pe Linux/Unix.
+		în \labelindexref{secțiunea}{sec:file-system-baza-struct}.
 	\item pmap (\textit{process map}) afișează harta memoriei unui proces, adică
 		zonele de memorie ocupate de acesta. Este un utilitar adecvat în
 		special pentru programatori și pentru cei care sunt interesați
 		de internele sistemelor de operare, nu insistăm pe el.
-	\item lsof (\textit{list open files}) este utilitarul care afișează fișierele
-		deschise de un proces. Îl vom folosi în Secțiunea TODO: Procese
-		și fișiere.
+	\item lsof (\textit{list open files}) este utilitarul care afișează
+		fișierele deschise de un proces. Îl vom folosi în
+		\labelindexref{secțiunea}{sec:procese-fisiere}
 \end{itemize}
 
 Așa cum am precizat, utilitarul ps este utilitarul principal pentru listarea
@@ -454,13 +455,13 @@ pornește serviciile sistemului și procesele de bază. De asemenea, observăm c
 proces are un singur proces părinte și oricâte procese copil. Ierarhia nu are
 foarte multe niveluri. În general procesul init creează servicii de bază și
 shell-uri, iar shell-urile creează alte procese. Detalii despre procesul init
-prezentăm în Secțiunea TODO.
+prezentăm în \labelindexref{secțiunea}{sec:procese-ierarhie-init}.
 
 În mod obișnuit, un proces dat are, de la creare până la încheiere, un proces
 părinte. Se poate întâmpla însă ca un proces să rămână "orfan" adică procesul
 părinte să își încheie execuția înaintea sa. În acest caz, în Linux, procesul
 init "adoptă" procesul rămas orfan și devine noul proces părinte. Vom prezenta
-detalii în Secțiunea TODO.
+detalii în \labelindexref{secțiunea}{sec:procese-ierarhie-init}.
 
 \subsection{Ierarhia de procese în Windows}
 \label{sec:procese-ierarhie-windows}
@@ -598,8 +599,8 @@ combinația Ctrl+d sau este închisă fereastra terminalului în care rulează),
 procesele active în terminalul respectiv sunt, de asemenea, omorâte. Sunt
 omorâte procesele aflate în background și, eventual, procesul aflat în
 foreground. Dacă dorim să menținem anumite procese active după încheierea
-procesului shell, avem opțiuni; vom discuta despre aceste optiuni  în Secțiunea
-TODO: “Procese daemon”.
+procesului shell, avem opțiuni; vom discuta despre aceste optiuni în
+\labelindexref{secțiunea}{sec:procese-interactivitate-daemon}
 
 \subsection{Procesul init}
 \label{sec:procese-ierarhie-init}
@@ -638,7 +639,7 @@ sesiune.
 \section{Procese și fișiere}
 \label{sec:procese-fisiere}
 
-Așa cum am precizat în Capitolul TODO: Utilizarea sistemului de fișiere,
+Așa cum am precizat în \labelindexref{capitolul}{chapter:file-system},
 fișierele sunt componenta cea mai vizibilă din sistemul de operare. Fișierele
 sunt folosite pentru a stoca informații care sunt ulterior accesate, prelucrate
 sau transferate.
@@ -750,7 +751,8 @@ salvăm ieșirea comenzii de investigare a hardware-ului unui sistem.
 
 În general redirectările apar în comenzi înlănțuite, mai ample, numite
 one-linere, în cadrul cărora rezultatul unei comenzi ajunge intrare pentru
-altul, așa cum vom vedea în secțiunea TODO: Comunicarea prin pipe-uri.
+altul, așa cum vom vedea în
+\labelindexref{secțiunea}{sec:procese-operatii-pipe}.
 
 Putem urmări redirectarea descriptorilor cu ajutorul comenzii lsof, așa cum apare mai jos:
 
@@ -792,7 +794,8 @@ comenzilor din familia kill, ca în exemplul de mai jos:
 + exemplu care folosește kill
 
 După folosirea comenzii kill procesul creat a fost omorât. Vom detalia semnale
-și folosire comenzii kill în Secțiunea TODO: Semnale.
+și folosire comenzii kill în
+\labelindexref{secțiunea}{sec:procese-operatii-semnale}.
 
 Indiferent de situație, procesul transmite către procesul părinte informații
 despre cum și-a încheiat execuția (\textit{exit status}) și un cod de ieșire
@@ -990,8 +993,8 @@ Procesele create dintr-un shell, adică procesele copil ale shell-ului, vor
 moșteni acest terminal. Procesele care se află la un moment dat în rulare în
 acel shell vor partaja ieșirea standard. Dar doar procesul aflat în foreground
 (shell-ul sau altul) va avea acces la intrarea standard. Așa cum am precizat în
-Secțiunea TODO: Foreground și background, procesul din foreground “acaparează”
-intrarea standard dată de terminal.
+\labelindexref{secțiunea}{sec:procese-ierarhie-foreground-background} procesul
+din foreground “acaparează” intrarea standard dată de terminal.
 
 În exemplul de mai jos arătăm cum procesele create din shell-ul curent au
 același terminal:
@@ -1033,7 +1036,7 @@ planificarea execuției unui proces la un moment dat). Din acest motiv, procesel
 daemon se mai numesc servicii; în Windows procesele care rulează neinteractiv,
 în background, detașate de terminal, se numesc servicii. De asemenea, în Linux,
 gestiunea serviciilor se face folosind comanda service, așa cum vom prezenta în
-Capitolul TODO: Pornirea sistemului.
+\labelindexref{capitolul}{chapter:boot}.
 
 Interacțiunea cu aceste procese se face prin intermediul semnalelor, fișierelor
 de configurare și fișierelor de tip jurnal (log). Exemple de procese daemon
@@ -1056,7 +1059,7 @@ Concluzionând, în general un proces daemon are următoarele caracteristici:
 
 Pentru a lista procesele daemon într-un sistem Linux, rulăm comanda:
 
-* rulare comandă ps --tty ? --ppid 1 (ceva de genul)
+* rulare comandă ps -{}-tty ? -{}-ppid 1 (ceva de genul)
 
 Aplicațiile din mediul grafic nu au un terminal asociat dar nu le putem numi
 procese daemon întrucât au o interfață (grafică) de interacțiune cu
@@ -1096,7 +1099,8 @@ două opțiuni:
 
 În prima categorie sunt utilitarele nohup, disown, despre care vom discuta în
 continuare. În a doua categorie sunt utilitarele screen, tmux, byobu, dtach
-despre care vom discuta în secțiunea TODO: screen, tmux, byobu, dtach.
+despre care vom discuta în
+\labelindexref{secțiunea}{sec:procese-interactivitate-screen}.
 
 \subsubsection{nohup, disown}
 \label{sec:procese-interactivitate-detasare-nohup}
@@ -1231,16 +1235,14 @@ memoriei, putem folosi utilitarul iotop pentru investigarea folosirii discului:
 * exemplu de folosire iotop
 
 Atunci când dorim să investigăm fișierele sau sockeții deschiși de un proces,
-putem folosi utilitarul lsof, pe care l-am prezentat și în secțiunea TODO:
-Procese și fișiere.
-
-Pentru monitorizarea folosirii resurselor unui proces, în afara utilitarului
-top, putem folosi utilitarele din familia sysstat. Acestea afișează periodic
-informații despre procentul de procesor ocupat, procentul de memorie ocupată,
-utilizarea de I/O. Monitorizarea (continuă) este utilă pentru a verifica
-trenduri în utilizarea resurselor. Monitorizarea este o formă de asigurare a
-securității unui sistem de calcul, așa cum vom prezenta în Capitolul TODO:
-Securizarea sistemului.
+putem folosi utilitarul lsof, pe care l-am prezentat și în
+\labelindexref{secțiunea}{sec:procese-fisiere} Pentru monitorizarea folosirii
+resurselor unui proces, în afara utilitarului top, putem folosi utilitarele din
+familia sysstat. Acestea afișează periodic informații despre procentul de
+procesor ocupat, procentul de memorie ocupată, utilizarea de I/O. Monitorizarea
+(continuă) este utilă pentru a verifica trenduri în utilizarea resurselor.
+Monitorizarea este o formă de asigurare a securității unui sistem de calcul, așa
+cum vom prezenta în Capitolul TODO: Securizarea sistemului.
 
 În cazul în care dorim o investigare amănunțită a funcționării unui
 program/proces putem urmări apelurile de bibliotecă sau de sistem realizate.

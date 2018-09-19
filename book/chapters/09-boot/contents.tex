@@ -179,8 +179,7 @@ cea de mai jos:
 Dacă bateria CMOS este scoasă din soclul ei sau este epuizată, configurațiile se
 pierd și BIOS-ul bootează la niște valori implicite. Aceasta este o formă facilă
 de resetarea a parolei de BIOS în cazul în care o astfel de parolă este
-configurată, așa cum vom preciza în secțiunea TODO: Use case: Resetarea parolei
-administrative.
+configurată, așa cum vom preciza în \labelindexref{secțiunea}{sec:boot-passreset}.
 
 Pe lângă interfața grafică mai prietenoasă, UEFI folosește o nouă schemă de
 partiționare a discurilor numită GPT (GUID Partition Table) spre deosebire de
@@ -248,16 +247,16 @@ bootare din rețea folosind PXE (Preboot eXecution Environment).
 Un dispozitiv bootabil este marcat special. Un dispozitiv bootabil, identificat
 ca atare de firmware, conține o secvență de cod care este rulată de firmware și
 care este următoarea fază a procesului de boot. Această secvență este, de
-obicei, bootloader-ul, despre care vom discuta detaliat în Secțiunea TODO:
-Bootloader.
+obicei, bootloader-ul, despre care vom discuta detaliat în
+\labelindexref{secțiunea}{sec:boot-bootloader}.
 
 PXE este o metodă prin care putem configura pornirea unui sistem de operare de
 pe un alt sistem (server) accesibil prin rețea. După o configurare dedicată, pe
 care nu o vom detalia aici, o stație poate încărca sistemul de operare de pe
 alt.
 
-Despre dispozitive bootabile vom discuta mai multe în Secțiunea TODO: Dispozitiv
-de boot.
+Despre dispozitive bootabile vom discuta mai multe în
+\labelindexref{secțiunea}{sec:boot-bootdev}.
 
 \subsection{Secure Boot}
 \label{sec:boot-firmware-secureboot}
@@ -319,9 +318,9 @@ despre care vorbim în continuare.
 \subsection{Scheme de partiționare: MBR și GPT}
 \label{sec:boot-bootdev-partscheme}
 
-Detalii despre schemele de partiționare sunt prezentate în secțiunea TODO din
-capitolul TODO: Administrarea spațiului de stocare. În această secțiune facem o
-trece prin cele două scheme de partiționare prezente pe PC: MBR și GPT.
+Detalii despre schemele de partiționare sunt prezentate în
+\labelindexref{secțiunea}{sec:boot-bootdev-partscheme}. În această secțiune
+facem o trece prin cele două scheme de partiționare prezente pe PC: MBR și GPT.
 
 MBR (Master Boot Record) este schema de partiționare clasică pe PC. În cadrul
 acestei scheme de partiționare primul sector de disc (de 512 octeți) conține
@@ -361,7 +360,7 @@ despre bootloader și prezența octeților 0x55AA:
 Fiind o secvență redusă acest 1st stage bootloader poate face operații minime.
 Astfel că rolul său este să încarca partea principală din booloader, numită și
 2nd stage bootloader, care realizează apoi încărcarea sistemului de operare, așa
-cum vom preciza în Secțiunea TODO: Bootloader.
+cum vom preciza în \labelindexref{secțiunea}{sec:boot-bootloader}.
 
 \subsection{Încărcarea bootloader-ului pentru UEFI}
 \label{sec:boot-bootdev-bootuefi}
@@ -522,10 +521,10 @@ va apăsa tasta e și va accesa o nouă interfață precum cea de mai jos:
 acest ecran putem modifica imaginea de kernel (de nucleu de sistem de operare)
 folosită, putem modifica partiția rădăcină folosită sau opțiuni de boot pentru
 kernel. O utilizare a editării opțiunilor de boot este recuperarea parolei
-contului root folosind opțiunea init=/bin/bash așa cum am precizat în Secțiunea
-TODO din Capitolul TODO: Utilizatori. Detalii despre opțiunile de boot aferente
-nucleului sistemului de operare prezentăm în Secțiunea TODO: Pornirea
-kernel-ului și drivere.
+contului root folosind opțiunea init=/bin/bash așa cum am precizat în
+\labelindexref{secțiunea}{sec:users-pass-restore-linux}. Detalii despre
+opțiunile de boot aferente nucleului sistemului de operare prezentăm în
+\labelindexref{secțiunea}{sec:boot-bootupos}.
 
 Opțiunile afișate de GRUB sunt încărcate din fișierul /boot/grub/grub.cfg,
 fișierul de configurare GRUB. Acest fișier nu se recomandă să fie editat manual;
@@ -750,7 +749,7 @@ student@uso:~$ dmesg
 După ce nucleul și driverele sunt încărcate și sistemul de operare este
 inițializat, trebuie pornite primele procese. Pentru aceasta se pornește primul
 proces, numit init, care apoi pornește alte procese. Așa cum am precizat în
-Secțiunea TODO din Capitolul TODO: Procese, procesul init este în vârful
+\labelindexref{secțiunea}{sec:procese-ierarhie-init}, procesul init este în vârful
 ierarhiei proceselor având ca roluri crearea primelor procese din sistemul de
 operare și adoptarea proceselor orfane.
 
@@ -769,7 +768,7 @@ legătură simbolică la fișierul /lib/systemd/systemd. Astfel că, pe sistemel
 moderne, configurarea init echivalează configurării systemd.
 
 Procesul principal systemd rulează ca procesul cu PID-ul 1. Există posibilitatea
-creării unui proces per utilizator prin transmiterea opțiunii --user comenzii
+creării unui proces per utilizator prin transmiterea opțiunii -{}-user comenzii
 systemd. Acest lucru este util atunci când dorim să creăm și să gestionăm
 servicii la nivelul utilizatorului, la la nivelul sistemului.
 
@@ -791,7 +790,7 @@ apparmor   console-setup.sh  dbus          hddtemp     keyboard-setup.sh  networ
 \end{screen}
 
 În systemd, serviciile, împreună cu alte componente, sunt numite units. Pentru a
-vizualiza toate unitățile systemd, folosimd comanda systemd --list-units.
+vizualiza toate unitățile systemd, folosimd comanda systemd -{}-list-units.
 
 Dacă dorim să afișăm informații, oprim, porni sau reporni servicii, putem folosi
 fie interfața clasică /etc/init.d/, fie comanda service, fie comanda systemctl.
@@ -886,11 +885,11 @@ Capitolul TODO: Interfața în linia de comandă.
 
 Este posibil ca pentru un sistem să pierdem parola administrativă, a contului
 root sau a contului Administrator și să fie nevoie de resetarea acesteia. În
-Anexa TODO din Capitolul TODO: Utilizatori am precizat modurile uzuale de
-resetare a parolei administrative și în Linux și în Windows. În Linux folosim
-opțiunea init=/bin/bash la bootarea sistemului de operare, editând intrarea în
-bootloader, sau folosim unui USB stick bootabil sau CD-ROM. În Windows folosim
-Ultimate Boot CD.
+\labelindexref{secțiunea}{sec:users-pass-restore-linux} am precizat modurile
+uzuale de resetare a parolei administrative și în Linux și în Windows. În Linux
+folosim opțiunea init=/bin/bash la bootarea sistemului de operare, editând
+intrarea în bootloader, sau folosim unui USB stick bootabil sau CD-ROM. În
+Windows folosim Ultimate Boot CD.
 
 În Linux este posibil să configurăm parolă de acces la bootloader (GRUB) și
 atunci opțiunea cu editarea intrării în bootloader nu funcționează. Rămâne însă
