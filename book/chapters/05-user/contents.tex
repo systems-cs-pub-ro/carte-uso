@@ -1,4 +1,5 @@
 \chapter{Utilizatori}
+\label{chapter:users}
 
 Sistemul de operare oferă resurse pe care utilizatorii să le poată folosi. În
 mod tipic utilizatorii creează procese (aplicații) care folosesc resursele
@@ -68,6 +69,7 @@ precizarea că multe concepte se aplică și la conturile de utilizator de
 aplicație.
 
 \section{Utilizatori de sistem}
+\label{sec:users-sistem}
 
 Așa cum am precizat mai sus conturile de utilizator de sistem sunt folosite
 pentru a obține acces la resursele gestionate de sistemul de operare. Conturile
@@ -88,6 +90,7 @@ Linux, C:\textbackslash{}Users\textbackslash{}student pe Windows,
 accesa fișiere sau alte resurse ale utilizatorului.
 
 \subsection{Permisiuni și privilegii}
+\label{sec:users-sistem}
 
 O dată autentificat în sistem (sau în aplicație) un utilizator are anumite
 permisiuni de folosire a sistemului. De exemplu, un utilizator obișnuit poate
@@ -135,6 +138,7 @@ Linux/Unix este numit root, în vreme ce pe sistemele Windows este numit
 privilegiate, se accesează contul de superuser.
 
 \section{Utilizatorul administrativ (superuser)}
+\label{sec:users-superuser}
 
 Utilizatorul administrativ, superuser-ul, deține controlul complet al
 sistemului. Toate operațiile privilegiate, inaccesibile unui utilizator obișnuit
@@ -177,6 +181,7 @@ privilegiate prin User Account Control.
 * screenshot cu user account control
 
 \subsection{Utilizatorul administrativ în Linux (root)}
+\label{sec:users-superuser-root}
 
 Utilizatorul administrativ în Linux este numit \texttt{root}. Utilizatorul root
 are acces complet la resursele sistemului și poate face orice operații. În
@@ -205,6 +210,7 @@ comanda exit, așa cum este ilustrat mai jos:
 * listare de comenzi folosind su pentru obținerea unui cont de root și instalarea unui pachet (operație privilegiată)
 
 \subsection{Utilitarul su}
+\label{sec:users-superuser-su}
 
 Utilitarul su este folosit pentru schimbarea utilizatorului, nu neapărat în
 root. Dacă su nu primește nici un argument sau primește ca argument root, va
@@ -227,6 +233,7 @@ un shell al noului utilizator:
 * listare cu su -c
 
 \subsection{Alternative la root în Linux}
+\label{sec:users-superuser-altroot}
 
 Așa cum am precizat anterior, utilizatorul root deține controlul întregului
 sistem. Dacă un atacator obține acces neautorizat la contul root, sistemul va fi
@@ -284,6 +291,7 @@ operare, care permite dezvoltatorilor de aplicații configurarea de privilegii
 granulare. Pentru mai multe detalii urmăriți TODO.
 
 \subsubsection{Utilitarul sudo}
+\label{sec:users-superuser-altroot-sudo}
 
 Bitul setuid și capabilitățile sunt mecanisme care oferă privilegii anumitor
 executabile și procese[z]. Nu permit ușor atașarea de privilegii unui utilizator
@@ -391,6 +399,7 @@ pentru adăuga informație la sfârșitul fișierului (append); în mod obișnui
 comanda suprascrie conținutul fișierului primit ca argument.
 
 \section{Operații cu utilizatori}
+\label{sec:users-ops}
 
 În sistemul de operare un utilizator este reprezentat de procesele și resursele
 acestuia. Procesele și resursele (de exemplu fișierele) sunt marcate ca
@@ -415,6 +424,7 @@ De obicei, un proces poate avea acces la o resursă dacă UID-ul procesului este
 marcat în cadrul resursei ca având acces.
 
 \subsection{Atribute ale utilizatorilor. Informații despre utilizatori}
+\label{sec:users-ops-atribute}
 
 Un utilizator are atribute care îi permit identificarea în sistem,
 autentificarea și accesul la resurse. Așa cum am precizat mai sus cele mai
@@ -454,6 +464,7 @@ modificate doar de un utilizator privilegiat. Mai multe informații prezentăm �
 Secțiunea TODO: Obținerea de informații despre utilizatori.
 
 \subsection{Obținerea de informații despre utilizatori}
+\label{sec:users-ops-info}
 
 Informațiile despre utilizatori (nume de utilizator, identificator de
 utilizator, director home) le putem obține[ab] folosind interfețele grafice
@@ -464,6 +475,7 @@ de comandă.
 obișnuit interfața grafică din Control Panel -> TODO -> TODO.
 
 \subsubsection{Obținerea de informații despre utilizatori în Linux}
+\label{sec:users-ops-info-linux}
 
 În Linux, informațiile despre utilizatori sunt stocate în fișiere de configurare
 dedicate. În scenarii de administrare mai complexe, care nu fac subiectul
@@ -507,6 +519,7 @@ utilizatori de sistem:
 + afișare utilizatori din /etc/passwd care au shell de login /bin/false sau /bin/nologin
 
 \subsection{Gestiunea utilizatorilor și grupurilor}
+\label{sec:users-ops-groups}
 
 Gestiunea utilizatorilor și grupurilor, însemnând crearea, ștergerea sau
 modificarea utilizatorilor și grupurilor poate fi făcută, în mod normal, doar de
@@ -532,6 +545,7 @@ utilizatori. Operațiile sunt realizate prin utilitare specifice fie din
 interfața grafică fie din linie de comandă, ca mai jos.
 
 \subsection{Gestiunea utilizatorilor și grupurilor în Windows}
+\label{sec:users-ops-windows}
 
 În Windows, gestiunea utilizatorilor și grupurilor o facem din interfața din
 panoul de control. Aceasta este uzual accesibilă din Control Panel -> TODO ->
@@ -543,6 +557,7 @@ Pe lângă interfața grafică, uzuală, Windows oferă și utilitare în linia 
 comandă pentru gestiunea utilizatorilor folosind interfața netsh: TODO.
 
 \subsubsection{Gestiunea utilizatorilor și grupurilor în Linux}
+\label{sec:users-ops-groups-linux}
 
 În Linux există interfețe grafice pentru gestiunea utilizatorilor în funcție de
 mediul desktop folosit (GNOME, KDE, XFCE etc.) În mod tradițional, gestiunea se
@@ -581,6 +596,7 @@ Gestiunea parolelor este o componentă critică a sistemului de operare și o vo
 prezenta în secțiunea de mai jos.
 
 \section{Autentificare. Gestiunea parolelor}
+\label{sec:users-auth}
 
 Atunci când un utilizator dorește accesul la sistemul de operare trebuie să se
 autentifice. Autentificarea presupune, în mod tipic, furnizarea unui nume de
@@ -592,6 +608,7 @@ autentificare, autentificare cu cheie publică. În această secțiune vom preze
 doar autentificarea pe bază de parole.
 
 \subsection{Baza de date de parole}
+\label{sec:users-auth-pass}
 
 Pentru ca autentificarea să reușească, adică utilizatorului să îi fie permis
 accesul în sistem, trebuie ca numele de utilizator și parola să fie valide.
@@ -652,6 +669,7 @@ acțiunilor bine definite. Similar cu /etc/shadow, parolele sunt reținute
 criptate.
 
 \subsection{Gestiunea parolelor}
+\label{sec:users-auth-pass-gestiune}
 
 Un utilizator își poate gestiona parola proprie, iar un utilizator administrativ poate gestiona parola tuturor utilizatorilor. Gestiunea parolelor înseamnă în mod uzual schimbarea lor dar sunt și alte acțiuni. O parolă are asociată o durată de viață după care expiră; o dată expirată, o parolă trebuie să fie schimbată. Altă acțiune legată de parole este blocarea parolei, astfel încât autentificarea cu parolă devine inaccesibilă. Sumarizând, există următoarele acțiuni de gestiune a parolelor:
 
@@ -734,6 +752,7 @@ Pentru o gestiune corespunzătoare a parolelor există următoarele recomandări
 \end{itemize}
 
 \subsection{Autentificare centralizată}
+\label{sec:users-auth-central}
 
 De multe ori în cadrul unei organizații există mai multe tipuri de aplicații și
 interfețe pe care le folosiți: un site web, un wiki, un cont Linux, un site
@@ -762,6 +781,7 @@ acestei cărți. Important este înțelegerea nevoii de autentificare centraliza
 și principalele soluții pentru asigurarea acesteia.
 
 \section{Accesul la sistemul de fișiere}
+\label{sec:users-fs}
 
 Conturile de utilizator sunt folosite în sistemul de calcul[ac] pentru a separa
 resursele la care acces fiecare utilizator. Una dintre cele mai folosite resurse
@@ -788,6 +808,7 @@ permisiunile de access pentru utilizatori. Modul în care sunt structurate acest
 metadate ține de sistemul de operare.
 
 \subsection{Gestiunea permisiunilor în Windows}
+\label{sec:users-fs-perms-windows}
 
 
 În Windows permisiunile sunt reținute în forma unor liste de access (access
@@ -833,6 +854,7 @@ Windows, pentru NTFS, găsiți pe site-ul care prezintă sistemul de fișiere NT
 (http://www.ntfs.com/ntfs-permissions-file-folder.htm)
 
 \subsection{Gestiunea permisiunilor în Linux}
+\label{sec:users-fs-perms-linux}
 
 În Linux fiecare fișiere are metadate. Metadatele relevante pentru permisiuni sunt:
 
@@ -943,6 +965,7 @@ lucru cu sistemul de fișiere:
 \end{itemize}
 
 \subsubsection{Formatul permisiunilor}
+\label{sec:users-fs-perms-format}
 
 În mod uzual, permisiunile sunt listate pentru un fișier dat în forma din
 diagrama de mai jos:
@@ -997,15 +1020,16 @@ cifră în octal (baza 8); de aceea mai numim reprezentarea octală. Avem, așad
 corespondența:
 
 \begin{itemize}
-	\item rw-r--r-- corespunde 110100100, adică 644 în octal
-	\item rwxr-x--- corespunde 111101000, adică 750 în octal
-	\item rw-rw---- corespunde 110110000, adică 660 în octal
+	\item rw-r-{}-r-{}- corespunde 110100100, adică 644 în octal
+	\item rwxr-x-{}-{}- corespunde 111101000, adică 750 în octal
+	\item rw-rw-{}-{}-{}- corespunde 110110000, adică 660 în octal
 \end{itemize}
 
 Pentru că sunt[ag] ușor de modificat și rapid de folosit gestiunea permisiunilor
 se face adesea, în format octal.
 
 \subsection{Comenzi pentru gestiunea permisiunilor}
+\label{sec:users-fs-perms-cmd}
 
 Pentru gestiunea permisiunilor avem comenzi de afișare a metadatelor de
 permisiuni (utilizator, grup și permisiuni) și comenzi de modificare a
@@ -1042,6 +1066,7 @@ permisiunile și modificările sunt mici, este de preferat să folosim forma în
 octal a permisiunilor.
 
 \subsubsection{Permisiuni de creare pentru fișiere}
+\label{sec:users-fs-perms-umask}
 
 Atunci când creăm un fișier sau director, folosind, de exemplu, comenzile touch
 și mkdir, le sunt asociate metadate implicite la creare. Utilizatorul și grupul
@@ -1078,6 +1103,7 @@ măștii de creare a shell-ului și, astfel, a permisiunilor de creare pentru
 fișiere și directoare.
 
 \subsection{Biți speciali de acces: setuid, setgid, sticky}
+\label{sec:users-fs-perms-special}
 
 Atunci când afișăm masca de creare a shell-ului, observăm că sunt 4 cifre octale
 afișate. În mod normal ar trebuie să fie 3 cifre afișate, cu permisiuni pentru
@@ -1158,6 +1184,7 @@ avem prezentat în exemplul de mai jos:
 * Exemplu cu sticky
 
 \section{Anexă: Resetarea parolei în Linux}
+\label{sec:users-pass-restore-linux}
 
 Se poate întâmpla să fie uitată parola administrativă pe un sistem care rulează
 Linux. În această situație este nevoie de resetarea parolei contului root.
@@ -1210,6 +1237,7 @@ Pașii de mai sus sunt reproduși în comenzile de mai jos:
 * Comenzile de resetare a parolei după ce am bootat cu un CD/stick USB live
 
 \section{Use case: Resetarea parolei în Windows}
+\label{sec:users-pass-restore-window}
 
 Pentru resetarea parolei unui utilizator în Windows, cel mai important fiind
 utilizatorul Administrator, se poate folosi utilitarul chntpw (de la change NT
@@ -1227,6 +1255,7 @@ tutorial cu screenshot-uri de aici
 despre folosirea Ultimate Boot CD pentru resetarea parole în Windows.
 
 \section{Sumar}
+\label{sec:users-sumar}
 
 Sisteme multi-user, utilizatori simultan pe un sistem, procesele rulează cu
 permisiunile unui utilizator

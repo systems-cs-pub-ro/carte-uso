@@ -1,4 +1,5 @@
 \chapter{Procese}
+\label{chapter:procese}
 
 La nivelul sistemului de operare, aceste aplicații sau comenzi pornite de
 utilizator sunt procese.  Atunci când o aplicație sau un program rulează, spunem
@@ -74,6 +75,7 @@ Concret, sistemul de operare oferă:
 \end{itemize}
 
 \section{Programe și procese}
+\label{sec:procese-v-programe}
 
 Am precizat mai sus că un proces rulează și folosește resursele sistemului
 pentru un anumit rezultat. Pentru aceasta, un proces stochează în memorie
@@ -130,6 +132,7 @@ multe despre atributele unui proces, inclusiv identificatorul său, în secțiun
 următoare.
 
 \section{Resursele și atributele unui proces}
+\label{sec:procese-resurse}
 
 Un proces rulează și folosește resursele sistemului de calcul: memorie,
 procesor, elemente de input/output (I/O): disc, rețea, tastatură etc. Un proces
@@ -164,6 +167,7 @@ Mai multe informații despre investigarea proceselor și monitorizarea resurselo
 utilizate se găsesc în Secțiunea TODO: Investigarea Proceselor.
 
 \subsection{Atributele unui proces}
+\label{sec:procese-resurse-atribute}
 
 Un proces are atribute în mod normal stabilite la pornirea sa (la load-time):
 identificatorul procesului, procesul părinte, utilizatorul, prioritatea de
@@ -195,6 +199,7 @@ modul principal de separare/izolare între procese. Mai multe detalii vom
 prezenta în Capitolul TODO: Utilizatori.
 
 \subsection{Utilitare pentru urmărirea proceselor}
+\label{sec:procese-resurse-monitorizare}
 
 Sistemul de operare pune la dispoziție utilitare și comenzi pentru a afișa
 procese și pentru a urmări atributele și resursele lor.
@@ -301,6 +306,7 @@ Atunci când dorim să obținem doar PID-urile anumitor procese, este mai simplu
 folosim pgrep în loc de ps.
 
 \subsection{Starea proceselor}
+\label{sec:procese-resurse-stare}
 
 Într-unul din exemplele de folosire a utilitarului ps de mai sus am vorbit
 despre starea unui proces. Un proces are o stare care arată dacă acesta rulează
@@ -347,6 +353,7 @@ sistemului:
 * exemplu parte superioară top
 
 \subsection{Prioritatea proceselor}
+\label{sec:procese-resurse-prioritate}
 
 Procesele concurează la folosirea procesorului. Sistemul de operare planifică un
 proces ready pe procesor ținând cont de prioritatea sa. Procesele cu prioritate
@@ -395,6 +402,7 @@ dacă un proces utilizează multe resurse (\textit{resource hog}) și vrem să-l
 “temperăm” îi slăbim prioritatea; la nevoie un astfel de proces este omorât.
 
 \section{Ierarhia de procese}
+\label{sec:procese-ierarhie}
 
 Un proces este creat la comanda utilizatorului sau la un eveniment de declanșare
 (o nouă conexiune în rețea, expirarea unui interval de timp). Crearea unui
@@ -429,6 +437,7 @@ execută o acțiune nevalidă.Procesul părinte este cel care poate furniza
 informații despre condițiile de încheiere ale unui proces copil.
 
 \subsection{Ierarhia de procese în Linux/Unix}
+\label{sec:procese-ierarhie-linux}
 
 În Linux, întrucât un proces creează alt proces care la rândul său poate crea
 alt proces, procesele sunt organizate într-o ierarhie de procese, într-o
@@ -454,6 +463,7 @@ init "adoptă" procesul rămas orfan și devine noul proces părinte. Vom prezen
 detalii în Secțiunea TODO.
 
 \subsection{Ierarhia de procese în Windows}
+\label{sec:procese-ierarhie-windows}
 
 În Windows, în mod similar, un proces creează alt proces. Cu toate acestea
 ierarhia de procese în Windows este o ierarhie cu legături mai slabe. În vreme
@@ -474,6 +484,7 @@ proces creează aplicațiile/procesele pornite în mediul grafic în Windows.
 TODO: Ce se întâmplă când un proces “părinte” moare.[1]
 
 \subsection{Foreground și background}
+\label{sec:procese-ierarhie-foreground-background}
 
 Un proces shell în linia de comandă creează procese în momentul introducerii de
 comenzi din partea utilizatorului. Procesul nou creat și shell-ul folosesc
@@ -591,16 +602,17 @@ procesului shell, avem opțiuni; vom discuta despre aceste optiuni  în Secțiun
 TODO: “Procese daemon”.
 
 \subsection{Procesul init}
+\label{sec:procese-ierarhie-init}
 
-După cum am indicat în Secțiunea TODO: Ierarhia de procese în Linux, în vârful
-ierarhiei proceselor din Linux se găsește procesul init. Acesta este primul
-proces al sistemului și creatorul primelor procese. Serviciile de bază ale
-sistemului, shell-urile inițiale, mediul grafic sunt pornite direct sau indirect
-din procesul init. Spunem că un sistem Linux a bootat în momentul creării
-procesului init. În această secțiune discutăm minimal despre init, cu accent pe
-rolul său în gestiunea proceselor sistemului. Detalii despre pornirea sistemului
-până la pornirea init, și detalii despre init și configurarea sa prezentăm în
-capitolul TODO: Pornirea sistemului.
+După cum am indicat în \labelindexref{secțiunea}{sec:file-system-baza-struct},
+în vârful ierarhiei proceselor din Linux se găsește procesul init. Acesta este
+primul proces al sistemului și creatorul primelor procese. Serviciile de bază
+ale sistemului, shell-urile inițiale, mediul grafic sunt pornite direct sau
+indirect din procesul init. Spunem că un sistem Linux a bootat în momentul
+creării procesului init. În această secțiune discutăm minimal despre init, cu
+accent pe rolul său în gestiunea proceselor sistemului. Detalii despre pornirea
+sistemului până la pornirea init, și detalii despre init și configurarea sa
+prezentăm în \labelindexref{capitolul}{chapter:boot}.
 
 Pe lângă rolul în pornierea proceselor inițiale, init are și rol în întreținerea
 sistemului prin adoptarea proceselor orfane. Un proces orfan este un proces al
@@ -624,6 +636,7 @@ din acea sesiune. Acest proces init de sesiune adoptă procesele orfane din acea
 sesiune.
 
 \section{Procese și fișiere}
+\label{sec:procese-fisiere}
 
 Așa cum am precizat în Capitolul TODO: Utilizarea sistemului de fișiere,
 fișierele sunt componenta cea mai vizibilă din sistemul de operare. Fișierele
@@ -654,6 +667,7 @@ tabelă este numit descriptor de fișier și este identificatorul folosirii
 fișierului în cadrul procesului.
 
 \subsection{Descriptori de fișiere}
+\label{sec:procese-fisiere-description}
 
 Un descriptor de fișiere identifică pentru un proces fișierul pe care îl
 operează. Pornind de la descriptorul de fișiere, procesul accesează intrarea
@@ -714,6 +728,7 @@ către fișier: fie la acțiuni explicite de salvare din partea utilizatorului f
 dacă este cazul, la acțiuni de salvare automată (\textit{autosave}).
 
 \subsection{Redirectarea în/din fișiere}
+\label{sec:procese-fisiere-redirectare}
 
 Am văzut că descriptorii de fișiere pot să refere terminalul, cum este cazul
 descriptorilor standard (0, 1 și 2) sau pot să refer fișiere. Legăturile
@@ -740,6 +755,7 @@ altul, așa cum vom vedea în secțiunea TODO: Comunicarea prin pipe-uri.
 Putem urmări redirectarea descriptorilor cu ajutorul comenzii lsof, așa cum apare mai jos:
 
 \section{Operații cu procese. Interacțiunea între procese}
+\label{sec:procese-operatii}
 
 Un proces ia naștere dintr-un executabil (un program) prin intermediul unui alt
 proces, de obicei shell-ul, care este procesul părinte. În linia de comanda
@@ -749,6 +765,7 @@ părintele acelui proces. Apoi procesul rulează până la încheierea sa, folos
 resurse puse la dispoziție de sistemul de operare.
 
 \subsection{Încheierea unui proces}
+\label{sec:procese-operatii-incheiere}
 
 Un proces își încheie execuția din diferite cauze. Poate fi o încheiere a
 codului aferent programului (a ajuns la sfârșitul programului), poate fi o
@@ -790,6 +807,7 @@ sau eroare. Mai jos prezentăm exemple de investigare a codului de eroare după
 și cu diferite coduri de eroare
 
 \subsection{Semnale}
+\label{sec:procese-operatii-semnale}
 
 Semnalele sunt, în Linux, mecanisme de interacțiune între procese. Un proces
 trimite un semnal unui alt proces pentru a-i semnaliza acestuia o situație
@@ -873,6 +891,7 @@ Nu folosiți Ctrl+z pentru că atunci procesul ajunge în background și rămân
 viață, consumând resurse ale sistemului.
 
 \subsection{Înlănțuirea comenzilor}
+\label{sec:procese-operatii-inlantuire}
 
 În unele situații dorim să rulăm mai multe procese unul după altul și să folosim
 o singură linie de comandă. De exemplu să compilăm o aplicație și apoi să o
@@ -892,6 +911,7 @@ de-a doua comenzi de codul de ieșire al primei. Astfel:
 + exemple de folosire operatori de înlănțuire (practice, utile)
 
 \subsection{Comunicarea prin pipe-uri}
+\label{sec:procese-operatii-pipe}
 
 Atunci când înlănțuim comenzi urmărim, de obicei, transferul de informație de la
 o comandă la alta: rezultatul unei comenzi să fie folosit de altă comandă.
@@ -922,6 +942,7 @@ one thing well!”. Un proces face un singur lucru și îl face bine. Pentru ac�
 mai complexe sunt combinate comenzi/procese într-un one-liner.
 
 \section{Interactivitatea proceselor}
+\label{sec:procese-interactivitate}
 
 Din punctul de vedere al interacțiunii cu utilizator clasificăm procesele în
 interactive și neinteractive. Procesele interactive au nevoie de date de intrare
@@ -943,6 +964,7 @@ comenzi înlănțuite) și va crea un proces sau mai multe procese. Vom detalia
 funcționarea shell-ului în capitolul TODO: Interfața în linia de comandă.
 
 \subsection{Terminale}
+\label{sec:procese-interactivitate-terminale}
 
 Un shell rulează în cadrul unui terminal, care este interfața acestuia de
 interacțiune cu utilizatorul. Descriptorii standard ai shell-ului (intrarea
@@ -978,6 +1000,7 @@ același terminal:
 procese create din el
 
 \subsection{Procese neinteractive}
+\label{sec:procese-interactivitate-neinteractive}
 
 Am precizat mai sus că procesele neinteractive nu au nevoie de interacțiune cu
 utilizatorul și servesc bunei funcționări a sistemului și automatizării
@@ -998,6 +1021,7 @@ anumite procese nu au terminal asociate. Acestea sunt procese neinteractive,
 care rulează în background, detașate de terminal.
 
 \subsection{Procese daemon}
+\label{sec:procese-interactivitate-daemon}
 
 O bună parte dintre procesele care rulează neinteractiv, în background, detașate
 de terminal se numesc procese daemon. În anumite descrieri, orice proces care
@@ -1039,6 +1063,7 @@ procese daemon întrucât au o interfață (grafică) de interacțiune cu
 utilizatorul, deci sunt procese interactive.
 
 \subsection{Detașarea de terminal}
+\label{sec:procese-interactivitate-detasare}
 
 În mod uzual procesele daemon sunt create la pornirea sistemului, în general de
 procesul init. Pe lângă serviciile pornite de init/sistem, un utilizator poate
@@ -1074,6 +1099,7 @@ continuare. În a doua categorie sunt utilitarele screen, tmux, byobu, dtach
 despre care vom discuta în secțiunea TODO: screen, tmux, byobu, dtach.
 
 \subsubsection{nohup, disown}
+\label{sec:procese-interactivitate-detasare-nohup}
 
 Utilitarele nohup și disown permit daemonizarea unui proces pornit din shell.
 Strict tehnic, după cum vom vedea, procesele create nu sunt daemoni pentru că nu
@@ -1125,6 +1151,7 @@ comenzii disown.
 * exemplu rulare disown
 
 \subsection{screen, tmux, byobu, dtach}
+\label{sec:procese-interactivitate-screen}
 
 Folosirea nohup și disown are dezavantajul pierderii interactivității. Se
 creează procese daemon, detașate de terminal și care rulează în background.
@@ -1173,6 +1200,7 @@ detalii găsiți în pagina de manual a comenzii:
 * Exemplu cu dtach
 
 \section{Investigarea proceselor}
+\label{sec:procese-investigare}
 
 Procesele folosesc resursele sistemului de calcul pentru realizarea unor
 acțiuni. Se poate întâmpla să avem nevoie să eliberăm resurse sau ca sistemul
@@ -1223,6 +1251,7 @@ unui proces existent. De exemplu
 * exemple de folosire ltrace/strace
 
 \section{Anexă: Sistemul de fișiere /proc}
+\label{sec:procese-proc}
 
 În Linux, utilitarele de lucru cu procese își iau informațiile din sistemul de
 fișiere virtual procfs, accesibil din /proc. Un sistem de fișiere virtual este
@@ -1275,6 +1304,7 @@ procese sau despre sistem și utilitarele existente nu vă ajută, puteți să
 urmăriți intrările din /proc.
 
 \section{Anexă: Internele pornirii unui proces. Loading}
+\label{sec:procese-loading}
 
 Un proces este creat de un alt proces (de obicei un proces shell) dintr-un
 program executabil. Spunem că procesul este un program aflat în execuție, iar
@@ -1315,6 +1345,7 @@ Aici procesul folosește resursele sistemului, comunică cu exteriorul și cu al
 procese și poate fi monitorizat și controlat de utilizator.
 
 \section{Sumar}
+\label{sec:procese-sumar}
 
 Pe un sistem de calcul procesele sunt necesare pentru realizarea acțiunilor
 utilizatorilor.

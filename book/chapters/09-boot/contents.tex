@@ -1,4 +1,5 @@
 \chapter{Pornirea sistemului}
+\label{chapter:boot}
 
 Atunci când un sistem hardware pornește, acesta urmărește încărcarea sistemului
 de operare, pornirea acestuia și a proceselor de bază. Această se acțiune se
@@ -35,6 +36,7 @@ jos:
 \end{enumerate}
 
 \section{Secvența de boot}
+\label{sec:boot-seq}
 
 În cadrul secvenței de boot fiecare pas, descris în Figura TODO (de mai sus) are
 rolul său. Unul dintre roluri este acela de a transfera controlul următorului
@@ -99,6 +101,7 @@ bootloader folosit pentru platforme embedded precum ARM.
 În cele ce urmează vom descrie în detaliu pașii din secvența de boot.
 
 \section{Firmware de boot}
+\label{sec:boot-firmware}
 
 Firmware-ul de boot este o secvență de cod localizată pe un chip specific al
 sistemului, în general un chip ROM (read-only memory). Din acest motiv i se mai
@@ -138,6 +141,7 @@ boot:
 \end{itemize}
 
 \subsection{BIOS și UEFI}
+\label{sec:boot-firmware-bios}
 
 https://www.howtogeek.com/56958/htg-explains-how-uefi-will-replace-the-bios/
 https://www.computerhope.com/issues/ch001360.htm
@@ -203,6 +207,7 @@ modului său de funcționare e utilă pentru a vedea evoluția firmware-ului de 
 pe arhitectura x86.
 
 \subsection{Alte firmware-ul de boot}
+\label{sec:boot-firmware-uefi}
 
 Fiecare sistem hardware care rulează un sistem de operare generalist (general
 purpose) are un firmware de boot, prima componentă rulată la pornirea
@@ -227,6 +232,7 @@ deschisă. Dezavantajul coreboot este folosirea sa redusă pe sisteme hardware,
 doar câteva folosind coreboot în loc de UEFI (sau BIOS).
 
 \subsection{Configurare dispozitive bootabile}
+\label{sec:boot-firmware-devices}
 
 Unul dintre rolurile firmware-ului de boot este configurarea dispozitivelor
 bootabile și selectarea ordinii de boot. Mai jos este o imagine cu un ecran BIOS
@@ -254,6 +260,7 @@ Despre dispozitive bootabile vom discuta mai multe în Secțiunea TODO: Dispozit
 de boot.
 
 \subsection{Secure Boot}
+\label{sec:boot-firmware-secureboot}
 
 Procesul de boot al unui sistem poate fi corupt și modificate elemente din
 proces. Dorim să avem verificare criptografică (semnătură criptografică) pentru
@@ -276,6 +283,7 @@ kernel folosite. Pe Android tehnologia se numește  Verified Boot, iar pe iOS se
 numește Secure Boot.
 
 \section{Dispozitiv de boot}
+\label{sec:boot-bootdev}
 
 https://www.howtogeek.com/193669/whats-the-difference-between-gpt-and-mbr-when-partitioning-a-drive/
 
@@ -309,6 +317,7 @@ firmware-ul de boot (BIOS sau UEFI) și schema de partiționare (MBR sau GPT),
 despre care vorbim în continuare.
 
 \subsection{Scheme de partiționare: MBR și GPT}
+\label{sec:boot-bootdev-partscheme}
 
 Detalii despre schemele de partiționare sunt prezentate în secțiunea TODO din
 capitolul TODO: Administrarea spațiului de stocare. În această secțiune facem o
@@ -338,6 +347,7 @@ acea valoare, firmware-ul de boot va putea folosi acest disc pentru a boota.
 schema de partiționare GPT cu bootarea folosind UEFI.
 
 \subsection{Încărcarea bootloader-ului pentru BIOS și MBR}
+\label{sec:boot-bootdev-bootmbr}
 
 Atunci când folosim schema de partiționare MBR, BIOS-ul extrage din sectorul de
 boot (marcat cu valoarea 0x55AA pe ultimii doi octeți) prima parte din
@@ -354,6 +364,7 @@ Astfel că rolul său este să încarca partea principală din booloader, numit�
 cum vom preciza în Secțiunea TODO: Bootloader.
 
 \subsection{Încărcarea bootloader-ului pentru UEFI}
+\label{sec:boot-bootdev-bootuefi}
 
 UEFI are un mod compatibil BIOS numit și CSM (Compatibility Support Module) care
 duce la bootarea similar BIOS: încărcare 1st stage bootloader din MBR, apoi
@@ -376,6 +387,7 @@ imaginea de sistem de operare pentru o instalare Fedora Linux.
 efibootmanager.
 
 \subsection{Denumiri discuri și partiții}
+\label{sec:boot-bootdev-denumiri}
 
 În general, discurile și partițiile sunt, în Linux, intrări în directorul /dev.
 De exemplu /dev/sda este primul disc al sistemului, /dev/sdb al doilea disc,
@@ -429,6 +441,7 @@ sistemele de fișiere ce vor fi montate, așa cum vom detalia în Secțiuea TODO
 Capitolul TODO: Administrarea spațiului de stocare.
 
 \section{Bootloader}
+\label{sec:boot-bootloader}
 
 Atunci când firmware-ul de boot trebuie să treacă la următorul pas din procesul
 de boot, va încărca în memorie bootloader-ul sau boot manager-ul și îi va
@@ -478,6 +491,7 @@ Linux, altfel bootloader-ul GRUB va încărca, prin chainloading, bootloader-ul
 WinLoader care încarcă Windows.
 
 \subsection{GRUB}
+\label{sec:boot-bootloader-grub}
 
 În Linux, bootloader-ul folosit cel mai adesea pe PC este GRUB (GRand Unified
 Bootloader). Mai există și alte bootloadere, precum Das uBoot, folosit în
@@ -572,6 +586,7 @@ Pentru detalii despre configurarea GRUB consultați documentația, fie online
 (TODO: footnote), fie accesând pagina info: info grub "Configuration".
 
 \section{Pornirea kernel-ului și drivere}
+\label{sec:boot-bootupos}
 
 Rolul bootloader-ului este de a permite utilizatorului să selecteze un sistem de
 operare în care să booteze, să configureze opțiunile acelui sistem de operare și
@@ -592,6 +607,7 @@ hardware-ului sistemului, nucleul sistemului de operare identifică dispozitivel
 hardware și apoi încarcă de pe disc programele ce reprezintă device driverele.
 
 \subsection{Kernel-ul și driverele în Linux}
+\label{sec:boot-bootupos-linux}
 
 Într-o configurație tipică, fișierul reprezentând imaginea de kernel în Linux se
 găsește în /boot/vmlinuz-<versiune>, unde <versiune> este versiunea de sistem de
@@ -729,6 +745,7 @@ student@uso:~$ dmesg
 \end{screen}
 
 \section{Pornirea init și a serviciilor de startup în Linux}
+\label{sec:boot-init-linux}
 
 După ce nucleul și driverele sunt încărcate și sistemul de operare este
 inițializat, trebuie pornite primele procese. Pentru aceasta se pornește primul
@@ -798,6 +815,7 @@ systemd sau putem folosi supervisor. Vom detalia în Secțiunea TODO din Capitol
 TODO: Automatizarea sarcinilor.
 
 \subsection{Pornirea terminalelor de login}
+\label{sec:boot-init-linux-login}
 
 După pornirea serviciilor inițiale (startup processes), init/systemd trebuie să
 pornească și terminalele de login, numite terminal virtuale, unde utilizatorul
@@ -864,6 +882,7 @@ experiența utilizatorului în linia de comandă. Vom discuta despre acestea în
 Capitolul TODO: Interfața în linia de comandă.
 
 \section{Anexă: Resetarea parolei administrative}
+\label{sec:boot-passreset}
 
 Este posibil ca pentru un sistem să pierdem parola administrativă, a contului
 root sau a contului Administrator și să fie nevoie de resetarea acesteia. În
@@ -895,6 +914,7 @@ resetează parola. Pentru a preveni acest lucru o soluție este criptarea
 discului, lucru ce face imposibilă orice modificare fără accesul la parolă.
 
 \section{Anexă: Crearea unui stick USB bootabil cu Linux}
+\label{sec:boot-usb}
 
 Pentru a instala un sistem de operare Linux un PC avem nevoie de un mediu de
 boot. În mod tipic, acest mediu va fi un stick USB bootabil. Pentru început
@@ -940,6 +960,7 @@ O alternativă, care permite crearea unui stick USB cu Linux folosind Windows
 este folosirea utilitarului Rufus[2] urmărind indicațiile de aici[3].
 
 \section{Anexă: Crearea unui stick USB bootabil cu Windows}
+\label{sec:boot-usb-win}
 
 Pentru crearea unui stick bootabil cu Windows, pregătim mediul de instalare
 (stick-ul USB) în mod similar cu instalarea Linux, cu o diferență: partiția
@@ -1004,6 +1025,7 @@ student@uso:~$ sudo umount iso-mnt/
 Acum putem folosi stick-ul pentru a boota Windows.
 
 \section{Anexă: Adăugarea unei intrări GRUB pentru UDPCast}
+\label{sec:boot-grubconfig}
 
 Pentru a demonstra o configurare particulară pentru GRUB vom descrie instalarea
 UDPcast pe disc pentru a putea fi bootat prin GRUB. UDPCast[5] este o imagine
@@ -1094,6 +1116,7 @@ student@uso:~$ sudo rmdir iso-mnt
 \end{enumerate}
 
 \section{Anexă: Booting în Windows}
+\label{sec:boot-init-win}
 
 În Windows 7, 8 și 10, bootarea se bazează pe trei componente:
 
@@ -1120,6 +1143,7 @@ BCDEdit.exe, un utilitar inclus în Windows.
 Detalii despre procesul de boot în Windows găsiți în documentație[6].
 
 \section{Concluzii}
+\label{sec:boot-colcuzii}
 
 Un sistem de calcul parcurge mai mulți pași din momentul pornirii acestuia
 (apăsării pe butonul de power on) până la pornirea primelor procese interactive,

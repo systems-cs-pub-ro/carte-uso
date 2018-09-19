@@ -1,6 +1,8 @@
 \chapter{Utiliarea sistemului de fișiere}
+\label{chapter:file-system}
 
 \section{Noțiuni de bază}
+\label{sec:file-system-baza}
 
 Sistemele de fișiere par banale datorită familiarității lor. În fiecare zi
 lucrăm cu diverse fișiere, precum poze, texte sau melodii. De exemplu, le
@@ -53,6 +55,7 @@ care putem compara și alege sistemele de fișiere se numără:
 \end{itemize}
 
 \subsection{Ce este un sistem de fișiere}
+\label{sec:file-system-baza-def}
 
 Știm, intuitiv, ce sunt fișierele: ele sunt documentele noastre electronice,
 precum pozele, melodiile, proiectele pentru facultate sau programele
@@ -129,6 +132,7 @@ de tip text (exemplu: interpretorul de comenzi) sau de tip grafic (exemplu:
 Windows File Explorer)
 
 \subsection{Structura ierarhică a sistemului de fișiere}
+\label{sec:file-system-baza-struct}
 
 De la an la an avem tot mai multe fișiere pe calculatoare și telefoane. Acumulăm
 poze, video-uri, melodii, precum și documente de la școală sau de la birou.
@@ -249,6 +253,7 @@ controla mai bine informațiile plătim un cost de 10.000 / 1.000.000 = 1\%.
 		spool (date neprocesate)\\
 	\hline
 	\end{tabular}
+	\label{table:file-system-linux-fs}
 \end{center}
 \end{table}
 %	Figura.... Ierarhia într-un sistem de fișiere din mediul Linux
@@ -291,6 +296,7 @@ C:\textbackslash{}Windows.
 		fi modificată) \\
 	\hline
 	\end{tabular}
+	\label{table:file-system-windows-fs}
 \end{center}
 \end{table}
 
@@ -340,6 +346,7 @@ operare cele mai cunoscute:
 Library; \file{/etc} \\
 	\hline
 	\end{tabular}
+	\label{table:file-system-compar}
 \end{center}
 \end{table}
 
@@ -348,6 +355,7 @@ Observăm că în Linux înșiruirea de directoare este separată de “\file{/}
 (backslash).
 
 \subsection{Căi relative și căi absolute}
+\label{sec:file-system-baza-paths}
 
 Revenind la exemplul de mai sus, dorim să găsim poza
 \file{selfiecumotanul-mai2018.jpg}, care se află în subdirectorul \file{98}, în
@@ -409,6 +417,7 @@ Exemplu:
 lui).
 
 \subsection{Căile stocate în variabila de mediu PATH}
+\label{sec:file-system-path}
 
 Pentru a economisi timp atunci când lucrăm cu programe frecvent folosite, nu
 este necesar să indicăm mereu calea absolută sau relativă, ci putem să folosim
@@ -434,6 +443,7 @@ C:\textbackslash{}WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem
 \end{screen}
 
 \section{Formatul fișierelor}
+\label{sec:file-system-format}
 
 Din perspectiva utilizatorului, fișierele se împart în diverse categorii, precum
 muzică, poze, jocuri și altele. Toate acestea sunt văzute de calculator ca o
@@ -489,6 +499,7 @@ nu prin schimbarea manuală a extensiei, ci prin intermediul unei aplicații cu
 care deschidem fișierul și îl transformăm în formatul dorit.
 
 \subsection{Detecția formatului fișierelor}
+\label{sec:file-system-format-detection}
 
 Pe sistemele Windows fiecare fișier are o extensie, ce ne indică formatul
 acestuia și astfel ajută sistemul de operare să determine ce aplicație să
@@ -506,6 +517,7 @@ fisier.txt: JPEG image data, JFIF standard 1.01
 \end{screen}
 
 \subsection{Atributele fișierelor}
+\label{sec:file-system-file-attributes}
 
 Pentru a controla funcționarea sistemelor de fișiere este importantă distincția
 dintre \textbf{date și meta-date}. Un fișier conține efectiv informații sau
@@ -565,6 +577,7 @@ acestora se regăsesc în capitolul 5 dedicat Utilizatorilor. TODO
 \end{itemize}
 
 \section{Operații uzuale asupra fișierelor și directoarelor}
+\label{sec:file-system-file-ops}
 
 Sistemul de fișiere ne permite realizarea mai multor tipuri de operațiuni asupra
 fișierelor.  \textbf{Operațiile uzuale} asupra fișierelor includ: afișarea și
@@ -618,6 +631,7 @@ fișierele, la inițiativa utilizatorilor sau automat, dar necesită sprijin din
 partea sistemului de fișiere.
 
 \subsection{Afișarea și schimbarea directorului curent}
+\label{sec:file-system-file-list-cd}
 
 Pentru a afișa directorul curent folosim comand \cmd{pwd} (\textit{print working
 directory}). De asemenea, dacă nu s-au efectuat manual schimbări asupra
@@ -679,6 +693,7 @@ Observații:
 
 
 \subsection{Listarea fișierelor}
+\label{sec:file-system-file-list}
 
 Acum că știm să navigăm dintr-un director în altul, ne interesează să afișăm
 conținutul acestora.  Comanda pe care o folosim este “\cmd{ls [opțiuni]
@@ -798,6 +813,7 @@ Dacă dorim să folosim alte opțiuni, putem sa consultăm \cmd{man ls} sau \cmd
 Pentru mai multe opțiuni se poate consulta \cmd{ls --help} sau \cmd{man ls}.
 
 \subsection{Afișarea conținutului fișierelor}
+\label{sec:file-system-file-list-content}
 
 Pentru a putea vedea ce conține un fișier, folosim comanda \cmd{cat <nume
 fișier>}. Un exemplu de utilizare găsiți mai jos:
@@ -822,6 +838,7 @@ $ cat /etc/X11/xorg.conf | less
 \end{screen}
 
 \subsection{Crearea fișierelor/directoarelor}
+\label{sec:file-system-file-creation}
 
 \begin{table}[htb]
 \caption{Comenzi pentru crearea fișierelor}
@@ -911,6 +928,7 @@ Atât legăturile simbolice, cât și legăturile hard sunt create prin comanda
 în cazul creării unei legături hard.
 
 \subsection{Copiere / mutare / redenumire / ștergere}
+\label{sec:file-system-file-cp-mv-rm}
 
 Copierea și mutarea primesc 2 parametri:
 
@@ -926,6 +944,8 @@ Observație:
 prin expresii regulate (vezi TODO)
 
 \subsubsection{Copierea}
+\label{sec:file-system-file-cp}
+
 Comanda folosită pentru a copia un fișier este \cmd{cp [opțiuni] <sursa> <destinație>}.
 
 Opțiunile cele mai des folosite cu aceasta comandă sunt:
@@ -947,7 +967,9 @@ $ cp f1.txt f2.txt
 $ ls
 f1.txt  f2.txt
 \end{screen}
+
 \subsubsection{Mutarea}
+\label{sec:file-system-file-mv}
 
 Comanda folosită pentru a muta un fișier este \cmd{mv [opțiuni] <sursa>
 <destinație>}. Mutarea se va face implicit recursiv și va păstra toate
@@ -967,6 +989,7 @@ f1.txt
 \end{screen}
 
 \subsubsection{Redenumirea}
+\label{sec:file-system-file-rename}
 
 Redenumirea unui fișier se realizează cu comanda mv sau cu cp astfel:
 
@@ -989,6 +1012,7 @@ f3.txt
 \end{screen}
 
 \subsubsection{Stergerea fișierelor/directoarelor}
+\label{sec:file-system-file-rm}
 
 Comanda cea mai folosită pentru ștergerea fișierelor și directoarelor este
 \cmd{rm [opțiuni] <cale>}.
@@ -1010,6 +1034,7 @@ Observație: dacă dorim să ștergem un director gol, putem să folosim comanda
 \cmd{rmdir <director_gol>}
 
 \subsubsection{Redirectarea intrării sau ieșirii pentru o aplicație}
+\label{sec:file-system-redirect}
 
 Există 3 \textbf{fișiere speciale} utilizate de programele în execuție pentru a
 interacționa cu utilizatorii:
@@ -1065,7 +1090,7 @@ standard modificați; putând fi întâlnite următoarele cazuri:
 		eroare \& iesire & Fișier & \cmd{./program 2>\&1 >fișier_ieșire_și_erori} \\
 	\hline
 	\end{tabular}
-	\label{table:redirectare-fisiere}
+	\label{table:file-system-redirec-methods}
 \end{center}
 \end{table}
 
@@ -1170,11 +1195,14 @@ Tabelul următor prezintă câteva redirectări folosind fișiere speciale:
 		conținut ca și /dev/null , adică un fișier gol \\
 	\hline
 	\end{tabular}
-	\label{table:redirectari-speciale}
+	\label{table:file-system-redirect-special}
 \end{center}
 \end{table}
 \subsection{Căutarea fișierelor}
+\label{sec:file-system-file-search}
+
 \subsubsection{Comanda find}
+\label{sec:file-system-cmd-find}
 
 Pentru căutarea în arborele de directoare al fișierelor se folosește comanda
 find ce are la bază abordarea brute-force. Comanda permite căutarea folosind
@@ -1218,6 +1246,7 @@ $ find /usr -size +500k
 \end{screen}
 
 \subsubsection{Comanda locate}
+\label{sec:file-system-cmd-locate}
 
 Comanda \cmd{locate} indexează toate fișierele într-o bază de date locală, fiind
 mai rapidă decât comanda \cmd{find}, însă cu costul de a avea doar numele
@@ -1247,6 +1276,7 @@ Unele distribuții de Linux folosesc comanda \cmd{slocate} în locul comenzii
 curent are drepturi de acces.
 
 \subsubsection{Comanda whereis}
+\label{sec:file-system-cmd-whereis}
 
 Comanda este utilizată pentru căutarea în anumite locații din sistem, de exemplu
 directoarele cu fișiere binare sau directoarele cu pagini \cmd{man}. Însă
@@ -1265,6 +1295,7 @@ Comanda afișează calea atât către executabil, cât si către pagina de \cmd{
 comenzii.
 
 \subsubsection{Comanda which}
+\label{sec:file-system-cmd-which}
 
 Folosirea comenzii \cmd{which} duce la obținerea căii către executabilele care
 au posibilitatea de a fi rulate din linia de comandă. Pentru a returna lista
@@ -1279,6 +1310,7 @@ $ which chmod
 \end{screen}
 
 \subsubsection{Comanda type}
+\label{sec:file-system-cmd-type}
 
 Utilizarea comenzii \cmd{type} duce la determinarea modului de interpretare a
 altei comenzi, de exemplu comandă integrată în shell, comandă externă sau alias.
@@ -1305,6 +1337,7 @@ ls is aliased to 'ls --color'
 \end{screen}
 
 \subsection{Arhivarea fișierelor și dezarhivarea}
+\label{sec:file-system-achivation}
 
 Prin procesul de arhivare, mai multe fișiere și directoare sunt strânse la un
 loc într-un fișier unic, realizându-se astfel și reducerea dimensiunii, deoarece
@@ -1397,7 +1430,7 @@ compresie de mai sus și se folosește de parametrul \texttt{z} pentru gzip și
 		bzip2 & tar cjvf fisier.tar.bz2 dir/ & tar xjvf fisier.tar.bz2 \\
 	\hline
 	\end{tabular}
-	\label{table:exemple-arhivare}
+	\label{table:file-system-achivation-cmd}
 \end{center}
 \end{table}
 
@@ -1448,6 +1481,7 @@ f1.txt  f2.txt  f3.txt  new.tar.gz
 \end{screen}
 
 \subsection{Backup}
+\label{sec:file-system-backup}
 
 Backup-ul este utilizat pentru a păstra într-un loc separat o copie a datelor ce
 poate fi folosită pentru a le recupera în cazul în care, din diferite motive,
@@ -1500,11 +1534,12 @@ potrivite.
 		incremental la acea stare. \\
 	\hline
 	\end{tabular}
-	\label{table:metode-backup}
+	\label{table:file-system-backup-cmd}
 \end{center}
 \end{table}
 
 \section{Tipuri de sisteme de fișiere}
+\label{sec:file-system-fs-types}
 
 În timp au apărut mai multe tipuri de sisteme de fișiere, majoritatea
 dezvoltându-se în mediul open-source. Utilizatorii au opțiunea de a alege
@@ -1541,7 +1576,7 @@ fișiere utilizate în prezent, alături de sistemele de operare în care operea
 		UDF & Nativ & Nativ & Nativ \\
 	\hline
 	\end{tabular}
-	\label{table:metode-backup}
+	\label{table:file-system-backup-fs-types}
 \end{center}
 \end{table}
 
@@ -1569,11 +1604,12 @@ Tabelul următor prezintă succint această clasificare:
 		fișiere aflate în rețea \\
 	\hline
 	\end{tabular}
-	\label{table:fs-clasificare}
+	\label{table:file-system-fs-classes}
 \end{center}
 \end{table}
 
 \subsection{Integritatea datelor}
+\label{sec:file-system-fs-integrity}
 
 Cărțile din bibliotecă se îngălbenesc, caietele se șifonează și scrisul își
 pierde conturul.  Fișierele digitale se pot și ele degrada, datorită unor erori.
@@ -1615,6 +1651,7 @@ care au fost începute, dar s-au întrerupt, deoarece ele sunt încă prezente �
 jurnal, urmând să fie reexecutate în întregime.
 
 \subsection{Alegerea unui sistem de fișiere}
+\label{sec:file-system-fs-integrity}
 
 Atunci când alegem un sistem de fișiere, criteriile cele mai căutate sunt:
 
@@ -1688,11 +1725,12 @@ reprezintă un exbibyte, adică $2^{60}$ octeți.
 		scriere cât și pentru citire \\
 	\hline
 	\end{tabular}
-	\label{table:fs-detalii}
+	\label{table:file-system-fs-details}
 \end{center}
 \end{table}
 
 \subsection{Numele fișierelor}
+\label{sec:file-system-fs-names}
 
 Deși pe dispozitivul de stocare există un spațiu bine definit ocupat de către
 fișiere, utilizatorul nu poate adresa direct poziția fizică a unui fișier pe
@@ -1749,7 +1787,7 @@ extensia lipsește, identificarea bazându-se integral pe conținutul fișierulu
 		poate fi folosit în numele fișierului \\
 	\hline
 	\end{tabular}
-	\label{table:fs-nume}
+	\label{table:file-system-name-length}
 \end{center}
 \end{table}
 
@@ -1764,8 +1802,10 @@ $ file /boot/kernel26.img
 \end{screen}
 
 \section{Studii de caz}
+\label{sec:file-system-case}
 
 \subsection{Comenzi pentru lucrul cu fișiere în Windows}
+\label{sec:file-system-case-windows}
 
 \begin{table}[htb]
 \begin{center}
@@ -1810,6 +1850,6 @@ $ file /boot/kernel26.img
 		diff & fc & afișează diferențele dintre două fișiere \\
 	\hline
 	\end{tabular}
-	\label{table:fs-studiu-caz}
+	\label{table:file-system-case-study}
 \end{center}
 \end{table}
