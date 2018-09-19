@@ -481,6 +481,9 @@ frame=single,rulecolor=\color{red},framerule=0.8mm}
 % package for euro symbol
 \usepackage{eurosym}
 
+% package for professional tables
+\usepackage{booktabs}
+
 % http://www.latex-community.org/forum/viewtopic.php?f=5&t=1876
 \usepackage{tocloft}
 % section
