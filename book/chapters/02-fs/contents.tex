@@ -202,56 +202,57 @@ controla mai bine informațiile plătim un cost de 10.000 / 1.000.000 = 1\%.
 \begin{table}[htb]
 \caption{Ierarhia într-un sistem de fișiere din mediul Linux}
 \begin{center}
-	\begin{tabular}{ | p{0.25\textwidth} | p{0.65\textwidth} | }
-	\hline
+	\begin{tabular}{ p{0.25\textwidth} p{0.75\textwidth} }
+	\toprule
 		\textbf{Director} & \textbf{Conținut} \\
-	\hline
+	\midrule
 		\file{/} & directorul rădăcină (en. root) - directorul cel mai
 		cuprinzător, care conține celelalte directoare, considerate
 		analoage trunchiului și ramurilor. \\
-	\hline
+	\midrule
 		\file{/bin} & comenzi esențiale necesare bootării, întreținerii
 		și depanării sistemului\\
-	\hline
+	\midrule
 		\file{/boot} & fișiere necesare bootării, precum imaginea
 		kernel-ului\\
-	\hline
+	\midrule
 		\file{/dev} & fișiere speciale utilizate pentru accesul direct
 		la dispozitivele hardware sau logice ale sistemului\\
-	\hline
+	\midrule
 		\file{/etc} & fișiere pentru configurarea sistemului, precum
 		inittab, fstab și hosts\\
-	\hline
+	\midrule
 		\file{/home} & fișierele fiecărui utilizator din sistem - datele
 		unui utilizator se găsesc în \file{/home/username}\\
-	\hline
+	\midrule
 		\file{/media} & subdirectoare în care se montează unitățile
 		optice, floppy etc.\\
-	\hline
+	\midrule
 		\file{/mnt} & subdirectoare în care se montează alte sisteme de
 		fișiere\\
-	\hline
+	\midrule
 		\file{/opt} & pachete de aplicații de dimensiuni mari,
 		accesibile tuturor utilizatorilor\\
-	\hline
+	\midrule
 		\file{/proc} & sistem virtual de fișiere din care se obțin
 		informații despre sistem și aplicațiile care rulează la un
 		moment dat\\
-	\hline
+	\midrule
 		\file{/root} & directorul home al utilizatorului root\\
-	\hline
-		\file{/sbin} & comenzi de bază accesibile numai utilizatorului root\\
-	\hline
+	\midrule
+		\file{/sbin} & comenzi de bază accesibile numai utilizatorului
+		root\\
+	\midrule
 		\file{/tmp} & fișiere temporare\\
-	\hline
+	\midrule
 		\file{/usr} & aplicații pentru uzul normal al sistemului de
 		operare - \file{/usr/local} conține aplicațiile
 		instalate/compilate de utilizator\\
-	\hline
+	\midrule
 		\file{/var} & fișiere al căror conținut se schimbă foarte des,
 		precum log-uri, fișiere temporare, cache (date reutilizabile),
 		spool (date neprocesate)\\
-	\hline
+	\bottomrule
 	\end{tabular}
 	\label{table:file-system-linux-fs}
 \end{center}
@@ -273,28 +274,28 @@ C:\textbackslash{}Windows.
 \begin{table}[htb]
 \caption{Ierarhia într-un sistem de fișiere din Windows}
 \begin{center}
-	\begin{tabular}{ | p{0.35\textwidth} | p{0.65\textwidth} | }
-	\hline
+	\begin{tabular}{ p{0.35\textwidth} p{0.65\textwidth} }
+	\toprule
 		\textbf{Director} & \textbf{Conținut} \\
-	\hline
+	\midrule
 		\file{C:\textbackslash{}} & directorul rădăcină \\
-	\hline
+	\midrule
 		\file{C:\textbackslash{}Windows} & Windows-ul și fișierele
 		aferente \\
-	\hline
+	\midrule
 		\file{C:\textbackslash{}Documents and Settings} & configurările
 		utilizatorilor și date specifice acestora \\
-	\hline
+	\midrule
 		\file{C:\textbackslash{}Program Files} & aplicații \\
-	\hline
+	\midrule
 		\file{C:\textbackslash{}Windows\textbackslash{}System32} &
 		drivere și fișiere de configurare Windows \\
-	\hline
+	\midrule
 		\file{C:\textbackslash{}Documents and
 		Settings\textbackslash{}username\textbackslash{}My Documents} &
 		datele unui utilizator (aceasta este calea implicită, ea poate
 		fi modificată) \\
-	\hline
+	\bottomrule
 	\end{tabular}
 	\label{table:file-system-windows-fs}
 \end{center}
@@ -325,26 +326,26 @@ operare cele mai cunoscute:
 \begin{table}[htb]
 \caption{Comparație între căile sistemelor de operare}
 \begin{center}
-	\begin{tabular}{ | p{0.25\textwidth} | p{0.25\textwidth} | p{0.25\textwidth} | p{0.25\textwidth} | }
-	\hline
+	\begin{tabular}{ p{0.25\textwidth} p{0.25\textwidth} p{0.25\textwidth} p{0.25\textwidth} }
+	\toprule
 	\textbf{Descriere} & \textbf{Windows} & \textbf{Linux} & \textbf{Mac OS} \\
-	\hline
+	\midrule
 		rădăcină & \file{C:} & \file{/} & \file{/} \\
-	\hline
+	\midrule
 		director home & \file{C:\textbackslash{}Documents and
 		Settings\textbackslash{}username} & \file{/home/username} &
 		\file{/Users/username} \\
-	\hline
+	\midrule
 		aplicații & \file{C:\textbackslash{}Program Files} &
 		\file{/bin}; \file{/sbin}; \file{/usr/bin}; \file{/usr/sbin};
 		\file{/usr/local/bin}; & \file{/opt/*/bin} \file{/Applications};
 		\file{/bin}; \file{/sbin} \\
-	\hline
+	\midrule
 		configurări ale sistemului & Windows Registry & directoare
 		specifice fiecărei \ aplicații, aflate în home-ul
 		utilizatorului; \file{/etc} & \file{/Users}\file{/username}/
 Library; \file{/etc} \\
-	\hline
+	\bottomrule
 	\end{tabular}
 	\label{table:file-system-compar}
 \end{center}
@@ -843,21 +844,21 @@ $ cat /etc/X11/xorg.conf | less
 \begin{table}[htb]
 \caption{Comenzi pentru crearea fișierelor}
 \begin{center}
-  \begin{tabular}{ | p{0.3\textwidth} | p{0.6\textwidth} | }
-    \hline
-    \textbf{Entitate} & \textbf{Comandă} \\
-    \hline
-    Fișier normal & \cmd{touch \textless{}nume_fișier>} sau \cmd{>
-\textless{}nume_fișier>} \\
-    \hline
-    Director & \cmd{mkdir \textless{}nume_director>} \\
-    \hline
-    Legături (link-uri) & \cmd{ln -s \textless{}destinatie> [\textless{}nume_legătură>]} \\
-    \hline
-    Pipe-uri cu nume & \cmd{mkfifo \textless{}nume_pipe>} \\
-    \hline
-   \end{tabular}
-   \label{table:creare-fisiere}
+	\begin{tabular}{ p{0.3\textwidth} p{0.6\textwidth} }
+	\toprule
+		\textbf{Entitate} & \textbf{Comandă} \\
+	\midrule
+		Fișier normal & \cmd{touch \textless{}nume_fișier>} sau \cmd{>
+		\textless{}nume_fișier>} \\
+	\midrule
+		Director & \cmd{mkdir \textless{}nume_director>} \\
+	\midrule
+		Legături (link-uri) & \cmd{ln -s \textless{}destinatie> [\textless{}nume_legătură>]} \\
+	\midrule
+		Pipe-uri cu nume & \cmd{mkfifo \textless{}nume_pipe>} \\
+	\bottomrule
+	\end{tabular}
+	\label{table:file-system-file-creation}
 \end{center}
 \end{table}
 
@@ -1075,20 +1076,20 @@ standard modificați; putând fi întâlnite următoarele cazuri:
 \begin{table}[htb]
 \caption{Metode te redirectare}
 \begin{center}
-	\begin{tabular}{ | p{0.2\textwidth} | p{0.2\textwidth} | p{0.5\textwidth} |}
-	\hline
+	\begin{tabular}{ p{0.2\textwidth} p{0.2\textwidth} p{0.5\textwidth}}
+	\toprule
 		\textbf{Sursă} & \textbf{Destinație} & \textbf{Exemplu comandă} \\
-	\hline
+	\midrule
 		intrare (stdin) & Fișier & \cmd{./program <fișier_intrare} \\
-	\hline
+	\midrule
 		ieșire (stdout) & Fișier & \cmd{./program >fișier_ieșire} \\
-	\hline
+	\midrule
 		eroare (stderr) & Fișier & \cmd{./program 2>fișier_erori} \\
-	\hline
+	\midrule
 		eroare (stderr) & iesire (stdout) & \cmd{./program 2>\&1} \\
-	\hline
+	\midrule
 		eroare \& iesire & Fișier & \cmd{./program 2>\&1 >fișier_ieșire_și_erori} \\
-	\hline
+	\bottomrule
 	\end{tabular}
 	\label{table:file-system-redirec-methods}
 \end{center}
@@ -1180,24 +1181,25 @@ Tabelul următor prezintă câteva redirectări folosind fișiere speciale:
 \begin{table}[htb]
 \caption{Redirectări folosind fișiere speciale}
 \begin{center}
-	\begin{tabular}{ | p{0.3\textwidth} | p{0.5\textwidth} |}
-	\hline
+	\begin{tabular}{ p{0.3\textwidth} p{0.5\textwidth}}
+	\toprule
 		\textbf{Comanda} & \textbf{Efect} \\
-	\hline
+	\midrule
 		./program 2>/dev/null & mesajele de la ieșirea de erori nu sunt
 		afișate \\
-	\hline
+	\midrule
 		./program 2>\&1 >/dev/null & nici un mesaj nu este afișat \\
-	\hline
+	\midrule
 		> nume_fișier & crează un fișier gol cu numele “nume_fișier” \\
-	\hline
+	\midrule
 		cat /dev/null > nume_fișier & crează un fișier cu același
 		conținut ca și /dev/null , adică un fișier gol \\
-	\hline
+	\bottomrule
 	\end{tabular}
 	\label{table:file-system-redirect-special}
 \end{center}
 \end{table}
+
 \subsection{Căutarea fișierelor}
 \label{sec:file-system-file-search}
 
@@ -1421,14 +1423,14 @@ compresie de mai sus și se folosește de parametrul \texttt{z} pentru gzip și
 
 \begin{table}[htb]
 \begin{center}
-	\begin{tabular}{ | p{0.1\textwidth} | p{0.3\textwidth} |  p{0.3\textwidth} |}
-	\hline
+	\begin{tabular}{ p{0.1\textwidth} p{0.3\textwidth}  p{0.3\textwidth}}
+	\toprule
 	 & \textbf{Compresie} & \textbf{Decompresie} \\
-	\hline
+	\midrule
 		Gzip & tar czvf fisier.tar.gz dir/ & tar xzvf fisier.tar.gz \\
-	\hline
+	\midrule
 		bzip2 & tar cjvf fisier.tar.bz2 dir/ & tar xjvf fisier.tar.bz2 \\
-	\hline
+	\bottomrule
 	\end{tabular}
 	\label{table:file-system-achivation-cmd}
 \end{center}
@@ -1506,24 +1508,24 @@ potrivite.
 
 \begin{table}[htb]
 \begin{center}
-	\begin{tabular}{ | p{0.2\textwidth} | p{0.7\textwidth} | }
-	\hline
+	\begin{tabular}{ p{0.2\textwidth} p{0.7\textwidth} }
+	\toprule
 		\textbf{Metoda} & \textbf{Descriere} \\
-	\hline
+	\midrule
 		tar + gzip/bzip2 & Metodă foarte simplu de aplicat. Devine greu
 		de folosit pentru dimensiuni mari de date. Permite compresia
 		datelor. \\
-	\hline
+	\midrule
 		dd & Metoda simplu de folosit și independentă de sistemul de
 		fișiere. Permite păstrarea intactă a structurii sistemului de
 		fișiere. Inflexibilă când vine vorba de recuperarea datelor.
 		Utilă pentru cantități mari de date. \\
-	\hline
+	\midrule
 		rsync & E asemănătoare comenzii cp dar la care s-a adăugat
 		suport de sincronizare intre mai multe computere. Permite
 		replicarea structurii de fișiere (inclusiv permisiuni) între 2
 		computere. \\
-	\hline
+	\midrule
 		rdiff-backup & Este un wrapper peste rsync. Adaugă suport pentru
 		backup-uri incrementale, adică: la un moment dat se realizează
 		un backup complet pentru un director (asemănător rsync-ului);
@@ -1532,7 +1534,7 @@ potrivite.
 		backup-ului; în acest fel se poate reveni la orice stare
 		anterioara, în măsura în care s-a realizat cel puțin un backup
 		incremental la acea stare. \\
-	\hline
+	\bottomrule
 	\end{tabular}
 	\label{table:file-system-backup-cmd}
 \end{center}
@@ -1547,34 +1549,33 @@ sistemul de fișiere preferat cu care doresc să lucreze, mai ales în cazul în
 care folosesc partiții multiple pentru mai multe sisteme de operare.
 
 Pentru mai multe informații despre crearea, montarea și repararea unui sistem de
-fișiere, precum și lucrul cu partiții, citiți capitolul dedicat Administrării
-spațiului de stocare.
-
-În tabelul de mai jos se găsesc unele dintre cele mai importante sisteme de
-fișiere utilizate în prezent, alături de sistemele de operare în care operează:
+fișiere, precum și lucrul cu partiții, citiți
+\labelindexref{capitolul}{chapter:storage} În tabelul de mai jos se găsesc unele
+dintre cele mai importante sisteme de fișiere utilizate în prezent, alături de
+sistemele de operare în care operează:
 
 \begin{table}[htb]
 \caption{Sisteme de operare și sisteme de fișiere suportate}
 \begin{center}
-	\begin{tabular}{ | p{0.2\textwidth} | p{0.2\textwidth} | p{0.2\textwidth} | p{0.3\textwidth} | }
-	\hline
+	\begin{tabular}{ p{0.2\textwidth} p{0.2\textwidth} p{0.2\textwidth} p{0.3\textwidth} }
+	\toprule
 		\textbf{SO} & \textbf{Windows} & \textbf{Linux} & \textbf{Mac OS} \\
 		\textbf{Sistem fișiere} & & & \\
-	\hline
+	\midrule
 		FAT32 & Nativ & Nativ & Nativ \\
-	\hline
+	\midrule
 		NTFS & Nativ (dupa WinNT) & prin ntfs-3g[1] & prin ntfs-3g \\
-	\hline
+	\midrule
 		Ext2/Ext3 & Driver third-party[2] & Nativ & - \\
-	\hline
+	\midrule
 		ReiserFS & Aplicație third-party[3] & Nativ & - \\
-	\hline
+	\midrule
 		HFS+ & - & Nativ & Nativ \\
-	\hline
+	\midrule
 		ISO9660 & Nativ & Nativ & Nativ \\
-	\hline
+	\midrule
 		UDF & Nativ & Nativ & Nativ \\
-	\hline
+	\bottomrule
 	\end{tabular}
 	\label{table:file-system-backup-fs-types}
 \end{center}
@@ -1590,19 +1591,19 @@ Tabelul următor prezintă succint această clasificare:
 \begin{table}[htb]
 \caption{Clasificarea sistemelor de fișiere după suportul datelor}
 \begin{center}
-	\begin{tabular}{ | p{0.3\textwidth} | p{0.3\textwidth} | p{0.4\textwidth} | }
-	\hline
+	\begin{tabular}{ p{0.3\textwidth} p{0.3\textwidth} p{0.4\textwidth} }
+	\toprule
 		\textbf{Tip} & \textbf{Exemplu} & \textbf{Descriere} \\
-	\hline
+	\midrule
 		sisteme de fișiere cu suport fizic & 	FAT32, NTFS, Ext3, ReiserFS, HFS+ & se
 		regăsesc de obicei pe un mediu de stocare \\
-	\hline
+	\midrule
 		sisteme de fișiere virtuale & 	procfs, devfs SSHFS & conțin fișiere/date generate
 		de SO (informații despre sistem) sau de o altă componentă software (alte surse) \\
-	\hline
+	\midrule
 		sisteme de fișiere pentru rețea & 	NFS, SMB & utilizate pentru accesul la
 		fișiere aflate în rețea \\
-	\hline
+	\bottomrule
 	\end{tabular}
 	\label{table:file-system-fs-classes}
 \end{center}
@@ -1677,12 +1678,12 @@ reprezintă un exbibyte, adică $2^{60}$ octeți.
 \begin{table}[htb]
 \caption{Caracteristici ale sistemelor de fișiere mai cunoscute}
 \begin{center}
-	\begin{tabular}{ | p{0.1\textwidth} | p{0.2\textwidth} |  p{0.1\textwidth} |  p{0.1\textwidth} | p{0.4\textwidth} | }
-	\hline
+	\begin{tabular}{ p{0.1\textwidth} p{0.2\textwidth}  p{0.1\textwidth}  p{0.1\textwidth} p{0.4\textwidth} }
+	\toprule
 		\textbf{Tip sistem de fișiere} & \textbf{Sisteme de operare} &
 		\textbf{Dimensiune maximă fișier} & \textbf{Jurnalizare} &
 		\textbf{Observații} \\
-	\hline
+	\midrule
 		FAT32 & Windows / Linux / Mac OS & 4 GB & nu & Cel mai folosit
 		sistem de fișiere - întâlnit în mod special pe USB stick-uri,
 		fără drepturi de acces; Windows-ul limitează la creare
@@ -1690,40 +1691,40 @@ reprezintă un exbibyte, adică $2^{60}$ octeți.
 		mari realizate și formatate cu aplicații third-party folosit
 		pentru a asigura compatibilitatea cu dispozitive sau sisteme mai
 		vechi \\
-	\hline
+	\midrule
 		NTFS & Windows / Linux / Mac OS & 16TiB & da & Singurul sistem
 		de fișiere pentru Windows recomandat de Microsoft. Singurul
 		sistem de fișiere pentru Windows cu securitate. \\
-	\hline
+	\midrule
 		Ext2/Ext3 & Linux / Windows & 16GiB - 64TiB & ext2-nu ext3-da &
 		Sistemul de fișiere considerat cel mai stabil datorită unei
 		istorii de dezvoltare foarte lungi; ext3 e compatibil cu
 		versiunea anterioară ext2, aduce jurnalizare față de ext2 \\
-	\hline
+	\midrule
 		Ext4 & Linux / Windows / MacOS & 16TiB & da & Succesorul lui
 		Ext3, îmbunătățind performanța, stabilitatea și capacitatea de
 		stocare. Este adecvat și pentru stocarea datelor critice,
 		datorită preciziei ridicate ale marcajelor temporale. \\
-	\hline
+	\midrule
 		ReiserFS & Linux & 8 TiB & da & Cunoscut pentru o viteză mai
 		mare decât ext3-ul la lucrul cu multe fișiere de dimensiune mică
 		\\
-	\hline
+	\midrule
 		HFS+ & Mac OS / Linux & 16 EiB & da* & * în Linux, HFS+ este
 		suportat fără jurnalizare \\
-	\hline
+	\midrule
 		AppleFS & MacOS, iOS & 8 EiB & da & Este optimizat pentru
 		dispozitivele de stocare tip flash și solid drive, și pune
 		accentul pe criptare. \\
-	\hline
+	\midrule
 		ISO9660 & Win / Linux / Mac OS & În funcție de implementare & nu
 		& Sistem de fișiere utilizat în principal pe CD-uri, organizare
 		internă concepută pentru ca datele să fie citibile ușor \\
-	\hline
+	\midrule
 		UDF & Win / Linux / Mac OS & 16 EiB & da & Sistem de fișiere
 		utilizat în principal pe mediile optice, cu suport atât pentru
 		scriere cât și pentru citire \\
-	\hline
+	\bottomrule
 	\end{tabular}
 	\label{table:file-system-fs-details}
 \end{center}
@@ -1751,41 +1752,41 @@ extensia lipsește, identificarea bazându-se integral pe conținutul fișierulu
 \begin{table}[htb]
 \caption{Restricții asupra numelor fișierelor}
 \begin{center}
-	\begin{tabular}{ | p{0.1\textwidth} | p{0.2\textwidth} |  p{0.1\textwidth} |  p{0.1\textwidth} | p{0.4\textwidth} | }
-	\hline
+	\begin{tabular}{ p{0.1\textwidth} p{0.2\textwidth}  p{0.1\textwidth}  p{0.1\textwidth} p{0.4\textwidth} }
+	\toprule
 		\textbf{Sistem de fișiere} & \textbf{Case sensitive} & \textbf{Lungime nume} &
 		\textbf{Lungime cale} & \textbf{Observații} \\
-	\hline
+	\midrule
 		FAT32 & nu & “8.3” sau 255 caractere cu LFN & nedefinit &
 		Inițial limitat la 8 caractere pentru numele fișierului și 3
 		caractere pentru extensie, FAT32 a căpătat suport și pentru nume
 		lungi Long Filename – LFN) – pentru un fișier, FAT32 reține atât
 		numele lung cât și versiunea scurta în format 8.3 \\
-	\hline
+	\midrule
 		NTFS & da[5] & 254 caractere + “.” & 32767 octeți & Orice
 		caracter Unicode poate fi folosit, mai puțin caracterele: NULL,
 		· " / \ * ? < > | : (utilizate în general pentru adresarea
 		fișierelor) \\
-	\hline
+	\midrule
 		Ext3, Ext4 & da & 255 octeți & nedefinit & Orice byte mai puțin
 		NULL și “/” poate fi folosit în numele fișierului \\
-	\hline
+	\midrule
 		ReiserFS & da & 4,032 octeți / 255 caractere & nedefinit & Orice
 		octet mai puțin NULL poate fi folosit în numele fișierului \\
-	\hline
+	\midrule
 		HFS+ & nu[6] & 255 caractere UTF-16 & nedefinit & Orice caracter
 		Unicode este permis, inclusiv NULL. \\
-	\hline
+	\midrule
 		AppleFS & nu & 255 caractere UTF-8 & nedefinit & Orice caracter
 		Unicode 9.0 din UTF-8 \\
-	\hline
+	\midrule
 		ISO9660 & nu & “8.3” sau Joliet: 128 octeți & adâncime maximă a
 		căii: 8 niveluri & Există mai multe niveluri pentru standard,
 		fiecare cu restricțiile lui \\
-	\hline
+	\midrule
 		UDF & da & 255 octeți & 1023 octeți & Orice octet mai puțin NULL
 		poate fi folosit în numele fișierului \\
-	\hline
+	\bottomrule
 	\end{tabular}
 	\label{table:file-system-name-length}
 \end{center}
@@ -1809,46 +1810,46 @@ $ file /boot/kernel26.img
 
 \begin{table}[htb]
 \begin{center}
-	\begin{tabular}{ | p{0.1\textwidth} | p{0.2\textwidth} |  p{0.3\textwidth} | }
-	\hline
+	\begin{tabular}{ p{0.1\textwidth} p{0.2\textwidth}  p{0.3\textwidth} }
+	\toprule
 		\textbf{Comanda Linux} & \textbf{Comanda Windows} & \textbf{Descriere} \\
-	\hline
-		comanda --help & comanda /? & afișează informații despre comandă \\
-	\hline
+	\midrule
+		comanda -{}-help & comanda /? & afișează informații despre comandă \\
+	\midrule
 		cd & cd & schimbă directorul curent \\
-	\hline
+	\midrule
 		pwd & chdir & afișează directorul curent \\
-	\hline
+	\midrule
 		clear & cls & șterge ecranul consolei curente \\
-	\hline
+	\midrule
 		cp & copy & copiază un fișier \\
-	\hline
+	\midrule
 		rm & del & șterge un fișier \\
-	\hline
+	\midrule
 		ls & dir & afișează conținutul directorului curent \\
-	\hline
+	\midrule
 		vim & edit & editează un fișier text \\
-	\hline
+	\midrule
 		exit & exit & închide shell-ul curent \\
-	\hline
+	\midrule
 		diff & fc & compară două fișiere și afișează diferențele între ele \\
-	\hline
+	\midrule
 		find & find & caută fișiere \\
-	\hline
+	\midrule
 		mkfs (mke2fs) & format & formatează un disc \\
-	\hline
+	\midrule
 		free & mem & afișează informații despre memoria liberă și cea ocupată \\
-	\hline
+	\midrule
 		mkdir & mkdir & creează un nou director \\
-	\hline
+	\midrule
 		mv & move & mută un fișier \\
-	\hline
+	\midrule
 		mv & ren & redenumește un fișier \\
-	\hline
+	\midrule
 		date & time & afișează ora sistemului \\
-	\hline
+	\midrule
 		diff & fc & afișează diferențele dintre două fișiere \\
-	\hline
+	\bottomrule
 	\end{tabular}
 	\label{table:file-system-case-study}
 \end{center}
