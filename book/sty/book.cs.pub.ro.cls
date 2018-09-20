@@ -455,11 +455,18 @@ frame=single,rulecolor=\color{red},framerule=0.8mm}
 \end{textblock*}
 }
 
-% note icon
-\newcommand{\note}[1][0pt]{
-\begin{textblock*}{12mm}(-15mm,0pt+#1)
-	\includegraphics[scale=.08]{template/icons/notebook}
-\end{textblock*}
+% note support
+\usepackage[most]{tcolorbox}
+
+\newtcolorbox{note}[1][]{%
+	enhanced jigsaw, % better frame drawing
+	borderline west={2pt}{0pt}{red}, % straight vertical line at the left edge
+	sharp corners, % No rounded corners
+	boxrule=0pt, % no real frame,
+	fonttitle={\large\bfseries},
+	coltitle={black},  % Black colour for title
+	title={#1:\ },  % Fixed title
+	attach title to upper, % Move the title into the box
 }
 
 % important
