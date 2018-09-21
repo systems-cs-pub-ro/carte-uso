@@ -463,7 +463,7 @@ frame=single,rulecolor=\color{red},framerule=0.8mm}
 	borderline west={2pt}{0pt}{red}, % straight vertical line at the left edge
 	sharp corners, % No rounded corners
 	boxrule=0pt, % no real frame,
-	fonttitle={\large\bfseries},
+	fonttitle={\bfseries},
 	coltitle={black},  % Black colour for title
 	title={#1:\ },  % Fixed title
 	attach title to upper, % Move the title into the box
