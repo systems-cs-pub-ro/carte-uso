@@ -111,12 +111,12 @@ din care a fost creat procesul Firefox, așa cum se vede mai jos:
 \end{definition}
 
 Pentru un proces spunem că programul executabil din care a fost creat este
-imaginea sa (\textit{process image}). Mai multe procese pot fi create din același program
-executabil. De exemplu, în Google Chrome orice tab este un proces creat din
-același program, orice tab de terminal creează un nou proces shell, un
-utilizator poate porni un proces Vim într-un terminal și un proces Vim în alt
-terminal. În toate aceste situații, se vor crea procese distincte pronind de la
-același executabil, adică procese ce au aceeași imagine.
+imaginea sa (\textit{process image}). Mai multe procese pot fi create din
+același program executabil. De exemplu, în Google Chrome orice tab este un
+proces creat din același program, orice tab de terminal creează un nou proces
+shell, un utilizator poate porni un proces Vim într-un terminal și un proces Vim
+în alt terminal. În toate aceste situații, se vor crea procese distincte pronind
+de la același executabil, adică procese ce au aceeași imagine.
 
 Diagrama de mai jos arată cum unul sau mai multe procese sunt create dintr-un
 fișier executabil (imaginea procesului):
@@ -125,12 +125,12 @@ fișier executabil (imaginea procesului):
 
 Întrucât mai multe procese pot fi create din același fișier executabil, este
 tehnic incorect să ne referim la procesul Firefox sau procesul Apache. Putem
-folosi termenul \textit{un} proces Firefox sau \textit{un} proces Apache. Numele unui proces
-identifică imaginea de proces, executabil din care a fost creat; numele nu este
-folosit pentru a identifica în mod unic un proces. Procesul este identificat la
-nivelul sistemului de un număr unic, numit Process Id sau PID. Prezentăm mai
-multe despre atributele unui proces, inclusiv identificatorul său, în secțiunea
-următoare.
+folosi termenul \textit{un} proces Firefox sau \textit{un} proces Apache. Numele
+unui proces identifică imaginea de proces, executabil din care a fost creat;
+numele nu este folosit pentru a identifica în mod unic un proces. Procesul este
+identificat la nivelul sistemului de un număr unic, numit Process Id sau PID.
+Prezentăm mai multe despre atributele unui proces, inclusiv identificatorul său,
+în secțiunea următoare.
 
 \section{Resursele și atributele unui proces}
 \label{sec:procese-resurse}
@@ -243,10 +243,11 @@ despre procese:
 		anumit terminal”, la fel ca în exemplele de mai jos.
 	\item pstree afișează ierarhia de procese a sistemului, îl vom detalia
 		în \labelindexref{secțiunea}{sec:file-system-baza-struct}.
-	\item pmap (\textit{process map}) afișează harta memoriei unui proces, adică
-		zonele de memorie ocupate de acesta. Este un utilitar adecvat în
-		special pentru programatori și pentru cei care sunt interesați
-		de internele sistemelor de operare, nu insistăm pe el.
+	\item pmap (\textit{process map}) afișează harta memoriei unui proces,
+		adică zonele de memorie ocupate de acesta. Este un utilitar
+		adecvat în special pentru programatori și pentru cei care sunt
+		interesați de internele sistemelor de operare, nu insistăm pe
+		el.
 	\item lsof (\textit{list open files}) este utilitarul care afișează
 		fișierele deschise de un proces. Îl vom folosi în
 		\labelindexref{secțiunea}{sec:procese-fisiere}
@@ -267,7 +268,7 @@ folosire a comenzii ps cu argumentele aferente:
 		procesor acaparat și memorie utilizate pentru toate procesele
 	\item listarea doar a PID-urilor, comenzii de pornire și a stării pentru
 		procesele ce aparțin unui utilizator
-	\item listarea  doar a PID-urilor, comenzii de pornire, procentul de
+	\item listarea doar a PID-urilor, comenzii de pornire, procentul de
 		procesor acaparat și memorie utilizate pentru toate procesele
 		sortate după procentul de procesor acaparat
 \end{itemize}
@@ -317,9 +318,9 @@ Un proces are nevoie de unul sau mai multe procesoare pentru a rula. Întrucât,
 de cele mai multe ori, sunt mai multe procese decât procesoare, nu toate
 procesele pot rula. Astfel unele procese rulează pe procesor, altele așteaptă să
 ruleze pe procesor; când un proces ajunge să ruleze pe un procesor spunem că
-este planificat (\textit{scheduled}) să ruleze pa acel procesor. Iar unele procese pot fi
-blocate (\textit{sleeping}) în așteptarea unei operații de input/output. Simplificat,
-avem schema de mai jos:
+este planificat (\textit{scheduled}) să ruleze pa acel procesor. Iar unele
+procese pot fi blocate (\textit{sleeping}) în așteptarea unei operații de
+input/output. Simplificat, avem schema de mai jos:
 
 * diagramă cu starea proceselor
 
@@ -497,8 +498,8 @@ trimitem informații la intrarea standard, prin terminal, doar procesul nou crea
 la va accesa.
 
 Spunem că în cadrul terminalului avem un singur proces care deține controlul
-intrării standard, adică un singur proces care este în \textbf{foreground}. În mod
-obișnuit, modul de funcționare a shell-ului, detaliat în Capitolul TODO:
+intrării standard, adică un singur proces care este în \textbf{foreground}. În
+mod obișnuit, modul de funcționare a shell-ului, detaliat în Capitolul TODO:
 Interfața în linia de comandă este:
 
 \begin{enumerate}
@@ -522,9 +523,9 @@ crea un proces firefox care va acapara terminalul.
 
 Pentru a trece de această problemă și pentru a permite shell-ului rularea
 continuă de comenzi și crearea de mai multe procese, există un mod de folosire a
-terminalului numit \textbf{background}. Background este modul în care un proces cedează
-accesul la intrarea terminalului curent; procesul poate rula în continuare dar
-nu mai are acces la informații furnizate de utilizator.
+terminalului numit \textbf{background}. Background este modul în care un proces
+cedează accesul la intrarea terminalului curent; procesul poate rula în
+continuare dar nu mai are acces la informații furnizate de utilizator.
 
 Întrucât un singur proces poate avea acces la intrarea terminalului, putem avea
 un singur proces în foreground. Putem avea însă oricâte procese în background.
@@ -735,7 +736,8 @@ Am văzut că descriptorii de fișiere pot să refere terminalul, cum este cazul
 descriptorilor standard (0, 1 și 2) sau pot să refer fișiere. Legăturile
 descriptorilor standard cu terminalul nu sunt fixe, pot fi modificate.
 Modificarea referinței unui descriptor poartă numele de "redirectare" sau
-"redirectarea unui descriptor de fișier" (\textit{redirecting a file descriptor}).
+"redirectarea unui descriptor de fișier" (\textit{redirecting a file
+descriptor}).
 
 În mod uzual, redirectarea înseamnă modificarea descriptorilor standard să
 refere un fișier (sau altceva) în loc de terminal. De exemplu, redirectăm
@@ -754,7 +756,8 @@ one-linere, în cadrul cărora rezultatul unei comenzi ajunge intrare pentru
 altul, așa cum vom vedea în
 \labelindexref{secțiunea}{sec:procese-operatii-pipe}.
 
-Putem urmări redirectarea descriptorilor cu ajutorul comenzii lsof, așa cum apare mai jos:
+Putem urmări redirectarea descriptorilor cu ajutorul comenzii lsof, așa cum
+apare mai jos:
 
 \section{Operații cu procese. Interacțiunea între procese}
 \label{sec:procese-operatii}
@@ -775,7 +778,8 @@ condiție anormală sau poate fi omorât de alt proces. Există următoarele sit
 pentru încheierea unui proces:
 
 \begin{itemize}
-	\item atingerea sfârșitului programului (încheierea funcției main() în C)
+	\item atingerea sfârșitului programului (încheierea funcției main() în
+		C)
 	\item apelul unei rutine de încheiere (precum funcția exit() în C)
 	\item întâlnirea unei condiții neașteptate: accesarea unei zone nevalide
 		de memorie, rularea unei intrucțiuni nevalide
@@ -831,7 +835,7 @@ la comanda kill poate fi folosit atât numele cât și numărul:
 
 +  snippet cu kill -l
 +  snippet cu kill -KILL și kill -9
-%
+
 Un semnal are asociat o acțiune pe care o întreprinde procesul care-l
 recepționează. Am văzut mai sus că această acțiuni este suspendarea procesului
 în cazul semnalului SIGSTP și omorârea procesului în cazul SIGTERM. Aceată
@@ -864,8 +868,8 @@ curent:
 		întrerupe execuția procesului curent
 	\item Ctrl+z: transmite semnalul SIGSTP, cu rolul de a suspenda execuția
 		procesului curent și de a-l trece în background
-	\item Ctrl+textbackslash{}: transmite semnalul SIGQUIT, cu rol similar semnalului
-		SIGINT, de a întreruper execuția procesului curent
+	\item Ctrl+textbackslash{}: transmite semnalul SIGQUIT, cu rol similar
+		semnalului SIGINT, de a întreruper execuția procesului curent
 \end{itemize}
 
 Semnalele SIGQUIT și SIGINT au rol similar, diferența fiind că semnalul SIGQUIT
@@ -873,8 +877,8 @@ Semnalele SIGQUIT și SIGINT au rol similar, diferența fiind că semnalul SIGQU
 decât semnalul SIGINT (transmis folosind combinația de taste Ctrl+c). Mai
 puternic înseamnă că pot exista procese care ignoră semnalul SIGINT dar nu
 semnalul SIGQUIT; astfel că dacă folosim combinația de taste Ctrl+c și nu are
-loc terminarea procesului, vom folosi combinația de taste Ctrl+\textbackslash{} cu șanse mai
-mari de reușit.
+loc terminarea procesului, vom folosi combinația de taste Ctrl+\textbackslash{}
+cu șanse mai mari de reușit.
 
 Pe scurt, atunci când vrem să omorâm un proces aflat în foreground folosim, în
 ordine:
@@ -907,8 +911,10 @@ operatori sunt cei de înlănțuire condiționată, care condiționează rularea
 de-a doua comenzi de codul de ieșire al primei. Astfel:
 
 \begin{itemize}
-	\item comm1 || comm2 rulează comanda comm2 doar dacă comm1 s-a încheiat cu insuccess
-	\item comm1 \&\& comm2 rulează comanda comm2 doar dacă comm1 s-a încheiat cu succes
+	\item comm1 || comm2 rulează comanda comm2 doar dacă comm1 s-a încheiat
+		cu insuccess
+	\item comm1 \&\& comm2 rulează comanda comm2 doar dacă comm1 s-a
+		încheiat cu succes
 \end{itemize}
 
 + exemple de folosire operatori de înlănțuire (practice, utile)
@@ -936,9 +942,9 @@ singură linie de comandă, ca în exemplul de mai jos:
 +     exemplu de comandă utilă cu mai multe pipe-uri
 
 Astfel de comenzi înlănțuite care pot folosi și redirectări și alți operatori de
-înlănțuire sunt numite \textbf{one-linere}. Sunt un mod rapid de a combina mai multe
-comenzi existente pentru un efect nou. Vom discuta în detaliu despre one linere
-în Secțiunea TODO din Capitolul TODO: Interfața în linia de comandă.
+înlănțuire sunt numite \textbf{one-linere}. Sunt un mod rapid de a combina mai
+multe comenzi existente pentru un efect nou. Vom discuta în detaliu despre one
+linere în Secțiunea TODO din Capitolul TODO: Interfața în linia de comandă.
 
 NOTE: Înlănțuirea comenzilor face parte din filozofia Unix: “Do one thing, do
 one thing well!”. Un proces face un singur lucru și îl face bine. Pentru acțiuni
@@ -1045,13 +1051,15 @@ sunt:
 \begin{itemize}
 	\item procesul init
 	\item procese de tip servicii: cron, servicii de rețea
-	\item alte procese rulate de utilizator pentru a rula fără un terminal asociat
+	\item alte procese rulate de utilizator pentru a rula fără un terminal
+		asociat
 \end{itemize}
 
 Concluzionând, în general un proces daemon are următoarele caracteristici:
 
 \begin{itemize}
-	\item rulează în background, fără o formă de interacțiune directă cu utilizatorul
+	\item rulează în background, fără o formă de interacțiune directă cu
+		utilizatorul
 	\item oferă un serviciu sistemului: planificare, indexare de fișiere
 	\item nu are un terminal asociat
 	\item are ca proces părinte init
@@ -1093,8 +1101,10 @@ Partea dificilă este punctul 3 în care închiderea shell-ului nu duce la
 două opțiuni:
 
 \begin{itemize}
-	\item Daemonizarea procesului bittorrent: rulare în background, detașat de terminal
-	\item Folosirea unui utilitar care să creeze o sesiune de terminal detașabilă în care procesul rulează în continuare interactiv
+	\item Daemonizarea procesului bittorrent: rulare în background, detașat
+		de terminal
+	\item Folosirea unui utilitar care să creeze o sesiune de terminal
+		detașabilă în care procesul rulează în continuare interactiv
 \end{itemize}
 
 În prima categorie sunt utilitarele nohup, disown, despre care vom discuta în
