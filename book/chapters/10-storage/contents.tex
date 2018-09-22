@@ -43,7 +43,7 @@ acest timp. În Fig. X. este reprezentat un exemplu de transfer de date de la o
 locație de pe Internet în timp de utilizatorul folosește aplicația
 \textit{Calculator}. Discurile sunt cele ce stochează efectiv informația. Luăm
 ca exemplu aplicațiile Google Drive și Dropbox: acestea oferă servicii de
-stocare a informațiilor pentru utilizatori.  Pentru a implementa facilitățile de
+stocare a informațiilor pentru utilizatori. Pentru a implementa facilitățile de
 stocare și partajare a datelor, aceste aplicații folosesc sisteme de stocare. În
 secțiunea următoare vom descrie și vom realiza o clasificare a discurilor.
 
@@ -503,7 +503,7 @@ afișa fiecare fișier recursiv al acelui director:
 
 Pentru a investiga informații despre partițiile unui disc se folosesc
 utilitarele fdisk (pentru partiții MBR) sau mai nou \cmd{parted}/\cmd{gparted}
-(suportă și GPT). Comanda \cmd{fdisk -l}  va lista toate discurile și partițiile
+(suportă și GPT). Comanda \cmd{fdisk -l} va lista toate discurile și partițiile
 unui sistem. Dacă se adaugă un parametru suplimentar (și anume calea către
 discul pe care se dorește a fi inspectat), atunci doar acesta va fi afișat
 
@@ -1018,7 +1018,7 @@ să îl partiționăm, formatăm și montăm întocmai unui disc fizic.
 Pentru a crea un fișier folosim comanda \cmd{dd}. Comanda \cmd{dd} este capabilă
 să citească și să scrie pe/de pe orice dispozitiv fizic sau fișier, având doi
 parametri centrali: \texttt{if=} pentru fluxul de intrare și \texttt{of=} pentru
-fluxul de ieșire.  Alți parametri care pot fi specificați pentru a control
+fluxul de ieșire. Alți parametri care pot fi specificați pentru a control
 fluxul de date sunt:
 
 \begin{itemize}
@@ -1344,7 +1344,7 @@ dorim salvarea unui director din tot sistemul de fișiere sau atunci când dorim
 să facem replicare incrementală. Replicarea incrementală va transfera doar
 diferențele între fișiere, iar în acest mod se poate realiza și o versionare a
 acestora (se pot reține mai multe versiuni ale aceluiași fișier). Cel mai
-cunoscut utilitar pentru Linux în rezolvarea acestui  lucru este \cmd{rsync}. Un
+cunoscut utilitar pentru Linux în rezolvarea acestui lucru este \cmd{rsync}. Un
 exemplu pentru Windows gratuit îl constituie: \cmd{Cobian}.
 
 Copierea datelor se poate realiza pe un disc extern conectat pe USB sau pe un

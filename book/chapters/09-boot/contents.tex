@@ -41,13 +41,13 @@ jos:
 În cadrul secvenței de boot fiecare pas, descris în Figura TODO (de mai sus) are
 rolul său. Unul dintre roluri este acela de a transfera controlul următorului
 pas: fiecare pas are capacitate limitată în procesul de pornire, următorul pas
-preluând rezultatul său și realizând alte acțiuni.  Alt rol al fiecărui pas este
+preluând rezultatul său și realizând alte acțiuni. Alt rol al fiecărui pas este
 de configurare a unor opțiuni specifice în procesul de boot, așa cum vom preciza
 mai jos.
 
 În momentul pornirii fizice a sistemului (power on) se încarcă dintr-o zonă
 dedicată din hardware-ul sistemul firmware-ul de boot. Firmware-ul de boot este
-numit BIOS (sau UEFI) pe arhitectura x86.  Firmware-ul de boot există pe
+numit BIOS (sau UEFI) pe arhitectura x86. Firmware-ul de boot există pe
 sistemul fizic indiferent de prezența sau nu a unui sistem de operare sau
 dispozitiv bootabil. Firmware-ul de boot face verificări de bază ale
 funcționării hardware-ului, oferă utilizatorului posibilitatea de configurări
@@ -56,7 +56,7 @@ vitezei de acces la memorie) și stabilește ordinea de boot: ce dispozitive și
 ce ordine sunt verificate pentru a trece la următorul pas.
 
 Firmware-ul de boot identifică dispozitivul de boot și încarcă o secvență
-dedicată de pe acesta.  Dispozitivul de boot poate fi hard disk drive, USB flash
+dedicată de pe acesta. Dispozitivul de boot poate fi hard disk drive, USB flash
 drive, CD-ROM drive. Dispozitivul de boot nu are un rol activ, ci unul de
 stocare. Acesta stochează următoarea secvență de cod care să fie executată, în
 mod tipic bootloader-ul. Bootloader-ul este încărcat de către firmware-ul de
@@ -80,7 +80,7 @@ sistemului de operare. Din acest punct sistemul de operare deține controlul
 sistemului și se asigură de buna funcționare a acestuia.
 
 O dată încărcat sistemul de operare, acesta încarcă și driverele de dispozitiv
-(\textit{device drivers}).  Driverele de dispozitiv sunt reținute în fișiere similare
+(\textit{device drivers}). Driverele de dispozitiv sunt reținute în fișiere similare
 imaginii de kernel și sunt încărcate în memorie de către sistemul de operare
 pentru gestionarea dispozitivelor hardware: disc, rețea, tastatură etc.
 
@@ -278,7 +278,7 @@ tipul smartphone unde bootloader-ul și imaginea de kernel sunt furnizate de
 producătorul telefonului și dorim garanții că acestea nu sunt alterate.
 Dispozitivele mobile ce folosesc Android sau iOS folosesc Secure Boot, adică
 mecanisme de verificare criptografică a imaginii de bootloader și a imaginii de
-kernel folosite. Pe Android tehnologia se numește  Verified Boot, iar pe iOS se
+kernel folosite. Pe Android tehnologia se numește Verified Boot, iar pe iOS se
 numește Secure Boot.
 
 \section{Dispozitiv de boot}
@@ -447,7 +447,7 @@ de boot, va încărca în memorie bootloader-ul sau boot manager-ul și îi va
 transfera controlul procesului de boot. Bootloader-ul este un program cu rolul
 de încărcare a sistemului de operare.
 
-Înainte de încărcarea sistemului  de operare, bootloader-ul poate oferi
+Înainte de încărcarea sistemului de operare, bootloader-ul poate oferi
 utilizatorului opțiunea de a alege între diferite sisteme de operare și va oferi
 posibilitatea configurării opțiunilor de bootare a kernel-ului.
 

@@ -148,7 +148,7 @@ salvează toate documentele pe desktop, avem o structură plată. O structură
 \textbf{ierarhică}, sau arborescentă, apare atunci când fișierele sunt
 organizate în directoare (en. \textit{folders}). Un director poate conține mai
 multe fișiere dar și alte directoare, fiecare dintre care poate conține mai
-multe fișiere dar și alte directoare și tot așa, până când  ultimul director va
+multe fișiere dar și alte directoare și tot așa, până când ultimul director va
 conține doar fișiere sau va fi gol. Un director este analog unei crengi dintr-un
 arbore, pe care pot crește alte crengi dar și frunze (fișierele). Pe frunze nu
 crește nimic.
@@ -172,7 +172,7 @@ poze
 Cum putem găsi acum poza? Adresa ei ne va indica unde anume se află, în arborele
 de fișiere. De exemplu, dacă adresa sa completă este: Directorul
 99/Subdirectorul 98/selfiecumotanul-mai2018.jpg, sistemul de fișiere va căuta
-întâi Directorul 99 printre cele 100 de directoare de pe primul nivel.  Apoi, va
+întâi Directorul 99 printre cele 100 de directoare de pe primul nivel. Apoi, va
 căuta Subdirectorul 98 printre cele 100 de subdirectoare din directorul 99.
 Apoi, în cele din urmă, va căuta poza dorită. În cel mai rău caz, sistemul de
 fișiere va realiza, de trei ori la rând, o căutare între 100 de elemente.
@@ -307,7 +307,7 @@ C:\textbackslash{}Windows.
 %	Figura... Ierarhia într-un sistem de fișiere din Windows
 %
 %
-Deși în Linux și în Mac OS  avem un singur director rădăcină, Windows are
+Deși în Linux și în Mac OS avem un singur director rădăcină, Windows are
 simultan pentru fiecare sistem de fișiere câte un director rădăcină:
 
 \begin{itemize}
@@ -428,7 +428,7 @@ este necesar să indicăm mereu calea absolută sau relativă, ci putem să folo
 niște prescurtări speciale numite variabile de mediu (environment variables).
 
 \textbf{PATH este o variabilă de mediu care conține lista căilor uzuale unde se
-găsesc programe}.  Astfel, orice program care se găsește în oricare din căile
+găsesc programe}. Astfel, orice program care se găsește în oricare din căile
 din PATH se poate executa direct, fără a fi necesar să se precizeze calea.
 Comanda pentru a afișa variabilele de mediu pentru Linux/MacOS este:
 
@@ -462,7 +462,7 @@ text (text file) și fișiere binare (binary file).
 \begin{itemize}
 	\item \textbf{Fișierele de tip text} conțin linii compuse din caractere,
 		fără să conțină elemente ce trebuie să fie interpretate de un
-		program (precum grafice, cod executabil etc).  Fișierele text
+		program (precum grafice, cod executabil etc). Fișierele text
 		pot conține text simplu (\textit{plain text}), având extensia
 		.txt, sau text formatat / îmbogățit (\textit{rich text}), care
 		include și informație stilistică, precum forma și culoarea
@@ -584,7 +584,7 @@ acestora se regăsesc în \labelindexref{capitolul}{chapter:users}.
 \label{sec:file-system-file-ops}
 
 Sistemul de fișiere ne permite realizarea mai multor tipuri de operațiuni asupra
-fișierelor.  \textbf{Operațiile uzuale} asupra fișierelor includ: afișarea și
+fișierelor. \textbf{Operațiile uzuale} asupra fișierelor includ: afișarea și
 schimbarea directorului, afișarea conținutului fișierului, listarea fișierelor
 dintr-un director, crearea fișierelor sau a directoarelor, copierea, mutarea,
 redenumirea sau ștergerea acestora, precum și arhivarea/dezarhivarea și
@@ -595,7 +595,7 @@ același fișier simultan, deoarece nu este clar dacă acțiunile celor doi nu s
 vor încurca reciproc. De aceea, una dintre responsabilitățile sistemului de
 fișiere este să mențină \textbf{separarea resurselor}.
 
-Pentru a ilustra această problemă:  dacă doi utilizatori doresc să citească și
+Pentru a ilustra această problemă: dacă doi utilizatori doresc să citească și
 să modifice simultan un fișier, apare \textbf{problema update-urilor
 intercalate} (interceding update), denumită și problema cursei (race condition).
 În acest scenariu, doi utilizatori intră într-o cursă a modificărilor succesive
@@ -608,7 +608,7 @@ Utilizatorul B nu știe că fondurile au scăzut între timp, având în propria
 o valoare expirată (cei 1000 de lei inițiali). Dacă utilizatorul B realizează și
 el o tranzacție de -20 de lei care modifică fondurile (980 de lei), apoi închide
 fișierul și suprascrie în fișierul original valoarea sa finală (980 de lei),
-tranzacția realizată de utilizatorul A este pierdută.  Desigur, un astfel de
+tranzacția realizată de utilizatorul A este pierdută. Desigur, un astfel de
 scenariu ar fi catastrofic nu doar pentru industria online banking, ci pentru
 orice altă activitate care depinde de accesul mai multor părți la o bază de date
 comună sau la un document comun.
@@ -622,7 +622,7 @@ fișier (adică prin versionare).
 
 \textbf{Blocarea} (\textit{locking}) se referă la faptul că un fișier, odată
 deschis de un proces, acesta nu va putea fi accesat de un alt proces până când
-primul nu și-a terminat modificările.  Există diferite metode de realizare în
+primul nu și-a terminat modificările. Există diferite metode de realizare în
 practică a blocării. Pot fi blocate fișierele integral, sau doar anumite câmpuri
 din ele. Diferite blocaje pot avea niveluri mai mari sau mai mici de prioritate,
 fiind marcate ca obligatorii sau doar preferabile.
@@ -700,7 +700,7 @@ Observații:
 \label{sec:file-system-file-list}
 
 Acum că știm să navigăm dintr-un director în altul, ne interesează să afișăm
-conținutul acestora.  Comanda pe care o folosim este “\cmd{ls [opțiuni]
+conținutul acestora. Comanda pe care o folosim este “\cmd{ls [opțiuni]
 <cale>}”. Dacă dorim să listăm conținutul directorului curent, executăm comanda
 \cmd{ls} fără a mai fi nevoie să specificăm calea.
 
@@ -708,7 +708,7 @@ conținutul acestora.  Comanda pe care o folosim este “\cmd{ls [opțiuni]
 
 
 \begin{itemize}
-	\item -\texttt{l}  = afișează detalii despre fiecare director/fișier,
+	\item -\texttt{l} = afișează detalii despre fiecare director/fișier,
 		precum dimensiunea, utilizator, grup, data modificare, drepturi
 		de acces
 	\item \texttt{-a} = afișează toate fișierele, inclusiv cele ascunse (cele
@@ -832,7 +832,7 @@ nameserver 192.168.0.1
 Comanda va întoarce conținutul întregului fișier, indiferent de lungime. Pentru
 ca utilizatorul să poată naviga prin tot output-ul comenzii, se pot folosi
 comenzile \cmd{more} și \cmd{less}. Comanda more permite vizualizarea doar
-într-o singură direcție (de la început către sfârșitul fișierului).  În schimb,
+într-o singură direcție (de la început către sfârșitul fișierului). În schimb,
 comanda \cmd{less} are o interfață asemănătoare cu cea a editorului \cmd{vim} și
 permite navigarea în ambele direcții, linie cu linie. Găsiți mai jos un exemplu:
 
@@ -977,7 +977,7 @@ f1.txt  f2.txt
 
 Comanda folosită pentru a muta un fișier este \cmd{mv [opțiuni] <sursa>
 <destinație>}. Mutarea se va face implicit recursiv și va păstra toate
-atributele fișierelor. Când se execută  comanda \cmd{mv}, se schimbă doar
+atributele fișierelor. Când se execută comanda \cmd{mv}, se schimbă doar
 părintele fișierului pe care îl mutăm.
 
 \begin{screen}
@@ -1065,7 +1065,7 @@ fișier:
 \end{itemize}
 
 Restul fișierelor deschise de aplicații au un descriptor de fișier mai mare sau
-egal cu 3.  În C/C++ există 3 variabile FILE* cu numele stdin, stdout, stderr.
+egal cu 3. În C/C++ există 3 variabile FILE* cu numele stdin, stdout, stderr.
 Ele au același rol ca cele descrise mai sus și sunt folosite ca orice alte
 variabilă de tip FILE*.
 
@@ -1119,7 +1119,7 @@ $ mail user1 < continut_mail
 \end{screen}
 
 În comanda anterioară intrare pentru comanda mail este redirectată la conținutul
-fișierului.  Utilizatorului user1 i se va trimite un email cu informațiile din
+fișierului. Utilizatorului user1 i se va trimite un email cu informațiile din
 fișier.
 
 Comanda următoare va scrie în fișierul listare toate fișierele și directoarele
@@ -1366,7 +1366,7 @@ Cele două etape importante ale procesului de arhivare sunt:
 \end{itemize}
 
 Utilitarele de arhivare din Linux se pot ocupa doar de una dintre etape sau de
-amândouă.  Pentru prima etapă este folosită comanda tar, numele acesteia
+amândouă. Pentru prima etapă este folosită comanda tar, numele acesteia
 (\textit{tape archiver}) venind de la faptul că, la origine, rezultatul era
 transferat pe benzi magnetice. Fișierele .tar au în componență fișierele
 inițiale necompresate precum și informațiile legate de modul lor de extragere
@@ -1426,7 +1426,7 @@ compresie de mai sus și se folosește de parametrul \texttt{z} pentru gzip și
 
 \begin{table}[htb]
 \begin{center}
-	\begin{tabular}{ p{0.1\textwidth} p{0.3\textwidth}  p{0.3\textwidth}}
+	\begin{tabular}{ p{0.1\textwidth} p{0.3\textwidth} p{0.3\textwidth}}
 	\toprule
 	 & \textbf{Compresie} & \textbf{Decompresie} \\
 	\midrule
@@ -1616,7 +1616,7 @@ Tabelul următor prezintă succint această clasificare:
 \label{sec:file-system-fs-integrity}
 
 Cărțile din bibliotecă se îngălbenesc, caietele se șifonează și scrisul își
-pierde conturul.  Fișierele digitale se pot și ele degrada, datorită unor erori.
+pierde conturul. Fișierele digitale se pot și ele degrada, datorită unor erori.
 Sistemele de fișiere au un rol vital în asigurarea integrității datelor
 (\textit{data integrity}), adică în prevenirea, detectarea și remedierea
 coruperii datelor. Coruperea datelor (\textit{data corruption}) se referă la
@@ -1650,7 +1650,7 @@ Operațiile din jurnal sunt executate la diferite intervale de timp de către
 driver-ul sistemului pentru actualizarea stării discului. După ce toate
 modificările asociate unei operații sunt executate, aceasta se șterge din
 jurnal, astfel că, la apariția unui eșec (cum ar fi întreruperile de curent,
-defecțiunile fizice ale dispozitivului etc.), vor  putea fi executate operațiile
+defecțiunile fizice ale dispozitivului etc.), vor putea fi executate operațiile
 care au fost începute, dar s-au întrerupt, deoarece ele sunt încă prezente în
 jurnal, urmând să fie reexecutate în întregime.
 
@@ -1681,7 +1681,7 @@ reprezintă un exbibyte, adică $2^{60}$ octeți.
 \begin{table}[htb]
 \caption{Caracteristici ale sistemelor de fișiere mai cunoscute}
 \begin{center}
-	\begin{tabular}{ p{0.1\textwidth} p{0.15\textwidth}  p{0.2\textwidth}  p{0.15\textwidth} p{0.4\textwidth} }
+	\begin{tabular}{ p{0.1\textwidth} p{0.15\textwidth} p{0.2\textwidth} p{0.15\textwidth} p{0.4\textwidth} }
 	\toprule
 		\textbf{Tip sistem de fișiere} & \textbf{Sisteme de operare} &
 		\textbf{Dimensiune maximă fișier} & \textbf{Jurnalizare} &
@@ -1755,7 +1755,7 @@ extensia lipsește, identificarea bazându-se integral pe conținutul fișierulu
 \begin{table}[htb]
 \caption{Restricții asupra numelor fișierelor}
 \begin{center}
-	\begin{tabular}{ p{0.1\textwidth} p{0.2\textwidth}  p{0.1\textwidth}  p{0.1\textwidth} p{0.4\textwidth} }
+	\begin{tabular}{ p{0.1\textwidth} p{0.2\textwidth} p{0.1\textwidth} p{0.1\textwidth} p{0.4\textwidth} }
 	\toprule
 		\textbf{Sistem de fișiere} & \textbf{Case sensitive} & \textbf{Lungime nume} &
 		\textbf{Lungime cale} & \textbf{Observații} \\
@@ -1813,7 +1813,7 @@ $ file /boot/kernel26.img
 
 \begin{table}[htb]
 \begin{center}
-	\begin{tabular}{ p{0.1\textwidth} p{0.2\textwidth}  p{0.3\textwidth} }
+	\begin{tabular}{ p{0.1\textwidth} p{0.2\textwidth} p{0.3\textwidth} }
 	\toprule
 		\textbf{Comanda Linux} & \textbf{Comanda Windows} & \textbf{Descriere} \\
 	\midrule

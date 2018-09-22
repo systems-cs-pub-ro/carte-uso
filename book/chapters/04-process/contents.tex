@@ -2,8 +2,8 @@
 \label{chapter:procese}
 
 La nivelul sistemului de operare, aceste aplicații sau comenzi pornite de
-utilizator sunt procese.  Atunci când o aplicație sau un program rulează, spunem
-că face acest lucru în contextul unui proces.  Spunem despre procese că
+utilizator sunt procese. Atunci când o aplicație sau un program rulează, spunem
+că face acest lucru în contextul unui proces. Spunem despre procese că
 \textbf{rulează} sau că \textbf{se execută} sau că \textbf{se află în execuție}.
 Procesele sunt entități active care, atunci când rulează, folosesc resursele
 sistemului: procesor, memorie, sistem de fișiere.
@@ -20,11 +20,11 @@ de resurse.
 O parte dintre procese sunt pornite la acțiuni ale utilizatorilor, precum
 rularea unei aplicații grafice sau a unei comenzi. Numim aceste procese
 \textbf{interactive} pentru că interacționează cu utilizatorul pe parcursul
-rulării lor.  Alte procese sunt pornite de sistem și nu interacționează cu
+rulării lor. Alte procese sunt pornite de sistem și nu interacționează cu
 utilizatorul; acestea au rol în gestiunea sistemului sau oferirea de servicii:
 de exemplu conectarea la rețea în momentul în care există o rețea wireless
 disponibilă sau actualizarea ceasului sistemului sau indexarea fișierelor pentru
-căutare rapidă.  Aceste procese sunt \textbf{neinteractive}. Le numim
+căutare rapidă. Aceste procese sunt \textbf{neinteractive}. Le numim
 \textbf{servicii} sau, pe Unix, procese \textbf{daemon}. Vom discuta mai în
 detaliu în \labelindexref{secțiunea}{sec:procese-interactivitate-daemon}.
 
@@ -578,7 +578,7 @@ moduri de rulare (foreground, background):
 
 Am precizat că mai multe procese pot rula în background. Procesele care rulează
 în background se numesc job-uri și au un identificator de job pentru shell-ul
-curent. Dacă  avem mai multe job-uri dorim să controlăm starea unui job folosind
+curent. Dacă avem mai multe job-uri dorim să controlăm starea unui job folosind
 comenzile fg și bg, atunci vom adăuga ca parametru către aceste comenzi
 identificatorul job-ului, așa cum facem în exemplul de mai jos:
 
@@ -799,7 +799,7 @@ După folosirea comenzii kill procesul creat a fost omorât. Vom detalia semnale
 
 Indiferent de situație, procesul transmite către procesul părinte informații
 despre cum și-a încheiat execuția (\textit{exit status}) și un cod de ieșire
-(\textit{exit code}).  În Linux, un cod de ieșire 0 înseamnă că programul s-a
+(\textit{exit code}). În Linux, un cod de ieșire 0 înseamnă că programul s-a
 încheiat cu succes, în vreme ce alt cod de ieșire înseamnă încheiere cu insucces
 sau eroare. Mai jos prezentăm exemple de investigare a codului de eroare după
 încheierea unui proces:
