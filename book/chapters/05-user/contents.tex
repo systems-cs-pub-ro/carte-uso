@@ -151,7 +151,11 @@ folosit. Dacă un atacator obține acces neautorizat la contul de superuser,
 atunci sistemul este compromis. La fel, dacă rulăm greșit o comandă
 privilegiată, aceasta poate afecta iremediabil sistemul.
 
-NOTĂ (amuzant): Despre rm -fr / rulat ca root și mijloace de prevenire
+\begin{note}[NOTĂ (amuzant)]
+
+Despre rm -fr / rulat ca root și mijloace de prevenire
+
+\end{note}
 
 De aceea, sistemele de operare moderne pun la dispoziția utilizatorul metode de
 realizare de acțiuni privilegiate care să nu necesite accesarea directă a
@@ -266,8 +270,12 @@ aferent utilitarului ping are atașată capabilitatea cap_net_raw. Această
 capabilitate înseamnă că procesele create din executabilul ping vor avea
 privilegiul de a crea sockeți raw, necesari utilitarului ping.
 
-NOTĂ: Discuția despre sockeți raw depășește cadrul acestei cărți. Pentru detalii
+\begin{note}[NOTĂ]
+
+Discuția despre sockeți raw depășește cadrul acestei cărți. Pentru detalii
 consultați TODO: Richard Stevens: Unix Network Programming.
+
+\end{note}
 
 Spre deosebire de bitul de setuid, capabilitățile sunt granulare. Privilegiile
 aferente contului root sunt separate în capabilități. Un proces are atașate, la
@@ -336,10 +344,14 @@ fișierului /etc/sudoers:
 %sudo        ALL=(ALL) ALL
 \end{screen}
 
-NOTĂ: E important când e folosit root si când se obține consolă de root și ce
+\begin{note}[NOTĂ]
+
+E important când e folosit root si când se obține consolă de root și ce
 utilizatori au acces la sudo. Avem grijă când acordăm unui utilizator
 “permisiuni de sudo”, adică posibilitatea de a rula comenzi ca root, lucru care
 poate duce la compromiterea sistemului.
+
+\end{note}
 
 sudo permite configurări mai avansate în fișierul /etc/sudoers; de exemplu linia
 de configurare de mai jos permite utilizatorul alin rularea doar a comenzii cat
@@ -355,8 +367,12 @@ eronată (ce poate duce sistemul într-o stare de eroare imposibil de rezolvat),
 se recomandă folosirea comenzii visudo pentru editare.. Pentru editarea sa, fie
 rulăm comanda visudo ca root, fie comanda sudo visudo.
 
-NOTĂ: Fișierul /etc/sudoers permite configurări avansate. Puteți parcurge pagina
+\begin{note}[NOTĂ]
+
+Fișierul /etc/sudoers permite configurări avansate. Puteți parcurge pagina
 de manual man sudoers sau TODO: link articol.
+
+\end{note}
 
 \paragraph{sudo și redirectare}
 
@@ -393,10 +409,12 @@ utilitarului sudo. Comanda scrie informația primită la intrarea standard (adic
 “1”) în fișierul primit ca argument (/proc/sys/netc/ipv4/ip_forward) în mod
 privilegiat.
 
-NOTĂ: Atunci când dorim să scriem într-un fișier privilegiat fără a accesa o
+\begin{note}[NOTĂ]
+Atunci când dorim să scriem într-un fișier privilegiat fără a accesa o
 consolă de root, folosim comanda tee cu sudo. Comanda tee are și opțiunea -a
 pentru adăuga informație la sfârșitul fișierului (append); în mod obișnuit
 comanda suprascrie conținutul fișierului primit ca argument.
+\end{note}
 
 \section{Operații cu utilizatori}
 \label{sec:users-ops}

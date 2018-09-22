@@ -400,7 +400,8 @@ ubuntu@ubuntu:/home$ pwd
 /home
 \end{screen}
 
-Explicații:
+
+\begin{note}[De exemplu]
 
 \begin{itemize}
 	\item folosim pwd pentru a afla în ce director ne aflăm;
@@ -409,16 +410,20 @@ Explicații:
 		curent (cale relativă).
 \end{itemize}
 
+\end{note}
+
 Până acum am explicat doar când folosim directorul special “\file{..}”
 
 Folosim gruparea “\file{.}”, care indică directorul curent, pentru comenzi ce
 execută script-uri/programe din acel director.
 
-Exemplu:
+\begin{note}[Exemplu]
 
 \cmd{\$ ./program_din_directorul_curent} - execută fișierul
 “program_din_directorul_curent” (doar dacă utilizatorul are permisiuni asupra
 lui).
+
+\end{note}
 
 \subsection{Căile stocate în variabila de mediu PATH}
 \label{sec:file-system-path}
@@ -677,23 +682,24 @@ ubuntu@ubuntu:/$ pwd
 ubuntu@ubuntu:/$
 \end{screen}
 
-Observații:
+\begin{note}[Observații]
 \begin{itemize}
 	\item \cmd{cd ..} (comanda de la linia 1) ne întoarce în directorul
 		părinte
-	\item \cmd{cd ../usr/bin} (comanda de la linia  6) este o cale
+	\item \cmd{cd ../usr/bin} (comanda de la linia 6) este o cale
 		relativă care pornește din directorul părinte al directorului
 		curent
-	\item \cmd{cd .} (comanda de la linia  9) nu modifică directorul,
+	\item \cmd{cd .} (comanda de la linia 9) nu modifică directorul,
 		deoarece “.” face referire la directorul curent
-	\item \cmd{cd \textasciitilde} (comanda de la linia  18) ne deplasează
-		în directorul home al utilizatorului curent;  “\textasciitilde”
+	\item \cmd{cd \textasciitilde} (comanda de la linia 18) ne deplasează
+		în directorul home al utilizatorului curent; “\textasciitilde”
 		este echivalentul directorului home pentru utilizatorul curent
-	\item \cmd{cd} (comanda de la linia  11) schimbă directorul tot în
+	\item \cmd{cd} (comanda de la linia 11) schimbă directorul tot în
 		directorul home
-	\item \cmd{cd -} (comanda de la linia  16) ne întoarce în directorul
+	\item \cmd{cd -} (comanda de la linia 16) ne întoarce în directorul
 		în care ne aflam anterior
 \end{itemize}
+\end{note}
 
 
 \subsection{Listarea fișierelor}
@@ -785,7 +791,7 @@ ubuntu@ubuntu:~$ ls -a /
 bin  dev    initrd  media           proc  sbin  tmp  vmlinuz
 \end{screen}
 
-Observații:
+\begin{note}[Observații]
 
 \begin{itemize}
 	\item comanda de la linia 8 afișează toate informațiile (\texttt{-l}) ale
@@ -798,6 +804,8 @@ Observații:
 	\item comanda de la linia 21 afişează toate fișierele, ascunse si
 		neascunse, din root (\file{/})
 \end{itemize}
+
+\end{note}
 
 O altă opțiune folosită este \texttt{-R}, care afișează directoarele și fișierele
 ce au ca rădăcină directorul dat ca parametru:
@@ -874,7 +882,7 @@ $ touch fisier1
 $ > fisier2
 \end{screen}
 
-Observații:
+\begin{note}[Observații]
 
 \begin{itemize}
 	\item comanda de la linia 1 folosește prima metodă; creează un fișier
@@ -883,6 +891,8 @@ Observații:
 		(\texttt{>}) ieșirea unei comenzi nule într-un fișier, creând
 		fișierul gol \file{fișier2}
 \end{itemize}
+
+\end{note}
 
 Comanda touch poate fi folosită și pentru a actualiza data ultimei accesări sau
 modificări asupra fișierului. Astfel, dacă utilizăm opțiunea \texttt{-a} se
@@ -941,11 +951,12 @@ Copierea și mutarea primesc 2 parametri:
 	\item al doilea parametru reprezintă destinația unde dorim să copiem/mutăm
 \end{itemize}
 
-
-Observație:
+\begin{note}[Observație]
 
 <sursa> comenzilor din acest subcapitol poate fi reprezentată și
 prin expresii regulate (vezi TODO)
+
+\end{note}
 
 \subsubsection{Copierea}
 \label{sec:file-system-file-cp}
@@ -1034,8 +1045,12 @@ pentru a nu șterge informații utile din greșeală și apoi să nu le mai pute
 recupera. Una dintre cele mai întâlnite erori este \cmd{rm -rf /}, care șterge
 recursiv toate fișierele începând cu rădăcina.
 
-Observație: dacă dorim să ștergem un director gol, putem să folosim comanda
+\begin{note}[Observație]
+
+Dacă dorim să ștergem un director gol, putem să folosim comanda
 \cmd{rmdir <director_gol>}
+
+\end{note}
 
 \subsubsection{Redirectarea intrării sau ieșirii pentru o aplicație}
 \label{sec:file-system-redirect}
@@ -1403,12 +1418,14 @@ $ tar xvf nume_arhiva.tar [<cale_destinatie>]
 	\item \texttt{[<cale_destinatie>]}: opțional, locul unde dorim dezarhivarea
 \end{itemize}
 
-\textbf{Observație:}
+\begin{note}[Observație]
 
 \texttt{f} și \texttt{nume_arhiva.tar} reprezintă un singur parametru – astfel,
 când folosim
 \texttt{f} pentru a indica un fișier, acesta trebuie să se afle ultimul în lista
 de parametri
+
+\end{note}
 
 
 Cele mai folosite utilitare care realizează compresarea unui fișier sunt:

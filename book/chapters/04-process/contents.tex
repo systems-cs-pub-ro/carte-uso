@@ -273,8 +273,12 @@ folosire a comenzii ps cu argumentele aferente:
 		sortate după procentul de procesor acaparat
 \end{itemize}
 
-NOTĂ (Best practice): Dacă la un moment dat avem nevoie de PID-urile proceselor
+\begin{note}[NOTĂ (Best practice)]
+
+Dacă la un moment dat avem nevoie de PID-urile proceselor
 care au un anumit program ca imagine, vom folosi comanda:
+
+\end{note}
 
 \begin{screen}
 ps -C apache2 -o pid
@@ -375,10 +379,14 @@ procesul nu este drăguț, deci “va lua fața” altor procese. Aceste lucru �
 că o valorea nice mică înseamnă un proces cu prioritate mai bună, iar o valoare
 nice mare înseamnă un proces cu prioritate mai slabă.
 
-NOTĂ: Din cauză că există această inconsecvență între valoarea nice și
-prioritate folosim exprimarea “prioritate mai bună” și “prioritate mai slabă”.
-Folosirea exprimării “prioritate mai mare” și “prioritate mai mică” ar putea
-produce confuzie între prioritate și valoarea nice.
+\begin{note}[NOTĂ]
+
+Din cauză că există această inconsecvență între valoarea nice și prioritate
+folosim exprimarea “prioritate mai bună” și “prioritate mai slabă”.
+Folosirea exprimării “prioritate mai mare” și “prioritate mai mică” ar
+putea produce confuzie între prioritate și valoarea nice.
+
+\end{note}
 
 În mod implicit un proces pornește cu valoarea nice 0, o valoare neutră.
 Valoarea poate fi modificatăla pornirea procesului (load-time) sau în timp ce
