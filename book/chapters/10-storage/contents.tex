@@ -368,6 +368,29 @@ de fișiere:
 /dev/sdb1 on /mnt type ext4 (rw)
 \end{screen}
 
+Un lucru specific sistemelor de operare bazate pe Linux este alocarea unui ID
+unui la formatarea unei partiții. Astfel la montare se poate specifica ID-ul
+partiției și nu calea către device. Acest lucru este utilizat pentru a rezolva
+conflictele generate de schimbarea ordinii discurilor fizice. De exemplu, în
+cazul prezentat mai sus, dacă mai inserăm un disc fizic în sistem, acesta poate
+fi detectat înainte celui prezent și i se va aloca litera b, deci va fi sdb, iar
+cel curent va deveni sdc. Astfel comanda de mai sus devine invalidă și
+inconsistentă deoarece va monta un cu totul alt disc. Pentru a afla ID-ul alocat
+unei partiții noi formatate se folosește comanda blkid:
+
+\begin{screen}
+[root@monitor ~]# blkid /dev/sdb1
+/dev/sdb1: UUID="ae064abe-b2fb-402b-8ba1-4ab1293bb584" TYPE="ext4"
+\end{screen}
+
+Acum putem monta partiția folosind acest ID notat cu UUID (Unique Univerally
+Identifier):
+
+\begin{screen}
+mount -U ae064abe-b2fb-402b-8ba1-4ab1293bb584 /mnt/
+\end{screen}
+
+
 Pe sisteme Windows montarea se realizează în general automat de către sistemul
 de operare. Dacă se doresc operații avansate, acestea pot fi făcute tot din
 \textit{Disk Management} (Start -> Run -> diskmgmt.msc; vezi Fig. X):
