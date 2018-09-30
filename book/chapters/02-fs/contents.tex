@@ -40,6 +40,15 @@ ce lucrează cu date critice, dar mai puțin importantă în sistemele personale
 care au mai multă nevoie de simplitate și flexibilitate. Printre criteriile după
 care putem compara și alege sistemele de fișiere se numără:
 
+%TBD by RD
+%\begin{figure}[htbp]
+%	\centering
+%	\def\svgwidth{\columnwidth}
+%	\includesvg{chapters/02-fs/def-fs.svg}
+%	\caption{TBD}
+%	\label{fig:def-fs}
+%\end{figure}
+
 \begin{itemize}
 	\item Asigurarea integrității datelor;
 	\item Separarea eficientă a resurselor între diferiți utilizatori;
@@ -163,8 +172,13 @@ câte 100? Pe primul nivel, vom avea 100 de directoare. În fiecare dintre ele,
 includem 100 de subdirectoare. Apoi, în fiecare subdirector includem 100 de
 poze. Astfel, am stocat într-o ierarhie cu trei niveluri \texttt{100 directoare * 100 subdirectoare * 100 poze = 1.000.000 poze}.
 
-Figura TODO Exemplu de organizare ierarhică pe 3 niveluri a unui set de 1.000.000
-poze
+\begin{figure}[htbp]
+	\centering
+	\def\svgwidth{\columnwidth}
+	\includesvg{chapters/02-fs/3-lvl-fs.svg}
+	\caption{Exemplu de organizare ierarhică pe 3 niveluri a unui set de 1.000.000 poze}
+	\label{fig:ex-3-lvl}
+\end{figure}
 
 Cum putem găsi acum poza? Adresa ei ne va indica unde anume se află, în arborele
 de fișiere. De exemplu, dacă adresa sa completă este: Directorul
