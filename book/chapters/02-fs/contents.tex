@@ -1,4 +1,4 @@
-\chapter{Utiliarea sistemului de fișiere}
+\chapter{Utilizarea sistemului de fișiere}
 \label{chapter:file-system}
 
 \section{Noțiuni de bază}
@@ -94,7 +94,7 @@ lor - fiind similare cu o foaie pe care am scris o listă de documente. Prin
 urmare, directoarele în Linux sunt niște fișiere speciale care servesc
 organizării altor fișiere și directoare.
 
-\begin{note}{Înțeles pentru \textit{folder} (director)}
+\begin{note}[Înțeles pentru \textit{folder} (director)]
 Conceptul mai general de director (\textit{folder}), preluat din engleză și în limbajul nostru, se
 poate referi la forme de organizare a informațiilor care nu au corespondent în
 sistemul de fișiere. De exemplu, interfețele de email pot permite organizarea
@@ -264,7 +264,7 @@ Prezentăm în continuare exemple concrete de organizare a fișierelor în siste
 În Figura TODO prezentăm cum arată grafic o ierarhie a sistemului de fișiere. Observăm că în rădăcină se află directoarele \file{home/}, \file{bin/}, \file{usr/} etc. În
 directorul \file{home/} se află subdirectoarele \file{ubuntu/} și \file{myuser/} ș.a.m.d.
 
-\begin{note}{Folosire caracter \texttt{/} (\textit{slash})}
+\begin{note}[Folosire caracter \texttt{/} (\textit{slash})]
 Atunci când folosim nume de directoare în Linux vom prefera să folosim sufixul \texttt{/} (\textit{slash}) pentru a indica faptul că sunt directoare.
 \end{note}
 
@@ -383,7 +383,7 @@ etc, în cazul Windows.
 etc, în cazul Windows.
 \end{definition}
 
-\begin{note}{Directorul \textit{home}}
+\begin{note}[Directorul \textit{home}]
 Simbolul \file{\textasciitilde{}} este o prescurtare în Linux/macOS pentru directorul \textit{home} al utilizatorului. De obicei acesta este \file{/home/$<$username$>$/} în Linux și în \file{/Users/$<$username$>$/} în macOS.
 \end{note}
 
@@ -493,6 +493,21 @@ fișiere în formaturi ce par foarte diferite, de exemplu un fișier \texttt{.tx
 apelând la soluții automate text-to-speech. Convertirea se realizează
 nu prin schimbarea manuală a extensiei, ci prin intermediul unei aplicații cu
 care deschidem fișierul și îl transformăm în formatul dorit.
+
+Pentru a vedea de ce tip este un fișier in Linux, dincolo de extensie, folosim comanda \cmd{file}. Mai jos avem exemple de folosire a comenzii \cmd{file} pentru determinarea tipului unui fișier. Pentru fiecare fișier primit ca argument de comanda \cmd{file} sunt indicate informații despre tipul fișierului: executabil, imagine de kernel, script shell, fișier comprimat, fișier imagine.
+
+\begin{screen}
+student@uso:~$ file /bin/ls
+/bin/ls: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=9567f9a28e66f4d7ec4baf31cfbf68d0410f0ae6, stripped
+student@uso:~$ file /boot/vmlinuz-4.15.0-29-generic
+/boot/vmlinuz-4.15.0-29-generic: Linux kernel x86 boot executable bzImage, version 4.15.0-29-generic (buildd@lgw01-amd64-057) #31-Ubuntu SMP Tue Jul 17 15:39:52 UTC 2018, RO-rootFS, swap_dev 0x7, Normal VGA
+student@uso:~$ file /etc/init.d/ssh
+/etc/init.d/ssh: POSIX shell script, ASCII text executable
+student@uso:~$ file /usr/share/man/man1/cp.1.gz
+/usr/share/man/man1/cp.1.gz: gzip compressed data, max compression, from Unix
+student@uso:~$ file /usr/share/pixmaps/htop.png
+/usr/share/pixmaps/htop.png: PNG image data, 128 x 128, 8-bit/color RGBA, non-interlaced
+\end{screen}
 
 \subsection{Detecția formatului fișierelor}
 \label{sec:file-system-format-detection}
@@ -866,7 +881,7 @@ student@uso:~$ ls -l uso.git/README.md
 -rw-r--r-- 1 student student 146 sep 30 12:24 uso.git/README.md
 \end{screen}
 
-Exemplele următoare prezintă crearea legăturilor simbolice, un mod prin care același fișier poate fi referit din două căi, echivalentul scurtăturilor.
+Exemplu următor prezintă crearea legăturilor simbolice, un mod prin care același fișier poate fi referit din două căi, echivalentul scurtăturilor.
 
 \begin{screen}
 student@uso:~$ cat uso.git/README.md
@@ -887,6 +902,26 @@ uso
 În exemplul de mai sus am creat intrarea \file{readme_link} care este o legătură simbolică spre fișierul \cmd{uso.git/README.md}. Dacă afișăm, folosind comanda \cmd{cat}, fișierul sau legătura simbolică, obținem același conținut: legătura simbolică referă același fișier.
 
 Legăturile (\textit{link-urile}) numite și legături simbolice (\textit{symbolic links}) sunt create cu ajutorul comenzii \texttt{ln} căreia îi transmitem ca argument opțiunea \texttt{-s}.
+
+Pentru a crea un director folosim comanda \cmd{mkdir} ca mai jos:
+
+\begin{screen}
+student@uso:~$ mkdir games
+student@uso:~$ ls -d games/
+games/
+student@uso:~$ ls -ld games/
+drwxrwxr-x 2 student student 4096 sep 30 17:28 games/
+student@uso:~$ ls games/
+student@uso:~$ mkdir games/warcraft
+student@uso:~$ mkdir games/lol
+student@uso:~$ ls games/
+lol  warcraft
+student@uso:~$ mkdir -p games/heroes/3/nighon/mutare
+student@uso:~$ ls -ld games/heroes/3/nighon/mutare
+drwxrwxr-x 2 student student 4096 sep 30 17:32 games/heroes/3/nighon/mutare
+\end{screen}
+
+În exemplul de mai sus am creat directorul \file{games/} iar în cadrul său am creat subdirectoarele \file{warcraft/} și \file{lol/}. Comanda \cmd{ls} afișează conținutul unui diretor; dacă dorim să afișăm informații despre director în sine folosim comanda opțiunea \texttt{-d} a comenzii \cmd{mkdir}; o formă frecventă este folosirea opțiunii \texttt{-ld} pentru afișarea informațiilor despre director în format lung, cu atribute ale directorului. În partea finală a exemplului am folosit opțiunea \texttt{-p} a comenzii \cmd{mkdir} pentru a crea un director cu toate directoarele părinte necesare chiar dacă acestea nu există.
 
 În Tabelul~\ref{table:file-system-file-creation} sunt sumarizate comenzile de creare a tipurilor de intrări în sistemul de fișiere:
 
@@ -912,7 +947,9 @@ Legăturile (\textit{link-urile}) numite și legături simbolice (\textit{symbol
 \subsection{Copiere / mutare / redenumire / ștergere}
 \label{sec:file-system-file-cp-mv-rm}
 
-Copierea și mutarea primesc doi parametri:
+Operațiile frecvente cu fișiere sunt copierea, mutarea sau redenumirea și ștergerea. Copierea înseamnă că un fișier sau director este duplicat în alt loc, și se găsește acum în două locuri. Mutarea/Redenumirea înseamnă cu un fișier sau director este acum mutat din locul său inițial în alt loc în sistemul de fișiere; spre deosebire de copiere, acum fișierul/directorul se găsește într-un singur loc. Ștergerea înseamnă eliminarea acelui fișier sau director din sistemul de fișiere; nu se va mai găsi în nici un loc.
+
+Comenzile de copiere și mutare primesc doi parametri:
 
 \begin{itemize}
 	\item primul parametru reprezintă sursa de unde dorim să copiem/mutăm
@@ -921,77 +958,70 @@ Copierea și mutarea primesc doi parametri:
 
 \begin{note}[Observație]
 <sursa> comenzilor din acest subcapitol poate fi reprezentată și
-prin globbing în sistemul de fișiere, despre care vom discuta detaliat în Capitolul TODO: Interfața în linia de comandă
+prin globbing în sistemul de fișiere, despre care vom discuta detaliat în \labelindexref{capitolul}{chapter:cli}.
 \end{note}
 
 \subsubsection{Copierea}
 \label{sec:file-system-file-cp}
 
-Comanda folosită pentru a copia un fișier este \cmd{cp $[$opțiuni$]$ $<$sursă$>$ $<$destinație$>$}.
+Comanda folosită pentru a copia un fișier este \cmd{cp $[$opțiuni$]$ $<$sursă$>$ $<$destinație$>$}. Mai jos este prezentat un exemplu de copiere a unui fișier și unul de copiere a unui director. Pentru copierea unui director folosim opțiunea \texttt{-r} a comenzii \cmd{cp} pentru copiere recursivă (care trece prin toate subdirectoarele).
 
 \begin{screen}
-$ touch f1.txt
-$ ls
-f1.txt
-$ cp f1.txt f2.txt
-$ ls
-f1.txt  f2.txt
+student@uso:~$ cp passwd passwd-copy
+student@uso:~$ ls -l passwd passwd-copy
+-rw-r--r-- 1 student student 2506 sep 30 11:28 passwd
+-rw-r--r-- 1 student student 2506 sep 30 16:48 passwd-copy
+student@uso:~$ cmp passwd passwd-copy
+student@uso:~$ cp uso.git/labs/01-fs/wiki/basics.wiki .
+student@uso:~$ cmp basics.wiki uso.git/labs/01-fs/wiki/basics.wiki
+student@uso:~$ cp -r uso.git/labs/ .
+student@uso:~$ diff -r uso.git/labs/ labs/
+student@uso:~$
 \end{screen}
 
-\subsubsection{Mutarea}
+În exemplu de mai sus, în primă fază facem o copie, în același director a fișierul \file{passwd} în fișierul \file{passwd-copy}. Apoi folosim comanda \cmd{ls -l} pentru a vedea că cele două fișiere au aceeași dimensiune (\texttt{2506}). Comanda \cmd{cmp} compară două fișiere și, dacă sunt identice, nu afișează nimic. Apoi copiem un fișier dintr-o cale relativă (\file{uso.git/labs/01-fs/wiki/basics.wiki}) în directorul curent, indicat de construcția \file{.} (punct). Folosim comanda \cmd{cmp} pentru a valida că cele două fișiere sunt identice. Apoi copiem un director dintr-o cale relativă (\file{uso.git/labs/}) în directorul curent. Pentru a compara două directoare și pentru a demonstra că sunt identice, folosim comanda \cmd{diff} cu opțiunea \texttt{-r}, pentru parcurgere recursivă a argumentelor de comparat.
+
+\subsubsection{Mutarea/Redenumirea}
 \label{sec:file-system-file-mv}
 
-Comanda folosită pentru a muta un fișier este \cmd{mv [opțiuni] <sursa>
-<destinație>}. Mutarea se va face implicit recursiv și va păstra toate
+Comanda folosită pentru a muta/redenumi un fișier este \cmd{mv $[$opțiuni$]$ $<$sursă$>$
+$<$destinație$>$}. Mutarea se va face implicit recursiv și va păstra toate
 atributele fișierelor. Când se execută comanda \cmd{mv}, se schimbă doar
-părintele fișierului pe care îl mutăm.
+părintele fișierului (sau directorului) pe care îl mutăm. Spre deosebire de comanda \cmd{cp}, comanda \cmd{mv} nu primește opțiunea \texttt{-r} pentru mutarea unui director; o intrare este mutată indiferent dacă este director sau fișier.
+
+Mai jos este un exemplu de folosire a comenzii \cmd{mv}:
 
 \begin{screen}
-$ pwd
-/tmp/q
-$ ls
-f1.txt  f2.txt
-$ mv f1.txt /tmp/r
-$ ls
-f2.txt
-$ ls /tmp/r/
-f1.txt
+student@uso:~$ mv basics.wiki 01-fs-basics.wiki
+student@uso:~$ ls basics.wiki 01-fs-basics.wiki
+ls: cannot access 'basics.wiki': No such file or directory
+01-fs-basics.wiki
+student@uso:~$ mv passwd-copy Downloads/
+student@uso:~$ ls passwd-copy
+ls: cannot access 'passwd-copy': No such file or directory
+student@uso:~$ ls Downloads/passwd-copy
+Downloads/passwd-copy
+student@uso:~$ mv labs/ labs-old
+student@uso:~$ ls labs
+ls: cannot access 'labs': No such file or directory
+student@uso:~$ ls labs-old/
+00-intro  01-fs  02-process  03-user  04-appdev  05-cli  06-hw-boot  07-storage  08-net  09-vm  10-sec  11-ctf
 \end{screen}
 
-\subsubsection{Redenumirea}
-\label{sec:file-system-file-rename}
+În exemplul de mai sus am redenumit fișierul \file{basics.wiki} în \file{02-fs-basics.wiki}. Am mutat fișierul \file{passwd-copy} în subdirectorul \file{Downloads/}, dat prin cale relatativă. Și am redenumit directorul \file{labs/} în \file{labs-old/}. La fiecare operație de mutare/redenumire am verificat că vechea intrare nu mai este disponibilă, dar este disponibilă noua intrare.
 
-Redenumirea unui fișier se realizează cu comanda mv sau cu cp astfel:
-
-\begin{itemize}
-	\item dacă folosim comanda \cmd{mv <sursa> <destinație>} și destinația
-		nu există ca director, atunci se realizează mutarea sursei cu
-		schimbarea numelui în numele <destinatiei>
-	\item dacă folosim comanda \cmd{cp <sursa> <destinație>} si la fel
-		destinația nu există ca director, se execută ca la comanda
-		precedentă, doar că aici se pastrează si fișierul <sursa>
-		original
-\end{itemize}
-
-\begin{screen}
-$ ls
-f2.txt
-$ mv f2.txt f3.txt
-$ ls
-f3.txt
-\end{screen}
-
-\subsubsection{Stergerea fișierelor/directoarelor}
+\subsubsection{Ștergerea fișierelor/directoarelor}
 \label{sec:file-system-file-rm}
 
+Ștergerea unei intrări înseamnă eliminarea acelei intrări și a conținutului său din sistemul de fișiere.
+
 Comanda cea mai folosită pentru ștergerea fișierelor și directoarelor este
-\cmd{rm [opțiuni] <cale>}.
+\cmd{rm $[$opțiuni$]$ $<$cale$>$}.
 
 Opțiunile cele mai des folosite pentru această comandă sunt:
 
 \begin{itemize}
-	\item \texttt{-r/-R}: se utilizează atunci când se dorește ștergerea
-		recursivă a unui director
+	\item \texttt{-r/-R}: se utilizează atunci când se dorește ștergerea recursivă a unui director
 	\item \texttt{-f}: se utilizează pentru a șterge forțat fișierele
 \end{itemize}
 
@@ -1001,466 +1031,259 @@ recupera. Una dintre cele mai întâlnite erori este \cmd{rm -rf /}, care șterg
 recursiv toate fișierele începând cu rădăcina.
 
 \begin{note}[Observație]
-
 Dacă dorim să ștergem un director gol, putem să folosim comanda
-\cmd{rmdir <director_gol>}
-
+\cmd{rmdir $<$director_gol$>$}
 \end{note}
 
-\subsubsection{Redirectarea intrării sau ieșirii pentru o aplicație}
-\label{sec:file-system-redirect}
-
-Există 3 \textbf{fișiere speciale} utilizate de programele în execuție pentru a
-interacționa cu utilizatorii:
-
-\begin{itemize}
-	\item standard input (\textbf{stdin}): acesta reprezintă locul de unde
-		se citesc datele de intrare de către program (de obicei
-		tastatura)
-	\item standard output (\textbf{stdout}): acesta este fișierul în care se
-		scriu datele de ieșire (de obicei este consola curentă)
-	\item standard error (\textbf{stderr}): în acest fișier se scriu
-		mesajele de eroare de către program (de obicei tot în consola
-		curentă)
-\end{itemize}
-
-Un descriptor de fișier reprezintă un indice asociat unui fișier deschis de o
-aplicație Linux. Cele 3 fișiere speciale de mai sus au următorii descriptori de
-fișier:
-
-\begin{itemize}
-	\item stdin = 0
-	\item stdout = 1
-	\item stderr = 2
-\end{itemize}
-
-Restul fișierelor deschise de aplicații au un descriptor de fișier mai mare sau
-egal cu 3. În C/C++ există 3 variabile FILE* cu numele stdin, stdout, stderr.
-Ele au același rol ca cele descrise mai sus și sunt folosite ca orice alte
-variabilă de tip FILE*.
-
-În unele situații, utilizatorul poate dori să modifice intrarea sau ieșirea
-pentru o aplicație. De exemplu, utilizatorul își poate dori ca în loc să obțină
-datele de intrare de la tastatură pentru un program, să le obțină dintr-un
-fișier. Aceste operații se pot realiza doar la nivelul descriptorilor. În
-shell-ul bash sunt permise comenzi cu o sintaxă specială asupra descriptorilor
-standard modificați; putând fi întâlnite următoarele cazuri:
-
-\begin{table}[htb]
-\caption{Metode te redirectare}
-\begin{center}
-	\begin{tabular}{ p{0.2\textwidth} p{0.2\textwidth} p{0.5\textwidth}}
-	\toprule
-		\textbf{Sursă} & \textbf{Destinație} & \textbf{Exemplu comandă} \\
-	\midrule
-		intrare (stdin) & Fișier & \cmd{./program <fișier_intrare} \\
-	\midrule
-		ieșire (stdout) & Fișier & \cmd{./program >fișier_ieșire} \\
-	\midrule
-		eroare (stderr) & Fișier & \cmd{./program 2>fișier_erori} \\
-	\midrule
-		eroare (stderr) & iesire (stdout) & \cmd{./program 2>\&1} \\
-	\midrule
-		eroare \& iesire & Fișier & \cmd{./program 2>\&1 >fișier_ieșire_și_erori} \\
-	\bottomrule
-	\end{tabular}
-	\label{table:file-system-redirec-methods}
-\end{center}
-\end{table}
-
-Pentru a redirecta ieșirea (către exteriorul programului) se folosește semnul
-\textit{mai mare}, în timp ce pentru a redirecta intrarea se folosește semnul
-\textit{mai mic} (către program), iar pentru redirectarea ieșirii de erori se
-folosește descriptorul \texttt{2} de fișier. Sintaxa \texttt{\&1} se folosește
-atunci când se dorește redirectarea către ieșirea standard (\textit{stdout}).
-
-Astfel, dacă dorim redirectarea ieșirii de erori și a ieșirii standard către un
-fișier trebuie să redirectăm mai întâi ieșirea de erori către stdout
-(\texttt{2>\&1}) și apoi să redirectăm ieșirea standard într-un fișier
-(\file{>fișier_erori_și_ieșiri}).
-
-În cazul în care redirectările sunt făcute în ordine inversă, nu va fi obținut
-efectul dorit.
-
-Exemplu de redirectare a intrării:
+Mai jos este un exemplu de folosire a comenzilor \cmd{rm} și \cmd{rmdir}.
 
 \begin{screen}
-$ mail user1 < continut_mail
+student@uso:~$ ls
+02-fs-basics.wiki  Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos  examples.desktop  labs-old  passwd  readme_link  uso.git  vm-actions-log.txt
+student@uso:~$ rm 02-fs-basics.wiki
+student@uso:~$ rm passwd
+student@uso:~$ rm readme_link
+student@uso:~$ rm -fr labs-old
+student@uso:~$ rmdir Downloads/
+rmdir: failed to remove 'Downloads/': Directory not empty
+student@uso:~$ rm Downloads/*
+student@uso:~$ rmdir Downloads/
+student@uso:~$ ls
+Desktop  Documents  Music  Pictures  Public  Templates  Videos  examples.desktop  uso.git  vm-actions-log.txt
 \end{screen}
 
-În comanda anterioară intrare pentru comanda mail este redirectată la conținutul
-fișierului. Utilizatorului user1 i se va trimite un email cu informațiile din
-fișier.
-
-Comanda următoare va scrie în fișierul listare toate fișierele și directoarele
-ce se află în directorul curent.
-
-\begin{screen}
-$ ls > listare
-$ cat listare
-fisier1
-\end{screen}
-
-Pentru a adăuga la sfârșitul fișierului rezultatul unei comenzi, următoarea
-comandă este folosită:
-
-\begin{screen}
-$ date >> listare
-$ cat listare
-fisier1
-Sat Aug 22 16:07:50 EEST 2018
-\end{screen}
-
-Comanda următoare încearcă să copieze un fișier fără a spune unde dorește să-l
-copieze, comandă ce va genera o eroare care va fi redirectată în fișierul erori:
-
-\begin{screen}
-$ cp fisier1 2> erori
-$ cat erori
-cp: missing destination file operand after `fisier1'
-Try `cp --help' for more information.
-\end{screen}
-
-Asemănător cazului anterior, pentru a scrie erorile la sfârșitul fișierului se
-va folosi comanda:
-
-\begin{screen}
-$ cp fisier4 2>> erori
-$ cat erori
-cp: missing destination file operand after `fisier1'
-Try `cp --help' for more information.
-cp: missing destination file operand after `fisier4'
-Try `cp --help' for more information.
-\end{screen}
-
-Comanda următoare va scrie atât erorile cât și rezultatele comenzii \cmd{ls} în
-fișierul specificat:
-
-\begin{screen}
-$ ls fisier1 fisier4 2>&1 > rezultate
-\end{screen}
-
-sau mai simplu:
-
-\begin{screen}
-$ ls fisier1 fisier4 >& rezultate
-$ cat rezultate
-ls: cannot access fisier4: No such file or directory
-fisier1
-\end{screen}
-
-Tabelul următor prezintă câteva redirectări folosind fișiere speciale:
-
-\begin{table}[htb]
-\caption{Redirectări folosind fișiere speciale}
-\begin{center}
-	\begin{tabular}{ p{0.3\textwidth} p{0.5\textwidth}}
-	\toprule
-		\textbf{Comanda} & \textbf{Efect} \\
-	\midrule
-		./program 2>/dev/null & mesajele de la ieșirea de erori nu sunt
-		afișate \\
-	\midrule
-		./program 2>\&1 >/dev/null & nici un mesaj nu este afișat \\
-	\midrule
-		> nume_fișier & crează un fișier gol cu numele “nume_fișier” \\
-	\midrule
-		cat /dev/null > nume_fișier & crează un fișier cu același
-		conținut ca și /dev/null , adică un fișier gol \\
-	\bottomrule
-	\end{tabular}
-	\label{table:file-system-redirect-special}
-\end{center}
-\end{table}
+În exemplul de mai sus am șters, folosind comanda \cmd{rm} fișierele \file{basics-wiki} și \file{passwd} și legătura simbolică \file{readme_link}. Apoi am șters recursiv (folosind opțiunea \texttt{-fr} (de la \textit{force and recursive}) directorul \file{labs-old/}. Comanda \cmd{rmdir} poate șterge un director doar dacă acesta este gol; pentru aceasta am șters toate fișierele din directorul \file{Downloads/} folosind construcția \file{Downloads/*}; apoi am folosit comanda \cmd{rmdir} pentru a șterge directorul. Am folosit coamanda \cmd{ls} la început și la sfârșit pentru a demonstra ștergerea fișierelor.
 
 \subsection{Căutarea fișierelor}
 \label{sec:file-system-file-search}
 
-\subsubsection{Comanda find}
-\label{sec:file-system-cmd-find}
+Structura ierarhică a sistemului de fișiere permite găsirea rapidă a unui fișier parcurgând pe rând subdirectoarele care-l conțin. Chiar și așa sunt situații în care nu se știe precis unde este localizat un fișier sa un director și este utilă căutarea acestuia. Pentru a căuta un fișier după numele său există două tipuri de căutări:
+\begin{enumerate}
+  \item \textbf{căutare indexată} în care fișierele sunt inspectate și informațiile despre localizarea lor sunt reținute într-o bază de date cu fișierele indexată;
+  \item \textbf{căutare exhaustivă} în cadrul unei zone din ierarhia sistemului de fișiere, trecând prin toate fișierele
+\end{enumerate}
 
-Pentru căutarea în arborele de directoare al fișierelor se folosește comanda
-find ce are la bază abordarea brute-force. Comanda permite căutarea folosind
-diferite criterii, precum numele fișierului, utilizator, grup, tip, permisiuni,
-dimensiune, dată și altele. Exemple de criterii de căutare:
-
-\begin{itemize}
-	\item \texttt{name} - căutare după numele fișierelor
-	\item \texttt{perm} - căutare după permisiunile fișierelor
-	\item \texttt{size} - căutare după dimensiunea fișierelor
-\end{itemize}
-
-Pentru a căuta toate fișierele ce au numele stat se folosește comanda find astfel:
-
-\begin{screen}
-$ find /usr -name stat
-/usr/src/linux-headers-2.6.24-19-generic/include/config/cpu/freq/stat
-/usr/bin/stat
-\end{screen}
-
-Pentru a căuta fișierele ce au permisiunile 644, se scrie comanda următoare:
-
-\begin{screen}
-$ find /usr -perm 644
-/usr/local/include/glib-2.0/glib.h
-/usr/local/include/glib-2.0/gobject/gsourceclosure.h
-/usr/local/include/glib-2.0/gobject/gtypeplugin.h
-[...]
-\end{screen}
-
-Pentru a găsi fișierele ce au o mărime mai mare de 500Mb, se poate folosi una
-dintre comenzile următoare:
-
-\begin{screen}
-$ find /usr -size +500000
-$ find /usr -size +500k
-/usr/local/lib/libgio-2.0.so.0.1800.4
-/usr/local/lib/libgobject-2.0.so.0.1800.4
-/usr/local/lib/libglib-2.0.so.0.1800.4
-[...]
-\end{screen}
+Pentru căutare indexată folosim, în Linux, comanda \cmd{locate} (și comanda \cmd{updatedb}). Pentru căutare exhaustivă folosim, în Linux, comanda \cmd{find}. Le prezentăm în continuare.
 
 \subsubsection{Comanda locate}
 \label{sec:file-system-cmd-locate}
 
-Comanda \cmd{locate} indexează toate fișierele într-o bază de date locală, fiind
-mai rapidă decât comanda \cmd{find}, însă cu costul de a avea doar numele
-fișierului drept criteriu de căutare și cu nevoia de reactualizare periodică a
-bazei de date pentru a include informații despre noile fișiere create în sistem.
-Rezultatul comenzii este o listă cu toate fișierele care conțin șirul de
-caractere trimis ca argument.
+Comanda \cmd{locate} caută în toate fișierele indexte într-o bază de date locală. Avantajul său este căutarea rapidă în sistemul de fișiere. Are două dezavantaje:
+\begin{enumerate}
+  \item Baza de date trebuie actualizată periodic pentru a indexa modificările din sistemul de fișiere. Actualizarea se face folosind comanda \cmd{updatedb}.
+  \item Căutarea se face strict după nume, nu și după alte atribute ale fișierelor.
+\end{enumerate}
 
-În exemplul următor se caută toate fișierele care conțin \cmd{pwd}:
+Rezultatul rulăii comenzii este o listă cu toate fișierele al căror nume conține șirul de caractere trimis ca argument.
+
+În exemplul următor se caută toate fișierele al căror nume conține șirul \texttt{pwd}:
 
 \begin{screen}
-$ locate pwd
+student@uso:~$ locate pwd
 /bin/pwd
 /etc/.pwd.lock
+/lib/modules/4.15.0-29-generic/kernel/drivers/watchdog/hpwdt.ko
+/lib/modules/4.15.0-32-generic/kernel/drivers/watchdog/hpwdt.ko
+/lib/modules/4.15.0-34-generic/kernel/drivers/watchdog/hpwdt.ko
+/sbin/pam_extrausers_chkpwd
 /sbin/unix_chkpwd
-/usr/bin/pwdx
-/usr/include/pwd.h
-/usr/lib/python2.5/lib-dynload/spwd.so
-/usr/share/man/man1/pwd.1.gz
-/usr/share/man/man1/pwdx.1.gz
-/usr/share/man/man8/unix_chkpwd.8.gz
-/usr/share/perl/5.8.8/pwd.pl
+/snap/core/4917/bin/pwd
+[...]
 \end{screen}
 
-Unele distribuții de Linux folosesc comanda \cmd{slocate} în locul comenzii
-\cmd{locate}, care afișează doar fișierele din directoarele în care utilizatorul
-curent are drepturi de acces.
+Unele distribuții Linux folosesc comanda \cmd{slocate} în locul comenzii \cmd{locate}, care afișează doar fișierele din directoarele în care utilizatorul curent are drepturi de acces.
 
-\subsubsection{Comanda whereis}
-\label{sec:file-system-cmd-whereis}
+\subsubsection{Comanda find}
+\label{sec:file-system-cmd-find}
 
-Comanda este utilizată pentru căutarea în anumite locații din sistem, de exemplu
-directoarele cu fișiere binare sau directoarele cu pagini \cmd{man}. Însă
-comanda \cmd{whereis} nu se poate folosi pentru căutarea în directoarele
-utilizatorului. Aceasta va căuta fișierele a căror nume începe cu șirul de
-caractere primit ca argument.
+Pentru căutarea în ierarhia de directoare al fișierelor se folosește comanda
+\cmd{find}, comandă ce parcurge exaustiv ierarhia de directoare. Comanda permite căutarea folosind
+diferite criterii, precum numele fișierului, utilizator, grup, tip, permisiuni,
+dimensiune, dată și altele. Exemple de opțiuni ale comenzii \cmd{find} pentru criterii de căutare:
 
-De exemplu, pentru a localiza comanda \cmd{ls}, folosim următoarea comandă:
+\begin{itemize}
+	\item \texttt{-name} - căutare după numele fișierelor
+  \item \texttt{-type} - căutare după tipul intrării (fișier, director, legătură simbolică)
+	\item \texttt{-size} - căutare după dimensiunea fișierelor
+\end{itemize}
+
+Pentru a căuta în ierarhia \cmd{/usr/} toate legăturile simbolice, folosim comanda \cmd{find} astfel:
 
 \begin{screen}
-$ whereis ls
-ls: /bin/ls /usr/share/man/man1/ls.1.gz
+student@uso:~$ find /usr/ -type l
+/usr/lib/pm-utils/sleep.d/95hdparm-apm
+/usr/lib/libgjs.so.0
+/usr/lib/bfd-plugins/liblto_plugin.so
+/usr/lib/sudo/libsudo_util.so
+/usr/lib/sudo/libsudo_util.so.0
+/usr/lib/gold-ld/ld
+/usr/lib/systemd/user/dbus-org.bluez.obex.service
+/usr/lib/systemd/user/graphical-session.target.wants/update-notifier-release.path
+/usr/lib/systemd/user/graphical-session.target.wants/update-notifier-crash.path
+/usr/lib/systemd/user/graphical-session.target.wants/unicast-local-avahi.path
+[...]
 \end{screen}
 
-Comanda afișează calea atât către executabil, cât si către pagina de \cmd{man} a
-comenzii.
-
-\subsubsection{Comanda which}
-\label{sec:file-system-cmd-which}
-
-Folosirea comenzii \cmd{which} duce la obținerea căii către executabilele care
-au posibilitatea de a fi rulate din linia de comandă. Pentru a returna lista
-completă a potrivirilor se folosește opțiunea \texttt{-a}, altfel se va returna
-doar prima potrivire.
-
-De exemplu, comanda următoare returnează prima potrivire găsită pentru chmod.
+Pentru a căuta în ierarhia \cmd{/usr/} toate fișierele care au numele \texttt{stat} se folosește comanda \cmd{find} astfel:
 
 \begin{screen}
-$ which chmod
+student@uso:~$ find /usr -name stat
+/usr/bin/stat
+/usr/src/linux-headers-4.15.0-29-generic/include/config/f2fs/stat
+/usr/src/linux-headers-4.15.0-32-generic/include/config/f2fs/stat
+/usr/src/linux-headers-4.15.0-34-generic/include/config/f2fs/stat
+\end{screen}
+
+Pentru a obține fișierele ce au o mărime mai mare de 500KB, folosim comanda:
+
+\begin{screen}
+student@uso:~$ find /usr/ -size +500k
+/usr/lib/gnome-shell/gnome-shell-portal-helper
+/usr/lib/gnome-shell/libgnome-shell.so
+/usr/lib/p7zip/7zr
+/usr/lib/xorg/modules/drivers/intel_drv.so
+/usr/lib/xorg/Xorg
+/usr/lib/debug/lib/x86_64-linux-gnu/libnsl-2.27.so
+/usr/lib/debug/lib/x86_64-linux-gnu/libmvec-2.27.so
+/usr/lib/debug/lib/x86_64-linux-gnu/ld-2.27.so
+/usr/lib/debug/lib/x86_64-linux-gnu/libm-2.27.so
+/usr/lib/debug/lib/x86_64-linux-gnu/libc-2.27.so
+[...]
+\end{screen}
+
+\subsubsection{Căutarea comenzilor}
+\label{sec:file-system-cmd-search}
+
+Uneori dorim să identificăm o comandă, sau executabilul aferent unei comenzi. Pentru aceasta folosim comenzile \cmd{whereis}, \cmd{which} și \cmd{type}.
+
+Comanda \cmd{whereis} este utilizată pentru căutarea locurilor corespunzătoare unei comenzi în sistemul de fișiere De exemplu, pentru a localiza comanda \cmd{ls}, folosim următoarea comandă:
+
+\begin{screen}
+student@uso:~$ whereis ls
+ls: /bin/ls /usr/share/man/man1/ls.1posix.gz /usr/share/man/man1/ls.1.gz
+\end{screen}
+
+Comanda afișează calea atât către executabil și către pagina de manual a comenzii.
+
+Dacă dorim doar obținerea căii către executabilul aferent comenzii, folosim comanda \cmd{which}. De exemplu, comanda următoare afișează calea către executabilul aferent comenzii \cmd{chmod}.
+
+\begin{screen}
+student@uso:~$ which chmod
 /bin/chmod
 \end{screen}
 
-\subsubsection{Comanda type}
-\label{sec:file-system-cmd-type}
+Utilizarea comenzii \cmd{type} duce la determinarea modului de interpretare a altei comenzi, de exemplu comandă integrată în shell (numită și internă), comandă externă sau alias. Mai multe despre comenzi în shell, interne și externe, vor fi prezentate în \labelindexref{capitolul}{chapter:cli}.
 
-Utilizarea comenzii \cmd{type} duce la determinarea modului de interpretare a
-altei comenzi, de exemplu comandă integrată în shell, comandă externă sau alias.
-
-Un exemplu de comandă integrată in shell este:
+Un exemplu de comandă integrată in shell este comanda \cmd{cd} în vreme ce o comanda externă, care are un executabil asociat, este comanda \cmd{cat}, așa cum putem vedea în exemplul de mai jos:
 
 \begin{screen}
-$ type cd
+student@uso:~$ type cd
 cd is a shell builtin
-\end{screen}
-
-Pentru o comandă externă rezultatul este calea către executabil:
-
-\begin{screen}
-$ type cat
+student@uso:~$ type cat
 cat is /bin/cat
 \end{screen}
 
 În cazul unui alias se va afișa comanda echivalentă:
 
 \begin{screen}
-$ type ls
-ls is aliased to 'ls --color'
+student@uso:~$ type ls
+ls is aliased to `ls --color=auto'
 \end{screen}
 
-\subsection{Arhivarea fișierelor și dezarhivarea}
-\label{sec:file-system-achivation}
+\subsection{Arhivarea și dezarhivarea fișierelor}
+\label{sec:file-system-archiving}
 
 Prin procesul de arhivare, mai multe fișiere și directoare sunt strânse la un
-loc într-un fișier unic, realizându-se astfel și reducerea dimensiunii, deoarece
-se elimină datele care apar de mai multe ori și se înlocuiesc cu niște serii de
-codificări.
+loc într-un fișier unic, realizându-se de obicei și reducerea dimensiunii (compresie). În general noțiunea de arhivare se referă doar la lipirea datelor într-un singur loc, în vreme ce compresia se referă la codificarea datelor pentru a reduce dimensiunea fișierului rezultat.
 
-După arhivare se creează un dicționar care conține secvențe de octeți care se
+În cazul compresiei se creează un dicționar care conține secvențe de octeți care se
 repetă mai des și codificarea lor pe mai puțini octeți. Pe lângă dicționar, în
-arhivă este conținut și cuprinsul fișierelor. Fiind folosite referințele către
+fișierul rezultat este conținut și cuprinsul fișierelor. Fiind folosite referințele către
 dicționar a secvențelor lungi, se realizează astfel o economie de spațiu. Cu cât
-fișierele conțin mai multe date repetitive, cu atât dimensiunile arhivei scad.
+fișierele conțin mai multe date repetitive, cu atât dimensiunile fișierului comprimat rezultat scad.
 
-Cele două etape importante ale procesului de arhivare sunt:
+Utilitare precum \cmd{zip} realizează atât arhivare cât și compresie; utiltarul \cmd{tar} realizează doar arhivare, iar utilitarul \cmd{gzip} realizează doar compresie; de obicei utilitarele \cmd{tar} și \cmd{gzip} sunt folosite la comun pentru a realiza și arhivarea și compresia.
 
-\begin{itemize}
-	\item concatenarea sau lipirea fișierelor într-unul mai mare, de unde
-		există posibilitatea de retragere a tuturor fișierelor și
-		informațiilor aferente acestora;
-	\item compresia fișierului mare, astfel reducându-se dimensiunea lui,
-		fără pierderi de informații.
-\end{itemize}
-
-Utilitarele de arhivare din Linux se pot ocupa doar de una dintre etape sau de
-amândouă. Pentru prima etapă este folosită comanda tar, numele acesteia
-(\textit{tape archiver}) venind de la faptul că, la origine, rezultatul era
-transferat pe benzi magnetice. Fișierele .tar au în componență fișierele
-inițiale necompresate precum și informațiile legate de modul lor de extragere
+Numele utilitarului \cmd{tar} este acronimul \textit{tape archiver}, provenind de la faptul că, la origine, rezultatul era
+transferat pe benzi magnetice. Fișierele \texttt{.tar} au în componență fișierele
+inițiale necomprimate precum și informațiile legate de modul lor de extragere
 (spre exemplu: de unde până unde se găsește un fișier în cadrul arhivei). Din
-această cauză fișierele .tar au o dimensiune mai mare decât suma dimensiunilor
+această cauză fișierele \texttt{.tar} au o dimensiune mai mare decât suma dimensiunilor
 fișierelor care îl alcătuiesc.
 
-Pentru a crea o arhiva tar, folosim comanda:
+În continuare sunt prezentate exemple de folosire ale comenzii \cmd{tar}:
 
 \begin{screen}
-$ tar cvf nume_arhiva.tar <cale>
+student@uso:~$ tar cvf 01-fs.tar uso.git/labs/01-fs/
+uso.git/labs/01-fs/
+uso.git/labs/01-fs/wiki/
+uso.git/labs/01-fs/wiki/basics.wiki
+uso.git/labs/01-fs/wiki/concepts.wiki
+uso.git/labs/01-fs/wiki/demo.wiki
+[...]
+student@uso:~$ tar tf 01-fs.tar
+uso.git/labs/01-fs/
+uso.git/labs/01-fs/wiki/
+uso.git/labs/01-fs/wiki/basics.wiki
+uso.git/labs/01-fs/wiki/concepts.wiki
+uso.git/labs/01-fs/wiki/demo.wiki
+[...]
+student@uso:~$ cd /tmp/
+student@uso:/tmp$ tar xf ~/01-fs.tar
+student@uso:/tmp$ ls uso.git/labs/01-fs/
+support  wiki
 \end{screen}
 
-ce are următorii parametri:
+Mai sus am creat o arhivă \file{.tar}, am listat conținutul ei și apoi am dezarhivat-o în directorul \file{/tmp/}.
 
+Opțiunile comenzii \cmd{tar}, folosite mai sus, sunt:
 \begin{itemize}
-	\item \texttt{c}: pentru a crea arhiva
-	\item \texttt{v}: arată ce se va arhiva
-	\item \texttt{f nume_arhiva.tar}: numele arhivei
-	\item \texttt{<cale>}: ce dorim să arhivăm
-\end{itemize}
-
-
-Pentru dezarhivare utilizăm:
-
-\begin{screen}
-$ tar xvf nume_arhiva.tar [<cale_destinatie>]
-\end{screen}
-
-\begin{itemize}
-	\item \texttt{x}: dezarhivează (eXtract)
-	\item \texttt{v}: afișează ce dezarhivăm
-	\item \texttt{f nume_arhiva.tar}: numele arhivei ce se dezarhivează
-	\item \texttt{[<cale_destinatie>]}: opțional, locul unde dorim dezarhivarea
+  \item \texttt{c} (pentru \textit{create}): pentru a crea arhiva
+  \item \texttt{x} (pentru \textit{extract}): dezarhivează
+  \item \texttt{t} (pentru \textit{list}): listează conținut
+  \item \texttt{v} (pentru \textit{verbose}): arată ce se întămplă
+  \item \texttt{f nume_arhiva.tar} (pentru \textit{file}): numele arhivei
 \end{itemize}
 
 \begin{note}[Observație]
-
 \texttt{f} și \texttt{nume_arhiva.tar} reprezintă un singur parametru – astfel,
 când folosim
 \texttt{f} pentru a indica un fișier, acesta trebuie să se afle ultimul în lista
 de parametri
-
 \end{note}
 
-
-Cele mai folosite utilitare care realizează compresarea unui fișier sunt:
+Cele mai folosite utilitare în Linux care realizează comprimarea unui fișier sunt:
 
 \begin{itemize}
-	\item \cmd{gzip}: are o rapiditate mai ridicată, dar o rată de
-		compresare mai scăzută
-	\item \cmd{bzip2}: are o rapiditate mai scăzută, dar o rată de
-		compresare mai ridicată
+	\item \cmd{gzip}: are o viteză mai ridicată de compresie, dar o rată de
+          mai scăzută (fișiere rezultat mai mari)
+	\item \cmd{bzip2}: are viteză mai scăzută de compresie, dar o rată de
+		compresie mai ridicată
 \end{itemize}
 
-Comanda \cmd{tar} este capabilă să utilizeze oricare dintre programele de
+Comanda \cmd{tar} poate să utilizeze oricare dintre programele de
 compresie de mai sus și se folosește de parametrul \texttt{z} pentru gzip și
-\texttt{j} pentru bzip2 astfel:
+\texttt{j} pentru bzip2 ca mai jos:
 
-\begin{table}[htb]
-\begin{center}
-	\begin{tabular}{ p{0.1\textwidth} p{0.3\textwidth} p{0.3\textwidth}}
-	\toprule
-	 & \textbf{Compresie} & \textbf{Decompresie} \\
-	\midrule
-		Gzip & tar czvf fisier.tar.gz dir/ & tar xzvf fisier.tar.gz \\
-	\midrule
-		bzip2 & tar cjvf fisier.tar.bz2 dir/ & tar xjvf fisier.tar.bz2 \\
-	\bottomrule
-	\end{tabular}
-	\label{table:file-system-achivation-cmd}
-\end{center}
-\end{table}
+\begin{screen}
+student@uso:~$ tar czf 01-fs.tar.gz uso.git/labs/01-fs/
+student@uso:~$ tar cjf 01-fs.tar.bz2 uso.git/labs/01-fs/
+student@uso:~$ file 01-fs.tar.*
+01-fs.tar.bz2: bzip2 compressed data, block size = 900k
+01-fs.tar.gz:  gzip compressed data, last modified: Sun Sep 30 17:02:19 2018, from Unix
+\end{screen}
+
+În exemplul de mai sus am folosit, respectiv, opțiunea \texttt{z} (în cadrul opțiunii \texttt{czf}) pentru a comprima folosind \cmd{gzip}, și apoi opțiunea \texttt{j} (în cadrul opțiunii \texttt{cjf}) pentru a comprima folosind \cmd{bzip2}. Apoi am folosit comanda \cmd{file} pentru a verifica tipul fișierelor și am confirmat tipul de compresie aferent celor două fișiere rezultate.
 
 Există, de asemenea, posibilitatea folosirii și a altor opțiuni, în afară de
 cele de compresare și arhivare, cele mai utilizare fiind \texttt{-{}-preserve},
 care poate determina păstrarea drepturilor de acces la arhivare și la
-dezarhivare. Mai jos este prezentat un exemplu unde comanda \cmd{tar} este
-utilizată pentru compresie și decompresie:
-
-\begin{screen}
-[ubuntu@ubuntu:/tmp/q]$ ls
-f1.txt  f2.txt  f3.txt
-[ubuntu@ubuntu:/tmp/q]$ tar cvf arhiva.tar f*.txt
-f1.txt
-f2.txt
-f3.txt
-[ubuntu@ubuntu:/tmp/q]$ file arhiva.tar
-arhiva.tar: POSIX tar archive (GNU)
-[ubuntu@ubuntu:/tmp/q]$ gzip arhiva.tar
-[ubuntu@ubuntu:/tmp/q]$ ls
-arhiva.tar.gz  f1.txt  f2.txt  f3.txt
-[ubuntu@ubuntu:/tmp/q]$ file arhiva.tar.gz
-arhiva.tar.gz: gzip compressed data, was "arhiva.tar", from Unix, last modified: Thu Sep 20 11:37:30 2007
-[ubuntu@ubuntu:/tmp/q]$ ls
-arhiva.tar.gz  f1.txt  f2.txt  f3.txt
-[ubuntu@ubuntu:/tmp/q]$ mv arhiva.tar.gz fisier.txt
-[ubuntu@ubuntu:/tmp/q]$ file fisier.txt
-fisier.txt: gzip compressed data, was "arhiva.tar", from Unix, last modified: Thu Sep 20 11:37:30 2007
-[ubuntu@ubuntu:/tmp/q]$ ls
-f1.txt  f2.txt  f3.txt
-[ubuntu@ubuntu:/tmp/q]$ tar czvf new.tar.gz f*
-f1.txt
-f2.txt
-f3.txt
-[ubuntu@ubuntu:/tmp/q]$ ls
-f1.txt  f2.txt  f3.txt  new.tar.gz
-[ubuntu@ubuntu:/tmp/q]$ file new.tar.gz
-new.tar.gz: gzip compressed data, from Unix, last modified: Thu Sep 20 11:40:02 2007
-[ubuntu@ubuntu:/tmp/q]$ mkdir tmp
-[ubuntu@ubuntu:/tmp/q]$ mv new.tar.gz tmp/
-[ubuntu@ubuntu:/tmp/q]$ cd tmp/
-[ubuntu@ubuntu:/tmp/q/tmp]$ tar xvf new.tar.gz
-f1.txt
-f2.txt
-f3.txt
-[ubuntu@ubuntu:/tmp/q/tmp]$ ls
-f1.txt  f2.txt  f3.txt  new.tar.gz
-\end{screen}
+dezarhivare.
 
 \subsection{Backup}
 \label{sec:file-system-backup}
 
-Backup-ul este utilizat pentru a păstra într-un loc separat o copie a datelor ce
+Backup-ul este utilizat pentru a păstra într-un loc separat o copie a datelor, copie ce
 poate fi folosită pentru a le recupera în cazul în care, din diferite motive,
 suportul original nu mai poate fi folosit. Adesea omitem sau amânăm realizarea
 unei versiuni de backup a datelor, putând ajunge la pierderea informațiilor în
@@ -1468,7 +1291,7 @@ situații de defecțiune. De aceea, în ultimii ani sunt foarte populare soluți
 de backup automat în Cloud. Astfel, utilizatorii pot folosi soluții precum
 Google Drive, Dropbox, Microsoft OneDrive pentru a sincroniza automat conținutul
 directoarelor în care lucrează cu un spațiu de stocare cloud. Dacă utilizatorul
-lucrează pe mai multe dispozitive (desktop, laptop, mobil etc) poate fi
+lucrează pe mai multe dispozitive (desktop, laptop, mobil etc.) poate fi
 configurată sincronizarea tuturor acestor dispozitive cu cloud-ul, facilitând
 astfel transferul documentelor.
 
@@ -1478,7 +1301,7 @@ datele noastre sunt afectate de erori grave, datorită malware sau ștergerii
 accidentale, aceste erori se pot propaga și în Cloud, dar versiunile salvate
 anterior pe suporturi fizice distincte vor fi protejate.
 
-Tabelul următor prezintă câteva metode de backup și situațiile când sunt ele
+Tabelul~\ref{table:file-system-backup-cmd} prezintă câteva metode de backup și situațiile când sunt ele
 potrivite.
 
 \begin{table}[htb]
@@ -1515,6 +1338,175 @@ potrivite.
 \end{center}
 \end{table}
 
+Informații detaliate despre backup-uri periodice folosind \cmd{rsync} vor fi prezentate în \labelindexref{secțiunea}{sec:storage-backup}.
+
+\section{Redirectarea intrării sau ieșirii}
+\label{sec:file-system-redirect}
+
+Așa cum veți întâlni în \labelindexref{secțiunea}{sec:procese-fisiere-description}, o aplicație care rulează folosește niște intrări speciale (standard); în folosirea acestor intrări și a altor fișiere folosește descriptori de fișiere.
+
+Există 3 \textbf{fișiere speciale} utilizate de programele în execuție pentru a
+interacționa cu utilizatorii:
+
+\begin{itemize}
+  \item intrare standard (\textit{standard input}, \textit{stdin}): acesta reprezintă locul de unde
+		se citesc datele de intrare de către program (de obicei
+		tastatura)
+  \item ieșire standard (\textit{standard output}, \textit{stdout}): acesta este fișierul în care se
+		scriu datele de ieșire (de obicei este consola curentă)
+  \item ieșire de eroare standard (\textit{standard error}, \textit{stderr}): în acest fișier se scriu
+		mesajele de eroare de către program (de obicei tot în consola
+		curentă)
+\end{itemize}
+
+Un descriptor de fișier reprezintă un indice asociat unui fișier deschis de o
+aplicație. Cele 3 fișiere speciale de mai sus au următorii descriptori de
+fișier:
+
+\begin{itemize}
+  \item \texttt{stdin} are descriptorul cu indexul 0
+  \item \texttt{stdout} are descriptorul cu indexul 1
+  \item \texttt{stderr} are descriptorul cu indexul 2
+\end{itemize}
+
+Restul fișierelor deschise de aplicații au un descriptor de fișier mai mare sau
+egal cu 3. În C/C++ există 3 variabile de tipul \texttt{FILE *} cu numele \texttt{stdin}, \texttt{stdout}, \texttt{stderr}.
+Ele au același rol ca cele descrise mai sus și sunt folosite ca orice alte
+variabilă de tip \texttt{FILE *}.
+
+În unele situații, utilizatorul poate dori să modifice intrarea sau ieșirea
+pentru o aplicație. De exemplu, utilizatorul își poate dori ca în loc să obțină
+datele de intrare de la tastatură pentru un program, să le obțină dintr-un
+fișier. Aceste operații se pot realiza doar la nivelul descriptorilor. În
+shell sunt permise comenzi cu o sintaxă specială asupra descriptorilor
+standard modificați; pot fi întâlnite cazurile de redirectare din Tabelul~\ref{table:file-system-redirec-methods}.
+
+\begin{table}[htb]
+\caption{Metode te redirectare}
+\begin{center}
+	\begin{tabular}{ p{0.2\textwidth} p{0.2\textwidth} p{0.5\textwidth}}
+	\toprule
+		\textbf{Sursă} & \textbf{Destinație} & \textbf{Exemplu comandă} \\
+	\midrule
+                intrare (\textit{stdin}) & Fișier & \cmd{./program $<$ fișier_intrare} \\
+	\midrule
+                ieșire (\textit{stdout}) & Fișier & \cmd{./program $>$ fișier_ieșire} \\
+	\midrule
+                eroare (\textit{stderr}) & Fișier & \cmd{./program 2$>$ fișier_erori} \\
+	\midrule
+                eroare (\textit{stderr}) & iesire (stdout) & \cmd{./program 2$>$\&1} \\
+	\midrule
+                eroare \& ieșire & Fișier & \cmd{./program $>$ fișier_ieșire_și_erori 2$>$\&1} \\
+	\bottomrule
+	\end{tabular}
+	\label{table:file-system-redirec-methods}
+\end{center}
+\end{table}
+
+Pentru a redirecta ieșirea (către exteriorul programului) se folosește caracterul \texttt{$>$} (semnul
+\textit{mai mare}), în timp ce pentru a redirecta intrarea se folosește caracterul \texttt{$<$} (semnul
+\textit{mai mic}) (către program), iar pentru redirectarea ieșirii de erori se
+folosește descriptorul \texttt{2} de fișier urmat de caracterul \texttt{$>$}.
+
+Sintaxa \texttt{\&1} se folosește
+atunci când se dorește redirectarea către ieșirea standard (\textit{stdout}), astfel încât construcția \texttt{2$>$\&1} redirectează ieșirea de eroare standard către ieșirea standard. Astfel, dacă dorim redirectarea ieșirii de erori și a ieșirii standard către un
+fișier trebuie să redirectăm mai întâi ieșirea de erori către stdout
+(\texttt{2$>$\&1}) și apoi să redirectăm ieșirea standard într-un fișier
+(\file{fișier_erori_și_ieșiri}).
+
+Exemplu de redirectare a intrării:
+
+\begin{screen}
+student@uso:~$ mail gabriel < message.txt
+\end{screen}
+
+În comanda anterioară intrarea pentru comanda \cmd{mail} este redirectată din conținutul
+fișierului \file{message.txt}. Utilizatorului \texttt{gabriel} i se va trimite un email cu informațiile din
+fișier.
+
+Comanda următoare va scrie în fișierul listare toate fișierele și directoarele ce se află în directorul curent.
+
+\begin{screen}
+student@uso:~$ ls > listare
+student@uso:~$ cat listare
+01-fs.tar
+01-fs.tar.bz2
+01-fs.tar.gz
+Desktop
+Documents
+Downloads
+Music
+Pictures
+Public
+Templates
+Videos
+examples.desktop
+games
+listare
+uso.git
+vm-actions-log.txt
+\end{screen}
+
+Pentru a adăuga la sfârșitul fișierului rezultatul unei comenzi folosim operatorul $>>$:
+
+\begin{screen}
+student@uso:~$ date >> listare
+student@uso:~$ cat listare
+[...]
+vm-actions-log.txt
+duminica 30 septembrie 2018, 20:17:50 +0300
+\end{screen}
+
+Comanda de mai jos încearcă să copieze un fișier fără a spune unde dorește să-l
+copieze, comandă ce va genera o eroare care va fi redirectată în fișierul \file{errors.out}.
+
+\begin{screen}
+student@uso:~$ cp listare 2> errors.out
+student@uso:~$ cat errors.out
+cp: missing destination file operand after 'listare'
+Try 'cp --help' for more information.
+\end{screen}
+
+Comanda următoare va scrie atât erorile cât și rezultatele comenzii \cmd{strace ls} în fișierul \file{strace-all.out}:
+
+\begin{screen}
+student@uso:~$ strace ls > strace-all.out 2>&1
+student@uso:~$ cat strace-all.out
+execve("/bin/ls", ["ls"], 0x7ffd95189350 /* 36 vars */) = 0
+brk(NULL)                               = 0x5578b9d96000
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=91329, ...}) = 0
+[...]
+\end{screen}
+
+Tabelul~\ref{table:file-system-redirect-special} prezintă câteva redirectări folosind fișiere speciale:
+
+\begin{table}[htb]
+\caption{Redirectări folosind fișiere speciale}
+\begin{center}
+	\begin{tabular}{ p{0.3\textwidth} p{0.5\textwidth}}
+	\toprule
+		\textbf{Comanda} & \textbf{Efect} \\
+	\midrule
+                \cmd{./program 2$>$ /dev/null} & mesajele de la ieșirea de eroare standard nu sunt
+		afișate \\
+	\midrule
+                \cmd{./program $>$ /dev/null 2$>$\&1} & nici un mesaj nu este afișat \\
+	\midrule
+                \cmd{$>$ new_file} & creează un fișier gol cu numele \file{new_file} \\
+	\midrule
+                \cmd{cat /dev/null $>$ new_file} & creează un fișier cu același
+                conținut ca \file{/dev/null}, adică un fișier gol, indentic ca mai sus \\
+	\bottomrule
+	\end{tabular}
+	\label{table:file-system-redirect-special}
+\end{center}
+\end{table}
+
+Detalii despre internele redirectării și ce se întâmplă la nivelul unei aplicații găsiți în \labelindexref{secțiunea}{sec:procese-fisiere-redirectare}.
+
 \section{Tipuri de sisteme de fișiere}
 \label{sec:file-system-fs-types}
 
@@ -1525,7 +1517,7 @@ care folosesc partiții multiple pentru mai multe sisteme de operare.
 
 Pentru mai multe informații despre crearea, montarea și repararea unui sistem de
 fișiere, precum și lucrul cu partiții, citiți
-\labelindexref{capitolul}{chapter:storage} În tabelul de mai jos se găsesc unele
+\labelindexref{capitolul}{chapter:storage}. În Tabelul~\ref{table:file-system-backup-fs-types} de mai jos se găsesc unele
 dintre cele mai importante sisteme de fișiere utilizate în prezent, alături de
 sistemele de operare în care operează:
 
@@ -1539,13 +1531,13 @@ sistemele de operare în care operează:
 	\midrule
 		FAT32 & Nativ & Nativ & Nativ \\
 	\midrule
-		NTFS & Nativ (dupa WinNT) & prin ntfs-3g[1] & prin ntfs-3g \\
+		NTFS & Nativ (dupa WinNT) & prin ntfs-3g & prin ntfs-3g \\
 	\midrule
-		Ext2/Ext3 & Driver third-party[2] & Nativ & - \\
-	\midrule
-		ReiserFS & Aplicație third-party[3] & Nativ & - \\
+		Ext2/Ext3/Ext4 & Driver third-party & Nativ & - \\
 	\midrule
 		HFS+ & - & Nativ & Nativ \\
+        \midrule
+                APFS & - & - & Nativ \\
 	\midrule
 		ISO9660 & Nativ & Nativ & Nativ \\
 	\midrule
@@ -1556,12 +1548,10 @@ sistemele de operare în care operează:
 \end{center}
 \end{table}
 
-Termenul “nativ” semnifică faptul că suportul este oferit de driverele ce
+Termenul ,,nativ'' semnifică faptul că suportul este oferit de driverele ce
 însoțesc sistemul de operare.
 
-Sistemele de fișiere pot fi clasificate după locul în care datele sunt stocate.
-
-Tabelul următor prezintă succint această clasificare:
+Sistemele de fișiere pot fi clasificate după locul în care datele sunt stocate. Tabelul~\ref{table:file-system-classes} prezintă succint această clasificare:
 
 \begin{table}[htb]
 \caption{Clasificarea sistemelor de fișiere după suportul datelor}
@@ -1570,19 +1560,21 @@ Tabelul următor prezintă succint această clasificare:
 	\toprule
 		\textbf{Tip} & \textbf{Exemplu} & \textbf{Descriere} \\
 	\midrule
-		sisteme de fișiere cu suport fizic & 	FAT32, NTFS, Ext3, ReiserFS, HFS+ & se
+		sisteme de fișiere cu suport fizic & 	FAT32, NTFS, Ext4, APFS & se
 		regăsesc de obicei pe un mediu de stocare \\
 	\midrule
-		sisteme de fișiere virtuale & 	procfs, devfs SSHFS & conțin fișiere/date generate
+		sisteme de fișiere virtuale & procfs, devfs SSHFS & conțin fișiere/date generate
 		de SO (informații despre sistem) sau de o altă componentă software (alte surse) \\
 	\midrule
-		sisteme de fișiere pentru rețea & 	NFS, SMB & utilizate pentru accesul la
+		sisteme de fișiere pentru rețea & NFS, SMB & utilizate pentru accesul la
 		fișiere aflate în rețea \\
 	\bottomrule
 	\end{tabular}
 	\label{table:file-system-fs-classes}
 \end{center}
 \end{table}
+
+Sistemele de fișiere virtuale (precum \texttt{procfs}) sunt sisteme care nu au suport fizic pe disc. Accesul prin comenzi la aceste sisteme de fișiere duce de obicei la date care se găsesc în memorie. Despre sistemul de fișiere \texttt{procfs} vor fi prezentate detalii în \labelindexref{secțiunea}{sec:procese-proc}.
 
 \subsection{Integritatea datelor}
 \label{sec:file-system-fs-integrity}
@@ -1599,15 +1591,13 @@ prevenirea atacurilor intenționate asupra datelor și de asemenea necesită
 sprijinul sistemului de fișiere.
 
 Un exemplu de metodă prin care sistemele de fișiere pot asigura integritatea
-datelor se referă la calcularea unei sume de control (\textit{check-sum}).
+datelor se referă la calcularea unei sume de control (\textit{checksum}).
 Pentru un anumit set de date, o sumă de control este un număr care descrie pe
 scurt acel set, diferențiindu-l suficient de mult de un set foarte similar dar
 un pic diferit. De exemplu, o sumă de control poate consta efectiv în însumarea
 valorilor numerice asociate cu caracterele respective într-un cod, precum
 valorile lor numerice din codul ASCII. Dacă se modifică o literă din greșeală,
-suma va diferi și eroarea va fi detectată. ZFS este unul dintre sistemele de
-fișiere renumit pentru performanțele sale în asigurarea integrității datelor [1]
-[2].
+suma va diferi și eroarea va fi detectată.
 
 Sistemul de fișiere trebuie să fie capabil să păstreze integritatea datelor și
 în situația unui eșec (failure). În cele mai multe cazuri această
@@ -1634,7 +1624,7 @@ Atunci când alegem un sistem de fișiere, criteriile cele mai căutate sunt:
 \begin{itemize}
 	\item disponibilitatea: dacă sistemul respectiv poate fi folosit în mai
 		multe sisteme de operare, sau doar în unul singur;
-	\item gradul de siguranță: dacă asigură jurnalizare sau nu – majoritatea
+	\item gradul de siguranță: dacă asigură jurnalizare sau nu -- majoritatea
 		sistemelor din prezent folosesc jurnalizarea, alte măsuri luate
 		pentru a permite integritatea datelor;
 	\item restricții speciale date de modul în care datele din sistemul de
@@ -1646,7 +1636,7 @@ Atunci când alegem un sistem de fișiere, criteriile cele mai căutate sunt:
 		tipul suportului de stocare, ori de dimensiunea fișierelor etc.
 \end{itemize}
 
-Tabelul următor realizează o analiză sumară a caracteristicilor sistemelor de
+Tabelul~\ref{table:file-system-fs-details} realizează o analiză sumară a caracteristicilor sistemelor de
 fișiere. Unitatea TiB reprezintă un tebibyte, adică $2^{40}$ octeți, iar un EiB
 reprezintă un exbibyte, adică $2^{60}$ octeți.
 
@@ -1681,14 +1671,10 @@ reprezintă un exbibyte, adică $2^{60}$ octeți.
 		stocare. Este adecvat și pentru stocarea datelor critice,
 		datorită preciziei ridicate ale marcajelor temporale. \\
 	\midrule
-		ReiserFS & Linux & 8 TiB & da & Cunoscut pentru o viteză mai
-		mare decât ext3-ul la lucrul cu multe fișiere de dimensiune mică
-		\\
-	\midrule
 		HFS+ & Mac OS / Linux & 16 EiB & da* & * în Linux, HFS+ este
 		suportat fără jurnalizare \\
 	\midrule
-		AppleFS & MacOS, iOS & 8 EiB & da & Este optimizat pentru
+		APFS & MacOS, iOS & 8 EiB & da & Este optimizat pentru
 		dispozitivele de stocare tip flash și solid drive, și pune
 		accentul pe criptare. \\
 	\midrule
@@ -1705,83 +1691,10 @@ reprezintă un exbibyte, adică $2^{60}$ octeți.
 \end{center}
 \end{table}
 
-\subsection{Numele fișierelor}
-\label{sec:file-system-fs-names}
-
-Deși pe dispozitivul de stocare există un spațiu bine definit ocupat de către
-fișiere, utilizatorul nu poate adresa direct poziția fizică a unui fișier pe
-dispozitivul de stocare. Astfel, pentru a adresa un fișier, utilizatorii
-folosesc \textbf{nume}, exprimate prin caractere. Fiecare sistem de fișiere
-prezintă o serie de restricții în alegere numelor.
-
-\textbf{Caracterele} ce alcătuiesc numele fișierelor sunt codificate după
-standardul Unicode (de obicei UTF-8 sau UTF-16)
-
-În subcapitolul privind atributele fișierelor, am discutat despre faptul că
-majoritatea fișierelor au o “extensie”, ce ajută la identificarea tipului
-acestora. Extensia are de obicei 3 litere și se găsește la finalul numelui:
-“nume.ext”. Sistemele de operare tip Windows folosesc extensia pentru a ști cu
-ce aplicație să deschidă fișierele, în tip ce în sistemele de operare tip Linux
-extensia lipsește, identificarea bazându-se integral pe conținutul fișierului.
-
-\begin{table}[htb]
-\caption{Restricții asupra numelor fișierelor}
-\begin{center}
-	\begin{tabular}{ p{0.1\textwidth} p{0.2\textwidth} p{0.1\textwidth} p{0.1\textwidth} p{0.4\textwidth} }
-	\toprule
-		\textbf{Sistem de fișiere} & \textbf{Case sensitive} & \textbf{Lungime nume} &
-		\textbf{Lungime cale} & \textbf{Observații} \\
-	\midrule
-		FAT32 & nu & “8.3” sau 255 caractere cu LFN & nedefinit &
-		Inițial limitat la 8 caractere pentru numele fișierului și 3
-		caractere pentru extensie, FAT32 a căpătat suport și pentru nume
-		lungi Long Filename – LFN) – pentru un fișier, FAT32 reține atât
-		numele lung cât și versiunea scurta în format 8.3 \\
-	\midrule
-		NTFS & da[5] & 254 caractere + “.” & 32767 octeți & Orice
-		caracter Unicode poate fi folosit, mai puțin caracterele: NULL,
-		· " / \ * ? < > | : (utilizate în general pentru adresarea
-		fișierelor) \\
-	\midrule
-		Ext3, Ext4 & da & 255 octeți & nedefinit & Orice byte mai puțin
-		NULL și “/” poate fi folosit în numele fișierului \\
-	\midrule
-		ReiserFS & da & 4,032 octeți / 255 caractere & nedefinit & Orice
-		octet mai puțin NULL poate fi folosit în numele fișierului \\
-	\midrule
-		HFS+ & nu[6] & 255 caractere UTF-16 & nedefinit & Orice caracter
-		Unicode este permis, inclusiv NULL. \\
-	\midrule
-		AppleFS & nu & 255 caractere UTF-8 & nedefinit & Orice caracter
-		Unicode 9.0 din UTF-8 \\
-	\midrule
-		ISO9660 & nu & “8.3” sau Joliet: 128 octeți & adâncime maximă a
-		căii: 8 niveluri & Există mai multe niveluri pentru standard,
-		fiecare cu restricțiile lui \\
-	\midrule
-		UDF & da & 255 octeți & 1023 octeți & Orice octet mai puțin NULL
-		poate fi folosit în numele fișierului \\
-	\bottomrule
-	\end{tabular}
-	\label{table:file-system-name-length}
-\end{center}
-\end{table}
-
-Ne reamintim că pentru a vedea de ce tip este un fișier in Linux folosim
-următoarea comandă: \cmd{file <nume_fisier>}
-
-\textbf{Exemplu :}
-
-\begin{screen}
-$ file /boot/kernel26.img
-/boot/kernel26.img: gzip compressed data, from Unix, last modified: Sat Mar 3 20:28:37 2018, max compression
-\end{screen}
-
-\section{Studii de caz}
-\label{sec:file-system-case}
-
-\subsection{Comenzi pentru lucrul cu fișiere în Windows}
+\section{Anexă: Comenzi pentru lucrul cu fișiere în Windows}
 \label{sec:file-system-case-windows}
+
+Tabelul~\ref{} prezintă comenzile echivalente în Windows pentru operațiile de lucru cu sistemul de fișiere. Acestea pot fi folosite în prompt-urile Windows precum PowerShell sau Command Prompt.
 
 \begin{table}[htb]
 \begin{center}
@@ -1789,41 +1702,41 @@ $ file /boot/kernel26.img
 	\toprule
 		\textbf{Comanda Linux} & \textbf{Comanda Windows} & \textbf{Descriere} \\
 	\midrule
-		comanda -{}-help & comanda /? & afișează informații despre comandă \\
+                \cmd{comanda -{}-help} & \cmd{comanda /?} & afișează informații despre comandă \\
 	\midrule
-		cd & cd & schimbă directorul curent \\
+                \cmd{cd} & \cmd{cd} & schimbă directorul curent \\
 	\midrule
-		pwd & chdir & afișează directorul curent \\
+                \cmd{pwd} & \cmd{chdir} & afișează directorul curent \\
 	\midrule
-		clear & cls & șterge ecranul consolei curente \\
+                \cmd{clear} & \cmd{cls} & șterge ecranul consolei curente \\
 	\midrule
-		cp & copy & copiază un fișier \\
+                \cmd{cp} & \cmd{copy} & copiază un fișier \\
 	\midrule
-		rm & del & șterge un fișier \\
+                \cmd{rm} & \cmd{del} & șterge un fișier \\
 	\midrule
-		ls & dir & afișează conținutul directorului curent \\
+                \cmd{ls} & \cmd{dir} & afișează conținutul directorului curent \\
 	\midrule
-		vim & edit & editează un fișier text \\
+                \cmd{vim} & \cmd{edit} & editează un fișier text \\
 	\midrule
-		exit & exit & închide shell-ul curent \\
+                \cmd{exit} & \cmd{exit} & închide shell-ul curent \\
 	\midrule
-		diff & fc & compară două fișiere și afișează diferențele între ele \\
+                \cmd{diff} & \cmd{fc} & compară două fișiere și afișează diferențele între ele \\
 	\midrule
-		find & find & caută fișiere \\
+                \cmd{find} & \cmd{find} & caută fișiere \\
 	\midrule
-		mkfs (mke2fs) & format & formatează un disc \\
+                \cmd{mkfs (mke2fs)} & \cmd{format} & formatează un disc \\
 	\midrule
-		free & mem & afișează informații despre memoria liberă și cea ocupată \\
+                \cmd{free} & \cmd{mem} & afișează informații despre memoria liberă și cea ocupată \\
 	\midrule
-		mkdir & mkdir & creează un nou director \\
+                \cmd{mkdir} & \cmd{mkdir} & creează un nou director \\
 	\midrule
-		mv & move & mută un fișier \\
+                \cmd{mv} & \cmd{move} & mută un fișier \\
 	\midrule
-		mv & ren & redenumește un fișier \\
+                \cmd{mv} & \cmd{ren} & redenumește un fișier \\
 	\midrule
-		date & time & afișează ora sistemului \\
+                \cmd{date} & \cmd{time} & afișează ora sistemului \\
 	\midrule
-		diff & fc & afișează diferențele dintre două fișiere \\
+                \cmd{diff} & \cmd{fc} & afișează diferențele dintre două fișiere \\
 	\bottomrule
 	\end{tabular}
 	\label{table:file-system-case-study}
