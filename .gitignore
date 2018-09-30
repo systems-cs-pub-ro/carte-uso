@@ -18,6 +18,7 @@
 *.idx
 *.ilg
 *.ind
+*.nlo
 
 # Main PDF file
 /book/uso.pdf
