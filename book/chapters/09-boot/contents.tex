@@ -565,6 +565,7 @@ după rularea comenzii update-grub. Opțiunile de mai sus reprezintă:
 	\item GRUB_TIMEOUT: după cât timp de la afișarea ecranului GRUB, timp în
 		care utilizatorul nu a atins nici o tastă, se bootează în
 		optiunea implicită
+%ADD GRUB_TIMOUT -1
 	\item GRUB_TIMEOUT_STYLE: precizează cum va fi afișat ecranul de boot
 		până la expirarea timpului de afișare; valoarea "hidden"
 		înseamnă că nu se afișează nici un ecran, și după 10 secunde se
@@ -944,8 +945,9 @@ TODO opțiuni gparted
 
 Pentru scrierea de informații pe stick-ul USB, descărcăm un fișier .ISO cu
 distribuția Linux dorită. Apoi folosim utilitarul unetbootin (pe orice
-platformă)[1], cu interfață grafică. Înainte de folosirea sa, trebuie să fie
-montat stick-ul USB, fie automat fie printr-o comandă de forma
+platformă)\footnote{\url{https://unetbootin.github.io}}, cu interfață grafică.
+Înainte de folosirea sa, trebuie să fie montat stick-ul USB, fie automat fie
+printr-o comandă de forma
 
 \begin{screen}
 student@uso:~$ sudo mkdir /mnt/sdb1
@@ -956,7 +958,9 @@ student@uso:~$ sudo mount /dev/sdb1 /mnt/sdb1
 destinația unde este montat stick-ul, adică /mnt/sdb1 în cazul nostru.
 
 O alternativă, care permite crearea unui stick USB cu Linux folosind Windows
-este folosirea utilitarului Rufus[2] urmărind indicațiile de aici[3].
+este folosirea utilitarului Rufus\footnote{\url{https://rufus.akeo.ie}} urmărind
+indicațiile de
+aici\footnote{\url{https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-stick-on-windows}}.
 
 \section{Anexă: Crearea unui stick USB bootabil cu Windows}
 \label{sec:boot-usb-win}
@@ -965,7 +969,8 @@ Pentru crearea unui stick bootabil cu Windows, pregătim mediul de instalare
 (stick-ul USB) în mod similar cu instalarea Linux, cu o diferență: partiția
 trebuie să fie formatată NTFS.
 
-Apoi se urmează pașii de mai jos, detaliați și aici[4]:
+Apoi se urmează pașii de mai jos, detaliați și
+aici\footnote{\url{https://askubuntu.com/a/487970}}:
 
 \begin{enumerate}
 	\item Se montează fișierul ISO imagine de Windows.
@@ -1027,9 +1032,10 @@ Acum putem folosi stick-ul pentru a boota Windows.
 \label{sec:boot-grubconfig}
 
 Pentru a demonstra o configurare particulară pentru GRUB vom descrie instalarea
-UDPcast pe disc pentru a putea fi bootat prin GRUB. UDPCast[5] este o imagine
-bootabilă de CD care permite transferul prin rețea al unui disc de la o sursă
-către mai multe destinații, asigurând astfel o clonare a discului.
+UDPcast pe disc pentru a putea fi bootat prin GRUB.
+UDPCast\footnote{\url{http://www.udpcast.linux.lu}} este o imagine bootabilă de
+CD care permite transferul prin rețea al unui disc de la o sursă către mai multe
+destinații, asigurând astfel o clonare a discului.
 
 Pentru a adăuga o intrare în GRUB pentru UDPCast și pentru a boota astfel în
 GRUB fără a fi nevoie de un stick USB sau un CD-ROM bootabil, urmăm pașii:
@@ -1139,7 +1145,8 @@ opțiuni de boot sunt folosite pentru un sistem de operare, sunt reținute într
 zonă numită BCD (Boot Configuration Data), zonă ce poate fi editată folosind
 BCDEdit.exe, un utilitar inclus în Windows.
 
-Detalii despre procesul de boot în Windows găsiți în documentație[6].
+Detalii despre procesul de boot în Windows găsiți în
+documentație\footnote{\url{https://docs.microsoft.com/en-us/windows-hardware/drivers/devtest/introduction-to-boot-options}}.
 
 \section{Concluzii}
 \label{sec:boot-colcuzii}
