@@ -21,16 +21,16 @@ all: $(PDF) clean-tmp
 
 .PHONY: $(PDF)
 $(PDF):
-	TEXINPUTS=$(STY_DIR)//: $(PDFLATEX) -interaction=scrollmode --src-specials $(BASENAME)
+	TEXINPUTS=$(STY_DIR)//: $(PDFLATEX) --shell-escape -interaction=scrollmode --src-specials $(BASENAME)
 	$(BIBTEX) $(BASENAME)
 	$(MAKEINDEX) $(NLO) -s $(IST) -o $(NLS)
-	TEXINPUTS=$(STY_DIR)//: $(PDFLATEX) -interaction=scrollmode --src-specials $(BASENAME)
+	TEXINPUTS=$(STY_DIR)//: $(PDFLATEX) --shell-escape -interaction=scrollmode --src-specials $(BASENAME)
 	$(MAKEINDEX) $(IDX)
 	@echo; echo; echo
 	@echo "****************************************************"
 	@echo "***** Ignore errors above. Check errors below. *****"
 	@echo
-	TEXINPUTS=$(STY_DIR)//: $(PDFLATEX) -interaction=scrollmode --src-specials $(BASENAME)
+	TEXINPUTS=$(STY_DIR)//: $(PDFLATEX) --shell-escape -interaction=scrollmode --src-specials $(BASENAME)
 
 .PHONY: clean-tmp
 clean-tmp:

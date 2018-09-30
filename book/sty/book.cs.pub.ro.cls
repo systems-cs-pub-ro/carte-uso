@@ -513,3 +513,5 @@ frame=single,rulecolor=\color{red},framerule=0.8mm}
   \hspace{1em}
   \thispagestyle{empty}
 }
+
+\usepackage{svg}

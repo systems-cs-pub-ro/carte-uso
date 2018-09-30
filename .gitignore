@@ -21,3 +21,6 @@
 
 # Main PDF file
 /book/uso.pdf
+
+# Converted svg files
+/book/svg-inkscape/
