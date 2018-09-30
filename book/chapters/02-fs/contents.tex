@@ -213,9 +213,9 @@ controla mai bine informațiile plătim un cost de 10.000 / 1.000.000 = 1\%.
 
 Prezentăm în continuare exemple concrete de organizare a fișierelor în sistemele de operare moderne.
 
-În Tabelul~\ref{table:file-system-linux-fs} este prezentată structura ierarhică în Linux.
+În \labelindexref{Tabelul}{table:file-system-linux-fs} este prezentată structura ierarhică în Linux.
 
-\begin{table}[htb]
+\begin{table}[!htb]
 \caption{Ierarhia într-un sistem de fișiere din mediul Linux}
 \begin{center}
 	\begin{tabular}{ p{0.25\textwidth} p{0.75\textwidth} }
@@ -350,7 +350,7 @@ Dacă se modifică sistemul de fișiere de pe o partiție, litera asignată part
 va rămâne aceeași. Pe o partiție se poate afla la un moment dat un singur sistem
 de fișiere.
 
-În Tabelul~\ref{table:file-system-compar} de mai jos avem o comparație între căile importante din sistemele de
+În \labelindexref{Tabelul}{table:file-system-compar} de mai jos avem o comparație între căile importante din sistemele de
 operare cele mai cunoscute.
 
 \begin{table}[htb]
@@ -951,7 +951,7 @@ drwxrwxr-x 2 student student 4096 sep 30 17:32 games/heroes/3/nighon/mutare
 
 În exemplul de mai sus am creat directorul \file{games/} iar în cadrul său am creat subdirectoarele \file{warcraft/} și \file{lol/}. Comanda \cmd{ls} afișează conținutul unui diretor; dacă dorim să afișăm informații despre director în sine folosim comanda opțiunea \texttt{-d} a comenzii \cmd{mkdir}; o formă frecventă este folosirea opțiunii \texttt{-ld} pentru afișarea informațiilor despre director în format lung, cu atribute ale directorului. În partea finală a exemplului am folosit opțiunea \texttt{-p} a comenzii \cmd{mkdir} pentru a crea un director cu toate directoarele părinte necesare chiar dacă acestea nu există.
 
-În Tabelul~\ref{table:file-system-file-creation} sunt sumarizate comenzile de creare a tipurilor de intrări în sistemul de fișiere.
+În \labelindexref{Tabelul}{table:file-system-file-creation} sunt sumarizate comenzile de creare a tipurilor de intrări în sistemul de fișiere.
 
 \begin{table}[htb]
 \caption{Comenzi pentru crearea intrărilor în sistemul de fișere}
@@ -1333,10 +1333,11 @@ datele noastre sunt afectate de erori grave, datorită malware sau ștergerii
 accidentale, aceste erori se pot propaga și în Cloud, dar versiunile salvate
 anterior pe suporturi fizice distincte vor fi protejate.
 
-Tabelul~\ref{table:file-system-backup-cmd} prezintă câteva metode de backup și situațiile când sunt ele
+\labelindexref{Tabelul}{table:file-system-backup-cmd} prezintă câteva metode de backup și situațiile când sunt ele
 potrivite.
 
 \begin{table}[htb]
+\caption{Metode pentru backup}
 \begin{center}
 	\begin{tabular}{ p{0.2\textwidth} p{0.7\textwidth} }
 	\toprule
@@ -1415,10 +1416,10 @@ pentru o aplicație. De exemplu, utilizatorul își poate dori ca în loc să ob
 datele de intrare de la tastatură pentru un program, să le obțină dintr-un
 fișier. Aceste operații se pot realiza doar la nivelul descriptorilor. În
 shell sunt permise comenzi cu o sintaxă specială asupra descriptorilor
-standard modificați; pot fi întâlnite cazurile de redirectare din Tabelul~\ref{table:file-system-redirec-methods}.
+standard modificați; pot fi întâlnite cazurile de redirectare din \labelindexref{Tabelul}{table:file-system-redirec-methods}.
 
 \begin{table}[htb]
-\caption{Metode te redirectare}
+\caption{Metode de redirectare}
 \begin{center}
 	\begin{tabular}{ p{0.2\textwidth} p{0.2\textwidth} p{0.5\textwidth}}
 	\toprule
@@ -1517,7 +1518,7 @@ fstat(3, {st_mode=S_IFREG|0644, st_size=91329, ...}) = 0
 [...]
 \end{screen}
 
-Tabelul~\ref{table:file-system-redirect-special} prezintă câteva redirectări folosind fișiere speciale.
+\labelindexref{Tabelul}{table:file-system-redirect-special} prezintă câteva redirectări folosind fișiere speciale.
 
 \begin{table}[htb]
 \caption{Redirectări folosind fișiere speciale}
@@ -1555,12 +1556,12 @@ care folosesc partiții multiple pentru mai multe sisteme de operare.
 Pentru mai multe informații despre crearea, montarea și repararea unui sistem de
 fișiere, precum și lucrul cu partiții, citiți
 \labelindexref{Capitolul}{chapter:storage}. În
-Tabelul~\ref{table:file-system-backup-fs-types} de mai jos se găsesc unele
+\labelindexref{Tabelul}{table:file-system-backup-fs-types} de mai jos se găsesc unele
 dintre cele mai importante sisteme de fișiere utilizate în prezent, alături de
 sistemele de operare în care operează.
 
 \begin{table}[htb]
-\caption{Sisteme de operare și sisteme de fișiere suportate}
+\caption{Sisteme de operare și sisteme de fișiere}
 \begin{center}
 	\begin{tabular}{ p{0.2\textwidth} p{0.2\textwidth} p{0.2\textwidth} p{0.3\textwidth} }
 	\toprule
@@ -1590,7 +1591,7 @@ Termenul ,,nativ'' semnifică faptul că suportul este oferit de driverele ce
 însoțesc sistemul de operare.
 
 Sistemele de fișiere pot fi clasificate după locul în care datele sunt stocate.
-Tabelul \labelindexref{Tabelul}{table:file-system-fs-classes} prezintă succint
+\labelindexref{Tabelul}{table:file-system-fs-classes} prezintă succint
 această clasificare.
 
 \begin{table}[htb]
@@ -1680,7 +1681,7 @@ Atunci când alegem un sistem de fișiere, criteriile cele mai căutate sunt:
 		tipul suportului de stocare, ori de dimensiunea fișierelor etc.
 \end{itemize}
 
-Tabelul~\ref{table:file-system-fs-details} realizează o analiză sumară a caracteristicilor sistemelor de
+\labelindexref{Tabelul}{table:file-system-fs-details} realizează o analiză sumară a caracteristicilor sistemelor de
 fișiere. Unitatea TiB reprezintă un tebibyte, adică $2^{40}$ octeți, iar un EiB
 reprezintă un exbibyte, adică $2^{60}$ octeți.
 
@@ -1738,9 +1739,10 @@ reprezintă un exbibyte, adică $2^{60}$ octeți.
 \section{Anexă: Comenzi pentru lucrul cu fișiere în Windows}
 \label{sec:file-system-case-windows}
 
-Tabelul~\ref{table:file-system-linux-windows} prezintă comenzile echivalente în Windows pentru operațiile de lucru cu sistemul de fișiere. Acestea pot fi folosite în prompt-urile Windows precum PowerShell sau Command Prompt.
+\labelindexref{Tabelul}{table:file-system-linux-windows} prezintă comenzile echivalente în Windows pentru operațiile de lucru cu sistemul de fișiere. Acestea pot fi folosite în prompt-urile Windows precum PowerShell sau Command Prompt.
 
 \begin{table}[htb]
+\caption{Echivalențe comenzi Linux și Windows}
 \begin{center}
 	\begin{tabular}{ p{0.1\textwidth} p{0.2\textwidth} p{0.3\textwidth} }
 	\toprule
