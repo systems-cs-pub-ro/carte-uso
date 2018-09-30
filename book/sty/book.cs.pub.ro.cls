@@ -345,14 +345,14 @@ frame=single,rulecolor=\color{red},framerule=0.8mm}
 % To get the actual ^ sign in the environment
 % you need to use: ^\verb+^+^ (yes, it's long but extremely rare)
 % optional parameter: font size (default: normal)
-\lstnewenvironment{screen}[1][\footnotesize]
+\lstnewenvironment{screen}[1][]
 {
 \definecolor{screentext}{rgb}{0,0,0}
 \definecolor{screenback}{rgb}{0.87,0.87,1}
 \color{screentext}
 \lstset{
 	numberstyle=\scriptsize,
-	basicstyle=\ttfamily#1,
+	basicstyle=\ttfamily\footnotesize,
 	numbers=left,
 	%numbersep=2mm,
 	breaklines=true,
@@ -368,7 +368,7 @@ frame=single,rulecolor=\color{red},framerule=0.8mm}
 	breakindent=0pt,
 	escapechar=^,
 	language=,
-	caption=,
+	caption=#1,
 } % end of lstset
 } % end of begin{env}
 {\vspace{-0.7em}}
