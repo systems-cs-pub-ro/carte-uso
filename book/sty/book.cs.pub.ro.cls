@@ -503,6 +503,9 @@ frame=single,rulecolor=\color{red},framerule=0.8mm}
 \renewcommand{\cftsubsecindent}{4.8 em}
 \renewcommand{\cftsubsecnumwidth}{3.7 em}
 
+% start chapter index from 0
+\setcounter{chapter}{-1}
+
 % hack - we don't like this, but we want to sleep more
 % creates blank page with centered number in footer
 \newcommand{\blankpage}{
