@@ -1,1 +1,1132 @@
 \chapter{Automatizarea sarcinilor}
+\label{chapter:script}
+
+În utilizarea și administrarea sistemului de operare sau al unei rețele sau
+infrastructuri informatice mai ample, avem adesea acțiuni pe care le repetăm.
+Fie că avem de compilat o aplicație, de pornit o mașină virtuală, de prelucrat
+datele dintr-o bază de date, de testat o aplicație desktop, mobilă sau web, de
+generat un raport de folosire a rețelei, este util să avem moduri prin care să
+automatizăm aceste aceste acțiuni.
+
+Automatizarea unei acțiuni înseamnă executarea acesteia fără intermedierea unei
+persoane, fără ca aceasta să fie interactivă. O acțiune interactivă solicită
+intervenția utilizatorului în vreme ce o acțiune neinteractivă nu are nevoie de
+intervenția utilizatorului. Automatizarea înseamnă eliminarea sau înlocuirea
+părților interactive dintr-o acțiune sau un set de acțiuni.
+
+Un exemplu de automatizare este asigurat de utilitarul Make. Fără utilitarul
+Make, un dezvoltator ar trebui să compileze toate fișierele obiect, apoi să le
+link-editeze împreună cu biblioteci și eventual să le compună cu alte fișiere
+într-un pachet software. Folosind Make și fișiere Makefile, dezvoltatorul
+automatizează procesul și permite ca toți pașii să fie executați la rularea
+comenzii make. Mai mult, utilizatorul poate să nu ruleze comanda make, ci
+rularea poate fi declanșată la un moment de timp sau la un alt eveniment; este
+cazul proceselor de tip nightly build de care vom discuta.
+
+Un alt exemplu de automatizare, de această dată la nivelul unui administrator de
+data, este crearea de mașini virtuale. Dacă un administrator are nevoie să
+creeze sute de mașini virtuale, nu le va crea pe rând, interactiv. Ar dura prea
+mult și ar fi repetitiv și plictisitor. Administratorul va automatiza procesul
+creării unei mașini virtuale și apoi va automatiza crearea mai multor mașini
+virtuale. În final prin rularea unei singure comenzi vor fi create toate
+mașinile virtuale.
+
+Un utilizator tehnic, în special unul care are rol administrativ într-o
+infrastructură, are nevoie de cunoștințe și abilități de automatizare pentru a
+își eficientiza timpul de lucru. Un utilizator care face mereu aceleași acțiuni
+în mod repetat va consuma timp care ar putea fi investit în alte acțiuni. În
+momentul când automatizează acțiuni, acel timp de acțiuni repetitive va putea fi
+folosit în acțiuni creative. Acțiunile creative nu pot fi automatizate, însă
+cele repetitive da, și un utilizator înțelept le automatizează pe ultimele ca să
+aibă cât mai multă energie și timp pentru celelalte. Într-o notă mai amuzantă,
+după spusele unui prieten, un administrator de infrastructură informatică ar
+trebui plătit cu atât mai bine cu cât stă mai mult timp degeaba: înseamnă că
+acțiunile uzuale sunt automatizate iar cele critice apar rar și sunt bine
+tratate.
+
+Termenul de automatizare este folosit în sens mai larg și la domenii diferite de
+domeniul IT: irigații automate, folosirea de roboți pentru automatizarea creării
+de componente, mașini autonome. Oriunde este nenecesară intervenția unei
+persoane în execuția unei acțiuni, spunem că avem automatizare. Automatizarea va
+necesita în continuare controlul din partea unei persoane, dar partea de
+execuție nu.
+
+În domeniul IT, termenul de automatizare este asociat de obicei cu noțiunea de
+scripting. Acțiunea se mai numește “a scripta”. Acest lucru întrucât acțiunile
+automatizate sunt formate din comenzi și instrucțiuni care se trec într-un
+fișier numit script. Acest script este apoi interpretat și rulat la un moment
+convenabil și are loc automatizarea acțiunii.
+
+Un script este asociat interfeței în linie de comandă; vorbim de scripturi
+shell, scripturi Python, scripturi Perl, scripturi Lua. Există însă și moduri de
+automatizare pentru interfețe grafice sau web. Există
+aplicații\footnote{\url{https://en.wikipedia.org/wiki/Graphical_user_interface_testing}}
+care testează interfețe grafice automatizând plasarea cursorului de mouse și
+evenimente grafice precum click, selectare, glisare. Similară este tehnologia
+RPA (Robotic Process Automation) care permite automatizarea unei activități pe
+care o execută cineva folosind interfața grafică, precum emiterea unei facturi
+care să cuprindă anumite date, sau citirea unor date dintr-un document și
+completarea acestora într-un formular web. În cele ce urmează ne vom concentra
+pe automatizarea în interfața în linia de comandă, modul uzual de automatizare
+în sistemele de operare și infrastructurile IT. De reținut însă tehnologiile și
+posibilitatea de automatizare și în interfața grafică.
+
+Așa cum am spus mai sus, automatizarea în linia de comandă folosește un script
+care conține comenzi și instrucțiuni pentru executarea unei acțiuni. Un conținut
+similar are însă și un program și poate apărea întrebarea cu ce diferă un
+program de un script. Nu avem o linie clară de demarcație între un script și un
+program. În general, un program se dorește a fi eficient în consumarea
+resurselor și execută o acțiune bine determinată. De partea cealaltă un script
+este ceva creat și folosit rapid (quick and dirty) și folosește programe deja
+existente pentru executarea unei acțiuni combinate, care leagă mai multe
+componente. De exemplu, un program va fi acela care generează un fișier PDF
+dintr-un fișier DOC; un script este acela care parcurge o ierarhie ce conține
+fișiere DOC, le selectează pe acelea care sunt mai noi de anumită dată, le
+convertește în fișiere PDF și apoi creează o arhivă cu fișierele PDF pe care o
+stochează într-un director dat. Păstrând măsura, putem folosi interschimbabil
+noțiunea de script și program, preferând termenul de script pentru situațiile în
+care urmărim o formă de automatizare.
+
+Într-un sistem informatic multe aplicații folosite au interfață grafică, care nu
+poate fi automatizată într-un script. Pentru automatizare acțiunilor
+corespunzătoare, avem două opțiuni:
+
+\begin{enumerate}
+	\item Să folosim aplicații alternative, în interfață de comandă
+	\item Să folosim forme de rulare neinteractivă a acestora.
+\end{enumerate}
+
+Din prima categorie, de exemplu, folosim utilitarul wget sau curl în locul unui
+browser web grafic precum Firefox sau Chrome. Sau folosim utilitarul bc în locul
+unei aplicații grafice de calculator.
+
+Din a doua categorie fac parte aplicațiile care oferă o formă numită headless.
+Forma headless înseamnă o aplicație cu funcționalități similare dar fără
+interfață grafică. În general, aplicații headless sunt acele aplicații care nu
+au interfața grafică. De exemplu, clientul Bittorrent Transmission are varianta
+headless transmission-cli. Soluția de virtualizare VirtualBox are varianta
+headless VBoxManage, pentru controlul mașinilor virtuale. Folosind aplicații
+alternative sau forme headless ale unor aplicații putem automatiza acțiunile
+aferente acestora. Putem spune că, în privința automatizării rulării
+aplicațiilor, \textit{where there is a will, there is a way}.
+
+În cele ce urmează vom prezenta modul în care putem crea scripturi pentru
+automatizarea de acțiuni în linia de comandă, cu accentul pe cea mai simplă și
+accesibilă formă: shell scripting.
+
+\section{Perspective pentru scripting}
+\label{sec:script-why}
+
+Am precizat mai sus că forma de automatizare în linia de comandă este folosind
+scripturi ce conțin comenzi și instrucțiuni. Atunci când automatizăm acțiuni în
+linia de comandă folosim scripturi în două cazuri mari de utilizare:
+
+\begin{enumerate}
+	\item automatizarea unor acțiuni repetitive
+	\item prelucrarea datelor
+\end{enumerate}
+
+În prima categorie intră acțiuni precum compilarea unei suite de aplicații,
+crearea de mai multe mașini virtuale, copierea unor fișiere pe o platformă la
+distanță pentru actualizarea conținutului. În general aceste scripturi conțin
+comenzi sau programe pe care utilizator le-ar rula pe rând în linia de comandă.
+Scriptul are avantajul de a agrega acele comenzi iar utilizatorul doar rulează
+scriptul.
+
+În a doua categorie intră acțiuni precum crearea unui raport sau a unei diagrame
+din datele existente într-o bază de date sau într-un fișier jurnal sau afișate
+de o aplicație. În general aceste scripturi conțin comenzi specifice pentru
+prelucrarea datelor (text), adică filtre de text, așa cum le-am denumit în
+capitolul TODO: Interfața în linia de comandă.
+
+Putem spune că ambele cazuri automatizează acțiuni și că acele acțiuni sunt
+repetitive. Cea mai importantă diferență între cele două este însă tipul de
+comenzi și utilitare pe care scripturile le folosesc: comenzi obișnuite dar acum
+folosite agregat în cazul automatizării de acțiuni repetitive și filtre de text
+în cazul prelucrării datelor. Atunci când automatizăm o acțiune, ne putem da
+seama de tipul de comenzi și utilitare pe care le vom folosi în funcție de cazul
+de utilizare al acțiunii.
+
+Atunci când dezvoltăm un script pentru automatizare, este recomandat să urmărim
+idei de bună proiectare, pe care le descriem mai jos.
+
+Există mai multe moduri de a face o acțiune. De exemplu pentru a afișa
+informații despre un proces putem folosi ps sau putem urmări intrările din
+/proc. Pentru a scrie informație într-un fișier putem folosi echo și redirectare
+sau comanda dd. Și în cazul general și când automatizăm, alegem soluția cea mai
+adecvată pentru cazul respectiv de utilizare. De exemplu utilitarul sed face tot
+ce face utilitarul tr și în plus; cu toate acestea vom folosi utiltarul tr
+pentru cazuri de utilizare simple. Nu există soluții universale, iar
+proiectantul scriptului va alege cele mai adecvate soluții în funcție de cazul
+de utilizare.
+
+Când creăm un script folosim cât mai mult utilitare și scripturi existente. Nu
+reinventăm roata. Dacă o comandă face deja ce ne dorim, nu facem un script. Dacă
+o comandă cu anumiți parametri face deja ceea ce ne dorim, nu folosim două sau
+trei comenzi. De exemplu, dacă dorim să aflăm dimensiunea unui fișier, avem cele
+doua variante de mai jos:
+
+\begin{screen}
+razvan@jotunn:~/Projects/org.git$ ls -l my.org | tr -s ' ' | cut -d ' ' -f 5
+45309
+razvan@jotunn:~/Projects/org.git$ stat -c "%s" my.org
+45309
+\end{screen}
+
+Vom prefera a doua variantă care este mai simplă și mai clară și mai puțin
+expusă la posibile erori de formatare ale utilitarului ls. Pentru aceasta e
+nevoie de o cunoaștere temeinică a comenzilor, utilitarelor și facilităților
+existente pentru a nu ajunge să reinventăm roata.
+
+Scripturile sunt folosite pentru acțiuni de tipul quick and dirty. Scripturile
+nu urmăresc să fie eficiente din punct de vedere al consumului de resurse
+(rapide, memorie redusă) ci urmăresc să fie eficace (să ducă treaba la bun
+sfârșit) și să eficientizeze munca utilizatorul, lăsându-i timp pentru alte
+activități. De aceea nu vom ajunge ca în scripturi să facem calcule numerice
+complexe sau acțiuni intens computaționale. Scripturile pot automatiza apelarea
+de programe scrise special pentru acțiuni intens computaționale, dar nu vor
+ajunge ele să facă astfel de acțiuni.
+
+În lumea Unix, modul de transfer de informație este textul, conținut citibil de
+om. Acest lucru permite stocarea informației în fișiere text și, la nevoie,
+editarea lor de utilizator. De aceea, scripturile, mai ales cele de prelucrarea
+de date, se recomandă să folosească informații text: ușor de citit de
+utilizator, ușor de modificat. Cele mai multe utilitare shell lucrează cu
+informații text, de exemplu filtrele de text.
+
+În linia de comandă avem utilitare care ne raportează informații de la nivelul
+sistemului. De exemplu ps ne raportează informații despre procese, iar ls ne
+raportează informații despre procese. Un rol oarecum similar îl au, respectiv,
+utilitarele pgrep și stat. Ne punem problema când folosim pe fiecare. Pentru
+aceasta clasificăm utilitarele în două:
+
+\begin{enumerate}
+	\item Utilitare pentru afișarea de informații, pe ecran, pentru a fi
+		accesibile utilizatorului
+	\item Utilitare care afișează informația în format prelucrabil, util
+		pentru legarea de alte comenzi, adică pentru automatizare
+\end{enumerate}
+
+Utilitarele ps și ls fac parte din prima categorie. La va folosi utilizatorul
+atunci dorește să afișeze informații despre fișiere și procese. Dacă însă
+utilizatorul va avea nevoie de PID-ul anumitor procese sau dimensiunea anumitor
+fișiere, va fi complicată folosirea utilitarelor ps și ls; atunci se recomandă
+folosirea utilitarelor pgrep și stat, ca mai jos:
+
+* TODO: ps vs pgrep pentru afișarea unor pid-uri
+* TODO: ls vs stat pentru obținerea dimensiunii unui fișier
+
+În secțiunile ce urmează vom prezenta informații despre crearea de scripturi
+shell și vom furniza exemple în care vom ține cont de principiile enunțate mai
+sus.
+
+\section{Dezvoltarea scripturilor}
+\label{sec:script-dev}
+
+Un script este un fișier care conține comenzi, instrucțiuni și construcții care
+execută o anumită acțiune. Un script este similar unui program din punct de
+vedere al conținutului. Din punctul de vedere al execuției, un script este
+interpretat. Așa cum multe limbaje de programare sunt compilate și executate, un
+script este interpretat de un interpretor. În cazul unui script shell
+interpretorul este chiar shell-ul. Alte interpretoare pot fi utilitarul sed sau
+awk sau un interpretor de limbaj Python sau Perl sau Ruby sau Lua sau altceva.
+
+\subsection{“Hello, World!” în scripting și shebang}
+\label{sec:script-dev-hello}
+
+Cel mai cunoscut exemplu în orice limbaj este un program care afișează șirul
+“Hello, World!” Vom exemplifica cele mai simple scripturi cu același rezultat:
+afișarea șirului “Hello, World!”.
+
+Dacă am creat fișierul hello.sh având conținutul de mai jos, atunci vom putea
+apela bash pentru interpretarea sa:
+
+* Cat hello.sh
+* Bash hello.sh
+
+În mod similar, dacă facem fișierul hello.py având conținutul de mai jos, atunci
+vom putea apela python pentru interpretarea sa:
+
+* Cat hello.py
+* Python hello.py
+
+La fel ar fi cazul și cu scripturi Perl sau Ruby sau altceva.
+
+Pentru a simplifica rularea unui script putem să-i oferim acestuia permisiuni de
+execuție și să-l rulăm ca pe un program. În acest caz însă, shell-ul va trebui
+să știe ce interpretor să folosească. Pentru a stabili intepretorul, folosim o
+construcție numită shebang (\#!). Această contrucție este folosită la începutul
+scriptului pentru a indica interpretorul folosit. Astfel, dacă cele două fișiere
+hello.sh și hello.py vor avea formele de mai jos:
+
+* Cat hello.sh
+* Cat hello.py
+
+Atunci le vom putea oferi permisiuni de execuție și executa:
+
+* Chmod a+x hello.sh
+* Chmod a+x hello.py
+* ./hello.sh
+* ./hello.py
+
+În ambele cazuri de execuție, shell-ul identifică cu ajutorul shebang
+intepretorul folosit și îl folosește în interpretarea scripturilor.
+
+Rețineți că shebang trebuie plasat la începutul scriptului.
+
+În scripturile pe care le vom construi în continuare vom folosi mereu shebang.
+
+\subsection{Conținutul unui script shell}
+\label{sec:script-dev-content}
+
+Am precizat anterior că în acest capitol ne vom concentra pe automatizare în
+linia de comandă, adică pe scripturi și dintre acestea pe cele mai simple și
+rapide: scripturile shell.
+
+Scripturile shell sunt scripturi interpretate direct de shell. În mod uzual,
+acestea vor începe cu simbolul shebang și apoi calea către executabilul aferent
+shell-ului. Pentru Bash, shell-ul predominant pe Linux, calea este /bin/bash,
+așa cum am văzut în exemplul “Hello, World!” de mai sus, astfel că prima linie
+într-un script shell/Bash va fi “\#!/bin/bash”.
+
+Informațiile pe care le vom furniza și exemplele de scripturi vor fi specifice
+shell-ului Bash. Cu toate acestea multe dintre funcționalități sunt prezente și
+în alte scripturi. În general, cu modificări minore un script Bash poate ajunge
+să ruleze și pe un shell Zsh sau Tcsh. Nu vom intra în aceste specificuri în
+această carte, ne vom concentra pe shell-ul Bash, lăsăm utilizatorului interesat
+să folosească resursele puse la dispoziție pe Internet legate de scripting
+pentru shell-ul Zsh sau Tcsh. În continuare când folosim shell, vom înțelege
+implicit Bash, iar când vom folosi script shell, vom înțelege script Bash.
+
+Un script shell conține în cea mai mare parte comenzi de utilitare pe care
+utilizatorul le folosește în linia de comandă, agregate pentru o nouă
+funcționalitate. Pe lângă aceste comenzi, un script conține construcții
+specifice shell-ului așa cum au fost descrise în secțiunea TODO din capitolul
+TODO: Interfața în linia de comandă: operatori, expandare, escaping. Cu acestea
+un script combină comenzi pentru a obține noi funcționalități.
+
+Pe lângă comenzile de utilitare, un script shell conține și comenzi interne
+folosite pentru controlul fluxului, funcții și parametri în linia de comandă. Pe
+acestea le vom discuta pe larg în secțiunea următoare.
+
+\subsection{Depanarea unui script shell}
+\label{sec:script-dev-debugging}
+
+Întrucât este conceput să fie quick and dirty, un script shell este de obicei
+mic, iar depanarea se face, în general, folosind print debugging: rularea sa de
+mai multe ori și afișarea de mesaje folosind comanda echo. Afișăm fie locuri în
+care a ajuns scriptul în cadrul execuției comenzilor, fie valorile unor
+variabile.
+
+La nevoie, dacă sunt foarte multe informații afișate pe ecran, scriem
+informațiile într-un fișier pentru a le consulta ulterior.
+
+Întrucât un script este format din comenzi de utilitare deja existente, putem
+rula pas cu pas fiecare comandă și apoi să vedem efectul ei. În fapt, este
+recomandată rularea comenzilor dorite înainte de adăugarea lor într-un script
+pentru a ne asigura de funcționarea corectă.
+
+Pentru depanare mai avansată, putem folosi comanda set -x așa cum vom descrise
+în \labelindexref{secțiunea}{sec:script-advancedfunc-other}.
+
+\subsection{Exemple de scripturi shell}
+\label{sec:script-dev-ex}
+
+În această secțiune prezentăm câteva exemple practice de scripturi shell și ce
+funcționalități sunt folosite în fiecare:
+
+* Script care creează fișierul all.wiki
+* Script care creează arhivă de laborator
+* Script care instalează programe
+* Script care prelucrează text
+
+\section{Funcționalități pentru scripturi shell}
+\label{sec:script-func}
+
+Scripturile shell sunt secvențe de comenzi existente combinate pentru o
+funcționalitate. Shell-ul oferă și funcționalități similare unui program precum
+variabile, comenzi de control al fluxului, funcții. Aceste funcționalități ajută
+la crearea de scripturi mai complexe și care să țină cont de diferitele condiții
+în care se rulează un script.
+
+\subsection{Variabile}
+\label{sec:script-func-vars}
+
+Variabilele au un rol similar altor limbaje de programare. Au un nume și o
+valoare. În shell (și în script-uri shell) variabilele nu au tip și intepretarea
+lor depinde de modul de utilizare. O variabilă cu valoarea “12” poate fi număr
+sau doar un simplu șir depinzând de cazul de folosire. Exemple de inițializare
+și folosire a unei variabile sunt prezentate mai jos:
+
+* Exemple variabile
+
+Detalii despre variabile și folosirea lor în shell am prezentat în Secțiunea
+TODO din Capitolul TODO din Interfața în linia de comandă.
+
+Variabilele sunt utile în scripturi shell pentru a menține o informație comună
+mai multor comenzi, similar unui limbaj de programare. De exemplu, în scriptul
+de mai jos:
+
+* Exemplu cu script shell cu variabilă care este folosită de mai multe comenzi
+
+În general folosim în scripturi shell o variabilă pentru a menține o valoare pe
+care o modificăm într-un singur loc și care apoi este folosită neschimbat în
+script. Similar unei variabile globale sau unei macrodefiniții în limbajul C.
+
+Așa cum am precizat în Secțiunea TODO din Capitolul TODO: Interfața în linia de
+comandă, shell-ul există forme de expandare precum expandarea aritmetică și
+expandarea comenzilor. Acestea sunt adesea folosite în shell pentru a inițializa
+anumite variabile.
+
+* Exemple cu expandare aritmetică și de comenzi
+
+Un tip special de variabile sunt parametrii unui script shell. Un shell poate
+primi unul sau mai mulți parametri care pot afecta funcționarea shell-ului. Mai
+jos avem un exemplu de astfel de script shell:
+
+* Exemplu cu parametri pentru scripturi shell
+
+Construcțiile aferente parametrilor unui script shell sunt prezentate în tabelul
+de mai jos:
+
+* Tabel cu antetul: construcție, semnificație
+
+În lucrul cu parametrii, shell-ul oferă comanda shift; comanda shift este
+folosită pentru a deplasa parametri o poziție la stânga, astfel încât $1 va avea
+acum valoarea celui de-al doilea parametru, $2 valoarea celui de-al treilea
+parametru etc.
+
+\subsection{Controlul fluxului}
+\label{sec:script-func-flux}
+
+Așa cum am văzut și în exemplele de mai sus, shell-ul oferă construcții de
+controlul fluxului: comenzi pentru decizii condiționale (if, case) și comenzi de
+ciclare (for, while). De avut în vedere că pot exista scripturi care nu folosesc
+aceste comenzi; un script nu este un program în sine ci o înlănțuire de
+funcționalități existente care pot să nu necesite comenzi de control al
+fluxului. Deși while și for pot bucla prin valori întregi, similar unui limbaj
+de programare, cel mai uzual este ca aceste comenzi este să bucleze prin fișiere
+dintr-un director sau prin coloane/elemente ale unui fișier.
+
+\subsubsection{if}
+\label{sec:script-func-flux-if}
+
+Comanda if este folosită pentru controlul fluxului. Comanda primește ca argument
+o altă comandă și interpretează codul de ieșire (exit code) al acesteia, în
+funcție de care ia o decizie. Sintaxa comenzii este:
+
+* Sintaxă if
+
+Un exemplu de folosire a comenzii if este mai jos:
+
+* Exemplu cu if fără test
+
+De multe ori comanda primită de comanda if este comanda test care la rândul său
+primește o condiție, pe sintaxa de mai jos:
+
+* Sintaxă if cu test
+
+Un exemplu de folosire a comenzii if în conjuncție cu test este:
+
+* Exemplu de if cu test
+
+Comanda test primește ca argumente o condiție care poate avea diferite forme.
+Condiția poate fi comparație între numere, între șiruri, tip de fișiere și
+altele. Mai jos avem o selecție a condițiilor folosite de comanda test. O listă
+completă găsiți în pagina de manual a comenzii test.
+
+* Tabel care să aibă capul de tabel “condiție, rol, exemplu”
+
+Comanda test are ca echivalent comanda [ sau comanda [[. Comanda [ este o
+comandă externă shell-ului, are un executabil aferent în vreme ce comanda [[
+este internă. Mai jos sunt exemple de folosire a acestora:
+
+* Exemple echivalente cu [ și [[
+
+Comenzile test și [ sunt echivalente, cu diferența că [ necesită un caracter ]
+care să închidă condițiile. Fiindcă [ este o comandă iar ] este o opțiune
+trebuie folosite spații pentru a le separa; astfel că mai jos prima construcție
+e validă în vreme ce a doua este nevalidă:
+
+* Exemplu [ cu spații, corect
+
+* Exemplu cu [ fără spații, incorect
+
+Din cauză că este nevoie de opțiunea ] și pentru că este nevoie de spații,
+cauzatoare de greșeli frecvente, recomandăm folosirea comenzii test în loc de [.
+
+Comanda [[ este o comandă internă și este posibil să nu fie prezentă în toate
+shell-urile. Are ca funcționalități suplimentare potrivirea șirurilor cu
+expresii regulate și operatori de test precum <, >, <=, ca în exemplele de mai
+jos:
+
+* Exemple de folosire [[
+
+În general se recomandă folosirea test pentru condiții uzuale și [[ pentru
+situații de potrivire cu expresii regulate. De avut în vedere că [[ poate avea
+probleme de portabilitate între diferite shell-uri, așa cum vom discuta în
+Secțiunea TODO.
+
+\subsubsection{case}
+\label{sec:script-func-flux-case}
+
+Comanda case este echivalentul instrucțiunii switch din C; are rolul de a
+potrivi o variabilă la mai multe variante și de a executa comenzile echivalente.
+Potrivirea se face folosind globbing, despre care am vorbit în Secțiunea TODO
+din Capitolul TODO: Interfața în linia de comandă.
+
+Sintaxa comenzii este:
+
+* Sintaxă case
+
+Un exemplu de utilizare case este mai jos:
+
+* Exemplu case
+
+De avut în vedere construcția ;; pentru închiderea unei opțiuni case.
+
+Construcția *) defineste echivalentul etichetei default din programarea în C. Se
+potrivește cu orice șir; în mod obișnuit se plasează ca ultima opțiune pentru
+case iar comenzile corespunzătoare sunt executate dacă nu s-au potrivit cu nici
+o altă opțiune.
+
+\subsubsection{for}
+\label{sec:script-func-flux-for}
+
+Atunci când dorim să trecem prin mai multe opțiuni folosim comanda for. O formă
+uzuală de folosire a comenzii for este pentru a bucla printr-o listă de șiruri,
+precum numele de fișiere dintr-un director, ca mai jos:
+
+* For f in *;
+
+O altă formă utilizare a comenzii for este folosirea unei expandări aritmetice:
+
+* For (())
+
+Comanda de mai sus este echivalentă cu:
+
+* For i in \$(seq ...)
+
+O altă formă, întâlnită doar în Bash este:
+
+* For i in {1..20}
+
+Un mod frecvent de folosire a for este trecerea prin parametrii unui script:
+
+* Exemplu parametri script
+
+O altă formă frecventă este trecerea printr-o listă reținută într-o variabilă:
+
+* Exemplu
+
+În general, sintaxa for este:
+
+* Sintaxă for
+
+De avut în vedere că folosirea for poate fi problematică sau ineficientă.
+Folosirea for este problematică atunci când există spații în nume:
+
+* Exemplu
+
+Vom discuta mijloace de rezolvare a spațiilor în nume în Secțiunea TODO.
+
+Folosirea for poate fi ineficientă când sunt alte forme de a folosi lista
+primită, fără a trece prin for:
+
+* Exemplu stat
+
+* Exemplu find -exec
+
+În primul exemplu rulăm comanda for și creăm mai multe procese stat, câte unul
+pentru fiecare fișier. În a doua variantă folosim expandarea comenzilor pentru a
+crea o singură comandă stat.
+
+Ca de obicei, în shell scripting, există mai multe moduri de a realiza un lucru.
+Ideal, cumulat cu experiența, vom prefera cea mai bună opțiune pentru o situație
+dată: opțiunea cea mai robustă, în primul rând, și cea mai eficientă, în al
+doilea rând. Vom discuta aceste aspecte în Secțiunea TODO.
+
+\subsubsection{while}
+\label{sec:script-func-flux-while}
+
+Similar comenzii for, comanda while poate fi folosită pentru a bucla în
+așteptarea unei condiții, ca mai jos:
+
+* Exemplu while cu expresie numerică
+
+În mod uzual, comanda while este folosită pentru a face parsing la fișiere text
+structurate tabelar (linii și coloane), folosind comanda read, ca mai jos:
+
+* Exemplu while read
+
+Comanda read este folosită pentru a citi câte un câmp într-o variabilă care va
+fi folosită ulterior. În forma de mai jos, folosim interactiv comanda read:
+
+* Read a și apoi introducere Ctrl+d
+
+La final am tastat Ctrl+d pentru a închide intrarea.
+
+Într-o forma neinteractivă putem folosi un here string, despre care vom discuta
+în secțiunea TODO:
+
+* Read a <<<”aaaaa”
+
+Sintaxa uzuală pentru while este:
+
+* Sintaxă while read
+
+Pentru a face parsing, comanda read folosește variabila IFS (Input Field
+Separator) a shell-ului. Aceasta este în mod implicit inițializată la caractere
+albe (spațiu, tab, linie nouă). Dacă dorim să folosim alt separator, vom
+actualiza variabila IFS ca mai jos:
+
+* Exemple while read cu IFS=’,’
+
+Construcția while read este utilă atunci când dorim să prelucrăm date în format
+tabelar, putând rula comenzi pentru intrările parsate. Este o formă cut extinsă;
+cut doar permite extragerea uneia sau mai multor coloane dar fără a permite
+execuția de comenzi pentru fiecare element extras.
+
+De avut în vederea că folosirea unei bucle pentru prelucrarea text poate fi
+problematică din punctul de vedere al robusteții, lizibilității și
+performanței\footnote{\url{https://unix.stackexchange.com/a/169765/227174}}.
+
+\subsection{Funcții}
+\label{sec:script-func-flux-funcs}
+
+Atunci când avem secvențe de comenzi pe care vrem să le folosim modular, putem
+folosi funcții. La fel ca într-un limbaj de programare, o funcție are un nume și
+are un conținut; o funcție rulează când este apelată. O funcție este apelată
+folosind numele său, ca mai jos:
+
+* Exemplu simplu de funcție și apel
+
+Din punctul de vedere al funcționării shell-ului, o funcție este ca o comandă:
+are parametri și întoarce o valoare. Mai jos este un exemplu de funcție care
+primește parametri și întoarce o valoare care poate fi investigată:
+
+* Exemplu de funcție cu parametri și valoare întoarsă
+
+O altă formă este ca funcția să afișeze un mesaj care să poată fi reținut într-o
+variabilă:
+
+* Exemplu de funcție care afișează un mesaj reținut într-o variabilă
+
+Funcțiile ajung să fie folosite în scripturi shell mai complexe, de exemplu
+/etc/init.d/*, mai puțin în scripturi uzuale.
+
+\section{Facilități avansate și bune practici în shell scripting}
+\label{sec:script-advancedfunc}
+
+Așa cum am precizat anterior, un script shell este o cale de mijloc între a rula
+comenzile în linia de comandă și a face un program într-un limbaj de programare.
+De asemenea, în shell sunt comenzi similare și funcționalități diferite care pot
+conduce la același rezultat. Fiind mai multe modurile de a ajunge la un rezultat
+în shell, cel mai bine este să fie scripturi shell cu cele mai bune opțiuni
+dintre cele existente urmărind:
+
+\begin{itemize}
+	\item Robustețea: script-ul să ruleze indiferent de condiții, să nu aibă
+		erori de rulare sau rezultate impredictibile
+	\item Lizibilitate: script-ul să fie ușor de citit și de înțeles de
+		altcineva; anumite construcții în shell sunt întortocheate și
+		pot face dificilă înțelegerea script-ului
+	\item Eficiență și performanță: deși nu poate ajunge la nivelul de
+		performanță al unui program, e indicat ca script-ul să ruleze
+		cât mai repede și să nu consume resurse în mod exagereat
+	\item Portabilitate: există mai multe tipuri de shell (Bash, dash, ksh,
+		tcsh) sau diferite versiune de shell; dacă se știe că un script
+		va rula pe shell-uri și în medii diferite trebuie să fie
+		portabil și să ruleze determinist.
+\end{itemize}
+
+Mai jos prezentăm construcții specifice acestor deziderate și recomandări de
+folosire în script-uri shell.
+
+\subsection{Robustețe}
+\label{sec:script-advancedfunc-robust}
+
+Robustețea unui script înseamnă că acesta funcționează în condiții cât mai
+diverse. Acest lucru înseamnă că având intrări diferite, sau pe configurații
+diferite sau cu intrări în sistemul de fișiere diferite, scriptul va funcționa
+corespunzător.
+
+Mai jos sunt indicate câteva surse de probleme care pot afecta robustețea
+scripturilor. Vom detalia ulterior soluții la acestea:
+
+* Inconsecvența formatului datelor prelucrate: unele comenzi afișează
+informațiile în formate care pot varia și care pot produce probleme. Soluția
+este folosirea de comenzi sau fișiere cu informație consecventă sau de avut în
+vedere, cât de mult se poate, toate cazurile
+
+* Configurații diferite de sistem: un script presupune anumite configurații care
+nu sunt prezente pe toate sistemele sau rularea în anumite condiții ce-l fac
+nerobust.
+
+* Intrările în sistemul de fișiere pot conține caractere speciale precum spații
+sau chiar caractere newline care nu sunt luate în considerare de script.
+
+Așa cum am precizat în secțiunea TODO din Capitolul TODO: Interfața în linia de
+comandă, utilitarele generatoare de text sunt de două tipuri, în funcție de
+utilitatea rezultatului rulării:
+
+\begin{enumerate}
+	\item Rezultatul rulării este util în special utilizatorului
+	\item Rezultatul rulării lor este util în special unei prelucrări
+\end{enumerate}
+
+Pentru a nu fi afectate de inconsecvența datelor prelucrate, în scripturi e
+recomandată folosirea utilitarelor care au ca obiectiv prelucrarea. Astfel, dacă
+dorim să obținem pentru prelucrare dimensiunea unui fișier vom folosi stat în
+loc de ls:
+
+* Exemplu stat vs ls
+
+La fel vom folosi pidof sau pgrep în loc de ps | grep.
+
+* Exemplu pidof, pgrep, ps | grep
+
+Ps | grep rămâne în continuare util atunci când vrem să fie afișată informație
+pentru utilizator și vrem doar anumite linii să fie selectate pentru afișare.
+Dacă însă dorim prelucrarea acelor informații de în alte comenzi, vom folosi
+pidof sau pgrep.
+
+În partea de configurații diferite putem avea variabila de mediu PATH cu valori
+diferite; drept urmare, e posibil ca o comandă să poată fi rulată decât
+furnizând calea completă; adică să funcționeze /bin/ls dar nu ls. Cel mai bine
+este ca în scripturi să folosim calea completă către o comandă, pentru a preveni
+cazul în care variabila de mediu PATH nu are conținutul așteptat. Mai mult,
+anumite utilitare pot să nu fie instalate. Drept urmare, trebuie verificat dacă
+o comandă sau un fișier se găsește pe acel sistem.
+
+Dacă un script se dorește rulat ca root trebuie verificat acest lucru printr-o
+construcție de genul:
+
+* Exemplu verificare root cu if
+
+În caz contrar scriptul va fi rulat ca utilizator privilegiat și vor apărea
+erori la rularea comenzilor privilegiate.
+
+Se poate întâmpla ca, într-un script, să folosim sudo sau o conexiune SSH. Este
+posibil ca pe un sistem să avem configurată autentificarea SSH sau rularea sudo
+fără cererea parolei iar pe alte sistem să nu fie configurată. Script-ul trebuie
+să aibă în vedere acest lucru și să configureze sistemul corespunzător sau să
+folosească un utilitar de automatizare a comenzilor neinteractive, așa cum vom
+preciza în Secțiunea TODO: Alte funcționalități.
+
+Când rulăm un script trebuie să avem în vedere din ce director îl rulăm. În
+script este posibil să existe căi relative la directorul din care rulăm. Din
+păcate, nu există nici o soluție care să funcționeze
+100\%\footnote{\url{http://mywiki.wooledge.org/BashFAQ/028}}. Soluția
+recomandată este fie folosirea căilor absolute către fișierele folosite în
+script (precum plasarea fișierelor de configurare într-un director cu o cale
+fixă) fie rularea scriptului doar din directorul în care se găsește scriptul.
+
+Atunci când lucrăm cu fișiere trebuie să ținem cont de numele acestora; numele
+fișierelor pot conține caractere problematice precum spațiu. O prelucrare precum
+cea de mai jos nu este robustă:
+
+* Exemplu for
+
+O soluție este folosire separatorul newline (IFS=’\\n’) ca mai jos:
+
+* Exemplu cu IFS=’\\n’
+
+Chiar și soluția aceasta (cu IFS=’\\n’) poate avea probleme atunci când o intrare
+conține caracterul newline.
+\begin{note}[NOTĂ]
+Deși ciudat, fișierele pot conține caracterul newline în nume. Deși nu este
+uzual să fie astfel de nume de fișiere un atacator poate crea fișiere cu
+astfel de nume pentru a sabota funcționarea scriptului.
+\end{note}
+
+Câteva dintre soluțiile posibile pentru cazul în care avem newline în fișier
+sunt prezentate mai jos:
+
+* Soluție cu array-uri
+
+* Soluție cu IFS=\$’\\0’
+
+Aici\footnote{\url{https://www.dwheeler.com/essays/filenames-in-shell.html}}
+sunt descrise un spectru larg de soluții la situația caracterelor problematice
+în numele de fișiere.
+
+O formă preferată rămâne, dacă se poate, folosirea comenzii find, așa cum am
+precizat în Secțiunea TODO din Capitolul TODO: Interfața în linia de comandă:
+
+* Exemplu find
+
+Avantajul comenzii find este că nu necesită o formă de interpretare a numelui
+fișierului. Fiecare intrare este apoi transmisă comenzii de după -exec pentru a
+fi prelucrată. Neajunsul comenzii find este că se poate executa o singură
+comandă pentru intrările parcurse, nu se pot opera acțiuni mai complexe.
+
+\subsection{Lizibilitate}
+\label{sec:script-advancedfunc-readability}
+
+Scripturile sunt quick and dirty și trebuie să fie lizibile, ușor de înțeles.
+Pentru aceasta este de preferat să nu se folosească construcții în care se poate
+greși repede sau care sunt greu de înțeles.
+
+De exemplu, pentru expandarea unei comenzi sunt posibile două forme, așa cum
+sunt indicate mai jos:
+
+* Exemplu cu `...`
+* Exemplu cu \$(...)
+
+Prima forma, care folosește caracterul backtick (`), este nerecomandată deoarece
+caracterul backtick poate fi confundat cu apostrof și se găsește greu pe
+tastatură. Mai mult, nu permite comenzi imbricate. Construcția \$(...) este mai
+ușor de văzut și tastat și permite comenzi imbricate, ca în exemplul de mai jos:
+
+* Exemplu cu \$(... \$(...) ... )
+
+Similar, între folosire comenzii test și folosirea comenzii [ preferăm folosirea
+comenzii test, așa cum am precizat și în Secțiunea TODO. Aceasta pentru că
+tendința este să folosim o construcție fără spații de forma [$a -eq $b] care
+este greșită; trebuie folosită construcția [ \$a -eq \$b ], folosind spații
+pentru a separa comanda [ și argumentul ] de restul argumentelor.
+
+Atunci când avem de furnizat un mesaj unei comenzi putem folosi here documents
+și here strings, forme mai expresive de transmitere a informației. Here
+documents și here strings sunt forme “inline” de transmitere a informației așa
+cum sunt prezentate mai jos:
+
+* Exemplu here document
+
+* Exemplu here string
+
+\subsection{Eficiență}
+\label{sec:script-advancedfunc-efficiency}
+
+Acolo unde avem mai multe opțiuni și avem robustețea asigurată, e de preferat să
+folosim soluția cea mai eficientă și performantă. De exemplu, între cele două
+secvențe de mai jos vom prefera secvența ce folosește find -exec:
+
+* While + find
+
+* Find -exec
+
+Pe lângă problemele inerente de robustețe a procesului de parsing, while durează
+mai mult, trebuind să citească ieșirea comenzii find și apoi să o transfere
+către comandă. Varianta folosind while rămâne utilă atunci când vrem să rulăm
+mai multe comenzi și nu le putem transfera prin find -exec; construcția find
+-exec permite rularea unei singure comenzi.
+
+Atunci când folosim find pentru a executa o comandă, avem următoarele opțiuni:
+
+* Find -exec \\;
+
+* Find -exec \\+
+
+* Find -print0 | xargs
+
+Prima variantă execută comanda TODO pentru fiecare intrare. Sunt create astfel N
+procese pornind de la comanda TODO, unde N este numărul de intrări furnizat de
+comanda find. A doua și a treia comandă execută o singură comandă TODO pentru
+toate intrările, fiind evident mai performantă.
+
+A doua și a treia variantă sunt aproape echivalente. Prima variantă creează câte
+un proces pentru fiecare fișier fiind mult mai costisitoare ca timp.
+
+\begin{note}[NOTĂ]
+Cu toate acestea, urmărind robustețea, există o situație în care prima
+forma a comenzii find este preferată: atunci când sunt foarte multe
+intrări descoperite celelalte forme pot eșua din cauza limitării
+numărului de argumente pe care le poate lua o comandă.
+\end{note}
+
+Dintre a doua și a treia variantă, varianta cu xargs poate fi utilă atunci când
+folosim opțiunea -P. Această opțiune permite precizarea numărului de core-uri
+folosite pentru rularea comenzilor în paralel, ceea ce poate duce la creșterea
+vitezei, ca mai jos:
+
+* Exemplu xargs cu -P
+
+\subsection{Portabilitate}
+
+Anumite construcții din scripturi shell sunt specifice unui tip de shell (precum
+Bash). Le mai numim bashisms. Dacă dorim să rulăm un script pe mai multe tipuri
+de
+shell\footnote{\url{https://stackoverflow.com/questions/19428418/what-is-the-use-of-portable-shell-scripts}}
+sau pe diferite versiuni de shell trebuie să avem în vedere ce construcții sunt
+standard și portabile. Pentru scripturi portabile recomandarea este folosirea de
+funcționalități care sunt recunoscut de standardul POSIX. Un shell compatibil
+POSIX\footnote{\url{http://pubs.opengroup.org/onlinepubs/009695399/utilities/xcu_chap02.html}}
+va rula un script construit conform standardului.
+
+De exemplu, pentru redirectarea simultană a ieșirii standard și ieșirii de
+eroare standard avem două moduri:
+
+* \&> file
+
+* > file 2>\&1
+
+Între cele două opțiuni, o preferăm pe a doua care este portabilă. Prima
+variantă nu funcționează, de exemplu, pe sh (Bourne Shell).
+
+O altă formă de bashism este construcția [[ pentru testarea condițiilor, o
+construcție specifică Bash; construcția se găsește și pe alte shell-uri dar nu
+este garantat. Dacă este nevoie într-un script de o implementare portabilă
+pentru comparația unei variabile cu o expresie regulată putem folosi grep:
+
+* Exemplu echivalent grep și [[
+
+Vectorii (arrays) în Bash sunt o funcționalitate a acestui shell care nu se
+găsește în alte shell-uri sau în versiuni anterioare de Bash. În locul lor
+trebuie folosite liste sau refăcut scriptul.
+
+Am văzut mai sus că pentru a folosi robust prelucrarea fișierelor cu find,
+trebuie să folosim opțiunea -print0 a acestuia. Opțiunea -print0 la comanda find
+nu este însă în standardul POSIX și este posibil să nu fie prezentă pe anumite
+shell-uri. Din păcate, folosirea find -print0 este singura soluție pentru
+prelucrarea robustă a fișierelor dintr-o ierarhie, așa că aici trebuie optat
+între portabilitate 100\% și robustețe.
+
+\subsection{Alte funcționalități}
+\label{sec:script-advancedfunc-other}
+
+Atunci când dorim să facem debugging în shell, soluția cea mai directă este
+afișarea unui mesaj sau a valorilor unei variabile folosind printf sau echo. O
+altă variantă este să folosim în cadrul unui script shell construcțiile set -x
+și set +x care activează, respectiv dezactivează, afișarea comenzilor atunci
+când se execută. Acest lucru permite să vedem dacă o comandă se execută sau nu
+și toate expandările realizate (variabile, expandare de comenzi, expandare
+aritmetică). Un exemplu este mai jos:
+
+* Exemplu cu set -x și set +x
+
+Se întâmplă adesea să folosim comenzi care necesită intrare de la utilizator
+într-un script shell. Aceste comenzi sunt interactive și nu pot fi folosite în
+această formă într-un script shell în care se dorește automatizare completă. De
+exemplu comenzi precum update-alternatives, passwd, ftp, curl/wget, ssh, sudo.
+Pentru unele există forme de rulare neinteractivă: în loc de passwd se pot
+folosi chpasswd; curl și wget au opțiuni de furnizare de nume de utilizator și
+parolă. Atunci când nu există forme de rulare neinteractivă, se pot folosi
+utilitare din categoria expect care permit transmiterea de informații în mod
+automat către comenzi interactive. Le vom detalia în Anexă: Utilitare pentru
+interacțiunea cu programe interactive.
+
+\subsection{Resurse suplimentare}
+\label{sec:script-advancedfunc-supl}
+
+Pentru sfaturi practice despre dezvoltarea shell scripturilor (și folosirea
+Bash) recomandăm ghidul BashFAQ: https://mywiki.wooledge.org/BashFAQ
+
+\section{Automatizarea la nivelul sistemelor informatice}
+\label{sec:script-infosys}
+
+\subsection{Gestiunea serviciilor}
+\label{sec:script-infosys-services}
+
+În Capitolul TODO: Pornirea sistemului am precizat că procesul init (de obicei
+systemd în distribuțiile Linux moderne) este responsabil pentru pornirea
+primelor procese ale sistemului, în particular serviciile. Serviciile sunt
+procese de tip daemon, care rulează în background și care gestionează sistemul
+sau oferă funcționalițăți pentru alte aplicații.
+
+Serviciile sunt gestionate de systemd fie în modul compatibil System V (folosind
+intrările din directorul /etc/init.d/) fie în modul specific systemd. Am
+precizat în Capitolul TODO: Pornirea sistemului că pentru interacțiunea cu
+serviciile (oprirea, pornirea, repornirea, aflarea stării lor) folosim fie
+scriptul aferent din /etc/init.d/, fie comanda service fie comanda systemctl.
+
+Dacă dorim să adăugăm un serviciu nou în sistem putem face acest lucru folosind
+systemd. Aceasta presupune crearea unui fișier de configurare pentru serviciu
+(numit unit în systemd) și apoi încărcarea sa în
+systemd\footnote{\url{https://www.devdungeon.com/content/creating-systemd-service-files}}.
+Putem face acest lucru cu un serviu per-user, folosind instanța de systemd
+specifică utilizatorului (systemd
+--user)\footnote{\url{https://www.brendanlong.com/systemd-user-services-are-amazing.html}}.
+
+* Exemplu de configurare serviciu nou systemd de sistem
+
+* Exemplu de configurare serviciu nou systemd la nivelul utilizatorului
+
+Folosind comenzile de mai sus creăm un serviciu care acum este gestionat de
+systemd.
+
+\subsubsection{supervisor}
+\label{sec:script-infosys-services-supervisor}
+
+Supervisor este un daemon care permite configurarea de servicii și monitorizarea
+acestora. Are funcționalitate similară serviciilor configurate cu systemd, și în
+general configurările systemd pot fi realizate și în supervisor și
+invers\footnote{\url{https://gunes.io/2017/08/25/systemd-vs-supervisor/}}.
+
+Supevisor conține un daemon (supervisord), un utilitar de gestiune
+(supervisorctl) și fișiere de configurare. Față de systemd, supervisor deține
+fișiere de configurare ceva mai simple de scris și poate fi configurat ușor să
+ruleze servicii ca alt utilizator.
+
+Mai jos este un exemplu de configurare de serviciu supervisor:
+
+* Exemplu supervisor
+
+După configurarea serviciului, îl putem activa și apoi porni în supervisor:
+
+* Exemplu de configurare și pornire
+
+\subsection{Planificarea sarcinilor}
+\label{sec:script-infosys-planning}
+
+De multe ori dorim rularea de sarcini periodice sau la un moment dat. Pentru
+aceasta în Linux avem servicii specifice: cron și atd. Cron este folosit pentru
+rularea periodică a unei comenzi sau script, iar at este folosit pentru rularea
+unei comenzi sau a unui script la un moment dat.
+
+O formă apropiată ideii de rulare planificată, este rularea după un anumit
+eveniment cum este cazul procesului de continuous integration (CI). În cazul
+continuous integration, orice actualizare a unui proiect software declanșează în
+spate rularea unor scripturi de verificare. Exemple de utilitare de continuous
+integration sunt Travis CI, Jenkins, GitLabCI.
+
+\subsubsection{cron}
+\label{sec:script-infosys-planning-cron}
+
+Cron este un serviciu care duce la rularea periodică a unei comenzi. Un caz de
+utilizare pentru cron sunt scenariile de nightly builds în care la momente bine
+determinate se verifică infrastructura, sau se compilează aplicații. Sau
+situații în care dorim o reindexare a fișierelor de pe sistemul local; sau un
+backup periodic.
+
+Cron poate fi configurat la nivel global în fișiere de configurare sau la
+nivelul unui utilizator. Configurarea sa presupune adăugarea unei linii de
+forma:
+
+* Exemplu linie cron
+
+La nivel unui utilizator pentru adăugarea unei configurări se folosește comanda
+crontab -e. Pentru vizualizarea intrărilor folosim comand crontab -l:
+
+* Exemplu de crontab -e
+
+* Exemplu de crontab -i
+
+\subsubsection{at}
+\label{sec:script-infosys-planning-at}
+
+Comanda at (care folosește în spate daemon-ul atd) permite rularea unei comenzi
+la un moment dat în viitor. Comanda primește ca argument timpul când să aibă loc
+execuția și la intrarea standard comanda care să fie executată, ca în exemplu de
+mai jos:
+
+* Exemplu folosire at
+
+\section{Anexă: Utilitare pentru interacțiunea cu programe interactive}
+\label{sec:script-gui}
+
+Atunci când dorim să automatizăm și să folosim în scripturi programe
+interactive, lucrurile devin problematice; în general ne propunem ca un script
+să fie complet automatizat și neinteractiv. Dacă putem, căutăm variante
+neinteractive ale acelor programe. Altfel, unde se poate, folosim utilitarul
+expect.
+
+Utilitarul expect permite transmiterea de informații în mod automat la intrarea
+standard a unor programe interactive, ca în exemplul de mai jos:
+
+* Exemplu FTP interactiv
+
+În exemplu de mai sus am folosit următoarele comenzi expect:
+
+* Explicații comenzi
+
+Comenzile expect creează un proces (spawn) căruia apoi îi pot controla intrarea
+standard și ieșirea standard, putând astfel realiza o comunicare neinteractivă.
+
+Pentru o variantă programatică a utilitarului expect, putem folosi
+pexpect\footnote{\url{https://pexpect.readthedocs.io/en/stable/}}. pexpect
+oferă o interfață programatică Python în care pot fi operate funcționalitățile
+expect.
+
+O variantă similară pexect, folosită în comunitatea de securitate (hacking,
+competiții de tip CTF: Capture the Flag) este
+pwntools\footnote{\url{http://docs.pwntools.com/en/stable/}}. Pe lângă modul de
+comunicare neinteractivă cu aplicații interactive, pwntools oferă
+funcționalități specifice pentru securitate și hacking analiză de executabile,
+construire de payload-uri pentru atacuri de securitate, formatări de date,
+integrare cu depanatoare etc.
+
+\section{Anexă: Gestiunea configurației}
+\label{sec:script-conf}
+
+Atunci un administrator de sistem și infrastructură gestionează mai multe
+sisteme, urmărește un mod rapid, automatizat de configurare a acelor sisteme. În
+general acest lucru înseamnă ca un set de configurații de pe un sistem central
+să ajungă pe sistemele administrate, rapid și scalabil. De obicei astfel de
+soluții oferă administratorului o interfața programatică pentru a configura ce
+informații de configurare ajung pe sisteme (numite de obicei noduri).
+
+Soluții de gestiune a configurației (Configuration Management) sunt chef,
+puppet, ansible, salt stack, terraform.
+
+Astfel de soluții sunt folosite de cei care ocupă poziții de DevOps, persoane
+responsabile cu buna funcționare a infrastructurii IT a unei organizații
+(Operations) care folosesc facilități programatice (Development) furnizate de
+utilitare precum cele din categoria Configuration Management.
+
+\section{Anexă: Bune practici în automatizare și scripting}
+\label{sec:script-good}
+
+Atunci când folosim scripting sau, în general, când automatizăm, e util să avem
+în vedere bune practici și, mai ales, perspective de lucru. Aceste bune practici
+asigură o rulare rapidă, automată și robustă de sarcini repetitive astfel încât
+să obținem mai mult pentru activități creative.
+
+Pentru persoana care lucrează cu un sistem de operare, perspectiva trebuie să
+fie “orice fac poate fi automatizat; are sens să automatizez?” Dacă o acțiune se
+întâmplă frecvent, acea acțiune este candidat la automatizare pentru a
+eficientiza realizarea acțiunii: timp mai scurt pentru acțiune repetitivă, timp
+mai mult pentru alte acțiuni.
+
+Atunci când automatizăm o acțiune, avem în vedere că sunt mai multe moduri de
+realizare a acesteia. Nu există un mod unic și recomandat de rezolvare. Pentru
+cazuri simple folosim comenzi simple, pentru cazuri complexe folosim utilitare
+avansate. Este nevoie de o cunoaștere bună a comenzilor, utilitarelor și
+facilităților oferite pentru a putea face alegerea optimă în situația
+respectivă.
+
+Pentru o situație dată, când avem mai multe moduri de a realiza un lucru,
+urmărim criterii precum: robustețe, lizibilitate, eficiență, portabilitate.
+Script-ul sau utilitarul folosit trebuie să meargă pe cât mai multe sisteme, în
+cât mai multe situații, cât mai performant și să fie cât mai ușor de înțeles.
+
+În Linux, formatul uzual de lucru este formatul text. Majoritatea utilitarelor
+citesc text și afișează text, ceea ce le face ușor de folosit de un utilizator
+uman; și ușor de combinat folosind operatorul pipe. Atunci când folosim
+scripturi, ne folosim de filtre de text care prelucrează text. Iar dacă
+dezvoltăm noi utilitare, urmărim ca intrarea, ieșirea și configurarea lor să fie
+făcute tot folosind format text.
+
+Multe utilitare fac un tip de acțiune. Acea acțiune înseamnă de multe ori
+prelucrarea unei intrări și afișarea unui rezultate. Astfel de utilitare pot fi
+combinate prin operator-ul pipe sau prin funcționalități precum expandarea
+comenzii. Când automatizăm în scripturi shell, e recomandat să avem perspectiva
+combinare de comenzi care pot duce la rezultatul dorit.
+
+Nu folosim shell scripting ca alternativă la un limbaj de programare. Shell
+scripting-ul este o formă de automatizare, de combinare rapidă de comenzi pentru
+a obține un rezultat cât mai rapid. Pentru calcule de înaltă performanță, pentru
+aplicații complexe, pentru eficiență în folosirea resurselor, folosim un limbaj
+de programare.
+
+\section{Sumar}
+\label{sec:script-sumar}
+
+Folosim automatizare pentru sarcini repetitive sau care necesită rulare
+neinteractivă la un moment dat, lăsând mai mult timp pentru sarcini creative.
+
+Avem mai multe limbaje pentru scripting, cu use case-urile avantajoase
+fiecăruia.
+
+Preferăm folosirea shell scripting pentru quick and dirty actions.
+
+Scripturile shell combină comenzi existente, comenzi interne shell-ului și alte
+funcționalități ale shell-ului: înlănțuire comenzi, variabile, expandări,
+globbing, controlul fluxului.
+
+Când creăm scripturi shell avem în vedere că sunt mai multe opțiuni posibile și
+le alegem urmărim robustețe, lizibilitate, eficiență, portabilitate.
+
+Pentru gestiunea unui sistem sau infrastructuri avem utilitare dedicate pentru
+automatizare.
