@@ -17,12 +17,12 @@ impresionante de informații, procese și colaboratori.
 		cantități tot mai mari de documente}, permițându-ne să găsim un
 		anumit fișier printre mii, milioane sau chiar miliarde de alte
 		fișiere, în sistemele distribuite. Această contribuție este
-		detaliată în \labelindexref{secțiunea}{sec:file-system-baza-struct}
+		detaliată în \labelindexref{Secțiunea}{sec:file-system-baza-struct}
 		privind structura ierarhică.
 	\item În al doilea rând, sistemele de fișiere \textbf{asigură separarea
 		resurselor între utilizatorii multipli ai unui sistem de
 		calcul}, fie cei umani sau non-umani. Vom discuta importanța
-		acestei trăsături în \labelindexref{secțiunea}{sec:users-fs}
+		acestei trăsături în \labelindexref{Secțiunea}{sec:users-fs}
 		dedicată permisiunilor.
 \end{itemize}
 
@@ -197,7 +197,7 @@ Prin organizarea arborescentă pe directoare, cantități impresionante de fiși
 pot fi gestionate la nivelul unei singure persoane. Sistemul de fișiere
 transformă astfel complexitatea volumului imens de informații și o face
 accesibilă pentru noi, utilizatorii umani. Mai mult despre găsirea fișierelor
-se află în \labelindexref{secțiunea}{sec:file-system-file-search} privind
+se află în \labelindexref{Secțiunea}{sec:file-system-file-search} privind
 comenzile de căutare (\cmd{find}, \cmd{locate}, \cmd{whereis}, \cmd{which} și
 \cmd{type}).
 
@@ -275,20 +275,30 @@ Prezentăm în continuare exemple concrete de organizare a fișierelor în siste
 %	Figura.... Ierarhia într-un sistem de fișiere din mediul Linux
 %
 
-În Figura TODO prezentăm cum arată grafic o ierarhie a sistemului de fișiere. Observăm că în rădăcină se află directoarele \file{home/}, \file{bin/}, \file{usr/} etc. În
-directorul \file{home/} se află subdirectoarele \file{ubuntu/} și \file{myuser/} ș.a.m.d.
+În \labelindexref{Figura}{fig:linux-fs} prezentăm cum arată grafic o ierarhie a
+sistemului de fișiere. Observăm că în rădăcină se află directoarele
+\file{home/}, \file{bin/}, \file{usr/} etc. În directorul \file{home/} se află
+subdirectoarele \file{ubuntu/} și \file{myuser/} ș.a.m.d.
 
 \begin{note}[Folosire caracter \texttt{/} (\textit{slash})]
-Atunci când folosim nume de directoare în Linux vom prefera să folosim sufixul \texttt{/} (\textit{slash}) pentru a indica faptul că sunt directoare.
+Atunci când folosim nume de directoare în Linux vom prefera să folosim sufixul
+\texttt{/} (\textit{slash}) pentru a indica faptul că sunt directoare.
 \end{note}
 
-Figura .... - Ierarhia sistemului de fișiere în Linux TODO
+\begin{figure}[htbp]
+	\centering
+	\def\svgwidth{\columnwidth}
+	\includesvg{chapters/02-fs/linux-fs.svg}
+	\caption{Ierarhia într-un sistem de fișiere din mediul Linux}
+	\label{fig:linux-fs}
+\end{figure}
 
 Ierarhia sistemului de fișiere în macOS este similară celei din Linux.
 
 Structura fișierelor în Windows diferă față de cea din Linux. Aceasta este mai
 simplă și majoritatea directoarelor importante se află în
-\file{C:\textbackslash{}Windows}, așa cum se observă în Tabelul~\ref{table:file-system-windows-fs}.
+\file{C:\textbackslash{}Windows}, așa cum se observă în
+\labelindexref{Tabelul}{table:file-system-windows-fs}.
 
 \begin{table}[htb]
 \caption{Ierarhia într-un sistem de fișiere din Windows}
@@ -377,12 +387,13 @@ Observăm că în Linux înșiruirea de directoare este separată de caracterul 
 \subsection{Căi relative și căi absolute}
 \label{sec:file-system-baza-paths}
 
-Revenind la exemplul din Figura TODO, dorim să găsim poza
-\file{selfiecumotanul-mai2018.jpg}, care se află în subdirectorul \file{cat-pics}, în
-directorul \file{99}. Pentru a putea accesa poza, avem două posibilități: putem
-sa folosim o cale relativă sau o cale absolută. Alegerea căii pe care o vom
-folosi depinde de unde ne aflăm în momentul respectiv în ierarhia de fișiere și
-unde se află fișierul căutat. O cale este echivalentul unei adrese pentru identificarea fișierului.
+Revenind la exemplul din \labelindexref{Figura}{fig:linux-fs}, dorim să găsim
+poza \file{selfiecumotanul-mai2018.jpg}, care se află în subdirectorul
+\file{cat-pics}, în directorul \file{99}. Pentru a putea accesa poza, avem două
+posibilități: putem sa folosim o cale relativă sau o cale absolută. Alegerea
+căii pe care o vom folosi depinde de unde ne aflăm în momentul respectiv în
+ierarhia de fișiere și unde se află fișierul căutat. O cale este echivalentul
+unei adrese pentru identificarea fișierului.
 
 \begin{definition}{Cale absolută}
 \textbf{Calea absolută} reprezintă adresa completă a fișierului, începând cu
@@ -606,7 +617,7 @@ Tipul fișierului este indicat de primul caracter din rezultatul rulării comenz
 Alte atribute importante descriu permisiunile, adică operațiile pe care diferite
 tipuri de utilizatori le pot realiza asupra respectivului fișier. Informații
 detaliate privind \textbf{tipurile de utilizatori} și configurarea permisiunilor
-acestora se regăsesc în \labelindexref{capitolul}{chapter:users}.
+acestora se regăsesc în \labelindexref{Capitolul}{chapter:users}.
 
 \begin{itemize}
 	\item \texttt{r} = permisiunea de a citi fișierul
@@ -628,7 +639,8 @@ realizarea unei versiuni de backup.
 O problemă poate apărea dacă doi utilizatori doresc să citească sau să modifice
 același fișier simultan, deoarece nu este clar dacă acțiunile celor doi nu se
 vor încurca reciproc. De aceea, una dintre responsabilitățile sistemului de
-fișiere este să mențină separarea resurselor resurselor între utilizatori. Vom prezenta detaliat aceste aspecte în \labelindexref{capitolul}{chapter:users}.
+fișiere este să mențină separarea resurselor resurselor între utilizatori. Vom
+prezenta detaliat aceste aspecte în \labelindexref{Capitolul}{chapter:users}.
 
 \subsection{Afișarea și schimbarea directorului curent}
 \label{sec:file-system-file-list-cd}
@@ -734,7 +746,9 @@ Explicații privind formatul de output:
 
 \begin{itemize}
 	\item primul caracter ne spune tipul fișierului, în cazul de față fișier obișnuit
-	\item următoarele 3 grupuri de caractere (\texttt{rwx}) reprezintă permisiunile de acces, pe care le vom detalia în \labelindexref{capitolul}{chapter:users}
+	\item următoarele 3 grupuri de caractere (\texttt{rwx}) reprezintă
+		permisiunile de acces, pe care le vom detalia în
+		\labelindexref{Capitolul}{chapter:users}
 	\item \texttt{student} este utilizatorul fișierului
         \item \texttt{student} (a doua apariție) este grupul de care aparține fișierul
 	\item \texttt{146} este dimensiunea fișierului, în octeți
@@ -970,8 +984,9 @@ Comenzile de copiere și mutare primesc doi parametri:
 \end{itemize}
 
 \begin{note}[Observație]
-<sursa> comenzilor din acest subcapitol poate fi reprezentată și
-prin globbing în sistemul de fișiere, despre care vom discuta detaliat în \labelindexref{capitolul}{chapter:cli}.
+<sursa> comenzilor din acest subcapitol poate fi reprezentată și prin globbing
+în sistemul de fișiere, despre care vom discuta detaliat în
+\labelindexref{Capitolul}{chapter:cli}.
 \end{note}
 
 \subsubsection{Copierea}
@@ -1185,7 +1200,10 @@ student@uso:~$ which chmod
 /bin/chmod
 \end{screen}
 
-Utilizarea comenzii \cmd{type} duce la determinarea modului de interpretare a altei comenzi, de exemplu comandă integrată în shell (numită și internă), comandă externă sau alias. Mai multe despre comenzi în shell, interne și externe, vor fi prezentate în \labelindexref{capitolul}{chapter:cli}.
+Utilizarea comenzii \cmd{type} duce la determinarea modului de interpretare a
+altei comenzi, de exemplu comandă integrată în shell (numită și internă),
+comandă externă sau alias. Mai multe despre comenzi în shell, interne și
+externe, vor fi prezentate în \labelindexref{Capitolul}{chapter:cli}.
 
 Un exemplu de comandă integrată in shell este comanda \cmd{cd} în vreme ce o comanda externă, care are un executabil asociat, este comanda \cmd{cat}, așa cum putem vedea în exemplul de mai jos:
 
@@ -1351,12 +1369,16 @@ potrivite.
 \end{center}
 \end{table}
 
-Informații detaliate despre backup-uri periodice folosind \cmd{rsync} vor fi prezentate în \labelindexref{secțiunea}{sec:storage-backup}.
+Informații detaliate despre backup-uri periodice folosind \cmd{rsync} vor fi
+prezentate în \labelindexref{Secțiunea}{sec:storage-backup}.
 
 \section{Redirectarea intrării sau ieșirii}
 \label{sec:file-system-redirect}
 
-Așa cum veți întâlni în \labelindexref{secțiunea}{sec:procese-fisiere-description}, o aplicație care rulează folosește niște intrări speciale (standard); în folosirea acestor intrări și a altor fișiere folosește descriptori de fișiere.
+Așa cum veți întâlni în
+\labelindexref{Secțiunea}{sec:procese-fisiere-description}, o aplicație care
+rulează folosește niște intrări speciale (standard); în folosirea acestor
+intrări și a altor fișiere folosește descriptori de fișiere.
 
 Există 3 \textbf{fișiere speciale} utilizate de programele în execuție pentru a
 interacționa cu utilizatorii:
@@ -1518,7 +1540,8 @@ Tabelul~\ref{table:file-system-redirect-special} prezintă câteva redirectări 
 \end{center}
 \end{table}
 
-Detalii despre internele redirectării și ce se întâmplă la nivelul unei aplicații găsiți în \labelindexref{secțiunea}{sec:procese-fisiere-redirectare}.
+Detalii despre internele redirectării și ce se întâmplă la nivelul unei
+aplicații găsiți în \labelindexref{Secțiunea}{sec:procese-fisiere-redirectare}.
 
 \section{Tipuri de sisteme de fișiere}
 \label{sec:file-system-fs-types}
@@ -1530,7 +1553,8 @@ care folosesc partiții multiple pentru mai multe sisteme de operare.
 
 Pentru mai multe informații despre crearea, montarea și repararea unui sistem de
 fișiere, precum și lucrul cu partiții, citiți
-\labelindexref{capitolul}{chapter:storage}. În Tabelul~\ref{table:file-system-backup-fs-types} de mai jos se găsesc unele
+\labelindexref{Capitolul}{chapter:storage}. În
+Tabelul~\ref{table:file-system-backup-fs-types} de mai jos se găsesc unele
 dintre cele mai importante sisteme de fișiere utilizate în prezent, alături de
 sistemele de operare în care operează.
 
@@ -1564,7 +1588,9 @@ sistemele de operare în care operează.
 Termenul ,,nativ'' semnifică faptul că suportul este oferit de driverele ce
 însoțesc sistemul de operare.
 
-Sistemele de fișiere pot fi clasificate după locul în care datele sunt stocate. Tabelul~\ref{table:file-system-classes} prezintă succint această clasificare.
+Sistemele de fișiere pot fi clasificate după locul în care datele sunt stocate.
+Tabelul \labelindexref{Tabelul}{table:file-system-fs-classes} prezintă succint
+această clasificare.
 
 \begin{table}[htb]
 \caption{Clasificarea sistemelor de fișiere după suportul datelor}
@@ -1587,7 +1613,11 @@ Sistemele de fișiere pot fi clasificate după locul în care datele sunt stocat
 \end{center}
 \end{table}
 
-Sistemele de fișiere virtuale (precum \texttt{procfs}) sunt sisteme care nu au suport fizic pe disc. Accesul prin comenzi la aceste sisteme de fișiere duce de obicei la date care se găsesc în memorie. Despre sistemul de fișiere \texttt{procfs} vor fi prezentate detalii în \labelindexref{secțiunea}{sec:procese-proc}.
+Sistemele de fișiere virtuale (precum \texttt{procfs}) sunt sisteme care nu au
+suport fizic pe disc. Accesul prin comenzi la aceste sisteme de fișiere duce de
+obicei la date care se găsesc în memorie. Despre sistemul de fișiere
+\texttt{procfs} vor fi prezentate detalii în
+\labelindexref{Secțiunea}{sec:procese-proc}.
 
 \subsection{Integritatea datelor}
 \label{sec:file-system-fs-integrity}
