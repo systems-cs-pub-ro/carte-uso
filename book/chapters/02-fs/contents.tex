@@ -33,7 +33,7 @@ care sunt prioritățile în funcționarea sistemului și să acceptăm anumite
 compromisuri între cerințe contradictorii. De exemplu, creșterea resurselor de
 stocare a dus la dispariția crizelor de spațiu și a problematicii comprimării în
 sistemele personale; aceasta este însă tot mai relevantă în arhitecturile
-\textit{cloud}. În zilele noastre, un utilizator stochează și folosește filme, poze, jocuri pe calculator, documente, mașini virtuale, arhive de informații; acestea ocupă spațiu considerabil pe un sistem laptop sau pe un dispozitiv mobil inteligent sau în Dropbox; acest spațiu ocupat nu mai este însă considerat o problemă.
+\textit{cloud}. În zilele noastre, un utilizator stochează și folosește filme, poze, jocuri pe calculator, documente, mașini virtuale, arhive de informații; acestea ocupă spațiu considerabil pe un sistem laptop sau pe un dispozitiv mobil inteligent sau în Dropbox; acest spațiu ocupat nu mai este însă considerat o problemă dat fiind starea tehnologiilor și serviciilor de stocare.
 
 De asemenea, cerința integrității datelor este foarte importantă în sistemele
 ce lucrează cu date critice, dar mai puțin importantă în sistemele personale,
@@ -109,7 +109,7 @@ spații continue de octeți, pe care putem înscrie multe fișiere, de dimensiun
 variabile. Pentru a putea citi sau scrie fișiere pe un mediu de stocare este
 necesar să cunoaștem sistemul de fișiere utilizat pentru organizarea acestuia.
 
-\begin{definition}{sistem de fișîere}
+\begin{definition}{sistem de fișiere}
 \textbf{Sistemul de fișiere} este o parte a sistemului de operare ce se ocupă cu
 numele și atributele fișierelor, pe care le stochează într-o structură
 ierarhică. Sistemul de fișiere oferă o metodă de organizare fizică și logică a
@@ -124,11 +124,11 @@ fișierelor într-un mediu de stocare:
 \end{definition}
 
 Fișierele sunt folosite de sistemul de operare pentru a organiza atât
-datele provenite de la utilizator, cât si cele generate de sistem. În sistemul de fișiere sunt stocate și organizate poze, documente, notițe ale utilizatorului, dar și fișiere de configurare, fișiere de tip jurnal (\textit{log files}), baze de date necesare funcționării sistemului.
+datele provenite de la utilizator, cât și cele generate de sistem. În sistemul de fișiere sunt stocate și organizate poze, documente, notițe ale utilizatorului, dar și fișiere de configurare, fișiere de tip jurnal (\textit{log files}), baze de date necesare funcționării sistemului.
 
 Deoarece este important ca utilizatorii să poată accesa fișierele stocate,
 sistemul de operare pune la dispoziție o interfață pentru a putea lucra cu
-sistemul de fișiere. In funcție de preferințe, există două tipuri de interfețe:
+sistemul de fișiere. În funcție de preferințe, există două tipuri de interfețe:
 de tip text (exemplu: interpretorul de comenzi) sau de tip grafic (exemplu:
 Windows File Explorer)
 
@@ -145,7 +145,7 @@ Vorbim despre o \textbf{structură plată} atunci când toate fișierele sunt
 într-un singur loc, adică un singur director. De exemplu, dacă un utilizator
 salvează toate documentele pe desktop, avem o structură plată. O structură
 \textbf{ierarhică}, sau arborescentă, apare atunci când fișierele sunt
-organizate în directoare (en. \textit{folders}). Un director poate conține mai
+organizate în directoare (\textit{folders}). Un director poate conține mai
 multe fișiere dar și alte directoare, fiecare dintre care poate conține mai
 multe fișiere dar și alte directoare și tot așa, până când ultimul director va
 conține doar fișiere sau va fi gol. Un director este analog unei crengi dintr-un
@@ -180,7 +180,7 @@ zile, cu o căutare în trei punguțe cu 100 de elemente fiecare, care este ușo
 realizat chiar și manual, de o singură persoană.
 
 Prin organizarea arborescentă pe directoare, cantități impresionante de fișiere
-devin gestionabile la nivelul unei singure persoane. Sistemul de fișiere
+pot fi gestionate la nivelul unei singure persoane. Sistemul de fișiere
 transformă astfel complexitatea volumului imens de informații și o face
 accesibilă pentru noi, utilizatorii umani. Mai mult despre găsirea fișierelor
 se află în \labelindexref{secțiunea}{sec:file-system-file-search} privind
@@ -198,7 +198,7 @@ controla mai bine informațiile plătim un cost de 10.000 / 1.000.000 = 1\%.
 
 Prezentăm în continuare exemple concrete de organizare a fișierelor în sistemele de operare moderne.
 
-În Tabelul~\ref{table:file-system-linux-fs} este prezentată structura ierarhică în Linux:
+În Tabelul~\ref{table:file-system-linux-fs} este prezentată structura ierarhică în Linux.
 
 \begin{table}[htb]
 \caption{Ierarhia într-un sistem de fișiere din mediul Linux}
@@ -207,7 +207,7 @@ Prezentăm în continuare exemple concrete de organizare a fișierelor în siste
 	\toprule
 		\textbf{Director} & \textbf{Conținut} \\
 	\midrule
-		\file{/} & directorul rădăcină (en. root) - directorul cel mai
+                \file{/} & directorul rădăcină (\textit{root directory}) -- directorul cel mai
 		cuprinzător, care conține celelalte directoare, considerate
 		analoage trunchiului și ramurilor. \\
 	\midrule
@@ -221,7 +221,7 @@ Prezentăm în continuare exemple concrete de organizare a fișierelor în siste
 		la dispozitivele hardware sau logice ale sistemului\\
 	\midrule
 		\file{/etc} & fișiere pentru configurarea sistemului, precum
-		inittab, fstab și hosts\\
+                \file{inittab}, \file{fstab} și \file{hosts}\\
 	\midrule
 		\file{/home} & fișierele fiecărui utilizator din sistem - datele
 		unui utilizator se găsesc în \file{/home/username}\\
@@ -274,7 +274,7 @@ Ierarhia sistemului de fișiere în macOS este similară celei din Linux.
 
 Structura fișierelor în Windows diferă față de cea din Linux. Aceasta este mai
 simplă și majoritatea directoarelor importante se află în
-C:\textbackslash{}Windows.
+\file{C:\textbackslash{}Windows}, așa cum se observă în Tabelul~\ref{table:file-system-windows-fs}.
 
 \begin{table}[htb]
 \caption{Ierarhia într-un sistem de fișiere din Windows}
@@ -325,8 +325,8 @@ Dacă se modifică sistemul de fișiere de pe o partiție, litera asignată part
 va rămâne aceeași. Pe o partiție se poate afla la un moment dat un singur sistem
 de fișiere.
 
-În tabelul de mai jos avem o comparație între căile importante din sistemele de
-operare cele mai cunoscute:
+În Tabelul~\ref{table:file-system-compar} de mai jos avem o comparație între căile importante din sistemele de
+operare cele mai cunoscute.
 
 \begin{table}[htb]
 \caption{Comparație între căile sistemelor de operare}
@@ -438,7 +438,7 @@ student@uso:~$ ls
 Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos  examples.desktop  passwd  uso.git  vm-actions-log.txt
 \end{screen}
 
-În exemplu de mai sus am folosit comanda \cmd{ls} (\textit{list}) pentru a afișa conținutul directorului curent (chiar directorul home \file{/home/student}). Apoi, la linia 5 am folosit comanda \cmd{cp} (\textit{copy}) pentru a copia fișierul \file{/etc/passwd} (cale absolută), dat ca primul argument, în directorul curent, reprezentat de construcția \file{.} (punct), dat ca al doilea argument. Apoi, la afișarea conținutuluin directorului (folosind comanda \cmd{ls}) vedem prezența fișierului \texttt{passwd}, acum copiat. În exemplu am folosit construcția \file{.} (punct) pentru a referi directorul curent, destinația comenzii de copiere.
+În exemplu de mai sus am folosit comanda \cmd{ls} (\textit{list}) pentru a afișa conținutul directorului curent (chiar directorul home \file{/home/student}). Apoi, la linia 5 am folosit comanda \cmd{cp} (\textit{copy}) pentru a copia fișierul \file{/etc/passwd} (cale absolută), dat ca primul argument, în directorul curent, reprezentat de construcția \file{.} (punct), dat ca al doilea argument. Apoi, la afișarea conținutului directorului (folosind comanda \cmd{ls}) vedem prezența fișierului \texttt{passwd}, acum copiat. În exemplu am folosit construcția \file{.} (punct) pentru a referi directorul curent, destinația comenzii de copiere.
 
 \section{Formatul fișierelor}
 \label{sec:file-system-format}
@@ -489,12 +489,12 @@ player.
 Fișierele pot fi convertite dintr-un format într-altul, de regulă în interiorul
 categoriilor mari de conținut. De exemplu, putem converti un fișier \texttt{.wav} într-un fișier \texttt {.mp3},
 sau un fișier \texttt{.bmp} într-un fișier \texttt{.png}, sau un fișier \texttt{.doc} într-un fișier \texttt{.pdf}. Este posibil să convertim și
-fișiere în formaturi ce par foarte diferite, de exemplu un fișier \texttt{.txt} într-un fișier \texttt{.mp3},
+fișiere în formate ce par foarte diferite, de exemplu un fișier \texttt{.txt} într-un fișier \texttt{.mp3},
 apelând la soluții automate text-to-speech. Convertirea se realizează
 nu prin schimbarea manuală a extensiei, ci prin intermediul unei aplicații cu
 care deschidem fișierul și îl transformăm în formatul dorit.
 
-Pentru a vedea de ce tip este un fișier in Linux, dincolo de extensie, folosim comanda \cmd{file}. Mai jos avem exemple de folosire a comenzii \cmd{file} pentru determinarea tipului unui fișier. Pentru fiecare fișier primit ca argument de comanda \cmd{file} sunt indicate informații despre tipul fișierului: executabil, imagine de kernel, script shell, fișier comprimat, fișier imagine.
+Pentru a vedea de ce tip este un fișier în Linux, dincolo de extensie, folosim comanda \cmd{file}. Mai jos avem exemple de folosire a comenzii \cmd{file} pentru determinarea tipului unui fișier. Pentru fiecare fișier primit ca argument de comanda \cmd{file} sunt indicate informații despre tipul fișierului: executabil, imagine de kernel, script shell, fișier comprimat, fișier imagine.
 
 \begin{screen}
 student@uso:~$ file /bin/ls
@@ -534,7 +534,7 @@ Pentru a controla funcționarea sistemelor de fișiere este importantă distinc�
 dintre \textbf{date} și \textbf{metadate}. Un fișier conține efectiv informații sau
 date, precum muzică, versuri, imagini sau bilete de avion.
 
-\begin{definition}{Metadatale unui fișier}
+\begin{definition}{Metadatele unui fișier}
 \textbf{Metadatele} sunt informații despre informații: cantitatea informațiilor, data
 ultimei accesări, cine le-a creat, cine le-a modificat, unde anume au fost
 editate ultima dată.
@@ -629,7 +629,6 @@ vrem să ajungem.
 Pentru a înțelege mai bine cum funcționează cele două comenzi -- \cmd{pwd} și
 \cmd{cd} -- avem următorul exemplu, mai jos. Urmăriți modificările prompt-ului
 bash atunci când schimbăm directorul:
-
 
 \begin{screen}
 student@uso:~$ pwd
@@ -783,11 +782,11 @@ student@uso:~$ ls -a /
   \item comanda de la linia 19 (\cmd{ls -l}) afișează toate informațiile (\texttt{-l}) ale
 		tuturor fișierelor, ascunse și neascunse, din directorul curent;
                 dimensiunea fișierelor este afișată în format inteligibil (\textit{human-readable})
-		(\texttt{-h}); observăm că sunt sunt afișate si directoarele
+		(\texttt{-h}); observăm că sunt sunt afișate și directoarele
 		standard \file{.} și \file{..}
 	\item comanda de la linia 38 primește o cale relativă pentru a-i afișa
 		conținutul
-	\item comanda de la linia 41 afişează toate fișierele, ascunse si
+	\item comanda de la linia 41 afișează toate fișierele, ascunse și
 		neascunse, din rădăcina ierarhiei de fișiere și directoare (\file{/})
 \end{itemize}
 
@@ -865,7 +864,7 @@ total 0
 	\item comanda de la linia 1 folosește prima metodă; creează un fișier
 		gol cu numele \file{cats.txt} în directorul curent
 	\item comanda de la linia 2 folosește a doua metodă; redirectează
-		(\texttt{>}) ieșirea unei comenzi nule într-un fișier, ducânt la trunchierea fișierului, dacă există, sau, în cazul nostru, ducând la crearea
+		(\texttt{>}) ieșirea unei comenzi nule într-un fișier, ducând la trunchierea fișierului, dacă există, sau, în cazul nostru, ducând la crearea
                 fișierului gol \file{dogs.txt}
 \end{itemize}
 Vedem din rezultatul rulării comenzii \texttt{ls -l} că ambele fișiere sunt create cu dimensiune 0, sunt goale.
@@ -923,7 +922,7 @@ drwxrwxr-x 2 student student 4096 sep 30 17:32 games/heroes/3/nighon/mutare
 
 În exemplul de mai sus am creat directorul \file{games/} iar în cadrul său am creat subdirectoarele \file{warcraft/} și \file{lol/}. Comanda \cmd{ls} afișează conținutul unui diretor; dacă dorim să afișăm informații despre director în sine folosim comanda opțiunea \texttt{-d} a comenzii \cmd{mkdir}; o formă frecventă este folosirea opțiunii \texttt{-ld} pentru afișarea informațiilor despre director în format lung, cu atribute ale directorului. În partea finală a exemplului am folosit opțiunea \texttt{-p} a comenzii \cmd{mkdir} pentru a crea un director cu toate directoarele părinte necesare chiar dacă acestea nu există.
 
-În Tabelul~\ref{table:file-system-file-creation} sunt sumarizate comenzile de creare a tipurilor de intrări în sistemul de fișiere:
+În Tabelul~\ref{table:file-system-file-creation} sunt sumarizate comenzile de creare a tipurilor de intrări în sistemul de fișiere.
 
 \begin{table}[htb]
 \caption{Comenzi pentru crearea intrărilor în sistemul de fișere}
@@ -1052,7 +1051,7 @@ student@uso:~$ ls
 Desktop  Documents  Music  Pictures  Public  Templates  Videos  examples.desktop  uso.git  vm-actions-log.txt
 \end{screen}
 
-În exemplul de mai sus am șters, folosind comanda \cmd{rm} fișierele \file{basics-wiki} și \file{passwd} și legătura simbolică \file{readme_link}. Apoi am șters recursiv (folosind opțiunea \texttt{-fr} (de la \textit{force and recursive}) directorul \file{labs-old/}. Comanda \cmd{rmdir} poate șterge un director doar dacă acesta este gol; pentru aceasta am șters toate fișierele din directorul \file{Downloads/} folosind construcția \file{Downloads/*}; apoi am folosit comanda \cmd{rmdir} pentru a șterge directorul. Am folosit coamanda \cmd{ls} la început și la sfârșit pentru a demonstra ștergerea fișierelor.
+În exemplul de mai sus am șters, folosind comanda \cmd{rm} fișierele \file{basics-wiki} și \file{passwd} și legătura simbolică \file{readme_link}. Apoi am șters recursiv (folosind opțiunea \texttt{-fr} (de la \textit{force and recursive}) directorul \file{labs-old/}. Comanda \cmd{rmdir} poate șterge un director doar dacă acesta este gol; pentru aceasta am șters toate fișierele din directorul \file{Downloads/} folosind construcția \file{Downloads/*}; apoi am folosit comanda \cmd{rmdir} pentru a șterge directorul. Am folosit comanda \cmd{ls} la început și la sfârșit pentru a demonstra ștergerea fișierelor.
 
 \subsection{Căutarea fișierelor}
 \label{sec:file-system-file-search}
@@ -1068,13 +1067,13 @@ Pentru căutare indexată folosim, în Linux, comanda \cmd{locate} (și comanda 
 \subsubsection{Comanda locate}
 \label{sec:file-system-cmd-locate}
 
-Comanda \cmd{locate} caută în toate fișierele indexte într-o bază de date locală. Avantajul său este căutarea rapidă în sistemul de fișiere. Are două dezavantaje:
+Comanda \cmd{locate} caută în toate fișierele indexate într-o bază de date locală. Avantajul său este căutarea rapidă în sistemul de fișiere. Are două dezavantaje:
 \begin{enumerate}
   \item Baza de date trebuie actualizată periodic pentru a indexa modificările din sistemul de fișiere. Actualizarea se face folosind comanda \cmd{updatedb}.
   \item Căutarea se face strict după nume, nu și după alte atribute ale fișierelor.
 \end{enumerate}
 
-Rezultatul rulăii comenzii este o listă cu toate fișierele al căror nume conține șirul de caractere trimis ca argument.
+Rezultatul rulării comenzii este o listă cu toate fișierele al căror nume conține șirul de caractere trimis ca argument.
 
 În exemplul următor se caută toate fișierele al căror nume conține șirul \texttt{pwd}:
 
@@ -1097,7 +1096,7 @@ Unele distribuții Linux folosesc comanda \cmd{slocate} în locul comenzii \cmd{
 \label{sec:file-system-cmd-find}
 
 Pentru căutarea în ierarhia de directoare al fișierelor se folosește comanda
-\cmd{find}, comandă ce parcurge exaustiv ierarhia de directoare. Comanda permite căutarea folosind
+\cmd{find}, comandă ce parcurge exhaustiv ierarhia de directoare. Comanda permite căutarea folosind
 diferite criterii, precum numele fișierului, utilizator, grup, tip, permisiuni,
 dimensiune, dată și altele. Exemple de opțiuni ale comenzii \cmd{find} pentru criterii de căutare:
 
@@ -1202,7 +1201,7 @@ fișierul rezultat este conținut și cuprinsul fișierelor. Fiind folosite refe
 dicționar a secvențelor lungi, se realizează astfel o economie de spațiu. Cu cât
 fișierele conțin mai multe date repetitive, cu atât dimensiunile fișierului comprimat rezultat scad.
 
-Utilitare precum \cmd{zip} realizează atât arhivare cât și compresie; utiltarul \cmd{tar} realizează doar arhivare, iar utilitarul \cmd{gzip} realizează doar compresie; de obicei utilitarele \cmd{tar} și \cmd{gzip} sunt folosite la comun pentru a realiza și arhivarea și compresia.
+Utilitare precum \cmd{zip} realizează atât arhivare cât și compresie; utilitarul \cmd{tar} realizează doar arhivare, iar utilitarul \cmd{gzip} realizează doar compresie; de obicei utilitarele \cmd{tar} și \cmd{gzip} sunt folosite la comun pentru a realiza și arhivarea și compresia.
 
 Numele utilitarului \cmd{tar} este acronimul \textit{tape archiver}, provenind de la faptul că, la origine, rezultatul era
 transferat pe benzi magnetice. Fișierele \texttt{.tar} au în componență fișierele
@@ -1241,7 +1240,7 @@ Opțiunile comenzii \cmd{tar}, folosite mai sus, sunt:
   \item \texttt{c} (pentru \textit{create}): pentru a crea arhiva
   \item \texttt{x} (pentru \textit{extract}): dezarhivează
   \item \texttt{t} (pentru \textit{list}): listează conținut
-  \item \texttt{v} (pentru \textit{verbose}): arată ce se întămplă
+  \item \texttt{v} (pentru \textit{verbose}): arată ce se întâmplă
   \item \texttt{f nume_arhiva.tar} (pentru \textit{file}): numele arhivei
 \end{itemize}
 
@@ -1481,7 +1480,7 @@ fstat(3, {st_mode=S_IFREG|0644, st_size=91329, ...}) = 0
 [...]
 \end{screen}
 
-Tabelul~\ref{table:file-system-redirect-special} prezintă câteva redirectări folosind fișiere speciale:
+Tabelul~\ref{table:file-system-redirect-special} prezintă câteva redirectări folosind fișiere speciale.
 
 \begin{table}[htb]
 \caption{Redirectări folosind fișiere speciale}
@@ -1519,7 +1518,7 @@ Pentru mai multe informații despre crearea, montarea și repararea unui sistem 
 fișiere, precum și lucrul cu partiții, citiți
 \labelindexref{capitolul}{chapter:storage}. În Tabelul~\ref{table:file-system-backup-fs-types} de mai jos se găsesc unele
 dintre cele mai importante sisteme de fișiere utilizate în prezent, alături de
-sistemele de operare în care operează:
+sistemele de operare în care operează.
 
 \begin{table}[htb]
 \caption{Sisteme de operare și sisteme de fișiere suportate}
@@ -1551,7 +1550,7 @@ sistemele de operare în care operează:
 Termenul ,,nativ'' semnifică faptul că suportul este oferit de driverele ce
 însoțesc sistemul de operare.
 
-Sistemele de fișiere pot fi clasificate după locul în care datele sunt stocate. Tabelul~\ref{table:file-system-classes} prezintă succint această clasificare:
+Sistemele de fișiere pot fi clasificate după locul în care datele sunt stocate. Tabelul~\ref{table:file-system-classes} prezintă succint această clasificare.
 
 \begin{table}[htb]
 \caption{Clasificarea sistemelor de fișiere după suportul datelor}
@@ -1600,8 +1599,8 @@ valorile lor numerice din codul ASCII. Dacă se modifică o literă din greșeal
 suma va diferi și eroarea va fi detectată.
 
 Sistemul de fișiere trebuie să fie capabil să păstreze integritatea datelor și
-în situația unui eșec (failure). În cele mai multe cazuri această
-funcționalitate se implementează prin \cmd{jurnalizare}, care permite și
+în situația unui eșec (\textit{failure}). În cele mai multe cazuri această
+funcționalitate se implementează prin \textbf{jurnalizare}, care permite și
 aducerea sistemului la o stare anterioară eșecului. Prin această activitate se
 creează un jurnal unde sunt păstrate toate modificările efectuate asupra unui
 sistem de fișiere, fiecare dintre aceste modificări fiind mai întâi scrisă în
@@ -1694,7 +1693,7 @@ reprezintă un exbibyte, adică $2^{60}$ octeți.
 \section{Anexă: Comenzi pentru lucrul cu fișiere în Windows}
 \label{sec:file-system-case-windows}
 
-Tabelul~\ref{} prezintă comenzile echivalente în Windows pentru operațiile de lucru cu sistemul de fișiere. Acestea pot fi folosite în prompt-urile Windows precum PowerShell sau Command Prompt.
+Tabelul~\ref{table:file-system-linux-windows} prezintă comenzile echivalente în Windows pentru operațiile de lucru cu sistemul de fișiere. Acestea pot fi folosite în prompt-urile Windows precum PowerShell sau Command Prompt.
 
 \begin{table}[htb]
 \begin{center}
@@ -1739,6 +1738,6 @@ Tabelul~\ref{} prezintă comenzile echivalente în Windows pentru operațiile de
                 \cmd{diff} & \cmd{fc} & afișează diferențele dintre două fișiere \\
 	\bottomrule
 	\end{tabular}
-	\label{table:file-system-case-study}
+	\label{table:file-system-linux-windows}
 \end{center}
 \end{table}
