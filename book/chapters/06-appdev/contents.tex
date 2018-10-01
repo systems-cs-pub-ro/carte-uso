@@ -338,8 +338,8 @@ blocul de cod care urmează să fie executat și îl transformă în cod mașin�
 factori precum frecvența de execuție a unui anumit bloc de cod și eficientizează
 procesul prin stocarea în memorie a codului mașină, pentru a nu transforma
 același cod de mai multe ori, deci făcând procesul și mai eficient. Totuși, spre
-deosebire de compilarea ahead-of-time, JIT are un timp de execuție mai mare, dar
-timpul de pornire al aplicației scade.
+deosebire de compilarea ahead-of-time, JIT \abbrev{JIT}{just-in-time} are un
+timp de execuție mai mare, dar timpul de pornire al aplicației scade.
 
 TODO - schema trebuie schimbata (e luata de pe Internet)
 
@@ -372,8 +372,9 @@ simple sau în educație.
 
 Fiind destinat dezvoltării de aplicații pentru companii, platforma Java este are
 două componente, compilatorul care generează bytecode-ul (Java Development Kit -
-JDK) și mașina care rulează bytecode-ul (Java Runtime Environment - JRE). Astfel
-pentru distribuția aplicației nu este necesară distribuția codului sursă.
+JDK \abbrev{JDK}{Java Development Kit}) și mașina care rulează bytecode-ul (Java
+Runtime Environment - JRE \abbrev{JRE}{Java Runtime Environment}). Astfel pentru
+distribuția aplicației nu este necesară distribuția codului sursă.
 
 Recomandăm folosirea limbajului Java dacă dorim să dezvoltăm aplicațiilor de
 mari dimensiuni, în general folosite în scop industrial.
@@ -557,12 +558,13 @@ adresa https://code.visualstudio.com/Download/.
 
 Am vorbit despre editoare și importanța lor în dezvoltarea programelor. Pe lângă
 editoare avansate, avem posibilitatea de a folosi medii integrate de dezvoltare.
-La o primă vedere, acestea sunt similare cu editoarele de text. IDE-urile au, în
-schimb, anumite funcționalități avansate, multe din ele fiind adaptate unui
-singur limbaj de programare, sau unui număr redus de limbaje. În primul rând,
-orice IDE are integrat un compilator sau interpretor pentru limbajul sau
-limbajele de programare pe care le suportă și la o simplă apăsare de buton
-programul este rulat.
+La o primă vedere, acestea sunt similare cu editoarele de text. IDE
+\abbrev{IDE}{Integrated Development environment}-urile au, în schimb, anumite
+funcționalități avansate, multe din ele fiind adaptate unui singur limbaj de
+programare, sau unui număr redus de limbaje. În primul rând, orice IDE are
+integrat un compilator sau interpretor pentru limbajul sau limbajele de
+programare pe care le suportă și la o simplă apăsare de buton programul este
+rulat.
 
 Având în vedere că editoare precum Sublime Text sau Visual Studio Code vin cu un
 număr mare de extensii care pot adăuga funcționalități specifice unui anumit
@@ -654,11 +656,11 @@ folosirea bibliotecilor și a framework-urilor.
 
 Bibliotecile sunt colecții de resurse pe care le integrăm în aplicațiile noastre
 pentru a ne ușura procesul de dezvoltare. De exemplu, dacă dorim să dezvoltăm o
-aplicație Python care face cereri HTTP, vom folosi biblioteca \textit{requests}
-care expune funcția \textit{get()} pentru a face o cerere. Fără a folosi
-biblioteca, ar trebui să scriem noi tot codul care se conectează la un server,
-generează pachetul pentru cerere, îl trimite, apoi preia și interpretează
-răspunsul.
+aplicație Python care face cereri HTTP \abbrev{HTTP}{Hypertex Transfer
+Protocol}, vom folosi biblioteca \textit{requests} care expune funcția
+\textit{get()} pentru a face o cerere. Fără a folosi biblioteca, ar trebui să
+scriem noi tot codul care se conectează la un server, generează pachetul pentru
+cerere, îl trimite, apoi preia și interpretează răspunsul.
 
 O unealtă asemănătoare bibliotecilor sunt framework-urile. Și acestea sunt
 unelte care ușurează procesul de dezvoltare, dar ele oferă un schelet pe care
@@ -740,10 +742,10 @@ interpretorului pentru mai multe limbaje de programare.
 \subsection{C}
 \label{sec:appdev-ideinstall-c}
 
-Pentru limbajul C, compilatorul cel mai cunoscut este gcc (GNU Compiler
-Collection). Conceput inițial pentru a compila limbajul C, în momentul de față
-gcc a fost extins pentru a suporta compilarea și a altor limbaje, cum ar fi C++
-sau Java.
+Pentru limbajul C, compilatorul cel mai cunoscut este gcc \abbrev{gcc}{GNU
+Compiler Collection} (GNU Compiler Collection). Conceput inițial pentru a
+compila limbajul C, în momentul de față gcc a fost extins pentru a suporta
+compilarea și a altor limbaje, cum ar fi C++ sau Java.
 
 Pe sisteme Unix compilatorul este deja instalat, există însă cazuri când ne
 dorim aducerea la zi a acestuia (update). Pentru a instala o versiune mai nouă a
@@ -1071,10 +1073,10 @@ cd node-v8.12.0-linux-x64
 sudo cp -R * /usr
 \end{screen}
 
-În plus, recomandăm instalarea unei versiuni LTS (Long Term Support) în
-detrimentul celei mai recente versiuni. Versiunea LTS este testată intensiv
-întainte de a fi lansată și este mult mai stabilă decat versiune curentă, care e
-încă în teste.
+În plus, recomandăm instalarea unei versiuni LTS \abbrev{LTS}{Long Term Support}
+(Long Term Support) în detrimentul celei mai recente versiuni. Versiunea LTS
+este testată intensiv întainte de a fi lansată și este mult mai stabilă decat
+versiune curentă, care e încă în teste.
 
 Pentru instalarea pe sisteme ce rulează Windows, se recomandă descărcarea
 kitului de instalare de pe site-ul Node.js.
@@ -1257,7 +1259,8 @@ cele mai cunoscute și folosite licențe software.
 \subsection{GNU GPL}
 \label{sec:appdev-licensing-gpl}
 
-GNU GPL este prescurtarea de la GNU General Public License și de cele mai multe
+GNU \abbrev{GNU}{GNU's Not Unix} GPL \abbrev{GNU GPL}{GNU General Public
+License} este prescurtarea de la GNU General Public License și de cele mai multe
 ori ne referim la această licență drept GPL.
 
 Un program însoțit de o licență GPL poate fi distribuit doar dacă sursa acestuia
@@ -1269,21 +1272,22 @@ biblioteca integrată poate fi modificată
 \subsection{GNU LGPL}
 \label{sec:appdev-licensing-lgpl}
 
-GNU LGPL (simplu LGPL) este o licență cu restricții mai reduse față de GNU GPL.
-Numele vine de la GNU Lesser General Public License. În cazul acestei licențe
-programul în cauză poate fi integrat în alte programe care au orice altă
-licență. Singura restricție este ca modulul LGPL folosit să fie făcut public în
-cadrul aplicației. De asemenea, în cazul în care biblioteca LGPL este modificată
-și abia apoi integrată într-o aplicație, biblioteca modificată trebuie publicată
-sub licență LGPL.
+GNU LGPL \abbrev{GNU LGPL}{GNU Lesser General Public License} (simplu LGPL) este
+o licență cu restricții mai reduse față de GNU GPL. Numele vine de la GNU
+Lesser General Public License. În cazul acestei licențe programul în cauză poate
+fi integrat în alte programe care au orice altă licență. Singura restricție este
+ca modulul LGPL folosit să fie făcut public în cadrul aplicației. De asemenea,
+în cazul în care biblioteca LGPL este modificată și abia apoi integrată într-o
+aplicație, biblioteca modificată trebuie publicată sub licență LGPL.
 
 \subsection{MIT}
 \label{sec:appdev-licensing-mit}
 
-MIT este o licență mai permisivă față de GPL. Orice bibliotecă care are licența
-MIT poate fi integrată în orice program și acesta poate fi distribuit, fără
-necesitatea de a face programul public. Singura condiție este ca licența MIT să
-apară în programul principal.
+MIT \abbrev{MIT}{Massachusetts Institute of Technology} este o licență mai
+permisivă față de GPL. Orice bibliotecă care are licența MIT poate fi integrată
+în orice program și acesta poate fi distribuit, fără necesitatea de a face
+programul public. Singura condiție este ca licența MIT să apară în programul
+principal.
 
 \section{Sumar}
 \label{sec:appdev-summary}

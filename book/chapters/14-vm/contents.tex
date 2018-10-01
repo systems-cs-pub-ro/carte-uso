@@ -122,13 +122,14 @@ serverelor pentru a rezolva două probleme importante:
 
 În terminologia virtualizării, toate operațiunile necesare acestui proces sunt
 administrate de o entitate denumită \textit{hipervizor} (în engleză:
-hypervisor). Hipervizorul este componenta din sistemul de operare ce se ocupă
-de virtualizare. O altă denumire des întâlnită a hipervizorului, mai ales în
-diagramele arhitecturale este \textit{Virtual Machine Monitor} (VMM) - numele
-este intuitiv întrucât rolul unei hipervizor este acela de a monitoriza toate
-operațiile privilegiate ale unei mașini virtuale și de a le executa în numele
-acesteia. În continuare vom realiza o clasificare a hipervizoarelor strâns
-legată de diferite tipuri de virtualizare.
+hypervisor). Hipervizorul este componenta din sistemul de operare ce se ocupă de
+virtualizare. O altă denumire des întâlnită a hipervizorului, mai ales în
+diagramele arhitecturale este \textit{Virtual Machine Monitor} (VMM
+\abbrev{VMM}{Virtual Machine Monitor}) - numele este intuitiv întrucât rolul
+unei hipervizor este acela de a monitoriza toate operațiile privilegiate ale
+unei mașini virtuale și de a le executa în numele acesteia. În continuare vom
+realiza o clasificare a hipervizoarelor strâns legată de diferite tipuri de
+virtualizare.
 
 De-a lungul timpului, procedeele de virtualizare au evoluat, existând în ziua de
 astăzi două tipuri de virtualizare:
@@ -178,11 +179,12 @@ semnificativă) hipervizoare din ziua de astăzi. Astfel avem hipervizoare de
 tipul 2:
 
 \begin{itemize}
-	\item \textit{KVM} (Kernel Virtual Machine) - vine ca un modul de kernel
-		în cadrul sistemelor Linux care implementează extensiile neceare
-		pentru a realiza virtualizarea. Există suport de virtualizarea
-		KVM atât pentru procesoarele cu arhitectură x86 (Intel și AMD)
-		cât și pentru procesoarele ARM (vezi
+	\item \textit{KVM} \abbrev{KVM}{Kernel Virtual Machine} (Kernel Virtual
+		Machine) - vine ca un modul de kernel în cadrul sistemelor Linux
+		care implementează extensiile neceare pentru a realiza
+		virtualizarea. Există suport de virtualizarea KVM atât pentru
+		procesoarele cu arhitectură x86 (Intel și AMD) cât și pentru
+		procesoarele ARM (vezi
 		\labelindexref{capitolul}{chapter:hardware})
 	\item \textit{Hyper-V} - hipervizor asociat sistemelor de operare
 		Windows Server. Acesta vine ca un rol (Role) instalabil în
@@ -259,8 +261,8 @@ Fig.X. Mașini virtuale vs. containere.[d]
 Tehnologii ce implementează mecanismul de container în sistemele Linux:
 
 \begin{itemize}
-	\item LXC (Linux Containers) - util pentru rularea unor servicii izolat
-		de sistemul de bază
+	\item LXC \abbrev{LXC}{Linux Containers} (Linux Containers) - util pentru
+		rularea unor servicii izolat de sistemul de bază
 	\item OpenVZ - similar LXC, dar nu este prezent în mod implicit în
 		nucleul Linux.
 	\item Docker - oferă posibilitatea rulării într-un cotainer doar a unei
@@ -325,22 +327,23 @@ virtualizare oferă opțiunea de a adăuga o placă de rețea virtuală. Acestă
 de rețea face în general legătura între mașina virtuală și mașina fizică (este
 practic un fir logic între acestea două). Mașina fizică trebuie să ofere o
 modalitate de conectare a firului la rețeaua fizică precum și alocarea de
-resurse (e.g. adresă IP). Soluțiile de virtualizare oferă în general trei tipuri
-de configurații (sau moduri) ale plăcii de rețea virtuale, ilustrate și în Fig.
-X.:
+resurse (e.g. adresă IP \abbrev{IP}{Internet Protocol}). Soluțiile de
+virtualizare oferă în general trei tipuri de configurații (sau moduri) ale
+plăcii de rețea virtuale, ilustrate și în Fig. X.:
 
 \begin{itemize}
-	\item NAT (Network Address Translation - vezi
-		\labelindexref{capitolul}{chapter:net})
+	\item NAT \abbrev{NAT}{Network Address Translation} (Network Address
+		Translation - vezi \labelindexref{capitolul}{chapter:net})
 	\item Host-only
 	\item Bridge
 \end{itemize}
 
-Modul de funcționare NAT alocă o adresă IP automat (prin DHCP) mașinii virtuale
-și în același timp realizează și funcția de NAT pentru a acorda acces la
-Internet mașinii virtuale. După cum se poate vedea și în Fig. X. traficul care
-iese în afara rețelei sau cel care intră este colorat cu roșu, în comparație cu
-cel din interior: acest lucru dorește să reliefeze faptul că la ieșire se face o
+Modul de funcționare NAT alocă o adresă IP automat (prin DHCP
+\abbrev{DHCP}{Dynamic Host Configuration Protocol}) mașinii virtuale și în
+același timp realizează și funcția de NAT pentru a acorda acces la Internet
+mașinii virtuale. După cum se poate vedea și în Fig. X. traficul care iese în
+afara rețelei sau cel care intră este colorat cu roșu, în comparație cu cel din
+interior: acest lucru dorește să reliefeze faptul că la ieșire se face o
 translație de adrese (nu se păstrează adresa sursă a mașinii virtuale) folosind
 mecanismul NAT.
 
@@ -471,8 +474,9 @@ către unitatea hardware.
 Printre soluții de emulare, putem enumera:
 
 \begin{itemize}
-	\item QEMU (prescurtare de la Quick Emulator) - acesta poate emula un
-		număr variat de arhitecturi: x86, ARM, Sparc, PowerPC, ș.a.
+	\item QEMU \abbrev{QEMU}{Quick Emulator} (prescurtare de la Quick
+		Emulator) - acesta poate emula un număr variat de arhitecturi:
+		x86, ARM, Sparc, PowerPC, ș.a.
 	\item BOCHS - acesta poate emula arhitectura x86 și este util în a face
 		debugging în cadrul sistemelor de operare atunci când sunt
 		portate pe arhitectura x86. Are suport inclusiv pentru

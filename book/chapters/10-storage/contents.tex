@@ -59,7 +59,8 @@ stocare au următoarele atribute principale:
 
 \begin{itemize}
 	\item spațiul disponibil - câtă informație se poate stoca pe disc
-		(măsurat de obicei în gigabytes - GB sau terabytes - TB)
+		(măsurat de obicei în gigabytes - GB sau terabytes
+		\abbrev{TB}{terrabytes} - TB)
 	\item viteza de acces - cât de repede se pot transfera datele de pe disc
 		în memoria RAM (măsurat de obice în megabytes pe secundă - MB/s)
 	\item mod de poziționare - intern (în interiorul unității) sau extern
@@ -78,7 +79,7 @@ stocare au următoarele atribute principale:
 
 \begin{itemize}
 	\item Hard Disk Drive (HDD)
-	\item Solid State Drive (SSD)
+	\item Solid State Drive (SSD \abbrev{SSD}{Solid State Drive})
 \end{itemize}
 
 \subsection{Hard Disk Drive}
@@ -97,9 +98,10 @@ controller în gigabiți pe secundă. În zilele noastre, există două tipuri d
 interfețe de conectare:
 
 \begin{itemize}
-	\item SATA - Serial ATA (sau Serial Advanced Technology Attachment)
-	\item SAS - Serial Attached SCSI (sau Serial Attached Small Computer
-		System Interface)
+	\item SATA - Serial ATA \abbrev{SATA}{Serial Advanced Technology
+		Attachment} (Serial Advanced Technology Attachment)
+	\item SAS - Serial Attached SCSI \abbrev{SAS}{Serial attached SCSI} (sau
+		Serial Attached Small Computer System Interface)
 \end{itemize}
 
 Fig. X. HDD
@@ -1186,8 +1188,8 @@ fișierul \file{usodisk}:
 Procesul de partiționare se poate aplica doar asupra unui disc fizic. Dacă în
 sistem sunt montate două discuri, pentru fiecare din acestea trebuie realizată
 partiționarea. În sisteme de tip Linux, pentru a rezolva acest neajuns, a fost
-introdus conceptul de LVM - Logical Volume Manager. În cadrul acestuia există
-următoarele obiecte:
+introdus conceptul de LVM \abbrev{LVM}{Logical Volume Manager} - Logical Volume
+Manager. În cadrul acestuia există următoarele obiecte:
 
 \begin{itemize}
 	\item Physical Volume - sunt discurile fizice alte sistemului asociate LVM-ului
@@ -1284,7 +1286,8 @@ replicate prin diverse mecanisme pe mai multe unități de stocare.
 
 Replicarea datelor pe discuri diferite se poate realiza automat la nivel de bloc
 de date atunci când acestea sunt trimise de către sistemul de operare.
-Mecanismul prin care se face este lucru se numește RAID (Redundant Array of
+Mecanismul prin care se face este lucru se numește RAID \abbrev{RAID}{Redundant
+Array of Independent/Inexpensive Disks} (Redundant Array of
 Independent/Inexpensive Disks). Protocolul RAID poate fi implementat în hardware
 de către controller-ul de stocare sau în software de către sistemul de operare.
 RAID-ul din hardware dispune de un protocol proprietar, cu metadate diferite de
@@ -1372,7 +1375,8 @@ exemplu pentru Windows gratuit îl constituie: \cmd{Cobian}.
 
 Copierea datelor se poate realiza pe un disc extern conectat pe USB sau pe un
 alt dispozitiv în rețea. În general în rețea avem alte servere pe care copiem
-datele sau avem dispozitive speciale de stocare denumite NAS (Network Attached
+datele sau avem dispozitive speciale de stocare denumite NAS
+\abbrev{NAS}{Network Attached Storage} (Network Attached
 Storage). Un NAS este un sistem de calcul cu un software specializat pentru
 accesarea și stocarea datelor. Acesta expune în rețea o multitudine de
 protocoale de acces (http, ftp, nfs, cifs) compatibile cu aproape toate

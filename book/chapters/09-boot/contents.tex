@@ -47,13 +47,14 @@ mai jos.
 
 În momentul pornirii fizice a sistemului (power on) se încarcă dintr-o zonă
 dedicată din hardware-ul sistemul firmware-ul de boot. Firmware-ul de boot este
-numit BIOS (sau UEFI) pe arhitectura x86. Firmware-ul de boot există pe
-sistemul fizic indiferent de prezența sau nu a unui sistem de operare sau
-dispozitiv bootabil. Firmware-ul de boot face verificări de bază ale
-funcționării hardware-ului, oferă utilizatorului posibilitatea de configurări
-aproape de hardware (precum activarea/dezactivarea virtualizării, configurarea
-vitezei de acces la memorie) și stabilește ordinea de boot: ce dispozitive și în
-ce ordine sunt verificate pentru a trece la următorul pas.
+numit BIOS (sau UEFI \abbrev{UEFI}{Unified Extensible Firmware Interface}) pe
+arhitectura x86. Firmware-ul de boot există pe sistemul fizic indiferent de
+prezența sau nu a unui sistem de operare sau dispozitiv bootabil. Firmware-ul de
+boot face verificări de bază ale funcționării hardware-ului, oferă
+utilizatorului posibilitatea de configurări aproape de hardware (precum
+activarea/dezactivarea virtualizării, configurarea vitezei de acces la memorie)
+și stabilește ordinea de boot: ce dispozitive și în ce ordine sunt verificate
+pentru a trece la următorul pas.
 
 Firmware-ul de boot identifică dispozitivul de boot și încarcă o secvență
 dedicată de pe acesta. Dispozitivul de boot poate fi hard disk drive, USB flash
@@ -119,8 +120,9 @@ spune și boot ROM. Firmware-ul de boot are următoarele roluri:
 Firmware-ul de boot este rulat în momentul pornirii sistemului (adică la
 apăsarea pe butonul de pornire). Este prima secvență de cod executată de
 sistemul de calcul. Partea de verificare a componentelor hardware poartă numele
-de POST (Power-On Self Test) pe arhitectura x86; dacă sunt defecte hardware
-acestea vor fi semnalizate de firmware-ul de boot.
+de POST \abbrev{POST}{Power-On Self Test} (Power-On Self Test) pe arhitectura
+x86; dacă sunt defecte hardware acestea vor fi semnalizate de firmware-ul de
+boot.
 
 Firmware-ul de boot este parte a hardware-ului sistemului și vine “preinstalat”
 pe un chip al acestuia. În mod uzual, firmware-ul de boot este furnizat de
@@ -161,17 +163,18 @@ UEFI.
 
 * screenshot cu BIOS și UEFI
 
-Meniul de configurare pentru BIOSl și UEFI sunt accesate la pornirea sistemului
+Meniul de configurare pentru BIOS și UEFI sunt accesate la pornirea sistemului
 folosind o combinație de taste a furnizorului plăcii de bază, uzual F2, F8, F12
 sau Esc. La apăsarea combinației adecvate se accesează ecranul de configurare
 specific.
 
 Configurațiile realizate sunt în mod uzual salvate la părăsirea modului de
 configurare. Aceste configurații sunt salvate într-un chip de memorie dedicat
-numit CMOS (de la Complementary Metal-Oxide-Semiconductor, tehnologia folosită
-pentru tranzistoarele ce compun circuitele integrate moderne). Această memorie
-este nevolatilă și își păstrează informațiile după resetare sistemului. Chipul
-de memorie este alimentat de o baterie dedicată numită baterie CMOS, similară cu
+numit CMOS \abbrev{CMOS}{Complementary Metal-Oxide-Semiconductor} (de la
+Complementary Metal-Oxide-Semiconductor, tehnologia folosită pentru
+tranzistoarele ce compun circuitele integrate moderne). Această memorie este
+nevolatilă și își păstrează informațiile după resetare sistemului. Chipul de
+memorie este alimentat de o baterie dedicată numită baterie CMOS, similară cu
 cea de mai jos:
 
 * imagine cu bateria CMOS
@@ -182,10 +185,11 @@ de resetarea a parolei de BIOS în cazul în care o astfel de parolă este
 configurată, așa cum vom preciza în \labelindexref{secțiunea}{sec:boot-passreset}.
 
 Pe lângă interfața grafică mai prietenoasă, UEFI folosește o nouă schemă de
-partiționare a discurilor numită GPT (GUID Partition Table) spre deosebire de
-schema MBR (Master Boot Record) utilizată de BIOS. Aceasta îi permite o
-flexibilitate sporită în accesarea dispozitivului de boot și alegerea următoarei
-faze din procesul de boot: încărcarea bootloader-ului.
+partiționare a discurilor numită GPT \abbrev{GPT}{GUID Partition Table} (GUID
+Partition Table) spre deosebire de schema MBR \abbrev{MBR}{Master Boot Record}
+(Master Boot Record) utilizată de BIOS. Aceasta îi permite o flexibilitate
+sporită în accesarea dispozitivului de boot și alegerea următoarei faze din
+procesul de boot: încărcarea bootloader-ului.
 
 În general UEFI permite și un mod de booting compatibil cu BIOS. În acest mod
 procesul de bootare este similar cu cel de BIOS și se folosește tot schema de
@@ -199,11 +203,11 @@ de firmware, numite imagini EFI care rețin codul bootloader-ului ce va fi
 
 * tabel cu următorul cap de tabel: caracteristică, BIOS, UEFI
 
-Datorită flexibilității sistemele PC moderne folosesc din ce în ce mai mult
-UEFI, cu probabilitate rmică de a mai întâlni sisteme care folosesc BIOS în
-următorii ani. BIOS rămâne însă folosit pe sistemele mai vechi și înțelegerea
-modului său de funcționare e utilă pentru a vedea evoluția firmware-ului de boot
-pe arhitectura x86.
+Datorită flexibilității sistemele PC \abbrev{PC}{Personal Computer} moderne
+folosesc din ce în ce mai mult UEFI, cu probabilitate rmică de a mai întâlni
+sisteme care folosesc BIOS în următorii ani. BIOS rămâne însă folosit pe
+sistemele mai vechi și înțelegerea modului său de funcționare e utilă pentru a
+vedea evoluția firmware-ului de boot pe arhitectura x86.
 
 \subsection{Alte firmware-ul de boot}
 \label{sec:boot-firmware-uefi}
@@ -242,7 +246,8 @@ pentru selectarea ordinii dispozitivelor bootabile:
 Atunci când firmware-ul va trece la pasul următor va trece, în ordine, prin
 dispozitivele de boot configurate și va boota de pe primul disponibil.
 Dispozitive de boot pot fi discuri, USB flash drive-url, CD ROM-drive sau
-bootare din rețea folosind PXE (Preboot eXecution Environment).
+bootare din rețea folosind PXE \abbrev{PXE}{Preboot eXecution Environment}
+(Preboot eXecution Environment).
 
 Un dispozitiv bootabil este marcat special. Un dispozitiv bootabil, identificat
 ca atare de firmware, conține o secvență de cod care este rulată de firmware și
@@ -365,17 +370,19 @@ cum vom preciza în \labelindexref{secțiunea}{sec:boot-bootloader}.
 \subsection{Încărcarea bootloader-ului pentru UEFI}
 \label{sec:boot-bootdev-bootuefi}
 
-UEFI are un mod compatibil BIOS numit și CSM (Compatibility Support Module) care
-duce la bootarea similar BIOS: încărcare 1st stage bootloader din MBR, apoi
-încărcare 2nd stage bootloader. Altfel, UEFI folosește modul nativ.
+UEFI are un mod compatibil BIOS numit și CSM \abbrev{CSM}{Compatibility Support
+Module} (Compatibility Support Module) care duce la bootarea similar BIOS:
+încărcare 1st stage bootloader din MBR, apoi încărcare 2nd stage bootloader.
+Altfel, UEFI folosește modul nativ.
 
 În cazul în care folosim UEFI modul nativ, una dintre partiții este marcată
-specializat ca fiind partiția EFI. Această partiție se numește ESP (EFI System
-Partition). Această partiție este formatată cu sistem de fișiere FAT (File
-Allocation Table) și conține fișiere executabile într-un format specific, numit
-format EFI. Aceste fișiere executabile sunt numite OS loaders, sunt codul
-echivalent de bootloader pentru pornirea sistemului de operare. De exemplu,
-putem avea fișierul /efi/boot/bootx64.efi pentru booting pe un sistem PC.
+specializat ca fiind partiția EFI. Această partiție se numește ESP
+\abbrev{ESP}{EFI System Partition} (EFI System Partition). Această partiție este
+formatată cu sistem de fișiere FAT (File Allocation Table) și conține fișiere
+executabile într-un format specific, numit format EFI. Aceste fișiere
+executabile sunt numite OS loaders, sunt codul echivalent de bootloader pentru
+pornirea sistemului de operare. De exemplu, putem avea fișierul
+/efi/boot/bootx64.efi pentru booting pe un sistem PC.
 
 În UEFI putem adăuga intrări pentru alte loadere. Pentru aceasta adăugăm căi
 către executabile EFI și acestea vor putea fi selectate cu ajutorul EFI, de
@@ -409,9 +416,10 @@ pe echivalentul celor de mai jos:
 Întrucât ordinea discurilor poate diferi prin mutarea discurilor sau prin
 adăugarea unui disc nou, cele două moduri de denumire de mai sus sunt variabile.
 Pentru a menține o denumire fixă, se folosește un identificator unic al
-partiției un șir numit UUID (Universally Unique Identifier). Pe Linux putem
-obține acest identificator cu ajutorul comenzii blkid sau listând conținutul
-directorului /dev/disk/by-uuid, ca mai jos:
+partiției un șir numit UUID \abbrev{UUID}{Universally Unique Identifier}
+(Universally Unique Identifier). Pe Linux putem obține acest identificator cu
+ajutorul comenzii blkid sau listând conținutul directorului /dev/disk/by-uuid,
+ca mai jos:
 
 \begin{screen}
 student@uso:~$ sudo blkid /dev/sda1
@@ -645,8 +653,8 @@ student@uso:~$ file /lib/modules/4.15.0-29-generic/kernel/drivers/net/ethernet/i
 \end{screen}
 
 Observăm că driverul e1000, pentru plăci de rețea Intel, se găsește în fișierul
-e1000.ko, fișier de tipul ELF (Executable and Linking Format), formatul clasic
-de executabil pe Linux.
+e1000.ko, fișier de tipul ELF \abbrev{ELF}{Executable and Linking Format} (Executable
+and Linking Format), formatul clasic de executabil pe Linux.
 
 Driverele sunt încărcate fie de kernel la pornirea sistemului, după
 identificarea componentelor hardware, fie în timp real, de programe dedicate sau
@@ -714,7 +722,8 @@ Dintre opțiunile de boot ale nucleului, precizăm:
 		detaliu al mesajelor de boot afișate la pornirea kernel-ului
 	\item opțiunea splash activează splashscreen-ul la pornirea sistemului,
 		în loc să afișeze mesajele de boot
-	\item opțiunea noacpi dezactivează ACPI (Advanced Configuration and
+	\item opțiunea noacpi dezactivează ACPI \abbrev{ACPI}{Advanced
+		Configuration and Power Interface} (Advanced Configuration and
 		Power Interface) o componentă PC care uneori este cauzatoare de
 		probleme
 \end{itemize}
@@ -943,8 +952,9 @@ TODO opțiuni gparted
 
 În acest moment avem un stick USB cu o partiție FAT32 bootabilă.
 
-Pentru scrierea de informații pe stick-ul USB, descărcăm un fișier .ISO cu
-distribuția Linux dorită. Apoi folosim utilitarul unetbootin (pe orice
+Pentru scrierea de informații pe stick-ul USB, descărcăm un fișier .ISO
+\abbrev{ISO}{International Organization for Standardization} cu distribuția
+Linux dorită. Apoi folosim utilitarul unetbootin (pe orice
 platformă)\footnote{\url{https://unetbootin.github.io}}, cu interfață grafică.
 Înainte de folosirea sa, trebuie să fie montat stick-ul USB, fie automat fie
 printr-o comandă de forma
@@ -1142,8 +1152,8 @@ operare.
 
 Opțiunile de boot, însemnând ce sisteme de operare sunt disponibile și ce
 opțiuni de boot sunt folosite pentru un sistem de operare, sunt reținute într-o
-zonă numită BCD (Boot Configuration Data), zonă ce poate fi editată folosind
-BCDEdit.exe, un utilitar inclus în Windows.
+zonă numită BCD \abbrev{BCD}{Boot Configuration Data} (Boot Configuration Data),
+zonă ce poate fi editată folosind BCDEdit.exe, un utilitar inclus în Windows.
 
 Detalii despre procesul de boot în Windows găsiți în
 documentație\footnote{\url{https://docs.microsoft.com/en-us/windows-hardware/drivers/devtest/introduction-to-boot-options}}.

@@ -128,20 +128,21 @@ tehnic incorect să ne referim la procesul Firefox sau procesul Apache. Putem
 folosi termenul \textit{un} proces Firefox sau \textit{un} proces Apache. Numele
 unui proces identifică imaginea de proces, executabil din care a fost creat;
 numele nu este folosit pentru a identifica în mod unic un proces. Procesul este
-identificat la nivelul sistemului de un număr unic, numit Process Id sau PID.
-Prezentăm mai multe despre atributele unui proces, inclusiv identificatorul său,
-în secțiunea următoare.
+identificat la nivelul sistemului de un număr unic, numit Process Id sau PID
+\abbrev{PID}{Process Id}. Prezentăm mai multe despre atributele unui proces,
+inclusiv identificatorul său, în secțiunea următoare.
 
 \section{Resursele și atributele unui proces}
 \label{sec:procese-resurse}
 
 Un proces rulează și folosește resursele sistemului de calcul: memorie,
-procesor, elemente de input/output (I/O): disc, rețea, tastatură etc. Un proces
-folosește memoria sistemului pentru a stoca instrucțiunile din executabil și a
-stoca date prelucrate. Instrucțiunile sunt apoi executate pe procesor, iar
-procesorul operează cu date din memorie. Pe parcursul execuției procesul
-comunică și cu elemente de I/O sau cu alte procese. Diagrama de mai jos arată
-modul în care un proces folosește resursele sistemului:
+procesor, elemente de input/output (I/O \abbrev{I/O}{Input/Output}): disc,
+rețea, tastatură etc. Un proces folosește memoria sistemului pentru a stoca
+instrucțiunile din executabil și a stoca date prelucrate. Instrucțiunile sunt
+apoi executate pe procesor, iar procesorul operează cu date din memorie. Pe
+parcursul execuției procesul comunică și cu elemente de I/O sau cu alte procese.
+Diagrama de mai jos arată modul în care un proces folosește resursele
+sistemului:
 
 + diagramă CPU, memorie, I/O, proces (procesul în centru, fluxuri)
 
@@ -193,11 +194,11 @@ acelui proces:
 
 * snippet cu kill 9898
 
-Atributul UID este identificatorul utilizatorului ce deține procesul. Un proces
-cu un anumit UID va avea acces la resursele acelui utilizator. În mod normal,
-procesele aceluiași utilizator au acces la aceleași resurse. Utilizatorii sunt
-modul principal de separare/izolare între procese. Mai multe detalii vom
-prezenta în \labelindexref{capitolul}{chapter:users}.
+Atributul UID \abbrev{UID}{User Id} este identificatorul utilizatorului ce
+deține procesul. Un proces cu un anumit UID va avea acces la resursele acelui
+utilizator. În mod normal, procesele aceluiași utilizator au acces la aceleași
+resurse. Utilizatorii sunt modul principal de separare/izolare între procese.
+Mai multe detalii vom prezenta în \labelindexref{capitolul}{chapter:users}.
 
 \subsection{Utilitare pentru urmărirea proceselor}
 \label{sec:procese-resurse-monitorizare}
@@ -594,12 +595,12 @@ identificatorul job-ului, așa cum facem în exemplul de mai jos:
 + snippet-uri de comenzi de interacțiune: bg, fg, jobs
 
 Un scenariu util pentru trecerea unui proces în background este când pornim un
-proces GUI din shell și pierdem în shell accesul la terminal. De exemplu am
-pornit procesul Emacs (grafic) în foreground. Pentru a putea readuce shell-ului
-controlul terminalului, vom trece procesul Emacs în background (suspendat)
-folosind combinația de taste Ctrl+z și vom muta apoi procesul din starea
-supendat în starea running folosind comanda bg. Adică la fel în eemplu de mai
-jos:
+proces GUI \abbrev{GUI}{Graphical User Interface} din shell și pierdem în shell
+accesul la terminal. De exemplu am pornit procesul Emacs (grafic) în foreground.
+Pentru a putea readuce shell-ului controlul terminalului, vom trece procesul
+Emacs în background (suspendat) folosind combinația de taste Ctrl+z și vom muta
+apoi procesul din starea supendat în starea running folosind comanda bg. Adică
+la fel în eemplu de mai jos:
 
 + exemplu cu enumerare pași cu pornire emacs, Ctrl+z și bg
 

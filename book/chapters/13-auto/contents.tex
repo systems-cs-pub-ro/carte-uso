@@ -45,11 +45,11 @@ acțiunile uzuale sunt automatizate iar cele critice apar rar și sunt bine
 tratate.
 
 Termenul de automatizare este folosit în sens mai larg și la domenii diferite de
-domeniul IT: irigații automate, folosirea de roboți pentru automatizarea creării
-de componente, mașini autonome. Oriunde este nenecesară intervenția unei
-persoane în execuția unei acțiuni, spunem că avem automatizare. Automatizarea va
-necesita în continuare controlul din partea unei persoane, dar partea de
-execuție nu.
+domeniul IT \abbrev{IT}{Information Technology}: irigații automate, folosirea de
+roboți pentru automatizarea creării de componente, mașini autonome. Oriunde este
+nenecesară intervenția unei persoane în execuția unei acțiuni, spunem că avem
+automatizare. Automatizarea va necesita în continuare controlul din partea unei
+persoane, dar partea de execuție nu.
 
 În domeniul IT, termenul de automatizare este asociat de obicei cu noțiunea de
 scripting. Acțiunea se mai numește “a scripta”. Acest lucru întrucât acțiunile
@@ -80,12 +80,12 @@ resurselor și execută o acțiune bine determinată. De partea cealaltă un scr
 este ceva creat și folosit rapid (quick and dirty) și folosește programe deja
 existente pentru executarea unei acțiuni combinate, care leagă mai multe
 componente. De exemplu, un program va fi acela care generează un fișier PDF
-dintr-un fișier DOC; un script este acela care parcurge o ierarhie ce conține
-fișiere DOC, le selectează pe acelea care sunt mai noi de anumită dată, le
-convertește în fișiere PDF și apoi creează o arhivă cu fișierele PDF pe care o
-stochează într-un director dat. Păstrând măsura, putem folosi interschimbabil
-noțiunea de script și program, preferând termenul de script pentru situațiile în
-care urmărim o formă de automatizare.
+\abbrev{PDF}{Portable Document Format} dintr-un fișier DOC; un script este acela
+care parcurge o ierarhie ce conține fișiere DOC, le selectează pe acelea care
+sunt mai noi de anumită dată, le convertește în fișiere PDF și apoi creează o
+arhivă cu fișierele PDF pe care o stochează într-un director dat. Păstrând
+măsura, putem folosi interschimbabil noțiunea de script și program, preferând
+termenul de script pentru situațiile în care urmărim o formă de automatizare.
 
 Într-un sistem informatic multe aplicații folosite au interfață grafică, care nu
 poate fi automatizată într-un script. Pentru automatizare acțiunilor
@@ -575,10 +575,10 @@ Sintaxa uzuală pentru while este:
 
 * Sintaxă while read
 
-Pentru a face parsing, comanda read folosește variabila IFS (Input Field
-Separator) a shell-ului. Aceasta este în mod implicit inițializată la caractere
-albe (spațiu, tab, linie nouă). Dacă dorim să folosim alt separator, vom
-actualiza variabila IFS ca mai jos:
+Pentru a face parsing, comanda read folosește variabila IFS \abbrev{IFS}{Input
+Field Separator} (Input Field Separator) a shell-ului. Aceasta este în mod
+implicit inițializată la caractere albe (spațiu, tab, linie nouă). Dacă dorim să
+folosim alt separator, vom actualiza variabila IFS ca mai jos:
 
 * Exemple while read cu IFS=’,’
 
@@ -851,7 +851,8 @@ de
 shell\footnote{\url{https://stackoverflow.com/questions/19428418/what-is-the-use-of-portable-shell-scripts}}
 sau pe diferite versiuni de shell trebuie să avem în vedere ce construcții sunt
 standard și portabile. Pentru scripturi portabile recomandarea este folosirea de
-funcționalități care sunt recunoscut de standardul POSIX. Un shell compatibil
+funcționalități care sunt recunoscut de standardul POSIX \abbrev{POSIX}{Portable
+Operating System Interface}. Un shell compatibil
 POSIX\footnote{\url{http://pubs.opengroup.org/onlinepubs/009695399/utilities/xcu_chap02.html}}
 va rula un script construit conform standardului.
 
@@ -976,10 +977,11 @@ rularea periodică a unei comenzi sau script, iar at este folosit pentru rularea
 unei comenzi sau a unui script la un moment dat.
 
 O formă apropiată ideii de rulare planificată, este rularea după un anumit
-eveniment cum este cazul procesului de continuous integration (CI). În cazul
-continuous integration, orice actualizare a unui proiect software declanșează în
-spate rularea unor scripturi de verificare. Exemple de utilitare de continuous
-integration sunt Travis CI, Jenkins, GitLabCI.
+eveniment cum este cazul procesului de continuous integration (CI
+\abbrev{CI}{Continuous Integration}). În cazul continuous integration, orice
+actualizare a unui proiect software declanșează în spate rularea unor scripturi
+de verificare. Exemple de utilitare de continuous integration sunt Travis CI,
+Jenkins, GitLabCI.
 
 \subsubsection{cron}
 \label{sec:script-infosys-planning-cron}
@@ -1040,7 +1042,7 @@ oferă o interfață programatică Python în care pot fi operate funcționalit�
 expect.
 
 O variantă similară pexect, folosită în comunitatea de securitate (hacking,
-competiții de tip CTF: Capture the Flag) este
+competiții de tip CTF \abbrev{CTF}{Capture the Flag}: Capture the Flag) este
 pwntools\footnote{\url{http://docs.pwntools.com/en/stable/}}. Pe lângă modul de
 comunicare neinteractivă cu aplicații interactive, pwntools oferă
 funcționalități specifice pentru securitate și hacking analiză de executabile,

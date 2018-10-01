@@ -18,10 +18,11 @@ Sistemele de operare moderne sunt în general multi-utilizator
 (\textit{multi-user}), adică permit existența mai multor conturi de utilizator
 pe un sistem și rularea simultană de mai multe[q] procese aparținând diferiților
 utilizatori. Mai mulți utilizatori pot simultan rula shell-uri și porni comenzi
-pe un sistem prin conexiuni de rețea la sistem, precum folosind SSH (Secure
-Shell, referință înainte la capitolul 10). Un cont de utilizator este separat de
-alt cont astfel că procesele unui utilizator sunt separate/izolate de procesele
-altuia, la fel și resursele (precum fișierele).[r]
+pe un sistem prin conexiuni de rețea la sistem, precum folosind SSH
+\abbrev{SSH}{Secure shell} (Secure Shell, referință înainte la capitolul 10). Un
+cont de utilizator este separat de alt cont astfel că procesele unui utilizator
+sunt separate/izolate de procesele altuia, la fel și resursele (precum
+fișierele).[r]
 
 Informațiile despre conturile de utilizatori sunt utile nu doar utilizatorilor
 avansați, ci și utilizatorilor obișnuiți. Deși utilizatorul obișnuit are în
@@ -176,11 +177,11 @@ Sistemele de operare moderne oferă opțiuni alternative de executare de acțiun
 privilegiate. În Linux/Unix se poate folosi sudo, bitul setuid, capabilități; le
 vom prezenta în \labelindexref{secțiunea}{sec:users-superuser-altroot}.
 
-În Windows, începând cu Windows Vista se folosește User Account Control (UAC).
-User Account Control este o tehnologie care oferă un prompt care trebuie
-confirmat ori de câte ori un se dorește realizarea unei acțiuni privilegiate.
-Doar utilizatorilor configurați specific li se permite rularea de acțiuni
-privilegiate prin User Account Control.
+În Windows, începând cu Windows Vista se folosește User Account Control
+(UAC\abbrev{UAC}{User Acount Control}). User Account Control este o tehnologie
+care oferă un prompt care trebuie confirmat ori de câte ori un se dorește
+realizarea unei acțiuni privilegiate. Doar utilizatorilor configurați specific
+li se permite rularea de acțiuni privilegiate prin User Account Control.
 
 * screenshot cu user account control
 
@@ -550,7 +551,8 @@ un utilizator privilegiat. Operațiile de gestiune a utilizatorilor sunt:
 		utilizator (UID) este disponibil în sistem
 	\item ștergerea unui utilizator: un cont de utilizator este șters din
 		sistem, nu mai pot fi create procese cu acest utilizator
-	\item crearea unui grup: este creat un grup nou în care pot fi adăugați utilizatori
+	\item crearea unui grup: este creat un grup nou în care pot fi adăugați
+		utilizatori
 	\item ștergerea unui grup: este șters un grup existent
 	\item adăugarea unui utilizator la un grup
 	\item ștergerea unui utilizator dintr-un grup
@@ -680,13 +682,14 @@ O intrare în fișierul /etc/shadow conține numele de utilizator, parola cripta
 
 * Intrare din fișierul /etc/shadow
 
-Pentru informații detaliate despre formatul intrării și al parolei criptate, consultați pagina de manual man shadow și man crypt.
+Pentru informații detaliate despre formatul intrării și al parolei criptate,
+consultați pagina de manual man shadow și man crypt.
 
-În Windows, baza de date de parole se numește Security Account Manager (SAM), și
-se găsește în \%SystemRoot\%/system32/config/SAM. Accesul la SAM are loc prin
-intermediul Windows Registry și este, similar cu /etc/shadow, permis numai
-acțiunilor bine definite. Similar cu /etc/shadow, parolele sunt reținute
-criptate.
+În Windows, baza de date de parole se numește Security Account Manager (SAM
+\abbrev{SAM}{Security Account Manager}), și se găsește în
+\%SystemRoot\%/system32/config/SAM. Accesul la SAM are loc prin intermediul
+Windows Registry și este, similar cu /etc/shadow, permis numai acțiunilor bine
+definite. Similar cu /etc/shadow, parolele sunt reținute criptate.
 
 \subsection{Gestiunea parolelor}
 \label{sec:users-auth-pass-gestiune}
@@ -800,11 +803,12 @@ departe numele de utilizator și parola către serviciul de autentificare și, d
 intrările respective sunt valide în baza de date, oferă accesul utilizatorului
 la aplicație.
 
-În lumea Windows autentificarea centralizată se bazează pe serviciul AD (Active
-Directory) iar în lumea Linux se bazează pe serviciul LDAP (Lightweight
-Directory Access Protocol). Aceste subiecte sunt avansate și nu fac subiectul
-acestei cărți. Important este înțelegerea nevoii de autentificare centralizată
-și principalele soluții pentru asigurarea acesteia.
+În lumea Windows autentificarea centralizată se bazează pe serviciul AD
+\abbrev{AD}{Active Directory} (Active Directory) iar în lumea Linux se bazează
+pe serviciul LDAP \abbrev{LDAP}{Lightweight Directory Access Protocol}
+(Lightweight Directory Access Protocol). Aceste subiecte sunt avansate și nu fac
+subiectul acestei cărți. Important este înțelegerea nevoii de autentificare
+centralizată și principalele soluții pentru asigurarea acesteia.
 
 \section{Accesul la sistemul de fișiere}
 \label{sec:users-fs}
@@ -838,8 +842,9 @@ metadate ține de sistemul de operare.
 
 
 În Windows permisiunile sunt reținute în forma unor liste de access (access
-control lists, ACL). Adică se creează o listă de utilizatori sau grupuri de
-utilizatori și permisiuni aferente, pe modelul diagramei de mai jos:
+control lists, ACL \abbrev{ACL}{Access Control Lists}). Adică se creează o listă
+de utilizatori sau grupuri de utilizatori și permisiuni aferente, pe modelul
+diagramei de mai jos:
 
 + listă cu utilizator1, utilizator2, grup1, grup2 și permisiuni
 
@@ -855,10 +860,11 @@ analizate permisiunile în Windows.
 
 + diagramă cu pașii de verificare a permisiunilor în Windows
 
-În Windows permisiunile sunt prezente doar pe sistemul de fișiere NTFS, nu și pe
-FAT32. Permisiunile sunt în mod tipic configurate folosind interfața grafică:
-click dreapta pe fișier -> Properties -> Security, obținând o fereastră ca cele
-de mai jos:
+În Windows permisiunile sunt prezente doar pe sistemul de fișiere NTFS
+\abbrev{NTFS}{New Technology File System}, nu și pe FAT32 \abbrev{FAT32}{File
+Allocation Table 32}. Permisiunile sunt în mod tipic configurate folosind
+interfața grafică: click dreapta pe fișier -> Properties -> Security, obținând o
+fereastră ca cele de mai jos:
 
 + fereastră cu permisiuni Windows NTFS
 
@@ -911,7 +917,8 @@ Permisiunile în Linux sunt, de asemenea, simplificate la 3 tipuri:
 		fi parcurs
 \end{itemize}
 
-Permisiunile în Linux sunt verificate în cazul în care un proces accesează un fișier urmând pașii:
+Permisiunile în Linux sunt verificate în cazul în care un proces accesează un
+fișier urmând pașii:
 
 \begin{enumerate}
 	\item Se obține utilizatorul procesului care accesează fișierul.
@@ -1219,10 +1226,12 @@ Pentru aceasta avem două opțiuni:
 
 \begin{itemize}
 	\item modificarea procesului de boot și înlocuirea procesului init
-	\item folosirea unui stick USB sau CD bootabil
+	\item folosirea unui stick USB \abbrev{USB}{Universal Serial Bus} sau CD
+		bootabil
 \end{itemize}
 
-În prima variantă, în ecranul bootloader-ului GRUB edităm linia de boot și
+În prima variantă, în ecranul bootloader-ului GRUB \abbrev{GRUB}{GRand Unified
+Bootloader} edităm linia de boot și
 adăugăm șirul init=/bin/bash, ca mai jos:
 
 * screenshot cu editarea liniei de boot
@@ -1275,7 +1284,7 @@ O opțiune este folosirea Ultimate Boot
 CD\footnote{\url{http://www.ultimatebootcd.com}}, un CD bootabil cu utilitare
 diverse de diagnostic și reparație la nivelul sistemului de operare. Ultimate
 Boot CD conține PartedMagic\footnote{\url{https://partedmagic.com}} care, la
-rândul său, conține utilitarul chntpw.  Utilitarul chntpw oferă interfață în
+rândul său, conține utilitarul chntpw. Utilitarul chntpw oferă interfață în
 linia de comandă pentru modificarea parolelor utilizatorilor în Windows.
 
 Pentru a nu ocupa spațiu din această carte cu detalii, recomandăm să parcurgeți

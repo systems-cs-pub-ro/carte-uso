@@ -2,7 +2,7 @@
 \label{chapter:hardware}
 
 Hardware-ul reprezintă partea fizica a unui sistem informatic constituită din
-diverse componente mecanice, electronice și optice.  Cu ajutorul hardware-ului
+diverse componente mecanice, electronice și optice. Cu ajutorul hardware-ului
 se pot primi, prelucra și stoca informații. Și mai generic, prin hardware
 înțelegem orice componentă într-un sistem complex de calcul ce poate fi atinsă,
 există fizic într-o locație (pornind de la monitor, tastatură până la
@@ -67,7 +67,8 @@ Un prim pas pentru îndeplinirea obiectivelor enunțate mai sus este dat de
 definirea unor clasificări (tipuri) ale hardware-ului din mai multe perspective.
 Vom porni de la o descriere logica a hardware-ului numită și \texttt{Arhitectura
 von Neumann}. Numele arhitecturii provine de la matematicianul și fizicianul
-John von Neumann care a scris primul draft al raportului EDVAC în 1945 ce
+John von Neumann care a scris primul draft al raportului EDVAC
+\abbrev{EDVAC}{Electronic Discrete Variable Automatic Computer} în 1945 ce
 descria arhitectura unui sistem de calcul
 
 %(https://sites.google.com/site/michaeldgodfrey/vonneumann/vnedvac.pdf?attredirects=0&d=1)
@@ -79,8 +80,9 @@ Arhitectura von Neumann reprezintă o descriere logică a unui sistem de calcul 
 enumeră următoarele tipuri de componente:
 
 \begin{itemize}
-	\item Unitate de procesare / Procesor (Central Processing Unit - CPU)
-	\item Unitate de memorie (Memory Unit - MU)
+	\item Unitate de procesare / Procesor (Central Processing Unit - CPU
+		\abbrev{CPU}{Central Processing Unit})
+	\item Unitate de memorie (Memory Unit - \abbrev{MU}{Memorty Unit})
 	\item Dispozitive de intrare/ieșire (Input-Output - I/O)
 \end{itemize}
 
@@ -106,7 +108,7 @@ scopuri (afișare, stocare permanentă).
 Fig. X. Arhitectura von Neumann
 
 În zilele noastre numărul unităților de procesare a crescut, precum și mărimea
-unității de memorie.  Unitatea de memorie este partajată între toate
+unității de memorie. Unitatea de memorie este partajată între toate
 procesoarele folosind o singură legătură între acestea denumită magistrală.
 Acest lucru s-a dovedit a fi un punct de congestie pentru procesoare întrucât
 acestea așteaptă fiecare pentru magistrală. Pentru optimizare, în implementările
@@ -138,16 +140,17 @@ dispozitivele mobile (smarthphone-uri, tablete).
 Pornind de la modelul von Neumann prezentat anterior, putem realiza o
 clasificare a unității de procesare în funcție de tipul instrucțiunilor pe care
 îl execută (se mai numește și set de instrucțiuni sau arhitectura sistemului,
-prescurtat deseori ISA, Instruction Set Architecture).
+prescurtat deseori ISA \abbrev{ISA}{Instruction Set Architecture}, Instruction
+Set Architecture).
 
 Astfel, în zilele noastre, sistemele de calcul respectă una din următoarele 2
 arhitecturi:
 
 \begin{itemize}
 	\item Reduced instruction set computer (referită de acum încolo prin
-		acronimul RISC)
+		acronimul RISC \abbrev{RISC}{Reduce Instruction Set Computer})
 	\item Complex instruction set computer (referită de acum încolo prin
-		acronimul CISC)
+		acronimul CISC \abbrev{CISC}{Complex Instruction Set Computer})
 \end{itemize}
 
 Înainte de a defini arhitecturile RISC/CISC vom mai introduce câteva elemente
@@ -347,11 +350,21 @@ In Fig. X. sunt reprezentate grafic principalele componente ale unui sistem de c
 		numărul de nuclee (un CPU poate avea mai multe unități de
 		execuție înglobate în aceeași pastilă) și viteza cu care
 		comunică cu restul componentelor prin intermediul magistralei
-		(se mai numește și frecvența magistralei [FSB]).
+		(se mai numește și frecvența magistralei [FSB
+		\abbrev{FSB}{Front-Side Bus}]).
 
 Fig. X. CPU (procesorul)
 
-	\item Memoria - unitatea de memorie care este de tip RAM (Random Access Memory) și este reprezentată de o plăcuță îngustă care poate avea diferite dimensiuni exprimate în megaocteți (MB - megabytes) sau gigaocteți (GB - gigabytes). O altă caracteristică a memorie se referă la frecvența acesteia în general exprimată în megaherți (Mhz). Frecvența reprezintă viteza cu care se realizează comunicația între memorie și magistrală, respectiv procesor.
+	\item Memoria - unitatea de memorie care este de tip RAM
+		\abbrev{RAM}{Random Access Memory} (Random Access Memory) și
+		este reprezentată de o plăcuță îngustă care poate avea diferite
+		dimensiuni exprimate în megaocteți (MB \abbrev{MB}{megabytes} -
+		megabytes) sau gigaocteți (GB \abbrev{GB}{gigabytes} -
+		gigabytes). O altă caracteristică a memorie se referă la
+		frecvența acesteia în general exprimată în megaherți (MHz
+		\abbrev{MHz}{megaherți}). Frecvența reprezintă viteza cu care
+		se realizează comunicația între memorie și magistrală, respectiv
+		procesor.
 
 Fig. X. Memoria RAM
 	\item Plăci de extensie: acestea sunt variante pornind de la plăcile de
@@ -367,20 +380,20 @@ Fig. X. Memoria RAM
 		reuși să acopere toți consumatorii din sistem (ex.: dacă avem un
 		procesor mai puternic, cu o frecvență mai mare și mai multe
 		nuclee avem nevoie de o sursă de putere mai mare)
-	\item Unitate optică (CD/DVD - ROM) - acesta este un dispozitiv de
-		intrare/ieșire persistent pentru redarea filmelor, a muzicii,
-		dar se pot stoca și date care nu au legătură cu aria multimedia
-		(ex.: documente)
+	\item Unitate optică (CD/DVD - ROM \abbrev{ROM}{Read-Only Memory}) -
+		acesta este un dispozitiv de intrare/ieșire persistent pentru
+		redarea filmelor, a muzicii, dar se pot stoca și date care nu au
+		legătură cu aria multimedia (ex.: documente)
 
 Fig. X. DVD-ROM
 
-	\item Unitate de stocare (HDD - Hard Disk Drive) - acesta este un
-		dispozitiv de intrare/ieșire pentru stocarea
-		permanentă/persistentă a datelor. De exemplu, ori de câte ori
-		salvăm un fișier în curs de editare, acesta este scris pe
-		unitatea de stocare. Aceasta este mult mai lentă ca unitatea de
-		memorie și de aceea se preferă scrierea cât mai rară, în special
-		când se întreprind acțiuni în timp real.
+	\item Unitate de stocare (HDD \abbrev{HDD}{Hard Disk Drive} - Hard Disk
+		Drive) - acesta este un dispozitiv de intrare/ieșire pentru
+		stocarea permanentă/persistentă a datelor. De exemplu, ori de
+		câte ori salvăm un fișier în curs de editare, acesta este scris
+		pe unitatea de stocare. Aceasta este mult mai lentă ca unitatea
+		de memorie și de aceea se preferă scrierea cât mai rară, în
+		special când se întreprind acțiuni în timp real.
 
 Fig. X. Discul pentru stocare - HDD
 
@@ -394,7 +407,8 @@ Fig. X. Placa de bază
 	\item Boxe conectate la placa de extensie (numită și placă de sunet)
 		pentru a reda sunetul emis de unitatea de calcul
 	\item Monitorul conectat la placa de extensie (numită și placă grafică
-		sau GPU în acest caz) pentru a reda elementele grafice.
+		sau GPU \abbrev{GPU}{Graphics Processing Unit} în acest caz)
+		pentru a reda elementele grafice.
 	\item Sistemul de operare - software-ul ce este responsabil cu
 		inițializarea și controlul componentelor hardware
 	\item O aplicație (joculeț) ce rulează în sistemul de operare
@@ -441,31 +455,32 @@ Descoperirea dispozitivelor se face folosind următoarele procedee:
 \begin{itemize}
 	\item Autodiscovery (descoperire automată de către sistemul de operare)
 		în general pe x86 - la pornirea sistemului rulează un program
-		proprietar al plăcii de bază denumit BIOS (Basic Input/Out
-		System - vezi \labelindexref{capitolul}{chapter:boot}) care
-		testează toate componentele conectate la placa de bază,
-		certifică compatibilitatea acestora (între ele și cu placa de
-		bază). Cel mai important lucru este dat de faptul ca încarcă
-		sistemul de operare de pe disc în memorie și pornește execuția
-		acestuia. Din acest punct sistemul de operare este cel care va
-		face din nou descoperirea tuturor componentelor, inițializarea
-		și configurarea, precum și controlul acestora. Totul este făcut
+		proprietar al plăcii de bază denumit BIOS \abbrev{BIOS}{Basic
+		Input/Output System} (Basic Input/Output System - vezi
+		\labelindexref{capitolul}{chapter:boot}) care testează toate
+		componentele conectate la placa de bază, certifică
+		compatibilitatea acestora (între ele și cu placa de bază). Cel
+		mai important lucru este dat de faptul ca încarcă sistemul de
+		operare de pe disc în memorie și pornește execuția acestuia. Din
+		acest punct sistemul de operare este cel care va face din nou
+		descoperirea tuturor componentelor, inițializarea și
+		configurarea, precum și controlul acestora. Totul este făcut
 		automat prin scanarea și enumerarea unor locații speciale din
 		memorie pentru a identifica fiecare componentă.
-	\item DTB (Device Tree Blob) în general pe ARM - pe sistemele ARM în
-		general nu există noțiunea de BIOS întrucât totul este integrat
-		pe o singură plăcuță (SoC - System on Chip) și nu avem nici o
-		configurație hardware dinamică (totul este prestabilit de la bun
-		început). Aici există specificații clare la ce adresă trebuie
-		încărcat sistemul de operare și de unde începe execuția
-		acestuia. Fiind totul integrat într-un SoC, integrarea variind
-		de la vendor la vendor (ex. adresa de început a memoriei este
-		diferită), nu există nici un mecanism de Autodiscovery. În
-		general producătorul oferă un DTB (Device Tree Blob) în care
-		este descrisă fiecare componentă SoC-ului. Acest DTB este
-		încărcat în memorie împreună cu sistemul de operare, iar acesta
-		parsează acest DTB pentru a vedea de elemente are la dispozitie
-		cu scopul de a le inițializa, configura și controla.
+	\item DTB \abbrev{DTB}{Device Tree Blob} (Device Tree Blob) în general
+		pe ARM - pe sistemele ARM în general nu există noțiunea de BIOS
+		întrucât totul este integrat pe o singură plăcuță (SoC - System
+		on Chip) și nu avem nici o configurație hardware dinamică (totul
+		este prestabilit de la bun început). Aici există specificații
+		clare la ce adresă trebuie încărcat sistemul de operare și de
+		unde începe execuția acestuia. Fiind totul integrat într-un SoC,
+		integrarea variind de la vendor la vendor (ex. adresa de început
+		a memoriei este diferită), nu există nici un mecanism de
+		Autodiscovery. În general producătorul oferă un DTB (Device Tree
+		Blob) în care este descrisă fiecare componentă SoC-ului. Acest
+		DTB este încărcat în memorie împreună cu sistemul de operare,
+		iar acesta parsează acest DTB pentru a vedea de elemente are la
+		dispozitie cu scopul de a le inițializa, configura și controla.
 \end{itemize}
 
 În ambele cazuri prezentate mai sus (Autodiscovery vs. DTB), până la rularea
@@ -571,21 +586,22 @@ producător (disponibile de obicei fără nici un cost pe site-ul acestora).
 S-a discutat până în acest punct despre comunicația între dispozitiv și procesor
 și faptul că aceasta este intermediată de controller. În rândurile ce urmează
 vom descrie procedeele de comunicație între dispozitive și procesor. Un prim
-procedeu este DMA (\textit{Direct Memory Access}). Controller-ul primește de la procesor
-o locație de memorie validă de unde va citi/va scrie datele pentru dispozitiv.
-Astfel procesorul nu trebuie să aștepte după dispozitiv să scrie. Dacă
-dispozitivul nu dispune de un controller DMA, se poate aplica un alt procedeu și
-anume: \textit{Memory Mapping} (maparea memoriei). Printr-un mecanism special aceeași
-zonă de memorie este vizibilă atât dispozitivului cât și procesorului. Astfel
-dispozitivul poate citi/scrie către și dinspre procesor. În ambele cazuri (DMA
-și Memory Mapping) avem nevoie de un mecanism de notificare (când a terminat de
-citit/scris dispozitivul). Acesta este implementat printr-un procedeu asincron
-numit \textit{întrerupere}. Întreruperea este trimisă de dispozitiv (sau controller)
-atunci când au terminat de făcut o acțiune (citire/scriere/prelucrare).
-Întreruperea este un mecanism asincron, astfel procesorul va opri execuția
-curentă imediat ce întreruperea vine și o va trata. Cu orice întrerupere
-livrată, există și un context: de unde a venit, care este motivul. După tratarea
-întreruperii procesorul își va continua execuția programului anterior.
+procedeu este DMA \abbrev{DMA}{Direct Memory Access} (\textit{Direct Memory
+Access}). Controller-ul primește de la procesor o locație de memorie validă de
+unde va citi/va scrie datele pentru dispozitiv. Astfel procesorul nu trebuie să
+aștepte după dispozitiv să scrie. Dacă dispozitivul nu dispune de un controller
+DMA, se poate aplica un alt procedeu și anume: \textit{Memory Mapping} (maparea
+memoriei). Printr-un mecanism special aceeași zonă de memorie este vizibilă atât
+dispozitivului cât și procesorului. Astfel dispozitivul poate citi/scrie către
+și dinspre procesor. În ambele cazuri (DMA și Memory Mapping) avem nevoie de un
+mecanism de notificare (când a terminat de citit/scris dispozitivul). Acesta
+este implementat printr-un procedeu asincron numit \textit{întrerupere}.
+Întreruperea este trimisă de dispozitiv (sau controller) atunci când au terminat
+de făcut o acțiune (citire/scriere/prelucrare). Întreruperea este un mecanism
+asincron, astfel procesorul va opri execuția curentă imediat ce întreruperea
+vine și o va trata. Cu orice întrerupere livrată, există și un context: de unde
+a venit, care este motivul. După tratarea întreruperii procesorul își va
+continua execuția programului anterior.
 
 \section{Rolul extensiilor (plăcilor) auxiliare ale unui sistem de calcul}
 \label{sec:hardware-extensii}
@@ -598,15 +614,15 @@ Plăcile de extensie se conectează folosind diverse porturi interne sau externe
 Printre porturile interne putem enumera:
 
 \begin{itemize}
-	\item PCI (\textit{Peripheral Component Interconnect}) - este un
-		standard vechi, iar plăcile de bază din ziua de astăzi aproape
-		au renunțat la acest tip de slot (unele mai prezintă câte un
-		astfel de slot din cauza prețului foarte scăzut al
-		perifericelor)
+	\item PCI \abbrev{PCI}{Peripheral Component Interconnect}
+		(\textit{Peripheral Component Interconnect}) - este un standard
+		vechi, iar plăcile de bază din ziua de astăzi aproape au
+		renunțat la acest tip de slot (unele mai prezintă câte un astfel
+		de slot din cauza prețului foarte scăzut al perifericelor)
 	\item PCI Express (\textit{Peripheral Component Interconnect Express}) -
 		este urmașul PCI-ului și asigură diferite viteze de
 		interconectare în funcție de componentele conectate (placă de
-		rețea, placă video).  În specificații veți observa că viteză
+		rețea, placă video). În specificații veți observa că viteză
 		este exprimată folosind notația x1, x2, x4, x8 sau x16. În
 		funcție de viteză, se va observa că variază și dimensiunea
 		slotului. În acest moment acesta este standardul de-facto pentru
@@ -689,7 +705,7 @@ aritmetice fără nici un fel de optimizare la verificări de condiție (branch-
 \subsection{Ce rol are placa de sunet?}
 \label{sec:hardware-extensii-audio}
 
-Placa de sunet este o placă de  extensie ce se poate conecta atât pe porturile
+Placa de sunet este o placă de extensie ce se poate conecta atât pe porturile
 interne (PCI, PCIe), cât și pe cele externe (USB) și are rolul de a procesa
 semnalele audio ce intră în calculator (microfoane) sau ies din calculator
 (boxele). În esență placa de sunet conține un convertor digital-analogic prin
@@ -737,7 +753,8 @@ La achiziția unei plăci de rețea trebuie ținut cont de următoarele caracter
 		de funcționare va fi cea mai mică dintre cele 2
 	\item Interfața disponibilă: în general cupru RJ-45 (protocol ethernet).
 		Există și plăci cu suport de fibră optică: în descriere veți
-		observa cuvântul cheie SFP (SFP+). Atenție pentru a utiliza
+		observa cuvântul cheie SFP \abbrev{SFP}{Small form-factor
+		pluggable transceiver} (SFP+). Atenție pentru a utiliza
 		suportul de fibră optică aveți nevoie de module speciale SFP ce
 		au un cost mai ridicat decât cablul de cupru și de asemenea
 		echipamentul în care vă conectați trebuie să suporte modul de
@@ -770,7 +787,8 @@ funcționalitate, cât și de securitate. Implementarea direct în hardware a
 acestora aduce beneficiul performanței: execuția unei facilități în hardware
 este mult mai rapidă decât alternativa execuției în software prin programe
 dedicate. În cadrul acestei sencțiuni vom prezenta două facilități prezente în
-hardware: Virtualizare și TPM (\textit{Trusted Platform Module}).
+hardware: Virtualizare și TPM \abbrev{TPM}{Trusted Platform Module}
+(\textit{Trusted Platform Module}).
 
 \subsection{Virtualizarea în hardware}
 \label{sec:hardware-functionalitati-virt}
@@ -800,25 +818,26 @@ funcționa indicând un mesaj de eroare corespunzător.
 \subsection{Trusted Platform Module}
 \label{sec:hardware-functionalitati-tpm}
 
-Securitatea este un alt subiect dezbătut în piața IT\&C. Asigurarea securității
-sistemelor a devenit o prioritate pentru fiecare companie din lume (indiferent
-de domeniul de activitate). Instalarea de firewall-uri și antiviruși este utilă
-pentru protecția atacurilor din exterior (din Internet), dar nu protejează
-unitatea de calcul împotriva furtului fizic de date (ex.: daca un laptop este
-furat, hoțul are acces la datele de pe laptop fără nici o problemă). Pentru a
-preveni astfel de pierderi de date, unitățile de stocare ale calculatoarele sunt
-criptate integral folosind algoritmi specifici. Pentru criptare este necesară o
-cheie de criptare (asemănătoare unei parole). Această cheie trebuie stocată
-într-un loc. În timp au fost întreprinse diverse metode de stocare a cheilor (la
-începutul discului, pe un stick USB), dar nu au fost suficiente. De aceea
-producătorii de procesoare au introdus un nou dispozitiv numit TPM. TPM
-(\textit{Trusted Platform Module}) este un standard internațional pentru un
-procesor criptografic capabil să stocheze chei criptografice (de criptare). O
-dată criptat discul, cheile vor fi stocate în acesta și protejate pe baza unei
-parole. Dacă unitatea de stocare va fi mutată pe alt calculator, atacatorul nu
-va putea vedea datele.  Doar modulul TPM ce stochează acele chei va putea
-vizualiza conținutul unității de stocare. Modulul TPM trebuie activat din BIOS,
-ca și virtualizare (vezi \labelindexref{capitolul}{chapter:boot}).
+Securitatea este un alt subiect dezbătut în piața IT\&C
+\abbrev{IT\&C}{Information Technology and Communications}. Asigurarea
+securității sistemelor a devenit o prioritate pentru fiecare companie din lume
+(indiferent de domeniul de activitate). Instalarea de firewall-uri și antiviruși
+este utilă pentru protecția atacurilor din exterior (din Internet), dar nu
+protejează unitatea de calcul împotriva furtului fizic de date (ex.: daca un
+laptop este furat, hoțul are acces la datele de pe laptop fără nici o problemă).
+Pentru a preveni astfel de pierderi de date, unitățile de stocare ale
+calculatoarele sunt criptate integral folosind algoritmi specifici. Pentru
+criptare este necesară o cheie de criptare (asemănătoare unei parole). Această
+cheie trebuie stocată într-un loc. În timp au fost întreprinse diverse metode de
+stocare a cheilor (la începutul discului, pe un stick USB), dar nu au fost
+suficiente. De aceea producătorii de procesoare au introdus un nou dispozitiv
+numit TPM. TPM (\textit{Trusted Platform Module}) este un standard internațional
+pentru un procesor criptografic capabil să stocheze chei criptografice (de
+criptare). O dată criptat discul, cheile vor fi stocate în acesta și protejate
+pe baza unei parole. Dacă unitatea de stocare va fi mutată pe alt calculator,
+atacatorul nu va putea vedea datele. Doar modulul TPM ce stochează acele chei va
+putea vizualiza conținutul unității de stocare. Modulul TPM trebuie activat din
+BIOS, ca și virtualizare (vezi \labelindexref{capitolul}{chapter:boot}).
 
 \section{Abstractizarea dispozitivelor în Linux}
 \label{sec:hardware-abstract-linux}
