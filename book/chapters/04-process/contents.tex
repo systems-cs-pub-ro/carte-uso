@@ -973,7 +973,14 @@ Pe lângă rolul în pornierea proceselor inițiale, init are și rol în între
 sistemului prin adoptarea proceselor orfane. Un proces orfan este un proces al
 cărui proces părinte și-a încheiat execuția. Pentru a menține ierarhia de
 procese, acest proces trebuie să aibă un proces părinte; acest proces părinte
-este procesul init.
+este procesul init. În codul sursă de suport al cărții în directorul \file{code/04-process/code/parent-child/} este un exemplu în care creăm un proces părinte (implementat fișierul sursă C \file{parent.c}) care apoi creează un proces (implementat în fișierul sursă C \file{child.c}). Mai jos este o secvență în care rulăm programul ce creează procesul părinte, program care apoi creează procesul copil:
+
+\begin{screen}
+TODO
+\end{screen}
+TODO: exemplu cu parent child din codul sursă
+
+Apoi din alt terminal urmărim cele două procese și observăm că procesul copil (\texttt{child}) cu PID-ul TODO are ca părinte procesul părinte (\texttt{parent}) cu PID-ul TODO. Apoi omorâm procesul părinte și investigăm din nou procesul copil. Observăm că acum procesul părinte este procesul \texttt{init} cu PID-ul TODO.
 
 Procesul init este un proces esențial în Linux, vârful ierarhiei de procese. De
 aceea, dacă dintr-un motiv sau altul procesul init moare sau este omorât,
@@ -1857,9 +1864,7 @@ create de acesta. Mai multe informații vom prezenta în \labelindexref{Capitolu
 
 Astfel, pe lângă pașii descriși mai sus, loader-ul plasează pe stiva procesului
 (accesibil funcției \texttt{main()}) argumentele programului și variabilele de mediu.
-Acestea sunt apoi disponibile programului din argumentele funcției \texttt{main()} (în C):
-
-TODO: exemplificare cum argc, argv, și envp permit accesarea argumentelor programului și variabilelor de mediu (arhivă de capitol)
+Acestea sunt apoi disponibile programului din argumentele funcției \texttt{main()} (în C). Găsiți o exemplificare a investigării variabilelor de mediu într-un program C în codul sursă de suport al cărții în directorul \file{code/04-process/main-args/}.
 
 După load-time, în momentul în care procesul rulează intră în faza run-time.
 Aici procesul folosește resursele sistemului, comunică cu exteriorul și cu alte
