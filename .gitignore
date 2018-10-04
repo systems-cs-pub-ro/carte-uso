@@ -25,3 +25,19 @@
 
 # Converted svg files
 /book/svg-inkscape/
+
+# Programming output files
+*.o
+*.a
+*.so
+*.lib
+*.dll
+*.dyld
+
+# Archive files
+*.zip
+*.rar
+*.tar
+*.gz
+*.bz2
+*.Z
