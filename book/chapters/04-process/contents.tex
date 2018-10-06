@@ -154,8 +154,7 @@ tehnic incorect să ne referim la procesul Firefox sau procesul Apache. Putem
 folosi termenul \textbf{un} proces Firefox sau \textbf{un} proces Apache. Numele
 unui proces identifică imaginea de proces, executabil din care a fost creat;
 numele nu este folosit pentru a identifica în mod unic un proces. Procesul este
-identificat la nivelul sistemului de un număr unic, numit Process Id sau PID
-\abbrev{PID}{Process Id}. Prezentăm mai multe despre atributele unui proces,
+identificat la nivelul sistemului de un număr unic, numit Process Id sau PID\abbrev{PID}{Process Id}. Prezentăm mai multe despre atributele unui proces,
 inclusiv identificatorul său, în secțiunea următoare.
 
 \section{Resursele și atributele unui proces}
@@ -175,7 +174,7 @@ sistemului.
         \def\svgwidth{0.8\textwidth}
         \includesvg{chapters/04-process/img/placeholder.svg}
         \caption{Procese și resursele sistemului}
-        \label{fig:process-overview}
+        \label{fig:process-resources}
 \end{figure}
 TODO: diagramă CPU, memorie, I/O, proces (procesul în centru, fluxuri)
 
@@ -236,14 +235,14 @@ student@uso:~$ ps -e -o pid,ppid,user,rss,%cpu
 
 \begin{figure}[!htbp]
 	\centering
-        \includegraphics[width=0.8\textwidth]{chapters/04-process/img/screenshot.png}
+        \includegraphics[width=0.8\textwidth]{chapters/04-process/img/top.png}
         \caption{Utilitarul top}
         \label{fig:process-top}
 \end{figure}
 
 \begin{figure}[!htbp]
         \centering
-        \includegraphics[width=0.8\textwidth]{chapters/04-process/img/screenshot.png}
+        \includegraphics[width=0.8\textwidth]{chapters/04-process/img/task-manager.png}
         \caption{Utilitarul Task Manager}
         \label{fig:process-task-manager}
 \end{figure}
@@ -341,8 +340,7 @@ Din prima categorie fac parte, în Linux, utilitarele \cmd{ps}, \cmd{pgrep}, \cm
 utilitarele precum Task Manager, Process Explorer monitorizează procesele
 sistemului.
 
-Sunt prezentate respectiv în \labelindexref{Figura}{fig:process-top}, \labelindexref{Figura}{fig:process-htop}, \labelindexref{Figura}{fig:process-task-manager}, \labelindexref{Figura}{fig:process-process-explorer} screenshot-uri cu utilitarele top, htop, Task Manager și
-Process Explorer, utilitare de monitorizare a proceselor. Monitorizarea
+Sunt prezentate respectiv în \labelindexref{Figura}{fig:process-top} și \labelindexref{Figura}{fig:process-task-manager} screenshot-uri cu utilitarele top și Task Manager, utilitare de monitorizare a proceselor. Monitorizarea
 proceselor e utilă pentru a urmări procesele din sistem, a observa tendințe, a
 vedea consumul de resurse și pentru a investiga de ce sistemul sau un proces
 funcționează anevoios. Mai multe informații despre monitorizarea și investigarea
@@ -610,11 +608,10 @@ Prioritatea unui proces este afectată de comportamentul acestuia (procesele mai
 
 \begin{figure}[!htbp]
 	\centering
-        \includegraphics[width=0.8\textwidth]{chapters/04-process/img/screenshot.png}
+        \includegraphics[width=0.8\textwidth]{chapters/04-process/img/task-manager-priority.png}
         \caption{Priorități de procese în Windows}
         \label{fig:process-priority-task-manager}
 \end{figure}
-TODO: screenshot cu Task Manager și afectarea priorității
 
 În Linux, putem altera prioritatea unui proces prin alterarea valorii \texttt{nice} a
 unui proces. Valoarea \texttt{nice} arată cât de ,,drăguț'' este acel proces cu alte
@@ -713,7 +710,7 @@ crearea unui proces este indicată în \labelindexref{Figura}{fig:process-create
         \def\svgwidth{0.8\textwidth}
         \includesvg{chapters/04-process/img/placeholder.svg}
         \caption{Crearea unui proces}
-        \label{fig:process-overview}
+        \label{fig:process-create}
 \end{figure}
 TODO: diagramă cu crearea unui proces: părinte, executabil/program, proces copil
 
@@ -795,6 +792,13 @@ poate obține informații.
 
 O imagine a ierarhiei de procese în Windows putem obține folosind utilitarul
 Process Explorer, așa cum vedem în \labelindexref{Figura}{fig:process-process-explorer-hierarchy}
+
+\begin{figure}[!htbp]
+	\centering
+        \includegraphics[width=0.8\textwidth]{chapters/04-process/img/process-explorer.png}
+        \caption{Vizualizare ierarhie de procese folosind Process Explorer}
+        \label{fig:process-process-explorer-hierarchy}
+\end{figure}
 
 Shell-ul Windows este un shell grafic reprezentat de procesul Explorer. Acest
 proces creează aplicațiile/procesele pornite în mediul grafic în Windows.
@@ -906,9 +910,18 @@ Un proces dus în background în starea suspendat folosind combinația de taste
 lucru folosind comanda \cmd{bg}, ca în exemplul de mai jos:
 
 \begin{screen}
-TODO
+student@uso:~$ sleep 100
+^\verb+^+^Z
+[1]+  Stopped                 sleep 100
+student@uso:~$ jobs
+[1]+  Stopped                 sleep 100
+student@uso:~$ bg
+[1]+ sleep 100 &
+student@uso:~$ jobs
+[1]+  Running                 sleep 100 &
 \end{screen}
-TODO: exemplu cu bg
+
+În exemplu se observă că după folosirea combinației de taste \texttt{Ctrl+z} procesul ajunge în starea \texttt{Stopped} în background. Apoi, prin folosirea comenzii \texttt{bg} acesta ajunge în starea \texttt{Running} în background.
 
 Sumarizând, \labelindexref{Figura}{fig:process-fg-bg} prezintă modul în care poate rula un proces în
 background/foreground: ce comenzi și operatori sunt folosiți în fiecare caz, ce
@@ -931,9 +944,34 @@ comenzile fg și bg, atunci vom adăuga ca parametru către aceste comenzi
 identificatorul job-ului, așa cum facem în exemplul de mai jos:
 
 \begin{screen}
-TODO
+student@uso:~$ sleep 100 &
+[1] 10962
+student@uso:~$ sleep 200
+^\verb+^+^Z
+[2]+  Stopped                 sleep 200
+student@uso:~$ jobs
+[1]-  Running                 sleep 100 &
+[2]+  Stopped                 sleep 200
+student@uso:~$ bg %2
+[2]+ sleep 200 &
+student@uso:~$ jobs
+[1]-  Running                 sleep 100 &
+[2]+  Running                 sleep 200 &
+student@uso:~$ fg %2
+sleep 200
+^\verb+^+^Z
+[2]+  Stopped                 sleep 200
+student@uso:~$ jobs
+[1]-  Running                 sleep 100 &
+[2]+  Stopped                 sleep 200
+student@uso:~$ fg %1
+sleep 100
+^\verb+^+^C
+student@uso:~$ jobs
+[2]+  Stopped                 sleep 200
 \end{screen}
-TODO:snippet-uri de comenzi de interacțiune: bg, fg, jobs
+
+Mai sus am folosit construcțiile \texttt{\%1} și \texttt{\%2} pentru a opera job-urile cu indexul 1 și 2 din background. Am trimis indexul ca argument comenzilor \cmd{bg} și \cmd{fg}.
 
 Un scenariu util pentru trecerea unui proces în background este când pornim un
 proces GUI \abbrev{GUI}{Graphical User Interface} din shell și pierdem în shell
@@ -944,9 +982,14 @@ apoi procesul din starea supendat în starea running folosind comanda bg. Adică
 la fel în eemplu de mai jos:
 
 \begin{screen}
-TODO
+student@uso:~$ emacs
+^\verb+^+^Z
+[1]+  Stopped                 emacs
+student@uso:~$ bg
+[1]+ emacs &
+student@uso:~$ jobs
+[1]+  Running                 emacs &
 \end{screen}
-TODO: exemplu cu enumerare pași cu pornire emacs, Ctrl+z și bg
 
 În mod obișnuit, dacă un shell se închide (se rulează comanda \cmd{exit} sau
 combinația \texttt{Ctrl+d} sau este închisă fereastra terminalului în care rulează),
@@ -976,11 +1019,26 @@ procese, acest proces trebuie să aibă un proces părinte; acest proces părint
 este procesul init. În codul sursă de suport al cărții în directorul \file{code/04-process/code/parent-child/} este un exemplu în care creăm un proces părinte (implementat fișierul sursă C \file{parent.c}) care apoi creează un proces (implementat în fișierul sursă C \file{child.c}). Mai jos este o secvență în care rulăm programul ce creează procesul părinte, program care apoi creează procesul copil:
 
 \begin{screen}
-TODO
-\end{screen}
-TODO: exemplu cu parent child din codul sursă
+# start process
+student@uso:~/.../code/04-process/parent-child$ ./parent
+parent: Parent process started. Creating child process ...
+parent: Child process created. Now going to sleep ...
+child: Child process started. Now going to sleep ...
 
-Apoi din alt terminal urmărim cele două procese și observăm că procesul copil (\texttt{child}) cu PID-ul TODO are ca părinte procesul părinte (\texttt{parent}) cu PID-ul TODO. Apoi omorâm procesul părinte și investigăm din nou procesul copil. Observăm că acum procesul părinte este procesul \texttt{init} cu PID-ul TODO.
+# investigate process
+student@uso:~$ ps -f -C parent
+UID        PID  PPID  C STIME TTY          TIME CMD
+student  11304 10765  0 11:04 pts/1    00:00:00 ./parent
+student@uso:~$ ps -f -C parent,child
+UID        PID  PPID  C STIME TTY          TIME CMD
+student  11304 10765  0 11:04 pts/1    00:00:00 ./parent
+student  11305 11304  0 11:04 pts/1    00:00:00 ./child
+student@uso:~$ kill 11304
+student@uso:~$ ps -f -C parent,child
+UID        PID  PPID  C STIME TTY          TIME CMD
+student  11305     1  0 11:04 pts/1    00:00:00 ./child
+\end{screen}
+În exemplul de mai sus în prima parte am pornit procesul \texttt{parent} care apoi a pornit și procesul \texttt{child}. Apoi din alt terminal urmărim cele două procese și observăm că procesul copil (\texttt{child}) cu PID-ul \texttt{11305} are ca părinte procesul părinte (\texttt{parent}) cu PID-ul \texttt{11304}. Apoi omorâm procesul părinte și investigăm din nou procesul copil. Observăm că acum procesul părinte este procesul \texttt{init} cu PID-ul \texttt{1}.
 
 Procesul init este un proces esențial în Linux, vârful ierarhiei de procese. De
 aceea, dacă dintr-un motiv sau altul procesul init moare sau este omorât,
@@ -1075,7 +1133,9 @@ bash    9585 student    2u   CHR  136,1      0t0      4 /dev/pts/1
 bash    9585 student  255u   CHR  136,1      0t0      4 /dev/pts/1
 \end{screen}
 
-Primele 3 intrări în tabelă (0, 1 și 2) sunt întotdeauna alocate pentru
+Mai sus \texttt{9585} este PID-ul procesului investigat, în cazul de față este un proces shell, creat din executabilul \texttt{/bin/bash}. Utilitarul \texttt{lsof} afișează mai multe informații, incluzând biblioteci încărcate. Aici sunt relevante ultimele intrări, care au pe coloana \texttt{FD} numere (\texttt{0u}, \texttt{1u}, \texttt{2u}, \texttt{255u}).
+
+Primii 3 indecși din tabela de descriptori de fișiere (0, 1 și 2) sunt întotdeauna alocate pentru
 descriptorii standard de interacțiune cu procesul: intrarea standard (\textit{standard
 input}), ieșirea standard (\textit{standard output}) și ieșirea de eroare standard
 (\textit{standard error}). Din acest motiv primul descriptor de fișier folosibil este
@@ -1114,11 +1174,26 @@ referință către fișier. Dacă investigăm folosind comanda \cmd{lsof}, obți
 de mai jos:
 
 \begin{screen}
-TODO
-\end{screen}
-TODO: exemplu vim + lsof
+student@uso:~$ vim a.txt
 
-Observăm că nu există o referință în Vim la acel fișier. În general editoarele
+[1]+  Stopped                 vim a.txt
+student@uso:~$ pidof vim
+11414
+student@uso:~$ lsof -p 11414
+COMMAND   PID    USER   FD   TYPE DEVICE SIZE/OFF   NODE NAME
+vim     11414 student  cwd    DIR    8,1     4096 681167 /home/student
+vim     11414 student  rtd    DIR    8,1     4096      2 /
+vim     11414 student  txt    REG    8,1  2880744 687896 /usr/bin/vim.nox
+[...]
+vim     11414 student    0u   CHR  136,2      0t0      5 /dev/pts/2
+vim     11414 student    1u   CHR  136,2      0t0      5 /dev/pts/2
+vim     11414 student    2u   CHR  136,2      0t0      5 /dev/pts/2
+vim     11414 student    3u   REG    8,1     4096 680064 /home/student/.a.txt.swp
+\end{screen}
+
+În exemplul de mai sus am pornit utilitarul Vim și apoi l-am trecut în background. Am investigat tabela sa de descriptori de fișiere. Indexul \texttt{3} este alocat unui fișier temporar de salvare a datelor în cazul în care aplicația are probleme; nu avem referință directă la fișierul \texttt{a.txt}.
+
+În general editoarele
 nu folosesc referințe la fișiere; editoarele citesc conținutul fișierelor în
 memorie și acțiunile de editare ale utilizatorului se traduc în modificări în
 memorie, nu în fișierul de pe disc; doar la comenzi de salvare sunt deschise
@@ -1146,9 +1221,14 @@ descriptorul 1 (ieșirea standard) a unui proces să nu mai refere terminalul ci
 fișierul \file{lshw.out}, cum este cazul comenzii de mai jos:
 
 \begin{screen}
-TODO
+student@uso:~$ lshw > lshw.out
+student@uso:~$ cat lshw.out
+uso
+    description: Computer
+    width: 64 bits
+    capabilities: vsyscall32
+[...]
 \end{screen}
-TODO: exemplu cu lshw > lshw.out
 
 Această operație, de redirectare, este utilă pentru a putea salva ieșirea unei
 comenzi pentru prelucrarea ulterioară sau pentru a transfera un fișier către
@@ -1160,13 +1240,29 @@ one-linere, în cadrul cărora rezultatul unei comenzi ajunge intrare pentru
 altul, așa cum vom vedea în
 \labelindexref{Secțiunea}{sec:procese-operatii-pipe}.
 
-Putem urmări redirectarea descriptorilor cu ajutorul comenzii lsof, așa cum
+Putem urmări redirectarea descriptorilor cu ajutorul comenzii \cmd{lsof}, așa cum
 apare mai jos:
 
 \begin{screen}
-TODO
+student@uso:~$ sleep 100 > out 2> err < in
+^\verb+^+^Z
+[1]+  Stopped                 sleep 100 > out 2> err < in
+student@uso:~$ pidof sleep
+11432
+student@uso:~$ lsof -p 11432
+COMMAND   PID    USER   FD   TYPE DEVICE SIZE/OFF   NODE NAME
+sleep   11432 student  cwd    DIR    8,1     4096 681167 /home/student
+sleep   11432 student  rtd    DIR    8,1     4096      2 /
+sleep   11432 student  txt    REG    8,1    35000 786587 /bin/sleep
+sleep   11432 student  mem    REG    8,1 11861184 662217 /usr/lib/locale/locale-archive
+sleep   11432 student  mem    REG    8,1  2030544 923728 /lib/x86_64-linux-gnu/libc-2.27.so
+sleep   11432 student  mem    REG    8,1   170960 923700 /lib/x86_64-linux-gnu/ld-2.27.so
+sleep   11432 student    0r   REG    8,1        0 680071 /home/student/in
+sleep   11432 student    1w   REG    8,1        0 680069 /home/student/out
+sleep   11432 student    2w   REG    8,1        0 680072 /home/student/err
 \end{screen}
-TODO: exemplu cu sleep și redirectări și lsof
+
+În exemplul de mai sus, toți descriptorii standard au fost redirecați în/din fișierele \texttt{out}, \texttt{err} și \texttt{in}, lucru precizat și de rezultatul rulării comenzii \cmd{lsof}.
 
 \section{Operații cu procese. Interacțiunea între procese}
 \label{sec:procese-operatii}
@@ -1205,9 +1301,16 @@ omorârea procesului. Transmiterea unui semnal se face prin intermediul
 comenzilor din familia \cmd{kill}, ca în exemplul de mai jos:
 
 \begin{screen}
-TODO
+student@uso:~$ sleep 100  # run command
+Terminated # after kill command below
+
+# kill process
+student@uso:~$ pidof sleep
+11450
+student@uso:~$ kill 11450
 \end{screen}
-TODO: exemplu care folosește kill
+
+Comanda \cmd{kill} de mai sus trimite un semnal procesului \cmd{sleep}, care are PID-ul \texttt{11450} ducând la terminarea procesului.
 
 După folosirea comenzii \cmd{kill} procesul creat a fost omorât. Vom detalia semnale
 și folosire comenzii \cmd{kill} în
@@ -1221,15 +1324,15 @@ sau eroare. Mai jos prezentăm exemple de investigare a codului de eroare după
 încheierea unui proces:
 
 \begin{screen}
-TODO
-\end{screen}
-TODO: exemplu cu grep
+student@uso:~$ grep student /etc/passwd > /dev/null
+student@uso:~$ echo $?
+0
+student@uso:~$ grep profesor /etc/passwd > /dev/null
+student@uso:~$ echo $?
+1
+\end{screen}j
 
-\begin{screen}
-TODO
-\end{screen}
-TODO: exemple din arhivă cu programe scrise în C care se încheie în diferite moduri
-și cu diferite coduri de eroare
+Construcția \texttt{\$?} afișează în shell codul de ieșire al ultimei comenzi rulate. În exemplu de mai sus, atunci când comanda \cmd{grep} reușește (adică găsește șirul primit ca prim argument în fișierul primit ca al doilea argument), valoarea construcției \texttt{\$?} este 0 (succes). Altfel este 1 (insucces).
 
 \subsection{Semnale}
 \label{sec:procese-operatii-semnale}
@@ -1243,26 +1346,54 @@ utiizatorului root.
 
 Semnalele sunt la bază mecanisme de notificare din partea unui proces către
 altul, dar sunt folosite în multe situații pentru omorârea unui proces. De
-exemplu semnalul \texttt{SIGTSTP} suspendă un proces (și îl trece în background), iar
+exemplu semnalul \texttt{SIGSTOP} suspendă un proces (și îl trece în background), iar
 semnalul \texttt{SIGTERM} îl omoară:
 
 \begin{screen}
-TODO
+student@uso:~$ sleep 100
+
+# after kill -STOP
+[1]+  Stopped                 sleep 100
+student@uso:~$ fg
+sleep 100
+# after kill -TERM
+Terminated
+
+# student@uso:~$ pidof sleep
+11537
+student@uso:~$ kill -STOP 11537
+student@uso:~$ kill -TERM 11537
 \end{screen}
-TODO: snippet cu kill -STP și kill -TERM
+
+În exemplul de mai sus este pornită comanda \cmd{sleep 100} într-un terminal și sunt rulate comenzile de investigare în alt terminal.
 
 Un semnal este identificat de un număr sau de un nume. Atunci când se folosește
-la comanda \cmd{kill} poate fi folosit atât numele cât și numărul:
+la comanda \cmd{kill} poate fi folosit atât numele cât și numărul. În exemplul de mai jos afișăm numerele și numele semnalelor. Apoi prezentăm trei comenzi care pot fi folosit echivalente pentru a transmite semnalul \texttt{SIGUSR1} unui proces:
 
 \begin{screen}
-TODO
+student@uso:~$ kill -l
+ 1) SIGHUP	 2) SIGINT	 3) SIGQUIT	 4) SIGILL	 5) SIGTRAP
+ 6) SIGABRT	 7) SIGBUS	 8) SIGFPE	 9) SIGKILL	10) SIGUSR1
+11) SIGSEGV	12) SIGUSR2	13) SIGPIPE	14) SIGALRM	15) SIGTERM
+16) SIGSTKFLT	17) SIGCHLD	18) SIGCONT	19) SIGSTOP	20) SIGTSTP
+21) SIGTTIN	22) SIGTTOU	23) SIGURG	24) SIGXCPU	25) SIGXFSZ
+26) SIGVTALRM	27) SIGPROF	28) SIGWINCH	29) SIGIO	30) SIGPWR
+31) SIGSYS	34) SIGRTMIN	35) SIGRTMIN+1	36) SIGRTMIN+2	37) SIGRTMIN+3
+38) SIGRTMIN+4	39) SIGRTMIN+5	40) SIGRTMIN+6	41) SIGRTMIN+7	42) SIGRTMIN+8
+43) SIGRTMIN+9	44) SIGRTMIN+10	45) SIGRTMIN+11	46) SIGRTMIN+12	47) SIGRTMIN+13
+48) SIGRTMIN+14	49) SIGRTMIN+15	50) SIGRTMAX-14	51) SIGRTMAX-13	52) SIGRTMAX-12
+53) SIGRTMAX-11	54) SIGRTMAX-10	55) SIGRTMAX-9	56) SIGRTMAX-8	57) SIGRTMAX-7
+58) SIGRTMAX-6	59) SIGRTMAX-5	60) SIGRTMAX-4	61) SIGRTMAX-3	62) SIGRTMAX-2
+63) SIGRTMAX-1	64) SIGRTMAX
+
+student@uso:~$ kill -USR1 $(pidof sleep)
+student@uso:~$ kill -10 $(pidof sleep)
+student@uso:~$ kill -SIGUSR1 $(pidof sleep)
 \end{screen}
-TODO: snippet cu kill -l
-TODO: snippet cu kill -KILL și kill -9
 
 Un semnal are asociat o acțiune pe care o întreprinde procesul care-l
 recepționează. Am văzut mai sus că această acțiuni este suspendarea procesului
-în cazul semnalului \texttt{SIGTSTP} și omorârea procesului în cazul \texttt{SIGTERM}. Aceată
+în cazul semnalului \texttt{SIGSTOP} și omorârea procesului în cazul \texttt{SIGTERM}. Aceată
 acțiune implicită poate fi modificată programatic pentru un proces dat; nu vom
 discuta acest lucru aici, vedeți câteva informații în pagina de manual \cmd{man 7
 signal}. De exemplu, un proces poate alege să ignore anumite semnale. Cu toate
@@ -1274,9 +1405,12 @@ Aceasta permite transmiterea proceselor cu un anumit atribut, de exemplu create
 dintr-un anumit proces sau care țin de un anumit utilizator:
 
 \begin{screen}
-TODO
+student@uso:~$ pkill sleep
+student@uso:~$ pkill -u dan
+student@uso:~$ pkill -P 18291
 \end{screen}
-TODO: snippet cu pkill
+
+Cele trei comenzi de mai sus trimit semnalul implicit (\texttt{SIGTERM}) respectiv tuturor proceselor \cmd{sleep}, tuturor proceselor utilizatorului \texttt{dan} și tuturor proceselor al căror proces părinte este \texttt{18291}.
 
 Pe anumite platforme Unix există și comenzile \cmd{killall} sau \cmd{skill}. Acestea pot fi
 folosite, de asemenea, pentru a transmite semnale (sau a omorî) mai multe
@@ -1346,10 +1480,10 @@ de-a doua comenzi de codul de ieșire al primei. Astfel:
 		încheiat cu succes
 \end{itemize}
 
+În exemplul de mai jos se rulează executabilul \texttt{main_args} din directorul curent doar dacă a reușit comanda de compilare \texttt{make}:
 \begin{screen}
-TODO
+student@uso:~/.../code/04-process/main-args$ make && ./main_args
 \end{screen}
-TODO: exemple de folosire operatori de înlănțuire (practice, utile)
 
 \subsection{Comunicarea prin pipe-uri}
 \label{sec:procese-operatii-pipe}
@@ -1361,31 +1495,39 @@ comandă redirectează ieșirea într-un fișier iar altă comandă redirecteaz�
 intrarea din acel fișier, ca mai jos:
 
 \begin{screen}
-TODO
+student@uso:~$ ps -e --no-header > out
+student@uso:~$ wc -l < out
+191
 \end{screen}
-TODO: exemplu practic și util cu comm1 > f ; comm2 < f
+
+În exemplul de mai sus vrem să aflăm câte procese sunt active în sistem numărând liniile afișate de comanda \cmd{ps}; număratul este realizat de comanda \cmd{wc -l}. Pentru aceasta redirectăm ieșirea comenzii \cmd{ps} în fișierul \file{out} pe care apoi îl redirectăm la intrarea comenzii \cmd{wc}.
 
 Același lucru poate fi obținut cu ajutorul operatorului \texttt{\textbar{}} (\textit{pipe}) din shell.
 Acest operator transferă ieșirea standard a unei comenzi către intrarea standard
 a altei comenzi. Adică, în loc de exemplul de mai sus să avem:
 
 \begin{screen}
-TODO
+student@uso:~$ ps -e --no-header | wc -l
+192
 \end{screen}
-TODO: același exemplu practic și util cu comm1 | comm2
 
 În unele situații avem mai multe comenzi înlănțuite prin operatorul pipe într-o
 singură linie de comandă, ca în exemplul de mai jos:
 
 \begin{screen}
-TODO
+student@uso:~$ grep -rwc FILE /usr/include/ | grep -v ':0' | sort -n -t ':' -k2 | tail -5
+/usr/include/stdio_ext.h:10
+/usr/include/unistd.h:10
+/usr/include/c++/7/profile/impl/profiler_trace.h:20
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:20
+/usr/include/stdio.h:82
 \end{screen}
-TODO: exemplu de comandă utilă cu mai multe pipe-uri
+
+În exemplul de mai sus am extras din ierarhia \file{/usr/include} cele 5 fișiere care conțin cel mai des șirul \texttt{FILE} (pentru lucrul cu fișîere în limbajul C).
 
 Astfel de comenzi înlănțuite care pot folosi și redirectări și alți operatori de
 înlănțuire sunt numite \textbf{one-linere}. Sunt un mod rapid de a combina mai
-multe comenzi existente pentru un efect nou. Vom discuta în detaliu despre one
-linere în \labelindexref{Secțiunea}{sec:cli-one-liners}.
+multe comenzi existente pentru un efect nou. Vom discuta în detaliu despre one-linere în \labelindexref{Secțiunea}{sec:cli-one-liners}.
 
 \begin{note}[Filozofia înlănțuirii comenzilor]
 Înlănțuirea comenzilor face parte din filozofia Unix: ,,Do one thing, do
@@ -1442,10 +1584,15 @@ Putem să identificăm terminalul unui proces (inclusiv shell-ul) folosind coman
 \cmd{ps}, ca în exemplul de mai jos:
 
 \begin{screen}
-TODO
+student@uso:~$ tty
+/dev/pts/1
+student@uso:~$ ps -f
+UID        PID  PPID  C STIME TTY          TIME CMD
+student  10765 10764  0 10:50 pts/1    00:00:00 -bash
+student  11724 10765  0 11:49 pts/1    00:00:00 ps -f
 \end{screen}
-TODO: Exemplu cu tty
-TODO: Exemplu cu ps cu afișarea terminalului
+
+În exemplul de mai sus terminalul aferent shell-ului curent este \texttt{/dev/pts/1}.
 
 Procesele create dintr-un shell, adică procesele copil ale shell-ului, vor
 moșteni acest terminal. Procesele care se află la un moment dat în rulare în
@@ -1458,10 +1605,15 @@ din foreground ,,acaparează'' intrarea standard dată de terminal.
 același terminal:
 
 \begin{screen}
-TODO
+student@uso:~$ sleep 100 &
+[1] 11728
+student@uso:~$ ps -f
+UID        PID  PPID  C STIME TTY          TIME CMD
+student  10765 10764  0 10:50 pts/1    00:00:00 -bash
+student  11728 10765  0 11:50 pts/1    00:00:00 sleep 100
+student  11729 10765  0 11:50 pts/1    00:00:00 ps -f
 \end{screen}
-TODO: exemplu de rulare ps cu afișarea terminalului pentru un proces shell și pentru
-procese create din el
+Observăm că terminalul (coloana \texttt{TTY}) pentru procesul shell (\texttt{-bash}) și pentru procesele copil create de acesta (procesul \cmd{sleep} și \cmd{ps}) este același: \texttt{pts/1}.
 
 \subsection{Procese neinteractive}
 \label{sec:procese-interactivitate-neinteractive}
@@ -1520,12 +1672,20 @@ Concluzionând, în general un proces daemon are următoarele caracteristici:
 	\item are ca proces părinte init
 \end{itemize}
 
-Pentru a lista procesele daemon într-un sistem Linux, rulăm comanda:
+Pentru a face o listă aproximativă a proceselor daemon într-un sistem Linux, rulăm comanda:
 
 \begin{screen}
-TODO
+student@uso:~$ ps -f --ppid 1
+UID        PID  PPID  C STIME TTY          TIME CMD
+root       207     1  0 oct05 ?        00:00:02 /lib/systemd/systemd-journald
+root       230     1  0 oct05 ?        00:00:00 /lib/systemd/systemd-udevd
+systemd+   302     1  0 oct05 ?        00:00:00 /lib/systemd/systemd-resolved
+root       440     1  0 oct05 ?        00:00:00 /usr/sbin/acpid
+root       444     1  0 oct05 ?        00:00:00 /usr/lib/udisks2/udisksd
+root       447     1  0 oct05 ?        00:00:00 /usr/sbin/ModemManager
+syslog     450     1  0 oct05 ?        00:00:00 /usr/sbin/rsyslogd -n
+[...]
 \end{screen}
-TODO: rulare comandă ps -{}-tty ? -{}-ppid 1 (ceva de genul)
 
 Aplicațiile din mediul grafic nu au un terminal asociat dar nu le putem numi
 procese daemon întrucât au o interfață (grafică) de interacțiune cu
@@ -1596,9 +1756,12 @@ semnalul \texttt{SIGHUP}. În exemplul de mai jos, rulăm comanda \cmd{sleep 100
 utilitarul \cmd{nohup}:
 
 \begin{screen}
-TODO
+student@uso:~$ nohup sleep 100 &
+[2] 11772
+student@uso:~$ nohup: ignoring input and appending output to 'nohup.out'
+
+student@uso:~$
 \end{screen}
-TODO: Exemplu nohup sleep 100
 
 Acum procesul \cmd{sleep} nou creat va ignora semnalul \texttt{SIGHUP} și închiderea
 terminalului și shell-ului nu va duce la încheierea execuției sale. După
@@ -1615,21 +1778,35 @@ folosind \cmd{nohup} cu redirectarea ieșirii standard și a ieșirii de eroare 
 în \file{/dev/null}:
 
 \begin{screen}
-TODO
+student@uso:~$ sudo apt install transmission-cli
+[...]
+student@uso:~$ wget http://releases.ubuntu.com/18.04/ubuntu-18.04.1-desktop-amd64.iso.torrent
+[...]
+student@uso:~$ nohup transmission-cli ubuntu-18.04.1-desktop-amd64.iso.torrent > /dev/null 2>&1 &
+[1] 12482
 \end{screen}
-TODO: exemplu rulare nohup, afișare descriptori
 
 Dacă am uitat să pornim un proces folosind comanda \cmd{nohup}, putem în continuare
 configura shell-ul să nu îi trimită acestuia semnalul \texttt{SIGHUP} folosind comanda
-disown. Practic comanda nohup afectează procesul nou creat și acesta ignoră
-semnalul \texttt{SIGHUP}, pe când comanda disown afectează shell-ul și nu trimite
+\cmd{disown}. Practic comanda \cmd{nohup} afectează procesul nou creat și acesta ignoră
+semnalul \texttt{SIGHUP}, pe când comanda \cmd{disown} afectează shell-ul și nu trimite
 semnalul unui proces din background. Mai jos prezentăm un exemplu de folosire a
-comenzii \cmd{disown}.
+comenzii \cmd{disown}:
 
 \begin{screen}
-TODO
+student@uso:~$ transmission-cli ubuntu-18.04.1-desktop-amd64.iso.torrent > /dev/null 2>&1
+
+^\verb+^+^Z
+[1]+  Stopped                 transmission-cli ubuntu-18.04.1-desktop-amd64.iso.torrent > /dev/null 2>&1
+student@uso:~$ bg
+[1]+ transmission-cli ubuntu-18.04.1-desktop-amd64.iso.torrent > /dev/null 2>&1 &
+student@uso:~$ jobs
+[1]+  Running                 transmission-cli ubuntu-18.04.1-desktop-amd64.iso.torrent > /dev/null 2>&1 &
+student@uso:~$ disown
+student@uso:~$ jobs
 \end{screen}
-TODO: exemplu rulare disown
+
+În exemplul de mai sus, am folosit comanda \cmd{disown} și procesul aflat în background a dispărut din lista de job-uri. Acest proces va fi persistent și după încheierea procesului shell.
 
 \subsection{screen, tmux, byobu, dtach}
 \label{sec:procese-interactivitate-screen}
@@ -1645,13 +1822,19 @@ posibilitatea creării de ,,subferestre de terminal'' într-o singură sesiune �
 posibilitatea detașării de la sesiunea de terminal și apoi reatașarea la
 aceasta. În acest capitol ne interesează al doilea rol. Când pornim utilitarele
 se creează o sesiune de terminal de la care ne putem detașa și la care apoi ne
-putem reatașa. Mai jos este un exemplu de folosire a tmux pentru a crea o
+putem reatașa. Mai jos este un exemplu de folosire a \cmd{tmux} pentru a crea o
 sesiune de terminal și apoi pentru a ne detașa de la ea:
 
 \begin{screen}
-TODO
+student@uso:~$ tmux
+# Use Ctrl+b d to detach.
+[detached (from session 0)]
+student@uso:~$ tmux list-sessions
+0: 1 windows (created Sat Oct  6 12:39:41 2018) [179x38]
+student@uso:~$ tmux attach-session
 \end{screen}
-TODO: exemplu simplu cu tmux, tmux -ls
+
+Argumentul \texttt{list-sessions} al comenzii \cmd{tmux} afișează sesiunile existente. Argumentul \texttt{attach-session} duce la reatașarea la sesiunea existentă.
 
 \cmd{screen}, \cmd{tmux}, \cmd{byobu} sunt utilitare similare cu diverse caracteristici, dar cu
 rulare similară în ceea ce privește pornirea unui proces interactiv și detașarea
@@ -1680,20 +1863,20 @@ recomandăm în defavoarea screen. De avut în vedere că multe opțiuni pot fi 
 	\toprule
                 \textbf{funcționalitate} & \textbf{tmux} & \textbf{byobu} & \textbf{screen} \\
 	\midrule
-          creare fereastră nouă & \texttt{Ctrl+b c} & \texttt{} & \texttt{Ctrl+a c} \\
+          creare fereastră nouă & \texttt{Ctrl+b c} & \texttt{F2} & \texttt{Ctrl+a c} \\
 	\midrule
-          detașare & \texttt{Ctrl+b d} & \texttt{} & \texttt{Ctrl+b c} \\
+          detașare & \texttt{Ctrl+b d} & \texttt{Shift+F6} & \texttt{Ctrl+b c} \\
 	\midrule
-          listare sesiuni & \texttt{tmux list-session} & \texttt{} & \texttt{screen -ls} \\
+          listare sesiuni & \texttt{tmux list-sessions} & \texttt{byobu list-sessions} & \texttt{screen -ls} \\
 	\midrule
-          reatașare sesiune & \texttt{tmux attach $[$sessio-name$]$} & \texttt{} & \texttt{screen -r $[$session-id$]$} \\
+          reatașare sesiune & \texttt{tmux attach $[$session-name$]$} & \texttt{tmux attach $[$session-name$]$} & \texttt{screen -r $[$session-id$]$} \\
 	\midrule
-          schimbare fereastră & \texttt{Ctrl+b \textless{}window-id>} & \texttt{} & \texttt{Ctrl+a \textless{}window-id>} \\
+          schimbare fereastră & \texttt{Ctrl+b \textless{}window-id>} & \texttt{F3, F4} & \texttt{Ctrl+a \textless{}window-id>} \\
 	\midrule
-          închidere sesiune & \texttt{Ctrl+b TODO} & \texttt{} & \texttt{Ctrl+a \textbackslash{}} \\
+          închidere sesiune & \texttt{Ctrl+b :kill-session} & \texttt{Ctrl+a \textbackslash{}} & \texttt{Ctrl+a \textbackslash{}} \\
 	\bottomrule
 	\end{tabular}
-        \label{table:process-attributes}
+        \label{table:cli-tmux-screen-byobu}
 \end{center}
 \end{table}
 
@@ -1704,9 +1887,13 @@ ne putem deconecta din acea sesiune. Mai jos este un exemplu de folosire,
 detalii găsiți în pagina de manual a comenzii:
 
 \begin{screen}
-TODO
+student@uso:~$ dtach -c this_socket /bin/bash
+# Use Ctrl+\ to detach
+[detached]
+student@uso:~$ dtach -a this_socket
 \end{screen}
-TODO: Exemplu cu dtach
+
+În prima comandă de mai sus am creat o sesiune shell nouă folosind socket-ul numit \texttt{this_socket}. Apoi, în cadrul sesiunii deschise, am folosit combinația de taste \texttt{Ctrl+\textbackslash{}} pentru a ne detașa. Apoi a doua comandă ne permite reconectarea la sesiunea shell deschisă.
 
 \section{Investigarea proceselor}
 \label{sec:procese-investigare}
@@ -1735,9 +1922,8 @@ Similar utilitarelor top și htop de investigare a folosirii procesorului și
 memoriei, putem folosi utilitarul \cmd{iotop} pentru investigarea folosirii discului:
 
 \begin{screen}
-TODO
+student@uso:~$ sudo iotop
 \end{screen}
-TODO: exemplu de folosire iotop
 
 Atunci când dorim să investigăm fișierele sau sockeții deschiși de un proces,
 putem folosi utilitarul \cmd{lsof}, pe care l-am prezentat și în
@@ -1753,12 +1939,21 @@ cum vom prezenta în \labelindexref{Capitolul}{chapter:sec}.
 program/proces putem urmări apelurile de bibliotecă sau de sistem realizate.
 Pentru aceasta folosim, respectiv, utilitarele \cmd{ltrace} și \cmd{strace}. Utilitarele pot
 rula un program pentru a crea un proces nou și a-l investiga, și pot fi atașate
-unui proces existent. De exemplu
+unui proces existent. De exemplu, pentru a vedea ce operații de scriere realizează comanda \cmd{ls} folosim comenzile \cmd{strace} și \cmd{ltrace} ca mai jos:
 
 \begin{screen}
-TODO
+student@uso:~$ strace -e write ls > /dev/null
+write(1, "Desktop\nDocuments\nDownloads\nMusi"..., 191) = 191
++++ exited with 0 +++
+student@uso:~$ ltrace -e fwrite_unlocked ls > /dev/null
+ls->fwrite_unlocked("Desktop", 1, 7, 0x7feee1c54760)                                                          = 7
+ls->fwrite_unlocked("Documents", 1, 9, 0x7feee1c54760)                                                        = 9
+ls->fwrite_unlocked("Downloads", 1, 9, 0x7feee1c54760)                                                        = 9
+ls->fwrite_unlocked("Music", 1, 5, 0x7feee1c54760)                                                            = 5
+ls->fwrite_unlocked("Pictures", 1, 8, 0x7feee1c54760)                                                         = 8
+[...]
++++ exited (status 0) +++
 \end{screen}
-TODO: exemple de folosire ltrace/strace
 
 \section{Anexă: Sistemul de fișiere procfs}
 \label{sec:procese-proc}
@@ -1777,9 +1972,15 @@ Sistemul de fișiere procfs se găsește doar în Linux, nu și pe alte Unix-uri
 La o listare a \file{/proc} observăm că este compus din fișiere și directoare format numeric:
 
 \begin{screen}
-TODO
+student@uso:~$ ls /proc
+1      1183   1456   1655  276   474        bus          mounts
+10     1188   1457   1668  28    479        cgroups      mtrr
+1010   1197   1459   1683  281   488        cmdline      net
+1018   12     14636  17    284   493        consoles     pagetypeinfo
+1019   1202   1464   1742  287   496        cpuinfo      partitions
+1032   1205   1467   176   288   498        crypto       sched_debug
+[...]
 \end{screen}
-TODO: exemplu listare /proc
 
 Fiecare director cu format numeric corespunde unui proces, numărul reprezentând
 PID-ul procesului. În cadrul fiecărui acest director se găsesc fișiere și
@@ -1787,17 +1988,21 @@ subdirectoare ce conțin informații despre procesul respectiv așa cum se poate
 observa mai jos:
 
 \begin{screen}
-TODO
+student@uso:~$ ls /proc/2395
+attr             exe        mounts         projid_map    status
+autogroup        fd         mountstats     root          syscall
+auxv             fdinfo     net            sched         task
+cgroup           gid_map    ns             schedstat     timers
+[...]
 \end{screen}
-TODO: exemplu listare /proc/<PID>
 
 Dintre intrările de mai sus, selectăm câteva și rolurile lor:
 
 \begin{itemize}
-  \item TODO
-  \item TODO
-  \item TODO
-  \item TODO
+  \item \cmd{exe}: legătură simbolică către executabilul aferent procesului
+  \item \cmd{fd}: director cu tabela de descriptori de fișiere a procesului
+  \item \cmd{status}: informații despre starea procesului
+  \item \cmd{task}: director cu firele de execuție (\textit{thread}-urile) procesului
 \end{itemize}
 
 Un utilizator poate, astfel, obține informații despre procese fie investigând
