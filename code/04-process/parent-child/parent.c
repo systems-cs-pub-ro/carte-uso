@@ -6,6 +6,7 @@
 int main(void)
 {
 	pid_t pid;
+	sigset_t empty;
 
 	printf("parent: Parent process started. Creating child process ...\n");
 
@@ -21,7 +22,8 @@ int main(void)
 
 	/* parent process */
 	printf("parent: Child process created. Now going to sleep ...\n");
-	sigsuspend(NULL);
+	sigemptyset(&empty);
+	sigsuspend(&empty);
 
 	return 0;
 }

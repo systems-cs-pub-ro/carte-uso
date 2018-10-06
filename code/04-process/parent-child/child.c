@@ -3,6 +3,11 @@
 
 int main(void)
 {
+	sigset_t empty;
+
 	printf("child: Child process started. Now going to sleep ...\n");
-	sigsuspend(NULL);
+	sigemptyset(&empty);
+	sigsuspend(&empty);
+
+	return 0;
 }
