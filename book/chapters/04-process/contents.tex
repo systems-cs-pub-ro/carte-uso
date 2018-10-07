@@ -46,11 +46,10 @@ Esențial este că orice aplicație care rulează folosește unul sau mai multe 
 \begin{figure}[!htbp]
 	\centering
 	\def\svgwidth{0.8\textwidth}
-        \includesvg{chapters/04-process/img/placeholder.svg}
-        \caption{Utilizator, procese și resurse}
-        \label{fig:process-overview}
+	\includesvg{chapters/04-process/img/proc-overview.svg}
+	\caption{Procese și resursele lor}
+	\label{fig:process-overview}
 \end{figure}
-TODO: diagramă cu utilizator + aplicație + 1 sau mai multe procese + resurse sistem
 
 Pentru utilizator și sistemul de operare, procesele sunt necesare ca formă de
 încapsulare. Un proces execută o anumită acțiune fără a afecta negativ alt
@@ -142,12 +141,11 @@ fișier executabil (imaginea procesului):
 
 \begin{figure}[!htbp]
 	\centering
-        \def\svgwidth{0.8\textwidth}
-        \includesvg{chapters/04-process/img/placeholder.svg}
-        \caption{Procese și programe (executabile)}
-        \label{fig:process-process-exec}
+	\def\svgwidth{0.8\textwidth}
+	\includesvg{chapters/04-process/img/program-proc.svg}
+	\caption{Procese și programe (executabile)}
+	\label{fig:process-process-exec}
 \end{figure}
-TODO: diagramă cu procese create din același executabil
 
 Întrucât mai multe procese pot fi create din același fișier executabil, este
 tehnic incorect să ne referim la procesul Firefox sau procesul Apache. Putem
@@ -171,12 +169,11 @@ sistemului.
 
 \begin{figure}[!htbp]
 	\centering
-        \def\svgwidth{0.8\textwidth}
-        \includesvg{chapters/04-process/img/placeholder.svg}
-        \caption{Procese și resursele sistemului}
-        \label{fig:process-resources}
+	\def\svgwidth{0.8\textwidth}
+	\includesvg{chapters/04-process/img/cpu-resources.svg}
+	\caption{Procese și resursele sistemului}
+	\label{fig:process-resources}
 \end{figure}
-TODO: diagramă CPU, memorie, I/O, proces (procesul în centru, fluxuri)
 
 Unui proces i se alocă resurse (de exemplu zone de memorie) în momentul creării
 (încărcării sale, numit și \textit{load-time}) și în momentul rulării (numit și
@@ -235,16 +232,16 @@ student@uso:~$ ps -e -o pid,ppid,user,rss,%cpu
 
 \begin{figure}[!htbp]
 	\centering
-        \includegraphics[width=0.8\textwidth]{chapters/04-process/img/top.png}
-        \caption{Utilitarul top}
-        \label{fig:process-top}
+	\includegraphics[width=0.8\textwidth]{chapters/04-process/img/top.png}
+	\caption{Utilitarul top}
+	\label{fig:process-top}
 \end{figure}
 
 \begin{figure}[!htbp]
-        \centering
-        \includegraphics[width=0.8\textwidth]{chapters/04-process/img/task-manager.png}
-        \caption{Utilitarul Task Manager}
-        \label{fig:process-task-manager}
+	\centering
+	\includegraphics[width=0.8\textwidth]{chapters/04-process/img/task-manager.png}
+	\caption{Utilitarul Task Manager}
+	\label{fig:process-task-manager}
 \end{figure}
 
 Mai multe informații despre investigarea proceselor și monitorizarea resurselor
@@ -541,12 +538,11 @@ input/output. Simplificat, avem precizate stările și tranzițiile între stăr
 
 \begin{figure}[!htbp]
 	\centering
-        \def\svgwidth{0.8\textwidth}
-        \includesvg{chapters/04-process/img/placeholder.svg}
-        \caption{Starea proceselor}
-        \label{fig:process-state}
+	\def\svgwidth{0.8\textwidth}
+	\includesvg{chapters/04-process/img/proc-status.svg}
+	\caption{Starea proceselor}
+	\label{fig:process-state}
 \end{figure}
-TODO: diagramă cu starea proceselor
 
 Putem investiga starea proceselor cu utilitare de urmărire și monitorizare.
 Acest lucru este util pentru a vedea dacă un proces este blocat și pentru ca
@@ -608,9 +604,9 @@ Prioritatea unui proces este afectată de comportamentul acestuia (procesele mai
 
 \begin{figure}[!htbp]
 	\centering
-        \includegraphics[width=0.8\textwidth]{chapters/04-process/img/task-manager-priority.png}
-        \caption{Priorități de procese în Windows}
-        \label{fig:process-priority-task-manager}
+	\includegraphics[width=0.8\textwidth]{chapters/04-process/img/task-manager-priority.png}
+	\caption{Priorități de procese în Windows}
+	\label{fig:process-priority-task-manager}
 \end{figure}
 
 În Linux, putem altera prioritatea unui proces prin alterarea valorii \texttt{nice} a
@@ -707,12 +703,11 @@ crearea unui proces este indicată în \labelindexref{Figura}{fig:process-create
 
 \begin{figure}[!htbp]
 	\centering
-        \def\svgwidth{0.8\textwidth}
-        \includesvg{chapters/04-process/img/placeholder.svg}
-        \caption{Crearea unui proces}
-        \label{fig:process-create}
+	\def\svgwidth{0.8\textwidth}
+	\includesvg{chapters/04-process/img/fork-exec.svg}
+	\caption{Crearea unui proces}
+	\label{fig:process-create}
 \end{figure}
-TODO: diagramă cu crearea unui proces: părinte, executabil/program, proces copil
 
 În general, procesul care creează un nou process este un shell. Shell-ul poate
 fi grafic (precum \textbf{Windows Explorer}) sau poate fi în linia de comandă (precum
@@ -795,9 +790,9 @@ Process Explorer, așa cum vedem în \labelindexref{Figura}{fig:process-process-
 
 \begin{figure}[!htbp]
 	\centering
-        \includegraphics[width=0.8\textwidth]{chapters/04-process/img/process-explorer.png}
-        \caption{Vizualizare ierarhie de procese folosind Process Explorer}
-        \label{fig:process-process-explorer-hierarchy}
+	\includegraphics[width=0.8\textwidth]{chapters/04-process/img/process-explorer.png}
+	\caption{Vizualizare ierarhie de procese folosind Process Explorer}
+	\label{fig:process-process-explorer-hierarchy}
 \end{figure}
 
 Shell-ul Windows este un shell grafic reprezentat de procesul Explorer. Acest
@@ -928,14 +923,13 @@ background/foreground: ce comenzi și operatori sunt folosiți în fiecare caz, 
 stări au procesele și cum pot tranzita între stări (\textit{running}, \textit{stopped}) și între
 moduri de rulare (foreground, background).
 
-%\begin{figure}[!htbp]
-%	\centering
-%        \def\svgwidth{0.8\textwidth}
-%        \includesvg{chapters/04-process/img/placeholder.svg}
-%        \caption{Foreground și background
-%        \label{fig:process-fg-bg}
-%\end{figure}
-TODO: diagramă cu foreground și background, \&, Ctrl+z, bg, fg
+\begin{figure}[!htbp]
+	\centering
+	\def\svgwidth{0.8\textwidth}
+	\includesvg{chapters/04-process/img/status-mov.svg}
+	\caption{Foreground și background}
+	\label{fig:process-fg-bg}
+\end{figure}
 
 Am precizat că mai multe procese pot rula în background. Procesele care rulează
 în background se numesc job-uri și au un identificator de job pentru shell-ul
@@ -1077,12 +1071,11 @@ care le folosește, așa cum este prezentat în \labelindexref{Figura}{fig:proce
 
 \begin{figure}[!htbp]
 	\centering
-        \def\svgwidth{0.8\textwidth}
-        \includesvg{chapters/04-process/img/placeholder.svg}
-        \caption{Tabela descriptorilor de fișiere a unui proces}
-        \label{fig:process-fdtab}
+	\def\svgwidth{0.8\textwidth}
+	\includesvg{chapters/04-process/img/fd-table.svg}
+	\caption{Tabela descriptorilor de fișiere a unui proces}
+	\label{fig:process-fdtab}
 \end{figure}
-TODO: diagramă cu tabela de descriptori de fișier
 
 Fiecare fișier folosit de un proces este gestionat prin intermediul unei intrări
 din această tabelă, \textbf{tabela descriptorilor de fișiere}. Indexul intrării din acea
@@ -1144,22 +1137,21 @@ acestuia îi va fi alocat descriptorul 3. Astfel că primul fișier deschis va a
 indexul 3. Alocarea și eliberarea indecșilor (adică descriptorilor de fișier)
 sunt descrise, respectiv, în \labelindexref{Figura}{fig:process-alloc-fd} și \labelindexref{Figura}{fig:process-free-fd}.
 
-%\begin{figure}[!htbp]
-%	\centering
-%        \def\svgwidth{0.8\textwidth}
-%        \includesvg{chapters/04-process/img/placeholder.svg}
-%        \caption{Alocarea unui descriptor de fișier}
-%        \label{fig:process-alloc-fd}
-%\end{figure}
-%
-%\begin{figure}[!htbp]
-%	\centering
-%        \def\svgwidth{0.8\textwidth}
-%        \includesvg{chapters/04-process/img/placeholder.svg}
-%        \caption{Eliberarea unui descriptor de fișîer
-%        \label{fig:process-free-fd}
-%\end{figure}
-TODO: diagrame cu alocarea și eliberarea indecșilor
+\begin{figure}[!htbp]
+	\centering
+	\def\svgwidth{0.8\textwidth}
+	\includesvg{chapters/04-process/img/fd-alloc.svg}
+	\caption{Alocarea unui descriptor de fișier}
+	\label{fig:process-alloc-fd}
+\end{figure}
+
+\begin{figure}[!htbp]
+	\centering
+	\def\svgwidth{0.8\textwidth}
+	\includesvg{chapters/04-process/img/fd-free.svg}
+	\caption{Eliberarea unui descriptor de fișier}
+	\label{fig:process-free-fd}
+\end{figure}
 
 Fiecare proces are o tabelă de descriptori de fișier proprie. Astfel că o
 intrare 3 într-o tabelă va referi alt fișier decât o intare 3 din tabela altui
@@ -1569,14 +1561,13 @@ interpretează șirul introdus. Terminalul este, așadar, un dispozitiv care
 intermediază transmiterea intrării și ieșirii de la utilizator prin tastatură/monitor către
 shell. \labelindexref{Figura}{fig:process-terminal-shell} prezintă legătura utilizator, terminal, shell.
 
-%\begin{figure}[!htbp]
-%	\centering
-%        \def\svgwidth{0.8\textwidth}
-%        \includesvg{chapters/04-process/img/placeholder.svg}
-%        \caption{Utilizator, terminal, shell}
-%        \label{fig:process-overview}
-%\end{figure}
-TODO: diagramă cu utilizator, terminal, shell
+\begin{figure}[!htbp]
+	\centering
+	\def\svgwidth{0.8\textwidth}
+	\includesvg{chapters/04-process/img/user-terminal-shell.svg}
+	\caption{Utilizator, terminal, shell}
+	\label{fig:process-termina-shell}
+\end{figure}
 
 Terminalul este identificat printr-un nume și are asociată, în Linux, o intrare
 în directorul \file{/dev}. Comanda \texttt{tty} ne indică terminalul curent pentru un shell.
@@ -2051,14 +2042,13 @@ un procesor.
 
 Acțiunille unui loader sunt prezentate în \labelindexref{Figura}{fig:process-loader}.
 
-%\begin{figure}[!htbp]
-%	\centering
-%        \def\svgwidth{0.8\textwidth}
-%        \includesvg{chapters/04-process/img/placeholder.svg}
-%        \caption{Acțiunile loader-ului}
-%        \label{fig:process-loader}
-%\end{figure}
-%TODO: diagramă cu acțiunile unui loader
+\begin{figure}[!htbp]
+	\centering
+	\def\svgwidth{0.8\textwidth}
+	\includesvg{chapters/04-process/img/loader-actions.svg}
+	\caption{Acțiunile loader-ului}
+	\label{fig:process-loader}
+\end{figure}
 
 Două sau mai multe procese pot fi rulate din același program executabil.
 Funcționarea acestora diferă însă încă de la load-time în funcție de doi
