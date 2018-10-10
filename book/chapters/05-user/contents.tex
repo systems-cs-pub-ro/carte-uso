@@ -63,7 +63,14 @@ sistemul sau aplicația le validează[v] dacă sunt prezente în baza de date; �
 caz afirmativ se oferă accesul la resurse. Acest mod de folosire este descris în
 diagrama de mai jos:
 
-+ diagramă cu acces, bază de date, resurse
+%+ diagramă cu acces, bază de date, resurse
+\begin{figure}[htbp]
+	\centering
+	\def\svgwidth{\columnwidth}
+	\includesvg{chapters/05-user/img/acces-bd.svg}
+	\caption{diagramă cu acces, bază de date, resurse}
+	\label{fig:user-acces-bd}
+\end{figure}
 
 În continuare ne vom referi în special la conturile de utilizator de sistem, cu
 precizarea că multe concepte se aplică și la conturile de utilizator de
@@ -470,9 +477,17 @@ administrator care dorește ca mai mulți utilizatori să aibă acces la o anumi
 resursă va crea un grup, va adăuga utilizatorii la acel grup și va oferi
 grupului permisiuni asupra resursei respective. Un grup poate conține 0 sau mai
 mulți utilizatori, iar un utilizator poate aparține unui sau mai multor grupuri,
-așa cum este indicat în figura de mai jos: TODO figură:
+așa cum este indicat în figura de mai jos:
 
-+ figură în care arătăm folosind un mod de diagrame Venn asocierea multi-multi utilizator-grupuri
+%+ figură în care arătăm folosind un mod de diagrame Venn asocierea multi-multi utilizator-grupuri
+\begin{figure}[htbp]
+	\centering
+	\def\svgwidth{\columnwidth}
+	\includesvg{chapters/05-user/img/multi-user.svg}
+	\caption{figură în care arătăm folosind un mod de diagrame Venn
+		asocierea multi-multi utilizator-grupuri}
+	\label{fig:user-multi-user}
+\end{figure}
 
 De exemplu, în Windows, există grupul Administrators. Un utilizator care este
 parte din grupul Administrators are acces complet la sistem.
@@ -712,6 +727,12 @@ acțiuni de gestiune a parolelor:
 accesează Control Panel -> User Accounts -> .. ca în figura de mai jos.
 
 * diagramă Windows cu ecran cu schimbarea parolei
+%\begin{figure}[!htbp]
+%	\centering
+%	\includegraphics[width=8cm]{chapters/05-user/img/screenshot.png}
+%	\caption{Conexiune serială}
+%	\label{fig:embed-serial}
+%\end{figure}
 
 În Linux, modul uzual de gestiune a parolei este prin linia de comandă folosind
 utilitarul passwd. Cu ajutorul utilitarului passwd, un utilizator neprivilegiat
@@ -795,7 +816,15 @@ centralizată presupune existența unui serviciu de autentificare care gestionea
 baza de date de parole, serviciu accesat de diferitele aplicații, ca în diagrama
 de mai jos:
 
-* Diagramă cu aplicații + serviciu de autentificare centralizată + bază de date parole
+%* Diagramă cu aplicații + serviciu de autentificare centralizată + bază de date parole
+\begin{figure}[htbp]
+	\centering
+	\def\svgwidth{\columnwidth}
+	\includesvg{chapters/05-user/img/auth-central.svg}
+	\caption{Diagramă cu aplicații + serviciu de autentificare centralizată
+		+ bază de date parole}
+	\label{fig:user-auth-central}
+\end{figure}
 
 În situația autentificării centralizate, un utilizator folosește același nume de
 utilizator și aceeași parolă pentru toate aplicațiile. Aplicațiile trimit mai
@@ -824,7 +853,14 @@ asociate permisiuni de modificare a acelui fișier. La nivel conceptual, un agen
 sau un subiect are anumite permisiuni de acces al unei resurse sau un obiect,
 așa cum este descris în diagrama de mai jos:
 
-+ diagramă cu agent, permisiuni, resursă
+%+ diagramă cu agent, permisiuni, resursă
+\begin{figure}[htbp]
+	\centering
+	\def\svgwidth{\columnwidth}
+	\includesvg{chapters/05-user/img/agent-perm.svg}
+	\caption{diagramă cu agent, permisiuni, resursă}
+	\label{fig:user-agent-perm}
+\end{figure}
 
 Schema de mai sus este o schemă generală. În cazul particular al secțiunii
 curente, agentul este utilizatorul, iar resursa este fișierul. Mai precis,
@@ -846,7 +882,14 @@ control lists, ACL \abbrev{ACL}{Access Control Lists}). Adică se creează o lis
 de utilizatori sau grupuri de utilizatori și permisiuni aferente, pe modelul
 diagramei de mai jos:
 
-+ listă cu utilizator1, utilizator2, grup1, grup2 și permisiuni
+%+ listă cu utilizator1, utilizator2, grup1, grup2 și permisiuni
+\begin{figure}[htbp]
+	\centering
+	\def\svgwidth{\columnwidth}
+	\includesvg{chapters/05-user/img/acl.svg}
+	\caption{listă cu utilizator1, utilizator2, grup1, grup2 și permisiuni}
+	\label{fig:user-acl}
+\end{figure}
 
 În momentul accesului unui fișier de către un proces, se obține utilizatorul
 căruia aparține procesul. Apoi se caută utilizatorul în lista de acces a
@@ -858,7 +901,14 @@ căutării, un utilizator nu este găsit în listă, atunci se folosesc permisiu
 pentru intrarea "Everyone". Diagrama de mai jos descrie modul în care sunt
 analizate permisiunile în Windows.
 
-+ diagramă cu pașii de verificare a permisiunilor în Windows
+%+ diagramă cu pașii de verificare a permisiunilor în Windows
+\begin{figure}[htbp]
+	\centering
+	\def\svgwidth{\columnwidth}
+	\includesvg{chapters/05-user/img/check-perm.svg}
+	\caption{diagramă cu pașii de verificare a permisiunilor în Windows}
+	\label{fig:user-check-perm}
+\end{figure}
 
 În Windows permisiunile sunt prezente doar pe sistemul de fișiere NTFS
 \abbrev{NTFS}{New Technology File System}, nu și pe FAT32 \abbrev{FAT32}{File
@@ -1003,7 +1053,14 @@ lucru cu sistemul de fișiere:
 În mod uzual, permisiunile sunt listate pentru un fișier dat în forma din
 diagrama de mai jos:
 
-+ diagramă cu 9 permisiuni pentru user, group others (rwx, rwx, rwx)
+%+ diagramă cu 9 permisiuni pentru user, group others (rwx, rwx, rwx)
+\begin{figure}[htbp]
+	\centering
+	\def\svgwidth{\columnwidth}
+	\includesvg{chapters/05-user/img/octal-perm.svg}
+	\caption{diagramă cu 9 permisiuni pentru user, group others (rwx, rwx, rwx)}
+	\label{fig:user-octal-perm}
+\end{figure}
 
 Adică permisiunile sunt listate ca un șir de 9 caractere:
 
