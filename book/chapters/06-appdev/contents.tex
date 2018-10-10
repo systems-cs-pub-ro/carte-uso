@@ -57,6 +57,16 @@ instrucțiune a limbajului de asamblare este tradusă printr-o altă instrucțiu
 procesorului. Codul sursă scris în limbaj de asamblare este transformat în cod
 mașină de un asamblor.
 
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=15cm]{chapters/06-appdev/img/fortran-card-img.png}
+	\caption{Program scris pe cartelă perforată\protect\footnotemark}
+	\label{fig:appdev-fortran}
+\end{figure}
+
+\footnotetext{\url{https://en.wikipedia.org/wiki/Computer_programming_in_the_punched_card_era\#/media/File:FortranCardPROJ039.agr.jpg}
+\textbf{CC BY-SA 2.5}}
+
 În general, producătorul unui procesor definește și limbajul de asamblare
 specific acestuia, pentru a oferi o variantă lizibilă a instrucțiunilor
 procesorului. Scopul limbajului de asamblare a fost de a permite scrierea de
@@ -86,7 +96,13 @@ programul. După aceea, următorul pas este să structurăm ideea și să o
 \textit{traducem} în limbajul de programare folosit. Așa obținem programul final
 ce apoi poate fi rulat.
 
-DIAGRAMA Pus o diagramă cu "idee" -> "limbaj" -> "program" -> sistem de calcul[j]
+%DIAGRAMA Pus o diagramă cu "idee" -> "limbaj" -> "program" -> sistem de calcul[j]
+\begin{figure}[htbp]
+	\centering
+	\def\svgwidth{\columnwidth}
+	\includesvg{chapters/06-appdev/img/lang-idea.svg}
+	\caption{TODO}
+\end{figure}
 
 Fișierele pe care programatorii le scriu se numesc fișiere cod sursă, ele conțin
 practic instrucțiuni scrise într-un anume limbaj de programare, de cele mai
@@ -342,6 +358,13 @@ deosebire de compilarea ahead-of-time, JIT \abbrev{JIT}{just-in-time} are un
 timp de execuție mai mare, dar timpul de pornire al aplicației scade.
 
 TODO - schema trebuie schimbata (e luata de pe Internet)
+\begin{figure}[htbp]
+	\centering
+	\def\svgwidth{\columnwidth}
+	\includesvg{chapters/06-appdev/img/comp-steps.svg}
+	\caption{Etapele compilării}
+\end{figure}
+
 
 \subsection{Exemple de limbaje de programare hibride}
 \label{sec:appdev-langs-hybrid-ex}
@@ -819,8 +842,6 @@ etape intermediare:
 		funcție definită într-un fișier și folosită în altul,
 		implementarea funcției trebuie legată de apelul ei;
 \end{enumerate}
-
-Fig. xxxx - Etapele compilării[k]
 
 La simpla rulare a comenzii \cmd{gcc}, se trece prin toate etapele menționate.
 De exemplu, pentru un program C simplu (main.c fără nicio bibliotecă) vom rula
