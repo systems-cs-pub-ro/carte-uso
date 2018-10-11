@@ -145,31 +145,45 @@ astăzi două tipuri de virtualizare:
 		numește și \textit{Type-1 hypervisor} (hipervizor de tipul 1).
 \end{itemize}
 
-În Fig. Xa. sunt reprezentate cele 2 tipuri de virtualizare, iar în Fig. Xb.
-sunt reprezentate cele 2 tipuri de hipervizoare (se observă echivalența). În
-stânga virtualizarea de tip hosted în care avem sistemul de operare ce rulează
-deasupra hardware-ului, iar nivelul de virtualizare a fost dezvoltat deasupra
-acestuia, având un hipervizor de tipul 2 (Type-2 Hypervisor). De asemenea în
-paralel cu mașinile virtuale pot rula și alte aplicații obișnuite. Acest tip de
-virtualizare este deseori folosit în sistemele desktop. În partea dreapta a Fig.
-Xa, respectiv a Fig. Xb. este reprezentată o arhitectură folosind virtualizarea
-de tip baremetal: practic codul de virtualizare rulează deasupra hardware-ului,
-având un hipervizor de tipul 1 (Type-1 Hypervisor). Acest tip de virtualizare
-este folosit de obicei în servere (unde nu avem aplicații ce trebuie să ruleze
-în paralel) și este apreciat pentru faptul că are un code-base (numărul de linii
-de cod) mult mai mic decât al unui sistem de operare și nu este predispus
-greșelilor de programare.
+În \labelindexref{Figura}{fig:vm-hostbaremetal} sunt reprezentate cele 2 tipuri
+de virtualizare, iar în \labelindexref{Figura}{fig:vm-hypervisortypes} sunt
+reprezentate cele 2 tipuri de hipervizoare (se observă echivalența). În stânga
+virtualizarea de tip hosted în care avem sistemul de operare ce rulează deasupra
+hardware-ului, iar nivelul de virtualizare a fost dezvoltat deasupra acestuia,
+având un hipervizor de tipul 2 (Type-2 Hypervisor). De asemenea în paralel cu
+mașinile virtuale pot rula și alte aplicații obișnuite. Acest tip de
+virtualizare este deseori folosit în sistemele desktop. În partea dreapta a
+\labelindexref{Figura}{fig:vm-hostbaremetal}, respectiv a
+\labelindexref{Figura}{fig:vm-hypervisortypes} este reprezentată o arhitectură
+folosind virtualizarea de tip baremetal: practic codul de virtualizare rulează
+deasupra hardware-ului, având un hipervizor de tipul 1 (Type-1 Hypervisor).
+Acest tip de virtualizare este folosit de obicei în servere (unde nu avem
+aplicații ce trebuie să ruleze în paralel) și este apreciat pentru faptul că are
+un code-base (numărul de linii de cod) mult mai mic decât al unui sistem de
+operare și nu este predispus greșelilor de programare.
 
-Fig.Xa. Virtualizare de tip Hosted vs. Baremetal [b]
+\begin{figure}[htbp]
+	\centering
+	\def\svgwidth{\columnwidth}
+	\includesvg{chapters/14-vm/img/host-baremetal.svg}
+	\caption{Virtualizare de tip Hosted vs. Baremetal}
+	\label{fig:vm-hostbaremetal}
+\end{figure}
 
-Fig.Xb. Hypervisor tip 2 vs tip 1 [c]
+\begin{figure}[htbp]
+	\centering
+	\def\svgwidth{\columnwidth}
+	\includesvg{chapters/14-vm/img/hypervisor-types.svg}
+	\caption{Hypervisor tip 2 vs tip 1}
+	\label{fig:vm-hypervisortypes}
+\end{figure}
 
-În ambele figuri (Xa. și Xb.) se observă ca la virtualizarea baremetal și
-hipervizor de tip 1 există o mașină virtuală de management. Aceasta este
-necesară pentru a putea administra hipervizorul și de a implementa
-funcționalitățile non-critice din acesta. Faptul că rulează ca o mașină virtuală
-diferită este un lucru bun întrucât dacă există probleme în funcționarea
-acestuia, nu va afecta întregul nod (implicit și celelalte mașini fizice).
+În ambele figuri se observă ca la virtualizarea baremetal și hipervizor de tip 1
+există o mașină virtuală de management. Aceasta este necesară pentru a putea
+administra hipervizorul și de a implementa funcționalitățile non-critice din
+acesta. Faptul că rulează ca o mașină virtuală diferită este un lucru bun
+întrucât dacă există probleme în funcționarea acestuia, nu va afecta întregul
+nod (implicit și celelalte mașini fizice).
 
 \subsection{Aplicații/hipervizoare pentru rularea mașinilor virtuale}
 \label{sec:vm-intro-apps}
@@ -246,17 +260,24 @@ mașinii gazdă pentru a efectua apeluri privilegiate către hardware și nu num
 Container-ele, în comparație cu mașinile virtuale, sunt mai rapide, consumă mai
 puține resurse întrucât nu trebuie decât să pornească o nouă ierarhie de procese
 (practic un nou proces \textit{init}, precum și demonii aferenți - vezi
-\labelindexref{capitolul}{chapter:procese}). Dezavantajul containerelor îl
+\labelindexref{Capitolul}{chapter:procese}). Dezavantajul containerelor îl
 reprezintă faptul că nu putem rula sisteme de operare diferite (Windows în
 cadrul unei mașini fizice ce rulează Linux) întrucât este nevoie de același tip
-de nucleu. În Fig. X. este reprezentată diferența între mașini virtuale și
-containere. Se observă că în primul caz (mașini virtuale - stânga) avem un
-hipervizor deasupra căruia rulează mașinile virtuale cu nucleele aferente, iar
-în cel de-al doilea (containere) avem mecanism de containerizare (în exemplul
-din figură tehnologia se numește Docker) peste care rulează direct aplicațiile.
-Se observă că mecanismul de container nu conține propriul nucleu (kernel).
+de nucleu. În \labelindexref{Figura}{fig:vm-vmcontainer} este reprezentată
+diferența între mașini virtuale și containere. Se observă că în primul caz
+(mașini virtuale - stânga) avem un hipervizor deasupra căruia rulează mașinile
+virtuale cu nucleele aferente, iar în cel de-al doilea (containere) avem
+mecanism de containerizare (în exemplul din figură tehnologia se numește Docker)
+peste care rulează direct aplicațiile. Se observă că mecanismul de container nu
+conține propriul nucleu (kernel).
 
-Fig.X. Mașini virtuale vs. containere.[d]
+\begin{figure}[htbp]
+	\centering
+	\def\svgwidth{\columnwidth}
+	\includesvg{chapters/14-vm/img/vm-container.svg}
+	\caption{Mașini virtuale vs. containere}
+	\label{fig:vm-vmcontainer}
+\end{figure}
 
 Tehnologii ce implementează mecanismul de container în sistemele Linux:
 
@@ -329,7 +350,7 @@ practic un fir logic între acestea două). Mașina fizică trebuie să ofere o
 modalitate de conectare a firului la rețeaua fizică precum și alocarea de
 resurse (e.g. adresă IP \abbrev{IP}{Internet Protocol}). Soluțiile de
 virtualizare oferă în general trei tipuri de configurații (sau moduri) ale
-plăcii de rețea virtuale, ilustrate și în Fig. X.:
+plăcii de rețea virtuale, ilustrate și în \labelindexref{Figura}{fig:vm-net}:
 
 \begin{itemize}
 	\item NAT \abbrev{NAT}{Network Address Translation} (Network Address
@@ -341,24 +362,30 @@ plăcii de rețea virtuale, ilustrate și în Fig. X.:
 Modul de funcționare NAT alocă o adresă IP automat (prin DHCP
 \abbrev{DHCP}{Dynamic Host Configuration Protocol}) mașinii virtuale și în
 același timp realizează și funcția de NAT pentru a acorda acces la Internet
-mașinii virtuale. După cum se poate vedea și în Fig. X. traficul care iese în
-afara rețelei sau cel care intră este colorat cu roșu, în comparație cu cel din
-interior: acest lucru dorește să reliefeze faptul că la ieșire se face o
-translație de adrese (nu se păstrează adresa sursă a mașinii virtuale) folosind
-mecanismul NAT.
+mașinii virtuale. După cum se poate vedea și în
+\labelindexref{Figura}{fig:vm-net} traficul care iese în afara rețelei sau cel
+care intră este colorat cu roșu, în comparație cu cel din interior: acest lucru
+dorește să reliefeze faptul că la ieșire se face o translație de adrese (nu se
+păstrează adresa sursă a mașinii virtuale) folosind mecanismul NAT.
 
 Modul de funcționare Host-only asigură o adresă IP prin intermediului
 serviciului DHCP dar comunicația este limitată doar între mașina fizică (HOST)
-și mașina virtuală după cum se poate vedea în Fig. X. (se observă că traficul nu
-va ieși în afara sistemului).
+și mașina virtuală după cum se poate vedea în \labelindexref{Figura}{fig:vm-net}
+(se observă că traficul nu va ieși în afara sistemului).
 
 Modul de funcționare Bridged unifică rețeaua externă cu placa de rețea a mașinii
 virtuale. Adresarea IP este asigurată de rețeaua externă. Mașina virtuală este
 văzută ca o altă stație normală în cadrul rețelei externe și poate fi accesată
-în mod direct. Se observă în Fig. X desenat cu roșu faptul că pachetele nu sunt
-alterate.
+în mod direct. Se observă în \labelindexref{Figura}{fig:vm-net} desenat cu roșu
+faptul că pachetele nu sunt alterate.
 
-Fig. X. Moduri de funcționare a plăcii de rețea virtualizate[e]
+\begin{figure}[htbp]
+	\centering
+	\def\svgwidth{\columnwidth}
+	\includesvg{chapters/14-vm/img/vm-net.svg}
+	\caption{Moduri de funcționare a plăcii de rețea virtualizate}
+	\label{fig:vm-net}
+\end{figure}
 
 \subsection{Servicii de integrare}
 \label{sec:vm-ops-services}
@@ -499,25 +526,36 @@ pentru a crea, configura și șterge o mașină virtuală. VirtualBox oferă de
 asemenea suport pentru virtualizare hardware (nativă) fără de care nu poate
 funcționa. În cazul în care aceasta este dezactivată din BIOS, VirtualBox vă va
 notifica acest lucru și trebuie să o activați (acest lucru este descris în
-\labelindexref{capitolul}{chapter:boot}).
+\labelindexref{Capitolul}{chapter:boot}).
 
 VirtualBox se poate descărca și instala gratuit pe orice sistem de Operare
 (Windows, Linux, MacOS) de la adresa: https://www.virtualbox.org/. Acesta este
 întreținut și dezvoltat de către Oracle.
 
-În Fig. X. este reprezentată fereastra principală a aplicației VirtualBox. Se
-observă că există o mașină virtuală deja creată denumită Windows 7 care este
-închisă (\textit{Powered Off}).
+În \labelindexref{Figura}{fig:vm-vbox-main} este reprezentată fereastra
+principală a aplicației VirtualBox. Se observă că există o mașină virtuală deja
+creată denumită Windows 7 care este închisă (\textit{Powered Off}).
 
-Fig. X. Fereastra principală VirtualBox
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=8cm]{chapters/14-vm/img/vbox-main-img.png}
+	\caption{Fereastra principală VirtualBox}
+	\label{fig:vm-vbox-main}
+\end{figure}
 
 Pentru a crea o mașină virtuală nouă mergeți pe meniul Machine -> New. O nouă
 fereastră va apărea în care trebuie să introduceți un nume pentru mașina
-virtuală precum și tipul sistemului de operare și varianta dorită. În Fig. X.
-este exemplificată crearea unei mașini virtuale ce va rula un sistem de operare
-Linux, baza pe distribuția Debian pe 64 de biți.
+virtuală precum și tipul sistemului de operare și varianta dorită. În
+\labelindexref{Figura}{fig:vm-vbox-create} este exemplificată crearea unei
+mașini virtuale ce va rula un sistem de operare Linux, baza pe distribuția
+Debian pe 64 de biți.
 
-Fig .X. Meniul de creare a unei mașini virtuale
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=8cm]{chapters/14-vm/img/vbox-create-img.png}
+	\caption{Meniul de creare a unei mașini virtuale}
+	\label{fig:vm-vbox-create}
+\end{figure}
 
 După selectarea sistemului de operare, trebuie să specificați cantitatea de
 memorie la care va avea acces mașina virtuală (poate fi modificată și după
@@ -541,10 +579,15 @@ tipului discului, avem două alte opțiuni:
 disc. După și acest ecran, mașina virtuală va fi creată. Înainte de a o porni,
 trebuie să mai realizăm setări privind rețeaua. Executați \textit{Right-click}
 pe mașina virtuală creată și apăsați pe butonul \textit{Settings}. În ecranul
-nou deschis puteți configura fiecare componentă hardware virtualizată (vezi Fig.
-X).
+nou deschis puteți configura fiecare componentă hardware virtualizată (vezi
+\labelindexref{Figura}{fig:vm-vbox-settings}.
 
-Fig. X. Setările unei mașini virtuale VirtualBox
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=8cm]{chapters/14-vm/img/vbox-settings-img.png}
+	\caption{Setările unei mașini virtuale VirtualBox}
+	\label{fig:vm-vbox-settings}
+\end{figure}
 
 Printre cele mai relevante setări enumerăm:
 
@@ -554,10 +597,10 @@ Printre cele mai relevante setări enumerăm:
 	\item Display - cantitatea de memorie utilizată de placa video
 	\item Storage - putem vedea ce discuri sunt atașate, ce proprietăți au.
 		Tot aici putem adăuga și un disc virtual necesar instalării
-		mașinii virtuale. În Fig. X. este reprezentat modul prin care
-		puteți selecta o imagine de tip ISO pentru a fi montată ca și un
-		disc virtual în mașina virtuală cu scopul de a instala sistemul
-		de operare.
+		mașinii virtuale. În \labelindexref{Figura}{fig:vm-vbox-iso}
+		este reprezentat modul prin care puteți selecta o imagine de tip
+		ISO pentru a fi montată ca și un disc virtual în mașina virtuală
+		cu scopul de a instala sistemul de operare.
 	\item Audio - activare/dezactivare a plăcii audio pentru mașina virtuală
 	\item Network - configurarea plăcii/plăcilor de rețea pe care mașina
 		virtuală le poate folosi. Implicit doar adaptorul 1
@@ -570,41 +613,69 @@ Printre cele mai relevante setări enumerăm:
 		mașinii virtuale. Procesul se numește \textit{pass-through}.
 \end{itemize}
 
-Fig. X. Introducere unei imagini ISO ca disc virtual într-o mașină virtuală
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=8cm]{chapters/14-vm/img/vbox-iso-img.png}
+	\caption{Introducere unei imagini ISO ca disc virtual într-o mașină virtuală}
+	\label{fig:vm-vbox-iso}
+\end{figure}
 
 După configurarea mașinii virtuale, această poate fi pornită. Selectați mașina
 virtuală și apăsați butonul Start din stânga sus. Aceasta va porni și va boota
-de pe discul virtual inserat (vezi. Fig. X.). În Fig. X este ilustrată pornirea
-mașinii virtuale și pornirea sistemului de operare Windows în vedere instalării.
+de pe discul virtual inserat (vezi \labelindexref{Figura}{fig:vm-vbox-iso}). În
+\labelindexref{Figura}{fig:vm-vbox-install} este ilustrată pornirea mașinii
+virtuale și pornirea sistemului de operare Windows în vedere instalării.
 
-Fig. X. Instalarea unui sistem de operare în VirtualBox
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=8cm]{chapters/14-vm/img/vbox-install-img.png}
+	\caption{Instalarea unui sistem de operare în VirtualBox}
+	\label{fig:vm-vbox-install}
+\end{figure}
 
 După instalarea sistemului de operare, este important să instalați serviciile de
-integrare (vezi \labelindexref{secțiunea}{sec:vm-ops-services} pentru a
-întelege scopul acestora). Pentru a le instala mergeți pe meniul Devices ->
-Insert Guest Additions CD Image. Această comandă va monta automat în mașina
-virtuală un disc virtual ce conține software-ul de instalat pentru serviciile de
-integrare. În Fig. X. se poate observa noua disc virtual și conținutul acestuia.
-De exemplu, după instalarea serviciilor de integrare veți putea face copy/paste
-din/în mașina virtuală atât a fișierelor cât și a textului.
+integrare (vezi \labelindexref{Secțiunea}{sec:vm-ops-services} pentru a întelege
+scopul acestora). Pentru a le instala mergeți pe meniul Devices -> Insert Guest
+Additions CD Image. Această comandă va monta automat în mașina virtuală un disc
+virtual ce conține software-ul de instalat pentru serviciile de integrare. În
+\labelindexref{Figura}{fig:vm-vbox-additions} se poate observa noua disc virtual
+și conținutul acestuia. De exemplu, după instalarea serviciilor de integrare
+veți putea face copy/paste din/în mașina virtuală atât a fișierelor cât și a
+textului.
 
-Fig. X. Guest Additions pentru mașini virtuale VirtualBox
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=8cm]{chapters/14-vm/img/vbox-additions-img.png}
+	\caption{Guest Additions pentru mașini virtuale VirtualBox}
+	\label{fig:vm-vbox-additions}
+\end{figure}
 
 O operație foarte utilă cu o mașină virtuală este cea de snapshot prezentată și
 în \labelindexref{secțiunea}{sec:vm-ops}. Pentru a realiza acest lucru în
 VirtualBox, mergeți pe meniul \textit{Machine tools} din dreapta sus și
-selectați butonul \textit{Snapshot}, exact ca în Fig. X. Pentru a realiza un
-snapshot apăsați butonul \textit{Take}.
+selectați butonul \textit{Snapshot}, exact ca în
+\labelindexref{Figura}{fig:vm-vbox-snapshot}. Pentru a realiza un snapshot
+apăsați butonul \textit{Take}.
 
-Fig. X. Snapshot-ul unei mașini virtuale în VirtualBox
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=8cm]{chapters/14-vm/img/vbox-snapshot-img.png}
+	\caption{Snapshot-ul unei mașini virtuale în VirtualBox}
+	\label{fig:vm-vbox-snapshot}
+\end{figure}
 
 Va apărea un meniu în care trebuie să introduceți numele snapshotului și o
-descriere relevantă. În Fig. X. se poate observa snapshot-ul creat. Pentru a ne
-întoarce la snapshot-ul dorit, apăsăm click-dreapta pe mouse pe acesta și
-selectăm opțiunea \textit{Restore}. Se poate observa după aceea că mașina a
-revenit la starea anterioară
+descriere relevantă. În \labelindexref{Figura}{fig:vm-vbox-view-snapshot} se
+poate observa snapshot-ul creat. Pentru a ne întoarce la snapshot-ul dorit,
+apăsăm click-dreapta pe mouse pe acesta și selectăm opțiunea \textit{Restore}.
+Se poate observa după aceea că mașina a revenit la starea anterioară
 
-Fig. X. Snaptshot creat în cadrul VirtualBox.
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=8cm]{chapters/14-vm/img/vbox-view-snapshot-img.png}
+	\caption{Snaptshot creat în cadrul VirtualBox}
+	\label{fig:vm-vbox-view-snapshot}
+\end{figure}
 
 \section{Anexă: Openstack în UPB}
 \label{sec:vm-openstack}
@@ -614,10 +685,15 @@ Multitenancy). În acest context, noțiunea de tenant poate fi asociata cu un
 proiect. Crearea proiectului se face prin apăsarea butonului Create user, buton
 aflat în blocul Openstack de pe platforma Moodle a Facultății de Automatică și
 Caculatoare (acs.curs.pub.ro - acest lucru este specific doar pentru studenții
-facultății, vezi Fig. X.). Odată tenant-ul creat, putem accesa Dashboard pentru
-crearea mașinilor virtuale.
+facultății, vezi \labelindexref{Figura}{fig:vm-openstack-project}). Odată
+tenant-ul creat, putem accesa Dashboard pentru crearea mașinilor virtuale.
 
-Fig. X. Crearea proiect Openstack
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=8cm]{chapters/14-vm/img/openstack-project-img.png}
+	\caption{Crearea proiect Openstack}
+	\label{fig:vm-openstack-project}
+\end{figure}
 
 \subsection{Accesarea Openstack Dashboard}
 \label{sec:vm-openstack-dashboard}
@@ -626,7 +702,12 @@ Interfața de administrare a Openstack (Openstack Dashboard) se poate accesa
 folosind link-ul https://cloud-controller.grid.pub.ro/. Autentificarea se face
 folosind utilizatorul și parola furnizate de către facultate.
 
-Fig. X. Dashboard-ul Openstack
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=8cm]{chapters/14-vm/img/openstack-dashboard-img.png}
+	\caption{Dashboard-ul Openstack}
+	\label{fig:vm-openstack-dashboard}
+\end{figure}
 
 \subsection{Crearea unei perechi de chei ssh publica-privata}
 \label{sec:vm-openstack-keys}
@@ -657,9 +738,14 @@ Un keypair reprezinta o asociere între un nume și o cheie publică. În Openst
 cheia publică se va identifica printr-un nume, specificat la creare. Cheia
 publică creată la pasul anterior trebuie încărcată în Openstack. Acest lucru se
 face din Openstack Dashboard -> Project -> Compute -> Access \& Security -> Key
-Pairs -> Import Key Pair (vezi Fig. X).
+Pairs -> Import Key Pair (vezi \labelindexref{Figura}{fig:vm-openstack-keypair}).
 
-Fig. X. Importarea unei perechi de chei în Openstack
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=8cm]{chapters/14-vm/img/openstack-keypair-img.png}
+	\caption{Alegerea unui keypair la crearea unei instanțe}
+	\label{fig:vm-openstack-keypair}
+\end{figure}
 
 \subsection{Crearea unei mașini virtuale}
 \label{sec:vm-openstack-createvm}
@@ -667,17 +753,29 @@ Fig. X. Importarea unei perechi de chei în Openstack
 Crearea unei masini virtuale se poate face atât din Openstack Dashboard cât și
 din linia de comandă. În acest tutorial va fi prezentată varianta folosind
 Openstack Dashboard. Pentru a lansa o instanță, accesați Openstack Dashboard ->
-Project -> Compute -> Instances -> Launch Instance (vezi Fig. X.)
+Project -> Compute -> Instances -> Launch Instance (vezi
+\labelindexref{Figura}{fig:vm-openstack-info-img})
 
-Fig. X. Crearea unei instanțe Openstack
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=8cm]{chapters/14-vm/img/openstack-info-img.png}
+	\caption{Crearea unei instanțe Openstack}
+	\label{fig:vm-openstack-info-img}
+\end{figure}
 
 În exemplul de față, am folosit template-ul “Ubuntu 14.04”. Un flavor reprezinta
 mărimea unei instanțe virtuale din punct de vedere al resurselor: număr de
 procesoare, memorie și spatiu pe disk. Din tabul Access \& Security, alegeți
-Keypair-ul creat anterior (vezi Fig. X). În final, apăsați pe Launch pentru a
-crea mașina virtuală.
+Keypair-ul creat anterior (vezi
+\labelindexref{Figura}{fig:vm-openstack-keychoice}). În final, apăsați pe Launch
+pentru a crea mașina virtuală.
 
-Fig. X. Alegerea unui keypair la crearea unei instanțe.
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=8cm]{chapters/14-vm/img/openstack-keychoice-img.png}
+	\caption{Importarea unei perechi de chei în Openstack}
+	\label{fig:vm-openstack-keychoice}
+\end{figure}
 
 \subsection{Accesarea masinii virtuale}
 \label{sec:vm-openstack-accessvm}
@@ -689,13 +787,19 @@ ssh ldap_user@fep.grid.pub.ro
 ssh -i ~/.ssh/openstack.key student@10.9.0.138 #(in cazul de fata)
 \end{screen}
 
-Fig. X. Informații despre mașina virtuală
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=8cm]{chapters/14-vm/img/openstack-short-info-img.png}
+	\caption{Informații despre mașina virtuală}
+	\label{fig:vm-openstack-info}
+\end{figure}
 
-Adresa IP 10.9.0.138 reprezintă adresa publică a mașinii virtuale (vezi Fig.
-X.). O mașină virtuală se va accesa întotdeauna folosind adresa publică. Aceasta
-va fi din clasa 10.9.0.0/16 în cazul instalării Openstack din facultate.
-Utilizatorul folosit la autentificare este student. Pentru alte template-uri
-gasiti aici lista cu username-urile pentru fiecare template:
+Adresa IP 10.9.0.138 reprezintă adresa publică a mașinii virtuale (vezi
+\labelindexref{Figura}{fig:vm-openstack-info}). O mașină virtuală se va accesa
+întotdeauna folosind adresa publică. Aceasta va fi din clasa 10.9.0.0/16 în
+cazul instalării Openstack din facultate. Utilizatorul folosit la autentificare
+este student. Pentru alte template-uri gasiti aici lista cu username-urile
+pentru fiecare template:
 https://cloud.curs.pub.ro/2014/12/17/username-uri-implicite/.
 
 \subsection{Ștergerea masinii virtuale}
@@ -743,11 +847,16 @@ Printre parametrii relevanți folosiți în comandă, putem enumera:
 \end{itemize}
 
 
-În Fig. X. se observă cum booteză sistemul de operare emulat. Pornirea acestuia
-durează în jur de 60 de secunde, mai lent decât pornirea unei mașini virtuale
-(30 secunde).
+În \labelindexref{Figura}{fig:vm-qemu-bootup} se observă cum booteză sistemul de
+operare emulat. Pornirea acestuia durează în jur de 60 de secunde, mai lent
+decât pornirea unei mașini virtuale (30 secunde).
 
-Fig. X. Pornirea unui sistem de operare emulate
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=8cm]{chapters/14-vm/img/qemu-bootup-img.png}
+	\caption{Pornirea unui sistem de operare emulate}
+	\label{fig:vm-qemu-bootup}
+\end{figure}
 
 Pentru a vă autentifica în consola sistemului de operare emulat, folosiți
 utilizatorul \textit{pi} și parola \textit{raspberry}:
