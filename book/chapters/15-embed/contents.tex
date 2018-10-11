@@ -672,11 +672,17 @@ cele enumerate anterior, acesta este un protocol, software. El defineste cum
 arata datele transmise intre dispoizitive, insa fara a defini o infrastructura
 de comunicatie. Exista diferite variante, in functie de cel mijloc de transport
 de date se foloseste. Exemple sunt o legatura seriala sau Ethernet (retea).
+Similar cu I2C, fiecare periferic conectat la modbus are o adresa unica.
 
 \textbf{CAN}
 
 Un protocol folosit în industria Auto este CAN. Acesta lega sistemele de control
-din autoturisme de periferice.
+din autoturisme de periferice. Aproape toate sistemele electronice din
+autoturisme sunt legate la magistrala care foloseste protocolul CAN. Fiecare
+dispozitiv conectat la magistrala se numeste nod. Fiecare nod are un ID (adresa)
+unic. Protocolul are o varianta de viteza redusa dar care este toleranta la
+erori. Protocolul a fost gandit pentru transmise in timp real.
+
 
 \subsection{Comunicarea wireless}
 \label{sec:embed-bus-wireless}
@@ -1029,4 +1035,16 @@ sunt în curs de dezvoltare și implementate în infrastructura dispozitivelor I
 \section{Sumar}
 \label{sec:embed-sumar}
 
-TODO
+În acest capitol au fost prezentate principalele moduri de utilizare ale
+sistemelor de operare în calculatoare industriale. Am definit ce înseamnă un
+calculator industrial, care sunt proprietățile și diferențele sale față de un
+sistem de calcul obișnuit.
+
+Sistemele integrate sunt folosite pentru un scop bine stabilit, au om interfață
+limitată cu utilizatorul și rulează sisteme de operare special adaptate pentru
+sarcinile sale. Se definesc doua tipuri de sisteme integrate: microcontrolere și
+calculatoare. Prima categorie este un sistem de procesare limitat, însă care
+funcționează în timp real și folosit pentru conectarea hardware-ului.
+Calculatoarele pe de altă parte rulează un sistem de operare, în general nu unul
+în timp real, pot procesa o cantitate mai mare de date și por fi conectate la
+rețea.
