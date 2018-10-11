@@ -189,7 +189,7 @@ cea de mai jos:
 Dacă bateria CMOS este scoasă din soclul ei sau este epuizată, configurațiile se
 pierd și BIOS-ul bootează la niște valori implicite. Aceasta este o formă facilă
 de resetarea a parolei de BIOS în cazul în care o astfel de parolă este
-configurată, așa cum vom preciza în \labelindexref{secțiunea}{sec:boot-passreset}.
+configurată, așa cum vom preciza în \labelindexref{Secțiunea}{sec:boot-passreset}.
 
 Pe lângă interfața grafică mai prietenoasă, UEFI folosește o nouă schemă de
 partiționare a discurilor numită GPT \abbrev{GPT}{GUID Partition Table} (GUID
@@ -260,7 +260,7 @@ Un dispozitiv bootabil este marcat special. Un dispozitiv bootabil, identificat
 ca atare de firmware, conține o secvență de cod care este rulată de firmware și
 care este următoarea fază a procesului de boot. Această secvență este, de
 obicei, bootloader-ul, despre care vom discuta detaliat în
-\labelindexref{secțiunea}{sec:boot-bootloader}.
+\labelindexref{Secțiunea}{sec:boot-bootloader}.
 
 PXE este o metodă prin care putem configura pornirea unui sistem de operare de
 pe un alt sistem (server) accesibil prin rețea. După o configurare dedicată, pe
@@ -268,7 +268,7 @@ care nu o vom detalia aici, o stație poate încărca sistemul de operare de pe
 alt.
 
 Despre dispozitive bootabile vom discuta mai multe în
-\labelindexref{secțiunea}{sec:boot-bootdev}.
+\labelindexref{Secțiunea}{sec:boot-bootdev}.
 
 \subsection{Secure Boot}
 \label{sec:boot-firmware-secureboot}
@@ -283,7 +283,7 @@ componentelor și verifică la bootare că este corespunzătoare.
 
 Secure Boot este o tehnologie UEFI, parte din standard. Există un certificat al
 entității care furnizează bootloader-ul, imaginea de kernel și drivere. Mai
-multe despre certificate în Capitolul 10: Securizarea sistemului.
+multe despre certificate în \labelindexref{Capitolul}{chapter:sec}.
 
 Tehnologia de tipul Secure Boot este utilă în special pe dispozitive mobile de
 tipul smartphone unde bootloader-ul și imaginea de kernel sunt furnizate de
@@ -331,7 +331,7 @@ despre care vorbim în continuare.
 \label{sec:boot-bootdev-partscheme}
 
 Detalii despre schemele de partiționare sunt prezentate în
-\labelindexref{secțiunea}{sec:boot-bootdev-partscheme}. În această secțiune
+\labelindexref{Secțiunea}{sec:boot-bootdev-partscheme}. În această secțiune
 facem o trece prin cele două scheme de partiționare prezente pe PC: MBR și GPT.
 
 MBR (Master Boot Record) este schema de partiționare clasică pe PC. În cadrul
@@ -372,7 +372,7 @@ despre bootloader și prezența octeților 0x55AA:
 Fiind o secvență redusă acest 1st stage bootloader poate face operații minime.
 Astfel că rolul său este să încarca partea principală din booloader, numită și
 2nd stage bootloader, care realizează apoi încărcarea sistemului de operare, așa
-cum vom preciza în \labelindexref{secțiunea}{sec:boot-bootloader}.
+cum vom preciza în \labelindexref{Secțiunea}{sec:boot-bootloader}.
 
 \subsection{Încărcarea bootloader-ului pentru UEFI}
 \label{sec:boot-bootdev-bootuefi}
@@ -451,8 +451,8 @@ UUID=a14d0991-a3d8-48d6-ac8c-327d1a524501 /               ext4    errors=remount
 În listarea de mai sus vedem că pentru partiția /dev/sda1 folosim
 identificatorul a14d0991-a3d8-48d6-ac8c-327d1a524501. Acest identificator de
 partiție este folosit și în fișierul /etc/fstab, fișier unde se configurează
-sistemele de fișiere ce vor fi montate, așa cum vom detalia în Secțiuea TODO din
-Capitolul TODO: Administrarea spațiului de stocare.
+sistemele de fișiere ce vor fi montate, așa cum vom detalia în
+\labelindexref{Secțiunea}{sec:storage-fs}.
 
 \section{Bootloader}
 \label{sec:boot-bootloader}
@@ -537,9 +537,9 @@ acest ecran putem modifica imaginea de kernel (de nucleu de sistem de operare)
 folosită, putem modifica partiția rădăcină folosită sau opțiuni de boot pentru
 kernel. O utilizare a editării opțiunilor de boot este recuperarea parolei
 contului root folosind opțiunea init=/bin/bash așa cum am precizat în
-\labelindexref{secțiunea}{sec:users-pass-restore-linux}. Detalii despre
+\labelindexref{Secțiunea}{sec:users-pass-restore-linux}. Detalii despre
 opțiunile de boot aferente nucleului sistemului de operare prezentăm în
-\labelindexref{secțiunea}{sec:boot-bootupos}.
+\labelindexref{Secțiunea}{sec:boot-bootupos}.
 
 Opțiunile afișate de GRUB sunt încărcate din fișierul /boot/grub/grub.cfg,
 fișierul de configurare GRUB. Acest fișier nu se recomandă să fie editat manual;
@@ -766,7 +766,7 @@ student@uso:~$ dmesg
 După ce nucleul și driverele sunt încărcate și sistemul de operare este
 inițializat, trebuie pornite primele procese. Pentru aceasta se pornește primul
 proces, numit init, care apoi pornește alte procese. Așa cum am precizat în
-\labelindexref{secțiunea}{sec:procese-ierarhie-init}, procesul init este în vârful
+\labelindexref{Secțiunea}{sec:procese-ierarhie-init}, procesul init este în vârful
 ierarhiei proceselor având ca roluri crearea primelor procese din sistemul de
 operare și adoptarea proceselor orfane.
 
@@ -827,8 +827,8 @@ Dacă dorim să oprim sau să repornim serviciul, folosim parametrul stop,
 respectiv restart, în loc de start.
 
 Dacă dorim adăugarea de servicii în sistem putem să le adăugăm în configurarea
-systemd sau putem folosi supervisor. Vom detalia în Secțiunea TODO din Capitolul
-TODO: Automatizarea sarcinilor.
+systemd sau putem folosi supervisor. Vom detalia în
+\labelindexref{Secțiunea}{sec:script-infosys-services}
 
 \subsection{Pornirea terminalelor de login}
 \label{sec:boot-init-linux-login}
@@ -901,14 +901,14 @@ Shell-ul poate fi pornit și dintr-un emulator de terminal din interfața grafic
 și dintr-un pseudo-terminal creat printr-o conexiune SSH. În toate situațiile
 shell-ul folosește niște fișiere de configurare specifice care personalizează
 experiența utilizatorului în linia de comandă. Vom discuta despre acestea în
-Capitolul TODO: Interfața în linia de comandă.
+\labelindexref{Capitolul}{chapter:cli}.
 
 \section{Anexă: Resetarea parolei administrative}
 \label{sec:boot-passreset}
 
 Este posibil ca pentru un sistem să pierdem parola administrativă, a contului
 root sau a contului Administrator și să fie nevoie de resetarea acesteia. În
-\labelindexref{secțiunea}{sec:users-pass-restore-linux} am precizat modurile
+\labelindexref{Secțiunea}{sec:users-pass-restore-linux} am precizat modurile
 uzuale de resetare a parolei administrative și în Linux și în Windows. În Linux
 folosim opțiunea init=/bin/bash la bootarea sistemului de operare, editând
 intrarea în bootloader, sau folosim unui USB stick bootabil sau CD-ROM. În
