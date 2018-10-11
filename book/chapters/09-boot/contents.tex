@@ -26,6 +26,13 @@ pașilor urmați în secvența de boot, urmând să îi detaliem în secțiunile
 jos:
 
 + sumar/diagramă de boot care va fi detaliată în continuare
+\begin{figure}[htbp]
+	\centering
+	\def\svgwidth{\columnwidth}
+	\includesvg{chapters/09-boot/img/boot-seq.svg}
+	\caption{diagramă de boot care va fi detaliată în continuare}
+	\label{fig:boot-seq}
+\end{figure}
 
 \begin{enumerate}
 	\item Firmware de boot (BIOS)
@@ -38,12 +45,12 @@ jos:
 \section{Secvența de boot}
 \label{sec:boot-seq}
 
-În cadrul secvenței de boot fiecare pas, descris în Figura TODO (de mai sus) are
-rolul său. Unul dintre roluri este acela de a transfera controlul următorului
-pas: fiecare pas are capacitate limitată în procesul de pornire, următorul pas
-preluând rezultatul său și realizând alte acțiuni. Alt rol al fiecărui pas este
-de configurare a unor opțiuni specifice în procesul de boot, așa cum vom preciza
-mai jos.
+În cadrul secvenței de boot fiecare pas, descris în
+\labelindexref{Figura}{fig:boot-seq} (de mai sus) are rolul său. Unul dintre
+roluri este acela de a transfera controlul următorului pas: fiecare pas are
+capacitate limitată în procesul de pornire, următorul pas preluând rezultatul
+său și realizând alte acțiuni. Alt rol al fiecărui pas este de configurare a
+unor opțiuni specifice în procesul de boot, așa cum vom preciza mai jos.
 
 În momentul pornirii fizice a sistemului (power on) se încarcă dintr-o zonă
 dedicată din hardware-ul sistemul firmware-ul de boot. Firmware-ul de boot este
@@ -855,6 +862,12 @@ Terminalele virtuale sunt pornite și gestionate de init/systemd pe următorul f
 Diagrama de mai jos ilustrează pașii de mai sus:
 
 + pornirea terminalelor virtuale și a shell-urilor
+\begin{figure}[htbp]
+	\centering
+	\def\svgwidth{\columnwidth}
+	\includesvg{chapters/09-boot/img/systemd-login.svg}
+	\caption{pornirea terminalelor virtuale și a shell-urilor}
+\end{figure}
 
 Putem vizualiza unitățile gestionate de systemd pentru terminalele virtuale folosind comanda de mai jos:
 
