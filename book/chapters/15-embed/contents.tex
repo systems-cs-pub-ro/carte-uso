@@ -9,15 +9,15 @@ calculatoare de dimensiuni tot mai mici, comparabile chiar cu dimensiunile unei
 monede.
 
 Această evoluție se reflectă în popularitatea pe care a câștigat-o domeniul
-Internet of Things (IoT) și evoluția dispozitivelor inteligente. În prezent,
-dezvoltările tehnologie se concentrează pe dezvoltarea unor dispozitive care să
-se adapteze cât mai mult necesităților noastre și care să acționeze autonom,
-preluând cât mai multe din sarcinile noastre. Suntem înconjurați de reclame la
-aspiratoare inteligente, își care construiesc singure o hartă a casei, parcurg
-întreaga suprafață și se conectează singure la încărcător. Purtăm pe încheietura
-mâinii ceasuri și brățări care ne monitorizează activitatea zilnică și ne
-avertizează când nu am făcut destulă mișcare sau stăm pe scaun de prea mult
-timp.
+Internet of Things (IoT) \abbrev{IoT}{Internet of Things} și evoluția
+dispozitivelor inteligente. În prezent, dezvoltările tehnologie se concentrează
+pe dezvoltarea unor dispozitive care să se adapteze cât mai mult necesităților
+noastre și care să acționeze autonom, preluând cât mai multe din sarcinile
+noastre. Suntem înconjurați de reclame la aspiratoare inteligente, își care
+construiesc singure o hartă a casei, parcurg întreaga suprafață și se conectează
+singure la încărcător. Purtăm pe încheietura mâinii ceasuri și brățări care ne
+monitorizează activitatea zilnică și ne avertizează când nu am făcut destulă
+mișcare sau stăm pe scaun de prea mult timp.
 
 Ca să ne facem o idee mai clară asupra popularității acestor dispozitive, un
 studiu publicat în 2018 de World Economic Forum menționează că în anul 2017 la
@@ -147,20 +147,22 @@ Cei mai simpli pini pe care îi putem găsi pe dispozitivele încorporate sunt:
 		dispozitivului, de aceea se numesc pini ground; ei sunt
 		referința față de care se calculează orice cădere de tensiune.
 		Nu pot fi controlați din firmware
-	\item GPIO (General Purpose Input Output) - Sunt pini simpli care pot fi
-		controlați din firmware. În funcție de starea lor, ei pot să
-		funcționeze fie ca pini Vcc sau GND sau ca un voltmetru, citind
-		date de la senzori.
-	\item ADC (Analog to Digital Converter) - Sunt pini care preiau date de
-		la senzori și le transformă în valori digitale. Valorile pot fi
-		citite din firmware.
-	\item DAC (Digital to Analog Converter) - Sunt pini asemănători cu cei
-		de Vcc, dar care pot fi controlați din firmware să expună un
-		voltaj între 0 și Vcc; sunt folosiți pentru a controla
-		periferice, cum ar fi motoare.
-	\item PWM (Pulse Width Modulation) - Sunt pini care simulează
-		comportamentul pinilor DAC, fiind mai ieftini. Ei oscilează
-		între GND și Vcc simulând o tensiune variabilă.
+	\item GPIO \abbrev{GPIO}{General Purpose Input Output} (General Purpose
+		Input Output) - Sunt pini simpli care pot fi controlați din
+		firmware. În funcție de starea lor, ei pot să funcționeze fie ca
+		pini Vcc sau GND sau ca un voltmetru, citind date de la senzori.
+	\item ADC \abbrev{ADC}{Analog to Digital Converter} (Analog to Digital
+		Converter) - Sunt pini care preiau date de la senzori și le
+		transformă în valori digitale. Valorile pot fi citite din
+		firmware.
+	\item DAC \abbrev{DAC}{Digital to Analog Converter} (Digital to Analog
+		Converter) - Sunt pini asemănători cu cei de Vcc, dar care pot
+		fi controlați din firmware să expună un voltaj între 0 și Vcc;
+		sunt folosiți pentru a controla periferice, cum ar fi motoare.
+	\item PWM \abbrev{PWC}{Pulse Width Modulation} (Pulse Width Modulation)
+		- Sunt pini care simulează comportamentul pinilor DAC, fiind mai
+		ieftini. Ei oscilează între GND și Vcc simulând o tensiune
+		variabilă.
 \end{itemize}
 
 Pe de altă parte, există pini care controlează periferice mai complexe, ce
@@ -242,17 +244,17 @@ aplicații în timp real. Acesta este un dezavantaj față de microcontrolere.
 Pentru anumite proiecte simple, putem folosi calculatoare integrate în locul
 microcontrolerelor. Acest lucru se datorează faptului că și aceste dispozitive
 expun anumiți pini. Scopul pinilor este de a controla câteva periferice simple,
-pentru interacțiunea cu utilizatorul (de exemplu, unele LED-uri care
-semnalizează starea sistemului). De obicei, numărul de pini expuși de
-calculatoarele integrate este limitat, majoritatea fiind pini GPIO. Aceste
-dispozitive nu expun mulți pini diverși pentru că scopul lor principal nu este
-acela de a interacționa cu mediul, ci de a aduna, procesa și transporta date.
-Adăugarea unor module de conectare, cum ar fi ADC sau DAC, crește prețul
-dispozitivului fără a-i crește în mod semnificativ valoarea. Pe de altă parte,
-aproape toate sistemele de calcul încorporate suportă conexiuni avansate cum ar
-fi SPI, I2C, USB, UART sau chiar HDMI. Pentru a fi ușor de controlat, unele
-calculatoare integrate pot fi conectate la un monitor, o tastatură și un mouse,
-similar unui calculator obișnuit.
+pentru interacțiunea cu utilizatorul (de exemplu, unele LED-uri
+\abbrev{LED}{Light-Emitting Diode} care semnalizează starea sistemului). De
+obicei, numărul de pini expuși de calculatoarele integrate este limitat,
+majoritatea fiind pini GPIO. Aceste dispozitive nu expun mulți pini diverși
+pentru că scopul lor principal nu este acela de a interacționa cu mediul, ci de
+a aduna, procesa și transporta date. Adăugarea unor module de conectare, cum ar
+fi ADC sau DAC, crește prețul dispozitivului fără a-i crește în mod semnificativ
+valoarea. Pe de altă parte, aproape toate sistemele de calcul încorporate
+suportă conexiuni avansate cum ar fi SPI, I2C, USB, UART sau chiar HDMI. Pentru
+a fi ușor de controlat, unele calculatoare integrate pot fi conectate la un
+monitor, o tastatură și un mouse, similar unui calculator obișnuit.
 
 \subsubsection{Exemple de calculatoare integrate}
 \label{sec:embed-ics-embed-ex}
@@ -560,7 +562,8 @@ date structurate. În plus, există multe periferice care comunică wireless cu
 dispozitivele încorporate.
 
 Pentru a interacționa cu aceste dispozitive de intrare/ieșire complexe, există
-diverse protocoale prin fir (ex. serial, SPI, I2C, Modbus, CAN) sau wireless
+diverse protocoale prin fir (ex. serial, SPI \abbrev{SPI}{Serial Peripheral
+Interface}, I2C, Modbus, CAN \abbrev{CAN}{Controller Area Network}) sau wireless
 (ex. Bluetooth, Wi-Fi, LoRa, Z-Wave ). Unele din aceste protocoale sunt valabile
 și pentru calculatoarele clasice. De exemplu, porturile USB implementează o
 conexiune serială. Pe de altă parte, folosim zilnic mouse-uri wireless, unele
@@ -626,8 +629,9 @@ serial separat, făcând conectarea multor dispozitive nepractică.
 \label{sec:embed-bus-wire-serial}
 
 SPI e un protocol mai complicat, care necesită 3 linii pentru comunicare. Datele
-sunt transmise pe liniile MISO (Master In Slave Out) și MOSI (Master Out Slave
-In). Cea de-a treia linie este folosită pentru sincronizare (SCLK).
+sunt transmise pe liniile MISO \abbrev{MISO}{Master In Slave Out}(Master In
+Slave Out) și MOSI \abbrev{MOSI}{Master Out Slave In} (Master Out Slave In). Cea
+de-a treia linie este folosită pentru sincronizare (SCLK).
 
 SPI vine ca o îmbunătățire a conexiunii seriale, încercând să asigure
 sincoronizarea celor două dispozitive care comunică, astfel transmisia de date
@@ -643,9 +647,10 @@ valoare 0 sau 1.
 \subsubsection{I2C}
 \label{sec:embed-bus-wire-i2c}
 
-I2C, sau IIC (Inter-Integrated Circuit), e un alt protocol care necesită două
-linii pentru transmiterea de date, SDA și SCL. SDA e linia pe care se transmit
-efectiv datele, în timp ce SCL e linia de sincronizare.
+I2C, sau IIC (Inter-Integrated Circuit) \abbrev{Inter-Integrated Circuit}, e un
+alt protocol care necesită două linii pentru transmiterea de date, SDA și SCL.
+SDA e linia pe care se transmit efectiv datele, în timp ce SCL e linia de
+sincronizare.
 
 Avantajul protocolului I2C este că putem conecta mai multe dispozitive simultan.
 Avem dispozitive master și slave. În cazul I2C este foarte importantă
@@ -692,8 +697,9 @@ special concepute pentru IoT.
 Acesta a fost unul dintre primele protocoale implementate în sistemele IoT. Pe
 măsură ce domeniul s-a dezvoltat și Bluetooth a rămas principalul protocol de
 comunicare între dispozitive, acesta a fost extins, implementându-se Bluetooth
-4.0, sau Bluetooth Low Energy (BLE). Acesta este special conceput pentru a
-consuma puțină energie în procesul de transfer al datelor.
+4.0, sau Bluetooth Low Energy (BLE) \abbrev{BLE}{Bluetooth Low Energy}. Acesta
+este special conceput pentru a consuma puțină energie în procesul de transfer al
+datelor.
 
 
 \subsubsection{Z-wave}
