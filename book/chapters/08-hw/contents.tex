@@ -86,26 +86,34 @@ enumeră următoarele tipuri de componente:
 	\item Dispozitive de intrare/ieșire (Input-Output - I/O)
 \end{itemize}
 
-In Fig. X este reprezentată grafic această arhitectură. Unitatea de procesare
-este formată din unitatea de control și unitatea aritmetică/logică. Unitatea de
-control are rolul de a configura și a da comenzi perifericelor, respectiv
-unității aritmetice/logice, pentru a întreprinde acțiunile dorite de utilizator.
-Unitatea aritmetică/logică se ocupă în general cu realizarea calculelor, fiind
-optimizată pentru acest lucru. Aceasta are un rol foarte important deoarece
-majoritatea comenzilor utilizatorului se vor traduce în final către hardware în
-operații de aritmetică (ex. adunare) sau de logică (și/sau/xor). Unitatea de
-memorie are rolul de a servi rapid procesorul cu datele necesare realizării
-calculelor. Datele în general vin de la utilizator prin dispozitivele de intrare
-și sunt stocate temporar de unitatea de memorie pentru a putea fi folosite de
-unitatea de procesare. Acest flux a fost creat din cauza faptului ca
-dispozitivele periferice (intrare/ieșire) sunt mult mai lente în general decât
-unitatea de procesare și ar încetini-o. Unitatea de memorie în general este
-volatilă (la închiderea sistemului, datele din unitatea de memorie se pierd)
-fiind folosită ca un tampon pentru prelucrarea datelor. Odată prelucrate,
-acestea sunt trimise către dispozitivele de ieșire și folosite în diverse
-scopuri (afișare, stocare permanentă).
+In \labelindexref{Figura}{fig:hw-neumann} este reprezentată grafic această
+arhitectură. Unitatea de procesare este formată din unitatea de control și
+unitatea aritmetică/logică. Unitatea de control are rolul de a configura și a da
+comenzi perifericelor, respectiv unității aritmetice/logice, pentru a
+întreprinde acțiunile dorite de utilizator. Unitatea aritmetică/logică se ocupă
+în general cu realizarea calculelor, fiind optimizată pentru acest lucru.
+Aceasta are un rol foarte important deoarece majoritatea comenzilor
+utilizatorului se vor traduce în final către hardware în operații de aritmetică
+(ex. adunare) sau de logică (și/sau/xor). Unitatea de memorie are rolul de a
+servi rapid procesorul cu datele necesare realizării calculelor. Datele în
+general vin de la utilizator prin dispozitivele de intrare și sunt stocate
+temporar de unitatea de memorie pentru a putea fi folosite de unitatea de
+procesare. Acest flux a fost creat din cauza faptului ca dispozitivele
+periferice (intrare/ieșire) sunt mult mai lente în general decât unitatea de
+procesare și ar încetini-o. Unitatea de memorie în general este volatilă (la
+închiderea sistemului, datele din unitatea de memorie se pierd) fiind folosită
+ca un tampon pentru prelucrarea datelor. Odată prelucrate, acestea sunt trimise
+către dispozitivele de ieșire și folosite în diverse scopuri (afișare, stocare
+permanentă).
 
 Fig. X. Arhitectura von Neumann
+\begin{figure}[!htbp]
+	\centering
+	\def\svgwidth{\columnwidth}
+	\includesvg{chapters/08-hw/img/arch-neumann.svg}
+	\caption{Arhitectura von Neumann}
+	\label{fig:hw-neumann}
+\end{figure}
 
 În zilele noastre numărul unităților de procesare a crescut, precum și mărimea
 unității de memorie. Unitatea de memorie este partajată între toate
@@ -217,19 +225,36 @@ limitărilor hardware cum ar fi folosirea unui număr mai mic de tranzistori).
 \begin{itemize}
 	\item x86 - disponibil atât pe 32 de biți (referit ca x86), cât și pe 64
 		de biți (referit ca x86_64 sau x64), fiind o arhitectură de tip
-		CISC. Un exemplu este reprezentat în Fig. X.: un calculator ce
-		are o arhitectura x86
+		CISC. Un exemplu este reprezentat în
+		\labelindexref{Figura}{fig:hw-x86} un calculator ce are o
+		arhitectura x86
 
-Fig. X. Calculator cu arhitectura x86
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=4cm]{chapters/08-hw/img/pc-img.png}
+	\caption{Calculator cu arhitectura x86\protect\footnotemark}
+	\label{fig:hw-x86}
+\end{figure}
+
+\footnotetext{https://commons.wikimedia.org/wiki/File:Modified-pc-case.png
+\textbf{CC BY SA}}
 
 	\item ARM - disponibil atât pe 32 de biți (referit ca ARMv7), câț și pe
 		64 de biți (referit ca ARMv8), fiind o arhitectură de tip RISC.
-		Un exemplu este reprezentat în Fig. X: un smartphone cu
-		arhitectura ARM. După cum se poate observa toate componentele
-		sunt integrate pe aceeași plăcută în comparație cu arhitectura
-		x86.
+		Un exemplu este reprezentat în
+		\labelindexref{Figura}{fig:hw-arm} un smartphone cu arhitectura
+		ARM. După cum se poate observa toate componentele sunt integrate
+		pe aceeași plăcută în comparație cu arhitectura x86.
 
-Fig. X. Smartphone cu arhitectura ARM
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=4cm]{chapters/08-hw/img/arm-img.png}
+	\caption{Smartphone cu arhitectura ARM\protect\footnotemark}
+	\label{fig:hw-arm}
+\end{figure}
+
+\footnotetext{\url{https://en.wikipedia.org/wiki/Nexus_5\#/media/File:Nexus_5_Front_View.png}
+\textbf{CC BY 2.5}}
 
 \end{itemize}
 
@@ -270,62 +295,98 @@ O altă diferență între cele 2 arhitecturi (x86 și ARM) o reprezintă modelu
 integrare a componentelor:
 
 \begin{itemize}
-	\item x86 are o arhitectură modulară în care utilizatorul poate înlocui separat procesorul, memoria, plăcile de procesare (grafică, sunet, rețea)
-	\item ARM are o arhitectură integrată denumită și SoC (System on Chip): integratorii pun toate componentele (procesorul, memoria, plăcile de procesare) pe aceeași plăcuță iar acestea nu pot fi schimbate separat
+	\item x86 are o arhitectură modulară în care utilizatorul poate înlocui
+		separat procesorul, memoria, plăcile de procesare (grafică,
+		sunet, rețea)
+	\item ARM are o arhitectură integrată denumită și SoC (System on Chip):
+		integratorii pun toate componentele (procesorul, memoria,
+		plăcile de procesare) pe aceeași plăcuță iar acestea nu pot fi
+		schimbate separat
 	\item rme constructive ale hardware-ului
-	\item stemele de calcul vin în diverse forme constructive (form factors - dimensiune, forma de împachetare a componentelor) în funcție rolul și utilizarea acestora. Într-o clasificare generică avem patru forme constructive:
+	\item stemele de calcul vin în diverse forme constructive (form factors
+		- dimensiune, forma de împachetare a componentelor) în funcție
+		rolul și utilizarea acestora. Într-o clasificare generică avem
+		patru forme constructive:
 	\item Server - specific centrelor de date
 	\item Desktop - specific utilizatorilor obișnuiți
-	\item Laptop - specific utilizatorilor finali, ocupând mai puțin spațiu și având un cost mai mare ca sistemele Desktop în general
-	\item Embedded - specific dispozitivelor mobile (smartphone-uri / tablete) și industriale
+	\item Laptop - specific utilizatorilor finali, ocupând mai puțin spațiu
+		și având un cost mai mare ca sistemele Desktop în general
+	\item Embedded - specific dispozitivelor mobile (smartphone-uri /
+		tablete) și industriale
 \end{itemize}
 
-\textit{Serverul} este specific centrelor de date având o construcție robustă, sisteme de
-prindere speciale în locurile special amenajate, o circulație a aerului pe
-orizontală foarte bună (în general din față în spate). Dimensiunea serverelor
-este dată de numărul unităților de rack ocupate (1U = 4,445cm). In Fig. X este
-ilustrat un server de dimensiune 1U (1 unitate de rack), cu sisteme de prindere
-în lateral. După cum se poate observa aerul va circula din față în spate și
-niciodată pe deasupra sau dedesubt din cauza modului în care serverele sunt
-așezate în rack: unul peste altul fară nici un spațiu.
+\textit{Serverul} este specific centrelor de date având o construcție robustă,
+sisteme de prindere speciale în locurile special amenajate, o circulație a
+aerului pe orizontală foarte bună (în general din față în spate). Dimensiunea
+serverelor este dată de numărul unităților de rack ocupate (1U = 4,445cm). In
+\labelindexref{Figura}{fig:hw-server} este ilustrat un server de dimensiune 1U
+(1 unitate de rack), cu sisteme de prindere în lateral. După cum se poate
+observa aerul va circula din față în spate și niciodată pe deasupra sau dedesubt
+din cauza modului în care serverele sunt așezate în rack: unul peste altul fară
+nici un spațiu.
 
-Fig. X. Server
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=6cm]{chapters/08-hw/img/server-img.png}
+	\caption{Server\protect\footnotemark}
+	\label{fig:hw-server}
+\end{figure}
 
-\textit{Desktop}-ul este specific utilizatorilor finali având un raport preț/performanță
-foarte bun. După cum am precizat mai sus, laptop-ul tot utilizatorului final se
-adresează. Avantajul desktop-ului în detrimentul laptop-ului este dat de faptul
-că poate fi ușor îmbunătățit, reparat și întreținut.
+\footnotetext{\url{https://commons.wikimedia.org/wiki/File:Supermicro_SBI-7228R-T2X_blade_server.jpg}
+\textbf{CC BY SA 4.0}}
 
-Fig.X. Forme constructive ale dekstop-ului
+\textit{Desktop}-ul este specific utilizatorilor finali având un raport
+preț/performanță foarte bun. După cum am precizat mai sus, laptop-ul tot
+utilizatorului final se adresează. Avantajul desktop-ului în detrimentul
+laptop-ului este dat de faptul că poate fi ușor îmbunătățit, reparat și
+întreținut.
 
-Desktop-ul vine și el în mai multe forme constructive, după cum se poate observa și în Fig. X:
+Desktop-ul vine și el în mai multe forme constructive:
 
 \begin{itemize}
 	\item Small factor
 	\item Normal factor
 \end{itemize}
 
-\textit{Small factor} se referă la o carcasă compactă de mici dimensiuni ce poate fi pusă
-inclusiv pe birou (cea din dreapta Fig. X), iar normal factor este o carcasa de
-dimensiuni mai mari (cea din stânga Fig. X). Avantajul small factor este după
-cum am precizat anterior dimensiunea redusă, iar dezavantajul este dat de faptul
-că suportă un număr limitat de extensii auxiliare (în general nu este loc și
-pentru ele în carcasă). Dezavantajul normal factor este dat de dimensiune, dar
-este mult mai ușor de personalizat.
+\textit{Small factor} se referă la o carcasă compactă de mici dimensiuni ce
+poate fi pusă inclusiv pe birou, iar normal factor este o carcasa de dimensiuni
+mai mari. Avantajul small factor este după cum am precizat anterior
+dimensiunea redusă, iar dezavantajul este dat de faptul că suportă un număr
+limitat de extensii auxiliare (în general nu este loc și pentru ele în carcasă).
+Dezavantajul normal factor este dat de dimensiune, dar este mult mai ușor de
+personalizat.
 
-\textit{Laptop-urile} reprezintă un alt model constructiv al unui calculator pentru a
-adresa portabilitatea (vezi Fig. X). De obicei acestea conțin din fabrică toate
-componentele dorite și este mai dificil de personalizat (în general se poate
-adăuga mai multă memorie, se poate schimba unitatea de stocare, dar cam atât).
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=6cm]{chapters/08-hw/img/laptop-img.png}
+	\caption{Laptop\protect\footnotemark}
+	\label{fig:hw-laptop}
+\end{figure}
 
-Fig. X. Laptop
+\footnotetext{\url{https://commons.wikimedia.org/wiki/File:Lenovo_G500s_laptop-2905.jpg}
+\textbf{CC BY-SA 4.0}}
 
-\textit{Sistemele embedded} (vezi Capitolul 15. Sisteme încorporate), de obicei, nu au o
-carcasă cu care vin de la producător. Acestea sunt niște plăcuțe care conțin
-toate perifericele integrate (SoC - System on Chip). Fig. X prezintă un astfel
-de sistem embedded (integrat).
+\textit{Laptop-urile} reprezintă un alt model constructiv al unui calculator
+pentru a adresa portabilitatea (vezi \labelindexref{Figura}{fig:hw-laptop}). De
+obicei acestea conțin din fabrică toate componentele dorite și este mai dificil
+de personalizat (în general se poate adăuga mai multă memorie, se poate schimba
+unitatea de stocare, dar cam atât).
 
-Fig. X. Sistem embedded (integrat)
+\textit{Sistemele embedded} (vezi \labelindexref{Capitolul}{chapter:embed}), de obicei,
+nu au o carcasă cu care vin de la producător. Acestea sunt niște plăcuțe care
+conțin toate perifericele integrate (SoC - System on Chip).
+\labelindexref{Figura}{fig:hw-embed} prezintă un astfel de sistem embedded
+(integrat).
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=7cm]{chapters/08-hw/img/embedded-img.png}
+	\caption{Sistem embedded (integrat)\protect\footnotemark}
+	\label{fig:hw-embed}
+\end{figure}
+
+\footnotetext{\url{https://commons.wikimedia.org/wiki/File:Embedded_World_2016,_Nordic_RF51822.jpg}
+\textbf{CC0}}
 
 \section{Componentele unui sistem de tip desktop}
 \label{sec:hardware-componente}
@@ -336,9 +397,16 @@ Această componență este valabilă și pentru celelalte forme constructive ale
 sistemelor de calcul (server, laptop, embedded) doar că sunt dispuse și
 integrate în poziții diferite.
 
-%Fig. X. Componentele unui calculator (By User:HereToHelp - Self-published work by User:HereToHelp and File:Personal computer, exploded 5.svg, CC BY 2.5, https://commons.wikimedia.org/w/index.php?curid=4023664)
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=8cm]{chapters/08-hw/img/comps-img.png}
+	\caption{Componentele unui calculator\protect\footnotemark}
+	\label{fig:hw-comps}
+\end{figure}
 
-In Fig. X. sunt reprezentate grafic principalele componente ale unui sistem de calcul:
+\footnotetext{\url{https://commons.wikimedia.org/w/index.php?curid=4023664}
+\textbf{CC BY 2.5}}
+
 \begin{enumerate}
 	\item Scanner - cu ajutorul acesteia se pozează conținutul documentelor
 		cu scopul de la fi digitalizate (transferate pe calculator).
@@ -353,7 +421,15 @@ In Fig. X. sunt reprezentate grafic principalele componente ale unui sistem de c
 		(se mai numește și frecvența magistralei [FSB
 		\abbrev{FSB}{Front-Side Bus}]).
 
-Fig. X. CPU (procesorul)
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=7cm]{chapters/08-hw/img/cpu-img.png}
+	\caption{CPU (procesorul)\protect\footnotemark}
+	\label{fig:hw-cpu}
+\end{figure}
+
+\footnotetext{\url{https://commons.wikimedia.org/wiki/File:Intel_CPU_Core_i7_6700K_Skylake_top.jpg}
+\textbf{CC BY SA}}
 
 	\item Memoria - unitatea de memorie care este de tip RAM
 		\abbrev{RAM}{Random Access Memory} (Random Access Memory) și
@@ -366,7 +442,16 @@ Fig. X. CPU (procesorul)
 		se realizează comunicația între memorie și magistrală, respectiv
 		procesor.
 
-Fig. X. Memoria RAM
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=8cm]{chapters/08-hw/img/ram-img.png}
+	\caption{Memoria RAM\protect\footnotemark}
+	\label{fig:hw-ram}
+\end{figure}
+
+\footnotetext{\url{https://commons.wikimedia.org/wiki/File:DDR_RAM-3.jpg}
+\textbf{Public domain}}
+
 	\item Plăci de extensie: acestea sunt variante pornind de la plăcile de
 		procesare a sunetului (pentru redarea acestuia), a elementelor
 		grafice (pentru afișarea pe ecran) până la plăcile ce realizează
@@ -385,7 +470,15 @@ Fig. X. Memoria RAM
 		redarea filmelor, a muzicii, dar se pot stoca și date care nu au
 		legătură cu aria multimedia (ex.: documente)
 
-Fig. X. DVD-ROM
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=8cm]{chapters/08-hw/img/dvd-img.png}
+	\caption{DVD-ROM\protect\footnotemark}
+	\label{fig:hw-dvd}
+\end{figure}
+
+\footnotetext{\url{https://commons.wikimedia.org/wiki/File:ASUS_CD-ROM_CD-S520-A4_20080821.jpg}
+\textbf{CC BY 3.0}}
 
 	\item Unitate de stocare (HDD \abbrev{HDD}{Hard Disk Drive} - Hard Disk
 		Drive) - acesta este un dispozitiv de intrare/ieșire pentru
@@ -395,14 +488,31 @@ Fig. X. DVD-ROM
 		de memorie și de aceea se preferă scrierea cât mai rară, în
 		special când se întreprind acțiuni în timp real.
 
-Fig. X. Discul pentru stocare - HDD
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=8cm]{chapters/08-hw/img/hdd-img.png}
+	\caption{Discul pentru stocare - HDD\protect\footnotemark}
+	\label{fig:hw-hdd}
+\end{figure}
+
+\footnotetext{\url{https://commons.wikimedia.org/wiki/File:Hard_Drive_(11644419853).jpg}
+\textbf{CC BY 2.0}}
 
 	\item Placa de bază reprezintă elementul central de conexiune între
 		procesor, memorie și plăcile de extensie. Aceasta conține
 		practic magistrala de comunicație și sloturile în care sunt
 		introduse procesorul, memoriile și plăcile de extensie.
 
-Fig. X. Placa de bază
+% this doesn't fit
+%\begin{figure}[!htbp]
+%	\centering
+%	\includegraphics[width=8cm]{chapters/08-hw/img/mb-img.png}
+%	\caption{Placa de bază\protect\footnotemark}
+%	\label{fig:hw-mb}
+%\end{figure}
+
+%\footnotetext{\url{https://commons.wikimedia.org/wiki/File:Mother_board.JPG}
+%\textbf{CC BY SA 4.0}}
 
 	\item Boxe conectate la placa de extensie (numită și placă de sunet)
 		pentru a reda sunetul emis de unitatea de calcul
@@ -557,6 +667,13 @@ driver-ele). Așadar recomandăm instalarea ultimelor versiuni de driver-e pentr
 a beneficia de performanță și stabilitate maximă.
 
 Fig. X. Relația sistem de operare - driver - controller - dispozitiv
+\begin{figure}[htbp]
+	\centering
+	\def\svgwidth{\columnwidth}
+	\includesvg{chapters/08-hw/img/so-driver.svg}
+	\caption{Relația sistem de operare - driver - controller - dispozitiv}
+	\label{fig:hw-so-driver}
+\end{figure}
 
 Pentru inițializare, configurare și control, dispozitivele trebuie să comunice
 cu procesorul (unitatea de procesare) și invers. Pentru acest lucru trebuie
@@ -631,13 +748,21 @@ Printre porturile interne putem enumera:
 		\textit{PCIe} sau \textit{PCI-e}.
 \end{itemize}
 
-Fig. X. Sloturi PCI și PCIe
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=8cm]{chapters/08-hw/img/pci-img.png}
+	\caption{Sloturi PCI și PCIe\protect\footnotemark}
+	\label{fig:hw-pci}
+\end{figure}
 
-În Fig. X. se poate observa cum arată un slot PCI în comparație cu unul PCIe x1
-sau x16.
+\footnotetext{\url{https://et.m.wikipedia.org/wiki/Fail:PCI_und_PCIe_Slots.jpg}
+\textbf{Flexible license}}
+
+În \labelindexref{Figura}{fig:hw-pci} se poate observa cum arată un slot PCI în
+comparație cu unul PCIe x1 sau x16.
 
 Portul extern cel mai des folosit pentru interconectarea dispozitivelor este
-USB-ul. În Fig. X. se poate observa forma unui port USB. Acesta vine în mare
+USB-ul. În \labelindexref{Figura}{fig:hw-usb} se poate observa forma unui port USB. Acesta vine în mare
 multe forme ce oferă performanțe diferite (viteză de comunicație):
 
 \begin{itemize}
@@ -646,7 +771,15 @@ multe forme ce oferă performanțe diferite (viteză de comunicație):
 	\item USB 3.0 - 5Gbps
 \end{itemize}
 
-Fig. X. Port USB
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=8cm]{chapters/08-hw/img/usb-img.png}
+	\caption{Port USB\protect\footnotemark}
+	\label{fig:hw-usb}
+\end{figure}
+
+\footnotetext{\url{https://commons.wikimedia.org/wiki/File:Blue_USB_port_without_USB_3.0_contacts.jpg}
+\textbf{CC0}}
 
 Până în acest punct am discutat despre formele de conectare ale plăcilor de
 extensie la unitatea de calcul. Plăcile de extensie au un element central de
@@ -683,15 +816,23 @@ făcute. Pentru acest lucru, placa grafică este echipată cu unități speciali
 de calcul matematic. Pe lângă unitățile de calcul, placa grafică mai dispune și
 de propria memorie pentru a eficientiza timpul de procesare a datelor. La
 achiziția unei plăci video (sau mai poartă denumirea de placă grafică - GPU
-[\textit{Graphical Porcessing Unit}]) trebuie avute în vedere următoarele aspecte: portul
-de conectare al plăcii (PCIe și la ce viteză), capacitatea memoriei, frecvența
-de procesare, numărul de nuclee, precum și porturile de ieșire. În Fig. X. sunt
-prezentate formatul porturilor de ieșire ale unei plăci grafice: VGA, HDMI, DVI,
-DisplayPort. În general plăcile grafice sunt produse cu o combinație între
-aceste porturi, existând adaptoare la nevoie.
+[\textit{Graphical Porcessing Unit}]) trebuie avute în vedere următoarele
+aspecte: portul de conectare al plăcii (PCIe și la ce viteză), capacitatea
+memoriei, frecvența de procesare, numărul de nuclee, precum și porturile de
+ieșire. În \labelindexref{Figura}{fig:hw-gpu} sunt prezentate formatul
+porturilor de ieșire ale unei plăci grafice: VGA, HDMI, DVI, DisplayPort. În
+general plăcile grafice sunt produse cu o combinație între aceste porturi,
+existând adaptoare la nevoie.
 
-Fig. X. Porturi ieșire placă grafică
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=8cm]{chapters/08-hw/img/gpu-img.png}
+	\caption{Porturi ieșire placă grafică\protect\footnotemark}
+	\label{fig:hw-gpu}
+\end{figure}
 
+\footnotetext{\url{https://commons.wikimedia.org/wiki/File:GPU_Interface.jpg}
+\textbf{CC BY-SA 4.0}}
 
 Atunci când veți analiza configurația unei plăci grafice, veți observa că
 dispune de un număr foarte mare de nuclee (de ordinul zecilor/sutelor). Din
@@ -724,12 +865,20 @@ inspectați următoarele caracteristici:
 		externă pe USB)
 \end{itemize}
 
-În Fig. X este reprezentată o placă de sunet 5.1 ce se conectează pe portul
-intern PCI. Există câte un port de ieșire pentru fiecare zonă (față, spate,
-centru), un port de intrare pentru microfon și un port de intrare generic
-(pentru alte dispozitive).
+În \labelindexref{Figura}{fig:hw-audio} este reprezentată o placă de sunet 5.1
+ce se conectează pe portul intern PCI. Există câte un port de ieșire pentru
+fiecare zonă (față, spate, centru), un port de intrare pentru microfon și un
+port de intrare generic (pentru alte dispozitive).
 
-Fig. X. Placă de sunet
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=8cm]{chapters/08-hw/img/audio-img.png}
+	\caption{Placă de sunet\protect\footnotemark}
+	\label{fig:hw-audio}
+\end{figure}
+
+\footnotetext{\url{https://commons.wikimedia.org/wiki/File:A_VIA_Envy_Sound_Card_5.1_6_Channels_(VIA_VT1617A).jpg}
+\textbf{CC BY SA 4.0}}
 
 \subsection{Ce rol are placa de rețea?}
 \label{sec:hardware-extensii-net}
@@ -754,13 +903,12 @@ La achiziția unei plăci de rețea trebuie ținut cont de următoarele caracter
 	\item Interfața disponibilă: în general cupru RJ-45 (protocol ethernet).
 		Există și plăci cu suport de fibră optică: în descriere veți
 		observa cuvântul cheie SFP \abbrev{SFP}{Small form-factor
-		pluggable transceiver} (SFP+). Atenție pentru a utiliza
-		suportul de fibră optică aveți nevoie de module speciale SFP ce
-		au un cost mai ridicat decât cablul de cupru și de asemenea
+		pluggable transceiver} (SFP+). Atenție pentru a utiliza suportul
+		de fibră optică aveți nevoie de module speciale SFP ce au un
+		cost mai ridicat decât cablul de cupru și de asemenea
 		echipamentul în care vă conectați trebuie să suporte modul de
-		fibră optică. În Fig.X puteți observa o placă de rețea ce are
-		ambele tipuri de porturi. În concluzie, în general veți alege
-		portul de tip RJ-45.
+		fibră optică. În concluzie, în general veți alege portul de tip
+		RJ-45.
 	\item Viteza de transmisie: 100mbps, 1gbps, 10gbps. Cea mai răspândită
 		în ziua de astăzi este viteza de 1Gbps.
 \end{itemize}
@@ -777,7 +925,13 @@ unității de procesare. Pentru o performanță sporită, mai ales în medii und
 realizează transmisii de date cu volum ridicat, sunt recomandate plăcile de
 rețea ce nu se bazează pe CPU atunci când trebuie să trimită/primească date.
 
-Fig. X. Placă de rețea cu port SFP+/RJ45
+% No license :(
+%\begin{figure}[!htbp]
+%	\centering
+%	\includegraphics[width=8cm]{chapters/08-hw/img/net-img.png}
+%	\caption{Placă de rețea cu port SFP+/RJ45}
+%	\label{fig:hw-net}
+%\end{figure}
 
 \section{Facilități moderne în hardware}
 \label{sec:hardware-functionalitati}
@@ -1161,19 +1315,31 @@ Pe sistemul de operare Windows pentru a vedea detalii despre componentele
 atașate sistemului se poate folosi modulul \textit{Device Manager} (Start -> Run
 -> devmgmt.msc):
 
-Fig. X. Device Manager
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=6cm]{chapters/08-hw/img/devmanager-img.png}
+	\caption{Device Manager}
+	\label{fig:hw-devmanager}
+\end{figure}
 
-După cum se poate observa în Fig. X. componentele sunt grupate, dispuse
-arborescent (asemănător comenzii \cmd{lshw} din Linux). Pentru a vedea ce dispozitive,
-respectiv modelul acestora, se extinde grupul de interes. Pentru exemplu, vom
-extinde grupul \textit{Processors}:
+După cum se poate observa în \labelindexref{Figura}{fig:hw-devmanager}
+componentele sunt grupate, dispuse arborescent (asemănător comenzii \cmd{lshw}
+din Linux). Pentru a vedea ce dispozitive, respectiv modelul acestora, se
+extinde grupul de interes. Pentru exemplu, vom extinde grupul
+\textit{Processors}:
 
-Fig. X. Vizualizarea procesoarelor în Device Manager
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=6cm]{chapters/08-hw/img/devmanager-virt-img.png}
+	\caption{Vizualizarea procesoarelor în Device Manager}
+	\label{fig:hw-devmanager-virt}
+\end{figure}
 
 
-În Fig. X., am extins secțiunea \textit{Processors} și observăm 8 intrări întrucât avem 8
-nuclee disponibile pe sistemul acesta. Ne apare și varianta de procesor precum
-și frecvența acestuia (i7-4790 la frecvența 3.6Ghz).
+În \labelindexref{Figura}{fig:hw-devmanager-virt}, am extins secțiunea
+\textit{Processors} și observăm 8 intrări întrucât avem 8 nuclee disponibile pe
+sistemul acesta. Ne apare și varianta de procesor precum și frecvența acestuia
+(i7-4790 la frecvența 3.6Ghz).
 
 \section{Anexă: Vizualizarea versiunilor de drivere}
 \label{sec:hardware-virtualizare-driver}
@@ -1241,8 +1407,9 @@ modului, ce dependențe are precum și versiunea (\texttt{vermagic}). Câmpul
 tot din \textit{Device Manager} (Start -> Run -> devmgmt.msc):
 
 Pentru a vizualiza informații despre driverul procesorului, vom da click pe unul
-din procesoarele listate în Fig. X. Va apărea o nouă fereastră ca în Fig. X ce
-va avea un tab denumit \textit{Driver}. Acesta ne va afișa toate informațiile relevant
+din procesoarele listate în \labelindexref{Figura}{fig:hw-devmanager-virt}. Va
+apărea o nouă fereastră ca în \labelindexref{Figura}{fig:hw-driver-virt} ce va avea
+un tab denumit \textit{Driver}. Acesta ne va afișa toate informațiile relevant
 despre driver:
 
 \begin{itemize}
@@ -1254,7 +1421,12 @@ despre driver:
 		a putea fi încărcate.
 \end{itemize}
 
-Fig. X. Vizualizarea unui driver pe Windows
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=8cm]{chapters/08-hw/img/driver-virt-img.png}
+	\caption{Vizualizarea unui driver pe Windows}
+	\label{fig:hw-driver-virt}
+\end{figure}
 
 \subsection{Vizualizarea componentelor pe Android}
 \label{sec:hardware-virtualizare-android}
@@ -1262,6 +1434,12 @@ Fig. X. Vizualizarea unui driver pe Windows
 În mod implicit, în Android, nu există o opțiune prin care putem vizualiza
 componentele hardware ale unui dispozitiv (telefon/tableta). Pentru acest lucru
 putem folosi o aplicație ce poate fi instalată gratuit din PlayStore. O astfel
-de aplicație este \textit{Android Hardware Info} (vezi Fig.X.)
+de aplicație este \textit{Android Hardware Info} (vezi
+\labelindexref{Figura}{fig:hw-android})
 
-Fig. X. Vizualizarea componentelor pe Android
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=8cm]{chapters/08-hw/img/android-img.png}
+	\caption{Vizualizarea componentelor pe Android}
+	\label{fig:hw-android}
+\end{figure}
