@@ -567,7 +567,7 @@ Descoperirea dispozitivelor se face folosind următoarele procedee:
 		în general pe x86 - la pornirea sistemului rulează un program
 		proprietar al plăcii de bază denumit BIOS \abbrev{BIOS}{Basic
 		Input/Output System} (Basic Input/Output System - vezi
-		\labelindexref{capitolul}{chapter:boot}) care testează toate
+		\labelindexref{Capitolul}{chapter:boot}) care testează toate
 		componentele conectate la placa de bază, certifică
 		compatibilitatea acestora (între ele și cu placa de bază). Cel
 		mai important lucru este dat de faptul ca încarcă sistemul de
@@ -965,7 +965,7 @@ Din anii 2007-2009 s-a introdus conceptul de virtualizare în hardware, acesta
 fiind suportat de către CPU. Viteza de rulare a sistemelor de operare
 virtualizate a crescut, având aproape aceleași performanțe ca un sistem de
 operare care rulează direct peste hardware. Pentru a beneficia de virtualizare,
-aceasta trebuie activată din BIOS (vezi \labelindexref{capitolul}{chapter:boot}).
+aceasta trebuie activată din BIOS (vezi \labelindexref{Capitolul}{chapter:boot}).
 De multe ori, fără activarea acestei opțiuni, soluțiile de virtualizare nu vor
 funcționa indicând un mesaj de eroare corespunzător.
 
@@ -991,7 +991,7 @@ criptare). O dată criptat discul, cheile vor fi stocate în acesta și protejat
 pe baza unei parole. Dacă unitatea de stocare va fi mutată pe alt calculator,
 atacatorul nu va putea vedea datele. Doar modulul TPM ce stochează acele chei va
 putea vizualiza conținutul unității de stocare. Modulul TPM trebuie activat din
-BIOS, ca și virtualizare (vezi \labelindexref{capitolul}{chapter:boot}).
+BIOS, ca și virtualizare (vezi \labelindexref{Capitolul}{chapter:boot}).
 
 \section{Abstractizarea dispozitivelor în Linux}
 \label{sec:hardware-abstract-linux}
@@ -1004,7 +1004,7 @@ oferite de nucleu, acesta crează intrările puse la dipoziție utilizatorului i
 \file{/dev}.
 
 Fiind văzute ca fișiere, utilizatorul poate aplica aceleași operații pe care le
-aplică fișierelor (vezi \labelindexref{capitolul}{chapter:file-system}). Există
+aplică fișierelor (vezi \labelindexref{Capitolul}{chapter:file-system}). Există
 două tipuri de dispozitive în calea \file{/dev}:
 
 \begin{itemize}
@@ -1027,7 +1027,7 @@ brw-rw---- 1 root disk 8, 17 Jul  9 02:23 /dev/sdb1
 \end{screen}
 
 După cum se poate observa, avem 2 discuri (\file{sda} și \file{sdb}) fiecare cu
-un număr diferit de partiții (vezi \labelindexref{capitolul}{chapter:file-system}).
+un număr diferit de partiții (vezi \labelindexref{Capitolul}{chapter:file-system}).
 Asupra acestora putem executa aceleași operații ce se aplică și fișierelor. Vom
 citi primi 10 octeți de pe discul \file{sda}:
 
@@ -1047,7 +1047,7 @@ virtuale cum ar fi:
 		șterge (un coș de gunoi)
 	\item \file{/dev/loop} - poate emula un disc ce este stocat într-un
 		fișier (mai multe detalii în
-		\labelindexref{capitolul}{chapter:file-system})
+		\labelindexref{Capitolul}{chapter:file-system})
 \end{itemize}
 
 Vom genera 10 zerou-uri într-un fișier (atenție este vorba ca numărul 0 și nu de
