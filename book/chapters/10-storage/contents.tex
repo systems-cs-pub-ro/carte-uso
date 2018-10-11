@@ -20,10 +20,16 @@ procesor). Un alt dezavantaj al dispozitivelor de stocare îl reprezintă modul
 modul de organizare a datelor pe acesta: capacitatea este net superioară
 comparativ cu a unei memorii (gigabytes vs. terabytes/petabytes) iar o adresare
 liniară, ca în cazul memoriei, nu ar fi posibilă. În cadrul acestui capitol vom
-studia tehnici de organizare a datelor pe dispozitivele de stocare (vezi Fig.
-X).
+studia tehnici de organizare a datelor pe dispozitivele de stocare (vezi
+\labelindexref{Figura}{fig:storage-mem-struct}.
 
-Fig. X. Ierarhia de memorie în cadrul unui sistem de calcul
+\begin{figure}[htbp]
+	\centering
+	\def\svgwidth{\columnwidth}
+	\includesvg{chapters/10-storage/img/mem-struct.svg}
+	\caption{Ierarhia de memorie în cadrul unui sistem de calcul}
+	\label{fig:storage-mem-struct}
+\end{figure}
 
 Așadar, stocarea este și ea un element central în operațiile cu sistemul de
 calcul. Orice informație procesată ar trebui stocată persistent pe un
@@ -39,15 +45,21 @@ acționează ca un element intermediar de control: procesorul dă comanda
 controller-ului, acesta execută toate operațiile cerute și când sunt finalizate,
 anunță unitatea principală de execuție (procesorul). Astfel procesorul nu
 așteaptă după unitățile de stocare, ci execută alte operații relevante în tot
-acest timp. În Fig. X. este reprezentat un exemplu de transfer de date de la o
-locație de pe Internet în timp de utilizatorul folosește aplicația
-\textit{Calculator}. Discurile sunt cele ce stochează efectiv informația. Luăm
-ca exemplu aplicațiile Google Drive și Dropbox: acestea oferă servicii de
-stocare a informațiilor pentru utilizatori. Pentru a implementa facilitățile de
-stocare și partajare a datelor, aceste aplicații folosesc sisteme de stocare. În
-secțiunea următoare vom descrie și vom realiza o clasificare a discurilor.
+acest timp. În \labelindexref{Figura}{fig:storage-concurent} este reprezentat un
+exemplu de transfer de date de la o locație de pe Internet în timp de
+utilizatorul folosește aplicația \textit{Calculator}. Discurile sunt cele ce
+stochează efectiv informația. Luăm ca exemplu aplicațiile Google Drive și
+Dropbox: acestea oferă servicii de stocare a informațiilor pentru utilizatori.
+Pentru a implementa facilitățile de stocare și partajare a datelor, aceste
+aplicații folosesc sisteme de stocare. În secțiunea următoare vom descrie și vom
+realiza o clasificare a discurilor.
 
-Fig. X. Executarea concomitentă a transferului de date și a unei aplicații
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=15cm]{chapters/10-storage/img/concurent-img.png}
+	\caption{Executarea concomitentă a transferului de date și a unei aplicații}
+	\label{fig:storage-concurent}
+\end{figure}
 
 \section{Tipuri de discuri}
 \label{sec:storage-tipuri}
@@ -87,7 +99,7 @@ stocare au următoarele atribute principale:
 
 HDD-ul prin construcție dispune de părți mobile în interiorul acestuia: un braț
 de citire/scriere si unul sau mai multe platane pe care se stochează datele
-(vezi Fig. X). Astfel HDD-ul este predispus defectării atunci când acesta
+(vezi \labelindexref{Figura}{fig:storage-hdd}). Astfel HDD-ul este predispus defectării atunci când acesta
 funcționează și este supus unor anumite șocuri mecanice. De asemenea șocurile
 mecanice sunt problematice și atunci când HDD-ul nu funcționează (platanele nu
 se rotesc, iar capul de citire/scriere nu se mișcă). Modelul constructiv al
@@ -104,7 +116,15 @@ interfețe de conectare:
 		Serial Attached Small Computer System Interface)
 \end{itemize}
 
-Fig. X. HDD
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=8cm]{chapters/10-storage/img/hdd-img.png}
+	\caption{HDD\protect\footnotemark}
+	\label{fig:storage-hdd}
+\end{figure}
+
+\footnotetext{\url{https://commons.wikimedia.org/wiki/File:Hard_Drive_(11644419853).jpg}
+\textbf{CC BY 2.0}}
 
 În funcție de aceste interfețe se clasifică și discurile. Ambele interfețe se
 interconectează cu controller-ul în general la o viteză de 6Gbps. Discurile cu
@@ -118,10 +138,28 @@ pe viteza de funcționare. Din cauza prețului foarte ridicat al discurilor SAS,
 acestea se folosesc în servere și sisteme de tip enterprise, iar discurile SATA
 se folosesc în calculatoarele personale.
 
-În Fig. X sunt reprezentate cele 2 tipuri de interfețe: în stânga sunt interfețe
-de tip SATA, iar în dreapta de tip SAS.
+În \labelindexref{Figura}{fig:storage-sas-sata} sunt reprezentate cele 2 tipuri
+de interfețe: în stânga sunt interfețe de tip SATA, iar în dreapta de tip SAS.
 
-Fig. X. SATA vs SAS; 2.5 vs 3.5
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=8cm]{chapters/10-storage/img/sas-sata-img.png}
+	\caption{SATA vs SAS\protect\footnotemark}
+	\label{fig:storage-sas-sata}
+\end{figure}
+
+\footnotetext{\url{https://commons.wikimedia.org/wiki/File:SASvsSATA_Connector.JPG}
+\textbf{CC BY SA 3.0}}
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=8cm]{chapters/10-storage/img/size-comp-img.png}
+	\caption{2.5" vs 3.5"\protect\footnotemark}
+	\label{fig:storage-size-comp}
+\end{figure}
+
+\footnotetext{\url{https://commons.wikimedia.org/wiki/File:Comparison_of_3.5_and_2.5_inch_hard_drives.jpg}
+\textbf{CC BY SA 3.0}}
 
 O altă clasificare a discurilor este legată de mărimea fizică a acestora:
 
@@ -235,9 +273,16 @@ discul rămas liber și va fi marcată ca partiție extinsă. În cadrul partiț
 extinse se pot crea oricâte partiții logice se dorește. Acest lucru îngreunează
 schema de partiționare, iar unele sisteme de operare nu pot porni folosind
 aceste partiții. Nu se recomandă folosirea acestor partiții, ca partiții de
-bootare. Întreaga schemă de partiționare a MBR este descrisă și în Fig. X.
+bootare. Întreaga schemă de partiționare a MBR este descrisă și în
+\labelindexref{Figura}{fig:storage-mbr-struct}.
 
-Fig. X. Schema de partiționare a MBR
+\begin{figure}[htbp]
+	\centering
+	\def\svgwidth{\columnwidth}
+	\includesvg{chapters/10-storage/img/mbr-struct.svg}
+	\caption{Schema de partiționare a MBR}
+	\label{fig:storage-mbr-struct}
+\end{figure}
 
 MBR-ul a început să fie înlocuit de către GPT din cauza limitărilor acestuia,
 cum ar fi:
@@ -258,18 +303,24 @@ BIOS-ul în sistemele de calcul. BIOS-ul și UEFI-ul sunt programe low-level car
 se execută la pornirea sistemelor de calcul pentru a realiza testarea și
 inițializarea componentelor. UEFI-ul este un nou standard, menit să înlocuiască
 BIOS-ul pentru a acoperi neajunsurile acestuia (mai multe detalii sunt
-prezentate în \labelindexref{capitolul}{chapter:boot}. Pornirea sistemului).
+prezentate în \labelindexref{Capitolul}{chapter:boot}. Pornirea sistemului).
 
-În Fig. X este reprezentată schema de partiționare a GPT-ului. Se observă
-asemănarea cu partiționarea de tip MBR: la începutul discului există MBR-ul.
-După MBR se află header-ul GPT ce descrie partițiile (maxim 128). MBR-ul și
-header-ul sunt duplicate și la finalul discului: în caz de corupere a primelor
-sectoare să nu pierdem detaliile despre schema de partiționare. În cazul GPT nu
-mai avem limitarea la 2TB a unei partiții și nici limitarea la 4 partiții
-primare (din cauza numărului ridicat disponibil de partiții nu mai există
-noțiunea de partiții logice).
+În \labelindexref{Figura}{fig:storage-gpt-struct} este reprezentată schema de
+partiționare a GPT-ului. Se observă asemănarea cu partiționarea de tip MBR: la
+începutul discului există MBR-ul.  După MBR se află header-ul GPT ce descrie
+partițiile (maxim 128). MBR-ul și header-ul sunt duplicate și la finalul
+discului: în caz de corupere a primelor sectoare să nu pierdem detaliile despre
+schema de partiționare. În cazul GPT nu mai avem limitarea la 2TB a unei
+partiții și nici limitarea la 4 partiții primare (din cauza numărului ridicat
+disponibil de partiții nu mai există noțiunea de partiții logice).
 
-Fig. X. Schema de partiționare GPT
+\begin{figure}[htbp]
+	\centering
+	\def\svgwidth{\columnwidth}
+	\includesvg{chapters/10-storage/img/gpt-struct.svg}
+	\caption{Schema de partiționare a GPT}
+	\label{fig:storage-gpt-struct}
+\end{figure}
 
 Pentru a utiliza spațiul de stocare eficient, există recomandări din partea
 vendorilor sistemelor de operare. Bunele practici în partiționarea unui disc
@@ -315,9 +366,15 @@ se instalează un sistem de fișiere. Procesul de instalare/alocare a unui siste
 de fișiere pe o partiție se numește formatare. O partiție fără un sistem de
 fișiere nu poate fi utilizată/explorată de către utilizatorul final. De exemplu,
 pe Windows, un disc USB neformatat nu va putea fi accesat cu dublu-click și va
-apărea un mesaj către utilizator dacă acceptă formatarea lui (vezi Fig. X.)
+apărea un mesaj către utilizator dacă acceptă formatarea lui (vezi
+\labelindexref{Figura}{fig:storage-format-disk})
 
-Fig. X. Fereastră privind formatarea unui disc pe Windows
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=8cm]{chapters/10-storage/img/format-disk-img.png}
+	\caption{Fereastră privind formatarea unui disc pe Windows}
+	\label{fig:storage-format-disk}
+\end{figure}
 
 Sistemul de fișiere oferă următoarele obiecte vizibile utilizatorului final:
 
@@ -349,12 +406,17 @@ greșeala frecventă este aplicarea procesului de formatare pe între discul (ex
 acel disc. Un exemplu complet de folosire a utilitarelor de formatare și
 partiționare îl puteți găsi la finalul capitolului, la studii de caz.
 
-Fig. X. Formatarea unei partiții pe Windows
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=8cm]{chapters/10-storage/img/format-part-img.png}
+	\caption{Formatarea unei partiții pe Windows}
+	\label{fig:storage-format-part}
+\end{figure}
 
 Pe Windows pentru a formata (instala) un sistem de fișiere pe o partiție, se
 face click dreapta pe litera aferentă partiției și există opțiunea Format: de
 aici se poate selecta tipul sistemului de fișiere și diverse caracteristici de
-formatare (vezi Fig. X.).
+formatare (vezi \labelindexref{Figura}{fig:storage-format-part}).
 
 Pentru a putea folosi un sistem de fișiere, acesta trebuie făcut disponibil
 utilizatorului. Procesul prin care acest este disponibil pentru citire/scriere
@@ -397,7 +459,12 @@ Pe sisteme Windows montarea se realizează în general automat de către sistemu
 de operare. Dacă se doresc operații avansate, acestea pot fi făcute tot din
 \textit{Disk Management} (Start -> Run -> diskmgmt.msc; vezi Fig. X):
 
-Fig. X. Administrarea spațiului de stocare pe Windows.
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=8cm]{chapters/10-storage/img/admin-img.png}
+	\caption{Administrarea spațiului de stocare pe Windows}
+	\label{fig:storage-admin}
+\end{figure}
 
 Anterior, s-a menționat faptul că sistemele de fișiere sunt specifice sistemului
 de operare. La nevoie, aceste sisteme de fișiere se pot monta pe alt sistem de
@@ -904,7 +971,8 @@ controla opțiunile și versiunile replicate. La baza BackupPC stă tot utilitar
 datelor, atât plătite cât și gratuite. Un exemplu îl constituie utilitarul
 \textit{Cobian Backup} (http://www.cobiansoft.com/cobianbackup.htm). Cu ajutorul
 acestuia putem configura replicarea unui directorul sau a unui disc local pe un
-stick USB sau la distanță peste rețea. În Fig. X. se află fereastra principală a
+stick USB sau la distanță peste rețea. În
+\labelindexref{Figura}{fig:storage-cobian} se află fereastra principală a
 aplicației. În coloana din stânga sunt sarcinile de backup pe care le creați. În
 figură avem o sarcină denumită \textit{Backup D}, care va face replicarea
 întregii partiții D. Printre proprietățile sarcinii de replicare avem:
@@ -917,7 +985,12 @@ figură avem o sarcină denumită \textit{Backup D}, care va face replicarea
 	\item Archive - dacă datele vor fi arhivate înainte de replicare
 \end{itemize}
 
-Fig. X. Aplicația pentru replicarea datelor pe Windows: Cobian Backup
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=8cm]{chapters/10-storage/img/cobian-img.png}
+	\caption{Aplicația pentru replicarea datelor pe Windows: Cobian Backup}
+	\label{fig:storage-cobian}
+\end{figure}
 
 \section{Anexă: Montarea dispozitivelor}
 \label{sec:storage-mount}
@@ -1270,10 +1343,16 @@ lrwxrwxrwx 1 root root 7 Aug  9 07:18 /dev/mapper/storage-titan -> ../dm-4
 
 \end{itemize}
 
-În Fig. X este reprezentat grafic incluziunea dintre Physical Volume, Volume
-Group și Logical Volume.
+În \labelindexref{Figura}{fig:lvm-struct} este reprezentat grafic incluziunea
+dintre Physical Volume, Volume Group și Logical Volume.
 
-Fig. X. Componentele LVM
+\begin{figure}[htbp]
+	\centering
+	\def\svgwidth{\columnwidth}
+	\includesvg{chapters/10-storage/img/lvm-struct.svg}
+	\caption{Componentele LVM}
+	\label{fig:lvm-struct}
+\end{figure}
 
 \section{Anexă: Replicarea datelor}
 \label{sec:storage-replicare}
@@ -1316,12 +1395,18 @@ RAID-ul dispune de mai multe niveluri de protecție:
 		de protecție și performanță crescută
 \end{itemize}
 
-În Fig.X sunt reprezentate grafic modurile de funcționare RAID prezentate mai
-sus. Pe lângă acestea mai există și RAID6,, care este asemănător RAID5, dar are
-două discuri pe care se reține paritatea. Așadar pot pica 2 discuri la un moment
-dat, iar datele sunt disponibile în continuare.
+În \labelindexref{Figura}{fig:raid-types} sunt reprezentate grafic modurile de
+funcționare RAID prezentate mai sus. Pe lângă acestea mai există și RAID6, care
+este asemănător RAID5, dar are două discuri pe care se reține paritatea. Așadar
+pot pica 2 discuri la un moment dat, iar datele sunt disponibile în continuare.
 
-Fig. X. Niveluri RAID
+\begin{figure}[htbp]
+	\centering
+	\def\svgwidth{\columnwidth}
+	\includesvg{chapters/10-storage/img/raid-types.svg}
+	\caption{Niveluri RAID}
+	\label{fig:raid-types}
+\end{figure}
 
 În sistemele bazate pe Linux, RAID-ul software este implementat prin modulul MD
 (Multiple Device). Cu ajutorul acestuia se pot configura două sau mai multe
