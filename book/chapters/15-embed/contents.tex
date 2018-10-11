@@ -439,8 +439,13 @@ avem un semnal discret, el poate lua doar anumite valori. De exemplu, dacă
 semnalul nostru poate lua doar valorile {1; 0} (pornit / oprit) sau poate lua
 doar valorile {2; 3; 4; 5; 100}, el este digital.
 
-Figura xxx. - Semnal analogic vs. semnal digital (TODO: poza e de pe Internet,
-ar trebui redesenată)
+\begin{figure}[htbp]
+	\centering
+	\def\svgwidth{\columnwidth}
+	\includesvg{chapters/15-embed/img/analog-digiat.svg}
+	\caption{Semnal analogic vs. semnal digital}
+	\label{fig:embed-analog-digital}
+\end{figure}
 
 Cum am precizat mai sus, dispozitivele încorporate, cum ar fi Raspberry Pi sau
 Arduino, expun pini la care aceste sisteme de intrare/ieșire se pot conecta. În
@@ -464,12 +469,18 @@ Un LED este o componentă electronică (o diodă) care generează lumină când 
 străbătută de curent. Deci, pentru a face un LED să lumineze, e suficient să îl
 conectăm la o baterie.
 
-În figura XXX avem un LED conectat la pinii unui Raspberry Pi. Unul din pini
-este conectat la ground (borna negativă a bateriei) iar celălalt este conectat
-la un pin GPIO. Dacă scriem valoarea 1 pe pin, acesta va genera un voltaj și
-LED-ul va începe să lumineze. Dacă scriem valoarea 0 pe pin, acesta va fi
-practic conectat la două borne negative, deci nu va lumina. Jonglând cu aceste
-două stări putem face diverse jocuri de lumini.
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=8cm]{chapters/15-embed/img/raspberry-img.png}
+	\label{fig:embed-raspberry}
+\end{figure}
+
+În \labelindexref{Figura}{fig:embed-raspberry} avem un LED conectat la pinii
+unui Raspberry Pi. Unul din pini este conectat la ground (borna negativă a
+bateriei) iar celălalt este conectat la un pin GPIO. Dacă scriem valoarea 1 pe
+pin, acesta va genera un voltaj și LED-ul va începe să lumineze. Dacă scriem
+valoarea 0 pe pin, acesta va fi practic conectat la două borne negative, deci nu
+va lumina. Jonglând cu aceste două stări putem face diverse jocuri de lumini.
 
 Pe de altă parte, putem folosi un pin digital ca intrare. În acest caz el se
 comportă ca un voltmetru, care măsoară diferența de potențial relativ la
@@ -529,7 +540,13 @@ percepe ca un LED ce luminează la o anumită intensitate. În funcție de rapor
 între perioada în care LED-ul este aprins versus perioada de timp în care el
 este stins, lumina va fi percepută la o intensitate mai mare sau mai joasă.
 
-Figura XXX- PWM (TODO: posa este de pe Internet, ar trebui redesenată)
+\begin{figure}[htbp]
+	\centering
+	\def\svgwidth{\columnwidth}
+	\includesvg{chapters/15-embed/img/pwm.svg}
+	\caption{PWM}
+	\label{fig:embed-pwm}
+\end{figure}
 
 Acești pini pot fi folosiți pentru a controla LED-uri sau chiar motoare.
 
@@ -575,8 +592,13 @@ dispozitiv trimite date pe TX și primește date pe linia RX. Astfel, când
 conectăm două dispozitive, linia RX a unuia se va conecta la linia TX a
 celuilalt și invers.
 
-Fig. xxx - Conexiune serială
-(https://cdn.sparkfun.com/assets/2/5/c/4/5/50e1ce8bce395fb62b000000.png)
+\begin{figure}[htbp]
+	\centering
+	\def\svgwidth{\columnwidth}
+	\includesvg{chapters/15-embed/img/serial.svg}
+	\caption{Conexiune serială}
+	\label{fig:embed-serial}
+\end{figure}
 
 Pentru a se asigura un transfer corect de date, protocolul serial se bazează pe
 următoarele elemente:
