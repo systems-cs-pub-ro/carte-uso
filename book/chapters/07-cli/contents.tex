@@ -1,101 +1,1151 @@
 \chapter{Interfața în linia de comandă}
 \label{chapter:cli}
+%
+%\section{Shell-ul. Funcționarea shell-ului}
+%\label{sec:cli-shell}
+%
+%\subsection{Interacțiunea cu shell-ul}
+%\label{sec:cli-shell-interact}
+%
+%\subsection{Facilități shell}
+%\label{sec:cli-shell-characteristics}
+%
+%\subsubsection{Completarea comenzilor}
+%\label{sec:cli-completion}
+%
+%\subsubsection{Istoricul de comenzi}
+%\label{sec:cli-history}
+%
+%\subsubsection{Editarea comenzilor}
+%\label{sec:cli-editing}
+%
+%\subsubsection{Biblioteca Readline}
+%\label{sec:cli-readline}
+%
+%\subsection{Funcționarea shell-ului}
+%\label{sec:cli-shell-func}
+%
+%\subsubsection{Variabila de mediu PATH}
+%\label{sec:cli-path}
+%
+%\subsubsection{Crearea unui proces nou}
+%\label{sec:cli-new-process}
+%
+%\section{Funcționalități shell}
+%\label{sec:cli-shell-func}
+%
+%\subsection{Operatori shell}
+%\label{sec:cli-operators}
+%
+%\subsection{Subshell}
+%\label{sec:cli-subshell}
+%
+%\subsection{Variabile shell}
+%\label{sec:cli-shell-variable}
+%
+%\subsection{Expandări}
+%\label{sec:cli-expansion}
+%
+%\subsubsection{Globbing}
+%\label{sec:cli-globbing}
+%
+%\subsubsection{Expandarea comenzilor}
+%\label{sec:cli-comm-expansion}
+%
+%\subsection{Escaping}
+%\label{sec:cli-escaping}
+%
+%\section{Pornirea și personalizarea shell-ului}
+%\label{sec:cli-customize-shell}
+%
+%\subsection{Configurarea la pornire a shell-ului}
+%\label{sec:cli-shell-startup}
+%
+%\subsection{Personalizarea promptului}
+%\label{sec:cli-prompt}
+%
+%\subsection{Multiplexoare de terminal}
+%\label{sec:cli-tmux}
+%
+%\section{Expresii regulate}
+%\label{sec:cli-regex}
+%
+%\section{Prelucrare de text de bază: filtre de text și one linere}
+%\label{sec:cli-basic-proc}
+%
+%\subsection{Generatoare de text}
+%\label{sec:cli-text-gen}
+%
+%\subsection{Prelucratoare de text}
+%\label{sec:cli-text-proc}
+%
+%\subsection{One linere}
+%\label{sec:cli-one-liners}
+%
+%\section{Utilitare avansate}
+%\label{sec:cli-advanced-utils}
+%
+%\subsection{find, xargs}
+%\label{sec:cli-find-xargs}
+%
+%\subsection{sed}
+%\label{sec:cli-sed}
+%
+%\subsection{awk}
+%\label{sec:cli-awk}
+%
+%\section{Anexă: Folosirea variabilelor de mediu în C}
+%\label{sec:cli-c-env-vars}
+%
+%\section{Sumar}
+%\label{sec:cli-summary}
+
+O aplicație sau un sistem oferă uzual o interfață de interacțiune cu
+utilizatorul.
+
+Sunt aplicații/programe batch neinteractive care nu oferă interfețe, rulează în
+background.
+
+Cele interactive oferă o interfață care poate fi GUI, WebUI, TUI, CLI. Cele GUI
+sunt accesibile, cele CLI sunt universale și oferă acces rapid la
+funcționalitățile sistemului.
+
+Un utilizator tehnic va ști de ambele tipuri de interfețe, care sunt plusurile
+acestora și când să le folosească. Va urmări eficiența operațiilor și va folosi
+interfețe CLI pentru a ajunge cât mai rapid la rezultat.
+
+Interfețele GUI și WebUI sunt intuitive, atractive și accesibile. Sunt folosite
+pe toate mediile mobile și în cele mai multe medii desktop. Elementele GUI,
+descrise în capitolul 1. Interfața cu utilizatorul: componente grafice, mouse,
+touchscreen.
+
+* screenshot cu exemplu desktop, exemplu mobile, exemplu dintr-un joc
+
+Interfețele CLI sunt simple, eficiente și cu facilități complexe. Sunt folosite
+în medii specializate, în servere și în medii desktop pentru utilizatori cu
+profil tehnic.
+
+Exemple de CLI: shell-ul Linux, PowerShell, python shell, game consoles,
+MATLAB/Octave, AutoCAD
+
+* screenshot cu terminal virtual Linux, exemplu shell Octave, exemplu consolă dintr-un joc
+
+Avantaje/dezavantaje CLI vs GUI
+
+* tabel cu criteriu și nivel de satisfacere CLI și GUI
+
+Cel mai cunoscut tip de interfață CLI este shell-ul care însă nu se referă doar la CLI după cum vom prezenta în continuare.
 
 \section{Shell-ul. Funcționarea shell-ului}
 \label{sec:cli-shell}
 
+Numim shell interfața oferită utilizatorului pentru a interacționa cu sistemul
+de operare.
+
+* diagramă cu kernel și shell-ul și utilizatorul[a]
+
+Putem spune că și o aplicație are un shell care să ajungă la serviciile oferite
+de aceasta: Python shell, dar ne vom referi la shell ca fiind shell-ul unui
+sistem de operare.
+
+Un shell poate fi GUI sau CLI. GUI pe Linux, Windows, macOS, Android, iOS. Sau
+poate fi CLI: PowerShell, shell-uri Unix.
+
+O acțiune efectuată de un utilizator duce la accesarea unui serviciu al
+sistemului de operare. Apăsarea unui buton, dublu click în GUI sau rularea unor
+comenzi în shell.
+
 \subsection{Interacțiunea cu shell-ul}
 \label{sec:cli-shell-interact}
+
+Funcționarea în linii mari a unui shell CLI: prompt oferit utilizator, rularea
+unei comenzi, interpretarea acelei comenzi și declanșarea unei operații care
+oferă o formă de rezultat (de obicei un rezultat text al rulării comenzii).
+Shell-ul CLI se mai numește intepretor de comenzi.
+
+* diagramă: utilizator -> comandă -> shell (interpretor) -> sistem de operare -> acțiune - > rezultat utilizator[b]
+
+În general la CLI folosim tastatura (input) și ecranul (output). Interacțiune
+shell-ului inputul și outputul sunt gestionate de un terminal.
+
+Referință la secțiunea Terminale din \labelindexref{Capitolul}{chapter:process}.
+Shell-ul este un proces care primește comenzi la intrarea standard, le
+interpretează și apoi afișează rezultatul la ieșirea standard. Atunci când rulăm
+comenzi spunem că le scriem la terminal. Când shell-ul interpretează comenzile
+spunem că rezultatul este afișat la terminal.
+
+Terminalul este un dispozitiv care este canalul de comunicare între shell și
+utilizator. Terminalul controlează intrarea și ieșirea unui shell. În general,
+fiecare shell are un terminal.
 
 \subsection{Facilități shell}
 \label{sec:cli-shell-characteristics}
 
+În folosirea shell-ului un utilizator urmărește eficiență și eficacitate. Să
+rezolve sarcina pe care o are de făcut și să facă acest lucru cât mai repede.
+Eficacitatea este atinsă având acces la comenzile adecvate și la parametrii
+corespunzători. Dacă o comandă nu există, un pachet poate fi instalat pentru a
+oferi acea comandă și pentru a extinde plaja de acțiune a shell-ului.
+
+Pentru eficiență utilizatorul trebuie să tasteze cât mai rapid comenzi. Acest
+lucru poate presupune două tipuri de acțiuni: generarea rapidă a comenzii sau
+editarea rapidă a unei comenzi, modificarea ei.
+
+Pentru generarea rapidă a unei comenzi shell-ul oferă facilitățile de completion
+și history search.
+
 \subsubsection{Completarea comenzilor}
 \label{sec:cli-completion}
+
+Completarea comenzilor, numită și completion sau command-line completion permite
+completare (expandare) automată a unei comenzi sau a unui argument fără a fi
+nevoie de tastarea acesteia în totalitate. Acest lucru se întâmplă folosind
+tasta <TAB>.
+
+* exemplu de completare comandă
+* exemplu de completare argument
+
+Dacă sunt mai multe posibilități. La apăsarea de două ori a tastei TAB se
+afișează posibilitățile de atunci. În mod uzual se mai scrie o secvență
+neambiguă și apoi se apasă iar TAB. În felul acesta scriem foarte repede
+comenzile, este o facilitate esențială în folosirea shell-ului.
+
+* exemplu cu TAB TAB
 
 \subsubsection{Istoricul de comenzi}
 \label{sec:cli-history}
 
+Shell-ul menține un istoric de comenzi. Acest lucru e util pentru un utilizator
+care dorește să refolosească o comandă anterioară.
+
+* afișarea history (command history)
+
+Cel mai direct mod de folosirea a istoricului de comenzi este prin intermediul
+tastelor săgeată care parcurg comenzile. Alternativ putem folosi Ctrl+p sau
+Ctrl+n (din Emacs) pentru a ajunge la comanda anterioară sau cea ulterioară.
+
+Dacă vrem să refolosim comanda anterioară avem construcția !!. Aceasta e utilă
+în special când vrem să folosim comanda anterioară împreună cu altă comandă. De
+exemplu dacă am rulat o comandă fără sudo:
+
+* exemplu
+
+sau dacă vrem să folosim comanda anterioară într-o construcție shell
+
+* exemplu cu which ls urmată de dpkg -S \$(!!)
+
+Mai general putem folosi !-3 sau !-2 ca să accesăm comenzi rulate în istoric.
+
+Mai adesea însă folosim funcționalitatea de căutare înapoi (reverse search) în
+istoricul unei comenzi. Atunci căutăm o comandă anterioară, prezentă la un
+moment dat în istoric, pe care o putem rula din nou sau edita pentru o nouă
+rulare.
+
+Ca să folosim căutarea înapoi în istoric, tastăm Ctrl+r. În acel moment se
+schimbă promptul shell-ului și putem introduce un string:
+
+* exemplu cu prompt de string
+
+În momentul introducerii șirului, pe măsură ce tastăm, shell-ul va face căutare
+înapoi și va face match pe acele comenzi care corespund. Putem să și ștergem din
+șir dacă dorim. Nu se face match pe începutul comenzii ci pe orice subșir din
+comandă. Dacă mai multe comenzi fac match, putem apăsa în continuare Ctrl+r
+pentru a găsi match-ul rămas.
+
+Apoi dacă apăsăm pe taste precum săgeți sau combinații de taste pentru editare
+se revine în modul normal de lucru, se părăsește modul de căutare înapoi.
+
+* exemplu de căutare înapoi
+
+Facilitatea de căutare înapoi este, din nou, esențială pentru folosirea
+eficientă a shell-ului. Împreună cu command-line completion sunt facilități
+indispensabile unui utilizator productiv în shell.
+
 \subsubsection{Editarea comenzilor}
 \label{sec:cli-editing}
+
+După ce am generat în shell o comandă (folosindu-ne și de facilități de
+command-line completion) sau după ce am regăsit o comandă în istoricul
+shell-ului, de multe ori va trebui să o modificăm. Poate un parametru este
+greșit, poate vrem să schimbăm comanda dar să păstrăm parametru, poate am avem
+un cuvânt sau o parte a unei căi în plus.
+
+În mod simplist, editarea unei comenzi se face parcurgând comanda cu tastele
+săgeți (stânga și dreapta) și folosind tastele Backspace și Delete. Anumite
+deplăsari mai rapide în cadrul comenzii se pot face folosind tastele Home și
+End.
+
+O formă mai bună de editare este folosind combinațiile de taste furnizate de
+shell. Aceste combinații de taste au două avantaje:
+
+\begin{enumerate}
+	\item Nu îndepărtează degetele de pe tastele comune, așa cum le
+		îndepărtăm când folosim taste săgeți, Home, End.
+	\item Permit editări mai rapide și mai complexe ale comenzii.
+\end{enumerate}
+
+\paragraph{Despre Ctrl+c}
+
+Mai jos prezentăm cele mai comune astfel de combinații de taste și efectul lor:
+
+* Tabel cu capul de tabel “combinație de taste” și “efect”
+
+\paragraph{Despre Alt+.}
+
+Aceste combinații de taste sunt împrumutate din editorul Emacs. Mai mult,
+inclusiv tastele Ctrl+r (pentru căutare în istoric), Ctrl+p (comanda anterioară)
+și Ctrl+n (comanda anterioară) sunt împrumutate tot din editorul Emacs[1].
+
+Recomandăm folosirea acestor combinații de taste cât mai mult pentru editarea
+comenzilor. Ajută la creșterea eficienței utilizării shell-ului și concentrarea
+timpului și efortului pe rezolvarea sarcinii propuse.
 
 \subsubsection{Biblioteca Readline}
 \label{sec:cli-readline}
 
+Editarea comenzilor în shell cu ajutorul combinațiilor de taste de mai sus este
+disponibilă și în alte interfețe în linia de comandă precum Python shell sau
+MySQL shell sau SQlite shell sau altceva. De exemplu, mai jos, pornim un shell
+SQlite și folosim facilitatea de reverse search:
+
+* Exemplu cu SQlite și reverse search
+
+La fel în cazul Python shell:
+
+* Exemplu cu Python shell și reverse search
+
+Toate combinațiile de taste prezentate în tabelul TODO sunt prezente și în
+aceste interfețe.
+
+Acest lucru se întâmplă pentru că funcționalitatea de editare de comenzi este
+oferită de biblioteca Readline[2], bibliotecă la care sunt legate majoritatea
+shell-urilor și a interfețelor în linia de comandă.
+
+Facilitățile Readline sunt apelate de shell pentru prelucrarea intrării de la
+utilizator, adică a comenzilor și parametrilor ei. Biblioteca permite asocierea
+între comenzi Readline și o combinație de taste. De exemplu: beginning-of-line
+(C-a) înseamnă că pentru a ajunge la începutul liniei, vom tasta Ctrl+a.
+
+O listă exhaustivă a comenzilor Readline și a combinației de taste (numită
+keybinding) găsiți în documentația bibliotecii Readline (online sau pagina de
+manual) sau a shell-ului Bash (online sau pagina de manual). Pentru accesarea
+paginilor de manual folosiți comenzile de mai jos:
+
+Man 3 readline
+
+Man bash
+
+În cazul comenzii “man bash” căutați în pagina de manual după șirul READLINE. În
+documentație aveți listate comenzile și combinațiile de taste uzuale și moduri
+prin care puteți să modificați combinațiile și să configurați biblioteca
+Readline.
+
 \subsection{Funcționarea shell-ului}
 \label{sec:cli-shell-func}
+
+Shell-ul primește un șir de la utilizator pe care îl interpretează ca fiind o
+comandă și argumentele acesteia. Separatorul este spațiu.
+
+O dată obținută comanda, shell-ul va trebui să execute acțiunea aferentă acelei
+comenzi. Pentru acesta, în mod uzual, se găsește un fișier executabil aferent
+comenzii și se creează un proces din acel fișier. De exemplu, pentru comanda ls
+fișierul executabil este /bin/ls, pentru comanda sudo, fișierul executabil este
+/usr/bin/sudo.
+
+Pentru localizarea fișierului executabil aferent unei comenzi, shell-ul se
+folosește de variabila de mediu PATH.
 
 \subsubsection{Variabila de mediu PATH}
 \label{sec:cli-path}
 
+Despre variabile de mediu vom discuta detaliat în secțiunea TODO. Pe moment e
+suficient sa știm că o variabilă are un nume și o valoare.
+
+Variabila de mediu PATH are o valoare de forma de mai jos:
+
+\begin{itemize}
+	\item Echo \$PATH
+	\item TODO
+\end{itemize}
+
+Folosim comanda echo și prefixăm numele variabilei cu simbolul \$ (dolar) pentru
+a afișa valoarea/conținutul variabilei.
+
+Variabila PATH conține directoarele în care sunt căutate fișiere executabile
+pentru o comandă, separate prin : (două puncte). Shell-ul va prefixa numele
+comenzii cu numele fiecărui director din variabila PATH și va verifica existența
+unui fișier cu acel nume. Dacă există, va crea un executabil din acel
+executabil, altfel trece la următorul director. Astfel, în cazul comenzii ls,
+dacă valoarea variabilei PATH e cea din exemplu de mai sus, se caută, pe rând
+existența fișierelor executabile /usr/bin/ls, /usr/sbin/ls ...
+
+Dacă nu găsește nici un fișier executabil, se afișează mesaj de eroare
+
+* Exemplu erorare command not found
+
+O dată identificat fișierul executabil aferent comenzii, shell creează un proces
+din acel executabil.
+
+Dacă se transmite comanda prin cale (absolută sau relativă) nu se mai caută în
+PATH.
+
+Directorul curent este absent diin PATH, de aceea trebuie să rulăm explicit un
+executabil ./nume_executabil.
+
+Pentru a afla fără a rula care este fișierul executabil aferente unei comenzi
+folosim comanda which:
+
+* exemple cu which
+
 \subsubsection{Crearea unui proces nou}
 \label{sec:cli-new-process}
+
+Așa cum am precizat în \labelindexref{Secțiunea}{process-operatii}.
+Interacțiunea între procese, un proces nou este creat prin intermediul unui alt
+proces, de obicei shell-ul. Shell-ul este procesul care pornește de la o
+comandă, identifică fișierul executabil aferent acelei comenzi din variabila
+PATH și apoi creează un proces din acel executabil.
+
+Procesul este creat printr-un API intern al sistemului de operare, care în Linux
+este dat de două funcții: fork() și exec(). Fork() este un apel care creează un
+proces copil identic procesului părinte (o clonă a acestuia) iar exec() este
+apelul care modifică imaginea procesului copil cu cea din executabilul primit ca
+parametru.
+
+Astfel când shell-ul primește comanda ls și identifică executabilul /bin/ls, va
+crea un proces copil identic (tot shell) folosind fork() și apoi va înlocui
+imagina de executabil cu /bin/ls folosind exec așa cum este indicat în imagina
+de mai jos:
+
+* Diagramă cu shell + fork() + exec()[c]
+
+Procesul nou creat are ca proces părinte shell-ul. De exemplu, dacă într-un
+shell rulăm comanda sleep 100 care nu face nimic timp de 100 de secunde, iar în
+alt shell afișam informații despre procesul creat din această comandă, vedem că
+procesul părinte aferent este chiar shell-ul:
+
+* Exemplu cu sleep 100 și afișarea procesului părinte
+
+În momentul în care procesul copil este creat, shell-ul se blochează așteptând
+încheierea procesului. După ce procesul se încheie, shell-ul se deblochează. În
+acest moment shell-ul reține codul de ieșire (exit code) al procesului creat.
+Acest cod poate fi afișat cu ajutorul construcției \$?
+
+După ce shell-ul creează un proces copil, shell-ul se blochează așteptând ca
+acesta să își încheie execuția. În acest timp informațiile transmise la terminal
+la intrarea standard sunt fie citite de procesul nou fie sunt ținute într-un
+buffer al terminalului. De exemplu, dacă rulăm comanda sleep 5 și tastăm rapid
+informații, acele informații vor fi transmise shell-ului după încheierea
+procesului creat din comanda sleep 5.
+
+Dacă dorim ca shell-ul să nu aștepte încheierea procesului nou creat, atunci
+rulăm comanda în background cu ajutorul operatorului \&, așa cum am arătat în
+\labelindexref{Secțiunea}{sec:process-ierarhie-foreground-background}.
+
+\subsection{Comenzi interne și comenzi externe}
+\label{sec:cli-internal-cmds}
+
+Am precizat că atunci când rulăm o comandă, shell-ul identifică un fișier
+executabil aferent acelei comenzi. Numim aceste comenzi comenzi externe,
+întrucât executabilul aferent lor este separat de shell.
+
+Din rațiuni de viteză și pentru că nu ar fi posibil altfel, unele comenzi sunt
+implementate la nivelul shell-ului. Adică rularea acelei comenzi nu conduce la
+crearea unui proces nou dintr-un executabil ci duce la rularea unei componente
+de program din procesul shell curent. Aceste comenzi sunt numite comenzi interne
+sau shell builtins.
+
+Comenzile interne sunt obligatorii pentru anumite funcționalități. De exemplu
+comanda exit este comandă internă. Dacă ar fi comandă externă, s-ar crea un
+proces nou obținut din executabilul exit care și-ar încheia execuția, fără a
+afecta shell-ul. La fel, comand cd este comandă internă ca să schimbe directorul
+curent aferent shell-ului. Dacă ar fi comandă externă, atunci s-ar crea un
+proces nou din executabilul cd care ar schimba directorul și și-ar încheia
+execuția, fără a afecta însă shell-ul.
+
+Comenzile interne sunt folosite și din rațiuni de eficiență. Crearea unui proces
+nou înseamnă un cost de timp (overhead) la nivelul shell-ului.
+
+Cu toate acestea comenzile externe sunt prevalente pentru modularitate: o nouă
+funcționalitate este adăugată prin adăugarea unui nou fișier executabil, fără a
+fi nevoie de modificarea shell-ului, cum ar fi cazul comenzilor interne.
+
+În tabelul de mai jos sumarizăm diferențele între comenzi interne și comenzi
+externe
+
+* Tabel cu “criteriu, comanzi interne, comenzi externe”
+
+Pentru a identifica rapid tipul unei comenzi, se poate folosi comanda which
+pentru a vedea dacă pentru o comandă are un fișier executabil. Mai robust de
+folosit este însă comanda type, așa cum este folosită mai jos
+
+\begin{screen}
+razvan@einherjar:~/.../current/examene/2018-septembrie\$ type echo
+echo is a shell builtin
+razvan@einherjar:~/.../current/examene/2018-septembrie\$ type exit
+exit is a shell builtin
+razvan@einherjar:~/.../current/examene/2018-septembrie\$ type ls
+ls is aliased to 'ls --color=auto --group-directories-first'
+razvan@einherjar:~/.../current/examene/2018-septembrie\$ type ps
+ps is hashed (/bin/ps)
+razvan@einherjar:~/.../current/examene/2018-septembrie\$ type df
+df is /bin/df
+razvan@einherjar:~/.../current/examene/2018-septembrie\$ type less
+less is /usr/bin/less
+razvan@einherjar:~/.../current/examene/2018-septembrie\$ type man
+man is hashed (/usr/bin/man)
+razvan@einherjar:~/.../current/examene/2018-septembrie\$ type pwd
+pwd is a shell builtin
+razvan@einherjar:~/.../current/examene/2018-septembrie\$ type cd
+cd is a shell builtin
+razvan@einherjar:~/.../current/examene/2018-septembrie\$ type type
+type is a shell builtin
+\end{screen}
+
+Comanda type este, desigur, internă, pentru a putea investiga comenzile interne
+ale shell-ului.
+
+Când un shell rulează, va căuta întâi intern comanda introdusă de utilizator,
+apoi va căuta dacă este o comandă externă cu un corespondent într-un fișier
+executabil localizabil prin intermediul variabilei PATH.
 
 \section{Funcționalități shell}
 \label{sec:cli-shell-func}
 
+La nivel de bază shell-ul permite rularea de comenzi sau rularea de comenzi cu
+parametri/opțiuni. Shell-ul are funcționalități care permit înlănțuirea și
+combinarea mai multor comenzi și configurarea modului în care acestea rulează.
+
+Aceste funcționalități sunt oferite de operatori shell, variabile shell,
+expandări în shell și construcții agregate (globbing). Le discutăm în
+continuare:
+
 \subsection{Operatori shell}
 \label{sec:cli-operators}
+
+Operatorii din shell frecvent folosiți sunt cei de redirectare, prezentați în
+\labelindexref{Capitolul}{chapter:storage} și cei de înlănțuire,
+prezentați în \labelindexref{Capitolul}{chapter:process}.
+
+Operatorii de redirectare sunt >, <, >>, 2>, cu rolurile din tabelul de mai jos:
+
+* Tabel cu operatorul de redirectare
+
+Dacă dorim să redirectăm și ieșirea standard și ieșirea de eroare standard
+atunci folosim operatorul de duplicare 2>\&1 care redirectează ieșirea de eroare
+standard (2) în ieșirea standard (1). Astfel în construcția de mai jos, ambele
+tipuri de ieșiri sunt redirectate la fișierul special /dev/null.
+
+Pentru înlănțuirea comenzilor avem operatorii |, ||, \&\& cu rolurile de mai
+jos:
+
+* Tabel cu operatorii de înlănțuire
+
+Atunci când dorim să rulăm un proces în background folosim operatorul \&. Acesta
+va trimite procesul în background. Putem să vedem procesele care se găsesc la un
+moment dat în background folosind comanda jobs. Este o formă de paralelism.
 
 \subsection{Subshell}
 \label{sec:cli-subshell}
 
+Atunci când folosim operatorii shell putem dori să operăm asupra unei compoziții
+de comenzi. De exemplu dorim să reținem output-ul a două comenzi într-un fișier.
+La o rulare precum cea de mai jos nu funcționează:
+
+\begin{screen}
+razvan@einherjar:~/.../current/examene/2018-septembrie\$ ls ; ps > a.out
+An1.xls  An2.xls  An3.xls  An4.xls  An5.xls  An6.xls
+\end{screen}
+
+Doar rezultatul rulării comenzii ps este redirectat. Pentru a redirecta o
+înlănțuire de comenzi folosim un subshell, adică vom crea un proces nou shell
+care va rula cele două comenzi și va transfera rezultatul amândurora în fișier.
+
+Un subshell este creat cu ajutorul parantezelor la fel ca mai jos:
+
+\begin{screen}
+\$ ( ls ; ps ) > a.out
+\end{screen}
+
+Aici ambele comenzi sunt redirectate în fișierul a.out.
+
 \subsection{Variabile shell}
 \label{sec:cli-shell-variable}
+
+Execuția shell-ului poate fi investigată și configurată cu ajutorul variabilelor
+acestuia. Variabilele oferă informații despre configurația shell-ului sau
+afectează execuția acestuia.
+
+O variabilă are un nume și o valoare. Pentru a afișa valoarea unei variabile
+prefixăm numele cu simbolul \$. Așa cum am văzut și mai sus pentru a afișa
+valoarea variabilei PATH folosim construcția:
+
+* Echo \$PATH
+
+Există o serie de parametri speciali ai shell-ului care sunt asemuiți unor
+variabile. Nu pot fi configurați/modificați, doar citiți, prezentați în tabelul
+de mai jos
+
+* Tabel cu parametri shell: \$\$, \$!, \$?
+
+Alți parametri special sunt folosiți în special în shell scripting și vor fi
+prezentați în \labelindexref{Secțiunea}{sec:auto-funct-vars}.
+
+Shell-ul Bash are o serie de variabile predefinite, care au rolul specifice în
+funcționarea shell-ului, indicate în tabelul de mai jos:
+
+* Tabel cu variabile Bash
+
+Pentru a vedea toate variabilele definite la un moment dat într-un shell Bash
+putem folosi comanda:
+
+* declare -p
+
+Pentru a inițializa o variabilă oarecare în shell folosim o construcție de forma
+nume=valoare, la fel ca mai jos:
+
+* Exemplu cu inițializări și afișări de variabile
+
+O variabilă poate fi folosită pentru a porni un program și afectează doar
+rularea acelui program. De exemplu în folosirea clientului Bittorrent în linia
+de comandă transmission-cli, putem folosi:
+
+* TR_DEBUG=1 transmission-cli
+
+* echo \$TR_DEBUG
+
+Vedem că variabila TR_DEBUG este inițializată doar pentru rularea comenzii
+transmission-cli, nu la nivelul shell-ului.
+
+Dacă vrem să anulăm definirea unei variabile folosim comanda unset, ca mai jos:
+
+* exemplu unset
+
+Anumite variabile pot fi variabile de mediu. O variabilă de mediu este o
+variabilă care este moștenită de procesele create din shell. Multe dintre
+variabilele shell-ului indicate în tabelul TODO sunt variabile de mediu. Pentru
+a vedea toate variabilele de mediu definite într-un shell folosim comanda:
+
+* export -p
+
+Pentru a defini o variabilă ca variabilă de mediu folosim comanda export:
+
+* exemple cu export
+
+Dacă dorim ca o variabilă să nu mai fie definitivă va variabilă de mediu (să fie
+neexportată), folosim opțiunea -n la comanda export:
+
+* export -n
+
+În folosirea variabilelor e de avut în vedere ce variabile există deja și care
+este rolul lor. De folosit comanda declare -p.
 
 \subsection{Expandări}
 \label{sec:cli-expansion}
 
+După ce un shell primește comenzile, parametrii și operatorii de la intrare, și
+după ce îi separă, realizează operațiile de expandare. Expandarea este de mai
+multe tipuri, detaliate în documentația Bash, vom indica aici cele mai
+importante forme.
+
+Expandarea de acolade înseamnă trecerea prin mai multe opțiuni. De exemplu:
+
+* Exemplu cu ls {a,b,c}.tex
+
+Acoladele sunt folosite pentru a selecta între mai multe opțiuni
+
+Expandarea tildei este folosită pentru expandarea directorului home. Atunci când
+rulăm
+
+* cd ~/projects/
+
+Tilda este înlocuită cu valoarea variabilei HOME a shell-ului curent.
+
+Expandarea parametrică se referă la construcții care încep cu \$\{
+(dolar-acoladă). Cea mai simplă formă este chiar expandarea valorii unei
+variabile:
+
+* echo \$\{algorithm\}
+
+Comanda de mai sus este echivalentă cu echo \$algorithm. Este însă, utilă pentru
+situații în care vrem să afișăm valoarea unei variabile urmată de un șir. De
+exemplu:
+
+* echo \$a_b
+
+Va încerca afișarea valorii variabilei a_b, nu a valorii variabilei a urmată de
+șirul _b. Pentru aceasta o rulare corectă este
+
+* Echo \$\{a\}_b
+
+Expandarea parametrică are mai multe forme, le amintim pe cele relevante în
+tabelul de mai jos
+
+* Tabel cu “construcție, rol, exemplu construcție, ce afișează
+
+Expandarea aritmetică se folosește de construcția \$((...)). Are loc atunci când
+dorim să efectuăm calcule în shell. De exemplu, dacă rulăm
+
+* Echo \$a+\$b
+
+Rezultatul va fi 2+3
+
+Ca să aibă sens aritmetic trebuie să folosim expandare aritmetică:
+
+* Echo \$((a+b))
+
 \subsubsection{Globbing}
 \label{sec:cli-globbing}
+
+Termenul globbing înseamnă în limba engleză chiar expandare. Globbing se referă
+la construcții specifice shell-ului care pot fi expandate la a se potrivi cu mai
+multe opțiuni. Se mai numește expandarea căilor (pathname expansion). De exemplu
+construcția “a*” se potrivește cu orice nume care începe cu litera a; este util
+în shell în interacțiunea cu sistemul de fișiere:
+
+* exemplu cu ls a*
+
+* exemplu cu ls *.c
+
+Globbing folosește de regulă 3 caractere, așa cum sunt indicate în construcțiile
+de mai jos:
+
+* Tabel cu globbing
+
+Construcțiile ce folosesc globbing, expandarea cu acolade și expandarea tildei
+sunt frecvent folosite în operațiile cu sistemul de fișiere.
 
 \subsubsection{Expandarea comenzilor}
 \label{sec:cli-comm-expansion}
 
+O situație întâlnită frecvent este folosirea output-ului unei comenzi ca
+parametru al unei alte comenzi sau ca să reținem într-o variabilă. De exemplu,
+TODO: ceva practic: În acest caz folosim expandarea comenzilor folosind
+construcția \$(...) ca mai jos:
+
+* TODO
+
+Alte exemple de expandare a comenzilor sunt prezentate în continuare.
+
 \subsection{Escaping}
 \label{sec:cli-escaping}
+
+După cum am văzut shell-ul folosește caractere cu roluri dedicate în rularea sa:
+separare de comenzi și parametri, operatori, expandare. Aceste metacaractere pot
+fi însă parte a unor nume de parametri primiți de comenzi. De exemplu, dacă avem
+fișierul uso curs 05.pdf și rulăm comanda de mai jos vom primi eroare:
+
+* ls uso curs 05.pdf
+
+Aceasta deoarece shell-ul interpretează intrarea primită ca fiiind o comandă și
+3 parametri.
+
+Pentru a împiedica shell-ul să interpreteze caracterele, folosim escaping, adică
+metode prin care acele caractere să fie interpretate literal.
+
+Există trei moduri de escaping: prin ghilimele, prin apostrofuri și prin
+backslash.
+
+În cazul escapării prin apostrofuri, caracterele plasate între două apostrofuri
+vor avea interpretare literală. Escaparea prin ghilimele este similară escapării
+prin apostrofuri, doar că nu se escapează caracterul dolar. Altfel spus
+construcțiile care folosesc dolar (afișarea valorii unei variabile și
+expandările) își păstrează semnificația între ghilimele.
+
+Escaparea prin bacsklash păstrează sensul literal al caracterului imediat
+următor.
+
+Mai jos sunt exemple de folosire a celor trei forme de escaping:
+
+* Exemple escaping
+
+Fiecare formă poate fi la rândul său folosită pentru a escapa celelalte forme:
+
+* Exemple cu escaping între ele
 
 \section{Pornirea și personalizarea shell-ului}
 \label{sec:cli-customize-shell}
 
-\subsection{Configurarea la pornire a shell-ului}
+După ce un utilizator se autentifică în sistem, acesta are configurat un shell
+de login în fișierul /etc/passwd. Acesta este procesul pornit după
+autentificarea utilizatorului.
+
+În mod uzual acest shell este /bin/bash pe sistemele Linux, înseamnă că
+utilizatorul pornește shell-ul Bash.
+
+Atunci când este pornit un shell, sunt încărcate configurări pentru acesta.
+Configurările sunt stocate în fișiere globale și locale și au în general rolul
+de a stabili variabilele shell-ului sau alți parametri ai acestuia. De exemplu,
+personalizarea promptului unui shell se realizează prin configurarea variabilei
+PS1 în Bash.
+
+Exemple mai multe de configurare a shell-ului.
+
+Locul unde se găsesc fișierele de configurare globale și locale depind de tipul
+de shell. Vom prezenta în continuare shell-ul Bash.
+
+\subsection{Configurarea la pornire a shell-ului Bash}
 \label{sec:cli-shell-startup}
+
+Există mai multe moduri de pornire a shell-ului Bash: login/non-login sau
+interactiv/neinteractiv. Aceste diferențe nu le vom detalia aici, sunt
+prezentate în documentația Bash online[3] sau folosind comanda:
+
+* man bash
+
+Și căutând în manual după șirul INVOCATION.
+
+În cazul cel mai uzual, shell de login și interactiv, shell-ul bash parcurge
+întâi fișierul global /etc/profile, apoi primul fișier găsit dintre
+~/.bash_profile, ~/.bash_login, ~/.profile. În mașina virtuală USO, avem
+situația:
+
+* listare startup files
+
+În general, Bash va avea configurate linii precum cele de mai jos în fișierul
+/etc/profile, ceea ce înseamnă că va fi interpretat conținutul fișierului
+/etc/bash.bashrc și conținutul fișierelor din directorul /etc/profile.d/:
+
+\begin{screen}
+        if [ -f /etc/bash.bashrc ]; then
+            . /etc/bash.bashrc
+        fi
+
+
+if [ -d /etc/profile.d ]; then
+    for i in /etc/profile.d/*.sh; do
+        if [ -r \$i ]; then
+            . \$i
+        fi
+    done
+fi
+\end{screen}
+
+De asemenea, fișierul ~/.bash_profile va avea configurate linii precum cele de
+mai jos, ceea ce înseamnă că se va interpreta și conținutul fișierului
+~/.bashrc.
+
+\begin{screen}
+    if [ -f "\$HOME/.bashrc" ]; then
+        . "\$HOME/.bashrc"
+    fi
+\end{screen}
+
+De aceea, dacă faceți configurări pentru personalizarea și configurarea pornirii
+shell-ului, le veți face, de obicei:
+
+\begin{itemize}
+	\item Global, la nivelul sistemului, în fișierul /etc/bash.bashrc
+
+	\item Local, la nivelul utilizatorului, în fișierul ~/.bashrc
+
+	\item TODO Un scenariu de configurare a shell-ului și configurarea în
+		/etc/bash.bashrc și în ~/.bashrc
+\end{itemize}
+
+La închiderea unei sesiuni de shell aceasta interpretează fișierul ~/.bash_logout.
 
 \subsection{Personalizarea promptului}
 \label{sec:cli-prompt}
 
+O funcționalitate adesea folosită în shell este personalizarea promptului.
+Personalizarea acestuia poate înseamna personalizarea conținutului sau a
+aspectului (culorilor).
+
+Promptul afișat de shellul Bash este definit de variabila PS1. De exemplu pe
+mașina virtuală USO promptul arată ca mai jos iar valoarea variabilei PS1 este
+cea indicată:
+
+* Exemplu prompt VM USO
+
+Conținutul promptului din variabila PS1 reprezintă elemente care sunt apoi
+interpretate de shell, precum cele de mai jos:
+
+* Tabel cu elemente din prompt
+
+O listă completă a elementelor ce pot fi parte din variabila PS1 găsiți în
+documentația online[4] sau în pagina de manual Bash în secțiunea PROMPTING.
+
+Variabila PS1 poate conține în cadrul său și facilități de shell expansion și
+rularea de comenzi. O facilitate utilă este ca promptul să conțină branch-ul Git
+curent atunci când directorul curent este un repository Git.
+
+Dacă doriți să personalizați promptul, va trebui să modificați valoarea
+variabilei PS1 într-un fișier de configurare a shell-ului (global
+/etc/bash.bashrc, local ~/.bashrc). Puteți încerca site-ul Easy Bash Prompt
+Generator (http://ezprompt.net/) pentru o formă interactivă și vizuală de
+generare de conținut PS1 pentru personalizarea prompt-ului.
+
 \subsection{Multiplexoare de terminal}
 \label{sec:cli-tmux}
+
+Atunci când dorim shell-uri multiple, avem posibilitatea să deschidem sau să
+folosim mai multe ferestre de shell sau mai multe tab-uri de shell sau să
+folosim multiplexoare de terminal precum screen, tmux pe care le-am prezentat în
+\labelindexref{Capitolul}{chapter:process}.
+
+Multiplexoarele de terminal sunt utile în situația în care vrem să rulăm
+aplicații interactive și apoi să ne detașăm de la terminal.
+
+Tmux și screen au fișiere de configurare specifice în care pot configura
+aspectul terminalului, combinații de taste și au facilități dedicate, precum
+salvarea sesiunii curente și restaurarea acesteia la alt moment de timp.
 
 \section{Expresii regulate}
 \label{sec:cli-regex}
 
+În Linux majoritatea fișierelor conțin informații text; la fel, majoritatea
+comenzilor afișează informații text. Dorim să prelucrăm aceste informații text:
+extragere de linii, extragere de coloane, verificarea apariției unor secvențe.
+
+Pentru verificarea apariției unei secvențe (acțiune numită pattern matching)
+folosim expresii regulate. O expresie regulată este un șir de caractere; unele
+caractere au rol special și le numim metacaractere. O expresie regulată este
+folosită pentru a îngloba reprezentarea mai multor șiruri. Exemplu.
+
+Expresiile regulate sunt prezente în majoritatea limbajelor, într-o formă sau
+alta: Python, Perl, PHP, Ruby, JavaScript, în biblioteci C.
+
+Există utilitare care folosesc expresii regulate, cel mai cunoscut fiind grep
+pentru a extrage linii de conțin o anumită expresie regulată.
+
+În continuare sunt câteva exemple de folosire a grep și a expresiilor regulate:
+
+* Exemple de folosire grep
+
+Expresiile regulate conțin metacaractere pe care le prezentăm mai jos:
+
+* Tabel cu antetul metacaracter, rol
+
+Dacă dorim să folosim într-o expresie regulată un metacaracter în sensul său
+literal, adică escaping, vom folosi backslash.
+
+Mai jos prezentăm alte câteva exemple de expresii regulate:
+
+* Exemple de expresii regulate:
+
+În cazul grep, în mod special, anumite caractere trebuie prefixate de backslash
+pentru a avea rolul lor de metacaracter: +, |, <, >, (, ).
+
+De avut în vedere că există mai multe tipuri de expresii regulate (regex
+flavours[5])
+
+Un caz util de folosire a expresiilor regulate este atunci când vrem să extragem
+informații care se repetă. De exemplu să extragem dintr-o listă pe cei al căror
+nume și prenume începe cu aceeași literă, ca mai jos:
+
+* Exemplu de folosire \\1
+
+Utilitarele avansate de prelucrare text sed și awk folosesc expresii regulate și
+le vom prezenta în secțiunea Utilitare avansate.
+
 \section{Prelucrare de text de bază: filtre de text și one linere}
 \label{sec:cli-basic-proc}
+
+Așa cum am precizat mai sus, textul este forma principală de stocare și afișare
+a datelor în Linux. Ceea ce face ca mare parte din utilitarele din Linux să
+afișeze și să primească la intrare text.
+
+În Windows forma de transfer sunt obiectele. Astfel că, dacă folosim PowerShell,
+transferul între utilitare se face prin obiecte, bazându-se pe tehnologia .NET.
+
+O bună parte din comenzile Linux lucrează cu text. Le grupăm în generatoare de
+text sau în prelucratoare de text. Utilitarele prelucratoare de text le mai
+numim filtre de text. Un filtru de text primește la intrare text, îl prelucrează
+și afișează, de obicei, tot text:
+
+* Diagramă cu intrare text, filtru de text, ieșire text[d]
 
 \subsection{Generatoare de text}
 \label{sec:cli-text-gen}
 
-\subsection{Prelucratoare de text}
+Exemple de generatoare text sunt:
+
+* Ps,pstree,ls,find,stat,df,lsblk,tree,strace,diff și în general orice comenzi care afișează informații
+
+De avut în vedere că generatoarele de comenzi intră în două scenarii de utilizare:
+
+\begin{enumerate}
+	\item Rezultatul rulării este util în special utilizatorului
+	\item Rezultatul rulării lor este util în special unei prelucrări
+\end{enumerate}
+
+De exemplu ls vs find sau ls vs stat sau ps vs pgrep. În scenariile de
+utilizare, dacă dorim ca rezultatul unei comenzi să fie prelucrat, vom prefera a
+doua categorie de utilitare. Atunci când construim one linere sau când folosim
+scripturi, în general e recomandat să fie folosite a doua categorie de
+generatoare.
+
+\subsubsection{Prelucratoare de text}
 \label{sec:cli-text-proc}
 
-\subsection{One linere}
+Prelucrarea text presupune acțiuni de forma:
+
+\begin{itemize}
+	\item Selecție: linii sau coloane
+	\item Înlocuiri: înlocuirea unor părți cu alte părți
+	\item Extrageri: doar anumite părți din text
+	\item Ordonări: ordonarea rezultatelor după un criteriu dat, de exemplu
+		ordonare alfabetică
+	\item Sumărizări: obținerea unor informații numerice sau statistice
+	\item Reformatări: plasarea unor caractere în plus, reordonarea unor
+		elemente pe o linie
+\end{itemize}
+
+Mai jos sunt exemple de comenzi și rolul lor din acțiunile de mai sus:
+
+* Tabel cu comenzile de mai jos, capul de tabel va fi comandă, acțiune
+
+* Grep,cut,nl,wc,sort,uniq,sed,awk,fmt,paste,join,rev,tail,head,tac,tr,tee
+
+\subsubsection{One linere}
 \label{sec:cli-one-liners}
+
+În momentul în care avem nevoie să prelucrăm text vom combina un generator de
+text sau un fișier text pur și simplu cu una sau mai multe prelucratoare de
+text. Combinarea o vom face prin intermediul operatorului I (referință) și vom
+forma one linere.
+
+O altă formă de combinare este prin intermediul expandării comenzilor.
+
+Exemple concrete de one linere (use case de prelucrare):
+
+generare de parolă
+
+Generare de fișiere 1...100.txt
+
+Generare fișiere cu conținut aleator
+
+Sortare fișiere după dimensiune, selectare primele 10 fișiere
 
 \section{Utilitare avansate}
 \label{sec:cli-advanced-utils}
 
+În lucrul în shell, în one linere și scripturi există cazuri de utilizare în
+care este foarte greu să ne descurcăm fără trei utilitare avansate: find, sed și
+awk, utilitare cu rol distinct. Le numim avansate datorită funcționalităților și
+opțiunilor complexe și diverse pe care le au și pentru că folosirea lor este
+uneori anevoioasă pentru cazuri de utilizare complicate.
+
 \subsection{find, xargs}
 \label{sec:cli-find-xargs}
+
+Utilitarul find este folosit pentru listarea intrărilor într-o ierarhie din
+sistemul de fișiere care corespund unor anumite criterii. Prezentăm prin exemplu
+funcționalități de afișare de intrări corespunzătoare unor criterii
+
+* Exemple de la find la find -perm -type …
+
+Pe lângă criterii de selectare (numite TESTS), find permite acțiuni care să fie
+executate pe intrările descoperite. Acțiuni uzuale sunt -delete și -exec, ca în
+exemplele de mai jos:
+
+* Exemplu cu -delete
+
+* Exemplu cu -exec
+
+Opțiunea cu -exec este echivalentă folosirii utilitarului xargs, ca în exemplu
+de mai jos:
+
+* xargs
+
+Construcția -I\{\} din xargs spune că acolo unde se va întâlni {} se va înlocui cu
+numele fișierului citit de la intrarea standard.
+
+Construcțiile care folosesc find și xargs sunt echivalente, diferențele între
+ele fiind minore.
 
 \subsection{sed}
 \label{sec:cli-sed}
 
+Utilitarul sed este folosit în principal pentru a face înlocuiri într-un fișier
+sau prelucrare text. În forma sa cea mai simplă, utilitarul este folosit sub
+forma:
+
+* sed ‘s/alpha/beta/g’
+
+S înseamnă substitute și duce la înlocuirea unei secvențe cu altă secvență.
+
+Sed are în spate un limbaj de programare și are și alte comenzi în afară de
+substitute. Mai jos sunt scenarii care reliefează facilități ale limbajului:
+
+\begin{itemize}
+	\item Range
+	\item Delete
+	\item Print cu -n
+	\item Eliminarea fiecărei a treia linii
+\end{itemize}
+
+Interesante sunt de parcurs sed oneliners
+(http://sed.sourceforge.net/sed1line.txt). Și mai interesant e de parcurs sed
+sokoban (https://github.com/aureliojargas/sokoban.sed/blob/master/sokoban.sed)
+
 \subsection{awk}
 \label{sec:cli-awk}
 
-\section{Anexă: Folosirea variabilelor de mediu în C}
+awk este un esență un limbaj de programare care poate fi folosit ca filtru de
+text. Putem considera awk ca fiind un limbaj intermediar între utilitarele de
+tip filtru de text și un limbaj de programare precum Perl sau Python. Dacă dorim
+să facem prelucrări text fără a intra într-un limbaj de programare complet
+precum Perl sau Python vom folosi awk.
+
+În forma sa simplă un one liner awk are forma de mai jos, cu utilitatea unui
+separator care poate fi o expresie regulată:
+
+* Exemplu awk -F ‘’
+
+Un alt exemplu este de a selecta doar anumite linii, ce conțin o anumită
+secvență.
+
+* Exemplu cu ‘/regex/ \{print \$1;\}’
+
+În forma sa programatică, awk poate executa secvețe de cod pe anumite linii:
+
+* Exemplu de intrare și program și ieșire
+
+Detalii complete despre awk se găsesc parcurgând documentația
+(https://www.gnu.org/software/gawk/manual/).
+
+\section{Use case: Folosirea variabilelor de mediu în C}
 \label{sec:cli-c-env-vars}
+
+În Link repository avem un exemplu de fișier C care afișează valorile
+variabilelor de mediu. Programul este simplist, folosește variabila environ și
+apelul getenv pentru a obține valoarea variabilelor de mediu.
+
+Pentru început, îl compilăm: make
+
+Și apoi rulăm executabil în diferite forme.
+
+Pentru început îl rulăm simplu și obținem toate variabilele programului, transmise de shell:
+
+* TODO
+
+Dacă definim o nouă variabilă shell, aceasta nu va modifica variabilele programului:
+
+* TODO
+
+Dacă însa exportăm acea variabilă, va apărea programului.
+
+Un alt mod de a personaliza mediul programului este de a defini o variabilă doar pentru rularea programului
+
+* HERO=lothar ./envtest
+
+Dacă avem nevoie sa rulăm programul cu mediul gol, folosim comanda env cu parametrul -i:
+
+* Env -i ./envtest
 
 \section{Sumar}
 \label{sec:cli-summary}
+
+Interfața în linia de comandă este necesară utilizatorului tehnic pentru eficiență și pentru uniformitate.
+
+Shell-ul este principala formă de interacțiune cu sistemul de operare. Bash este cel mai răspândit shell în Linux.
+
+Shell-ul oferă funcționalități precum reverse history search, command completion și expandări pentru utilizator.
+
+Shell-ul poate fi configurat pentru a eficientiza și personaliza experiența utilizatorului.
+
+Comenzile shell și fișierele din Linux sunt centrate pe folosire textului. Multe
+comenzi sunt filtre de text, comenzi care prelucrează text, la baza prelucrării
+textului stând expresiile regulate.
