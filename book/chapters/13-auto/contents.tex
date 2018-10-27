@@ -1,5 +1,5 @@
 \chapter{Automatizarea sarcinilor}
-\label{chapter:script}
+\label{chapter:auto}
 
 În utilizarea și administrarea sistemului de operare sau al unei rețele sau
 infrastructuri informatice mai ample, avem adesea acțiuni pe care le repetăm.
@@ -115,7 +115,7 @@ automatizarea de acțiuni în linia de comandă, cu accentul pe cea mai simplă 
 accesibilă formă: shell scripting.
 
 \section{Perspective pentru scripting}
-\label{sec:script-why}
+\label{sec:auto-why}
 
 Am precizat mai sus că forma de automatizare în linia de comandă este folosind
 scripturi ce conțin comenzi și instrucțiuni. Atunci când automatizăm acțiuni în
@@ -221,7 +221,7 @@ shell și vom furniza exemple în care vom ține cont de principiile enunțate m
 sus.
 
 \section{Dezvoltarea scripturilor}
-\label{sec:script-dev}
+\label{sec:auto-dev}
 
 Un script este un fișier care conține comenzi, instrucțiuni și construcții care
 execută o anumită acțiune. Un script este similar unui program din punct de
@@ -232,7 +232,7 @@ interpretorul este chiar shell-ul. Alte interpretoare pot fi utilitarul sed sau
 awk sau un interpretor de limbaj Python sau Perl sau Ruby sau Lua sau altceva.
 
 \subsection{“Hello, World!” în scripting și shebang}
-\label{sec:script-dev-hello}
+\label{sec:auto-dev-hello}
 
 Cel mai cunoscut exemplu în orice limbaj este un program care afișează șirul
 “Hello, World!” Vom exemplifica cele mai simple scripturi cu același rezultat:
@@ -277,7 +277,7 @@ Rețineți că shebang trebuie plasat la începutul scriptului.
 În scripturile pe care le vom construi în continuare vom folosi mereu shebang.
 
 \subsection{Conținutul unui script shell}
-\label{sec:script-dev-content}
+\label{sec:auto-dev-content}
 
 Am precizat anterior că în acest capitol ne vom concentra pe automatizare în
 linia de comandă, adică pe scripturi și dintre acestea pe cele mai simple și
@@ -310,7 +310,7 @@ folosite pentru controlul fluxului, funcții și parametri în linia de comandă
 acestea le vom discuta pe larg în secțiunea următoare.
 
 \subsection{Depanarea unui script shell}
-\label{sec:script-dev-debugging}
+\label{sec:auto-dev-debugging}
 
 Întrucât este conceput să fie quick and dirty, un script shell este de obicei
 mic, iar depanarea se face, în general, folosind print debugging: rularea sa de
@@ -327,10 +327,10 @@ recomandată rularea comenzilor dorite înainte de adăugarea lor într-un scrip
 pentru a ne asigura de funcționarea corectă.
 
 Pentru depanare mai avansată, putem folosi comanda set -x așa cum vom descrise
-în \labelindexref{Secțiunea}{sec:script-advancedfunc-other}.
+în \labelindexref{Secțiunea}{sec:auto-advancedfunc-other}.
 
 \subsection{Exemple de scripturi shell}
-\label{sec:script-dev-ex}
+\label{sec:auto-dev-ex}
 
 În această secțiune prezentăm câteva exemple practice de scripturi shell și ce
 funcționalități sunt folosite în fiecare:
@@ -341,7 +341,7 @@ funcționalități sunt folosite în fiecare:
 * Script care prelucrează text
 
 \section{Funcționalități pentru scripturi shell}
-\label{sec:script-func}
+\label{sec:auto-func}
 
 Scripturile shell sunt secvențe de comenzi existente combinate pentru o
 funcționalitate. Shell-ul oferă și funcționalități similare unui program precum
@@ -350,7 +350,7 @@ la crearea de scripturi mai complexe și care să țină cont de diferitele cond
 în care se rulează un script.
 
 \subsection{Variabile}
-\label{sec:script-func-vars}
+\label{sec:auto-func-vars}
 
 Variabilele au un rol similar altor limbaje de programare. Au un nume și o
 valoare. În shell (și în script-uri shell) variabilele nu au tip și intepretarea
@@ -397,7 +397,7 @@ acum valoarea celui de-al doilea parametru, $2 valoarea celui de-al treilea
 parametru etc.
 
 \subsection{Controlul fluxului}
-\label{sec:script-func-flux}
+\label{sec:auto-func-flux}
 
 Așa cum am văzut și în exemplele de mai sus, shell-ul oferă construcții de
 controlul fluxului: comenzi pentru decizii condiționale (if, case) și comenzi de
@@ -409,7 +409,7 @@ de programare, cel mai uzual este ca aceste comenzi este să bucleze prin fișie
 dintr-un director sau prin coloane/elemente ale unui fișier.
 
 \subsubsection{if}
-\label{sec:script-func-flux-if}
+\label{sec:auto-func-flux-if}
 
 Comanda if este folosită pentru controlul fluxului. Comanda primește ca argument
 o altă comandă și interpretează codul de ieșire (exit code) al acesteia, în
@@ -468,7 +468,7 @@ probleme de portabilitate între diferite shell-uri, așa cum vom discuta în
 Secțiunea TODO.
 
 \subsubsection{case}
-\label{sec:script-func-flux-case}
+\label{sec:auto-func-flux-case}
 
 Comanda case este echivalentul instrucțiunii switch din C; are rolul de a
 potrivi o variabilă la mai multe variante și de a executa comenzile echivalente.
@@ -491,7 +491,7 @@ case iar comenzile corespunzătoare sunt executate dacă nu s-au potrivit cu nic
 o altă opțiune.
 
 \subsubsection{for}
-\label{sec:script-func-flux-for}
+\label{sec:auto-func-flux-for}
 
 Atunci când dorim să trecem prin mai multe opțiuni folosim comanda for. O formă
 uzuală de folosire a comenzii for este pentru a bucla printr-o listă de șiruri,
@@ -547,7 +547,7 @@ dată: opțiunea cea mai robustă, în primul rând, și cea mai eficientă, în
 doilea rând. Vom discuta aceste aspecte în Secțiunea TODO.
 
 \subsubsection{while}
-\label{sec:script-func-flux-while}
+\label{sec:auto-func-flux-while}
 
 Similar comenzii for, comanda while poate fi folosită pentru a bucla în
 așteptarea unei condiții, ca mai jos:
@@ -592,7 +592,7 @@ problematică din punctul de vedere al robusteții, lizibilității și
 performanței\footnote{\url{https://unix.stackexchange.com/a/169765/227174}}.
 
 \subsection{Funcții}
-\label{sec:script-func-flux-funcs}
+\label{sec:auto-func-flux-funcs}
 
 Atunci când avem secvențe de comenzi pe care vrem să le folosim modular, putem
 folosi funcții. La fel ca într-un limbaj de programare, o funcție are un nume și
@@ -616,7 +616,7 @@ Funcțiile ajung să fie folosite în scripturi shell mai complexe, de exemplu
 /etc/init.d/*, mai puțin în scripturi uzuale.
 
 \section{Facilități avansate și bune practici în shell scripting}
-\label{sec:script-advancedfunc}
+\label{sec:auto-advancedfunc}
 
 Așa cum am precizat anterior, un script shell este o cale de mijloc între a rula
 comenzile în linia de comandă și a face un program într-un limbaj de programare.
@@ -644,7 +644,7 @@ Mai jos prezentăm construcții specifice acestor deziderate și recomandări de
 folosire în script-uri shell.
 
 \subsection{Robustețe}
-\label{sec:script-advancedfunc-robust}
+\label{sec:auto-advancedfunc-robust}
 
 Robustețea unui script înseamnă că acesta funcționează în condiții cât mai
 diverse. Acest lucru înseamnă că având intrări diferite, sau pe configurații
@@ -762,7 +762,7 @@ fi prelucrată. Neajunsul comenzii find este că se poate executa o singură
 comandă pentru intrările parcurse, nu se pot opera acțiuni mai complexe.
 
 \subsection{Lizibilitate}
-\label{sec:script-advancedfunc-readability}
+\label{sec:auto-advancedfunc-readability}
 
 Scripturile sunt quick and dirty și trebuie să fie lizibile, ușor de înțeles.
 Pentru aceasta este de preferat să nu se folosească construcții în care se poate
@@ -797,7 +797,7 @@ cum sunt prezentate mai jos:
 * Exemplu here string
 
 \subsection{Eficiență}
-\label{sec:script-advancedfunc-efficiency}
+\label{sec:auto-advancedfunc-efficiency}
 
 Acolo unde avem mai multe opțiuni și avem robustețea asigurată, e de preferat să
 folosim soluția cea mai eficientă și performantă. De exemplu, între cele două
@@ -885,7 +885,7 @@ prelucrarea robustă a fișierelor dintr-o ierarhie, așa că aici trebuie optat
 între portabilitate 100\% și robustețe.
 
 \subsection{Alte funcționalități}
-\label{sec:script-advancedfunc-other}
+\label{sec:auto-advancedfunc-other}
 
 Atunci când dorim să facem debugging în shell, soluția cea mai directă este
 afișarea unui mesaj sau a valorilor unei variabile folosind printf sau echo. O
@@ -909,16 +909,16 @@ automat către comenzi interactive. Le vom detalia în Anexă: Utilitare pentru
 interacțiunea cu programe interactive.
 
 \subsection{Resurse suplimentare}
-\label{sec:script-advancedfunc-supl}
+\label{sec:auto-advancedfunc-supl}
 
 Pentru sfaturi practice despre dezvoltarea shell scripturilor (și folosirea
 Bash) recomandăm ghidul BashFAQ: https://mywiki.wooledge.org/BashFAQ
 
 \section{Automatizarea la nivelul sistemelor informatice}
-\label{sec:script-infosys}
+\label{sec:auto-infosys}
 
 \subsection{Gestiunea serviciilor}
-\label{sec:script-infosys-services}
+\label{sec:auto-infosys-services}
 
 În \labelindexref{Capitolul}{chapter:boot} am precizat că procesul init (de obicei
 systemd în distribuțiile Linux moderne) este responsabil pentru pornirea
@@ -948,7 +948,7 @@ Folosind comenzile de mai sus creăm un serviciu care acum este gestionat de
 systemd.
 
 \subsubsection{supervisor}
-\label{sec:script-infosys-services-supervisor}
+\label{sec:auto-infosys-services-supervisor}
 
 Supervisor este un daemon care permite configurarea de servicii și monitorizarea
 acestora. Are funcționalitate similară serviciilor configurate cu systemd, și în
@@ -969,7 +969,7 @@ După configurarea serviciului, îl putem activa și apoi porni în supervisor:
 * Exemplu de configurare și pornire
 
 \subsection{Planificarea sarcinilor}
-\label{sec:script-infosys-planning}
+\label{sec:auto-infosys-planning}
 
 De multe ori dorim rularea de sarcini periodice sau la un moment dat. Pentru
 aceasta în Linux avem servicii specifice: cron și atd. Cron este folosit pentru
@@ -984,7 +984,7 @@ de verificare. Exemple de utilitare de continuous integration sunt Travis CI,
 Jenkins, GitLabCI.
 
 \subsubsection{cron}
-\label{sec:script-infosys-planning-cron}
+\label{sec:auto-infosys-planning-cron}
 
 Cron este un serviciu care duce la rularea periodică a unei comenzi. Un caz de
 utilizare pentru cron sunt scenariile de nightly builds în care la momente bine
@@ -1006,7 +1006,7 @@ crontab -e. Pentru vizualizarea intrărilor folosim comand crontab -l:
 * Exemplu de crontab -i
 
 \subsubsection{at}
-\label{sec:script-infosys-planning-at}
+\label{sec:auto-infosys-planning-at}
 
 Comanda at (care folosește în spate daemon-ul atd) permite rularea unei comenzi
 la un moment dat în viitor. Comanda primește ca argument timpul când să aibă loc
@@ -1016,7 +1016,7 @@ mai jos:
 * Exemplu folosire at
 
 \section{Anexă: Utilitare pentru interacțiunea cu programe interactive}
-\label{sec:script-gui}
+\label{sec:auto-gui}
 
 Atunci când dorim să automatizăm și să folosim în scripturi programe
 interactive, lucrurile devin problematice; în general ne propunem ca un script
@@ -1050,7 +1050,7 @@ construire de payload-uri pentru atacuri de securitate, formatări de date,
 integrare cu depanatoare etc.
 
 \section{Anexă: Gestiunea configurației}
-\label{sec:script-conf}
+\label{sec:auto-conf}
 
 Atunci un administrator de sistem și infrastructură gestionează mai multe
 sisteme, urmărește un mod rapid, automatizat de configurare a acelor sisteme. În
@@ -1068,7 +1068,7 @@ responsabile cu buna funcționare a infrastructurii IT a unei organizații
 utilitare precum cele din categoria Configuration Management.
 
 \section{Anexă: Bune practici în automatizare și scripting}
-\label{sec:script-good}
+\label{sec:auto-good}
 
 Atunci când folosim scripting sau, în general, când automatizăm, e util să avem
 în vedere bune practici și, mai ales, perspective de lucru. Aceste bune practici
@@ -1113,7 +1113,7 @@ aplicații complexe, pentru eficiență în folosirea resurselor, folosim un lim
 de programare.
 
 \section{Sumar}
-\label{sec:script-sumar}
+\label{sec:auto-sumar}
 
 Folosim automatizare pentru sarcini repetitive sau care necesită rulare
 neinteractivă la un moment dat, lăsând mai mult timp pentru sarcini creative.
