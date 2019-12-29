@@ -72,7 +72,7 @@ specific acestuia, pentru a oferi o variantă lizibilă a instrucțiunilor
 procesorului. Scopul limbajului de asamblare a fost de a permite scrierea de
 aplicații într-o manieră ușoară, la început acesta fiind singura modalitatea de
 a dezvolta programe. Deși mai ușor de folosit decât codul binar, și limbajul de
-asamblare era dificil de urmărit mai ales pentru programe lungi. De aceea, în
+asamblare este dificil de urmărit mai ales pentru programe lungi. De aceea, în
 timp, au apărut limbajele mai complexe din punct de vedere al logicii, limbaje
 ce folosesc comenzi apropiate ca structură de limbajul natural, și care sunt mai
 ușor de urmărit. Acestea permit programatorilor să se concentreze pe logica
@@ -96,7 +96,6 @@ programul. După aceea, următorul pas este să structurăm ideea și să o
 \textit{traducem} în limbajul de programare folosit. Așa obținem programul final
 ce apoi poate fi rulat.
 
-%DIAGRAMA Pus o diagramă cu "idee" -> "limbaj" -> "program" -> sistem de calcul[j]
 \begin{figure}[htbp]
 	\centering
 	\def\svgwidth{\columnwidth}
@@ -116,7 +115,7 @@ Procesul de transformare a codului sursă în cod mașină se numește compilare
 Bazat pe modul în care codul de nivel înalt este transformat și rulat pe
 procesor, putem clasifica limbajele de programare în limbaje compilate sau
 interpretate. Diferența între cele două este că pentru a rula un limbaj
-compilat, acesta este întâi transformat în limbaj mașină, rezultând un fișier
+compilat, acesta este întâi transformat în cod mașină, rezultând un fișier
 executabil, care apoi poate fi rulat oricând. Pe de altă parte, un limbaj
 interpretat este executat direct, prin intermediul unui interpretor.
 Interpretorul este cel care ia fiecare instrucțiune, o transformă în cod mașină
@@ -134,7 +133,7 @@ rulare, codul sursă va fi interpretat \textit{linie cu linie} de către
 interpretor, acesta fiind de fapt cel care execută acțiunile programului, proces
 care e mai lent.
 
-Unele interpretoare mai eficienta vor încerca sa compileze parțial codul sursă
+Unele interpretoare mai eficiente vor încerca sa compileze parțial codul sursă
 și să îl execute direct pe procesor. Practic, în acest caz, codul sursă se
 compilează la fiecare rulare.
 
@@ -192,17 +191,12 @@ mașină.
 
 Pentru că există un număr foarte mare de limbaje și un număr mare de procesoare
 diferite, în practică, nu avem cate un compilator diferit. În general, există
-framework-uri de compilator care au componente ce înțeleg mai multe limbaje și
-traduc limbajele într-un limbaj specific compilatorului, respectiv alte
-componente care cunosc mai multe procesoare și traduc limbajul specific
-compilatorului în limbajul specific procesorului care va rula programul. Astfel,
-pentru a putea genera un compilator pentru un limbaj nou, e suficientă
-integrarea a unui modul care să transforme limbajul de programare în limbajul
-compilatorului.
+framework-uri de compilator care au suport pentru mai multe limbaje de programare (de exemplu C sau C++ sau D), respectiv alte
+componente care au suport pentru mai multe arhitecturi de procesor (de exemplu x86 sau ARM sau MIPS). Astfel, un compilator poate genera cod pentru diferite arhitecturi pornind de la diferite tipuri de limbaje. În general aceste compilatoare au un limbaj intern, numit limbaj intermediar care facilitează aceste traduceri din limbaj în cod mașină de procesor, așa cum este indicat în figura TODO.
 
 TODO - schemă
 
-\subsection{Exemple de programare compilate}
+\subsection{Exemple de limbaje de programare compilate}
 \label{sec:appdev-langs-comp-ex}
 
 Deși am prezentat avantajele și dezavantajele folosirii unui limbaj de
