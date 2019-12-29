@@ -268,7 +268,7 @@ disc un sector special de boot care reține schema de partiționare precum și o
 versiune minimală a boot loader-ului care va încărca sistemul de operare (vezi
 8. Pornirea sistemului). Schema de partiționare MBR este formată din maxim 4
 partiții, denumite primare. Pentru a acoperi aceste neajunsuri, au fost
-introduse partițiile logice: una din partițiile primare vor fi alocate pe întreg
+introduse partițiile logice: una din partițiile primare va fi alocată pe întreg
 discul rămas liber și va fi marcată ca partiție extinsă. În cadrul partiției
 extinse se pot crea oricâte partiții logice se dorește. Acest lucru îngreunează
 schema de partiționare, iar unele sisteme de operare nu pot porni folosind
@@ -433,7 +433,7 @@ de fișiere:
 \end{screen}
 
 Un lucru specific sistemelor de operare bazate pe Linux este alocarea unui ID
-unui la formatarea unei partiții. Astfel la montare se poate specifica ID-ul
+la formatarea unei partiții. Astfel la montare se poate specifica ID-ul
 partiției și nu calea către device. Acest lucru este utilizat pentru a rezolva
 conflictele generate de schimbarea ordinii discurilor fizice. De exemplu, în
 cazul prezentat mai sus, dacă mai inserăm un disc fizic în sistem, acesta poate
