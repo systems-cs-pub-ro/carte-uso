@@ -1,1 +1,253 @@
 \chapter{Pachete software}
+\label{chapter:package}
+
+Spre deosebire de hardware, software-ul are marele avantaj al flexibilității: pe un sistem hardware putem rula diferite tipuri de software, putem adăuga și șterge software, putem modifica ușor. Atunci când avem o nevoie, putem fie să dezvoltăm software nou sau putem instala software existent în sistem. Vom prezenta partea de dezvoltare software, de aplicații, în Capitolul TODO: Dezvoltarea aplicațiilor, și ne vom concentra în acest capitol pe partea de instalare și configurare de aplicații existente.
+
+Atunci când un dezvoltator sau o firmă software produce o aplicație nouă, este interesul să ajungă cât mai eficient la utilizator. Această acțiune, de distribuție software, necesită ca aplicația și datele sale să fie agregate într-o formă care să fie instalabilă de utilizator. Această formă este numită pachet software. După instalarea unui pachet software utilizatorul va putea să ruleze aplicația pe sistemul său.
+
+Pentru ca o aplicație să ruleze, aceasta are nevoie de un fișier executabil și fișiere de date și fișiere de configurare. De exemplu, un browser web are un executabil, are fișier de date în care reține parole de acces la site-uri și bookmark-uri și are o zonă de configurare precum pagina de start, prezența unor intrări în meniu, directorul implicit în care se descarcă fișierele. Aceste fișiere sunt împachetate de firma de dezvoltare. Fișierul rezultat în urma împachetării, pachetul software, este apoi transmis utilizatorului pentru instalare. 
+
+Instalarea unui pachet înseamnă că fișierul executabil, fișierele de date și fișierele de configurare sunt dispuse în sistemul local de fișiere de unde vor fi folosite. De exemplu, pe Windows, toate fișierele sunt de obicei dispuse într-un subdirector din directorul C:\Program Files\. Pe macOS toate fișierele sunt dispuse într-un subdirectorul din directorul /Applications/. Pe Linux fișierele sunt distribuite în funcție de tipul lor: în /usr/bin fișierele executabile, în /usr/share/ și /var/ fișiere de date, în /etc/ fișiere de configurare.
+
+Cea mai simplă formă de împachetare a unei aplicații este o arhivă. O arhivă este un fișier reprezentând o colecție de fișiere puse unul lângă altul. Arhiva nu are informații dedicate despre aplicație, astfel încât instalarea aplicației presupune dezarhivarea. Avantajul folosirii arhivelor este simplitatea. Dezavantajul este gestiunea dificilă a pachetelor: dezinstalarea devine greoaie, pentru că trebuie șterse manual toate fișierele; unele pachete pot fi incompatibile unele cu altele și trebuie instalate alte versiuni.
+
+Forma modernă de livrare a aplicațiilor o reprezintă pachetele software. Un pachet, spre deosebire de o arhivă conține informații despre aplicație, precum descrierea pachetului, versiune, dependențe de alte pachete, pachetele similare. Un pachet respectă un format cunoscut de o aplicație specifică de gestiune a pachetelor, aplicație care mai este numită și installer.
+
+În anumite situații dorim anumite versiuni de pachete. Aceste versiuni riscă să afecteze celelalte pachete instalate, sau să necesite configurări mai complexe. Sau să aibă nevoie de alte pachete și diferite versiuni care duce la o problemă numită “dependency hell”. Din acest motiv o formă de livrare a pachetelor este “toate-în-unul” (all-in-one) cu toate dependențele în aceeași arhivă. Vom vorbi despre acestea în Secțiunea TODO: Sisteme de distribuție cu tot cu sistem.
+
+În cele ce urmează vom prezenta partea de pachete software în forma lor tradițională și apoi vom discuta despre pachete all-in-one.
+
+\section{Pachete software}
+\label{sec:package:overview}
+
+Un pachet software este o colecție de fișiere: executabile, de date și de configurare. Un pachet este distribuit și apoi instalat pe un sistem pentru a adăuga o nouă funcționalitate acelui sistem. În urma instalării fișierele din colecție se găsesc în sistemul de fișiere. Fișierele executabile sunt cele folosite pentru rula aplicațiile în formă de procese, așa cum vom preciza în Secțiunea TODO (din capitolul Procese). Fișierele de date sunt baze de date, imagini, sunete, filme folosite de aplicație pentru a rula. Fișierele de configurare permit modificarea parametrilor de funcționare a aplicației.
+
+Tipurile de fișiere care vor fi instalate reprezintă datele unui pachet. Pe lângă date, un pachet conține și metadate, adică informații despre acele date. Metadatele sunt folosite pentru gestiunea versiunilor și dependențelor pachetelor. De exemplu un pachet debian conține două directoare: data și metadata ca mai jos:
+
+TODO
+
+Pe un sistem Debian, dacă dorim să vedem metadatele unui fișier folosim o comandă precum cea de mai jos:
+
+TODO
+
+Structura unui pachet, cuprinzând datele și metadatele acestuia, este descrisă în imaginea de mai jos:
+
+Imagine cu pachet cuprinzând date (fișiere executabile, fișiere de date și fișiere de configurare) și metadate (informații, versiuni, pachet dependente)
+
+Metadatele au rol în informarea utilizatorului și să asigure funcționarea corespuzătoare a aplicațiilor pe sistemelor. Pentru o funcționare corespunzătoare pachetele trebuie să fie compatibile cu sistemul și lucreze bine împreună: un pachet are nevoie de o anumită versiune de sistem de operare și de pachete să fie instalate pentru a funcționa. De exemplu, pachetul firefox, analizat mai sus, are nevoie de pachetele TODO.
+
+În plus, un pachet software evoluează și numărul său de versiune crește. Acea versiune necesită o anumită versiune a altui pachet sau altă versiune de sistem de operare. Prin analizarea versiunii, vom ști dacă acel pachet este instalabil pe un sistem dat și ce pachete (și versiuni) trebuie să fie instalate.
+
+Spunem că un pachet are dependențe de alte pachete. Fără ca acele pachete să fie instalate, aplicația din pachet nu va funcționa. Este responsabilitatea unui manager de pachete să asigure instalarea și a pachetelor de care pachetul curent depinde; numim aceste pachete dependențe. Vom prezenta soluții de tip manager de pachete în secțiunile următoare.
+
+Modul în care sunt organizate datele și metadatele într-un pachet software determină formatul acestuia și tipul de pachet. Fiecare sistem de operare și fiecare distribuție are un format de pachete și aplicații specifice pentru gestiunea acelui tip de pachete. Aplicațiile specifice pentru gestiunea pachetelor se ocupă de instalarea, dezinstalarea și investigarea pachetelor, acțiuni ce vor fi descrise în Secțiunea TODO: Operații cu pachete.
+
+\subsection{Tipuri de pachete}
+\label{sec:package:types}
+
+Așa cum e prezentat în Figura TODO (de mai sus), în general un pachet este o arhivă de date și metadate, o colecție. Indiferent de tipul de pachet, în mod uzual se poate investiga folosind o soluție de dezarhivat.
+
+Un prim tip de pachete software sunt arhive simple care conțin datele aplicației. Așa cum am precizat mai sus, această formă este simplă dar nu permite dezinstalarea facilă și rezolvarea dependențelor. Din acest motiv nu este foarte întâlnită, preferându-se tipuri de pachete care conțin metadate care sunt gestionate de aplicațiile specifice.
+
+Atunci când nu se dorește folosirea unei aplicații specifice de gestiunea pachetelor, se pot livra pachetele în format de arhivă auto-extractivă (self extracting archive) sau pachet executabil auto-extractiv (self-extracting executable). Acest pachet este rulat și apoi are loc instalarea.
+
+Aplicațiile de pe sistemele Windows nu sunt livrate în general, cu un format de instalare. De multe ori aplicațiile au un fișier numit setup.exe care este folosit pentru instalarea și configurarea aplicației. Alte aplicații pot fi instalate dintr-un pachet software de tip MSI (Microsoft Install), folosite de aplicația de instalare numită Windows Installer.
+
+Pe macOS aplicațiile sunt livrate în pachete de tip imagine de disk, fișiere cu extensia .dmg sau fișiere de tip .pkg. Fișierele .pkg au avantajul că pot fi adăugate scripturi instalare și de configurare; fișiere .dmg sunt imagini de disc care conțin aplicația care se instalează de obicei prin copierea ei, fără o operație de instalare.
+
+În Linux există cea mai mare variație de tipuri de pachete și de soluții pentru gestiunea lor. În vreme ce la macOS și la Windows există o singură organizație responsabilă de gestiunea sistemului de operare (Apple, respectiv Microsoft), lumea Linux este foarte diversă cu multe surse de aplicații, multe distribuții care livrează acele aplicații în pachete și care întrețin soluțiile de gestiunea lor. Cele mai răspândite formate de pachete sunt formatul deb (pe distribuțiile bazate pe Debian) și formatul rpm (pe distribuțiile bazate pe RedHat). Le vom prezenta detaliat, respectiv în secțiunile TODO: Gestiunea pachetelor format DEB și secțiunea TODO: Gestiunea pachetelor format RPM.
+
+Sistemele de operare mobile (precum Android și iOS) folosesc un depozit central de pachete: Google Play pentru Android și AppStore pentru iOS. Aplicația dedicată de pe telefonul mobil descarcă și instalează pachetul din depozit. Formatul folosit pe iOS este formatul .ipa (iPhone Archive) iar pe Android este formatul .apk (Android Package).
+
+Indiferent de sistem de operare, distribuție și aplicație, formatele de pachete au caracteristici comune: conțin date și metadate, sunt un fișier de tip arhivă, există o aplicație dedicată pentru gestiunea acestora: instalare, dezinstalare, configurare, investigare. În continuare vom prezenta cum gestionăm aceste pachete în sistemele de operare moderne.
+
+\section{Gestiunea pachetelor}
+\label{sec:package:manage}
+
+Pentru a putea fi instalate pe sistemele utilizatorilor finali, pachetele trebuie să fie distribuite către aceștia. Utilizatorii pot accesa manual un site sau un depozit (repository) de pachete de unde descarcă pachetul și apoi îl instalează. Sau pot folosi o aplicație specifică pentru localizarea, descărcarea și instalarea pachetelor. Aceste aplicații poartă numele de manager de pachete (package manager).
+
+Un depozit (repository) este locul sunt stocate pachetele software. În general un sistem de operare sau o distribuție de sistem de operare are un repository sau mai multe cu pachetele corespunzătoare. De exemplu, pentru Ubuntu există repository-uri pentru fiecare versiune: un repository pentru Ubuntu 18.04 Bionic Beaver și un repository pentru Ubuntu 18.10 Cosmic Cuttlefish. Pe sistemele de operare mobile putem considera Google Play sau Apple AppStore repository-urile de pachete. Depozitele conțin pachetele în formatul specific distribuției sau sistemului de operare; de exempl pachete .deb pentru distribuțiile Debian/Ubuntu, pachete .rpm pentru distribuțiile RedHat, sau pachete .ipa în Apple AppStore.
+
+Un repository este identificat printr-un URL (Uniform Resource Locator). De exemplu URL-ul pentru un repository Ubuntu este http://archive.ubuntu.com/ubuntu/ este. Acest URL este folosit de manager-ul de pachete pentru a afla lista de pachete și pentru a descărca pachetele.
+
+Manager-ul de pachete este instalat cu un sistem de operare/distribuție de la bun început. Pentru acesta se configurează URL-ul repository-ului / repository-urilor folosite. Apoi utilizatorul folosește manager-ul pentru a instala sau dezinstala pachete. Managerul ține cont de URL-ul repository-ului și de dependențele pachetelor pentru instalare și dezinstalarea comandată de utilizator la fel ca în diagrama de mai jos:
+
+TODO: diagramă cu utilizator, manager de pachete, configurare manager, repository și dependențe locale
+
+În momentul instalării pachetelor managerul de pachete reține fișierele care au fost instalate pentru a putea să le șteargă la dezinstalare. Tot în momentul instalării, managerul de pachete va investiga dependențele pachetului care se dorește instalat pentru a le instala și pe acestea. Tipurile de operații efectuate de managerul de pachete, la comanda utilizatorului, sunt descrise în Secțiunea TODO: Operații cu pachete.
+
+Noțiunea de manager de pachete este răspândită îndeosebi în distribuții Linux/BSD. Cu toate acestea există soluții de acest tip pe Windows, precum Chocolatey. Pe macOS se poate folosi Homebrew sau MacPorts. Spre deosebire de distribuțiile Linux/BSD, soluțiile de tip manager de pachete de pe Windows și macOS nu sunt distribuite oficiale de companiile producătoare, Microsoft și Apple.
+
+În Tabelul TODO prezentăm cele mai cunoscute tipuri de managere de pachete cu tipurile de pachete și distribuțiile pe care le folosesc împreună cu aplicațiile și comenzile specifice.
+
+Manager de pachete, tip de pachet/extensie, sistem de operare/distribuție, comenzi
+
+APT (Advanced Package Tool), .deb, distribuții bazate pe Debian, apt/aptitude/dpkg
+DNF (Dandified yum), yum (Yellowdog Updated Modified), .rpm, distribuții bazate pe RedHat, dnf/rpm
+Pacman, .tar, Arch, pacman/pactree/paccache
+Portage, .tar.gz, Gentoo, emerge/equery/eix
+Port, .txz, FreeBSD, pkg
+Homebrew, .tar.gz, macOS, brew
+MacPorts, .tbz2, macOS, port
+Chocolatey, .nupkg, Windows, choco
+
+\subsection{Operații cu pachete}
+\label{sec:package:ops}
+
+Un utilizator realizează operații cu pachete prin intermediul comenzilor oferite de un manager de pachete. Aceste operații sunt tipic de instalare, dezinstalare, actualizarea versiunii (upgrade), investigare de pachete. Un utilizator nu trebuie să știi internele funcționării unui manager de pachete sau formatul pachetelor. Utilizatorului trebuie să știe cum configurează repository-urile unui manager de pachete și apoi să instaleze sau să dezinstaleze pachetele.
+
+Operațiile uzuale realizate de un utilizator sunt descrise în continuare. Vom descrie în detaliul modul în care se realizează aceste operații pe distribuțiile bazate pe Debian și cele bazate pe RedHat în Secțiunea TODO, respectiv Secțiunea TODO. Pentru alte distribuții/sisteme de operare și, deci, alte managere de pachete, agregăm comenzile uzuale în tabele în Secțiunea TODO.
+
+Cele mai directe operații realizate cu pachete sunt instalarea și dezinstalarea pachetelor. Instalarea presupune că un pachet este despachetat și conținutul său este distribuit în sistemul de fișiere, eventual împreună cu rularea unui scripturi de configurare. Dezinstalarea înseamnă ștergerea din sistemul de fișiere a conținutului unui pachet împreună cu rularea unor scripturi de deconfigurare. Prin intermediul unui manager de pachete, instalarea poate însemna descărcarea pachetului dorit dintr-un depozit împreună cu pachete de care acesta depinde. În cazul interacțiunii cu depozitul de pachete putem opta pentru descărcarea pachetului fără instalare.
+
+Pentru a menține sistemul la zi, atât cu cele mai noi caracteristici ale pachetelor cât și cu rezolvarea anumitor probleme de programare (bug-uri) sau de securitate, se recomandă acțiunea de actualizare a pachetelor (upgrade). Operația de upgrade înseamnă descărcarea din depozit a celor mai recente versiuni și înlocuirea versiunilor mai vechi în sistemul de fișiere.
+
+De multe ori nu știm ce pachet să instalăm, dat fiind numărul mare al acestora și faptul că mai multe pachete pot face același lucru: mai multe editoare, mai multe navigatoare web, mai multe playere de muzică. De aceea o operație frecventă este căutarea unui pachet după cuvinte cheie relevante. Căutarea se face de regulă în metadatele pachetelor din depozitul de pachete.
+
+În cazul în care pachetul este corespunzător unei aplicații open source, putem opta pentru descărcarea surselor acelui pachet pentru a le putea investiga ulterior.
+
+Pe un sistem cu mai multe pachete instalate putem investiga sistemul de fișiere și pachetele. De exemplu putem să listăm pachetele instalate sau să le căutăm pe acele care corespund unei expresii. Pute să vedem conținutul unui pachet instalat, adică ce fișiere din sistemul de fișiere corespund acelui pachet. Altă operație este să afișăm care este pachetul care conține un anumit fișier din sistemul de fișiere.
+
+\subsection{Pachete în sistemele de operare mobile}
+\label{sec:package:mobile}
+
+Operațiile de mai sus au corespondent și în cazul sistemelor de operare mobile. Prin intermediul aplicațiilor GooglePlay și AppStore utilizatorii interacționează cu depozitele de pachete oferite de Google și de Apple, numite magazine de aplicații (app store). Așa caută pachete sau instalează pachete.
+
+În urma unei comenzi de instalare, transparent utilizatorului, aplicația GooglePlay sau AppStore descarcă din depozitul pachetul în format respectiv .apk și .ipa. După instalare, aplicația are fișiere executabile, de date, de configurare în sistemul de fișiere și este, în general, accesibilă prin intermediul unei icoane pe ecranul telefonului mobil.
+
+Depozitele de pachete folosite de aplicațiile GooglePlay și AppStore nu pot fi configurate, sunt preconfigurate în aplicație. Cu toate acestea pot fi folosite aplicații cu depozite neoficiale de aplicații, precum Cydia pe iOS. De avut în vedere, însă, că folosirea unor depozite neaprobate de producătorul dispozitivului mobil reprezintă un risc de securitate; instalarea acestor aplicații poate însemna instalarea de aplicații malițioase (malware).
+
+\section{Gestiunea pachetelor în Linux}
+\label{sec:package:linux}
+
+În Linux, pachetele sunt strânse în depozite pentru fiecare distribuție. Fiecare distribuție are apoi sub-depozite pentru fiecare versiune a distribuției, sub-depozit ce conține versiunile de pachete corespunzătoare. Sistemul de gestiunea a pachetelor, cuprinzând managerul de pachete și alte componente, este cel responsabil pentru interacțiunea cu depozitul de pachete, la comanda utilizatorului.
+
+Repository-ul de pachete este identificat printr-un URL care poate fi local (de exemplu CD-ROM) sau poate fi la distanță (acesta este modul uzual). Managerul de pachete are o zonă de configurare în care putem specifica URL-urile repository-urilor folosite.
+
+Pentru interacțiunea cu sistemul de gestiune a pachetelor, avem aplicații dedicate. Acestea pot fi grafice sau în linia de comandă. De exemplu, pe sistemele bazate pe Debiam, există aplicația grafică Synaptic și aplicația în linia de comandă apt. La fel, pe Fedora și alte distribuții, există aplicația grafică PackageKit și aplicația în linia de comandă dnf. Aceste aplicații interacționează cu sistemul de gestiune a pachetelor, cu depozite și instalează pachete. Pentru operarea directă asupra pachetelor aceste aplicații folosesc o comandă dedicată care cunoaște formatul pachetelor: dpkg pe sistemele derivate din Debian și rpm pe sistemele derivate din RedHat.
+
+În continuare vom detalia comenzile folosite pe sistemele derivate din Debian (cu pachete DEB) și pe sistemele derivate din RedHat (cu pachete RPM).
+
+\subsection{Gestiunea pachetelor format DEB}
+\label{sec:package:deb}
+
+Sistemele derivate din Debian folosesc pachete în format DEB, cu extensia .deb. Aceste pachete sunt arhive ar care conțin datele și metadatele.
+
+Sistemul de gestiune a pachetelor este APT (Advanced Package Tool). Configurația acestuia se găsește în directorul /etc/apt. În fișierul /etc/apt/sources.list sunt configurate URL-uri de depozite de pachete. O configurație uzuală se găsește mai jos:
+
+TODO: selecție din /etc/apt/sources.list
+
+Mai sus este o selecție a fișierului /etc/apt/sources.list de pe o distribuție Ubuntu 18.04 Bionic Beaver. URL-ul indicat este folosit pentru pachete (deb) și pentru surse (deb-src). După URL urmează versiunea distribuției (bionic) și apoi sunt componente de repository unde sunt clasificate pachetele.
+
+Interacțiunea cu APT se face în mod uzual în linia de comandă prin intermediul comenzii apt. În continuare listăm operații frecvente folosind comanda apt. Fiecare comandă este prefixată de un comentariu care explică rolul acelei comenzi:
+
+TODO: comenzi de căutare, instalare, dezinstalare, actualizare informații, actualizare versiuni, download fără instalare, descărcare surse
+
+Pentru operațiile din spate, de lucru cu pachete, comanda apt folosește comanda dpkg. Comanda dpkg are informații despre pachet și despre instalările din sistem. Mai jos listăm operații frecvente folosind comanda dpkg. Fiecare comandă este prefixată de un comentariu care explică rolul acelei comenzi:
+
+TODO: afișare informații despre un pachet, căutare pachet, căutare pachete locale, căutare pachet ce conține un fișier, văzut ce conține un pachet (listare internă și dezarhivat)
+
+\subsection{Gestiunea pachetelor format RPM}
+\label{sec:package:rpm}
+
+Similar distribuțiilor derivate din Debian, distribuțiile derivate din RedHat folosesc pachete RPM (RPM Package Manager) cu extensia .rpm.
+ Aceste pachete sunt arhive ar care conțin datele și metadatele.
+
+Sistemul de gestiune a pachetelor este DNF (Dignified yum), care este o îmbunătățire a vechiului sistem care numea YUM (Yellowdog Updater Modified) care la rândul său era o îmbunătățire de la YUP (Yellowdog Updater); Yellowdog a fost o distribuție Linux care a creat sistemul YUP. Configurația DNS se găsește în directorul /etc/dnf. În fișierul TODO sunt configurate URL-uri de depozite de pachete. O configurație uzuală se găsește mai jos:
+
+TODO: selecție din TODO
+
+Mai sus este o selecție a fișierului /etc/apt/sources.list de pe o distribuție Fedora 18.04.
+
+Interacțiunea cu DNF se face în mod uzual în linia de comandă prin intermediul comenzii dnf. La fel ca în cazul Debian, listăm operații frecvente folosind comanda dnf. Fiecare comandă este prefixată de un comentariu care explică rolul acelei comenzi:
+
+TODO: comenzi de căutare, instalare, dezinstalare, actualizare informații, actualizare versiuni, download fără instalare, descărcare surse
+
+Pentru operațiile din spate, de lucru cu pachete, comanda apt folosește comanda rpm. Comanda rpm are informații despre pachet și despre instalările din sistem. Mai jos listăm operații frecvente folosind comanda rpm. Fiecare comandă este prefixată de un comentariu care explică rolul acelei comenzi:
+
+TODO: afișare informații despre un pachet, căutare pachet, căutare pachete locale, căutare pachet ce conține un fișier, văzut ce conține un pachet (listare internă și dezarhivat)
+
+\subsection{Gestiunea pachetelor în alte formate}
+\label{sec:package:other}
+
+În continuare prezentăm în format tabelar comenzi comparative între diferite sisteme de gestiune a pachetelor descrise în Secțiunea TODO. Pentru completitudine vom include și APT și DNF. O coloană va descrie tipul de sistem de gestiune a pachetelor iar alte coloane vor prezenta comenzile corespunzătoare fiecărui tip de operație. Din limitări de spațiu sunt mai multe tabele cu aceeași primă coloană. În tabele vom folosi numele de pachet generic hello; când apare cuvântul hello într-o comandă presupunem că e vorba de numele unui pachet.
+
+Tabel cu fișier de configurare repository, comandă de configurare repository
+
+Tabel cu căutare, actualizare cache/versiuni, upgrade
+
+Tabel cu instalare, dezinstalare, curățare, instalare pachet local
+
+Tabel cu download fără instalare, descărcare sursă
+
+Tabel cu căutare fișier local, ce conține un pachet instalat, ce pachet are un fișier, ce conține un pachet local
+
+\section{Sisteme de distribuție cu tot cu sistem}
+\label{sec:package:all-in-one}
+
+Atunci când instalăm un pachet pe un sistem trebuie să avem grijă să fie compatibil cu celelalte pachete, adică să fie versiuni de pachete care pot lucra împreună. În unele situații avem nevoie de o anumită versiune, lucru imposibil de realizat câtă vreme versiunile altor pachete sunt incompatibile. Ne interesează să avem un mediu relativ izolat în care să avem instalat pachetul: o ierarhie în care pachetul să fie instalat împreună cu dependențele sale fără legătură cu ce este deja instalat la nivelul sistemului.
+
+Această abordare de instalare numit all-in-one folosește un alt sistem de gestiune decât cel al sistemului. Sistemul de gestiune a pachetelor sistemului este la nivelul global al sistemului; soluțiile all-in-one lucrează independent de acesta. Soluțiile all-in-one permit actualizarea (upgrade) mai facilă a pachetelor prin actualizarea directorului în care sunt instalate. Suplimentar permit configurări de securitate care pot fi realizate granular, doar la nivelul pachetului în cauză, nu la nivelul sistemului.
+
+Un caz de utilizare pentru aceste sisteme de gestiune a pachetelor sunt soluțiile IoT (Internet of Things) despre care vom discuta în Capitolul TODO: Sisteme embedded. Aceasta pentru că sistemele IoT au de obicei roluri foarte bine definite și dorim să instalăm ușor o aplicație software cu toate dependențele sale.
+
+În aceste sisteme există un pachet (o arhivă) care conține toate informațiile necesare rulării aplicație: aplicația, depdendențe, metadate, scripturi de instalare și configurare.
+
+Sistemele Ubuntu folosesc Snappy, o soluție care înglobează aplicațiile în pachete; un pachet se numește snap. Un serviciu local numit snapd este responsabil de instalarea unei aplicații folosind snap. De exemplu, pe Ubuntu 18.04 sunt instalate implicit câteva aplicații în format snap:
+
+TODO: listare pachete instalate în format snap
+
+Mai jos sunt câteva comenzi uzuale folosind snap:
+
+TODO: comenzi snap
+
+Alte soluții de tip all-in-one sunt Flatpak și AppImage. Flatpak creează un mediu izolat folosind o formă de virtualizare de aplicație, similar unui container, descris în Capitolul TODO: Virtualizare. În acest mediu izolat rulează aplicații. Sunt disponibile pachete format Flatpack pentru câteva aplicații. AppImage este o soluție care permite instalarea unei aplicații fără a fi nevoie de cont privilegiat; există aplicații care sunt descărcabile în format de pachet AppImage și instalabile astfel de un utilizator neprivilegiat.
+
+\subsection{Medii specifice pentru limbaje de programare}
+\label{sec:package:specific}
+
+Limbaje de programare precum Python sau Ruby permit dezvoltarea de aplicații în aceste limbaje și distribuirea acestora ca pachete. Pentru aceasta cele două limbaje au sisteme de gestiune ale pachetelor: pip pentru Python și gem pentru Ruby.
+
+Sistemele de gestiune a pachetelor pentru limbaje de programare sunt independente de sistemele de gestiune a pachetelor la nivel de sistem. Folosesc în mod similar sistemul de fișiere, dar se ocupă de gestiunea acestor noi pachete.
+
+Pachetele specifice Python sau Ruby se pot găsi însă și în depozitul sistemului de gestiune a pachetelor la nivelul sistemului. Astfel că dacă se instalează pachete în ambele sisteme (cel al sistemului și pip sau gem) pot apărea conflicte. În mod ideal, vom folosi doar pachetele de la nivelul sistemului. Dar pentru că nu se găsesc toate pachetele în depozitul de la nivelul sistemului și pentru că versiunile pot fi nepotrivite, ne dorim să folosim pip sau gem.
+
+În continuare avem exemple de folosire a comenzilor pip și gem pentru căutarea, instalarea, listarea și dezinstalarea de pachete:
+
+TODO: listing pip și gem
+
+Pentru a preveni conflicte, sau pentru a lucra la un proiect specific în Python sau Ruby, se pot crea medii specifice unde se instalează pachete folosind ruby sau gem. Aceste medii se numesc medii virtuale și sunt similare celor create de sisteme precum Snappy sau Flatpack. Aceste medii sunt create cu ajutorul comenzilor virtualenv pentru Python sau rvm pentru Ruby. Mai jos sunt secvențe de comenzi pentru crearea unui mediu virtual Python și instalarea unui pachet, respectiv pentru crearea unui mediu virtual Ruby și instalarea unui pachet:
+
+TODO: mediu virtual Ruby și mediu virtual Python
+
+O soluție similară pentru JavaScript (Node.js) folosește npm ca sistem de gestiune a pachetelor și nvm pentru crearea unui mediu izolat.
+
+\section{Anexă: Instalarea unui pachet din surse}
+\label{sec:package:source}
+
+Modul uzual de a obține o aplicație este prin intermediul unui pachet software și a unui sistem de gestiune a pachetelor ca mai sus. Aceste pachete conțin de obicei executabile și cod compilat pentru a face cât mai rapid procesul de compilare.
+
+Cu toate acestea, există situații în care suntem interesați de obținerea codului sursă al unei aplicații și compilarea acesteia și instalarea manuală din codul compilat. În mod evident, doar pentru aplicațiile open source, la care avem acces la codul sursă. În trecut, această formă era frecventă pentru că distribuțiile erau reduse și nu aveau toate pachetele; singurul mod de a instala pachetul era obținând sursele și compilându-l. În zilele noastre, nu mai este cazul; majoritatea distribuțiilor au foarte multe pachete în depozitele lor de pachete. Rămân însă câteva motive pentru care ne-am dori instalarea din surse:
+
+acea aplicație este suficient de obscur încât să nu se găsească în depozitul de pachete al distribuției
+dorim să edităm codul sursă al aplicației pentru a adăuga anumite funcționalități punctuale nevoilor noastre; acest scenariu e mai degrabă util unei companii, nu unui utilizator obișnuit
+vrem să compilăm aplicația într-un anumit mod, folosind funcționalități de compilare care țin cont de particularități ale arhitecturii procesorului sistemului
+
+Instalarea din codul sursă presupune obținerea unei arhive care are codul sursă al aplicației sau clonarea repository-ului sursă al aplicației. În cadrul codului sursă astfel obținut se regăsesc în mod uzual un fișier README cu indicații de instalare și scripturi sau componente de compilare.
+
+În general pentru compilare se folosesc sisteme de build care automatizează procesul. Acestea pot fi make, cmake, Scons, Maven, Ant, Gradle depinzând de limbajul de programare folosit și de preferințele dezvoltatorului. Mai multe informații despre sistemele de build se găsesc în Capitolul TODO: Dezvoltarea aplicațiilor.
+
+În cazul aplicațiilor scrise în limbajele C/C++ cel mai frecvent sistem de build este cel bazat pe make, împreună cu utilitarele complementare. Acest sistem se numește Autotool, sau sistemul de build GNU.
+
+Mai jos este prezentată secvența de comenzi care duce la instalarea pachetului librasterbar (o bibliotecă Bittorrent) din surse:
+
+TODO: instalare din surse
+
+\section{Sumar}
+\label{sec:package:summary}
+
+Un dezvoltator sau firmă de dezvoltare are nevoie de o formă de distribuție a aplicației create pentru a ajunge la utilizatori. Uzual este în formă de pachete software.
+Pachetele conțin date și metadate care sunt prelucrate de un sistem de gestiune a pachetelor pentru instalare, dezinstalare.
+Sistemele de gestiune sunt aplicații care cunosc formatul pachetelor. Exemplu sunt APT sau YUM pe Linux.
+Pachetele se găsesc într-un depozit (repository sau AppStore) de unde aplicația de gestiune a pachetelor le obține. Altfel, un pachet poate fi obținut dintr-un loc anume și instalat.
+Gestiunea pachetelor poate fi dificilă, pot fi versiuni incompatibile. O soluție este folosirea sistemelor “all-in-one”.
