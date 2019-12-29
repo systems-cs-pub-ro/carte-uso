@@ -102,7 +102,7 @@ serviciile acestuia.
 Secvența de pași de bootare este comună pentru arhitecturi hardware și sisteme
 de operare diferite, dar fiecare pas are caracteristici și denumiri particulare.
 Pe arhitectura x86 firmware-ul de boot se numește BIOS sau UEFI, pe arhitectura
-ARM nu are o denumire specifică. Bootloadere folosite pe arhitectura x86 sunt
+ARM nu are o denumire specifică. Bootloaderele cele mai comune folosite pe arhitectura x86 sunt
 GRUB (pentru Linux) sau WinLoader (pentru Windows), în vreme ce Das U-boot e un
 bootloader folosit pentru platforme embedded precum ARM.
 
@@ -129,7 +129,7 @@ apăsarea pe butonul de pornire). Este prima secvență de cod executată de
 sistemul de calcul. Partea de verificare a componentelor hardware poartă numele
 de POST \abbrev{POST}{Power-On Self Test} (Power-On Self Test) pe arhitectura
 x86; dacă sunt defecte hardware acestea vor fi semnalizate de firmware-ul de
-boot.
+boot, în general prin mesaje sonore sau vizuale simple.
 
 Firmware-ul de boot este parte a hardware-ului sistemului și vine “preinstalat”
 pe un chip al acestuia. În mod uzual, firmware-ul de boot este furnizat de
@@ -211,7 +211,7 @@ de firmware, numite imagini EFI care rețin codul bootloader-ului ce va fi
 * tabel cu următorul cap de tabel: caracteristică, BIOS, UEFI
 
 Datorită flexibilității sistemele PC \abbrev{PC}{Personal Computer} moderne
-folosesc din ce în ce mai mult UEFI, cu probabilitate rmică de a mai întâlni
+folosesc din ce în ce mai mult UEFI, cu probabilitate mică de a mai întâlni
 sisteme care folosesc BIOS în următorii ani. BIOS rămâne însă folosit pe
 sistemele mai vechi și înțelegerea modului său de funcționare e utilă pentru a
 vedea evoluția firmware-ului de boot pe arhitectura x86.
@@ -219,24 +219,24 @@ vedea evoluția firmware-ului de boot pe arhitectura x86.
 \subsection{Alte firmware-ul de boot}
 \label{sec:boot-firmware-uefi}
 
-Fiecare sistem hardware care rulează un sistem de operare generalist (general
-purpose) are un firmware de boot, prima componentă rulată la pornirea
+Fiecare sistem hardware care rulează un sistem de operare generalist (\textit{general
+purpose}) are un firmware de boot, prima componentă rulată la pornirea
 sistemului. Pe arhitectura x86, de fapt pe sistemele de tipul PC (Personal
 Computer), acest firmware de boot este BIOS-ul, iar în ultimii ani UEFI.
 
 Sistemele care folosesc procesoare ARM sunt mai variate, fără să aibă un format
-unitar de conectare a componentelor hardware. Mai mult producători de sisteme
+unitar de conectare a componentelor hardware. Mai mult, producătorii de sisteme
 care folosesc arhitecturi ARM sunt foarte variați. Din acest motiv nu există un
 standard universal precum BIOS sau UEFI pe ARM, lucru care face foarte dificilă
 dezvoltarea de software de sistem pentru o plajă de dispozitive ARM.
 
 Pe sistemele PC o alternativă de firmware de boot este coreboot (și alternativa
 libreboot). coreboot este o versiune liberă/deschisă de firmware de boot, ca o
-reacție la faptul că firmware-ul de BIOS și UEFI este în general furnizată în
-formă binară (binary blob). Dincolo de aspecte de filozofie (software liber vs.
+reacție la faptul că firmware-ul de BIOS și UEFI este în general furnizată de producător în
+formă binară (\textit{binary blob}). Dincolo de aspecte de filozofie (software liber vs.
 proprietar), dezvoltatorii coreboot invocă posibilitatea ca furnizorii de binare
-BIOS/UEFI să aibă accese ascunse (backdoor), iar un firmware de boot deschis
-oferă posibilitatea verificării codului. coreboot încă folosește unele
+BIOS/UEFI să aibă accese ascunse (\textit{backdoor}), iar un firmware de boot deschis
+oferă posibilitatea verificării mai facile a codului. coreboot încă folosește unele
 componente binare în vreme ce libreboot le înlocuiește pentru o versiune complet
 deschisă. Dezavantajul coreboot este folosirea sa redusă pe sisteme hardware,
 doar câteva folosind coreboot în loc de UEFI (sau BIOS).
