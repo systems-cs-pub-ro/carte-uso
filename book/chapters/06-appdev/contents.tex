@@ -805,7 +805,7 @@ La folosirea gcc, sistemul analizează fișierele de intrare și hotărăște da
 limbajul compilat este C sau C++. Pentru a eficientiza procesul, se poate folosi
 direct g++, adică compilatorul de C++ integrat în gcc.
 
-\begin{screen}[Exemplu compilare si rulare C++]
+\begin{screen}[caption={Exemplu compilare si rulare C++}]
 g++ main.cpp -o main
 ./main
 \end{screen}
@@ -876,7 +876,7 @@ Regula: dependinte
 
 Fișierul poate să conțină mai multe astfel de linii.
 
-\begin{screen}[Exemplu Makefile]
+\begin{screen}[caption={Exemplu Makefile}]
 build: utils.o hello.o help.o
        gcc utils.o help.o hello.o -o hello
 
@@ -1029,7 +1029,7 @@ fișiere, similar cu programele din C, în Python vom avea un fișier de bază c
 depinde de celelalte fișiere. Astfel, pentru a rula aplicația e suficient să
 specificăm fișierul de pornire.
 
-\begin{screen}[Exemplu rulare python]
+\begin{screen}[caption={Exemplu rulare python}]
 python main.py
 \end{screen}
 
@@ -1042,7 +1042,7 @@ Pip este un utilitar care permite manipularea pachetelor Python, cum ar fi
 instalarea sau dezinstalarea unor biblioteci. Pentru a instala un astfel de
 pachet e suficient să rulăm comanda \cmd{pip install <pachet>}
 
-\begin{screen}[Exemplu instalare de framework-uri]
+\begin{screen}[caption={Exemplu instalare de framework-uri}]
 pip install wiringpi
 \end{screen}
 
@@ -1132,7 +1132,7 @@ ca la un utilitar semănător cu make, doar că operațiile pe care grunt le
 efectuează implică preprocesarea codului sursă. Similar cu Makefile-ul, pentru
 grunt, vom crea un Gruntfile care conține toate regulile.
 
-\begin{screen}[Exemplu cod Gruntfile]
+\begin{screen}[caption={Exemplu cod Gruntfile}]
 module.exports = function(grunt) {
 
  grunt.initConfig({

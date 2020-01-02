@@ -368,7 +368,7 @@ frame=single,rulecolor=\color{red},framerule=0.8mm}
 	breakindent=0pt,
 	escapechar=^,
 	language=,
-	caption=#1,
+	#1,
 } % end of lstset
 } % end of begin{env}
 {\vspace{-0.7em}}
