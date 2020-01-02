@@ -180,7 +180,7 @@ Pe lângă beneficiul prezenței mai multor aplicații de rețea pe aceeași sta
 \subsection{Limita de adrese IP}
 \label{sec:net:ip-limit}
 
-O adresă IPv4 ocupă 32 de biți. Aceasta înseamnă că există un număr maxim de circa 4 miliarde (2^32) de adrese IPv4. În realitate numărul este mult mai mic, unele adrese fiind rezervate, altele fiind pierdute în organizarea adreselor în rețele, altele fiind folosite de echipamentele de rețea din Internet.
+O adresă IPv4 ocupă 32 de biți. Aceasta înseamnă că există un număr maxim de circa 4 miliarde ($2^32$) de adrese IPv4. În realitate numărul este mult mai mic, unele adrese fiind rezervate, altele fiind pierdute în organizarea adreselor în rețele, altele fiind folosite de echipamentele de rețea din Internet.
 
 Pe măsura creșterii numărului de stații și dispozitive conectate la Internet, adresele IPv4 au început să fie epuizate. În zilele noastre sunt miliarde de dispozitive legate la Internet, în special prin intermediul tehnologiilor de tip IoT (Internet of Things) prin care dispozitive precum un bec inteligent sau un frigider sau un senzor au o adresă IP.
 
@@ -483,6 +483,7 @@ Virtual Network Computing (VNC) este un alt sistem de tipul desktop sharing. Cup
 
 Pentru acces la distanță în linia de comandă cel mai întâlnit protocol este SSH (Secure Shell). Protocolul SSH creează un canal sigur de comunicare (criptat); în acest canal se poate opta pentru deschiderea unei sesiuni shell la distanță (remote shell) sau pentru transfer de fișier sau pentru tunelerare altor protocoale pentru a le adăuga funcționalități de securitate. Ca să deschidem o sesiune shell la distanță folosim, în Linux, comanda ssh urmată de numele de cont (username) și numele stație, ca în secvența TODO:
 
+\begin{screen}
 razvan@jotunn:~$ whoami
 razvan
 razvan@jotunn:~$ hostname
@@ -494,6 +495,7 @@ uso@elf:~$ whoami
 uso
 uso@elf:~$ hostname
 elf
+\end{screen}
 
 În secvența TODO, ne-am conectat de pe sistemul cu numele uso din contul student pe sistemul cu numele elf.cs.pub.ro în contul uso. Avem deschisă o sesiune shell la distanță unde putem rula comenzi și unde putem administra sistemul.
 
