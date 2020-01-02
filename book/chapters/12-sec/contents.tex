@@ -10,10 +10,11 @@ Numim un sistem informatic sigur un sistem care funcționează conform așteptă
 Spunem că, în general, complexitatea unui sistem afectează securitatea acestuia. Cu cât un sistem este mai complex cu atât este mai greu de validat că pentru un număr mare de cazuri de utilizare, sistemul funcționează corespunzător. Creșterea complexității unui sistem duce la creșterea riscurilor de securitate la adresa acestuia. Riscurile de securitate pot apărea la toate nivelurile unui sistem: pot fi probleme software, probleme hardware, probleme de infrastructură sau probleme de configurare. Aceste probleme sunt riscuri care expun sistemul către atacatori; un atacator va urmări exploatarea sistemului în beneficiu propriu.
 
 Un sistem care este atacat poate suferi pe trei direcții:
-
-pierderea controlului: atacatorul deține controlul sistemului putând accesa date private sau rulând aplicații malițioase sau abuza alte sisteme
-furtul de informații: informații critice ale unui utilizator (cod PIN, date private) sau ale unei companii (conturi de acces, informații despre tranzacții, cod sursă) pot fi extrase de atacator pentru a fi vândute sau pentru șantaj sau pentru a extrage bani din conturi bancare
-abuzarea resurselor: atacatorul îngreunează funcționarea sistemului sau îl oprește, sabotând astfel serviciul unei companii și ducând la pierderi de imagini sau pierderi în piață
+\begin{enumerate}
+  \item pierderea controlului: atacatorul deține controlul sistemului putând accesa date private sau rulând aplicații malițioase sau abuza alte sisteme
+  \item furtul de informații: informații critice ale unui utilizator (cod PIN, date private) sau ale unei companii (conturi de acces, informații despre tranzacții, cod sursă) pot fi extrase de atacator pentru a fi vândute sau pentru șantaj sau pentru a extrage bani din conturi bancare
+  \item abuzarea resurselor: atacatorul îngreunează funcționarea sistemului sau îl oprește, sabotând astfel serviciul unei companii și ducând la pierderi de imagini sau pierderi în piață
+\end{enumerate}
 
 Un atacator poate urmări una sau mai multe dintre aceste direcții. Motivația unui atacator este adesea financiară dar poate fi și una politică sau poate fi angajat de o entitate concurentă sau poate ataca sistemul doar pentru distracție. Există, de asemenea, categorii de persoane bine intenționate, așa numiții white-hat hackers (sau ethical hackers), care atacă un sistem pentru a-i descoperi probleme pe care le raportează apoi pentru a fi corectate.
 
@@ -37,9 +38,9 @@ Perspectiva securității ca proces, ca acțiune continuă, impune alocarea perm
 
 A securiza un sistem, sau, mai bine zis, a crește securitatea unui sistem, înseamnă a elimina, sau, mai bine zis, a îngreuna atacurile. Securitatea unui sistem înseamnă atingerea unor obiective pentru acel sistem, obiective care sunt compromise în cazul unui atac. În mod ideal, aceste obiective sunt atinse pentru toate sistemele, dar unele pot fi prevalente pentru anumite sisteme. Prezentăm în continuare obiective principale ale securității, cu precizarea că nu sunt exhaustive și nu sunt complet separate.
 
-Unul dintre cele mai importante obiective este confidențialitatea. Confidențialitatea se referă în general la datele stocate și la datele transferate. Spunem că este asigurată confidențialitatea dacă doar utilizatorii sau entitățile autorizate să acceseze și să vizualizeze datele o pot face. Confidențialitatea este asigurată în general cu ajutorul criptării, așa cum vom clarifica în Secțiunea TODO: Criptarea datelor.
+Unul dintre cele mai importante obiective este confidențialitatea. Confidențialitatea se referă în general la datele stocate și la datele transferate. Spunem că este asigurată confidențialitatea dacă doar utilizatorii sau entitățile autorizate să acceseze și să vizualizeze datele o pot face. Confidențialitatea este asigurată în general cu ajutorul criptării, așa cum vom clarifica în \labelindexref{Secțiunea}{sec:sec:confidentiality}.
 
-Un alt obiectiv legat de date este integritatea. Dacă un atacator nu poate vizualiza date (adică le este asigurată confidențialitatea), în continuare acesta poate modifica datele; spunem că atacatorul corupe datele. Coruperea datelor poate însemna pierderea datelor pentru o entitate de tip victimă sau poate însemna inducerea unui alt comportament: victima crede că datele sunt corecte și ia altă decizie pe baza lor. Integritatea datelor este asigurată în general de algoritmi de hashing, așa cum vom detalia în Secțiunea TODO: Integritatea datelor.
+Un alt obiectiv legat de date este integritatea. Dacă un atacator nu poate vizualiza date (adică le este asigurată confidențialitatea), în continuare acesta poate modifica datele; spunem că atacatorul corupe datele. Coruperea datelor poate însemna pierderea datelor pentru o entitate de tip victimă sau poate însemna inducerea unui alt comportament: victima crede că datele sunt corecte și ia altă decizie pe baza lor. Integritatea datelor este asigurată în general de algoritmi de hashing, așa cum vom detalia în \labelindexref{Secțiunea}{sec:sec:integrity}.
 
 Un sistem sigur este un sistem care răspunde cererilor de la utilizator pentru a obține rezultatele dorite de acesta. De aceea un obiectiv al securității este disponibilitatea (availability). Concepte similare sunt fiabilitatea (reliability) și robustețe (robustness). Un sistem este disponibil atunci când oferă în mod constant serviciul corespunzător utilizatorilor, independent de condiții. Adică în cazul unui atac de abuz de resurse de tipul DoS (Denial of Service), sistemul funcționează în parametri satisfăcători. Asigurarea disponibilității unui sistem ține de mai multe măsuri precum monitorizarea sistemului, verificarea intrărilor, redundanță, hardware fiabil.
 
@@ -58,15 +59,29 @@ Un bug devine o vulnerabilitate în momentul în care acesta poate fi exploatat�
 
 Un exploit este un instrument (poate fi o aplicație sau o dată de intrare sau un dispozitiv) care poate fi folosit pentru exploatarea unei vulnerabilități.
 
-Atunci când un atacator știe de prezența uneia sau mai multor vulnerabilități la nivelul unui sistem, acesta va încerca să le exploateze urmărind un beneficiu în direcția celor prezentate la începutul capitolului: obținerea controlului, furtul de informații sau abuzarea resurselor. Pentru aceasta un atacator construiește un vector de atac. Un vector de atac reprezintă setul de pași pe care îl urmează un atacator pentru a obține un beneficiu în sistemul atacat. De obicei o singură vulnerabilitate și, deci, un singur exploit nu sunt suficiente, așa că atacatorul va lega mai multe exploit-uri într-un vector de atac. De exemplu, poate fi un exploit pentru a trece de firewall, unul pentru a obține un shell într-un sistem, altul pentru a obține acces la baza de date de parole, alta pentru a accesa un server și de acolo de a obține informații critice. Mai jos este prezentată schematic ideea unui vector de atac:
+Atunci când un atacator știe de prezența uneia sau mai multor vulnerabilități la nivelul unui sistem, acesta va încerca să le exploateze urmărind un beneficiu în direcția celor prezentate la începutul capitolului: obținerea controlului, furtul de informații sau abuzarea resurselor. Pentru aceasta un atacator construiește un vector de atac. Un vector de atac reprezintă setul de pași pe care îl urmează un atacator pentru a obține un beneficiu în sistemul atacat. De obicei o singură vulnerabilitate și, deci, un singur exploit nu sunt suficiente, așa că atacatorul va lega mai multe exploit-uri într-un vector de atac. De exemplu, poate fi un exploit pentru a trece de firewall, unul pentru a obține un shell într-un sistem, altul pentru a obține acces la baza de date de parole, alta pentru a accesa un server și de acolo de a obține informații critice. În \labelindexref{Figura}{fig:sec:attack-vector} este prezentată schematic ideea unui vector de atac.
 
-diagramă cu vector de atac ca înlănțuire de exploit-uri
+\begin{figure}[htbp]
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/02-fs/def-fs.svg}
+  \caption{Vector de atac}
+  \label{fig:sec:attack-vector}
+  % TODO: diagramă cu vector de atac ca înlănțuire de exploit-uri
+\end{figure}
 
 În obiectivul său de a obține beneficii proprii, un atacator are nevoie de un mod de acces la un sistem. În zilele noastre, accesibilitatea prin Internet înseamnă că multe sisteme sunt atacabile de la distanță. Modurile în care se poate accesa un sistem, adică modurile în care putem intra într-un sistem, sunt țintele de început ale atacatorilor, punctele de intrare în sistem. Spunem că intrările unui sistem reprezintă suprafața de atac a unui sistem; un sistem are suprafața de atac cu atât mai mare cu cât are un număr mai mare de intrări sau de intrări cât mai largi. O suprafață de atac mare înseamnă risc de securitate mare. Așa că unul dintre modurile prin care un apărător protejează sistemul este reducerea suprafeței de atac.
 
-Principiul reducerii suprafeței de atac se aplică și în alt context. Un sistem are o componentă critică de funcționarea corectă a căreia depinde între sistemul. De exemplu, pe un sistem de calcul obișnuit, această componentă este dată de sistemul de operare și de serviciile privilegiate ale sistemului; când sistemul de operare sau un serviciu privilegiat este compromis, echivalent cu obținerea contului de root pe Linux sau contul de tip Administrator pe Windows, spunem că întreg sistemul este compromis. Numim această componentă critică a sistemului Trusted Computing Base (TCB), așa cum indicăm în Figura TODO. TCB trebuie protejat cel mai mult în cadrul sistemului. Componente non-TCB pot fi compromise fără a compromite întreg sistemul; dar compromiterea TCB înseamnă compromiterea sistemului. Dată fiind relevanța acestuia în securizarea sistemului, dimensiunea TCB trebuie să fie cât mai mică, adică TCB-ul să aibă suprafață de atac cât mai mică, reducând riscurile critice de securitate.
+Principiul reducerii suprafeței de atac se aplică și în alt context. Un sistem are o componentă critică de funcționarea corectă a căreia depinde între sistemul. De exemplu, pe un sistem de calcul obișnuit, această componentă este dată de sistemul de operare și de serviciile privilegiate ale sistemului; când sistemul de operare sau un serviciu privilegiat este compromis, echivalent cu obținerea contului de root pe Linux sau contul de tip Administrator pe Windows, spunem că întreg sistemul este compromis. Numim această componentă critică a sistemului Trusted Computing Base (TCB), așa cum indicăm în \labelindexref{Figura}{fig:sec:tcb}. TCB trebuie protejat cel mai mult în cadrul sistemului. Componente non-TCB pot fi compromise fără a compromite întreg sistemul; dar compromiterea TCB înseamnă compromiterea sistemului. Dată fiind relevanța acestuia în securizarea sistemului, dimensiunea TCB trebuie să fie cât mai mică, adică TCB-ul să aibă suprafață de atac cât mai mică, reducând riscurile critice de securitate.
 
-diagramă cu aplicații neprivilegiate, aplicații privilegiate, sistem de operare, hardware, cu TCB-ul cuprinzând aplicațiile privilegiate, sistemul de operare și hardwware-ul
+\begin{figure}[htbp]
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/02-fs/def-fs.svg}
+  \caption{Trusted Computing Base (TCB) într-un sistem de calcul}
+  \label{fig:sec:tcb}
+  % TODO: diagramă cu aplicații neprivilegiate, aplicații privilegiate, sistem de operare, hardware, cu TCB-ul cuprinzând aplicațiile privilegiate, sistemul de operare și hardwware-ul
+\end{figure}
 
 \subsection{Principii de securitate}
 \label{sec:sec:principles}
@@ -75,9 +90,16 @@ diagramă cu aplicații neprivilegiate, aplicații privilegiate, sistem de opera
 
 Unul dintre cele mai importante principii este principiul celui mai mic privilegiu. Un sistem are componente (hardware, software, de infrastructură) ce interacționează între ele. O anumită componentă, de exemplu un anumit proces, are nevoie de acces la anumite resurse pentru a funcționa. Principiul celui mai mic privilegiu dictează ca implementarea mecanismelor de securitate să nu permită accesul componentei la alte resurse. Astfel că, dacă o aplicație este compromisă, impactul daunelor produse va fi minim: doar la nivelul resurselor accesibile aplicației.
 
-Principiul celui mai mic privilegiu corelează cu proiectarea modulară a sistemelor. Atunci când sistemul este monolitic (nu are separații clare între componente), accesul la toate resursele se acordă întregului sistem. Atunci când sistemul este modular, format din mai multe părți, fiecărei părți îi este atribuit setul minim necesar de privilegii: o parte are acces la anumite resurse, o altă parte la alte resurse, limitând potențialul daunelor în cazul compromiterii unei părți. Putem spune că principiul celui mai mic privilegiu, împreună cu o proiectare modulară, duce la reducerea suprafeței de impact în cazul unui atac. În figura de mai jos (TODO) este precizată diferența între o proiectare monolitică a unui sistem și una modulară și beneficiul folosirii principiului celui mai mic privilegiu.
+Principiul celui mai mic privilegiu corelează cu proiectarea modulară a sistemelor. Atunci când sistemul este monolitic (nu are separații clare între componente), accesul la toate resursele se acordă întregului sistem. Atunci când sistemul este modular, format din mai multe părți, fiecărei părți îi este atribuit setul minim necesar de privilegii: o parte are acces la anumite resurse, o altă parte la alte resurse, limitând potențialul daunelor în cazul compromiterii unei părți. Putem spune că principiul celui mai mic privilegiu, împreună cu o proiectare modulară, duce la reducerea suprafeței de impact în cazul unui atac. În \labelindexref{Figura}{fig:sec:resource-access} este precizată diferența între o proiectare monolitică a unui sistem și una modulară și beneficiul folosirii principiului celui mai mic privilegiu.
 
-TODO diagramă comparativă cu un sistem monolitic și acces la toate resursele și unul modular cu acces la resurse separat și interzis accesul unei componente la resurse nenecesare
+\begin{figure}[htbp]
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/02-fs/def-fs.svg}
+  \caption{Accesul la resurse într-un sistem monolitic și unul modular}
+  \label{fig:sec:resource-access}
+  % TODO: diagramă comparativă cu un sistem monolitic și acces la toate resursele și unul modular cu acces la resurse separat și interzis accesul unei componente la resurse nenecesare
+\end{figure}
 
 Mijloacele defensive care pot fi folosite în securizarea unui sistem nu sunt infailibile. Pentru creșterea securității unui sistem, se recomandă principiul apărării în adâncime sau apărării multi-nivel (defense in depth, multi-layer security) cu mai multe mijloace defensive prezente simultan în securizarea unui sistem. Aceste mijloace sunt complementare, similare mai multe ziduri de apărare: penetrarea unui mijloc defensiv plasează atacatorul în fața unui alt mijloc defensiv, făcând dificilă crearea unui vector de atac capabil să înfrângă toate mijloacele.
 
@@ -88,15 +110,29 @@ Atunci când se dorește securizarea unui sistem, facem separația între politi
 \subsection{Modelul subiect-obiect. Permisiuni de acces}
 \label{sec:sec:permissions}
 
-În implementarea principiilor de securitate, sistemele și interacțiunea între componentele acestora sunt descrise de modelul subiect-obiect (subject-object model). În acest model, subiectul, numit și agent, este entitatea activă, entitatea care execută acțiuni. Obiectul, numit și resursă, este entitatea pasivă, entitate asupra căreia se execută acțiunile. Securitatea unui sistem este dată de regulile de acces ale subiecților la obiecte. Un subiect S1 poate avea acces de scriere la obiectul O1, subiectul S2 poate avea acces de citire la obiectul O1, iar subiectul S3 poate nu avem nici un acces. Aceste reguli sunt în general reprezentate în formă de graf ca în figura de mai jos TODO:
+În implementarea principiilor de securitate, sistemele și interacțiunea între componentele acestora sunt descrise de modelul subiect-obiect (subject-object model). În acest model, subiectul, numit și agent, este entitatea activă, entitatea care execută acțiuni. Obiectul, numit și resursă, este entitatea pasivă, entitate asupra căreia se execută acțiunile. Securitatea unui sistem este dată de regulile de acces ale subiecților la obiecte. Un subiect S1 poate avea acces de scriere la obiectul O1, subiectul S2 poate avea acces de citire la obiectul O1, iar subiectul S3 poate nu avem nici un acces. Aceste reguli sunt în general reprezentate în formă de graf ca în \labelindexref{Figura}{fig:sec:access-permissions}.
 
-figură cu S1 -> write -> O1, S2 -> read -> O1, S3 nimic
+\begin{figure}[htbp]
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/02-fs/def-fs.svg}
+  \caption{Permisiuni de access}
+  \label{fig:sec:access-permissions}
+  % TODO: figură cu S1 -> write -> O1, S2 -> read -> O1, S3 nimic
+\end{figure}
 
-O entitate privilegiată, care face parte din TCB-ul sistemului, numită și monitor de referințe (reference monitor) este cea care permite sau nu accesul subiecților la obiecte. Pentru acesta sunt configurate permisiuni de acces care stabilesc pentru fiecare subiect și obiect ce permisiuni au fiecare. Modul în care monitorul de referințe gestionează accesul subiecților la obiecte este descris în Figura de mai jos TODO:
+O entitate privilegiată, care face parte din TCB-ul sistemului, numită și monitor de referințe (reference monitor) este cea care permite sau nu accesul subiecților la obiecte. Pentru acesta sunt configurate permisiuni de acces care stabilesc pentru fiecare subiect și obiect ce permisiuni au fiecare. Modul în care monitorul de referințe gestionează accesul subiecților la obiecte este descris în \labelindexref{Figura}{fig:sec:reference-monitor}.
 
-Diagramă cu subiecți + obiecte și acces gestionat de monitorul de referințe pe baza unei baze de date de permisiuni
+\begin{figure}[htbp]
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/02-fs/def-fs.svg}
+  \caption{Monitorul de referințe (reference monitor)}
+  \label{fig:sec:reference-monitor}
+  % TODO: diagramă cu subiecți + obiecte și acces gestionat de monitorul de referințe pe baza unei baze de date de permisiuni
+\end{figure}
 
-O formă de implementare a modelului subiect-obiect o reprezintă permisiunile în sistemul de fișiere despre care vom discuta în Secțiunea TODO: Securitatea în sistemul de fișiere. În acest caz subiectul este procesul iar obiectul este fișierul care se dorește accesat. În cadrul fișierului sunt reținute permisiunile de acces pe baza cărora monitorul de referințe (adică sistemul de operare) oferă accesul. Modelul subiect-obiect este simplificat în cazul permisiunilor pe sistemul de fișiere: nu există intrări pentru fiecare subiect (proces) ci sunt agregate în cele trei clase de entități: utilizator (user), grup (group), ceilalți (others).
+O formă de implementare a modelului subiect-obiect o reprezintă permisiunile în sistemul de fișiere despre care vom discuta în \labelindexref{Secțiunea}{sec:sec:fs}. În acest caz subiectul este procesul iar obiectul este fișierul care se dorește accesat. În cadrul fișierului sunt reținute permisiunile de acces pe baza cărora monitorul de referințe (adică sistemul de operare) oferă accesul. Modelul subiect-obiect este simplificat în cazul permisiunilor pe sistemul de fișiere: nu există intrări pentru fiecare subiect (proces) ci sunt agregate în cele trei clase de entități: utilizator (user), grup (group), ceilalți (others).
 
 În contextul modelului subiect-obiect, vorbim de cele trei tipuri de acțiuni legate: autentificare, autorizare și controlul accesului.
 
@@ -115,42 +151,65 @@ Accesul subiectului la obiect este condiționat de baza de date de permisiuni ca
 
 Pentru a preveni accesul unui atacator la date, trebuie configurate permisiuni de acces pe datele respective, stocate în general în fișiere. Pe lângă aceasta, pentru a prevenit citirea datelor mai ales în cazul în acestea sunt transferate pe rețea, datele vor fi criptate. Permisiunile de acces pe fișiere și criptarea datelor sunt principalele mijloace de asigurare a confidențialitătii datelor.
 
-\section{Securitatea în sistemul de fișiere}
+\subsection{Securitatea în sistemul de fișiere}
 \label{sec:sec:fs}
 
-Pentru accesul corect la fișierele care conțin informații confidențiale, sistemele de operare moderne permit configurarea de permisiuni de acces (access permissions sau access rights). Așa cum am precizat mai sus, în cazul acestor permisiuni, utilizatorii și procesele lor sunt subiecții, iar fișierele sunt obiectele. În forma simplă, permisiunile pe fișiere sunt citire, scriere și execuție așa cum am indicat în capitolul TODO: Utilizatori.
+Pentru accesul corect la fișierele care conțin informații confidențiale, sistemele de operare moderne permit configurarea de permisiuni de acces (access permissions sau access rights). Așa cum am precizat mai sus, în cazul acestor permisiuni, utilizatorii și procesele lor sunt subiecții, iar fișierele sunt obiectele. În forma simplă, permisiunile pe fișiere sunt citire, scriere și execuție așa cum am indicat în \labelindexref{Capitolul}{chapter:users}.
 
 Astfel, în sistemul de fișiere un utilizator neprivilegiat va avea acces de scriere doar în directorul său home, va avea acces de citire la acele fișiere de sistem de care au nevoie procesele sale și nu va avea nici o formă de acces la fișierele cu informații critice ale sistemului. Aceasta reprezintă o implementare a principiului celui mai mic privilegiu (least privilege). În această implementare, dacă un atacator obține acces la contul unui utilizator privilegiat (obține parola acestuia sau exploatează o aplicație a acestuia), va avea acces limitat la fișierele din sistem.
 
 O formă suplimentară de protejare a accesului la sistemul de fișiere este folosirea unui utilitar de tipul chroot. chroot este un utilitar Linux care schimbă directorul rădăcină al sistemului de fișiere pentru un proces; astfel, nu proces nu va mai avea / (slash) ca director rădăcină ci un subdirector al acestuia, de exemplu /var/lib/app/; în această situație, procesul care rulează prin chroot va avea acces doar la fișierele din ierarhia /var/lib/app/ nu la toate fișierele din sistemul de fișiere, limitând daunele care ar fi produse dacă ar fi exploatat. Această tehnică mai poartă numele de jailing.
 
-\subsection{Criptarea datelor}
-\label{sec:sec:encryption}
+\subsection{Confidențialitatea datelor}
+\label{sec:sec:confidentiality}
 
-Sistemele și dispozitivele moderne au legătură aproape permanentă la Internet și transferă informații între ele. În această situație permisiunile pe fișiere în sistemul local sunt nerelevante pentru un atacator care poate să captureze datele când sunt transferate. De aceea avem nevoie de moduri de a ascunde aceste date și chiar capturate să nu fie citite de un atacator.
+Sistemele și dispozitivele moderne au legătură aproape permanentă la Internet și transferă informații între ele. În această situație permisiunile pe fișiere în sistemul local sunt nerelevante pentru un atacator care poate să captureze datele când sunt transferate. De aceea avem nevoie de moduri de a ascunde aceste date și chiar capturate să nu fie citite de un atacator, adică să păstrăm \textbf{confidențialitatea datelor}. Confidențialitatea datelor este asigurată în general prin \textbf{criptare}.
 
 În plus și pe un sistem local este recomandat ca datele critice să fie criptate. Dacă permisiunile de acces nu sunt configurate corespunzător sau dacă un atacator reușește să treacă de permisiuni sau să exploateze un proces privilegiat care are acces la date, atunci va putea citi datele critice. Criptarea datelor critice pe sistemul local, peste permisiuni de acces corespunzător configurate, este o formă de securitate în adâncime (security in depth).
 
-Criptarea datelor presupune că datele de intrare sunt supuse unui proces (de criptare) din care rezultă date de ieșire (ascuns). Datele mai sunt numite mesaje; avem, așadar, un mesaj de intrare și un mesaj de ieșire. Mesajul de intrare este numit mesaj inteligibil (plaintext) iar mesajul de ieșire este numit mesaj ascuns (ciphertext). Pentru criptarea unui mesaj de tip plaintext într-un mesaj de tip ciphertext este nevoie de un algoritm de criptare; algoritmul de criptare este setul de pași prin care mesajul de tipul plaintext este prelucrat în mesajul de tipul ciphertext. Algoritmul de criptare folosește în mod tipic o cheie de criptare; cheia de criptare perturbă funcționarea algoritmului astfel încât în cazul aceluiași mesaj de tip plaintext și aceluiași algoritm de criptare dar chei de criptare diferite vor rezultate mesaje de tip ciphertext diferite. Schematic funcționarea criptării cu cele patru componente (mesaj de tip plaintext, mesaj de tip ciphertext, algoritm și cheie) sunt descrise în Figura TODO.
+Criptarea datelor presupune că datele de intrare sunt supuse unui proces (de criptare) din care rezultă date de ieșire (ascuns). Datele mai sunt numite mesaje; avem, așadar, un mesaj de intrare și un mesaj de ieșire. Mesajul de intrare este numit mesaj inteligibil (plaintext) iar mesajul de ieșire este numit mesaj ascuns (ciphertext). Pentru criptarea unui mesaj de tip plaintext într-un mesaj de tip ciphertext este nevoie de un algoritm de criptare; algoritmul de criptare este setul de pași prin care mesajul de tipul plaintext este prelucrat în mesajul de tipul ciphertext. Algoritmul de criptare folosește în mod tipic o cheie de criptare; cheia de criptare perturbă funcționarea algoritmului astfel încât în cazul aceluiași mesaj de tip plaintext și aceluiași algoritm de criptare dar chei de criptare diferite vor rezultate mesaje de tip ciphertext diferite. Schematic funcționarea criptării cu cele patru componente (mesaj de tip plaintext, mesaj de tip ciphertext, algoritm și cheie) sunt descrise în \labelindexref{Figura}{fig:sec:encryption}.
 
-diagramă cu mesaj plaintext, algoritm, cheie, mesaj ciphertext
+\begin{figure}[htbp]
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/02-fs/def-fs.svg}
+  \caption{Criptarea datelor}
+  \label{fig:sec:encryption}
+  % TODO: diagramă cu mesaj plaintext, algoritm, cheie, mesaj ciphertext
+\end{figure}
 
 Un mesaj ciphertext va fi ascuns atacatorului care nu știe cheia. Dar va trebui decriptat de un utilizator valid. Decriptarea este operația inversă criptării în care mesajul de intrare este mesajul de tip ciphertext iar mesajul de ieșire este mesajul de tip plaintext. Pentru a putea decripta un fișier de tip ciphertext, un utilizator are nevoie de acces la o cheie de decriptare și să cunoască algoritmul de decriptare. Dacă această cheie este aceeași ca cea de criptare spunem că folosim criptare simetrică; altfel spunem că folosim criptare asimetrică.
 
-În cazul criptării simetrice, aceeași cheie este folosită și pentru criptare și decriptare ca în Figura TODO. Cel mai folosit algoritm de criptare simetrică este AES (Advanced Encryption Standard). Cheia de criptare trebuie știută atât de entitatea care face criptarea cât și de entitatea care face decriptarea; în cazul probabil în care aceste entități sunt în locuri diferite în Internet, cheia trebuie transferată prin rețea; pentru aceasta în mod uzual se folosesc algoritmi de schimbare de chei (key exchange) care folosesc criptare asimetrică precum Diffie-Hellman-Merkle.
+În cazul criptării simetrice, aceeași cheie este folosită și pentru criptare și decriptare ca în \labelindexref{Figura}{fig:sec:symmetric-encryption}. Cel mai folosit algoritm de criptare simetrică este AES (Advanced Encryption Standard). Cheia de criptare trebuie știută atât de entitatea care face criptarea cât și de entitatea care face decriptarea; în cazul probabil în care aceste entități sunt în locuri diferite în Internet, cheia trebuie transferată prin rețea; pentru aceasta în mod uzual se folosesc algoritmi de schimbare de chei (key exchange) care folosesc criptare asimetrică precum Diffie-Hellman-Merkle.
 
-diagramă cu criptarea simetrică
+\begin{figure}[htbp]
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/02-fs/def-fs.svg}
+  \caption{Criptarea simetrică}
+  \label{fig:sec:symmetric-encryption}
+  % TODO: diagramă cu criptarea simetrică
+\end{figure}
 
-În cazul criptării asimetrice, numită și criptare cu chei publice (public key cryptography), se folosește o cheie pentru criptare și alta pentru decriptare; cele două chei (numite cheie privată/secretă și cheie publică) sunt legate matematic; în general cheia privată este generată aleator iar cheia publică este generată din cheia privată. Cheia publică este accesibilă întregii lumi în vreme ce cheia privată este accesibilă doar entității care o deține. Criptarea este realizată folosind cheia publică, iar decriptarea este realizată folosind cheia privată, ca în Figura TODO. Adică oricine poate cripta și transmite un mesaj folosind cheia publică, dar doar deținător cheii private poate decripta acel mesaj. Cel mai răspândit algoritm de criptare asimetrică este RSA; numele vine de la creatorii săi (Rivest–Shamir–Adleman).
+În cazul criptării asimetrice, numită și criptare cu chei publice (public key cryptography), se folosește o cheie pentru criptare și alta pentru decriptare; cele două chei (numite cheie privată/secretă și cheie publică) sunt legate matematic; în general cheia privată este generată aleator iar cheia publică este generată din cheia privată. Cheia publică este accesibilă întregii lumi în vreme ce cheia privată este accesibilă doar entității care o deține. Criptarea este realizată folosind cheia publică, iar decriptarea este realizată folosind cheia privată, ca în \labelindexref{Figura}{fig:sec:asymmetric-encryption}. Adică oricine poate cripta și transmite un mesaj folosind cheia publică, dar doar deținător cheii private poate decripta acel mesaj. Cel mai răspândit algoritm de criptare asimetrică este RSA; numele vine de la creatorii săi (Rivest–Shamir–Adleman).
 
-diagramă cu criptarea asimetrică; cheia publică criptează, cheia privată decriptează
+\begin{figure}[htbp]
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/02-fs/def-fs.svg}
+  \caption{Criptarea asimetrică (cu chei publice)}
+  \label{fig:sec:asymmetric-encryption}
+  % TODO: diagramă cu criptarea asimetrică; cheia publică criptează, cheia privată decriptează
+\end{figure}
 
 Criptarea asimetrică este avantajoasă pentru că nu este nevoie de transmiterea unei chei. Cheia privată este generată locală și ținută local, iar cheia publică este furnizată publicului larg pentru a o folosi pentru transmiterea de mesaje criptate. În felul acesta evităm neajunsul partajării cheii de la criptarea simetrică. Dezavantajul criptării asimetrice este viteza: este mai puțin performantă decât criptarea asimetrică. De aceea, în practică, se folosește criptarea asimetrică pentru stabilirea unui canal sigur de comunicare pe baza căreia se stabilește cheia simetrică (doar pentru acea sesiune) și apoi se folosește criptarea simetrică. Este modul de funcționare a algoritmului Diffie-Hellman-Merkle. Succint, algoritmul urmează pașii de mai jos. Considerăm două entități (un transmițător și un receptor) și un canal public de comunicație (accesibil atacatorului):
 
-1. ambele entități agreează un număr partajat (transmis pe canalul publică)
-2. fiecare entitate are un număr privat, generează o cheie privată din numărul public și numărul privat; cele două chei, deși private, au o legătură matematică dată de numărul partajat
-3. fiecare entitate generează o cheie publică din cheia privată și este transmisă celeilalte entități (pe canalul public)
-4. dată fiind legătura matematică între cele două chei publice, cele două entități pot calcula un număr nou, identic, care va fi cheia pentru criptarea simetrică, cheie ce nu a fost transmisă pe canalul public.
+\begin{enumerate}
+  \item ambele entități agreează un număr partajat (transmis pe canalul publică)
+  \item fiecare entitate are un număr privat, generează o cheie privată din numărul public și numărul privat; cele două chei, deși private, au o legătură matematică dată de numărul partajat
+  \item fiecare entitate generează o cheie publică din cheia privată și este transmisă celeilalte entități (pe canalul public)
+  \item dată fiind legătura matematică între cele două chei publice, cele două entități pot calcula un număr nou, identic, care va fi cheia pentru criptarea simetrică, cheie ce nu a fost transmisă pe canalul public.
+\end{enumerate}
 
 Chiar dacă un atacator nu poate obține cheia de criptate, algoritmii de criptare nu sunt imbatabili. Un algoritm de criptare slab va putea fi “spart” de un atacator (adică poate fi determinată cheia de criptare) dacă atacatorul are acces la suficient de multe mesaje criptate de tip ciphertext (de exemplu capturate din rețea). Această acțiune este numită criptanaliză; un algoritm de criptare robust rezistă la atacuri criptografice și nu permite descoperirea cheii atunci când atacatorul are acces la multe mesaje de tip ciphertext.
 
@@ -158,39 +217,51 @@ Criptarea poate fi folosită și de atacator în cazul atacurilor de tipul ranso
 
 În general un utilizator nu va folosi direct utilitare de criptare. Algoritmii de criptare sunt în general implementați în formă de biblioteci care apoi sunt folosite de aplicații care folosesc funcționalitatea de criptare. De exemplu un browser web poate folosi o bibliotecă de criptare pentru a cripta parolele salvate de utilizator într-un fișier local; sau un utilizator poate decide să își cripteze o partiție de disc, fiind responsabilitatea utilitarelor de formatare și montare să folosească o bibliotecă de criptare.
 
-Una dintre cele mai folosite biblioteci de criptare, prezentă în general pe sistemele Linux este openssl. Biblioteca openssl oferă și un utilitar care poate fi folosit în linia de comandă pentru criptarea și decriptarea datelor. În secvența de cod TODO folosim openssl și algoritmul AES pentru a cripta fișierul plain.txt în fișierul cipher.dat; iar apoi decriptăm fișierul cipher.dat în fișierul decrypted.txt. În final observăm că fișierul decrypted.txt și fișierul plain.txt sunt identice, deci ambele operații (criptare și decriptare) au fost realizate cu succes.
+Una dintre cele mai folosite biblioteci de criptare, prezentă în general pe sistemele Linux este openssl. Biblioteca openssl oferă și un utilitar care poate fi folosit în linia de comandă pentru criptarea și decriptarea datelor. În \labelindexref{Listing}{lst:sec:openssl} folosim openssl și algoritmul AES pentru a cripta fișierul plain.txt în fișierul cipher.dat; iar apoi decriptăm fișierul cipher.dat în fișierul decrypted.txt. În final observăm că fișierul decrypted.txt și fișierul plain.txt sunt identice, deci ambele operații (criptare și decriptare) au fost realizate cu succes.
 
-secvență de cod cu AES și openssl
+\begin{screen}[caption={Criptare și decriptare folosind openssl},label={lst:sec:openssl}]
+TODO: secventa de cod cu AES si openssl
+\end{screen}
 
 \subsection{Integritatea datelor}
 \label{sec:sec:integrity}
 
 Așa cum am precizat anterior, un atacator poate urmări să citească datele, sau în cazul în care acestea sunt criptate, poate decide să le modifice. Aceasta va împiedica receptorul datelor să le folosească sau le va folosi într-un mod necorespunzător, benefic atacatorului. Chiar și în absența atacatorului, datele pot fi corupte de defecte hardware pe dispozitivele de stocare sau în momentul transferului. De aceea este necesar ca în cazul transferului datelor să asigurăm integritatea acestora.
 
-Integritatea datelor se realizează în general cu algoritmi de hashing. Un algoritm de hashing generează un rezumat de mici dimensiuni pentru un mesaj de intrare. Un fișier oricât de mare va avea un rezumat de doar câteva zeci de octeți. Algoritmi întâlniți de hashing sunt MD5 sau SHA. Receptorul unui mesaj va primi și rezumatul acestui mesaj și va putea verifica faptul că mesajul este corect aplicând algoritmul de hashing peste mesaj și comparând rezultatul cu rezumatul primit. Generarea rezumatului și verificarea sa sunt prezentate în Figura TODO.
-diagramă cu generare rezumat la transmițător și verificare rezumat la receptor
+Integritatea datelor se realizează în general cu algoritmi de hashing. Un algoritm de hashing generează un rezumat de mici dimensiuni pentru un mesaj de intrare. Un fișier oricât de mare va avea un rezumat de doar câteva zeci de octeți, numit sumă de control (checksum). Algoritmi întâlniți de hashing sunt MD5 sau SHA. Receptorul unui mesaj va primi și suma de control acestui mesaj și va putea verifica faptul că mesajul este corect aplicând algoritmul de hashing peste mesaj și comparând rezultatul cu suma de control primită. Generarea sumei de control și verificarea sa sunt prezentate în \labelindexref{Figura}{fig:sec:checksum}.
+
+\begin{figure}[htbp]
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/02-fs/def-fs.svg}
+  \caption{Generare și verificare sumă de control}
+  \label{fig:sec:checksum}
+  % TODO: diagramă cu generare rezumat la transmițător și verificare rezumat la receptor
+\end{figure}
 
 În cazul unui algoritm de hashing mai multe mesaje de intrare (de dimensiuni mari) pot genera același rezumat. Numim această situație o coliziune. Pentru ca această situație să nu fie abuzată, un algoritm de hashing trebuie să fie rezistent la coliziuni și să fie cvasi-imposibil pentru un atacator să furnizeze un mesaj diferit cel inițial care să genereze același rezumat.
 
-La fel ca în cazul algoritmilor de criptare, algoritmii de hashing sunt încorporați în biblioteci precum openssl. Aplicații care transferă date prin rețea, precum clienții Bittorrent, vor folosi implementările de algoritmi de hashing din aceste biblioteci pentru a garanta integritatea datelor transferate. În Linux există comenzi care implementează algoritmi de hashing pentru lucrul cu fișiere. De exemplu dacă transferăm un fișier de mari dimensiuni, precum o imagine de mașină virtuală, este recomandat să transferăm și rezumatul acesteia pentru ca cei care o vor descărca să se asigure că datele sunt integre. În secvența de cod TODO folosim comenzile md5sum și sha512sum pentru a calcula rezumatul MD5 și SHA-256 pentru o imagine de mașină virtuală de dimensiune mare (12GB):
+La fel ca în cazul algoritmilor de criptare, algoritmii de hashing sunt încorporați în biblioteci precum openssl. Aplicații care transferă date prin rețea, precum clienții Bittorrent, vor folosi implementările de algoritmi de hashing din aceste biblioteci pentru a garanta integritatea datelor transferate. În Linux există comenzi care implementează algoritmi de hashing pentru lucrul cu fișiere. De exemplu dacă transferăm un fișier de mari dimensiuni, precum o imagine de mașină virtuală, este recomandat să transferăm și rezumatul acesteia pentru ca cei care o vor descărca să se asigure că datele sunt integre. În \labelindexref{Listing}{lst:sec:checksum} folosim comenzile md5sum și sha512sum pentru a calcula rezumatul MD5 și SHA-256 pentru o imagine de mașină virtuală de dimensiune mare (12GB).
 
-razvan@pr708-drone:~$ md5sum SSS-Kali-amd64.ova
+\begin{screen}[caption={Calcul rezumat (checksum)},label={lst:sec:checksum}]
+student@uso:~$ md5sum SSS-Kali-amd64.ova
 3dbd973d2a331e5e755e7949274da626  SSS-Kali-amd64.ova
-razvan@pr708-drone:~$ sha256sum SSS-Kali-amd64.ova
+student@uso:~$ sha256sum SSS-Kali-amd64.ova
 caefeebfba5bb19c2acb7f77b373653e5a3179ddf46bb68ddbcad612b545debb  SSS-Kali-amd64.ova
-razvan@pr708-drone:~$ ls -sh SSS-Kali-amd64.ova
+student@uso:~$ ls -sh SSS-Kali-amd64.ova
 12G SSS-Kali-amd64.ova
+\end{screen}
 
 \section{Securitatea accesului. Autentificare}
 \label{sec:sec:auth}
 
 Pentru ca un utilizator să poată crea procese pentru folosirea unui sistem de calcul, acesta trebuie să se autentifice, adică să certifice o identitate care poate accesa sistemul. În absența autentificării un utilizator nu poate folosi un sistem de calcul. Se previne astfel accesul utilizatorilor neautorizați în sistem.
 
-Autentificarea presupune transmiterea unor informații de autentificare compuse uzual dintr-un nume de utilizator (username) și un element de autentificare (credential), adesea o parolă. Este forma descrisă în secțiunea TODO (din capitolul Utilizatori). În afara parolei, un utilizator poate folosi date biometrice (precum amprentă digitală, comună la laptop-uri sau telefoane mobile, sau amprentă facială precum cea folosită de iPhoneX sau retină) sau poate folosi autentificare cu chei publice sau certificate digitale sau poate folosi un dispozitiv hardware (precum tokenii folosiți pentru autentificarea în conturile online de bancă). Dispozitivele hardware (hardware tokens) sau aplicații pe dispozitivele mobile folosesc parole de tip one-time (one-time passwords); acestea sunt parole care expiră în scurt timp, după expirarea unei parole generându-se una nouă. În acest fel se previne reținerea unei parole de un atacator.
+Autentificarea presupune transmiterea unor informații de autentificare compuse uzual dintr-un nume de utilizator (username) și un element de autentificare (credential), adesea o parolă. Este forma descrisă în \labelindexref{Secțiunea}{sec:users-auth}. În afara parolei, un utilizator poate folosi date biometrice (precum amprentă digitală, comună la laptop-uri sau telefoane mobile, sau amprentă facială precum cea folosită de iPhoneX sau retină) sau poate folosi autentificare cu chei publice sau certificate digitale sau poate folosi un dispozitiv hardware (precum tokenii folosiți pentru autentificarea în conturile online de bancă). Dispozitivele hardware (hardware tokens) sau aplicații pe dispozitivele mobile folosesc parole de tip one-time (one-time passwords); acestea sunt parole care expiră în scurt timp, după expirarea unei parole generându-se una nouă. În acest fel se previne reținerea unei parole de un atacator.
 
-Așa cum este precizat în Figura TODO, în cadrul procesului de autentificare, un utilizator transmite un nume de utilizator și un element de autentificare. Sistemul are o bază de date de autentificare pe care o consultă și vede dacă există intrare pentru numele de utilizator furnizat cu elementul de autentificare corespunzător. Accesul este permis dacă ambele sunt găsite în baza de date de autentificare. Altfel, accesul este blocat.
+Așa cum este precizat în \labelindexref{Figura}{fig:sec:password-authentication}, în cadrul procesului de autentificare, un utilizator transmite un nume de utilizator și un element de autentificare. Sistemul are o bază de date de autentificare pe care o consultă și vede dacă există intrare pentru numele de utilizator furnizat cu elementul de autentificare corespunzător. Accesul este permis dacă ambele sunt găsite în baza de date de autentificare. Altfel, accesul este blocat.
 
-Pentru cazul în care avem mai multe servicii (care se pot localiza pe mai multe sisteme) care folosesc același nume de utilizator și element de autentificare, putem folosi autentificare centralizată, așa cum am prezentat în Secțiunea TODO (din capitolul Utilizatori). În această situație, baza de date de autentificare este gestionată de un serviciu dedicat care este contactat atunci când dorim autentificarea pentru un alt serviciu.
+Pentru cazul în care avem mai multe servicii (care se pot localiza pe mai multe sisteme) care folosesc același nume de utilizator și element de autentificare, putem folosi autentificare centralizată, așa cum am prezentat în \labelindexref{Secțiunea}{sec:users-auth-central}. În această situație, baza de date de autentificare este gestionată de un serviciu dedicat care este contactat atunci când dorim autentificarea pentru un alt serviciu.
 
 Pentru sporirea nivelului de securitate în cazul autentificare putem folosi autentificare de tip multi-factor (multi-factor authentication). Forma uzuală este two-factor authentication (2FA). În acest caz sunt folosite mai multe moduri de autentificare: o parolă și o parolă de tip one-time sau o parolă și un identificator biometric. Recomandăm ca pentru servicii sensibile (precum e-mail, rețele sociale, servicii de stocare de date) să folosiți autentificare multi-factor.
 
@@ -199,32 +270,50 @@ Pentru sporirea nivelului de securitate în cazul autentificare putem folosi aut
 
 Cel mai întâlnit element de autentificare îl reprezintă parolele. Parolele sunt șiruri de caractere furnizate sistemului de autenficare pentru a certifica identitatea utilizatorului. Parolele trebuie să fie păstrate private, altfel un atacator va impersona un utilizator și se va autentifica în sistem pretinzând că este acesta. De aceea parolele trebuie gestionate cu grijă.
 
-Parolele trebuie reținute în baza de date de autentificare descrisă în Figura TODO. Este problematic ca parolele să fie păstrate în format citibil (plain text); dacă baza de date este compromisă, un atacator va avea acces la parolele tuturor utilizatorilor. De aceea, în general nu sunt stocate parolele în format plain text în baza de date ci se stochează un rezumat al acestora obținut cu ajutorul unui algoritm de hashing așa cum am descris în Secțiunea TODO. Algoritmii de hashing sunt numiți algoritmi de tipul one-way, pentru că putem obține rapid rezumatul unui mesaj (în acest caz o parolă) dar nu și invers. Astfel, pentru autentificarea într-un sistem se parcurg pașii de mai jos, descriși și în Figura TODO:
+Parolele trebuie reținute în baza de date de autentificare descrisă în \labelindexref{Secțiunea}{fig:sec:password-authentication}. Este problematic ca parolele să fie păstrate în format citibil (plain text); dacă baza de date este compromisă, un atacator va avea acces la parolele tuturor utilizatorilor. De aceea, în general nu sunt stocate parolele în format plain text în baza de date ci se stochează un rezumat al acestora obținut cu ajutorul unui algoritm de hashing așa cum am descris în \labelindexref{Secțiunea}{fig:sec:integrity}. Algoritmii de hashing sunt numiți algoritmi de tipul one-way, pentru că putem obține rapid rezumatul unui mesaj (în acest caz o parolă) dar nu și invers. Astfel, pentru autentificarea într-un sistem se parcurg pașii de mai jos, descriși și în \labelindexref{Figura}{fig:sec:password-authentication}:
 
-utilizatorul care dorește autentificarea furnizează un nume de utilizator și o parolă
-pe parolă se aplică algoritmul de hashing și obține rezumatul
-se caută în baza de date intrarea compusă din numele de utilizator și rezumatul mesajului; dacă este găsită o astfel de intrare, este permis utilizatorului accesul în sistem
-t
+\begin{enumerate}
+  \item utilizatorul care dorește autentificarea furnizează un nume de utilizator și o parolă
+  \item pe parolă se aplică algoritmul de hashing și obține rezumatul
+  \item se caută în baza de date intrarea compusă din numele de utilizator și rezumatul mesajului; dacă este găsită o astfel de intrare, este permis utilizatorului accesul în sistem
+\end{enumerate}
 
-Chiar dacă parola nu este reținută în format plain text în baza de date, ci ca rezumat, accesul la baza de date trebuie restricționat. Este o formă a principiului securitate în adâncime. De exemplu, în Linux informațiile despre utilizatori sunt reținute în fișierul /etc/passwd care este citibil de toți utilizatorii; însă informațiile despre parole sunt reținute în fișierul /etc/shadow care este citibil doar de procese privilegiate; observăm permisiunile pe cele două fișiere în secvența de cod TODO. În plus, în fișierul /etc/shadow parolele sunt reținute ca rezumat, nu în format plain text. În secvența TODO observăm parola în format rezumat pentru utilizatorul test.
+\begin{figure}[htbp]
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/02-fs/def-fs.svg}
+  \caption{Autentificarea cu parolă}
+  \label{fig:sec:password-authentication}
+  % TODO: diagramă cu mesaj plaintext, algoritm, cheie, mesaj ciphertext
+\end{figure}
 
-secvență cu permisiuni /etc/passwd și /etc/shadow
+Chiar dacă parola nu este reținută în format plain text în baza de date, ci ca rezumat, accesul la baza de date trebuie restricționat. Este o formă a principiului securitate în adâncime. De exemplu, în Linux informațiile despre utilizatori sunt reținute în fișierul /etc/passwd care este citibil de toți utilizatorii; însă informațiile despre parole sunt reținute în fișierul /etc/shadow care este citibil doar de procese privilegiate; observăm permisiunile pe cele două fișiere în \labelindexref{Listing}{lst:sec:password-files}. În plus, în fișierul /etc/shadow parolele sunt reținute ca rezumat, nu în format plain text. În \labelindexref{Listing}{lst:sec:shadow} observăm parola în format rezumat pentru utilizatorul test.
 
-secvență cu intrare în /etc/shadow
+\begin{screen}[caption={Permisiuni pe fișiere cu parole},label={lst:sec:password-files}]
+TODO: secventa cu permisiuni /etc/passwd si /etc/shadow
+\end{screen}
+
+\begin{screen}[caption={Parolă în format rezumat (hash)},label={lst:sec:shadow}]
+TODO: secventa cu intrare in /etc/shadow
+\end{screen}
 
 Obținerea unei parole este pentru un atacator modul de a obține acces în sistem. Acesta poate obține parola fie de la utilizator sau acțiunile acestuia (inginerie socială, captură de mesaje, aflarea parolei scrisă pe o foaie sau într-un fișier accesibil, șantaj, amenințare) sau poate încerca ghicirea sau aflarea parolei direct de la sistemul de autentificare; numim ultima abordare spargerea parolei/contului sau password cracking. Spargerea parolei are două forme:
 
-online password cracking: atacatorul încearcă pe rând parole și solicită sistemului de autentificare să valideze dacă parola este corectă
-offline password cracking: atacatorul obține acces la baza de date de parole (stocate în format rezumat) și calculează rezumate de parole pentru a le compara cu cele din baza de date
+\begin{enumerate}
+  \item online password cracking: atacatorul încearcă pe rând parole și solicită sistemului de autentificare să valideze dacă parola este corectă
+  \item offline password cracking: atacatorul obține acces la baza de date de parole (stocate în format rezumat) și calculează rezumate de parole pentru a le compara cu cele din baza de date
+\end{enumerate}
 
 Există utilitare dedicate pentru a asista la spargerea parolei. Utilitare precum THC-Hydra sau Burp Suite sunt folosite pentru online password cracking, iar utilitare precum John the Ripper sunt folosite pentru offline password cracking; site-ul Crackstation oferă serviciul de offline password cracking, utilizatorul trebuind să furnizeze rezumate de parole pentru ca acesta să poată raporta dacă deține parola inițială. Avantajul online password cracking este că nu necesită accesul la baza de date de parole (adică să existe înainte un atac de tipul password leak). Dar nu se pot testa foarte multe parole pe secundă, ca în cazul offline password cracking; în plus, un sistem va raporta situația sau se va dezactiva în cazul unui număr mare de încercări eșuate pe secundă.
 
 Parolele rămân forma principală de autentificare pentru multe servicii în Internet. Într-o astfel de lume interconectată, riscurile de aflare a parolei de un atacator în modurile descrise mai sus sunt mari. De aceea există recomandări de generare, folosire și gestionare a parolelor precum cele descrise mai jos; multe organizații stabilesc și aplică politici de folosire a parolelor pentru a minimiza riscul de aflare a acestora și pentru a preveni accesul atacatorilor la resursele organizației:
 
-Parolele să conțină un set de caractere cât mai larg, să nu fie doar litere mici. Pot conține litere mari, cifre, semne de punctuație.
-Parolele trebuie să aibă o lungime de peste 10-12 caractere. Parolele cu dimensiune mai mici pot fi ghicite sau sparte. Este ideală folosirea de passphrase-uri, adică parole compuse din cuvinte, ideal nelegate între ele, mai greu de ghicit și mai ușor de reținut. Așa cum este descrisă într-o celebră ilustrație xkcd, o parolă precum Tr0o\ub4dor&3 este mai greu de reținut și mai ușor de spart decât passphrase-ul “correct horse battery staple”.
-De folosit multi-factor authentication. În general se folosește telefonul mobil (trimitere de SMS sau aplicații precum Google Authenticator) ca o formă suplimentară de autentificare, nu doar parole. În acest fel, dacă cineva obține parola, nu va putea accesa serviciul fără acces la telefonul mobil; în plus, utilizatorul va fi notificat de încercarea de autentificare.
-Parolele să fie schimbate periodic. Este ideal ca o parolă să fie schimbată o dată la 6-12 luni. Dacă a fost spartă/ghicită, parola va deveni inutilă odată ce a fost schimbată.
+\begin{itemize}
+  \item Parolele să conțină un set de caractere cât mai larg, să nu fie doar litere mici. Pot conține litere mari, cifre, semne de punctuație.
+  \item Parolele trebuie să aibă o lungime de peste 10-12 caractere. Parolele cu dimensiune mai mici pot fi ghicite sau sparte. Este ideală folosirea de passphrase-uri, adică parole compuse din cuvinte, ideal nelegate între ele, mai greu de ghicit și mai ușor de reținut. Așa cum este descrisă într-o celebră ilustrație xkcd, o parolă precum \texttt{Tr0oub4dor\&3} este mai greu de reținut și mai ușor de spart decât passphrase-ul “correct horse battery staple”.
+  \item De folosit multi-factor authentication. În general se folosește telefonul mobil (trimitere de SMS sau aplicații precum Google Authenticator) ca o formă suplimentară de autentificare, nu doar parole. În acest fel, dacă cineva obține parola, nu va putea accesa serviciul fără acces la telefonul mobil; în plus, utilizatorul va fi notificat de încercarea de autentificare.
+  \item Parolele să fie schimbate periodic. Este ideal ca o parolă să fie schimbată o dată la 6-12 luni. Dacă a fost spartă/ghicită, parola va deveni inutilă odată ce a fost schimbată.
+\end{itemize}
 
 În zilele noastre, avem multe servicii la care avem acces pe bază de parole: sistem desktop, e-mail, online shopping, online media, rețele sociale, servicii de stocare, servicii financiare. Este riscul să ajungem să folosim o parolă de două sau mai multe ori pe același site/serviciu. E important să folosim parole diferite pentru servicii diferite. Dacă o parolă este ghicită accesul la un sigur serviciu este compromis.
 
@@ -242,11 +331,13 @@ Parolele sunt o componentă critică în accesul utilizatorilor la dispozitive �
 Transferul datelor are loc peste infrastructură de Internet (medii de transmisie și echipamente dedicate) pentru care nu avem garanții. Aceste medii pot fi ostile și datele pot fi capturate, citite, sau modificate. Numim acest tip de atac “man-in-the-middle”. Un atacator cu acces la mediile de transmisie sau echipamentele dedicate va avea acces la datele transferate.
 
 De aceea este important ca în cazul transferului de date să avem două proprietăți:
-confidențialitate: să ne asigurăm că datele transferate nu sunt capturate și interpretate de atacatori pe infrastructura de rețea
 
-autenticitate și integritate: să ne asigurăm că datele transferate sosesc de la / pleacă la entitatea la care ne așteptăm, în formă neschimbată / nemodificată
+\begin{enumerate}
+  \item confidențialitate: să ne asigurăm că datele transferate nu sunt capturate și interpretate de atacatori pe infrastructura de rețea
+  \item autenticitate și integritate: să ne asigurăm că datele transferate sosesc de la / pleacă la entitatea la care ne așteptăm, în formă neschimbată / nemodificată
+\end{enumerate}
 
-Fiecare dintre cele două proprietăți este de regulă implementată în practică prin metode criptografice: criptare în cazul confidențialității și hashing în cazul integrității, așa cum am descris și în secțiunea TODO: Securitatea datelor.
+Fiecare dintre cele două proprietăți este de regulă implementată în practică prin metode criptografice: criptare în cazul confidențialității și hashing în cazul integrității, așa cum am descris și în \labelindexref{Secțiunea}{sec:sec:confidentiality}, respectiv \labelindexref{Secțiunea}{sec:sec:integrity}.
 
 \subsection{Identitate}
 \label{sec:sec:identity}
@@ -262,41 +353,68 @@ De partea cealaltă abordarea descentralizată este de tipul “comunitate”. L
 
 La baza identității digitale stă conceptul de semnătură digitală. Semnătura digitală este aplicată unei informații pentru a garanta autenticitatea acelei informații. Adică, similar unei semnături fizice pe un document, o semnătură digitală pe un document electronic va certifica acel document.
 
-Semnăturile digitale se realizează cu ajutorul unei perechi cheie publică - cheie privată/secretă pe care le-am prezentat în Secțiunea TODO: Criptarea datelor. În vreme ce în cazul criptării, criptarea este realizată folosind cheia publică (oricine poate să cripteze) iar decriptarea este realizată folosind cheia privată (doar deținătorul cheii private poate să decripteze), în cazul semnării digitale lucrurile sunt invers. Deținătorul cheii private folosește cheia privată ca să semneze un document electronic (doar deținătorul poate semna), iar oricine poate folosi cheia publică pentru a verifica semnătura (orice poate verifica). Aceste două acțiuni (semnare și verificare) sunt descrise în Figura TODO.
+Semnăturile digitale se realizează cu ajutorul unei perechi cheie publică - cheie privată/secretă pe care le-am prezentat în \labelindexref{Secțiunea}{sec:sec:confidentiality}. În vreme ce în cazul criptării, criptarea este realizată folosind cheia publică (oricine poate să cripteze) iar decriptarea este realizată folosind cheia privată (doar deținătorul cheii private poate să decripteze), în cazul semnării digitale lucrurile sunt invers. Deținătorul cheii private folosește cheia privată ca să semneze un document electronic (doar deținătorul poate semna), iar oricine poate folosi cheia publică pentru a verifica semnătura (orice poate verifica). Aceste două acțiuni (semnare și verificare) sunt descrise în \labelindexref{Figura}{fig:sec:sign}.
 
-diagramă cu semnare (cu cheie privată) și verificare (cu cheie publică)
+\begin{figure}[htbp]
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/02-fs/def-fs.svg}
+  \caption{Semnare și verificare digitală}
+  \label{fig:sec:sign}
+  % TODO: diagramă cu semnare (cu cheie privată) și verificare (cu cheie publică)
+\end{figure}
 
 În urma procesului de semnare cu cheia privată rezultă o semnătură digitală, un șir de octeți rezultat în urma semnării. Documentul semnat este apoi expus public, împreună cu semnătura. Cheia publică este deja publică. Oricine poate lua apoi documentul împreună cu semnătura digitală și verifica, folosind cheia publică, autenticitatea documentului. Acesta este un mod care poate fi folosit la mesaje de poștă electronică (e-mail-uri) pentru a garanta că un mesaj este cel corect, având semnătura atașată.
 
-Atât pentru semnături în e-mail-uri dar și pentru semnături de documente, în Linux putem folosi utilitarul GPG (GNU Privacy Guard). În secvența TODO indicăm pașii urmați de un transmițător de mesaj pentru a transmite un mesaj semnat iar în secvența TODO indicăm pașii urmați de receptorul mesajului pentru a verifica mesajul semnat.
+Atât pentru semnături în e-mail-uri dar și pentru semnături de documente, în Linux putem folosi utilitarul GPG (GNU Privacy Guard). În \labelindexref{Listing}{lst:sec:gpg-sign} indicăm pașii urmați de un transmițător de mesaj pentru a transmite un mesaj semnat iar în \labelindexref{Listing}{lst:sec:gpg-verify} indicăm pașii urmați de receptorul mesajului pentru a verifica mesajul semnat.
 
-secvență transmițător GPG
-secvență receptor GPG
+\begin{screen}[caption={Semnare mesaj folosind GPG},label={lst:sec:gpg-sign}]
+TODO: secventa transmitator GPG
+\end{screen}
+
+\begin{screen}[caption={Verificare mesaj folosind GPG},label={lst:sec:gpg-verify}]
+TODO: secventa receptor GPG
+\end{screen}
 
 În forma prezentată mai sus semnăturile digitale doar certifică autenticitatea mesajului, adică este un mesaj autentic semnat. Dar nu certifică identitatea celui care a semnat. Acesta poate pretinde că este altă persoană, genera o pereche cheie privată - cheie publică și semna mesaje folosind cheia privată iar alții pot verifica folosind cheia publică. Pentru aceasta avem nevoie de un mod de a atașa o identitate fizică (nume, e-mail) de o cheie publică și să avem încredere că acea atașare este validă; adică într-adevăr identitatea este a persoanei pretinse și este cheia publică a acesteia.
 
-Asocierea unei identăți cu o cheie publică poartă numele de certificat digital de identitate sau certificat de cheie publică sau pe scurt certificat digital. Pentru ca asocierea să fie validă, certificatul trebuie să fie semnat de o entitate în care avem încredere, așa cum am precizat mai sus în secțiunea TODO: Identitate. În funcție de natura acestei entități avem o formă centralizată, numită infrastructură cu chei publice (Public Key Infrastructure) și o formă descentralizată, numită rețea de încredere (web of trust).
+Asocierea unei identăți cu o cheie publică poartă numele de certificat digital de identitate sau certificat de cheie publică sau pe scurt certificat digital. Pentru ca asocierea să fie validă, certificatul trebuie să fie semnat de o entitate în care avem încredere, așa cum am precizat mai sus în \labelindexref{Secțiunea}{sec:sec:identity}. În funcție de natura acestei entități avem o formă centralizată, numită infrastructură cu chei publice (Public Key Infrastructure) și o formă descentralizată, numită rețea de încredere (web of trust).
 
 \subsubsection{Public Key Infrastructure}
 \label{sec:sec:pki}
 
-În cazul formei centralizate există o entitate aparte în care avem încredere numită autoritate de certificare (Certificate Authority, CA). Similar unui minister autorizat care certifică identitatea unei persoane pe un act, autoritatea de certificare este cea care semnează un certificat care asociază identitatea de o cheie publică. Pașii urmați pentru verificarea unui document semnat în PKI sunt prezentați în Figura TODO:
+În cazul formei centralizate există o entitate aparte în care avem încredere numită autoritate de certificare (Certificate Authority, CA). Similar unui minister autorizat care certifică identitatea unei persoane pe un act, autoritatea de certificare este cea care semnează un certificat care asociază identitatea de o cheie publică. Pașii urmați pentru verificarea unui document semnat în PKI sunt prezentați în \labelindexref{Figura}{fig:sec:pki}.
 
-diagramă cu pașii de verificare pentru certificate CA, așa cum sunt descriși mai jos
+\begin{figure}[htbp]
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/02-fs/def-fs.svg}
+  \caption{Verificarea identității în PKI}
+  \label{fig:sec:pki}
+  % TODO: diagramă cu pașii de verificare pentru certificate CA, așa cum sunt descriși mai jos
+\end{figure}
 
 În momentul care dorim să verificăm un document, vom obține certificatul digital al semnatarului, vom verifica certificatul digital folosind cheia publică (în care avem încredere) a autorității de certificare. Dacă certificatul digital este valid, vom extrage din acesta cheia publică și vom verifica apoi semnătura. Având certificatul digital verificat de autoritatea de certificare avem încredere că identitatea este cea din certificat.
 
 În schema PKI va trebui să avem încredere în autoritatea de certificare. Vom avea acces la cheia publică a acesteia și vom avea încredere că acea cheie publică este într-adevăr a autorității de certificare. Cheia publică este folosită pentru verificare certificatelor. Această cheie publică a autorității de certificare este ea însăși distribuită în forma unui certificat. Acest certificat poate fi semnat de o altă entitate de tip CA de nivel mai înalt. La un moment dat va exista o autoritate de certificare care nu va mai fi semnată de alta, se spune că am ajuns la rădăcina schemei PKI. Această autoritate de certificare va avea un certificat rădăcină (root certificate) care este semnat tot cu el (self signed). Adică propria cheie privată este folosită pentru a semna certificatul ce cuprinde propria cheie publică și identitatea.
 
-Schema PKI este folosită în Internet pentru a garanta identitatea site-urilor pe care le vizităm (google.com, facebook.com, amazon.com). Așa cum vom descrie în Secțiunea TODO, fiecare site are un certificat digital semnat de o autoritate de certificare în care avem încredere. În momentul în care instalăm un browser acesta are deja certificatele diferitelor autorități de certificare și poate verifica autenticitatea certificatelor furnizate de diferitele site-uri și, deci, identitatea acestora.
+Schema PKI este folosită în Internet pentru a garanta identitatea site-urilor pe care le vizităm (google.com, facebook.com, amazon.com). Fiecare site are un certificat digital semnat de o autoritate de certificare în care avem încredere. În momentul în care instalăm un browser acesta are deja certificatele diferitelor autorități de certificare și poate verifica autenticitatea certificatelor furnizate de diferitele site-uri și, deci, identitatea acestora.
 
 \subsubsection{Web of Trust}
 \label{sec:sec:wot}
 
 Schema PKI este o schemă centralizată. Are avantajul organizării și a existenței unui lanț de încredere și răspundere. Cu toate acestea, dacă o autoritate de certificare este compromisă atunci toate certificatele semnate de aceasta sunt compromise. De aceea certificatele au un timp limitat de viața (de obicei 1-2 ani) după care trebuie regenerate.
 
-Alternativa la schema centralizată PKI este schema descentralizată web of trust. În această schemă, fiecare utilizator cunoaște direct anumiți utilizatori (îi cunoaște fizic), îi poate garanta și îi semnează certificatul. Apoi acest utilizator, pe baza legăturilor directe poate acepta certificate semnate de aceste legături directe; nu cunoaște direct utilizatorii finali dar are încrederea în semnăturile legăturilor sale directe. Funcționarea web of trust este descrisă schematic în Figura TODO.
-diagramă cu funcționarea web of trust, similar schemei de pe Wikipedia: https://en.wikipedia.org/wiki/Web_of_trust
+Alternativa la schema centralizată PKI este schema descentralizată web of trust. În această schemă, fiecare utilizator cunoaște direct anumiți utilizatori (îi cunoaște fizic), îi poate garanta și îi semnează certificatul. Apoi acest utilizator, pe baza legăturilor directe poate acepta certificate semnate de aceste legături directe; nu cunoaște direct utilizatorii finali dar are încrederea în semnăturile legăturilor sale directe. Funcționarea web of trust este descrisă schematic în \labelindexref{Figura}{fig:sec:wot}.
+
+\begin{figure}[htbp]
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/02-fs/def-fs.svg}
+  \caption{Functionarea Web of Trust}
+  \label{fig:sec:wot}
+  % TODO: diagramă cu funcționarea web of trust, similar schemei de pe Wikipedia: https://en.wikipedia.org/wiki/Web_of_trust
+\end{figure}
 
 Avantajul schemei web of trust față de PKI este flexibilitatea. Neavând o autoritate centrală, nu avem parte de rigiditatea schemei PKI. Un dezavantaj al acestei este dificultatea verificării funcționării corespunzătoare. În absența unei structuri riguroase, verificarea funcționării corespunzătoare este greoaie. Din acest motiv implementările reale de scară largă ale web of trust sunt mai reduse. O implementare întâlnită este semnarea e-mail-urilor folosind implementări din familia PGP (Pretty Good Privacy) precum utilitarul GPG prezentat mai sus.
 
@@ -309,101 +427,147 @@ TLS încorporează cele mai multe din conceptele pe care le-am descris în cazul
 
 Versiunea curentă de TLS este 1.3 și este considerată sigură. Versiunile anterioare prezintă vulnerabilități ale algoritmilor. În general o specificație mai nouă de TLS înseamnă că anumiți algoritmi nu mai sunt permiși sau cheile de criptare sunt mai lungi tocmai pentru a preveni exploatarea lor. De obicei se recomandă că un server să refuze conexiuni care solicită algoritmi mai slabi care pot fi apoi exploatați. Acest tip de atac poartă numele de connection downgrade attack și este folosit pentru a impune un algoritm mai slab care se cunoaște că are vulnerabilități.
 
-Dacă dorim să verificăm nivelul de securitate TLS pentru un server web pe care l-am configurat (sau altul) putem folosi aplicații testul celor de la SSL Labs așa cum este prezentat în Figura TODO. Într-un astfel de test ne sunt raportate punctele slabe ale unui server, precum faptul că acceptă conexiuni TLS 1.1 și TLS 1.2 care pot avea probleme pentru anumiți algoritmi.
+Dacă dorim să verificăm nivelul de securitate TLS pentru un server web pe care l-am configurat (sau altul) putem folosi aplicații testul celor de la SSL Labs așa cum este prezentat în \labelindexref{Figura}{fig:sec:ssllabs}. Într-un astfel de test ne sunt raportate punctele slabe ale unui server, precum faptul că acceptă conexiuni TLS 1.1 și TLS 1.2 care pot avea probleme pentru anumiți algoritmi.
 
-RD: de făcut screenshot cu SSL server test
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth]{chapters/12-sec/img/screenshot.png}
+  \caption{Verificarea nivelului de securitate pentru un domeniu}
+  \label{fig:sec:ssllabs}
+  % TODO: screenshot cu SSL server test pe SSL Labs
+\end{figure}
 
 Similar funcționalităților de criptare, TLS este implementat de obicei în forma unor biblioteci criptografice. Protocoale nesecurizate folosesc TLS pentru a obține forma lor securizată: este vorba de HTTP/HTTPS (pentru acces web), IMAP/IMAPS (pentru acces la căsuța poștală), LDAP/LDAPS (pentru interogarea directoarelor de informații).
 
-Un exemplu de implementare de TLS este biblioteca openssl folosită de multe aplicații de rețea pentru a comunica securizat. Utilitarul în linia de comandă openssl permite, pentru scenarii de test, construirea sau verificarea unei conexiuni securizate. De exemplu, comanda din secvența TODO obține informații despre certificatul TLS folosit de serverul google.com.
-secvență cu openssl pentru obținerea certificatului digital
+Un exemplu de implementare de TLS este biblioteca openssl folosită de multe aplicații de rețea pentru a comunica securizat. Utilitarul în linia de comandă openssl permite, pentru scenarii de test, construirea sau verificarea unei conexiuni securizate. De exemplu, comanda din \labelindexref{Listing}{lst:sec:openssl-check} obține informații despre certificatul TLS folosit de serverul google.com.
+
+\begin{screen}[caption={Obținerea de informații despre certificatul unui domeniu},label={lst:sec:openssl-check}]
+TODO: secventa cu openssl pentru obtinerea certificatului digital
+\end{screen}
 
 \subsection{Secure Shell}
 \label{sec:sec:ssh}
 
 Transport Layer Security (TLS) permite adăugarea proprietăților de securitate pentru protocoale într-o implementare în formă de bibliotecă. O alternativă la crearea unui canal sigur de comunicare este protocolul SSH (Secure Shell). Protocolul SSH, la fel ca TLS, oferă confidențialitate, integritate și autenticitate. Protocolul SSH este folosind în general pentru deschiderea unei conexiuni shell sigure la distanță, pe un canal criptat. Permite astfel administrarea unui sistem la distanță; este, astfel, principalul utilitar folosit în lumea Linux/Unix pentru administrarea sistemelor și este prezent pe majoritatea sistemelor de tip server.
 
-În ciuda numelui, protocolul SSH nu este folosit numai pentru deschiderea unei sesiuni de shell sigure la distanță; protocolul SSH creează un canal sigur de comunicare prin care se pot realiza acțiuni precum deschiderea unei sesiuni de shell la distanță, transferul de fișiere sau tunelarea unui protocol, descrise și în Figura TODO. Tunelarea unui protocol nesigur (plain text) înseamnă că mesajele specifice acestui protocol sunt trecute prin canalul sigur de conexiune realizat de SSH. În felul acesta SSH oferă funcționalitate similară TLS, de securizare a unui protocol. Totuși, în TLS protocolul în forma securizată este deja implementat, pe când în cazul SSH este nevoie de crearea canalului sigur de comunicare prin care apoi este tunelat protocolul nesigur. Întrucât este mai simplu de folosit, preferăm folosirea protocolului securizat folosind TLS; SSH rămâne util însă în situațiile în care nu dispunem de forma securizată a protocolului prin TLS, cum ar fi tunelarea protocolului X pentru mediul grafic în Linux, așa cum am prezentat în Secțiunea TODO (referire la Interfața grafică).
+În ciuda numelui, protocolul SSH nu este folosit numai pentru deschiderea unei sesiuni de shell sigure la distanță; protocolul SSH creează un canal sigur de comunicare prin care se pot realiza acțiuni precum deschiderea unei sesiuni de shell la distanță, transferul de fișiere sau tunelarea unui protocol, descrise și în \labelindexref{Figura}{fig:sec:ssh-channel}. Tunelarea unui protocol nesigur (plain text) înseamnă că mesajele specifice acestui protocol sunt trecute prin canalul sigur de conexiune realizat de SSH. În felul acesta SSH oferă funcționalitate similară TLS, de securizare a unui protocol. Totuși, în TLS protocolul în forma securizată este deja implementat, pe când în cazul SSH este nevoie de crearea canalului sigur de comunicare prin care apoi este tunelat protocolul nesigur. Întrucât este mai simplu de folosit, preferăm folosirea protocolului securizat folosind TLS; SSH rămâne util însă în situațiile în care nu dispunem de forma securizată a protocolului prin TLS, cum ar fi tunelarea protocolului X pentru mediul grafic în Linux, așa cum am prezentat în Secțiunea TODO (referire la Interfața grafică).
 
-diagramă cu un canal securizat SSH prin care pot fi transmise acțiuni de deschidere shell la distanță, transferate fișiere sau tunelate protocoale plain text
+\begin{figure}[htbp]
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/02-fs/def-fs.svg}
+  \caption{Canal securizat de comunicație cu SSH}
+  \label{fig:sec:ssh-channel}
+  % TODO: diagramă cu un canal securizat SSH prin care pot fi transmise acțiuni de deschidere shell la distanță, transferate fișiere sau tunelate protocoale plain text
+\end{figure}
 
-Pentru a funcționa, protocolul SSH are nevoie de un cont de utilizator la sursă și la destinație. Practic, realizăm un canal de comunicare sigur între două conturi de utilizator, uzual pentru deschiderea unei sesiuni de shell la distanță, ca în diagrama TODO. Crearea canalului se realizează numai după ce se realizează autentificarea pe contul destinație. Autentificarea se poate realiza cu parolă sau folosind cheie publică, așa cum cum descrie în continuare. O dată realizată autentificarea, avem un canal de comunicare prin care putem tunela comenzi (în cazul shell-ului), fișiere (în cazul transferului de fișiere) sau protocoale.
+Pentru a funcționa, protocolul SSH are nevoie de un cont de utilizator la sursă și la destinație. Practic, realizăm un canal de comunicare sigur între două conturi de utilizator, uzual pentru deschiderea unei sesiuni de shell la distanță, ca în \labelindexref{Figura}{fig:sec:ssh}. Crearea canalului se realizează numai după ce se realizează autentificarea pe contul destinație. Autentificarea se poate realiza cu parolă sau folosind cheie publică, așa cum cum descrie în continuare. O dată realizată autentificarea, avem un canal de comunicare prin care putem tunela comenzi (în cazul shell-ului), fișiere (în cazul transferului de fișiere) sau protocoale.
 
-diagramă cu o conexiune SSH între două conturi de utilizator și autentificare cu parolă sau cheie publică
+\begin{figure}[htbp]
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/02-fs/def-fs.svg}
+  \caption{Conexiune SSH}
+  \label{fig:sec:ssh}
+  % TODO: diagramă cu o conexiune SSH între două conturi de utilizator și autentificare cu parolă sau cheie publică
+\end{figure}
 
-Pentru realizarea conexiunii SSH, la destinație trebuie să ruleze un server SSH, numit și daemon SSH sau sshd. Serverul SSH rulează uzual pe portul 22, prezența sa putând fi verificată folosind comanda netstat ca în secvența TODO:
+Pentru realizarea conexiunii SSH, la destinație trebuie să ruleze un server SSH, numit și daemon SSH sau sshd. Serverul SSH rulează uzual pe portul 22, prezența sa putând fi verificată folosind comanda netstat ca în \labelindexref{Listing}{lst:sec:ssh-netstat}
 
-secvență care folosește comanda netstat pentru verificarea ssh
+\begin{screen}[caption={Serverul SSH},label={lst:sec:ssh-netstat}]
+TODO: secventa care foloseste comanda netstat pentru verificarea ssh
+\end{screen}
 
-Dacă nu este prezent serverul SSH este posibil să fie oprit sau să nu fie instalat. Pentru instalarea și pornire/repornirea serverului SSH folosim comenzile din secvența TODO; comenzile de instalare sunt respectiv pentru sistemele Debian/Ubuntu și pentru sistemele RedHat / Fedora.
+Dacă nu este prezent serverul SSH este posibil să fie oprit sau să nu fie instalat. Pentru instalarea și pornire/repornirea serverului SSH folosim comenzile din \labelindexref{Listing}{lst:sec:ssh-server}; comenzile de instalare sunt respectiv pentru sistemele Debian/Ubuntu și pentru sistemele RedHat / Fedora.
 
-secvență cu instalarea și repornirea serverului SSH
+\begin{screen}[caption={Instalare și pornire server SSH},label={lst:sec:ssh-server}]
+TODO: secventa cu instalarea si repornirea serverului SSH
+\end{screen}
 
-Pentru deschiderea unei sesiuni shell la distanță folosim comanda ssh urmată de destinație: numele contului de utilizator și adresa stației destinație; adresa stației destinație poate fi adresă IP sau nume DNS. În secvența de mai jos avem exemple de conexiune la distanță. Se cere parola utilizatorului la distanță și, în cazul unei conexiuni reușite, se obține un shell care rulează la distanță cu permisiunile utilizatorului la distanță. Pentru închiderea conexiunii, închidem procesul shell folosind comenzile exit sau logout sau combinația de taste Ctrl+d.
+Pentru deschiderea unei sesiuni shell la distanță folosim comanda ssh urmată de destinație: numele contului de utilizator și adresa stației destinație; adresa stației destinație poate fi adresă IP sau nume DNS. În \labelindexref{Listing}{lst:sec:ssh-shell} avem exemple de conexiune la distanță. Se cere parola utilizatorului la distanță și, în cazul unei conexiuni reușite, se obține un shell care rulează la distanță cu permisiunile utilizatorului la distanță. Pentru închiderea conexiunii, închidem procesul shell folosind comenzile exit sau logout sau combinația de taste Ctrl+d.
 
-secvență de rulare la distanță cu ssh
+\begin{screen}[caption={Acces shell la distanță folosind SSH},label={lst:sec:ssh-shell}]
+TODO: secventa de rulare la distanta cu ssh
+\end{screen}
 
-Comanda de conexiune la distanță poate fi urmată și de o comandă caz în care nu se va deschide o sesiune shell ci se va rula acea comandă și apoi se va închide conexiunea. În secvența de mai jos rulăm la distanță comanda ls sau o comandă mai complexă pentru a afla rapid informații de pe acel sistem fără a mai fi nevoie de a deschide un proces shell:
+Comanda de conexiune la distanță poate fi urmată și de o comandă caz în care nu se va deschide o sesiune de shell interactivă ci se va rula acea comandă și apoi se va închide conexiunea. În \labelindexref{Listing}{lst:sec:ssh-commands} rulăm la distanță comanda ls sau o comandă mai complexă pentru a afla rapid informații de pe acel sistem fără a mai fi nevoie de a deschide o sesiune de shell interactivă.
 
-secvență cu rularea unei comenzi prin SSH
+\begin{screen}[caption={Rulare comenzi la distanță prin SSH},label={lst:sec:ssh-commands}]
+TODO: secventa cu rularea unei comenzi prin SSH
+\end{screen}
 
-Atunci când facem prima oară o conexiune la un sistem la distanță vom primi un mesaj de avertizare că nu este cunoscută identitatea acelui sistem și suntem întrebați dacă dorim să continuăm. În cazul în care răspundem afirmativ și continuăm, cheia publică (identitatea) acelui sistem va fi adăugată într-un fișier de configurare specific (~/.ssh/known_hosts) și nu vom primi întrebarea mai târziu. În secvența de mai jos, fișierul ~/.ssh/known_hosts nu există, apoi la prima conexiune primim întrebarea, răspundem afirmativ, fișierul ~/.ssh/known_hosts are acum intrarea corespunzătoare sistemului de la distanță (cheia publică), iar la următoarea conexiune nu mai primim întrebarea, întrucât cunoaștem identitatea serverului.
+Atunci când facem prima oară o conexiune la un sistem la distanță vom primi un mesaj de avertizare că nu este cunoscută identitatea acelui sistem și suntem întrebați dacă dorim să continuăm. În cazul în care răspundem afirmativ și continuăm, cheia publică (identitatea) acelui sistem va fi adăugată într-un fișier de configurare specific (~/.ssh/known_hosts) și nu vom primi întrebarea mai târziu. În \labelindexref{Listing}{lst:sec:ssh-host-check} fișierul ~/.ssh/known_hosts nu există, apoi la prima conexiune primim întrebarea, răspundem afirmativ, fișierul ~/.ssh/known_hosts are acum intrarea corespunzătoare sistemului de la distanță (cheia publică), iar la următoarea conexiune nu mai primim întrebarea, întrucât cunoaștem identitatea serverului.
 
-secvență cu yes pentru conexiune SSH
+\begin{screen}[caption={Verificarea identității serverului prin SSH},label={lst:sec:ssh-host-check}]
+TODO: secventa cu yes pentru conexiune SSH
+\end{screen}
 
-Pe lângă deschiderea unei conexiuni shell la distanță, protocolul SSH este folosit pentru transferul securizat de fișiere folosind comanda scp (de la secure copy). Comanda scp primește ca argument o cale locală și un nume de utilizator, adresă de stație și cale de la distanță. În secvența TODO, avem un exemplu de descărcare de fișier (download) de la destinație (remote) către sursă (local) și unul de încărcare de fișier (upload) de la sursă (local) către destinație (remote)
+Pe lângă deschiderea unei conexiuni shell la distanță, protocolul SSH este folosit pentru transferul securizat de fișiere folosind comanda scp (de la secure copy). Comanda scp primește ca argument o cale locală și un nume de utilizator, adresă de stație și cale de la distanță. În \labelindexref{Listing}{lst:sec:scp}, avem un exemplu de descărcare de fișier (download) de la destinație (remote) către sursă (local) și unul de încărcare de fișier (upload) de la sursă (local) către destinație (remote)
 
-secvență cu scp download și upload
+\begin{screen}[caption={Transfer de fișiere prin SSH (scp)},label={lst:sec:scp}]
+TODO: secventa cu scp download si upload
+\end{screen}
 
-De multe ori în cazul descărcării unui fișier destinația este . (punct) adică realizăm transferul de la distanță în directorul curent, ca în secvența TODO:
+De multe ori în cazul descărcării unui fișier destinația este . (punct) adică realizăm transferul de la distanță în directorul curent, ca în \labelindexref{Listing}{lst:sec:scp-current}.
 
-secvență cu transfer în directorul curent
+\begin{screen}[caption={Descărcarea unui fișier în directorul curent},label={lst:sec:scp-current}]
+TODO: secventa cu transfer in directorul curent
+\end{screen}
 
-Similar comenzii cp, putem folosi comanda scp pentru a transfera recursiv o ierarhie de directoare și fișiere ca în exemplu de mai jos:
+Similar comenzii cp, putem folosi comanda scp pentru a transfera recursiv o ierarhie de directoare și fișiere ca în \labelindexref{Listing}{lst:sec:scp-recursive}.
 
-secvență cu transfer recursiv
+\begin{screen}[caption={Transfer recursiv prin SSH (scp)},label={lst:sec:scp-recursive}]
+TODO: secventa cu transfer recursiv
+\end{screen}
 
-Autentificare cu cheie publică, evitarea autentificării cu parole
+TODO: Autentificare cu cheie publică, evitarea autentificării cu parole
 
 \section{Securitatea proceselor}
 \label{sec:sec:process}
 
-Un utilizator folosește resursele unui sistem (hardware, fișiere, servicii) cu ajutorul proceselor. La fel, un atacator care dorește să abuzeze un sistem (să-l controleze, să fure informații sau să-i afecteze funcționarea) va dori capturarea unor procese. Un mod direct pentru aceasta este ca atacatorul să obțină credențialele de acces și să impersoneze un utilizator valid în sistem, obținând permisiunile acestora, așa cum am descris în SecțiunEA TODO: Securitatea accesului. Un alt mod este exploatând vulnerabilități ale procesului și capturând astfel procesul. Alt mod este păcălind utilizatorul să instaleze aplicații create de atacator care pornească procese care să abuzeze sistemele; aceste aplicații malițioase sunt numite malware; virușii, troinerii, viermii (worms), spyware sunt exemple de malware.
+Un utilizator folosește resursele unui sistem (hardware, fișiere, servicii) cu ajutorul proceselor. La fel, un atacator care dorește să abuzeze un sistem (să-l controleze, să fure informații sau să-i afecteze funcționarea) va dori capturarea unor procese. Un mod direct pentru aceasta este ca atacatorul să obțină credențialele de acces și să impersoneze un utilizator valid în sistem, obținând permisiunile acestora, așa cum am descris în \labelindexref{Secțiunea}{sec:sec:auth}. Un alt mod este exploatând vulnerabilități ale procesului și capturând astfel procesul. Alt mod este păcălind utilizatorul să instaleze aplicații create de atacator care pornească procese care să abuzeze sistemele; aceste aplicații malițioase sunt numite malware; virușii, troinerii, viermii (worms), spyware sunt exemple de malware.
 
 În oricare dintre variantele de mai sus, sistemul de operare trebuie să aibă în vedere măsuri preventive și măsuri reactive pentru protejarea proceselor.
 
 Măsurile preventive vizează împiedicarea unui atacator să poată ajunge la procese din sistem. Aceste măsuri pot fi:
 
-securitatea accesului la sistem (descrisă în secțiunea TODO: Securitatea accesului)
-tehnici specializate (precum protejarea memoriei) care să împiedice exploatarea vulnerabilităților
-verificarea aplicațiilor instalate (folosind rezumate / sume de control) și verificarea sursei de proveniență; aceasta este foarte importantă mai ales în cazul dispozitivelor mobile unde magazinele online de aplicații (online application stores) precum Apple AppStore sau GooglePlay stochează foarte multe aplicații
+\begin{itemize}
+  \item securitatea accesului la sistem (descrisă în \labelindexref{Secțiunea}{sec:sec:auth})
+  \item tehnici specializate (precum protejarea memoriei) care să împiedice exploatarea vulnerabilităților
+  \item verificarea aplicațiilor instalate (folosind rezumate / sume de control) și verificarea sursei de proveniență; aceasta este foarte importantă mai ales în cazul dispozitivelor mobile unde magazinele online de aplicații (online application stores) precum Apple AppStore sau GooglePlay stochează foarte multe aplicații
+\end{itemize}
 
 Măsurile reactive presupun că atacul s-a produs sau se va produce și vizează limitarea daunelor produse de un atac. Astfel de măsuri sunt plasarea procesului contaminat în carantină, investigația atacului și depistarea problemei, actualizarea aplicației vulnerabile (update, patching), înlăturarea aplicației vulnerabile.
 
 Măsurile reactive trebuie să fie luate cât mai repede după producerea unui atac pentru a limita daunele. De aceea este importantă monitorizarea proceselor și resurselor unui sistem. Un utilizator tehnic sau un administrator de sistem sau de rețea va folosi suite de aplicații specifice pentru monitorizare și va depista comportamente anormale care pot fi efectele unui atac și va reacționa rapid. În absența monitorizării un atacator va avea mai mult timp pentru a obține beneficii în urma atacului sau va putea extinde atacul la alte sisteme sau resurse. Monitorizarea are rolul de a depista atât atacurile cât și abuzul de resurse sau comportamente neobișnuite datorate unei utilizări necorespunzătoare (dar neintenționat abuzive) a sistemului. De exemplu, sistemele de tip antivirus monitorizează periodic sistemul de fișiere pentru a detecta prezența fișierelor infectate; utilitare precum fail2ban monitorizează fișiere de tip jurnal pentru a detecta și a bloca încercări de acces nevalid în sistem; sisteme complexe precum Nagios monitorizează infrastructura IT a unei organizații: rețea, aplicații, resurse hardware.
 
-Pentru prevenirea daunelor produse de un proces compromis, este esențială respectarea principiului celui mai mic privilegiu (least privilege), descris în Secțiunea TODO: Principii de securitate. Acesta presupune ca un proces să aibă acces doar la resursele de care are nevoie: fișiere, interacțiune cu alte procese, resurse hardware.
+Pentru prevenirea daunelor produse de un proces compromis, este esențială respectarea principiului celui mai mic privilegiu (least privilege), descris în \labelindexref{Secțiunea}{sec:sec:principles}. Acesta presupune ca un proces să aibă acces doar la resursele de care are nevoie: fișiere, interacțiune cu alte procese, resurse hardware.
 
 Un prim mod de implementarea a principiului celui mai mic privilegiu îl reprezintă permisiunile de acces la sistemul de fișiere. Un proces va putea accesa doar acele fișiere la care are acces utilizatorul de care aparține procesul. Astfel, un proces al unui utilizator neprivilegiat va putea scrie doar în directorul home propriu, va putea doar citi fișierul /etc/passwd și nu va avea nici o formă de acces la fișierul /etc/shadow.
 
-O măsură suplimentară este folosirea de mecanisme de jailing de tipul chroot, așa cum am descris în Secțiunea TODO: Securitatea în sistemul de fișiere. Cu un astfel de mecanism, un proces va putea accesa doar fișierele dintr-o parte a ierarhiei sistemului de fișiere.
+O măsură suplimentară este folosirea de mecanisme de jailing de tipul chroot, așa cum am descris în \labelindexref{Secțiunea}{sec:sec:fs}. Cu un astfel de mecanism, un proces va putea accesa doar fișierele dintr-o parte a ierarhiei sistemului de fișiere.
 
 Mecanismele de tipul chroot sunt mecanisme de izolare a procesului. Cu ajutorul chroot izolăm accesul procesului la sistemul de fișiere. Pentru a extinde izolarea și în alte zone (comunicarea cu alte procese, accesul la rețea, accesul la hardware), putem folosi sandboxing. Sandboxing presupune crearea unor reguli de acces la resurse și atașarea acelor reguli la un proces; procesul va putea accesa doar resursele permise în acele reguli. Sandboxing-ul este implementat în sistemele de operare de pe dispozitivele mobile (Android, iOS) pentru a limita potențialele daune create de aplicații instalate de un utilizator pe dispozitivul mobil.
 
-O formă extinsă de izolare este folosirea containerelor sau mașinilor virtuale, descrise în Capitolul TODO: Virtualizare. Containerele oferă reguli complexe de izolare a unei aplicații sau a unui set de aplicații, extinzând astfel mecanismul de sandboxing. Mașinile virtuale adaugă, față de containere, partiționarea resurselor hardware și izolarea inclusiv a sistemului de operare al mașinii virtuale; în cazul unui sistem de operare compromis, doar mașina virtuală respectivă va fi afectată.
+O formă extinsă de izolare este folosirea containerelor sau mașinilor virtuale, descrise în \labelindexref{Capitolul}{chapter:vm}. Containerele oferă reguli complexe de izolare a unei aplicații sau a unui set de aplicații, extinzând astfel mecanismul de sandboxing. Mașinile virtuale adaugă, față de containere, partiționarea resurselor hardware și izolarea inclusiv a sistemului de operare al mașinii virtuale; în cazul unui sistem de operare compromis, doar mașina virtuală respectivă va fi afectată.
 
 Prezența metodelor de izolare duce la diminuarea daunelor produse de un potențial atac. Dar izolarea unui proces limitează plaja de acțiuni a acestuia. Este posibil ca un proces să aibă nevoie, la un moment dat, de o acțiune privilegiată care nu poate fi realizată conform regulilor de izolare. Pentru această acțiuni este nevoie de escaladarea nivelului de privilegiu (privilege escalation), adică obținerea (temporară) de privilegii care să permită acțiunea.
 
-Forma clasică de escaladare a privilegiilor în Linux este marcarea unui executabil cu bitul de set-user-ID-onexecution (numit și setuid). Prezența acestui bit pe un executabil înseamnă că procesul creat din acel executabil va rula cu privilegiile utilizatorului ce deține executabilul (de obicei root) nu al utilizatorului care a lansat comanda (de obicei nu root). De exemplu, așa cum vedem în secvența de cod TODO, executabilul /usr/bin/passwd și executabilul /bin/mount au activat bitul de setuid. Aceasta se întâmplă pentru că se permite oricărui utilizator să poată monta anumite tipuri de fișiere, operație privilegiată (cu ajutorul comenzii mount); iar orice utilizator își poate schimba parola (cu ajutorul comenzii passwd) acțiune ce necesită accesul la fișierul /etc/shadow la care numai utilizatorul privilegiat are acces.
+Forma clasică de escaladare a privilegiilor în Linux este marcarea unui executabil cu bitul de set-user-ID-onexecution (numit și setuid). Prezența acestui bit pe un executabil înseamnă că procesul creat din acel executabil va rula cu privilegiile utilizatorului ce deține executabilul (de obicei root) nu al utilizatorului care a lansat comanda (de obicei nu root). De exemplu, așa cum vedem în \labelindexref{Listing}{lst:sec:setuid}, executabilul /usr/bin/passwd și executabilul /bin/mount au activat bitul de setuid. Aceasta se întâmplă pentru că se permite oricărui utilizator să poată monta anumite tipuri de fișiere, operație privilegiată (cu ajutorul comenzii mount); iar orice utilizator își poate schimba parola (cu ajutorul comenzii passwd) acțiune ce necesită accesul la fișierul /etc/shadow la care numai utilizatorul privilegiat are acces.
 
+TODO: de refăcut pe mașina de USO
+\begin{screen}[caption={Bitul setuid},label={lst:sec:setuid}]
 razvan@yggdrasil:~/Downloads$ ls -l /bin/mount
 -rwsr-xr-x 1 root root 43088 aug 23 02:47 /bin/mount
 razvan@yggdrasil:~/Downloads$ ls -l /usr/bin/passwd
 -rwsr-xr-x 1 root root 59640 mar 22  2019 /usr/bin/passwd
+\end{screen}
 
-O formă configurabilă de escaladare de privilegii este cu ajutorul comenzii sudo. Comanda sudo este configurată în fișierul /etc/sudoers. În mod obișnuit fișierul /etc/sudoers nu poate fi scris de nici un utilizator, pentru că scrierea greșită poate afecta funcționarea sistemului. Editarea fișierului /etc/sudoers se realizează cu ajutorul comenzii visudo. Cu ajutorul fișierului /etc/sudoers putem decide ce utilizator poate rula ce comenzi în numele altui utilizator. În secvența de cod TODO avem două astfel de linii de configurare specifice fișierului /etc/sudoers.
+O formă configurabilă de escaladare de privilegii este cu ajutorul comenzii sudo. Comanda sudo este configurată în fișierul /etc/sudoers. În mod obișnuit fișierul /etc/sudoers nu poate fi scris de nici un utilizator, pentru că scrierea greșită poate afecta funcționarea sistemului. Editarea fișierului /etc/sudoers se realizează cu ajutorul comenzii visudo. Cu ajutorul fișierului /etc/sudoers putem decide ce utilizator poate rula ce comenzi în numele altui utilizator. În \labelindexref{Listing}{lst:sec:sudoers} avem două astfel de linii de configurare specifice fișierului /etc/sudoers.
 
-secvență cu /etc/sudoers
+\begin{screen}[caption={Secvență de configurație din fișierul /etc/sudoers},label={lst:sec:sudoers}]
+TODO: secventa cu /etc/sudoers
+\end{screen}
 
 Întrucât procesele sunt modul de utilizare a sistemului și accesarea a resurselor acestuia, trebuie să avem în vedere securitatea acestora prin măsuri preventive și măsuri reactive. Este important sa avem grijă ce aplicații instalăm pe sistemele și dispozitivele noastre și să folosim aplicații care monitorizează funcționarea sistemului și folosirea resurselor acestuia.
 
