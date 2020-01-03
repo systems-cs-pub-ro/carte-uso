@@ -3,21 +3,32 @@
 
 Un sistem de calcul oferă resurse de calcul utilizatorului. Utilizatorul folosește o interfața de lucru furnizată de sistemul de calcul pentru activitățile sale: navigare pe Internet, dezvoltare de aplicații, creare de conținut, scriere de documente. Interfața este o aplicație a sistemului de operare numită shell. Prin interacțiunea cu shell-ul, utilizatorul își realizează activitățile și folosește resursele sistemului de calcul. De exemplu un shell grafic va prezenta utilizatorului butoane, meniuri și ferestre pe care acesta le va folosi; un shell text va prezenta utilizatorului un prompt unde acesta va introduce comenzi.
 
-Figura TODO prezintă legătura dintre componentele sistemului de calcul. Componentele hardware sunt gestionate de sistemul de operare; peste sistemul de operare rulează aplicații, una dintre aplicații fiind shell-ul, aplicația care interfațează utilizatorul cu celelalte aplicații, cu serviciile sistemului de operare și resursele hardware,
+\labelindexref{Figura}{fig:ui:system-components} prezintă legătura dintre componentele sistemului de calcul. Componentele hardware sunt gestionate de sistemul de operare; peste sistemul de operare rulează aplicații, una dintre aplicații fiind shell-ul, aplicația care interfațează utilizatorul cu celelalte aplicații, cu serviciile sistemului de operare și resursele hardware.
 
-Un sistem de operare destinat utilizatorului oferă o interfață, numită shell
-
-diagramă hardware, sistem de operare, aplicații, shell, utilizator
+\begin{figure}[htbp]
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/02-fs/def-fs.svg}
+  \caption{Componentele sistemului de calcul}
+  \label{fig:ui:system-components}
+  % TODO: diagramă hardware, sistem de operare, aplicații, shell, utilizator
+\end{figure}
 
 Majoritatea aplicațiilor au la rândul lor o interfață. De exemplu jocurile pe calculator au o interfață grafică unde utilizatorul/jucătorul își gestionează resurse, creează armate, navighează harta; un browser web are o interfață în care se introduce adresa unui site și are zonă de redare a componentelor paginii web (text, butoane, imagini); aplicația Matlab, pentru calcule matematice complexe, oferă un prompt în care dezvoltatorul introduce comenzi specifice. În general, numim shell aplicația care interacționează cu sistemul de operare; într-un sens mai larg, putem spune și că aplicațiile de mai sus (jocul, browser-ul web, Matlab) oferă un shell, acea interfață.
 
-Interfețele cu utilizatorul, shell-urile, vin de obicei în două moduri: grafice (Graphical User Interface - GUI) și text/linie de comandă (Command Line Interface). În general, interfața grafică este mai intuitivă, are avantajul ușurinței în utilizare și acomodare, un aspect mai plăcut, ușor personalizabil. Interfața în linia de comandă este ceva mai dificil de învățat și de folosit, mai anostă ca aspect, dar oferă acces mult mai complet și mai detaliat la serviciile sistemului. Interfața în linia de comandă permite automatizarea prin script-uri, lucru pe care îl vom discuta în Capitolul TODO: Automatizarea sarcinilor.
+Interfețele cu utilizatorul, shell-urile, vin de obicei în două moduri: grafice (Graphical User Interface - GUI) și text/linie de comandă (Command Line Interface). În general, interfața grafică este mai intuitivă, are avantajul ușurinței în utilizare și acomodare, un aspect mai plăcut, ușor personalizabil. Interfața în linia de comandă este ceva mai dificil de învățat și de folosit, mai anostă ca aspect, dar oferă acces mult mai complet și mai detaliat la serviciile sistemului. Interfața în linia de comandă permite automatizarea prin script-uri, lucru pe care îl vom discuta în \labelindexref{Capitolul}{chapter:auto}.
 
-În Figura TODO avem două screenshot-uri cu un shell GUI și un shell CLI din distribuția Ubuntu 18.04. Shell-ul GUI oferă meniuri, butoane și ferestre, în vreme ce shell-ul CLI oferă un prompt unde se pot introduce comenzi.
+În \labelindexref{Figura}{fig:ui:shell-gui-cli} avem două screenshot-uri cu un shell GUI și un shell CLI din distribuția Ubuntu 18.04. Shell-ul GUI oferă meniuri, butoane și ferestre, în vreme ce shell-ul CLI oferă un prompt unde se pot introduce comenzi.
 
-screenshot GUI + CLI GNOME
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth]{chapters/01-ui/img/screenshot.png}
+  \caption{Shell GUI și CLI în Ubuntu 18.04}
+  \label{fig:ui:shell-gui-cli}
+  % screenshot GUI + CLI GNOME
+\end{figure}
 
-În capitolul curent ne vom concentra pe interfața grafică. Interfața în linia de comandă o vom discuta detaliat în Capitolul TODO: Interfața în linia de comandă.
+În capitolul curent ne vom concentra pe interfața grafică. Interfața în linia de comandă o vom discuta detaliat în \labelindexref{Capitolul}{chapter:cli}.
 
 \section{Interfața grafică}
 \label{sec:ui:gui}
@@ -32,9 +43,15 @@ Interfața grafică poate fi personalizată: scheme de culori, fonturi, dimensiu
 
 Pentru accelerarea acțiunilor în interfața grafică, există în mod uzual scurtături de tastatură. Este o practică frecventă în lumea jocurilor de calculator (unde celebrele actions-per-minute (APM)) se bazează pe folosirea scurtăturilor din tastatură. În interfața în linia de comandă scurtăturilor sunt folosite pentru gestiunea ferestrelor, accesarea rapidă a unor elemente din meniuri.
 
-În instalările implicite, sistemele de operare desktop oferă interfața grafică. Pentru tipurile de acțiuni care necesită interfața în linia de comandă (precum acțiuni mai specifice, sau acțiuni de automatizare sau acțiuni care nu se pot realiza altfel), se pot porni shell-uri CLI din interfața grafică. Într-un mediu GNOME se poate porni o fereastră GNOME terminal, în într-un mediu grafic Windows se poate porni o fereastră PowerShell. În Figura TODO sunt screenshot-uri cu două ferestre din mediul GUI în care rulează un shell CLI. Este modul uzual în care rulăm comenzi în sistemele desktop moderne.
+În instalările implicite, sistemele de operare desktop oferă interfața grafică. Pentru tipurile de acțiuni care necesită interfața în linia de comandă (precum acțiuni mai specifice, sau acțiuni de automatizare sau acțiuni care nu se pot realiza altfel), se pot porni shell-uri CLI din interfața grafică. Într-un mediu GNOME se poate porni o fereastră GNOME terminal, în într-un mediu grafic Windows se poate porni o fereastră PowerShell. În \labelindexref{Figura}{fig:ui:shell-cli-linux-windows} sunt screenshot-uri cu două ferestre din mediul GUI în care rulează un shell CLI. Este modul uzual în care rulăm comenzi în sistemele desktop moderne.
 
-screenshot GNOME Terminal + screenshot PowerShell
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth]{chapters/01-ui/img/screenshot.png}
+  \caption{Shell CLI (terminal) în Linux și în Windows}
+  \label{fig:ui:shell-cli-linux-windows}
+  % screenshot GNOME Terminal + screenshot PowerShell
+\end{figure}
 
 \subsection{Interfețe native și interfețe web}
 \label{sec:ui:native-web}
@@ -54,25 +71,29 @@ Motivul migrării aplicațiilor desktop în aplicații web este portabilitatea: 
 
 Organizațiile care dezvoltă interfețe grafice stabilesc principii și recomandări de urmat. Acest principii țin cont de natura umană și comportamentul utilizatorilor, în general din studii specifice, și se regăsesc în documente numite Human Interface Guidelines (Ghiduri de interfațare om-calculator). Exemple de organizații și astfel de documente sunt:
 
-GNOME: GNOME Human Interface Guidelines
-Apple: Apple Human Interface Guidelines
-Android: Android Design Guidelines
-Microsoft: Microsoft User Interface Principles
+\begin{itemize}
+  \item GNOME: GNOME Human Interface Guidelines
+  \item Apple: Apple Human Interface Guidelines
+  \item Android: Android Design Guidelines
+  \item Microsoft: Microsoft User Interface Principles
+\end{itemize}
 
 O aplicație sau un dispozitiv de succes va trebuie să țină cont și de interfața grafică, nu numai de funcționalitățile și performanța sa. Aspectele ce țin de experiența utilizatorului sunt cu atât mai importante pe dispozitivele mobile unde interfața grafică tactilă este universală. În aceeași măsură aplicațiile și site-urile web necesită interfețe intuitive pentru satisfacția utilizatorilor acestora. Un utilizator nemulțumit sau încurcat de interfață nu va folosi aplicația, lucru care se traduce în general în pierderi financiare. De aceea aspectele de ce țin de experiența utilizatorului sunt esențiale pentru dezvoltatorii de aplicații pe dispozitive mobile sau aplicații web.
 
 \section{Interfața grafică în Linux}
 \label{sec:ui:linux-gui}
 
-Așa cum am precizat și în Capitolul TODO: Introducere, Linux (sau mai bine spus, distribuțiile software bazate pe Linux) rulează pe o plajă largă de sisteme și dispozitive: server, desktop/laptop, mobile (Android), smart TV, smart watch, rutere/echipamente de rețea etc. Fiecare dintre aceste sisteme oferă o interfață utilizatorului:
+Așa cum am precizat și în \labelindexref{Capitolul}{chapter:intro}, Linux (sau mai bine spus, distribuțiile software bazate pe Linux) rulează pe o plajă largă de sisteme și dispozitive: server, desktop/laptop, mobile (Android), smart TV, smart watch, rutere/echipamente de rețea etc. Fiecare dintre aceste sisteme oferă o interfață utilizatorului:
 
-interfață grafică tactilă în cazul dispozitivelor mobile sau smart watch
-interfață grafică și telecomandă în cazul smart TV
-interfață în linie de comandă sau interfață web de configurare în cazul echipamentelor de rețea
-interfață în linie de comandă în cazul serverelor
-interfață grafică și în linie de comandă în cazul sistemelor desktop/laptop
+\begin{itemize}
+  \item interfață grafică tactilă în cazul dispozitivelor mobile sau smart watch
+  \item interfață grafică și telecomandă în cazul smart TV
+  \item interfață în linie de comandă sau interfață web de configurare în cazul echipamentelor de rețea
+  \item interfață în linie de comandă în cazul serverelor
+  \item interfață grafică și în linie de comandă în cazul sistemelor desktop/laptop
+\end{itemize}
 
-În cele ce urmează vom prezenta interfața grafică în cazul sistemelor desktop/laptop. Deși nu este obișnuit, această interfață poate fi prezentă și în cazul sistemelor server. Interfața în linia de comandă va fi prezentată în formă de comenzi Linux în restul capitolelor și detaliat în Capitolul TODO: Interfața în linia de comandă.
+În cele ce urmează vom prezenta interfața grafică în cazul sistemelor desktop/laptop. Deși nu este obișnuit, această interfață poate fi prezentă și în cazul sistemelor server. Interfața în linia de comandă va fi prezentată în formă de comenzi Linux în restul capitolelor și detaliat în \labelindexref{Capitolul}{chapter:cli}.
 
 \subsection{Desktop Environments}
 \label{sec:ui:desktop-environments}
@@ -92,13 +113,22 @@ Redarea elementelor grafice ale unei aplicații ce rulează peste sistemul de op
 
 Sistemul de ferestre este compus în mod uzual din:
 
-Manager de ferestre/afișare (window/display manager): gestionează așezarea ferestrelor pe ecran, uzual încluzând bare de meniuri.
-Widget/GUI toolkit: colecție de biblioteci care oferă elementele grafice (numite widget-uri), folosit de managerul de ferestre.
-Server de ferestre/afișare (window/display server): interacționează printr-un protocol specific cu aplicațiile grafice, cu sistemul de operare și managerul de ferestre pentru redarea componentelor grafice.
+\begin{itemize}
+  \item Manager de ferestre/afișare (window/display manager): gestionează așezarea ferestrelor pe ecran, uzual încluzând bare de meniuri.
+  \item Widget/GUI toolkit: colecție de biblioteci care oferă elementele grafice (numite widget-uri), folosit de managerul de ferestre.
+  \item Server de ferestre/afișare (window/display server): interacționează printr-un protocol specific cu aplicațiile grafice, cu sistemul de operare și managerul de ferestre pentru redarea componentelor grafice.
+\end{itemize}
 
-Schematic, componentele sistemului de ferestre sunt indicate în Figura TODO:
+Schematic, componentele sistemului de ferestre sunt indicate în \labelindexref{Figura}{fig:ui:window-system}.
 
-% de folosit imaginea asta (https://en.wikipedia.org/wiki/Display_server#/media/File:Schema_of_the_layers_of_the_graphical_user_interface.svg) cu menționarea autorului și văzut compatibilitatea licenței
+\begin{figure}[htbp]
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/02-fs/def-fs.svg}
+  \caption{Componentele sistemului de ferestre}
+  \label{fig:ui:window-system}
+  % TODO: de folosit imaginea asta (https://en.wikipedia.org/wiki/Display_server#/media/File:Schema_of_the_layers_of_the_graphical_user_interface.svg) cu menționarea autorului și văzut compatibilitatea licenței
+\end{figure}
 
 Delimitarea între componentele de mai sus ale sistemului de ferestre nu este strictă, mai ales în sistemele de operare diferite de Linux.
 
@@ -108,19 +138,33 @@ Delimitarea între componentele de mai sus ale sistemului de ferestre nu este st
 
 Aspectul comun al X și Weyland este interacțiunea componentelor. X și Weyland sunt de fapt specificații de protocoale și implementări de referință ale acestora pentru interacțiunea între serverul de ferestre (window server) și aplicațiile grafice (clienți grafici).
 
-Schema de funcționare a X/Weyland este prezentată în Figura TODO:
+Schema de funcționare a X/Weyland este prezentată în \labelindexref{Figura}{fig:ui:x-window-system}.
 
-figură cu X server/Weyland, aplicație, ecran/tastatură, protocolul X/Weyland
+\begin{figure}[htbp]
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/02-fs/def-fs.svg}
+  \caption{Funcționarea sistemului de ferestre în Linux (X sau Weyland}
+  \label{fig:ui:x-window-system}
+  % TODO: figură cu X server/Weyland, aplicație, ecran/tastatură, protocolul X/Weyland
+\end{figure}
 
 În această interacțiune, o aplicație precum Mozilla Firefox este client grafic; folosind protocolul X/Weyland aceasta transmite către serverul X/Weyland cerințele sale de afișare grafică pe ecran, sau acțiunile utilizatorului. Practic, aplicația client se ocupă de resursele sale de calcul lăsând serverului grafic responsabilitatea interacțiunii cu utilizatorul.
 
-Una dintre funcționalitățile X, absentă din Weyland, este folosirea peste rețea. În această situație, aplicația client rulează pe un sistem la distanță, iar serverul X rulează pe sistemul local. În acest caz, utilizatorul interacționează cu serverul X local: acțiunile sale sunt transmise serverului, iar redarea se face pe afișajul local; aplicația client rulează însă pe sistemul de la distanță, consumul de resurse (procesor, memorie, sistem de fișiere) făcându-se pe acel sistem. Interacțiunea între aplicația client și aplicația server are loc prin rețea prin intermediul protocolului X. Acest lucru este prezentat în Figura TODO.
+Una dintre funcționalitățile X, absentă din Weyland, este folosirea peste rețea. În această situație, aplicația client rulează pe un sistem la distanță, iar serverul X rulează pe sistemul local. În acest caz, utilizatorul interacționează cu serverul X local: acțiunile sale sunt transmise serverului, iar redarea se face pe afișajul local; aplicația client rulează însă pe sistemul de la distanță, consumul de resurse (procesor, memorie, sistem de fișiere) făcându-se pe acel sistem. Interacțiunea între aplicația client și aplicația server are loc prin rețea prin intermediul protocolului X. Acest lucru este prezentat în \labelindexref{Figura}{fig:ui:remote-x}.
 
-figură cu utilizator, acțiuni/evenimente + afișare, server X, rețea + protocol X, client X (aplicație), resurse hardware la distanță
+\begin{figure}[htbp]
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/02-fs/def-fs.svg}
+  \caption{Rularea la distanță a aplicațiilor X grafice}
+  \label{fig:ui:remote-x}
+  % TODO: figură cu utilizator, acțiuni/evenimente + afișare, server X, rețea + protocol X, client X (aplicație), resurse hardware la distanță
+\end{figure}
 
 Aplicații grafice pot fi rulate la distanță și dacă sistemul local rulează Windows sau macOS. Pentru aceasta este nevoie de instalarea unui server X nativ Windows, precum XMing, sau macOS precum XQuartz.
 
-În mod uzual, din rațiuni de securitate, rularea la distanță de aplicații X grafice se realizează peste un canal SSH, protocol despre care vom discuta în Capitolul TODO: Rețelistică și Internet.
+În mod uzual, din rațiuni de securitate, rularea la distanță de aplicații X grafice se realizează peste un canal SSH, protocol despre care vom discuta în \labelindexref{Secțiunea}{sec:sec:ssh}.
 
 \subsection{Funcționalități ale interfeței grafice în Linux}
 \label{sec:ui:linux-gui-features}
@@ -129,27 +173,84 @@ Pe lângă interfața grafică efectivă, interfața grafică în Linux oferă f
 
 O astfel de funcționalitatea este noțiunea de spațiu de lucru (workspace) sau desktop. Într-o sesiune de mediu grafic pot exista mai multe workspace-uri/desktop-uri, fiecare cu ferestrele sale, utilizatorul putând migra între workspace-uri pentru a-și păstra aplicațiile izolate. Depinzând de mediul desktop, numărul de workspace-urile este static configurabil (fixat într-o configurație) sau dinamic (se poate crea rapid un workspace nou). În oricare situație, acțiunile sunt: tranziție la un alt workspace sau mutare fereastră într-un alt workspace. O funcționalitate similară este prezentă pe macOS și în Windows, de la Windows 10.
 
-Folosirea scurtăturilor de tastatură (keyboard shortcuts) este utilă pentru acțiuni rapide în cadrul mediului grafic. În general orice mediu grafic oferă scurtături pentru pornire de aplicații, închidere de aplicații, deschidere și închidere de tab-uri de aplicație, minimizat ferestre, accesat meniuri, schimbat între ferestre. Aceste scurtături depind de sistemul de operare și mediul desktop folosit. O listă a scurtăturilor folosite pe mașina virtuală de suport a acestei cărți este în Tabelul TODO.
+Folosirea scurtăturilor de tastatură (keyboard shortcuts) este utilă pentru acțiuni rapide în cadrul mediului grafic. În general orice mediu grafic oferă scurtături pentru pornire de aplicații, închidere de aplicații, deschidere și închidere de tab-uri de aplicație, minimizat ferestre, accesat meniuri, schimbat între ferestre. Aceste scurtături depind de sistemul de operare și mediul desktop folosit. O listă a scurtăturilor folosite pe mașina virtuală de suport a acestei cărți este în \labelindexref{Tabelul}{tab:ui:vm-shortcuts}.
 
-O parte dintre acțiunile utilizatorului pot fi realizate doar sau mai rapid în interfața în linia de comandă. Pentru acesta, din mediul grafic se pot porni rapid aplicații shell în linia de comandă, în forma emulatoarelor de terminal. Un emulator de terminal este o aplicație care prezintă utilizatorului o fereastră. În această fereastră rulează un shell CLI unde utilizatorul poate rula comenzi. În Figura TODO, imaginea din stânga este o fereastră de emulator de terminal în GNOME (aplicația gnome-terminal) în care rulează shell-ul Bash; în mod similar, în dreapta este o fereastră Windows în care rulează shell-ul PowerShell. Pe macOS acest rol în are aplicația Terminal, care vine preinstalată cu sistemul de operare. Sunt și alte emulatoare de terminal care pot fi instalate în locul sau pe lângă cele implicite. Mai multe informații despre terminale, emulatoare de terminal și shell vom prezenta în Capitolul TODO: Interfața în linia de comandă.
+O parte dintre acțiunile utilizatorului pot fi realizate doar sau mai rapid în interfața în linia de comandă. Pentru acesta, din mediul grafic se pot porni rapid aplicații shell în linia de comandă, în forma emulatoarelor de terminal. Un emulator de terminal este o aplicație care prezintă utilizatorului o fereastră. În această fereastră rulează un shell CLI unde utilizatorul poate rula comenzi. De exemplu, în \labelindexref{Figura}{fig:ui:shell-cli-linux-windows}, imaginea din stânga este o fereastră de emulator de terminal în GNOME (aplicația gnome-terminal) în care rulează shell-ul Bash; în mod similar, în dreapta este o fereastră Windows în care rulează shell-ul PowerShell. Pe macOS acest rol în are aplicația Terminal, care vine preinstalată cu sistemul de operare. Sunt și alte emulatoare de terminal care pot fi instalate în locul sau pe lângă cele implicite. Mai multe informații despre terminale, emulatoare de terminal și shell vom prezenta în \labelindexref{Capitolul}{chapter:cli}.
 
 \section{Interfața grafică în mașina virtuală de suport}
 \label{sec:ui:vm}
 
 Distribuțiile, mediile desktop, managerii de ferestre și a aplicații Linux sunt diverse. Este dificil de găsit un numitor comun de aspecte generice, comune tuturor. În această secțiune vom prezenta informații specifice mașinii virtuale de suport a cărții, mașină care rulează Ubuntu 18.04.
 
-Așa cum am precizat mai sus, pentru acțiuni rapide în interfața grafică a unui sistem de operare (și, în general, a unei aplicații) sunt utile scurtăturile de tastatură. Tabelul TODO conține cele mai comune scurtături în mașina virtuală:
+Așa cum am precizat mai sus, pentru acțiuni rapide în interfața grafică a unui sistem de operare (și, în general, a unei aplicații) sunt utile scurtăturile de tastatură. \labelindexref{Tabelul}{tab:ui:vm-shortcuts} conține cele mai comune scurtături în mașina virtuală.
 
-În ce aplicație e folosită, scurtătură, efect
+\begin{table}[!htb]
+  % TODO: În ce aplicație e folosită, scurtătură, efect
+  \caption{Scurtături de tastatură în mașina virtuală de suport}
+  \begin{center}
+    \begin{tabular}{ p{0.2\textwidth} p{0.5\textwidth} p{0.3\textwidth} }
+      \toprule
+        \textbf{Scurtătură} &
+        \textbf{Efect} &
+        \textbf{Aplicații în care are efect} \\
+      \midrule
+        Alt+F2 &
+        deschidere prompt de rulare comenzi &
+        în mediul grafic (nu într-o anume aplicație) \\
 
-O scurtătură frecventă de tastatură, întâlnită pe majoritatea distribuțiilor și mediilor desktop, este Alt+F2 folosită pentru pornirea rapidă a unei aplicații, introducând numele comenzii, la fel ca în Figura TODO. Funcționalitatea este numită application launcher. Echivalentul în Windows este Windows+R, iar în macOS Command+Space.
+        Alt+Ctrl+t &
+        TODO &
+        TODO \\
 
-O acțiune frecventă la instalarea sistemului de calcul este configurarea schemei de tastaturii (keyboard layout). Dacă dorim adăugarea unei noi scheme de tastatură, acest lucru se face prin accesarea meniului de tastatură din pașii TODO. Vom ajunge la un ecran precum cel din Figura TODO, unde putem configura noi scheme de tastatură.
-fereastra finală din keyboard layout
+        TODO &
+        TODO &
+        TODO \\
 
-În general configurațiile se pot realiza din meniurile aplicațiilor. Anumite configurații (precum dezactivarea introducerii parolei la autentificare) necesită accesarea interfeței de configurare. Pentru aceasta folosim aplicația dconf-editor, la fel ca în Figura TODO, cu care avem acces la o plajă largă de opțiuni de configurare.
+        TODO &
+        TODO &
+        TODO \\
 
-În general, desktop-ul nu este folosit pentru a reține desktop shortcuts sau alte iconuri. Aceasta pentru că aplicațiile pot fi pornite rapid folosit scurtătura de tip application launcher (Alt+F2). Dacă însă dorim să creăm un desktop shortcut, putem face acest fie creând manual un fișier cu extensia .desktop sau folosind comanda gnome-desktop-item-edit.
+      \bottomrule
+    \end{tabular}
+    \label{tab:ui:vm-shortcuts}
+  \end{center}
+\end{table}
+
+O scurtătură frecventă de tastatură, întâlnită pe majoritatea distribuțiilor și mediilor desktop, este Alt+F2 folosită pentru pornirea rapidă a unei aplicații, introducând numele comenzii, la fel ca în \labelindexref{Figura}{fig:ui:app-launcher}. Funcționalitatea este numită application launcher. Echivalentul în Windows este Windows+R, iar în macOS Command+Space.
+
+\begin{figure}[!htbp]
+  % TODO: screenshot cu Alt+F2
+  \centering
+  \includegraphics[width=0.8\textwidth]{chapters/01-ui/img/screenshot.png}
+  \caption{Rularea unei aplicații din mediul grafic în Linux (application launcher}
+  \label{fig:ui:app-launcher}
+\end{figure}
+
+O acțiune frecventă la instalarea sistemului de calcul este configurarea schemei de tastatură (keyboard layout). Dacă dorim adăugarea unei noi scheme de tastatură, acest lucru se face prin accesarea meniului de tastatură din pașii TODO. Vom ajunge la un ecran precum cel din \labelindexref{Figura}{fig:ui:keyboard-layout}, unde putem configura noi scheme de tastatură.
+
+\begin{figure}[!htbp]
+  % TODO: fereastra finală din keyboard layout
+  \centering
+  \includegraphics[width=0.8\textwidth]{chapters/01-ui/img/screenshot}
+  \caption{Configurarea schemei de tastatură (keyboard layout)}
+  \label{fig:ui:keyboard-layout}
+\end{figure}
+
+În general configurațiile se pot realiza din meniurile aplicațiilor. Anumite configurații (precum dezactivarea introducerii parolei la autentificare) necesită accesarea interfeței de configurare. Pentru aceasta folosim aplicația dconf-editor, la fel ca în \labelindexref{Figura}{fig:ui:dconf-editor}, cu care avem acces la o plajă largă de opțiuni de configurare.
+
+\begin{figure}[!htbp]
+  % TODO: folosire dconf-editor
+  \centering
+  \includegraphics[width=0.8\textwidth]{chapters/01-ui/img/screenshot}
+  \caption{Opțiuni de configurare în mediul grafic (dconf-editor)}
+  \label{fig:ui:dconf-editor}
+\end{figure}
+
+În general, desktop-ul nu este folosit pentru a reține desktop shortcuts sau alte iconuri. Aceasta pentru că aplicațiile pot fi pornite rapid folosit scurtătura de tip application launcher (Alt+F2). Dacă însă dorim să creăm un desktop shortcut, putem face acest fie creând manual un fișier cu extensia .desktop sau folosind comanda gnome-desktop-item-edit, ca în \labelindexref{Listing}{lst:ui:desktop-create}.
+
+\begin{screen}[caption={Crearea unui desktop shortcut},label={lst:ui:desktop-create}]
+TODO: folosire gnome-desktop-item-edit pentru a crea un desktop shortcut
+\end{screen}
 
 \section{Sumar}
 \label{sec:ui:summary}
