@@ -3,16 +3,31 @@
 
 Internet-ul este o resursă indispensabilă în ziua de azi. Cu ajutorul Internet-ului putem comunica cu altcineva de pe altă parte a globului in timp real, putem urmări ultimele seriale, putem colabora la distanță, putem descărca cea mai recentă versiune a unei aplicații, putem accesa și stoca cantități uriașe de informații. Internet-ul ne conectează între noi și la resursele diferitelor companii și organizații, simultan simplificându-ne activitățile personale și profesionale și adăugând un set nou de activități de realizat. Cu ajutorul Internet-ului putem să achiziționăm un bilet online, fără a fi nevoie de mers la o casă de bilete, așteptat la coadă, plătit cash sau cu card-ul; sau putem apela la serviciul Uber cu plată online și rating în loc de a suna la un serviciu de taximetrie sau la transportul în comun; putem vedea un film direct pe Netflix, în loc de a aștepta achiziționarea unui Blu-ray cu filmul. Totodată, acum putem lucra la un proiect software la distanță, folosind GitHub, Slack, Skype, fără a fi nevoie de prezență fizică. Putem să transmitem informații instant unei echipe cu care lucrăm printr-un mesaj pe WhatsApp cu un link la un director partajat Google Drive. Toate acestea și multe altele sunt posibile cu ajutorul Internet-ului.
 
-Internet-ul aduce și o serie de provocări. Una dintre acestea este scalabilitatea: modul în care Internet-ul ajunge la cât mai mulți oameni și cât mai multe dispozitive în lume. În momentul apariției Internet-ului doar câteva echipamente erau conectate la Internet; apariția World Wide Web-ului a dus la o creștere foarte mare a acestora; dispozitivele mobile au dus la un nou val de creștere; lumea IoT (Internet of Things) cu dispozitive de tot felul (senzori, sisteme de climatizare, becuri inteligente etc.) conectate la Internet e o nouă sursă de creștere. Scalabilitatea Internet-ului se referă și la infrastructura de interconectare și la spațiul de stocare a cantității uriașe de informație și la viteza de transfer a datelor; vom discuta aspecte legate de infrastructură în acest capitol. O altă provocare este securitatea și viața privată (privacy): interconectarea persoanelor înseamnă că informații particulare sunt livrate pe infrastructura Internet-ului și pot fi capturate la sursă, pe parcurs sau din spațiul unde sunt stocate. Vom discuta aceste aspecte în capitolul TODO: Securitatea sistemului.
+Internet-ul aduce și o serie de provocări. Una dintre acestea este scalabilitatea: modul în care Internet-ul ajunge la cât mai mulți oameni și cât mai multe dispozitive în lume. În momentul apariției Internet-ului doar câteva echipamente erau conectate la Internet; apariția World Wide Web-ului a dus la o creștere foarte mare a acestora; dispozitivele mobile au dus la un nou val de creștere; lumea IoT (Internet of Things) cu dispozitive de tot felul (senzori, sisteme de climatizare, becuri inteligente etc.) conectate la Internet e o nouă sursă de creștere. Scalabilitatea Internet-ului se referă și la infrastructura de interconectare și la spațiul de stocare a cantității uriașe de informație și la viteza de transfer a datelor; vom discuta aspecte legate de infrastructură în acest capitol. O altă provocare este securitatea și viața privată (privacy): interconectarea persoanelor înseamnă că informații particulare sunt livrate pe infrastructura Internet-ului și pot fi capturate la sursă, pe parcurs sau din spațiul unde sunt stocate. Vom discuta aceste aspecte în \labelindexref{Capitolul}{chapter:sec}.
 
 În general, privim Internet-ul ca pe un mijloc prin care accesăm date, prin care apelăm la servicii la distanță și prin care comunicăm cu alții. Pentru mulți înseamnă că putem folosi o aplicație precum un browser web pe un sistem desktop sau WhatsApp pe un dispozitiv mobil. În limbaj tehnic, aceste informații și servicii nu fac parte din Internet; accesul la aceste informații și servicii sunt facilitate de Internet. Companii precum Google sau Facebook au sisteme conectate la Internet care oferă servicii și informații pe care oamenii le pot accesa având la rândul său dispozitive conectate la Internet.
 
-Spunem că Internet-ul este infrastructura care asigură interconectarea între sisteme/dispozitive la nivel planetar, ca în Figura TODO.
+Spunem că Internet-ul este infrastructura care asigură interconectarea între sisteme/dispozitive la nivel planetar, ca în \labelindexref{Figura}{fig:net:internet}.
 
-diagramă cu Internet-ul văzut ca un cloud cu sisteme/stații la margine “legate la Internet”
+\begin{figure}[htbp]
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/02-fs/def-fs.svg}
+  \caption{Internet-ul}
+  \label{fig:net:internet}
+  % TODO: diagramă cu Internet-ul văzut ca un cloud cu sisteme/stații la margine “legate la Internet”
+\end{figure}
 
-Mai precis, Internet-ul este ansamblul tuturor rețelelor de pe glob, interconectate între ele, ca în Figura TODO. Fiecare sistem face parte dintr-o rețea. Această rețea este conectată la alte rețele care la rândul său sunt conectate la alte rețele și tot așa, rezultând o rețea planetară de rețele: Internet-ul.
-diagramă cu Internet-ul ca rețea de rețele
+Mai precis, Internet-ul este ansamblul tuturor rețelelor de pe glob, interconectate între ele, ca în \labelindexref{Figura}{fig:net:internet-as-network}. Fiecare sistem face parte dintr-o rețea. Această rețea este conectată la alte rețele care la rândul său sunt conectate la alte rețele și tot așa, rezultând o rețea planetară de rețele: Internet-ul.
+
+\begin{figure}[htbp]
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/02-fs/def-fs.svg}
+  \caption{Internet-ul: rețea de rețele}
+  \label{fig:net:internet-as-network}
+  % TODO: diagramă cu Internet-ul ca rețea de rețele
+\end{figure}
 
 Conectarea la Internet înseamnă conectarea la o rețea care este conectată la Internet, adică la o rețea care este conectată, direct sau indirect, la alte rețele. Atunci când achiziționăm un ruter wireless și servicii de la un furnizor de servicii Internet, creăm o rețea în care conectăm laptop-ul, smart TV-ul, telefoanele mobile. Prin intermediul ruterului wireless ne conectăm la rețeaua furnizorului de servicii Internet care este conectat la alte rețele și tot așa. În felul acesta avem legătură la Internet, adică la serviciile și informațiile furnizate de alte persoane sau organizații care au sisteme conectate.
 
@@ -21,29 +36,65 @@ O rețea, precum cea creată între ruterul wireless, laptop, smart TV, telefoan
 \section{Servicii de Internet}
 \label{sec:net:internet-services}
 
-Așa cum am precizat, pentru mulți utilizatori Internet-ul este un spațiu de informație și de servicii. Un utilizator folosește o aplicație precum un browser web, care rulează pe un sistem conectat la Internet, pentru a accesa informații sau servicii puse la dispoziție de alte aplicații pe alte sisteme de pe Internet. De exemplu, Figura TODO prezintă un scenariu în care un utilizator, folosind un browser web, apelează prin Internet la serviciul Amazon pentru a cumpăra o carte (fizică, sau pentru Amazon Kindle).
+Așa cum am precizat, pentru mulți utilizatori Internet-ul este un spațiu de informație și de servicii. Un utilizator folosește o aplicație precum un browser web, care rulează pe un sistem conectat la Internet, pentru a accesa informații sau servicii puse la dispoziție de alte aplicații pe alte sisteme de pe Internet. De exemplu, \labelindexref{Figura}{fig:net:internet-services} prezintă un scenariu în care un utilizator, folosind un browser web, apelează prin Internet la serviciul Amazon pentru a cumpăra o carte (fizică, sau pentru Amazon Kindle).
 
-diagramă cu browser web + laptop + Internet + server + aplicație/serviciu Amazon
+\begin{figure}[htbp]
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/02-fs/def-fs.svg}
+  \caption{Folosirea serviciilor de Internet}
+  \label{fig:net:internet-services}
+  % TODO: diagramă cu browser web + laptop + Internet + server + aplicație/serviciu Amazon
+\end{figure}
 
-Scenariul din Figura TODO este modul frecvent de accesare de informații și servicii în Internet. În aceste scenarii, aplicația și sistemul utilizatorului, care realizează cererea, se numește client; în mod similar, aplicația și sistemul organizației care oferă serviciul se numește server. Depinzând de situație putem numi client atât aplicația care realizează cererea cât și sistemul pe care aceasta rulează; la fel și în cazul serverului. Pentru claritate, se folosesc și termeni precum aplicație client sau sistem client, respectiv aplicație server sau sistem server.
+Scenariul din \labelindexref{Figura}{fig:net:internet-services} este modul frecvent de accesare de informații și servicii în Internet. În aceste scenarii, aplicația și sistemul utilizatorului, care realizează cererea, se numește client; în mod similar, aplicația și sistemul organizației care oferă serviciul se numește server. Depinzând de situație putem numi client atât aplicația care realizează cererea cât și sistemul pe care aceasta rulează; la fel și în cazul serverului. Pentru claritate, se folosesc și termeni precum aplicație client sau sistem client, respectiv aplicație server sau sistem server.
 
 Cea mai mare parte a comunicației Internet se realizează conform paradigmei client-server: o aplicație client solicită informații/un serviciu, iar o aplicație server îi oferă acel serviciu. Numim organizațiile care rulează astfel de servere furnizori de servicii/produse în Internet. Companii precum Google, Amazon, Facebook, Apple sunt astfel de organizații.
 
-Prin intermediul infrastructurii furnizate de Internet, putem avea acces la o gamă largă de servicii. Acestea pot fi servicii clasice acum migrate pe infrastructura de Internet (de exemplu, serviciul de tip video-on-demand furnizat de HBOGO, care înlocuiește  achiziția de medii cu conținut video, precum un DVD cu un film sau un transfer de bani direct prin Revolut în loc de transfer numerar/cash) sau servicii noi apărute în Internet (de exemplu, rețele sociale ca Facebook sau Pinterest sau spații colaborative precum GitHub sau Dropbox). În Tabelul TODO prezentăm cele mai răspândite tipuri de servicii din Internet cu exemple de aplicații și organizații care le furnizează.
+Prin intermediul infrastructurii furnizate de Internet, putem avea acces la o gamă largă de servicii. Acestea pot fi servicii clasice acum migrate pe infrastructura de Internet (de exemplu, serviciul de tip video-on-demand furnizat de HBOGO, care înlocuiește  achiziția de medii cu conținut video, precum un DVD cu un film sau un transfer de bani direct prin Revolut în loc de transfer numerar/cash) sau servicii noi apărute în Internet (de exemplu, rețele sociale ca Facebook sau Pinterest sau spații colaborative precum GitHub sau Dropbox). În \labelindexref{Tabelul}{tab:net:services} prezentăm cele mai răspândite tipuri de servicii din Internet cu exemple de aplicații și organizații care le furnizează.
 
-TODO: tabel cu lista de mai jos
+\begin{table}[!htb]
+  % TODO: completare exemple de serivicii
+  \caption{Tipuri de servicii de Internet}
+  \begin{center}
+    \begin{tabular}{ p{0.4\textwidth} p{0.6\textwidth} }
+      \toprule
+        \textbf{Tip de serviciu} &
+        \textbf{Exemple de servicii} \\
+      \midrule
+        acces la distanță &
+        TODO \\
 
-acces la distanță
-acces de informații
-livrare de conținut (multimedia)
-comunicare / messaging
-servicii online, intermediere tranzacții
-divertisment
-spațiu de stocare
-resurse de calcul, sisteme distribuite
-colaborare
+        acces de informații &
+        TODO \\
 
-Așa cum este precizat în Figura TODO, accesarea unui serviciu din Internet se realizează prin intermediul unei aplicații client de pe un sistem client al unui utilizator. De multe ori aplicația client este un browser web, datorat popularității folosirii serviciului web în Internet. Folosind un browser web putem accesa rețeaua de socializare Facebook, putem face achiziții pe Amazon, putem căuta informații folosind motorul de căutare Google, putem vizualiza cod pe GitHub, putem scrie și edita informație pe Wikipedia, putem partaja documente prin Dropbox, putem vedea conținut video pe YouTube, putem verifica e-mail-ul și altele. Browser-ul web devine astfel una dintre cele mai importante aplicații client de Internet.
+        livrare de conținut (multimedia) &
+        TODO \\
+
+        comunicare / messaging &
+        TODO \\
+
+        servicii online, intermediere tranzacții &
+        TODO \\
+
+        divertisment &
+        TODO \\
+
+        spațiu de stocare &
+        TODO \\
+
+        resurse de calcul, sisteme distribuite &
+        TODO \\
+
+        colaborare &
+        TODO \\
+      \bottomrule
+    \end{tabular}
+    \label{tab:net:services}
+  \end{center}
+\end{table}
+
+Așa cum este precizat în \labelindexref{Figura}{fig:net:internet-services}, accesarea unui serviciu din Internet se realizează prin intermediul unei aplicații client de pe un sistem client al unui utilizator. De multe ori aplicația client este un browser web, datorat popularității folosirii serviciului web în Internet. Folosind un browser web putem accesa rețeaua de socializare Facebook, putem face achiziții pe Amazon, putem căuta informații folosind motorul de căutare Google, putem vizualiza cod pe GitHub, putem scrie și edita informație pe Wikipedia, putem partaja documente prin Dropbox, putem vedea conținut video pe YouTube, putem verifica e-mail-ul și altele. Browser-ul web devine astfel una dintre cele mai importante aplicații client de Internet.
 
 Alternativa este folosirea unor aplicații client dedicate: un client de e-mail dedicat precum Mozilla Thunderbird, un aplicație (cu rol de client) pentru un joc de rețea precum Starcraft 2, o aplicație client dedicată pentru sincronizarea datelor Dropbox pe sistemul local, o aplicație Slack pentru comunicarea în cadrul echipei și altele.
 
@@ -51,46 +102,64 @@ Folosirea unei aplicații de tip browser web este obișnuită pe sisteme desktop
 
 Pentru mulți utilizatori, accesarea serviciilor de Internet este văzută ca un lucru simplu și gratis. Așteptarea este să poți căuta informație pe Internet folosind motorul de căutare Google, să poți asculta muzică folosind Spotify, să poți publica și vedea conținut Facebook, să poți comunica folosind WhatsApp, să poți stoca informație folosind Dropbox. Toate acestea fără cost din partea utilizatorului.
 
-Totuși, pentru organizațiile care oferă aceste servicii interesul este unul financiar, de a capitaliza din folosirea serviciilor pe care le oferă. Aceste organizații dezvoltă modele de afaceri (business models) diferite față de cele clasice; în modelul clasic, un client obține un bun de la un furnizor și plătește contravaloarea acelui bun; modelele de afaceri online (online business models) au alte forme de monetizare. Mai jos sunt câteva exemple: TODO servicii freemium/premium: Serviciul de bază este gratis. Dar anumite funcționalități sunt permise doar utilizatorilor care plătesc. De exemplu Spotify Premium îți permite să asculți muzică fără acces la Internet și să selectezi melodiile dorite pe aplicația pe mobil. În mod similar, GitHub poate fi folosit pentru cod public; pentru surse private există un cost. Dropbox este limitat la 2GB de spațiu de stocare în forma gratis, pentru mai mult și alte funcționalități există un cost.
+Totuși, pentru organizațiile care oferă aceste servicii interesul este unul financiar, de a capitaliza din folosirea serviciilor pe care le oferă. Aceste organizații dezvoltă modele de afaceri (business models) diferite față de cele clasice; în modelul clasic, un client obține un bun de la un furnizor și plătește contravaloarea acelui bun; modelele de afaceri online (online business models) au alte forme de monetizare. Mai jos sunt câteva exemple:
 
-comision de tranzacții: Pentru utilizator folosirea serviciul pare gratis, dar serviciul în sine aduce un comision transparent. Aplicații precum Uber, Glovo, Airbnb intermediază tranzacții între furnizori de transport, mâncare, cazare și obțin o cotă parte din tranzacțiile efectuate.
+\begin{itemize}
+  \item \textbf{servicii freemium/premium}: Serviciul de bază este gratis. Dar anumite funcționalități sunt permise doar utilizatorilor care plătesc. De exemplu Spotify Premium îți permite să asculți muzică fără acces la Internet și să selectezi melodiile dorite pe aplicația pe mobil. În mod similar, GitHub poate fi folosit pentru cod public; pentru surse private există un cost. Dropbox este limitat la 2GB de spațiu de stocare în forma gratis, pentru mai mult și alte funcționalități există un cost.
+  \item \textbf{comision de tranzacții}: Pentru utilizator folosirea serviciul pare gratis, dar serviciul în sine aduce un comision transparent. Aplicații precum Uber, Glovo, Airbnb intermediază tranzacții între furnizori de transport, mâncare, cazare și obțin o cotă parte din tranzacțiile efectuate.
+  \item \textbf{reclame țintite pe utilizatori}: Cu ajutorul unei baze largi de utilizator, servicii oferite de Google sau Facebook sau alte companii prezintă reclame utilizatorilor. Reclamele sunt plătite de alte companii care vor să vândă serviciile lor. Un punct cheie în acest model de afaceri este numărul mare de utilizatori, motiv pentru care pentru organizații de acest fel este important ca serviciile pe care le oferă să fie cât mai atractive. Un citat celebru în lumea digitală care face referire la acest model de afaceri este \textit{If you aren’t paying for it, you’re the product.}
+\end{itemize}
 
-reclame țintite pe utilizatori: Cu ajutorul unei baze largi de utilizator, servicii oferite de Google sau Facebook sau alte companii prezintă reclame utilizatorilor. Reclamele sunt plătite de alte companii care vor să vândă serviciile lor. Un punct cheie în acest model de afaceri este numărul mare de utilizatori, motiv pentru care pentru organizații de acest fel este important ca serviciile pe care le oferă să fie cât mai atractive. Un citat celebru în lumea digitală care face referire la acest model de afaceri este If you aren’t paying for it, you’re the product.
-
-Multe organizații folosesc multiple modele de afaceri. De exemplu, Revolut încorporează toate modele de mai sus: comision de tranzacții efectuate prin Revolut, servicii premium (însemnând asigurări de călătorie și de transport, card premium, limite mai mari de operațiuni fără comision) și reclame țintite pentru utilizatori.
+Multe organizații folosesc modele de afaceri multiple. De exemplu, Revolut încorporează toate modele de mai sus: comision de tranzacții efectuate prin Revolut, servicii premium (însemnând asigurări de călătorie și de transport, card premium, limite mai mari de operațiuni fără comision) și reclame țintite pentru utilizatori.
 
 \section{Funcționarea Internet-ului}
 \label{sec:net:internet}
 
-Internet-ul este infrastructura ce realizează legătura dintre sisteme la nivel planetar. Așa cum indică Figura TODO aceste sisteme sunt la periferia Internet-ului. Unele sunt de tip client, altele de tip server. Mai numim aceste sisteme stații (în engleză hosts, network hosts, end nodes). Internet-ul cuprinde echipamentele care realizează conexiunea între aceste stații: dispozitive de interconectare, precum rutere, switch-uri, access point-uri și medii de transmisie precum cablu, aer, fibră optică.
+Internet-ul este infrastructura ce realizează legătura dintre sisteme la nivel planetar. Așa cum indică \labelindexref{Figura}{fig:net:internet} aceste sisteme sunt la periferia Internet-ului. Unele sunt de tip client, altele de tip server. Mai numim aceste sisteme stații (în engleză hosts, network hosts, end nodes). Internet-ul cuprinde echipamentele care realizează conexiunea între aceste stații: dispozitive de interconectare, precum rutere, switch-uri, access point-uri și medii de transmisie precum cablu, aer, fibră optică.
 
-Peste această infrastructură fizică a Internet-ului se realizează comunicarea între aplicații client și aplicații server, așa cum este prezentat în Figura TODO.
+Peste această infrastructură fizică a Internet-ului se realizează comunicarea între aplicații client și aplicații server, așa cum este prezentat în \labelindexref{Figura}{fig:net:internet-infrastructure}.
 
-diagramă cu aplicație client, telefon mobil, aer/unde, access point, ruter, fibră, alte rutere (cu puncte puncte), fibră, ruter, switch data center, fibră, sistem server, aplicație server
+\begin{figure}[htbp]
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/02-fs/def-fs.svg}
+  \caption{Infrastructura de conectare în Internet}
+  \label{fig:net:internet-infrastructure}
+  % TODO: diagramă cu aplicație client, telefon mobil, aer/unde, access point, ruter, fibră, alte rutere (cu puncte puncte), fibră, ruter, switch data center, fibră, sistem server, aplicație server
+\end{figure}
 
 Pentru a putea realiza comunicarea între stații în Internet, este nevoie de:
 
-un mod de adresare: stația A trebuie să poată preciza că vrea să comunice cu stația B sau stația C
-o formă de transmitere a datelor: datele comunicate trebuie să fie compartimentate și așezate pentru a fi transmise între stații
-un mecanism de dirijare a comunicației: pe baza adreselor furnizate, datele trebuie să fie dirijate de la stația sursă A la stația destinație B
-un mod comun acceptat de interacțiune: aplicația client trebuie să aibă un limbaj comun cu aplicația B
+\begin{itemize}
+  \item un mod de adresare: stația A trebuie să poată preciza că vrea să comunice cu stația B sau stația C
+  \item o formă de transmitere a datelor: datele comunicate trebuie să fie compartimentate și așezate pentru a fi transmise între stații
+  \item un mecanism de dirijare a comunicației: pe baza adreselor furnizate, datele trebuie să fie dirijate de la stația sursă A la stația destinație B
+  \item un mod comun acceptat de interacțiune: aplicația client trebuie să aibă un limbaj comun cu aplicația B
+\end{itemize}
 
 Aceste deziderate sunt realizate în Internet prin intermediul protocoalelor de comunicație. Un protocol cunoscut de stația A și stația B va permite interacțiunea între acestea. Un protocol este un set de reguli care guvernează comunicația între două sau mai multe componente interconectate. Un protocol nu se referă doar la rețele de date și Internet; de exemplu, în interacțiunea cu echipamente periferice un sistem poate folosi protocolul USB; la fel, poate folosi protocolul SCSI pentru a interfața cu un sistem de stocare.
 
-La nivelul Internet-ului se găsesc multe protocoale cu roluri diferite și complementare. Un sistem conectat la Internet va avea implementate mai multe protocoale care să asigure comunicarea cu alte sisteme din Internet. Spunem că în Internet sistemele implementează o stivă de protocoale, adică mai multe protocoale care sunt construite unele peste altele pentru a oferi interconectivitate. Stiva de facto în Internet este numită stiva TCP/IP de la cele mai cunoscute două protocoale folosite. Vom discuta pe scurt protocolul IP în continuare, iar detaliat, împreună cu stiva TCP/IP în secțiunea TODO: Adresarea IP. Stiva TCP/IP.
+La nivelul Internet-ului se găsesc multe protocoale cu roluri diferite și complementare. Un sistem conectat la Internet va avea implementate mai multe protocoale care să asigure comunicarea cu alte sisteme din Internet. Spunem că în Internet sistemele implementează o stivă de protocoale, adică mai multe protocoale care sunt construite unele peste altele pentru a oferi interconectivitate. Stiva de facto în Internet este numită stiva TCP/IP de la cele mai cunoscute două protocoale folosite. Vom discuta pe scurt protocolul IP în continuare, iar detaliat, împreună cu stiva TCP/IP, în \labelindexref{Secțiunea}{sec:net:tcp-ip}.
 
 \subsection{Internet Protocol (IP)}
 \label{sec:net:ip}
 
 IP (Internet Protocol) este cel mai important protocol din Internet. IP oferă schema de adresare IP pe baza căreia se realizează dirijarea datelor în Internet și schema de compartimentare a datelor în unități numite pachete IP (IP packets). Stația sursă compartimentează datele în pachete, le transferă, iar stația destinație le recepționează și le reasamblează. Întrucât pachetele sunt modul universal de transferare a datelor în Internet, de acum încolo vom folosi adesea denumirea de pachete în loc de date.
 
-Dirijarea pachetelor în Internet poartă numele de rutare. Rutarea este realizată de echipamente dedicate numite rutere. Pentru ca un ruter să poată dirija un pachet are nevoie de informații privind sursa și destinația acestuia: de unde vine și cui îi este adresat. De aceea, orice pachet IP conține metadate (adresa stației sursă și adresa stației destinație) pe lângă datele efective. Un ruter preia un pachet, verifică adresa sursă și destinație și ia decizia unde să îl transfere, în mod normal către alt ruter aflat mai aproape de stația destinație. Figura TODO prezintă schematic modul de funcționare al unui ruter.
+Dirijarea pachetelor în Internet poartă numele de rutare. Rutarea este realizată de echipamente dedicate numite rutere. Pentru ca un ruter să poată dirija un pachet are nevoie de informații privind sursa și destinația acestuia: de unde vine și cui îi este adresat. De aceea, orice pachet IP conține metadate (adresa stației sursă și adresa stației destinație) pe lângă datele efective. Un ruter preia un pachet, verifică adresa sursă și destinație și ia decizia unde să îl transfere, în mod normal către alt ruter aflat mai aproape de stația destinație. \labelindexref{Figura}{fig:net:routing} prezintă schematic modul de funcționare al unui ruter.
 
-diagrama figură cu stația A trimite către stația B sau stația C prin ruterul R, ruterul R trimite prin ruterul S către stația B și către ruterul T către stația C; adică rutează în funcție de destinație
+\begin{figure}[htbp]
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/02-fs/def-fs.svg}
+  \caption{Rutarea pachetelor}
+  \label{fig:net:routing}
+  % TODO: diagrama figură cu stația A trimite către stația B sau stația C prin ruterul R, ruterul R trimite prin ruterul S către stația B și către ruterul T către stația C; adică rutează în funcție de destinație
+\end{figure}
 
-Fiecare rețea cu stații (numită și rețea locală, sau Local Area Network - LAN) are un ruter care intermediază accesul la Internet făcând primul pas în a dirija pachetele către destinație. Numim acest ruter gateway (sau default gateway). De exepmplu, în Figura TODO, ruterul R este gateway-ul rețelei locale din care face parte stației A, ruterul S este gateway-ul rețelei locale din care face parte stația B, iar ruterul T este gateway-ul rețelei locale din care face parte stația C.
+Fiecare rețea cu stații (numită și rețea locală, sau Local Area Network - LAN) are un ruter care intermediază accesul la Internet făcând primul pas în a dirija pachetele către destinație. Numim acest ruter gateway (sau default gateway). De exepmplu, în \labelindexref{Figura}{fig:net:routing}, ruterul R este gateway-ul rețelei locale din care face parte stației A, ruterul S este gateway-ul rețelei locale din care face parte stația B, iar ruterul T este gateway-ul rețelei locale din care face parte stația C.
 
-Așadar, comunicarea în Internet înseamnă compartimentarea datelor în pachete, adăugarea de metadate de adresare și rutarea pe baza metadatelor. Faptul că între stația sursă și stația destinație sunt mai multe echipamente intermediare poate fi un risc de securitate: pachetele pot fi interceptate și analizate sau modificate. De aceea e important ca mesajele în Internet să fie criptate, folosind de exemplu protocolul HTTPS în loc de HTTP. O discuție despre subiectul securității transferului vom prezenta în Capitolul TODO: Securitatea sistemului.
+Așadar, comunicarea în Internet înseamnă compartimentarea datelor în pachete, adăugarea de metadate de adresare și rutarea pe baza metadatelor. Faptul că între stația sursă și stația destinație sunt mai multe echipamente intermediare poate fi un risc de securitate: pachetele pot fi interceptate și analizate sau modificate. De aceea e important ca mesajele în Internet să fie criptate, folosind de exemplu protocolul HTTPS în loc de HTTP. Subiectul securității transferului îl vom trata în \labelindexref{Secțiunea}{sec:sec:transfer}.
 
 \subsection{Nume în Internet. DNS}
 \label{sec:net:dns}
@@ -99,56 +168,128 @@ Atunci când un utilizator dorește să folosească un serviciu din Internet, tr
 
 Această “agendă” este implementată în Internet de serviciul DNS (Domain Name System). Cu ajutorul DNS putem folosi nume de stații sau nume de domenii (DNS hostnames, DNS domain names) mai ușor de reținut. De exemplu în loc de adresa 141.85.227.118 vom folosi numele swarm.cs.pub.ro, în loc de adresa 216.58.207.174 vom folosi TODO, iar în loc de adresa 161.148.164.31 vom folosi www.gov.br.
 
-DNS nu este un termen prea cunoscut, pentru că folosirea DNS este transparentă utilizatorului. Utilizatorul pornește o aplicație precum un browser web, folosește numele www.gov.br iar aplicația în spate va apela la serviciul DNS pentru a afla adresa IP corespunzătoare numelui și apoi se va conecta la serviciul de la acea adresă IP. Schematic, funcționarea DNS este indicată Figura TODO:
+DNS nu este un termen prea cunoscut, pentru că folosirea DNS este transparentă utilizatorului. Utilizatorul pornește o aplicație precum un browser web, folosește numele www.gov.br iar aplicația în spate va apela la serviciul DNS pentru a afla adresa IP corespunzătoare numelui și apoi se va conecta la serviciul de la acea adresă IP. Schematic, funcționarea DNS este indicată \labelindexref{fig:net:dns}.
 
-diagramă cu client web, contact www.gov.br, contact serviciu DNS, primit adresă IP, contact adresă IP
+\begin{figure}[htbp]
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/02-fs/def-fs.svg}
+  \caption{Funcționarea DNS}
+  \label{fig:net:dns}
+  % TODO: diagramă cu client web, contact www.gov.br, contact serviciu DNS, primit adresă IP, contact adresă IP
+\end{figure}
 
-Serviciul DNS este implementat în Internet printr-un set de servere. Aceste servere rețin asocierile între nume și adrese IP. De aceea, fiecare sistem trebuie să aibă configurat un server DNS pe care să îl contacteze pentru informații legate de aceste asocieri. Atunci când o aplicație apelează la un server DNS spunem că aplicația realizează o interogare DNS (DNS query). Serverul DNS configurat pe sistemul pe care rulează aplicația va răspunde interogării dacă are răspunsul, altfel va transmite cererea mai departe altor servere DNS și tot așa până obține răspunsul, ca în Figura TODO.
+Serviciul DNS este implementat în Internet printr-un set de servere. Aceste servere rețin asocierile între nume și adrese IP. De aceea, fiecare sistem trebuie să aibă configurat un server DNS pe care să îl contacteze pentru informații legate de aceste asocieri. Atunci când o aplicație apelează la un server DNS spunem că aplicația realizează o interogare DNS (DNS query). Serverul DNS configurat pe sistemul pe care rulează aplicația va răspunde interogării dacă are răspunsul, altfel va transmite cererea mai departe altor servere DNS și tot așa până obține răspunsul, ca în \labelindexref{Figura}{fig:net:dns-service}.
 
-diagramă cu aplicație, server DNS din configurare locală, interogare DNS către server DNS, răspuns direct sau transmiterea interogării către alte servere DNS; un “cloud” DNS acoperă toate serverele însemnând serviciul DNS
+\begin{figure}[htbp]
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/02-fs/def-fs.svg}
+  \caption{Implementarea serviciului DNS}
+  \label{fig:net:dns-service}
+  % TODO: diagramă cu aplicație, server DNS din configurare locală, interogare DNS către server DNS, răspuns direct sau transmiterea interogării către alte servere DNS; un “cloud” DNS acoperă toate serverele însemnând serviciul DNS
+\end{figure}
 
-Despre configurarea concretă a unui server DNS (și a altor parametri de rețea) pentru un sistem dat vom vorbi în Secțiunea TODO: Configurări de rețea.
+Despre configurarea concretă a unui server DNS (și a altor parametri de rețea) pentru un sistem dat vom vorbi în \labelindexref{Secțiunea}{sec:net:config}.
 
 \section{Echipamente de rețea}
 \label{sec:net:equipment}
 
-Așa cum am precizat în Secțiunea TODO: Funcționarea Internet-ului și în Figura TODO, pentru conectarea fizică a stațiilor între ele, la rețele și la Internet se folosesc echipamente de rețea. Clasificăm aceste echipamente în:
+Așa cum am precizat în \labelindexref{Secțiunea}{sec:net:internet} și în \labelindexref{Figura}{fig:net:internet-infrastructure}, pentru conectarea fizică a stațiilor între ele, la rețele și la Internet se folosesc echipamente de rețea. Clasificăm aceste echipamente în:
 
-dispozitive de rețea: switch-uri, rutere, access point-uri, firewall-uri
-medii de transmisie: aer, cablu, fibră optică
+\begin{itemize}
+  \item dispozitive de rețea: switch-uri, rutere, access point-uri, firewall-uri
+  \item medii de transmisie: aer, cablu, fibră optică
+\end{itemize}
 
 Dispozitivele de rețea lucrează cu pachetele transmise de la stația sursă către stația destinație - le prelucrează și dirijează pentru a ajunge la destinație. De exemplu, un ruter urmărește adresele IP sursă și destinație pentru a ruta un pachet, un access point preia un pachet din mediul aer și îl transmite în mediul cablu, iar un firewall filtrează anumite pachete (nu trec mai departe). Unele dispozitive pot fi multi-rol: dirijare, filtrare, conversie între medii.
 
-Mediile de transmisie sunt folosite pentru a transmite informația digitală (biți). Informația digitală este transmisă în formă de semnal în funcție de mediul său. Tabelul TODO prezintă cele trei tipuri principale de medii de transmisie, tipurile de semnale folosite, vitezele uzuale de transmisie și avantajele și dezavantajele fiecăruia.
+Mediile de transmisie sunt folosite pentru a transmite informația digitală (biți). Informația digitală este transmisă în formă de semnal în funcție de mediul său. \labelindexref{Tabelul}{tab:net:media} prezintă cele trei tipuri principale de medii de transmisie, tipurile de semnale folosite, vitezele uzuale de transmisie și avantajele și dezavantajele fiecăruia.
 
-tabel cu mediu, semnal, viteză, avantaje, dezavantaje
+\begin{table}[!htb]
+  % TODO: de completat
+  \caption{Medii de transmisie}
+  \begin{center}
+    \begin{tabular}{ p{0.15\textwidth} p{0.15\textwidth} p{0.15\textwidth} p{0.25\textwidth} p{0.25\textwidth} }
+      \toprule
+        \textbf{Mediu} &
+        \textbf{Semnal} &
+        \textbf{Viteză} &
+        \textbf{Avantaje} &
+        \textbf{Dezavantaje} \\
+      \midrule
+        cablu cu fir de cupru &
+        electric &
+        todo &
+        todo &
+        todo \\
+
+        aer &
+        electromagnetic &
+        todo &
+        todo &
+        todo \\
+
+        fibră optică &
+        optic (lumină) &
+        todo &
+        todo &
+        todo \\
+      \bottomrule
+    \end{tabular}
+    \label{tab:net:media}
+  \end{center}
+\end{table}
 
 O stație comunică printr-un mediu de transmisie cu un echipament de rețea: prin aer cu un access point, prin cablu sau fibră optică cu un switch sau un ruter. Pentru acesta, o stație are nevoie de o placă de rețea (network interface card, NIC). O placă de rețea este o componentă hardware parte a unei stații care preia datele de le aplicații ce rulează pe stație și le convertește în semnal specific mediului de transmisie. Astfel, o placă de rețea Ethernet va transmite datele în semnal electric pe un cablu de rețea, iar o placă wireless va transmite datele în semnal electromagnetic (unde) prin aer către un ruter wireless sau access point.
 
-În general, stațiile au placă de rețea de tip Ethernet/LAN (Local Area Network) sau placă de rețea de tip WiFi/WLAN (Wireless Area Network). Dispozitivele mobile au placă de rețea WiFi integrată. Figura TODO prezintă o comunicare între un telefon mobil și un sistem desktop, în care telefonul mobil folosește o placă de rețea WiFi iar sistemul desktop folosește o placă de rețea Ethernet.
+În general, stațiile au placă de rețea de tip Ethernet/LAN (Local Area Network) sau placă de rețea de tip WiFi/WLAN (Wireless Area Network). Dispozitivele mobile au placă de rețea WiFi integrată. \labelindexref{Figura}{fig:net:connect} prezintă o comunicare între un telefon mobil și un sistem desktop, în care telefonul mobil folosește o placă de rețea WiFi iar sistemul desktop folosește o placă de rețea Ethernet.
 
-diagramă cu telefon - placă de rețea WiFi - aer - Internet (cloud) - cablu - placă de rețea Ethernet - sistem desktop
+\begin{figure}[htbp]
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/02-fs/def-fs.svg}
+  \caption{Dispozitive și medii folosite în comunicarea în Internet}
+  \label{fig:net:connect}
+  % TODO: diagramă cu telefon - placă de rețea WiFi - aer - Internet (cloud) - cablu - placă de rețea Ethernet - sistem desktop
+\end{figure}
 
 \section{Adresarea IP. Stiva TCP/IP}
 \label{sec:net:tcp-ip}
 
-Peste infrastructura fizică a Internet-ului formată din dispozitive de rețea și medii de transmisie se stabilește legătura între stații. Această legătură, numită și conexiune logică, este realizată cu ajutorul protocoalelor de rețea. Protocoalele de rețea sunt organizate într-o stivă de rețea; în cadrul stivei un protocol de pe un nivel inferior oferă sprijin pentru protocoalele de pe nivelul superior. Stiva folosită în Internet este stiva TCP/IP, numită așa de la cele mai folosite protocoale (TCP și IP). Este prezentată în Figura TODO.
+Peste infrastructura fizică a Internet-ului formată din dispozitive de rețea și medii de transmisie se stabilește legătura între stații. Această legătură, numită și conexiune logică, este realizată cu ajutorul protocoalelor de rețea. Protocoalele de rețea sunt organizate într-o stivă de rețea; în cadrul stivei un protocol de pe un nivel inferior oferă sprijin pentru protocoalele de pe nivelul superior. Stiva folosită în Internet este stiva TCP/IP, numită așa de la cele mai folosite protocoale (TCP și IP). Este prezentată în \labelindexref{Figura}{fig:net:tcp-ip-stack}
 
-diagriagrama stiva TCP cu 4 niveluri și fiecare nivel cu protocoale cele mai cunoscute: Legătură de date (Ethernet), Internet (IP), Transport (TCP, UDP), Aplicație (HTTP, DNS, FTP, SSH, DHCP, SNMP, LDAP)
+\begin{figure}[htbp]
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/02-fs/def-fs.svg}
+  \caption{Stiva TCP/IP}
+  \label{fig:net:tcp-ip-stack}
+  % TODO: diagriagrama stiva TCP cu 4 niveluri și fiecare nivel cu protocoale cele mai cunoscute: Legătură de date (Ethernet), Internet (IP), Transport (TCP, UDP), Aplicație (HTTP, DNS, FTP, SSH, DHCP, SNMP, LDAP)
+\end{figure}
 
 Fiecare nivel din această stivă are un rol în construirea conexiunii între stația client și stația server. Fiecare nivel din stivă are o formă de adresare:
 
-Adresa de la nivelul Legătură de date este adresa MAC (Media Access Control): este o adresă care identifică unic o placă de rețea, o adresă pe 48 de biți (6 octeți) de obicei definită de fabricantul plăcii de rețea.
-Adresa de la nivelul Internet este adresa IP (Internet Protocol) de la numele protocolului. Este o adresă ce poate fi configurată pe stație, identificând stația în Internet și fiind folosită în rutarea pachetelor.
-Adresa de la nivelul Transport este portul. Un port este un număr care identifică un proces/o aplicație de rețea pe acel sistem (este diferit de PID-ul procesului). Dacă un sistem are mai multe procese de rețea, sistemul va fi identificat cu adresa IP iar fiecare proces de rețea cu portul.
-La nivelul Aplicație adresele depind de protocol. Uzual iau forma unui URI (Uniform Resource Identifier) care identifică o resursă în sistemul fizic, accesibilă prin protocolul respectiv. Un exemplu de URI este o adresă web de forma https://github.com/longld/peda
+\begin{itemize}
+  \item Adresa de la nivelul Legătură de date este adresa MAC (Media Access Control): este o adresă care identifică unic o placă de rețea, o adresă pe 48 de biți (6 octeți) de obicei definită de fabricantul plăcii de rețea.
+  \item Adresa de la nivelul Internet este adresa IP (Internet Protocol) de la numele protocolului. Este o adresă ce poate fi configurată pe stație, identificând stația în Internet și fiind folosită în rutarea pachetelor.
+  \item Adresa de la nivelul Transport este portul. Un port este un număr care identifică un proces/o aplicație de rețea pe acel sistem (este diferit de PID-ul procesului). Dacă un sistem are mai multe procese de rețea, sistemul va fi identificat cu adresa IP iar fiecare proces de rețea cu portul.
+  \item La nivelul Aplicație adresele depind de protocol. Uzual iau forma unui URI (Uniform Resource Identifier) care identifică o resursă în sistemul fizic, accesibilă prin protocolul respectiv. Un exemplu de URI este o adresă web de forma https://github.com/longld/peda
+\end{itemize}
 
 \subsection{Adresarea IP}
 \label{sec:net:ip-address}
 
-Adresa IP este cea mai importantă adresă pentru că identifică stația în Internet și este folosită pentru rutarea pachetelor. O adresă IP este scrisă de obicei în formatul zecimal cu puncte (dotted decimal) precum 141.85.224.118. Tehnic, o adresă IP este un număr pe 32 de biți (4 octeți). Forma de reprezentare dotted decimal traduce fiecare octet într-un număr în zecimal între 0 si 255 și pune punct între octeți. Un exemplu de forma binară și forma dotted decimal a unei adrese IP este în Figura TODO.
+Adresa IP este cea mai importantă adresă pentru că identifică stația în Internet și este folosită pentru rutarea pachetelor. O adresă IP este scrisă de obicei în formatul zecimal cu puncte (dotted decimal) precum 141.85.224.118. Tehnic, o adresă IP este un număr pe 32 de biți (4 octeți). Forma de reprezentare dotted decimal traduce fiecare octet într-un număr în zecimal între 0 si 255 și pune punct între octeți. Un exemplu de forma binară și forma dotted decimal a unei adrese IP este în \labelindexref{Figura}{fig:net:ip-address-formats}.
 
-diagramă cu adresa 141.85.224.118 în format zecimal și binar și corespondența între ele
+\begin{figure}[htbp]
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/02-fs/def-fs.svg}
+  \caption{Adresă în format zecimal și binar}
+  \label{fig:net:ip-address-formats}
+  % TODO: diagramă cu adresa 141.85.224.118 în format zecimal și binar și corespondența între ele
+\end{figure}
 
 Când vorbim despre protocolul IP sau adresarea IP ne referim, în general, la versiunea 4 a protocolului, numită și IPv4. Aceasta este versiunea în care adresa IP ocupă 32 de biți. În ultimii ani, din cauza limitării adresei IPv4, a început folosirea la scară mai largă a versiunii 6 a protocolului: IPv6. La fel ca IPv4, IPv6 este folosit pentru adresare și rutare. Cea mai mare diferență este adresa, care ocupă 128 de biți (16 octeți) pentru IPv6. Adresele IPv6 nu mai sunt scrise în format dotted decimal ci în hexazecimal; se folosesc simplificări pentru a reduce spațiul ocupat de adrese. Un exemplu de adresă IPv6 este 2a00:1450:4016:807::200e. În cazul IPv6 este cu atât mai necesară folosirea serviciului DNS; dacă în cazul IPv4 putem reține câteva adrese numerice, în cazul IPv6 devine foarte dificil din cauza dimensiunii extinse a acesteia.
 
@@ -158,11 +299,13 @@ Din acest motiv, atunci când configurăm accesul la Internet pentru o stație �
 
 Numărul de biți din adresa unei stații înlocuiți cu 0 depinde de la rețea la rețea. Pentru a determina acest lucru, folosim masca de rețea (network mask sau netmask sau subnet mask). Aceasta spune câți biți nu vor fi modificați și câți biți vor fi puși pe 0. De exemplu masca /24 precizează că 24 de biți vor rămâne la fel și 8 biți vor fi puși pe zero. Mai specific:
 
-Dacă avem adresa 192.168.53.129/24 (adică masca /24) înseamnă că adresa rețelei este 192.168.53.0.
-Dacă avem adresa 192.168.53.129/16 (adică masca /16) înseamnă că adresa rețelei este 192.168.0.0.
-Dacă avem adresa 192.168.53.129/8 (adică masca /8) înseamnă că adresa rețelei este 192.0.0.0.
+\begin{itemize}
+  \item Dacă avem adresa 192.168.53.129/24 (adică masca /24) înseamnă că adresa rețelei este 192.168.53.0.
+  \item Dacă avem adresa 192.168.53.129/16 (adică masca /16) înseamnă că adresa rețelei este 192.168.0.0.
+  \item Dacă avem adresa 192.168.53.129/8 (adică masca /8) înseamnă că adresa rețelei este 192.0.0.0.
+\end{itemize}
 
-În general, un utilizator nu este preocupat de adresa de rețea și nici nu va face calcule. Este determinată de echipamentele de rețea. Utilizatorul trebuie să furnizeze la configurare adresa IP și masca de rețea. Vom detalia în Secțiunea TODO: Configurări de rețea.
+În general, un utilizator nu este preocupat de adresa de rețea și nici nu va face calcule. Este determinată de echipamentele de rețea. Utilizatorul trebuie să furnizeze la configurare adresa IP și masca de rețea. Vom detalia în \labelindexref{Secțiunea}{sec:net:config}.
 
 \subsection{Adresarea TCP}
 \label{sec:net:tcp-address}
@@ -188,17 +331,20 @@ Pentru a contracara această limitare a protocolului IPv4, sunt prezente simulta
 
 Prima soluție este folosirea IPv6 cu un spațiu de adresare mult mai generos. Această soluție are dezavantajul că trebuie să fie folosită de ambele părți; dacă serverul are adresă IPv6 dar clientul nu are (nu a primit de la furnizorul de servicii Internet), nu pot comunica.
 
-O a doua soluție, mai puțin disruptivă, este folosirea NAT (Network Address Translation). Folosirea NAT înseamnă că o rețea locală primește o singură adresă IP. Această adresă IP este adresa publică a rețelei, o adresă care poate fi folosită în Internet pentru identificarea rețelei și pentru rutare. Toate stațiile din rețea folosesc adrese private, adrese care nu permit identificarea sau rutarea în Internet. Adresele private sunt rezervate în schema de adrese IP și sunt de forma:
+O a doua soluție, mai puțin disruptivă, este folosirea NAT (Network Address Translation). Folosirea NAT înseamnă că o rețea locală primește o singură adresă IP. Această adresă IP este adresa publică a rețelei, o adresă care poate fi folosită în Internet pentru identificarea rețelei și pentru rutare. Toate stațiile din rețea folosesc adrese private, adrese care nu permit identificarea sau rutarea în Internet. Adresele private sunt rezervate în schema de adrese IP și sunt de forma \texttt{192.168.X.Y}, \texttt{172.16-31.X.Y} și \texttt{10.X.Y.Z}.
 
-192.168.X.Y
-172.16-31.X.Y
-10.X.Y.Z
+Când folosimt NAT, ruterul rețelei este responsabil pentru traducerea adreselor private în adresa publică a rețelei pentru a permite conectarea la Internet și traducerea inversă, din adresa publică în adresa privată, a pachetelor către stații din rețeaua locală, așa cum este indicat în \labelindexref{Figura}{fig:net:nat}.
 
-Ruterul rețelei este responsabil pentru traducerea adreselor private în adresa publică a rețelei pentru a permite conectarea la Internet și traducerea inversă, din adresa publică în adresa privată, a pachetelor către stații din rețeaua locală, așa cum este indicat în figura TODO.
+\begin{figure}[htbp]
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/02-fs/def-fs.svg}
+  \caption{NAT: Translatare din adresă privată în publică}
+  \label{fig:net:nat}
+  % TODO: diagramă cu o stație - ruter - Internet; pachetele pleacă de la stație cu adresa privată a stației și apoi din ruter cu adresa pubică.
+\end{figure}
 
-diagramă cu o stație - ruter - Internet; pachetele pleacă de la stație cu adresa privată a stației și apoi din ruter cu adresa pubică.
-
-NAT are avantajul că se construiește pe infrastructura IPv4 existentă și nu necesită modificări. Dezavantajul este că este limitativ în ceea ce privește interconectarea aplicațiilor de tip server de pe stațiile din rețele private. Cel mai probabil în rețeaua de acasă sau de la serviciu sau dintr-un local veți întâlni adrese IP private care apoi folosesc NAT pentru conexiunea la Internet. Dacă doriți să aflați adresa IP publică pe care o folosiți puteți accesa site-ul https://www.whatismyip.com.
+NAT are avantajul că se construiește pe infrastructura IPv4 existentă și nu necesită modificări. Dezavantajul este că este limitativ în ceea ce privește interconectarea aplicațiilor de tip server de pe stațiile din rețele private. Cel mai probabil în rețeaua de acasă sau de la serviciu sau dintr-un local veți întâlni adrese IP private care apoi folosesc NAT pentru conexiunea la Internet. Dacă doriți să aflați adresa IP publică pe care o folosiți puteți accesa site-ul \url{https://www.whatismyip.com}.
 
 \section{Configurări de rețea}
 \label{sec:net:config}
@@ -207,22 +353,32 @@ Pentru a conecta o stație la Internet, fie aceasta un sistem laptop sau un tele
 
 Elementele de infrastructură pentru conectarea unei stații la Internet sunt:
 
-Stația trebuie să aibă o placă de rețea care să fie configurată pentru a permite conectarea.
-Stația trebuie să fie parte a unei rețele, conectate la Internet printr-un ruter, numit și gateway.
-Stația trebuie să aibă mediu de transmisie (aer, cablu, fibră optică) care să o conecteze la rețea.
-
-Trebuie să existe accesibil un server DNS pe care stația să îl poată interoga pentru translatarea numelor de domeniu în adrese IP.
+\begin{itemize}
+  \item Stația trebuie să aibă o placă de rețea care să fie configurată pentru a permite conectarea.
+  \item Stația trebuie să fie parte a unei rețele, conectate la Internet printr-un ruter, numit și gateway.
+  \item Stația trebuie să aibă mediu de transmisie (aer, cablu, fibră optică) care să o conecteze la rețea.
+  \item Trebuie să existe accesibil un server DNS pe care stația să îl poată interoga pentru translatarea numelor de domeniu în adrese IP.
+\end{itemize}
 
 Pe stație apoi trebuie configurați parametrii de rețea corespunzători:
 
-adresa IP a stației, cu ajutorul căreia va fi identificată în rețea
-masca de rețea a rețelei  pentru determinarea adresei rețelei din care face parte
-adresa IP a gateway-ului care rutează pachetele și asigură legătura la Internet
-adresa IP a serverului DNS
+\begin{itemize}
+  \item adresa IP a stației, cu ajutorul căreia va fi identificată în rețea
+  \item masca de rețea a rețelei  pentru determinarea adresei rețelei din care face parte
+  \item adresa IP a gateway-ului care rutează pachetele și asigură legătura la Internet
+  \item adresa IP a serverului DNS
+\end{itemize}
 
-Figura TODO prezintă elementele de infrastructură și parametrii de rețea necesari pentru conectarea stației la Internet.
+\labelindexref{Figura}{fig:net:connect-infrastructure} prezintă elementele de infrastructură și parametrii de rețea necesari pentru conectarea stației la Internet.
 
-diagramă cu infrastructură de rețea cuprinzând un telefon + placă de rețea + mediu aer (WiFi), un laptop + placă de rețea + mediu cablu (Ethernet), un ruter (wireless), un server DNS, adresă IP și mască configurate pe telefon și laptop
+\begin{figure}[htbp]
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/02-fs/def-fs.svg}
+  \caption{Infrastructuri pentru conectarea la Internet}
+  \label{fig:net:connect-infrastructure}
+  % TODO: diagramă cu infrastructură de rețea cuprinzând un telefon + placă de rețea + mediu aer (WiFi), un laptop + placă de rețea + mediu cablu (Ethernet), un ruter (wireless), un server DNS, adresă IP și mască configurate pe telefon și laptop
+\end{figure}
 
 În mod normal, elementele de infrastructură sunt instalate de un tehnician sau un angajat al furnizorului de servicii Internet. Configurarea, adică stabilirea celor 4 parametri de rețea de mai sus, este responsabilitatea utilizatorului.
 
@@ -243,39 +399,77 @@ Un sistem are nevoie de placă de rețea pentru a permite conectarea la Internet
 
 În mod obișnuit, o interfață de rețea corespunde unei plăci de rețea; le mai numim interfețe de rețea fizice. Un sistem poate avea și interfețe de rețea virtuale, care nu au corespunzător o placă de rețea. Aceste interfețe pot servi mai multe roluri:
 
-pentru servicii și conexiuni locale: Interfața de loopback este o interfața prezentă pe majoritatea sistemelor de operare care referă sistemul însuși, auto-referință. Este numită lo pe Linux.
-pentru testare: Dacă dorim să testăm un protocol sau un serviciu dorim să avem interfețe virtuale pentru testare
-pentru virtualizare: Interfața vboxnet0 este interfața virtuală care face legătura între mașinile virtuale VirtualBox. La fel interfața vmnet8 este interfața virtuală care face legătura între mașinile virtuale VMware. TODO: Referință la capitolul de virtualizare.
-pentru servicii și configurări specifice
+\begin{itemize}
+  \item pentru servicii și conexiuni locale: Interfața de loopback este o interfața prezentă pe majoritatea sistemelor de operare care referă sistemul însuși, auto-referință. Este numită lo pe Linux.
+  \item pentru testare: Dacă dorim să testăm un protocol sau un serviciu dorim să avem interfețe virtuale pentru testare
+  \item pentru virtualizare: Interfața vboxnet0 este interfața virtuală care face legătura între mașinile virtuale VirtualBox. La fel interfața vmnet8 este interfața virtuală care face legătura între mașinile virtuale VMware. Vom discuta despre virtualizare în \labelindexref{Capitolul}{chapter:vm}.
+  \item pentru servicii și configurări specifice
+\end{itemize}
 
-În secvențele TODO și TODO folosim comenzi pentru a lista interfețele de rețea existente în sistem împreună cu parametrii de rețea configurați pentru fiecare dintre acestea, respectiv pe Linux și pe Windows.
+În \labelindexref{Listing}{lst:net:show-if-linux} și \labelindexref{Listing}{lst:net:show-if-windows} folosim comenzi pentru a lista interfețele de rețea existente în sistem împreună cu parametrii de rețea configurați pentru fiecare dintre acestea, respectiv în Linux și în Windows.
 
-snippet pe Linux cu ip address show
-snippet pe Windows cu ipconfig
+\begin{screen}[caption={Listarea interfețelor de rețea în Linux},label={lst:net:show-if-linux}]
+TODO: snippet pe Linux cu ip address show
+\end{screen}
 
-Pe Linux, din cei 4 parametri  de rețea, comanda ip address show afișează doar adresa IP și masca de rețea. Pentru afișarea ruterului/gateway-ului, respectiv a serverului DNS folosim comenzile din secvențele de cod TODO și TODO.
+\begin{screen}[caption={Listarea interfețelor de rețea în Windows},label={lst:net:show-if-windows}]
+TODO: snippet pe Windows cu ipconfig
+\end{screen}
 
-snippet pe Linux cu ip route show
-snippet pe Linux cu cat /etc/resolv.conf
-Gateway-ul se găsește în rezultatul rulării comenzii ip route show pe linia care conține șirul default. Mai numim gateway-ul și default gateway. În rezultatul din secvența TODO, gateway-ul are adresa IP TODO.
-Serverul DNS se găsește în fișierul /etc/resolv.conf. Aici îl putem investiga și tot aici se poate configura. În rezultatul din secvența TODO, serverul DNS are adresa TODO.
+În Linux, dintre cei 4 parametri  de rețea, comanda ip address show afișează doar adresa IP și masca de rețea. Pentru afișarea ruterului/gateway-ului, respectiv a serverului DNS folosim comenzile din \labelindexref{Listing}{lst:net:show-gateway} și \labelindexref{Listing}{lst:net:show-dns}.
 
-Așa cum este cazul pentru majoritatea rețelelor locale, adresa IP a stației este una privată (TODO), ruterul/gateway-ul folosind NAT pentru a traduce adresa privată în cea publică, rutabilă în Internet. Pentru a afla adresa IP publică, pe lângă vizitarea site-ului https://www.whatismyip.com, pe Linux se pot folosi comenzi precum cele din secvența TODO. În această secvență ne folosim de o aplicație client web în linia de comandă (curl) pentru a interoga un server web (ifconfig.me, icanhazip.com) care ne transmite adresa IP publică. Adică în cazul de față, 62.121.83.2.
+\begin{screen}[caption={Afișarea gateway-ului (în Linux)},label={lst:net:show-gateway}]
+TODO: snippet pe Linux cu ip route show
+\end{screen}
 
+\begin{screen}[caption={Afișarea serverului DNS (în Linux)},label={lst:net:show-dns}]
+TODO: snippet pe Linux cu cat /etc/resolv.conf
+\end{screen}
+
+Gateway-ul se găsește în rezultatul rulării comenzii ip route show pe linia care conține șirul default. Mai numim gateway-ul și default gateway. În rezultatul din \labelindexref{Listing}{lst:net-show-gateway}, gateway-ul are adresa IP TODO.
+
+Serverul DNS se găsește în fișierul /etc/resolv.conf. Aici îl putem investiga și tot aici se poate configura. În rezultatul din \labelindexref{Listing}{lst:net:show-dns}, serverul DNS are adresa IP TODO.
+
+Așa cum este cazul pentru majoritatea rețelelor locale, adresa IP a stației este una privată, ruterul/gateway-ul folosind NAT pentru a traduce adresa privată în cea publică, rutabilă în Internet. Pentru a afla adresa IP publică, pe lângă vizitarea site-ului \url{https://www.whatismyip.com}, în Linux se pot folosi comenzi precum cele din \labelindexref{Listing}{lst:net:show-public-address}. În această secvență ne folosim de o aplicație client web în linia de comandă (curl) pentru a interoga un server web (ifconfig.me, icanhazip.com) care ne transmite adresa IP publică. Adică în cazul de față, 62.121.83.2.
+
+\begin{screen}[caption={Aflarea adresei IP publice în linia de comandă},label={lst:sec:show-public-address}]
 student@uso:~$ curl -s ifconfig.me
 62.121.83.2
 student@uso:~$ curl -s icanhazip.com
 62.121.83.2
+\end{screen}
 
 Adresa IP publică va diferi în funcție de plasarea stației într-o rețea sau alta. Dacă folosim un laptop acasă vom avea o adresă IP publică, într-un local, altă adresa IP publică, într-o universitate, altă adresă IP publică.
 
-Pentru a verifica corectitudinea configurației testăm conectivitatea sistemului la Internet. În mod uzual acest lucru îl facem pe majoritatea sistemelor de operare folosind comanda ping, ca în secvența TODO. Pe Linux/Unix comanda ping rulează neîntrerupt așa că e nevoie să folosim combinația de taste Ctrl+c pentru a opri comanda. În secvența TODO, avem un răspuns pozitiv în care ni se transmite și cât timp a durat transmiterea pachetului de verificare a conectivității; o conexiune bună va afișa timpi de ordinul milisecundelor. În cazul unei probleme de configurare, răspunsul ar fi fost negativ ca în secvența TODO.
+Pentru a verifica corectitudinea configurației testăm conectivitatea sistemului la Internet. În mod uzual acest lucru îl facem pe majoritatea sistemelor de operare folosind comanda ping, ca în \labelindexref{Listing}{lst:net:ping-positive}. Pe Linux/Unix comanda ping rulează neîntrerupt așa că e nevoie să folosim combinația de taste Ctrl+c pentru a opri comanda. În \labelindexref{Listing}{lst:net:ping-positive}, avem un răspuns pozitiv în care ni se transmite și cât timp a durat transmiterea pachetului de verificare a conectivității; o conexiune bună va afișa timpi de ordinul milisecundelor. În cazul unei probleme de configurare, răspunsul ar fi fost negativ ca în \labelindexref{Listing}{lst:net:ping-negative}.
+
+\begin{screen}[caption={Verificarea conectivității (răspuns pozitiv)},label={lst:net:ping-positive}]
+TODO: ping cu raspuns pozitiv
+\end{screen}
+
+\begin{screen}[caption={Verificarea conectivității (răspuns negativ)},label={lst:net:ping-negative}]
+TODO: ping cu raspuns negativ
+\end{screen}
 
 Pentru depanarea problemelor de conectivitate, pe lângă afișarea parametrilor de rețea, putem folosi următoarele acțiuni:
 
-verificarea conectivității fizice a plăcii de rețea: Pe lângă a vedea dacă există un LED activ în portul plăcii de rețea Ethernet unde este conectat cablul de rețea, putem folosi pe Linux comanda ethtool, ca în secvența TODO.
-verificarea rutării până la destinație: Astfel putem vedea dacă un ruter de pe parcurs nu funcționează corespunzător. Folosim, pe Linux, comanda traceroute ca în secvența TODO. Pe Windows, comanda echivalentă este tracert.
-verificarea funcționării serviciului DNS: Pentru a verifica serviciul DNS folosim o comandă de interogare DNS. Pe Linux folosim comanda host ca în secvența TODO; rol similar au și comenzile dig și nslookup. Pe Windows, comanda echivalentă este nslookup.
+\begin{itemize}
+  \item verificarea conectivității fizice a plăcii de rețea: Pe lângă a vedea dacă există un LED activ în portul plăcii de rețea Ethernet unde este conectat cablul de rețea, putem folosi pe Linux comanda ethtool, ca în \labelindexref{Listing}{lst:net:check-if}.
+  \item verificarea rutării până la destinație: Astfel putem vedea dacă un ruter de pe parcurs nu funcționează corespunzător. Folosim, pe Linux, comanda traceroute ca în \labelindexref{Listing}{lst:net:check-route}. Pe Windows, comanda echivalentă este tracert.
+  \item verificarea funcționării serviciului DNS: Pentru a verifica serviciul DNS folosim o comandă de interogare DNS. Pe Linux folosim comanda host ca în \labelindexref{Listing}{lst:net:check-dns}; rol similar au și comenzile dig și nslookup. Pe Windows, comanda echivalentă este nslookup.
+\end{itemize}
+
+\begin{screen}[caption={Verificarea conectivității fizice a plăcii de plăcii de rețea},label={lst:net:check-if}]
+TODO: ethtool
+\end{screen}
+
+\begin{screen}[caption={Verificarea rutării până la destinație},label={lst:net:check-route}]
+TODO: traceroute
+\end{screen}
+
+\begin{screen}[caption={Verificarea funcționării serviciului DNS},label={lst:net:check-dns}]
+TODO: host
+\end{screen}
 
 \subsection{DHCP}
 \label{sec:net:dhcp}
@@ -293,15 +487,44 @@ Serverul DHCP este, așadar, o componentă prezentă în majoritatea rețelelor 
 
 Atunci când folosim DHCP spunem că realizăm o configurare automată a parametrilor de rețea. Alternativa este configurare manuală a parametrilor de rețea, în care utilizatorul folosește utilitare specifice pentru configurare.
 
-De exemplu, pe Windows, pentru configurare folosim interfața grafică la fel ca în Figura TODO. Dacă optăm pentru TODO, configurarea se va realiza automat prin DHCP. Altfel configurarea va fi făcută manual.
+De exemplu, în Windows, pentru configurare folosim interfața grafică la fel ca în \labelindexref{Figura}{fig:net:windows-config}. Dacă optăm pentru opțiunea TODO, configurarea se va realiza automat prin DHCP. Altfel configurarea va fi făcută manual.
+
+\begin{figure}[!htbp]
+  % TODO: screenshot din Windows
+  \centering
+  \includegraphics[width=0.8\textwidth]{chapters/11-net/img/screenshot.png}
+  \caption{Configurarea grafică a rețelei în Windows}
+  \label{fig:net:windows-config}
+\end{figure}
 
 În mod obișnuit, tipul de configurare (automată sau manuală) este salvat în sistem astfel că, la repornirea sa, configurația se menține. Adică în cazul configurării manuale salvate, se mențin parametrii de rețea, iar în cazul configurării automate salvate, se interoghează serverul DHCP la repornirea sistemului. Este modul preferat de configurare pentru că ne dorim să menținem configurația la repornirea sistemului.
 
 Pentru situații în care dorim să testăm configurații sau pentru depanare este util să realizăm configurări temporare, care pot fi ușor suprascrise și care nu se mențin la repornirea sistemului. Configurările temporare pot fi de asemenea automate și manuale: putem declanșa configurarea temporară prin DHCP și putem configura manual parametrii de rețea.
 
-Avem așadar 4 tipuri de configurare, așa cum sunt indicate în Tabelul TODO, cu scenariile de utilizare specifice.
+Avem așadar 4 tipuri de configurare, așa cum sunt indicate în \labelindexref{Tabelul}{tab:net:config-types}, cu scenariile de utilizare specifice.
 
-tabel 2x2 cu cele 4 tipuri de configurare
+\begin{table}[!htb]
+  % TODO: tabel 2x2 cu cele 4 tipuri de configurare
+  \caption{Tipuri de configurare a parametrilor de rețea}
+  \begin{center}
+    \begin{tabular}{ p{0.25\textwidth} p{0.3\textwidth} p{0.3\textwidth} }
+      \toprule
+        \textbf{Persistență / Automatizare} &
+        \textbf{manuală} &
+        \textbf{automată} \\
+      \midrule
+        \textbf{temporară} &
+        TODO &
+        TODO \\
+
+        \textbf{permanentă} &
+        TODO &
+        TODO \\
+      \bottomrule
+    \end{tabular}
+    \label{tab:net:config-types}
+  \end{center}
+\end{table}
 
 \section{Configurarea rețelei pe Linux}
 \label{sec:net:config-linux}
@@ -315,111 +538,162 @@ Pentru a fi persistentă, o configurație de rețea este reținută în fișiere
 \subsection{Configurarea grafică. NetworkManager}
 \label{sec:net:graphical-config}
 
-Pe un sistem desktop un utilizator va folosi de obicei interfața grafică pentru a realiza configurarea rețelei. Mediul desktop Linux (desktop environment) oferă elemente de configurare grafică a rețelei, precum în Figura TODO.
+Pe un sistem desktop un utilizator va folosi de obicei interfața grafică pentru a realiza configurarea rețelei. Mediul desktop Linux (desktop environment) oferă elemente de configurare grafică a rețelei, precum în \labelindexref{Figura}{fig:net:linux-gui-config}.
 
-figură/screenshot cu NetworkManager
+\begin{figure}[!htbp]
+  % TODO: figură/screenshot cu NetworkManager
+  \centering
+  \includegraphics[width=0.8\textwidth]{chapters/11-net/img/screenshot.png}
+  \caption{Configurarea grafică a rețelei în Linux}
+  \label{fig:net:linux-gui-config}
+\end{figure}
 
-Configurarea grafică este realizată în Linux cu ajutorul NetworkManager. NetworkManager este un serviciu care permite configurarea facilă a interfeței în Linux. Este compus dintr-un daemon care gestionează configurarea și interfețe grafice care facilitează configurarea, precum interfața din Figura TODO. NetworkManager oferă și un utilitar în linia de comandă (nmcli) care poate fi folosit pentru inspectarea configurației de rețea sau realizarea unei configurații, dar în mod uzual folosim interfața grafică.
+Configurarea grafică este realizată în Linux cu ajutorul NetworkManager. NetworkManager este un serviciu care permite configurarea facilă a interfeței în Linux. Este compus dintr-un daemon care gestionează configurarea și interfețe grafice care facilitează configurarea, precum interfața din \labelindexref{Figura}{fig:net:linux-gui-config}. NetworkManager oferă și un utilitar în linia de comandă (nmcli) care poate fi folosit pentru inspectarea configurației de rețea sau realizarea unei configurații, dar în mod uzual folosim interfața grafică.
 
-NetworkManager este prezent pe majoritatea sistemelor Linux cu interfața grafică și este forma recomandată de configurare. Utilitarele clasice de configurare a rețelei în linia de comandă Linux pe care le vom prezenta în continuare pot intra în conflict cu NetworkManager. Acestea sunt uzual folosite pe sistemele care nu au interfață grafică și pe care NetworkManager nu este prezent. Dacă dorim folosirea utilitarelor clasice în linia de comandă, fie pentru un control mai bun al configurației fie pentru diagnosticare, depanare sau testare, atunci este recomandat să dezactivăm NetworkManager. Dezactivarea NetworkManager poate fi realizată la nivelul sistemului prin oprirea serviciului, ca în secvența TODO:
+NetworkManager este prezent pe majoritatea sistemelor Linux cu interfața grafică și este forma recomandată de configurare. Utilitarele clasice de configurare a rețelei în linia de comandă Linux pe care le vom prezenta în continuare pot intra în conflict cu NetworkManager. Acestea sunt uzual folosite pe sistemele care nu au interfață grafică și pe care NetworkManager nu este prezent. Dacă dorim folosirea utilitarelor clasice în linia de comandă, fie pentru un control mai bun al configurației fie pentru diagnosticare, depanare sau testare, atunci este recomandat să dezactivăm NetworkManager. Dezactivarea NetworkManager poate fi realizată la nivelul sistemului prin oprirea serviciului, ca în \labelindexref{Listing}{lst:net:nm-disable}.
 
-secvență cu dezactivarea NetworkManager (systemctl)
+\begin{screen}[caption={Dezactivarea NetworkManager},label={lst:net:nm-disable}]
+TODO: dezactivare NetworkManager cu systemctl
+\end{screen}
 
 Dacă dorim control mai fin putem dezactiva NetworkManager pe anumite interfețe. Acele interfețe nu vor fi gestionate de NetworkManager și le putem configura folosind utilitarele clasice de configurare în Linux. Dezactivarea NetworkManager la nivelul interfeței este specifică fiecărui tip de distribuție. O vom prezenta pentru distribuțiile Debian/Ubuntu, respectiv Fedora/RedHat în secțiunile de mai jos.
 
 \subsection{Inspectarea configurației}
 \label{sec:net:config-inspect}
 
-Înainte de a realiza o configurație de rețea și pentru a vedea că o configurație aplicată este corectă, un utilizator va inspecta configurația existentă. Pentru depanarea problemelor, utilizatorul va verifica conectivitatea. Am descris aceste acțiuni și modul de realizare a lor pe Linux în Secțiunea TODO: Interfețe de rețea. Investigația configurației. Sumarizăm mai jos cele mai frecvente acțiuni de inspectare a configurației și verificare a depanării:
+Înainte de a realiza o configurație de rețea și pentru a vedea că o configurație aplicată este corectă, un utilizator va inspecta configurația existentă. Pentru depanarea problemelor, utilizatorul va verifica conectivitatea. Am descris aceste acțiuni și modul de realizare a lor pe Linux în \labelindexref{Secțiunea}{sec:net:interface}. Investigația configurației. Sumarizăm mai jos cele mai frecvente acțiuni de inspectare a configurației și verificare a depanării:
 
-listarea interfețelor și a configurației interfețelor de rețea (adresă MAC, adresă IP și mască) folosind comanda ip address show: prezentată în secvența TODO
-listarea tabelei de rutare (pentru aflarea adresei IP a gateway-ului) folosind comanda ip route show: prezentată în secvența TODO
-afișarea serverelor DNS din fișierul /etc/resolv.conf: prezentată în secvența TODO
-verificarea conectivității folosind comanda ping: prezentată în secvența TODO
-verificarea funcționării serviciului DNS folosind comanda host: prezentată în secvența TODO
-verificarea ruterelor intermediare folosind comanda traceroute: prezentată în secvența TODO
-verificarea legăturii pe interfață folosind comanda ethtool: prezentată în secvența TODO
-
+\begin{itemize}
+  \item listarea interfețelor și a configurației interfețelor de rețea (adresă MAC, adresă IP și mască) folosind comanda ip address show: prezentată în \labelindexref{Listing}{lst:net:show-if-linux}.
+  \item listarea tabelei de rutare (pentru aflarea adresei IP a gateway-ului) folosind comanda ip route show: prezentată în \labelindexref{Listing}{lst:net:show-gateway}.
+  \item afișarea serverelor DNS din fișierul /etc/resolv.conf: prezentată în \labelindexref{Listing}{lst:net:show-dns}.
+  \item verificarea conectivității folosind comanda ping: prezentată în \labelindexref{Listing}{lst:ping-positive}.
+  \item verificarea funcționării serviciului DNS folosind comanda host: prezentată în \labelindexref{Listing}{lst:net:check-dns}.
+  \item verificarea ruterelor intermediare folosind comanda traceroute: prezentată în \labelindexref{Listing}{lst:net:check-route}.
+  \item verificarea legăturii pe interfață folosind comanda ethtool: prezentată în \labelindexref{Listing}{lst:net:check-if}.
+\end{itemize}
 
 \subsection{Interfețe active/inactive}
 \label{sec:net:up-down-interfaces}
 
-Pentru a putea folosi o configurație, interfața corespunzătoare trebuie să fie activă. Pentru a activa, dezactiva și verifica o interfață folosim comanda ip link ca în secvența TODO.
+Pentru a putea folosi o configurație, interfața corespunzătoare trebuie să fie activă. Pentru a activa, dezactiva și verifica o interfață folosim comanda ip link ca în \labelindexref{Listing}{lst:net:enable-if}.
 
-secvență cu ip link show, ip link set dev eth0 down, ip link show, ip link set dev eth0 up, ip link show
+\begin{screen}[caption={Activarea și dezactivarea unei interfețe},label={lst:net:enable-if}]
+TODO: secventa cu ip link show, ip link set dev eth0 down, ip link show, ip link set dev eth0 up, ip link show
+\end{screen}
 
-În secvența TODO, folosim comanda ip link show pentru a afișa informații despre legătura interfeței. Atunci când rezultatul rulării comenzii conține șirul “state UP” interfața este activă; altfel, dacă șirul este “state DOWN”, interfața este inactivă.
+Folosim comanda ip link show pentru a afișa informații despre legătura interfeței. Atunci când rezultatul rulării comenzii conține șirul “state UP” interfața este activă; altfel, dacă șirul este “state DOWN”, interfața este inactivă.
 
 Folosind comanda ip link set dev eth0 down dezactivăm interfața eth0, iar folosind comanda ip link set dev eth0 up activăm interfața. Apoi starea interfeței va fi marcată DOWN, respectiv UP în rezultatul rulării comenzi ip link show.
 
 \subsection{Configurarea DNS}
 \label{sec:net:config-dns}
 
-Pe Linux, configurarea DNS se realizează în fișierul /etc/resolv.conf, ca în secvența TODO. Serverele DNS (poate fi unul sau pot fi mai multe) sunt definite prin adresa IP pe liniile cu șirul nameserver. Putem modifica sau adăuga noi servere DNS editând liniile cu șirul nameserver din fișierul /etc/resolv.conf.
+Pe Linux, configurarea DNS se realizează în fișierul /etc/resolv.conf, așa cum este exemplificat în \labelindexref{Listing}{lst:net:show-dns}. Serverele DNS (poate fi unul sau pot fi mai multe) sunt definite prin adresa IP pe liniile cu șirul nameserver. Putem modifica sau adăuga noi servere DNS editând liniile cu șirul nameserver din fișierul /etc/resolv.conf.
 
 Configurarea DNS se face în fișierul /etc/resolv.conf indiferent de tipul de configurare: automată/manuală sau persistentă/temporară.
 
 Pe sistemele cu interfața grafică, fișierul /etc/resolv.conf este editat periodic de managerul de rețea (precum NetworkManager) sau de alte utilitare care sunt apelate individual sau de manager: resolvconf, systemd-resolved, dhclient. Modificările realizate în prealabil sunt suprascrise.
 
 De aceea, dacă este nevoie să configurăm manual servere DNS pentru un sistem, va trebui să știm ce alte utilitare modifică și suprascriu fișierul /etc/resolv.conf. Atunci avem două opțiuni:
-
-configurăm respectivele utilitare (NetworkManager, resolvconf, systemd-resolved) pentru a putea configura serverele DNS, iar utilitarele modifică fișierul /etc/resolv.conf
-dezactivăm respectivele utilitare sau le configurăm să nu modifice fișierul /etc/resolv.conf și apoi configurăm manual fișierul /etc/resolv.conf.
+\begin{itemize}
+  \item configurăm respectivele utilitare (NetworkManager, resolvconf, systemd-resolved) pentru a putea configura serverele DNS, iar utilitarele modifică fișierul /etc/resolv.conf
+  \item dezactivăm respectivele utilitare sau le configurăm să nu modifice fișierul /etc/resolv.conf și apoi configurăm manual fișierul /etc/resolv.conf.
+\end{itemize}
 
 Nu detaliem aici cum putem configura sau dezactiva utilitarele care editează fișierul /etc/resolv.conf pentru că depinde de distribuție, de componentele instalate și de configurație. Astfel de informații se pot găsi pe Internet; de exemplu acest articol prezintă modurile în care putem configura utilitarele să nu modifice fișierul /etc/resolv.conf.
 
 \subsection{Configurarea persistentă pe Debian/Ubuntu}
 \label{sec:net:persistent-config-debian}
 
-Pe distribuțiile Debian/Ubuntu configurațiile persistente de rețea se rețin în fișiere din directorul /etc/network/. Configurările fundamentale de rețea se rețin în fișierul /etc/network/interfaces. În secvențele TODO și TODO avem exemple de configurație persistentă respectiv automată și manuală pe o distribuție Debian/Ubuntu.
+Pe distribuțiile Debian/Ubuntu configurațiile persistente de rețea se rețin în fișiere din directorul /etc/network/. Configurările fundamentale de rețea se rețin în fișierul /etc/network/interfaces. În \labelindexref{Listing}{lst:net:persistent-automatic-debian} și \labelindexref{Listing}{lst:net:persistent-manual-debian} avem exemple de configurație persistentă respectiv automată și manuală pe o distribuție Debian/Ubuntu.
 
-TODO secvență de configurație persistentă automată
+\begin{screen}[caption={Configurare persistentă automată pe Debian/Ubuntu},label={lst:net:persistent-automatic-debian}]
+TODO: secventa de configuratie persistenta automata
+\end{screen}
 
-TODO secvență de configurație persistentă manuală
+\begin{screen}[caption={Configurare persistentă manuală pe Debian/Ubuntu},label={lst:net:persistent-manual-debian}]
+TODO: secventa de configuratie persistenta manuala
+\end{screen}
 
-În ambele configurații persistente, linia de configurație începe cu precizarea interfeței folosind șirul “iface en0s3”, adică interfața este en0s3. Apoi se precizează dacă este configurație automată prin precizarea șirului “dhcp” (secvența TODO) sau manuală prin precizarea șirului “static” (secvența TODO). În cazul configurației persistente automate este vorba de o singură linie. În cazul configurației persistente manuale, ulterior liniei care precizează interfața și tipul de configurare sunt prezente linii care configurează 3 dintre cei 4 parametri de rețea: adresa IP, masca de rețea, adresa IP a gateway-ului. Așa cum am precizat mai sus, configurarea DNS se realizează în fișierul /etc/resolv.conf, separat de configurația din fișierul /etc/network/interfaces.
+În ambele configurații persistente, linia de configurație începe cu precizarea interfeței folosind șirul “iface en0s3”, adică interfața este en0s3. Apoi se precizează dacă este configurație automată prin precizarea șirului “dhcp” (\labelindexref{Listing}{lst:net:persistent-automatic}) sau manuală prin precizarea șirului “static” (\labelindexref{Listing}{lst:net:persistent-manual}). În cazul configurației persistente automate este vorba de o singură linie. În cazul configurației persistente manuale, ulterior liniei care precizează interfața și tipul de configurare sunt prezente linii care configurează 3 dintre cei 4 parametri de rețea: adresa IP, masca de rețea, adresa IP a gateway-ului. Așa cum am precizat mai sus, configurarea DNS se realizează în fișierul /etc/resolv.conf, separat de configurația din fișierul /etc/network/interfaces.
 
-Pe sistemele Debian, configurațiile persistente sunt aplicate cu ajutorul comenzilor ifup și ifdown. Aceste comenzi sunt invocat pentru aplicarea configurației din fișierul /etc/network/interfaces. În secvența TODO sunt folosite comenzile ifup și ifdown pentru activarea, respectiv dezactivarea configurației pe o interfață. Atunci când este rulată comanda ifup -a sunt activate configurațiile tuturor interfețelor care sunt marcate cu \texttt{auto} în fișierul de configurare /etc/network/interfaces.
+Pe sistemele Debian, configurațiile persistente sunt aplicate cu ajutorul comenzilor ifup și ifdown. Aceste comenzi sunt invocat pentru aplicarea configurației din fișierul /etc/network/interfaces. În \labelindexref{Listing}{lst:net:enable-persistent} sunt folosite comenzile ifup și ifdown pentru activarea, respectiv dezactivarea configurației pe o interfață. Atunci când este rulată comanda ifup -a sunt activate configurațiile tuturor interfețelor care sunt marcate cu \texttt{auto} în fișierul de configurare /etc/network/interfaces.
 
-TODO secvență cu ifup / ifdown
+\begin{screen}[caption={Activarea și dezactivarea configurației persistente},label={lst:net:enable-persistent}]
+TODO: secventa cu ifup / ifdown
+\end{screen}
 
-Dacă pe sistem rulează NetworkManager, atunci configurațiile de mai sus vor intra în conflict cu cele realizate de NetworkManager. Putem dezactiva NetworkManager la nivelul interfeței. Pe distribuțiile Debian/Ubuntu, realizăm acest lucru în fișierul de configurare /etc/NetworkManager/NetworkManager.conf, adăugând linii de configurare de forma celor din secțiunea TODO:
+Dacă pe sistem rulează NetworkManager, atunci configurațiile de mai sus vor intra în conflict cu cele realizate de NetworkManager. Putem dezactiva NetworkManager la nivelul interfeței. Pe distribuțiile Debian/Ubuntu, realizăm acest lucru în fișierul de configurare /etc/NetworkManager/NetworkManager.conf, adăugând linii de configurare de forma celor din \labelindexref{Listing}{lst:net:disable-nm-if-debian}.
 
-TODO secvența cu managed false
+\begin{screen}[caption={Dezactivare NetworkManager la nivelul interfeței în Debian},label={lst:net:disable-nm-if-debian}]
+TODO: secventa cu managed false
+\end{screen}
 
-Informații extinse despre configurarea persistentă pe Debian/Ubuntu se găsesc în documentația Debian (https://wiki.debian.org/NetworkConfiguration, https://www.debian.org/doc/manuals/debian-reference/ch05.en.html).
+Informații extinse despre configurarea persistentă pe Debian/Ubuntu se găsesc în documentația Debian (\url{https://wiki.debian.org/NetworkConfiguration}, \url{https://www.debian.org/doc/manuals/debian-reference/ch05.en.html}).
 
 \subsection{Configurarea persistentă pe Fedora/RedHat}
 \label{sec:net:persistent-config-redhat}
 
-Pe distribuțiile Fedora/RedHat configurațiile persistente de rețea se rețin în fișierul /etc/sysconfig/network și în fișiere din directorul /etc/sysconfig/network-scripts/. Dacă dorim să configurăm interfața eth0 vom crea și edita fișierul /etc/sysconfig/network-scripts/ifcfg-eth0; altfel spus numele fișierului este ifcfg-<nume_interfață>, unde <nume_interfață> este înlocuit cu numele interfeței, aici eth0. În secvențele TODO și TODO avem exemple de configurare persistentă automată, respectiv manuală a interfeței eth0 în fișierul /etc/sysconfig/network-scripts/ifcfg-eth0.
+Pe distribuțiile Fedora/RedHat configurațiile persistente de rețea se rețin în fișierul /etc/sysconfig/network și în fișiere din directorul /etc/sysconfig/network-scripts/. Dacă dorim să configurăm interfața eth0 vom crea și edita fișierul /etc/sysconfig/network-scripts/ifcfg-eth0; altfel spus numele fișierului este ifcfg-$<$nume_interfață$>$, unde $<$nume_interfață$>$ este înlocuit cu numele interfeței, aici eth0. În \labelindexref{Listing}{lst:net:persistent-automatic-redhat} și \labelindexref{Listing}{lst:net:persistent-manual-redhat} avem exemple de configurare persistentă automată, respectiv manuală a interfeței eth0 în fișierul /etc/sysconfig/network-scripts/ifcfg-eth0.
 
-TODO secvență de configurație persistentă automată
+\begin{screen}[caption={Configurare persistentă automată pe Fedora/RedHat},label={lst:net:persistent-automatic-redhat}]
+TODO: secventa de configuratie persistenta automata
+\end{screen}
 
-TODO secvență de configurație persistentă manuală
+\begin{screen}[caption={Configurare persistentă manuală pe Fedora/RedHat},label={lst:net:persistent-manual-redhat}]
+TODO: secventa de configuratie persistenta manuala
+\end{screen}
 
 În ambele configurații persistente, avem linii de forma <cheie>=<valoare>; de exemplu, DEVICE va conține numele interfeței, BOOTPROTO tipul configurației (static pentru manuală și dhcp pentru automată), IPADDR pentru adresa IP, GATEWAY pentru adresa IP a gateway-ului. Astfel configurăm pe distribuțiile Fedora/RedHat 3 dintre cei 4 parametri de rețea: adresa IP, masca de rețea, adresa IP a gateway-ului. La fel ca în cazul Debian/Ubuntu, configurarea DNS se realizează în fișierul /etc/resolv.conf, separat de configurația din fișierul /etc/sysconfig/network-scripts/ifcfg-eth0.
 
-Tot la fel ca în cazul Debian/Ubuntu, activarea/dezactivarea configurației persistente curente se realizează cu ajutorul comenzilor ifup/ifdown urmate de numele interfeței de rețea, ca în secvența TODO.
+Tot la fel ca în cazul Debian/Ubuntu, activarea/dezactivarea configurației persistente curente se realizează cu ajutorul comenzilor ifup/ifdown urmate de numele interfeței de rețea, ca în \labelindexref{Listing}{lst:net:enable-persistent}.
 
-Dacă pe sistem rulează NetworkManager, atunci configurațiile de mai sus vor intra în conflict cu cele realizate de NetworkManager. Putem dezactiva NetworkManager la nivelul interfeței. Pe distribuțiile Fedora/RedHat, realizăm acest lucru în fișierul de configurare al interfeței (de exemplu /etc/sysconfig/network-scripts/ifcfg-eth0), adăugând linii de configurare:
+Dacă pe sistem rulează NetworkManager, atunci configurațiile de mai sus vor intra în conflict cu cele realizate de NetworkManager. Putem dezactiva NetworkManager la nivelul interfeței. Pe distribuțiile Fedora/RedHat, realizăm acest lucru în fișierul de configurare al interfeței (de exemplu /etc/sysconfig/network-scripts/ifcfg-eth0), adăugând linia de configurare din \labelindexref{Listing}{lst:net:disable-nm-if-redhat}.
 
+\begin{screen}[caption={Dezactivare NetworkManager la nivelul interfeței în RedHat},label={lst:net:disable-nm-if-redhat}]
 NM_CONTROLLED=no
+\end{screen}
 
-Informații extinse despre configurarea persistentă pe Fedora/RedHat se găsesc în documentația Fedora (https://docs.fedoraproject.org/en-US/Fedora/14/html/Deployment_Guide/ch-Network_Interfaces.html, https://docs.fedoraproject.org/en-US/Fedora/22/html/Networking_Guide/ch-Configure_Networking.html).
+Informații extinse despre configurarea persistentă pe Fedora/RedHat se găsesc în documentația Fedora (\url{https://docs.fedoraproject.org/en-US/Fedora/14/html/Deployment_Guide/ch-Network_Interfaces.html}, \url{https://docs.fedoraproject.org/en-US/Fedora/22/html/Networking_Guide/ch-Configure_Networking.html}).
 
 \subsection{Configurarea temporară. Comanda ip}
 \label{sec:net:temporary-config}
 
 Configurarea temporară în Linux se realizează în linia de comandă și se face la fel pe toate tipurile de distribuții. Configurarea temporară se realizează cu ajutorul utilitarul ip. Am folosit utilitarul ip mai sus pentru investigarea configurației (folosind comanda ip address show) și pentru activarea/dezactivarea unei interfețe (folosind comanda ip link set).
 
-Înainte de a configura temporare parametrii de rețea, se recomandă să se șteargă configurațiile anterioare. Acest lucru poate fi făcut cu ajutorul comenzii ip address flush, ca în secvența TODO. După rularea comenzii ip address flush orice configurații anterioare ale interfeței sunt șterse.
+Înainte de a configura temporare parametrii de rețea, se recomandă să se șteargă configurațiile anterioare. Acest lucru poate fi făcut cu ajutorul comenzii ip address flush, ca în \labelindexref{Listing}{lst:net:flush-if}. După rularea comenzii ip address flush orice configurații anterioare ale interfeței sunt șterse.
 
-Pentru configurarea unei adrese IP și a unei măști pe o interfață folosim comanda ip address add. Dacă am greșit o comandă și dorim să ștergem o adresă folosim comanda ip address del. În secvența TODO avem exemple de configurare a adresei IP 192.168.0.7/24 pe interfața eth0.
+\begin{screen}[caption={Ștergerea configurațiilor unei interfețe},label={lst:net:flush-if}]
+TODO: ip addres flush
+\end{screen}
 
-Comanda ip address add, așa cum îi spune numele, adaugă o nouă adresa IP interfeței de rețea. Adică o interfață de rețea poate avea mai multe adrese IP. În secvența TODO, ștergem toate configurația pe interfața de rețea TODO, adăugăm două adrese IP pe o interfață de rețea și apoi o ștergem pe una dintre ele.
+Pentru configurarea unei adrese IP și a unei măști pe o interfață folosim comanda ip address add. Dacă am greșit o comandă și dorim să ștergem o adresă folosim comanda ip address del. În \labelindexref{Listing}{lst;net:add-ip} avem exemple de configurare a adresei IP 192.168.0.7/24 pe interfața eth0.
 
-Pentru configurarea gateway-ului folosim comanda ip route add default. În mod similar, dacă dorim să ștergem configurația gateway-ului folosim comanda ip route del. În secvență TODO avem exemplu de configurare a gateway-ului cu adresa IP 192.168.0.1.
+\begin{screen}[caption={Configurarea unei adrese pe o interfață},label={lst:net:add-ip}]
+TODO: ip addres add
+\end{screen}
+
+Comanda ip address add, așa cum îi spune numele, adaugă o nouă adresa IP interfeței de rețea. Adică o interfață de rețea poate avea mai multe adrese IP. În \labelindexref{lst:net:del-ip}, ștergem toate configurația pe interfața de rețea TODO, adăugăm două adrese IP pe o interfață de rețea și apoi o ștergem pe una dintre ele folosind comanda ip address del.
+
+\begin{screen}[caption={Ștergerea unei adrese de pe o interfață},label={lst:net:del-ip}]
+TODO: ip address del
+\end{screen}
+
+Pentru configurarea gateway-ului folosim comanda ip route add default. În mod similar, dacă dorim să ștergem configurația gateway-ului folosim comanda ip route del. În \labelindexref{lst:net:add-gw} avem exemplu de configurare a gateway-ului cu adresa IP 192.168.0.1.
+
+\begin{screen}[caption={Configurarea gateway-ului},label={lst:net:add-gw}]
+TODO: ip route addd
+\end{screen}
+
+\subsection{Configurarea DHCP. Comanda dhclient}
+\label{sec:net:dhclient}
+
+Configurările de mai sus sunt configurări manuale, cu adresele precizate de utilizator. Dacă dorim să configurăm parametrii de rețea în mod automat, interogând serverul DHCP al rețelei locale, folosim clientul DHCP dat de comanda \cmd{dhclient}, ca în \labelindexref{Listing}{lst:net:dhclient}. Rularea comenzii \cmd{dhclient} duce la configurarea tuturor parametrilor de rețea furnizați prin DHCP: adresă IP, mască de rețea, gateway, server DNS.
+
+\begin{screen}[caption={Configurarea automată (prin DHCP) din linia de comandă},label={lst:net:add-gw}]
+TODO: dhclient
+\end{screen}
 
 \subsection{Sumar}
 \label{sec:net:config-summary}
@@ -430,17 +704,16 @@ pentru control mai fin sau diagnosticare/testare/depanare putem folosi utilitare
 
 fișierele de configurare le folosim pentru configurarea persistentă
 
-tabelul TODO prezintă utilitarele și fișierele de configurare folosite pentru cele patru tipuri de configurare
+\labelindexref{Tabelul}{tab:net:config-types} prezintă utilitarele și fișierele de configurare folosite pentru cele patru tipuri de configurare
 
 exemple concrete pentru toate tipurile de configurare sunt prezentate în secvențele de mai sus:
 
-configurare temporară manuală: secvența TODO
-
-configurare temporară automată: secvența TODO
-
-configurare persistentă manuală: secvența TODO (Debian/Ubuntu) și TODO (Fedora/RedHat)
-
-configurare persistentă automată: secvența TODO (Debian/Ubuntu) și TODO (Fedora/RedHat)
+\begin{itemize}
+  \item configurare temporară manuală: secvențele de comenzi din \labelindexref{Secțiunea}{sec:net:temporary-config}
+  \item configurare temporară automată: \labelindexref{Listing}{lst:net:dhclient}
+  \item configurare persistentă manuală: \labelindexref{Listing}{lst:net:persistent-manual-debian} și \labelindexref{Listing}{lst:net:persistent-manual-redhat}
+  \item configurare persistentă automată: \labelindexref{Listing}{lst:net:persistent-automatic-debian} și \labelindexref{Listing}{lst:net:persistent-automatic-redhat}
+\end{itemize}
 
 \section{Aplicații de rețea. Web-ul}
 \label{sec:net:apps}
@@ -458,15 +731,19 @@ Browserele sunt clienți web care folosesc protocolul HTTP pentru accesarea serv
 
 Protocolul HTTP este în esență un protocol de acces de resurse de la distanță. Pentru accesarea acestor resurse este nevoie de un mod de identificare a acestora, o adresă. Acest identificator este URL (Uniform Resource Locator), numit și adresă web; este acea adresă pe care o introducem în bara de adrese a unui browser web. Un URL este compus din trei elemente:
 
-* protocolul folosit: uzual http sau https (HTTP securizat)
-* numele sistemului pe care rulează serviciul: uzual este un nume DNS (precum google.com) dar poate fi și o adresă IP
-* calea către resursă: modul în care serviciul web localizează pe server resursa. Resursa este uzual o pagină web. Pagina web este transferată de la serviciul web la clientul web (browser) unde este redată (rendered) în ceea ce vede la final utilizator.
+\begin{itemize}
+  \item protocolul folosit: uzual http sau https (HTTP securizat)
+  \item numele sistemului pe care rulează serviciul: uzual este un nume DNS (precum google.com) dar poate fi și o adresă IP
+  \item calea către resursă: modul în care serviciul web localizează pe server resursa. Resursa este uzual o pagină web. Pagina web este transferată de la serviciul web la clientul web (browser) unde este redată (rendered) în ceea ce vede la final utilizator.
+\end{itemize}
 
-De exemplu, în cadrul URL-ului https://ocw.cs.pub.ro/courses/uso/cursuri/curs-05, protocolul este https, numele sistemului este ocw.cs.pub.ro iar calea către resursă (adică pagina web aferentă cursului 5 de USO) este courses/uso/cursuri/curs-05.
+De exemplu, în cadrul URL-ului \url{https://ocw.cs.pub.ro/courses/uso/cursuri/curs-05}, protocolul este https, numele sistemului este ocw.cs.pub.ro iar calea către resursă (adică pagina web aferentă cursului 5 de USO) este courses/uso/cursuri/curs-05.
 
-Folosim un browser web pentru accesarea unor servicii de la distanță, uzual în formă de pagini web care for redate de browser. Pentru cazul în care dorim descărcarea unei resurse, sau accesarea unui serviciu simplu sau pentru automatizare sau testare putem folosi utilitare de tip clienți web în linia de comandă. Cele mai întâlnite astfel de utilitare în Linux sunt wget sau curl. Cele două au funcționalități similare, numai că, implicit, wget salvează conținutul de la URL transmis ca argument într-un fișier în vreme ce curl îl afișează la ieșirea standard. O altă diferență este că wget permite descărcarea recursivă a resurselor, adică link-urile web sunt accesate și apoi se realizează transferul și resurselor respective. wget folosește protocoalele HTTP, HTTPS, FTP; curl adaugă suport și pentru alte protocoale Câteva exemple de funcționare sunt în secvența TODO:
+Folosim un browser web pentru accesarea unor servicii de la distanță, uzual în formă de pagini web care for redate de browser. Pentru cazul în care dorim descărcarea unei resurse, sau accesarea unui serviciu simplu sau pentru automatizare sau testare putem folosi utilitare de tip clienți web în linia de comandă. Cele mai întâlnite astfel de utilitare în Linux sunt wget sau curl. Cele două au funcționalități similare, numai că, implicit, wget salvează conținutul de la URL transmis ca argument într-un fișier în vreme ce curl îl afișează la ieșirea standard. O altă diferență este că wget permite descărcarea recursivă a resurselor, adică link-urile web sunt accesate și apoi se realizează transferul și resurselor respective. wget folosește protocoalele HTTP, HTTPS, FTP; curl adaugă suport și pentru alte protocoale. Câteva exemple de funcționare sunt în \labelindexref{Listing}{lst:net:wget-curl}.
 
-+ secvență cu folosirea wget și curl
+\begin{screen}[caption={Clienți web în linie de comandă: wget și curl}{lst:sec:wget-curl}]
+TODO: secventa cu folosirea wget si curl
+\end{screen}
 
 \subsection{Alte servicii}
 \label{sec:net:services}
@@ -481,25 +758,25 @@ O aplicație de tipul remote desktop este TeamViewer. Aplicația acționează si
 
 Virtual Network Computing (VNC) este un alt sistem de tipul desktop sharing. Cuprinde un server VNC, un client VNC și protocolul RFB (Remote Frame Buffer) folosit pentru comunicare. Există mai multe implementări de clienți și servere VNC, open source și proprietare.
 
-Pentru acces la distanță în linia de comandă cel mai întâlnit protocol este SSH (Secure Shell). Protocolul SSH creează un canal sigur de comunicare (criptat); în acest canal se poate opta pentru deschiderea unei sesiuni shell la distanță (remote shell) sau pentru transfer de fișier sau pentru tunelerare altor protocoale pentru a le adăuga funcționalități de securitate. Ca să deschidem o sesiune shell la distanță folosim, în Linux, comanda ssh urmată de numele de cont (username) și numele stație, ca în secvența TODO:
+Pentru acces la distanță în linia de comandă cel mai întâlnit protocol este SSH (Secure Shell). Protocolul SSH creează un canal sigur de comunicare (criptat); în acest canal se poate opta pentru deschiderea unei sesiuni shell la distanță (remote shell) sau pentru transfer de fișier sau pentru tunelerare altor protocoale pentru a le adăuga funcționalități de securitate. Ca să deschidem o sesiune shell la distanță folosim, în Linux, comanda ssh urmată de numele de cont (username) și numele stație, ca în \labelindexref{Listing}{lst:net:ssh}.
 
-\begin{screen}
-razvan@jotunn:~$ whoami
-razvan
-razvan@jotunn:~$ hostname
-jotunn
-razvan@jotunn:~$ ssh uso@elf.cs.pub.ro
+\begin{screen}[caption={Conexiune la distanță folosind SSH},label={lst:net:ssh}]
+student@uso:~$ whoami
+student
+student@uso:~$ hostname
+uso
+razvan@jotunn:~$ ssh asm@elf.cs.pub.ro
 Linux elf 2.6.32-5-amd64 #1 SMP Tue May 13 16:34:35 UTC 2014 x86_64
 [...]
-uso@elf:~$ whoami
-uso
-uso@elf:~$ hostname
+asm@elf:~$ whoami
+asm
+asm@elf:~$ hostname
 elf
 \end{screen}
 
-În secvența TODO, ne-am conectat de pe sistemul cu numele uso din contul student pe sistemul cu numele elf.cs.pub.ro în contul uso. Avem deschisă o sesiune shell la distanță unde putem rula comenzi și unde putem administra sistemul.
+În \labelindexref{Listing}{lst:net:ssh}, ne-am conectat de pe sistemul cu numele uso din contul student pe sistemul cu numele elf.cs.pub.ro în contul uso. Avem deschisă o sesiune shell la distanță unde putem rula comenzi și unde putem administra sistemul.
 
-Protocolul SSH este folosit aproape exclusiv pe sistemele Linux pentru administrarea sistemelor și data center-elor. Mai multe detalii despre protocolul SSH vom prezenta în Capitolul TODO: Securitatea sistemului.
+Protocolul SSH este folosit aproape exclusiv pe sistemele Linux pentru administrarea sistemelor și data center-elor. Mai multe detalii despre protocolul SSH vom prezenta în \labelindexref{Secțiunea}{sec:sec:ssh}.
 
 Serviciul de poștă electronică (e-mail) este folosit pentru transmisia de mesaje între utilizatori. Fiecare utilizator dispune de o căsuță poștală electronică (mailbox) unde primește mesajele. Pentru accesarea căsuței poștale și pentru trimiterea de mesaje (e-mail-uri) folosește protocoale specifice serviciului de e-mail și un client de e-mail care cunoaște aceste protocoale. Exemple de clienți de e-mail sunt Microsoft Outlook sau Mozilla Thunderbird. Aceștia se conectează la servere de e-mail corespunzătoare pentru a citi și a trimite mesaje.
 
@@ -517,7 +794,6 @@ Protocolul FTP (File Transfer Protocol) are ca rol transferul fișierelor. Spre 
 
 Pentru transferul de date în rețele mai mari de noduri (numite swarm-uri) folosim protocolul BitTorrent. Protocolul BitTorrent este un protocol peer-to-peer în care fiecare nod este simultan și client și server, permițând și descărcarea (download) și încărcarea (upload) de informații. Este în special util pentru distribuția de fișiere de mari dimensiuni. În perioada 2005-2010 transferurile prin BitTorrent erau printre cele mai consumatoare de lățime de bandă din Internet, în special pentru conținut video, adesea piratat. Între timp, dezvoltarea infrastructurii de Internet și popularitatea serviciilor de video streaming precum YouTube sau Netflix au dus la diminuarea folosirii BitTorrent.
 
-
 \section{Anexă: Configurări de rețea folosind suita ifconfig/route}
 \label{sec:net:config-ifconfig}
 
@@ -525,19 +801,25 @@ Pe sistemele Linux folosim suita iproute2 (care conține comanda ip) pentru inve
 
 Un avantaj al cunoașterii utilitarelor de forma ifconfig și route sunt prezente pe toate sistemele din familia Unix. Dacă vom avea de-a face cu sisteme rulând FreeBSD sau macOS, vom putea folosi ifconfig și route pentru configurarea rețelei.
 
-Pentru a investiga configurația existentă la un sistem folosim comanda ifconfig pentru a afișa informații despre interfețe și comanda route pentru a afișa tabela de rutare, incluzând gateway-ul, ca în secvența TODO:
+Pentru a investiga configurația existentă la un sistem folosim comanda ifconfig pentru a afișa informații despre interfețe și comanda route pentru a afișa tabela de rutare, incluzând gateway-ul, ca în \labelindexref{Listing}{lst:net:show-ifconfig-route}.
 
-secvență ifconfig / route
+\begin{screen}[caption={Vizualizarea parametrilor de rețea cu ifconfig/route},label={lst:net:show-ifconfig-route}]
+TODO: secventa ifconfig / route / ifconfig -a
+\end{screen}
 
 Comanda ifconfig afișează implicit doar interfețele active. Dacă dorim să afișăm informații despre toate interfețele (active și inactive) folosim opțiunea -a la comanda ifconfig.
 
-Activarea sau dezactivarea unei interfețe se face tot cu ajutorul comenzii ifconfig ca în secvența TODO:
+Activarea sau dezactivarea unei interfețe se face tot cu ajutorul comenzii ifconfig ca în \labelindexref{Listing}{lst:net:enable-ifconfig}.
 
-secvență cu ifconfig up și ifconfig down
+\begin{screen}[caption={Activarea și dezactivarea unei interfețe folosind ifconfig},label={lst:net:enable-ifconfig}]
+TODO: ifconfig up / down
+\end{screen}
 
-Pentru configurarea parametrilor de rețea folosim ifconfig și route. ifconfig configurează adresa IP și masca de rețea, iar route configurează gateway-ul. Astfel, dacă dorim să configurăm adresa IP 192.168.0.7/24 și gateway-ul cu adresa IP 192.168.0.1, vom folosi comenzile ifconfig și route ca în secvența TODO:
+Pentru configurarea parametrilor de rețea folosim ifconfig și route. ifconfig configurează adresa IP și masca de rețea, iar route configurează gateway-ul. Astfel, dacă dorim să configurăm adresa IP 192.168.0.7/24 și gateway-ul cu adresa IP 192.168.0.1, vom folosi comenzile ifconfig și route ca în \labelindexref{Listing}{lst:net:config-ifconfig-route}.
 
-configurarea temporară manuală folosind ifconfig/route
+\begin{screen}[caption={Configurarea parametrilor de rețea folosind ifconfig/route},label={lst:net:config-ifconfig-route}]
+TODO: configurarea temporara manuala folosind ifconfig/route
+\end{screen}
 
 \section{Sumar}
 \label{sec:net:summary}
