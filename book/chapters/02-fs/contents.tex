@@ -415,9 +415,9 @@ Simbolul \file{\textasciitilde{}} este o prescurtare în Linux/macOS pentru dire
 
 În fiecare director se găsesc \textbf{două directoare speciale}: \file{.} (punct) și \file{..} (punct punct). Directorul \file{.} (\textit{punct}) indică spre același director, directorul curent. \file{..} (\textit{punct punct}) indică spre directorul părinte în ierarhia de fișiere și directoare.
 
-Pentru a ne întoarce în ierarhia de fișiere pas cu pas, ne folosim de \file{..} pentru a ajunge în directorul părinte. Putem să înlănțuim mai multe grupări \file{..} (de ex. \file{../../..}) pentru a ne întoarce mai sus în ierarhie. Avem un exemplu de comenzi mai jos:
+Pentru a ne întoarce în ierarhia de fișiere pas cu pas, ne folosim de \file{..} pentru a ajunge în directorul părinte. Putem să înlănțuim mai multe grupări \file{..} (de ex. \file{../../..}) pentru a ne întoarce mai sus în ierarhie. Avem un exemplu de comenzi în \labelindexref{Listing}{lst:fs:dot-dot}.
 
-\begin{screen}
+\begin{screen}[caption={Referința .. către directorul părinte},label={lst:fs:dot-dot}]
 student@uso:~$ pwd
 /home/student
 student@uso:~$ cd uso.git/labs/
@@ -452,9 +452,9 @@ student@uso:~$ ./list_permissions
 
 Aceasta înseamnă să se execute executabilul \file{list_permissions} din directorul curent.
 
-Construcția \file{.} (punct) poate fi folosită în situații în care dorim să referim directorul curent. De exemplu dacă dorim să copiem un fișier în directorul curent rulăm comanda de mai jos:
+Construcția \file{.} (punct) poate fi folosită în situații în care dorim să referim directorul curent. De exemplu dacă dorim să copiem un fișier în directorul curent rulăm o comandă similară cu cea de pe linia 5 din \labelindexref{Listing}{lst:fs:dot}.
 
-\begin{screen}
+\begin{screen}[caption={Referința . către directorul curent},label={lst:fs:dot}]
 student@uso:~$ pwd
 /home/student
 student@uso:~$ ls
@@ -520,9 +520,9 @@ apelând la soluții automate text-to-speech. Convertirea se realizează
 nu prin schimbarea manuală a extensiei, ci prin intermediul unei aplicații cu
 care deschidem fișierul și îl transformăm în formatul dorit.
 
-Pentru a vedea de ce tip este un fișier în Linux, dincolo de extensie, folosim comanda \cmd{file}. Mai jos avem exemple de folosire a comenzii \cmd{file} pentru determinarea tipului unui fișier. Pentru fiecare fișier primit ca argument de comanda \cmd{file} sunt indicate informații despre tipul fișierului: executabil, imagine de kernel, script shell, fișier comprimat, fișier imagine.
+Pentru a vedea de ce tip este un fișier în Linux, dincolo de extensie, folosim comanda \cmd{file}. Mai jos avem exemple de folosire a comenzii \cmd{file} pentru determinarea tipului unui fișier. Pentru fiecare fișier primit ca argument de comanda \cmd{file} sunt indicate informații despre tipul fișierului: executabil, imagine de kernel, script shell, fișier comprimat, fișier imagine. \labelindexref{Listing}{lst:fs:file} conține exemple de rulare a comenzii \cmd{file}.
 
-\begin{screen}
+\begin{screen}[caption={Aflarea tipului unui fișier (comanda file)},label={lst:fs:file}]
 student@uso:~$ file /bin/ls
 /bin/ls: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=9567f9a28e66f4d7ec4baf31cfbf68d0410f0ae6, stripped
 student@uso:~$ file /boot/vmlinuz-4.15.0-29-generic
@@ -535,22 +535,16 @@ student@uso:~$ file /usr/share/pixmaps/htop.png
 /usr/share/pixmaps/htop.png: PNG image data, 128 x 128, 8-bit/color RGBA, non-interlaced
 \end{screen}
 
-\subsection{Detecția formatului fișierelor}
-\label{sec:file-system-format-detection}
-
-Pe sistemele Windows fiecare fișier are o extensie, ce ne indică formatul
-acestuia și astfel ajută sistemul de operare să determine ce aplicație să
-utilizeze pentru a deschide fișierul. Sistemele Linux folosesc comanda \cmd{file}
-pentru a afla formatul unui fișier. Comanda \cmd{file} lucrează independent de extensia
+Comanda \cmd{file} lucrează independent de extensia
 fișierului. Acest lucru este avantajos deoarece extensia poate să fie atribuită
-greșit de către utilizator, precum putem vedea și în exemplul de mai jos.
+greșit de către utilizator, precum putem vedea și în \labelindexref{Listing}{lst:fs:file-wrong-extenstion}. Chiar dacă extensia fișierul a fost schimbată din \texttt{.jpg} în \texttt{.txt}, comanda \cmd{file} detectează în continuare tipul corect al fișierului: fișier de tip imagine JPEG.
 
-\begin{screen}
+\begin{screen}[caption={Detectarea tipului unui fișier cu extensie greșită},label={lst:fs:file-wrong-extension}]
 student@uso:~$ file photo.jpg
 photo.jpg: JPEG image data, JFIF standard 1.01
-student@uso:~$ mv photo.jpg fisier.txt # schimbarea numelui din photo.jpg in fisier.txt (schimba extensia din jpg in txt la nivel superficial
+student@uso:~$ mv photo.jpg fisier.txt
 student@uso:~$ file fisier.txt
-fisier.txt: ASCII text
+fisier.txt: JPEG image data, JFIF standard 1.01
 \end{screen}
 
 \subsection{Atributele fișierelor}
@@ -579,9 +573,9 @@ Sistemele de fișiere se bazează și ele pe crearea și gestionarea metadatelor
 fișiere. Aceste metadate poartă denumirea de \textbf{atribute}. Ele fac posibilă accesarea
 eficientă și securizată a informațiilor.
 
-În Linux putem afișa atribute ale fișierelor folosind comanda \cmd{ls} cu opțiunea \texttt{-l}; opțiunea înseamnă \textit{long listing} și este folosită pentru afișarea detaliată (cu atribute a fișierelor), ca mai jos:
+În Linux putem afișa atribute ale fișierelor folosind comanda \cmd{ls} cu opțiunea \texttt{-l}; opțiunea înseamnă \textit{long listing} și este folosită pentru afișarea detaliată (cu atribute a fișierelor), ca în \labelindexref{Listing}{lst:fs:long-listing}.
 
-\begin{screen}
+\begin{screen}[caption={Afișarea atributelor fișierelor (folosind ls)},label={lst:fs:long-listing}]
 student@uso:~$ ls -l
 total 60
 drwxr-xr-x  2 student student 4096 aug  6 17:41 Desktop
@@ -653,11 +647,11 @@ dorim să ne mutăm în alt director, vom folosi comanda \cmd{cd $<$cale$>$}. Co
 \cmd{cd} are ca parametru o cale absolută sau relativă către destinația în care
 vrem să ajungem.
 
-Pentru a înțelege mai bine cum funcționează cele două comenzi -- \cmd{pwd} și
-\cmd{cd} -- avem următorul exemplu, mai jos. Urmăriți modificările prompt-ului
-bash atunci când schimbăm directorul:
+Urmărim cum funcționează cele două comenzi -- \cmd{pwd} și
+\cmd{cd} -- în \labelindexref{Listing}{lst:fs:pwd-cd}. Vedem cum se modifică prompt-ul shell-ului atunci când schimbăm directorul curent.
+tunci când schimbăm directorul,
 
-\begin{screen}
+\begin{screen}[caption={Schimbarea directorului curent},label={lst:fs:pwd-cd}]
 student@uso:~$ pwd
 /home/student
 student@uso:~$ cd ..
@@ -736,14 +730,14 @@ conținutul acestora. Comanda pe care o folosim este \cmd{ls [opțiuni]
 		anumit ordin de mărime.
 \end{itemize}
 
-Exemplu de output atunci când utilizăm opțiunea \texttt{-l}:
+Un exemplu de utilizare a opțiunii \texttt{-l} a comenzi \cmd{ls} se găsește în \labelindexref{Listing}{lst:fs:ls-l}.
 
-\begin{screen}
+\begin{screen}[caption={Opțiunea -l a comenzii ls},label={lst:fs:ls-l}]
 student@uso:~$ ls -l uso.git/README.md
 -rw-r--r-- 1 student student 146 aug 20 20:57 uso.git/README.md
 \end{screen}
 
-Explicații privind formatul de output:
+În output-ul de pe linia 2 din \labelindexref{Listing}{lst:fs:ls-l}:
 
 \begin{itemize}
 	\item primul caracter ne spune tipul fișierului, în cazul de față fișier obișnuit
@@ -758,9 +752,21 @@ Explicații privind formatul de output:
 	\item \texttt{uso.git/README.md} este numele fișierului
 \end{itemize}
 
-Exemplele următoare conțin câteva modele de funcționare a comenzii \cmd{ls}:
+\labelindexref{Listing}{lst:fs:ls} conține alte exemple de folosire a comenzii \cmd{ls}, cu următoarele exeplicații:
 
-\begin{screen}
+\begin{itemize}
+  \item comanda de la linia 19 (\cmd{ls -l}) afișează toate informațiile (\texttt{-l}) ale
+		tuturor fișierelor, ascunse și neascunse, din directorul curent;
+                dimensiunea fișierelor este afișată în format inteligibil (\textit{human-readable})
+		(\texttt{-h}); observăm că sunt sunt afișate și directoarele
+		standard \file{.} și \file{..}
+	\item comanda de la linia 38 primește o cale relativă pentru a-i afișa
+		conținutul
+	\item comanda de la linia 41 afișează toate fișierele, ascunse și
+		neascunse, din rădăcina ierarhiei de fișiere și directoare (\file{/})
+\end{itemize}
+
+\begin{screen}[caption={Folosirea comenzii ls},label={lst:fs:ls}]
 student@uso:~$ ls
 Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos  examples.desktop  passwd  uso.git  vm-actions-log.txt
 student@uso:~$ ls ~
@@ -806,23 +812,10 @@ student@uso:~$ ls -a /
 ..  boot  dev    home  initrd.img.old  lib32  libx32  media       opt  root  sbin  srv   sys       usr  vmlinuz
 \end{screen}
 
-În exemplu de mai sus
-\begin{itemize}
-  \item comanda de la linia 19 (\cmd{ls -l}) afișează toate informațiile (\texttt{-l}) ale
-		tuturor fișierelor, ascunse și neascunse, din directorul curent;
-                dimensiunea fișierelor este afișată în format inteligibil (\textit{human-readable})
-		(\texttt{-h}); observăm că sunt sunt afișate și directoarele
-		standard \file{.} și \file{..}
-	\item comanda de la linia 38 primește o cale relativă pentru a-i afișa
-		conținutul
-	\item comanda de la linia 41 afișează toate fișierele, ascunse și
-		neascunse, din rădăcina ierarhiei de fișiere și directoare (\file{/})
-\end{itemize}
+O opțiune folosită a comenzii \cmd{ls} este \texttt{-R}, care afișează recursiv directoarele și fișierele
+ce au ca rădăcină directorul dat ca argument, exemplificată în \labelindexref{Listing}{lst:fs:ls-R}. Prin recursiv înțelegem că trece prin toate directoarele pornind de la directorul dat ca argument.
 
-O altă opțiune folosită este \texttt{-R}, care afișează recursiv directoarele și fișierele
-ce au ca rădăcină directorul dat ca argument. Prin recursiv înțelegem că trece prin toate directoarele pornind de la directorul dat ca argument.
-
-\begin{screen}
+\begin{screen}[caption={Listarea recursivă a conținutului unui director},label={lst:ls:ls-R}].
 student@uso:~$ ls -R /usr/local/lib/
 /usr/local/lib/:
 python2.7  python3.6
@@ -840,16 +833,16 @@ dist-packages
 /usr/local/lib/python3.6/dist-packages:
 \end{screen}
 
-Dacă dorim să folosim alte opțiuni, putem sa consultăm \cmd{man ls} sau \cmd{ls
+Dacă dorim să folosim alte opțiuni, putem să consultăm \cmd{man ls} sau \cmd{ls
 -{}-help}.
 
 \subsection{Afișarea conținutului fișierelor}
 \label{sec:file-system-file-list-content}
 
 Pentru a putea vedea ce conține un fișier, folosim comanda \cmd{cat $<$nume
-fișier$>$}. Un exemplu de utilizare este:
+fișier$>$}, ca în \labelindexref{Listing}{lst:fs:cat}.
 
-\begin{screen}
+\begin{screen}[caption={Afișarea conținutului unui fișier},label={lst:fs:cat}]
 student@uso:~$ cat /etc/default/saned
 # Defaults for the saned initscript, from sane-utils
 
@@ -863,21 +856,31 @@ RUN_AS_USER=saned
 
 Comanda va întoarce conținutul întregului fișier, indiferent de lungime. Pentru
 ca utilizatorul să poată naviga prin tot output-ul comenzii, putem folosi comanda
-\cmd{less}. Comanda \cmd{less} are o interfață asemănătoare cu cea a editorului \cmd{vim} și
-permite navigarea în ambele direcții, linie cu linie. O folosim ca mai jos, dându-i ca argument calea către fișierul al cărui conținut dorim să-l afișăm:
+\cmd{less}, ca mai jos:
 
 \begin{screen}
 student@uso:~$ less /etc/X11/Xsession
 \end{screen}
 
+Comanda \cmd{less} are o interfață asemănătoare cu cea a editorului \cmd{vim} și
+permite navigarea în ambele direcții, linie cu linie.
+
 \subsection{Crearea fișierelor/directoarelor}
 \label{sec:file-system-file-creation}
 
-Există doua metode pentru a crea un fișier gol. Prima metoda este utilizarea
+Pentru a crea un fișier gol, avem două metode. Prima metoda este utilizarea
 comenzii \cmd{touch $<$nume fișier$>$}, iar a doua se bazează pe o funcționalitate
-a shell-ului numită redirectare în fișier:
+a shell-ului numită redirectare în fișier, ca în \labelindexref{Listing}{lst:fs:create-file}, cu următoarele explicații:
+\begin{itemize}
+	\item comanda de la linia 1 folosește prima metodă; creează un fișier
+		gol cu numele \file{cats.txt} în directorul curent
+	\item comanda de la linia 2 folosește a doua metodă; redirectează
+		(\texttt{>}) ieșirea unei comenzi nule într-un fișier, ducând la trunchierea fișierului, dacă există, sau, în cazul nostru, ducând la crearea
+                fișierului gol \file{dogs.txt}
+        \item vedem din rezultatul rulării comenzii \texttt{ls -l} de la linia 5 că ambele fișiere sunt create cu dimensiune 0, sunt goale
+\end{itemize}
 
-\begin{screen}
+\begin{screen}[caption={Crearea unui fișier},label={lst:fs:create-file}]
 student@uso:~/Downloads$ touch cats.txt
 student@uso:~/Downloads$ > dogs.txt
 student@uso:~/Downloads$ ls
@@ -888,26 +891,19 @@ total 0
 -rw-rw-r-- 1 student student 0 sep 30 12:20 dogs.txt
 \end{screen}
 
-În exemplul de mai sus:
-\begin{itemize}
-	\item comanda de la linia 1 folosește prima metodă; creează un fișier
-		gol cu numele \file{cats.txt} în directorul curent
-	\item comanda de la linia 2 folosește a doua metodă; redirectează
-		(\texttt{>}) ieșirea unei comenzi nule într-un fișier, ducând la trunchierea fișierului, dacă există, sau, în cazul nostru, ducând la crearea
-                fișierului gol \file{dogs.txt}
-\end{itemize}
-Vedem din rezultatul rulării comenzii \texttt{ls -l} că ambele fișiere sunt create cu dimensiune 0, sunt goale.
+Comanda \cmd{touch} are în principal rolul pentru a actualiza data ultimei accesări sau
+modificări asupra fișierului; dacă un fișier nu există, acesta este creat cu data curentă; crearea fișierului este un rol secundar al comenzii \cmd{touch}. În \labelindexref{Listing}{lst:fs:touch} folosim comanda \cmd{touch} pentru a schimba data ultimei modificări din \texttt{aug 20 20:57} în \texttt{sep 30 12:24}.
 
-Comanda \cmd{touch} poate fi folosită și pentru a actualiza data ultimei accesări sau
-modificări asupra fișierului. În exemplu de mai jos folosim comanda touch pentru a schimba data ultimei modificări din \texttt{aug 20 20:57} în \texttt{sep 30 12:24}.
-
-\begin{screen}
+\begin{screen}[caption={Schimbarea datei ultimei modificări a unui fișier},label={lst:fs:touch}]
 student@uso:~$ ls -l uso.git/README.md
 -rw-r--r-- 1 student student 146 aug 20 20:57 uso.git/README.md
 student@uso:~$ touch uso.git/README.md
 student@uso:~$ ls -l uso.git/README.md
 -rw-r--r-- 1 student student 146 sep 30 12:24 uso.git/README.md
 \end{screen}
+
+\subsubsection{Crearea legăturilor simbolice}
+\label{sec:file-system-symlink-creation}
 
 Exemplu următor prezintă crearea legăturilor simbolice, un mod prin care același fișier poate fi referit din două căi, echivalentul scurtăturilor.
 
@@ -931,9 +927,12 @@ uso
 
 Legăturile (\textit{link-urile}) numite și legături simbolice (\textit{symbolic links}) sunt create cu ajutorul comenzii \texttt{ln} căreia îi transmitem ca argument opțiunea \texttt{-s}.
 
-Pentru a crea un director folosim comanda \cmd{mkdir} ca mai jos:
+\subsubsection{Crearea directoarelor}
+\label{sec:file-system-dir-creation}
 
-\begin{screen}
+Pentru a crea un director folosim comanda \cmd{mkdir} ca în \labelindexref{Listing}{lst:fs:dir-create}.
+
+\begin{screen}[caption={Crearea directoarelor},label={lst:fs:dir-create}]
 student@uso:~$ mkdir games
 student@uso:~$ ls -d games/
 games/
@@ -949,7 +948,7 @@ student@uso:~$ ls -ld games/heroes/3/nighon/mutare
 drwxrwxr-x 2 student student 4096 sep 30 17:32 games/heroes/3/nighon/mutare
 \end{screen}
 
-În exemplul de mai sus am creat directorul \file{games/} iar în cadrul său am creat subdirectoarele \file{warcraft/} și \file{lol/}. Comanda \cmd{ls} afișează conținutul unui diretor; dacă dorim să afișăm informații despre director în sine folosim comanda opțiunea \texttt{-d} a comenzii \cmd{mkdir}; o formă frecventă este folosirea opțiunii \texttt{-ld} pentru afișarea informațiilor despre director în format lung, cu atribute ale directorului. În partea finală a exemplului am folosit opțiunea \texttt{-p} a comenzii \cmd{mkdir} pentru a crea un director cu toate directoarele părinte necesare chiar dacă acestea nu există.
+În \labelindexref{Listing}{lst:fs:dir-create} am creat directorul \file{games/} iar în cadrul său am creat subdirectoarele \file{warcraft/} și \file{lol/}. Comanda \cmd{ls} afișează conținutul unui diretor; dacă dorim să afișăm informații despre director în sine folosim comanda opțiunea \texttt{-d} a comenzii \cmd{mkdir}; o formă frecventă este folosirea opțiunii \texttt{-ld} pentru afișarea informațiilor despre director în format lung, cu atribute ale directorului. În partea finală a exemplului am folosit opțiunea \texttt{-p} a comenzii \cmd{mkdir} pentru a crea un director cu toate directoarele părinte necesare chiar dacă acestea nu există.
 
 În \labelindexref{Tabelul}{table:file-system-file-creation} sunt sumarizate comenzile de creare a tipurilor de intrări în sistemul de fișiere.
 
@@ -975,7 +974,7 @@ drwxrwxr-x 2 student student 4096 sep 30 17:32 games/heroes/3/nighon/mutare
 \subsection{Copiere / mutare / redenumire / ștergere}
 \label{sec:file-system-file-cp-mv-rm}
 
-Operațiile frecvente cu fișiere sunt copierea, mutarea sau redenumirea și ștergerea. Copierea înseamnă că un fișier sau director este duplicat în alt loc, și se găsește acum în două locuri. Mutarea/Redenumirea înseamnă cu un fișier sau director este acum mutat din locul său inițial în alt loc în sistemul de fișiere; spre deosebire de copiere, acum fișierul/directorul se găsește într-un singur loc. Ștergerea înseamnă eliminarea acelui fișier sau director din sistemul de fișiere; nu se va mai găsi în nici un loc.
+Operațiile frecvente cu fișiere sunt copierea, mutarea sau redenumirea și ștergerea. Copierea înseamnă că un fișier sau director este duplicat în alt loc, și se găsește acum în două locuri. Mutarea / Redenumirea înseamnă cu un fișier sau director este acum mutat din locul său inițial în alt loc în sistemul de fișiere; spre deosebire de copiere, acum fișierul / directorul se găsește într-un singur loc. Ștergerea înseamnă eliminarea acelui fișier sau director din sistemul de fișiere; nu se va mai găsi în nici un loc.
 
 Comenzile de copiere și mutare primesc doi parametri:
 
@@ -993,9 +992,9 @@ Comenzile de copiere și mutare primesc doi parametri:
 \subsubsection{Copierea}
 \label{sec:file-system-file-cp}
 
-Comanda folosită pentru a copia un fișier este \cmd{cp $[$opțiuni$]$ $<$sursă$>$ $<$destinație$>$}. Mai jos este prezentat un exemplu de copiere a unui fișier și unul de copiere a unui director. Pentru copierea unui director folosim opțiunea \texttt{-r} a comenzii \cmd{cp} pentru copiere recursivă (care trece prin toate subdirectoarele).
+Comanda folosită pentru a copia un fișier este \cmd{cp $[$opțiuni$]$ $<$sursă$>$ $<$destinație$>$}. În \labelindexref{Listing}{lst:fs:cp} este prezentat un exemplu de copiere a unui fișier și unul de copiere a unui director. Pentru copierea unui director folosim opțiunea \texttt{-r} a comenzii \cmd{cp} pentru copiere recursivă (care trece prin toate subdirectoarele).
 
-\begin{screen}
+\begin{screen}[caption={Copierea fișierelor și directoarelor},label={lst:fs:cp}]
 student@uso:~$ cp passwd passwd-copy
 student@uso:~$ ls -l passwd passwd-copy
 -rw-r--r-- 1 student student 2506 sep 30 11:28 passwd
@@ -1008,9 +1007,9 @@ student@uso:~$ diff -r uso.git/labs/ labs/
 student@uso:~$
 \end{screen}
 
-În exemplu de mai sus, în primă fază facem o copie, în același director a fișierul \file{passwd} în fișierul \file{passwd-copy}. Apoi folosim comanda \cmd{ls -l} pentru a vedea că cele două fișiere au aceeași dimensiune (\texttt{2506}). Comanda \cmd{cmp} compară două fișiere și, dacă sunt identice, nu afișează nimic. Apoi copiem un fișier dintr-o cale relativă (\file{uso.git/labs/01-fs/wiki/basics.wiki}) în directorul curent, indicat de construcția \file{.} (punct). Folosim comanda \cmd{cmp} pentru a valida că cele două fișiere sunt identice. Apoi copiem un director dintr-o cale relativă (\file{uso.git/labs/}) în directorul curent. Pentru a compara două directoare și pentru a demonstra că sunt identice, folosim comanda \cmd{diff} cu opțiunea \texttt{-r}, pentru parcurgere recursivă a argumentelor de comparat.
+În \labelindexref{Listing}{lst:fs:cp}, în primă fază facem o copie, în același director a fișierul \file{passwd} în fișierul \file{passwd-copy}. Apoi folosim comanda \cmd{ls -l} pentru a vedea că cele două fișiere au aceeași dimensiune (\texttt{2506}). Comanda \cmd{cmp} compară două fișiere și, dacă sunt identice, nu afișează nimic. Apoi copiem un fișier dintr-o cale relativă (\file{uso.git/labs/01-fs/wiki/basics.wiki}) în directorul curent, indicat de construcția \file{.} (punct). Folosim comanda \cmd{cmp} pentru a valida că cele două fișiere sunt identice. Apoi copiem un director dintr-o cale relativă (\file{uso.git/labs/}) în directorul curent. Pentru a compara două directoare și pentru a demonstra că sunt identice, folosim comanda \cmd{diff} cu opțiunea \texttt{-r}, pentru parcurgere recursivă a argumentelor de comparat.
 
-\subsubsection{Mutarea/Redenumirea}
+\subsubsection{Mutarea / Redenumirea}
 \label{sec:file-system-file-mv}
 
 Comanda folosită pentru a muta/redenumi un fișier este \cmd{mv $[$opțiuni$]$ $<$sursă$>$
@@ -1018,9 +1017,9 @@ $<$destinație$>$}. Mutarea se va face implicit recursiv și va păstra toate
 atributele fișierelor. Când se execută comanda \cmd{mv}, se schimbă doar
 părintele fișierului (sau directorului) pe care îl mutăm. Spre deosebire de comanda \cmd{cp}, comanda \cmd{mv} nu primește opțiunea \texttt{-r} pentru mutarea unui director; o intrare este mutată indiferent dacă este director sau fișier.
 
-Mai jos este un exemplu de folosire a comenzii \cmd{mv}:
+\labelindexref{Listing}{lst:fs:mv} conține exemple de folosire a comenzii \cmd{mv}.
 
-\begin{screen}
+\begin{screen}[caption={Mutarea / Redenumirea fișierelor și directoarelor},label={lst:fs:mv}]
 student@uso:~$ mv basics.wiki 01-fs-basics.wiki
 student@uso:~$ ls basics.wiki 01-fs-basics.wiki
 ls: cannot access 'basics.wiki': No such file or directory
@@ -1037,17 +1036,13 @@ student@uso:~$ ls labs-old/
 00-intro  01-fs  02-process  03-user  04-appdev  05-cli  06-hw-boot  07-storage  08-net  09-vm  10-sec  11-ctf
 \end{screen}
 
-În exemplul de mai sus am redenumit fișierul \file{basics.wiki} în \file{02-fs-basics.wiki}. Am mutat fișierul \file{passwd-copy} în subdirectorul \file{Downloads/}, dat prin cale relatativă. Și am redenumit directorul \file{labs/} în \file{labs-old/}. La fiecare operație de mutare/redenumire am verificat că vechea intrare nu mai este disponibilă, dar este disponibilă noua intrare.
+În \labelindexref{Listing}{lst:fs:mv} am redenumit fișierul \file{basics.wiki} în \file{02-fs-basics.wiki}. Am mutat fișierul \file{passwd-copy} în subdirectorul \file{Downloads/}, dat prin cale relatativă. Și am redenumit directorul \file{labs/} în \file{labs-old/}. La fiecare operație de mutare/redenumire am verificat că vechea intrare nu mai este disponibilă, dar este disponibilă noua intrare.
 
 \subsubsection{Ștergerea fișierelor/directoarelor}
 \label{sec:file-system-file-rm}
 
-Ștergerea unei intrări înseamnă eliminarea acelei intrări și a conținutului său din sistemul de fișiere.
-
-Comanda cea mai folosită pentru ștergerea fișierelor și directoarelor este
-\cmd{rm $[$opțiuni$]$ $<$cale$>$}.
-
-Opțiunile cele mai des folosite pentru această comandă sunt:
+Ștergerea unei intrări înseamnă eliminarea acelei intrări și a conținutului său din sistemul de fișiere. Comanda cea mai folosită pentru ștergerea fișierelor și directoarelor este
+\cmd{rm $[$opțiuni$]$ $<$cale$>$}. Opțiunile cele mai des folosite pentru această comandă sunt:
 
 \begin{itemize}
 	\item \texttt{-r/-R}: se utilizează atunci când se dorește ștergerea recursivă a unui director
@@ -1064,9 +1059,9 @@ Dacă dorim să ștergem un director gol, putem să folosim comanda
 \cmd{rmdir $<$director_gol$>$}
 \end{note}
 
-Mai jos este un exemplu de folosire a comenzilor \cmd{rm} și \cmd{rmdir}.
+\labelindexref{Listing}{lst:fs:rm} conține exemple de folosire a comenzilor \cmd{rm} și \cmd{rmdir}.
 
-\begin{screen}
+\begin{screen}[caption={Ștergerea fișierelor și directoarelor},label={lst:fs:rm}]
 student@uso:~$ ls
 02-fs-basics.wiki  Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos  examples.desktop  labs-old  passwd  readme_link  uso.git  vm-actions-log.txt
 student@uso:~$ rm 02-fs-basics.wiki
@@ -1081,16 +1076,16 @@ student@uso:~$ ls
 Desktop  Documents  Music  Pictures  Public  Templates  Videos  examples.desktop  uso.git  vm-actions-log.txt
 \end{screen}
 
-În exemplul de mai sus am șters, folosind comanda \cmd{rm} fișierele \file{basics-wiki} și \file{passwd} și legătura simbolică \file{readme_link}. Apoi am șters recursiv (folosind opțiunea \texttt{-fr} (de la \textit{force and recursive}) directorul \file{labs-old/}. Comanda \cmd{rmdir} poate șterge un director doar dacă acesta este gol; pentru aceasta am șters toate fișierele din directorul \file{Downloads/} folosind construcția \file{Downloads/*}; apoi am folosit comanda \cmd{rmdir} pentru a șterge directorul. Am folosit comanda \cmd{ls} la început și la sfârșit pentru a demonstra ștergerea fișierelor.
+În \labelindexref{Listing}{lst:fs:rm} am șters, folosind comanda \cmd{rm} fișierele \file{basics-wiki} și \file{passwd} și legătura simbolică \file{readme_link}. Apoi am șters recursiv (folosind opțiunea \texttt{-fr} (de la \textit{force and recursive}) directorul \file{labs-old/}. Comanda \cmd{rmdir} poate șterge un director doar dacă acesta este gol; pentru aceasta am șters toate fișierele din directorul \file{Downloads/} folosind construcția \file{Downloads/*}; apoi am folosit comanda \cmd{rmdir} pentru a șterge directorul. Am folosit comanda \cmd{ls} la început și la sfârșit pentru a demonstra ștergerea fișierelor.
 
 \subsection{Căutarea fișierelor}
 \label{sec:file-system-file-search}
 
 Structura ierarhică a sistemului de fișiere permite găsirea rapidă a unui fișier parcurgând pe rând subdirectoarele care-l conțin. Chiar și așa sunt situații în care nu se știe precis unde este localizat un fișier sa un director și este utilă căutarea acestuia. Pentru a căuta un fișier după numele său există două tipuri de căutări:
-\begin{enumerate}
+\begin{itemize}
   \item \textbf{căutare indexată} în care fișierele sunt inspectate și informațiile despre localizarea lor sunt reținute într-o bază de date cu fișierele indexată;
   \item \textbf{căutare exhaustivă} în cadrul unei zone din ierarhia sistemului de fișiere, trecând prin toate fișierele
-\end{enumerate}
+\end{itemize}
 
 Pentru căutare indexată folosim, în Linux, comanda \cmd{locate} (și comanda \cmd{updatedb}). Pentru căutare exhaustivă folosim, în Linux, comanda \cmd{find}. Le prezentăm în continuare.
 
@@ -1105,9 +1100,9 @@ Comanda \cmd{locate} caută în toate fișierele indexate într-o bază de date 
 
 Rezultatul rulării comenzii este o listă cu toate fișierele al căror nume conține șirul de caractere trimis ca argument.
 
-În exemplul următor se caută toate fișierele al căror nume conține șirul \texttt{pwd}:
+În \labelindexref{Listing}{lst:fs:locate} se caută toate fișierele al căror nume conține șirul \texttt{pwd}.
 
-\begin{screen}
+\begin{screen}[caption={Căutarea fișierelor folosind locate},label={lst:fs:locate}]
 student@uso:~$ locate pwd
 /bin/pwd
 /etc/.pwd.lock
@@ -1136,9 +1131,15 @@ dimensiune, dată și altele. Exemple de opțiuni ale comenzii \cmd{find} pentru
 	\item \texttt{-size} - căutare după dimensiunea fișierelor
 \end{itemize}
 
-Pentru a căuta în ierarhia \cmd{/usr/} toate legăturile simbolice, folosim comanda \cmd{find} astfel:
+Mai jos avem câteva exemple de folosire a comenzii \cmd{find}:
 
-\begin{screen}
+\begin{itemize}
+  \item în \labelindexref{Listing}{lst:fs:find-symlinks} căutăm în ierarhia \cmd{/usr/} toate legăturile simbolice
+  \item în \labelindexref{Listing}{lst:fs:find-name} căutăm în ierarhia \cmd{/usr/} toate fișierele care au numele \texttt{stat}
+  \item în \labelindexref{Listing}{lst:fs:find-size} obținem fișierele care au o dimensiune mai mare de \texttt{500KB}
+\end{itemize}
+
+\begin{screen}[caption={Afișarea link-urilor simbolice din ierarhia /usr/},label={lst:fs:find-symlinks}]
 student@uso:~$ find /usr/ -type l
 /usr/lib/pm-utils/sleep.d/95hdparm-apm
 /usr/lib/libgjs.so.0
@@ -1153,9 +1154,7 @@ student@uso:~$ find /usr/ -type l
 [...]
 \end{screen}
 
-Pentru a căuta în ierarhia \cmd{/usr/} toate fișierele care au numele \texttt{stat} se folosește comanda \cmd{find} astfel:
-
-\begin{screen}
+\begin{screen}[caption={Afișarea fișierelor cu numele stat din ierarhia /usr/},label={lst:fs:find-name}]
 student@uso:~$ find /usr -name stat
 /usr/bin/stat
 /usr/src/linux-headers-4.15.0-29-generic/include/config/f2fs/stat
@@ -1163,9 +1162,9 @@ student@uso:~$ find /usr -name stat
 /usr/src/linux-headers-4.15.0-34-generic/include/config/f2fs/stat
 \end{screen}
 
-Pentru a obține fișierele ce au o mărime mai mare de 500KB, folosim comanda:
+Pentru a 
 
-\begin{screen}
+\begin{screen}[caption={Afișarea fișierelor cu o dimensiune mai mare de 500KB din ierarhia /usr/},label={lst:fs:find-size}]
 student@uso:~$ find /usr/ -size +500k
 /usr/lib/gnome-shell/gnome-shell-portal-helper
 /usr/lib/gnome-shell/libgnome-shell.so
@@ -1183,9 +1182,9 @@ student@uso:~$ find /usr/ -size +500k
 \subsubsection{Căutarea comenzilor}
 \label{sec:file-system-cmd-search}
 
-Uneori dorim să identificăm o comandă, sau executabilul aferent unei comenzi. Pentru aceasta folosim comenzile \cmd{whereis}, \cmd{which} și \cmd{type}.
+Uneori dorim să identificăm o comandă sau executabilul aferent unei comenzi. Pentru aceasta folosim comenzile \cmd{whereis}, \cmd{which} și \cmd{type}.
 
-Comanda \cmd{whereis} este utilizată pentru căutarea locurilor corespunzătoare unei comenzi în sistemul de fișiere De exemplu, pentru a localiza comanda \cmd{ls}, folosim următoarea comandă:
+Comanda \cmd{whereis} este utilizată pentru căutarea locurilor corespunzătoare unei comenzi în sistemul de fișiere De exemplu, pentru a localiza comanda \cmd{ls}, folosim:
 
 \begin{screen}
 student@uso:~$ whereis ls
@@ -1194,7 +1193,7 @@ ls: /bin/ls /usr/share/man/man1/ls.1posix.gz /usr/share/man/man1/ls.1.gz
 
 Comanda afișează calea atât către executabil și către pagina de manual a comenzii.
 
-Dacă dorim doar obținerea căii către executabilul aferent comenzii, folosim comanda \cmd{which}. De exemplu, comanda următoare afișează calea către executabilul aferent comenzii \cmd{chmod}.
+Dacă dorim doar obținerea căii către executabilul aferent comenzii, folosim comanda \cmd{which}. De exemplu, comanda următoare afișează calea către executabilul aferent comenzii \cmd{chmod}:
 
 \begin{screen}
 student@uso:~$ which chmod
@@ -1206,21 +1205,18 @@ altei comenzi, de exemplu comandă integrată în shell (numită și internă),
 comandă externă sau alias. Mai multe despre comenzi în shell, interne și
 externe, vor fi prezentate în \labelindexref{Capitolul}{chapter:cli}.
 
-Un exemplu de comandă integrată in shell este comanda \cmd{cd} în vreme ce o comanda externă, care are un executabil asociat, este comanda \cmd{cat}, așa cum putem vedea în exemplul de mai jos:
+Un exemplu de comandă integrată in shell este comanda \cmd{cd} în vreme ce o comanda externă, care are un executabil asociat, este comanda \cmd{cat}, așa cum putem vedea în \labelindexref{Listing}{lst:fs:type}.
 
-\begin{screen}
+\begin{screen}[caption={Tipul unei comenzi},label={lst:fs:type}]
 student@uso:~$ type cd
 cd is a shell builtin
 student@uso:~$ type cat
 cat is /bin/cat
-\end{screen}
-
-În cazul unui alias se va afișa comanda echivalentă:
-
-\begin{screen}
 student@uso:~$ type ls
 ls is aliased to `ls --color=auto'
 \end{screen}
+
+În cazul unui alias de comandă, comanda \cmd{type} va preciza că este un alias așa cum reiese din liniile 5 și 6 din \labelindexref{Listing}{lst:fs:type}.
 
 \subsection{Arhivarea și dezarhivarea fișierelor}
 \label{sec:file-system-archiving}
@@ -1243,9 +1239,9 @@ inițiale necomprimate precum și informațiile legate de modul lor de extragere
 această cauză fișierele \texttt{.tar} au o dimensiune mai mare decât suma dimensiunilor
 fișierelor care îl alcătuiesc.
 
-În continuare sunt prezentate exemple de folosire ale comenzii \cmd{tar}:
+\labelindexref{Listing}{lst:fs:tar} prezintă exemple de folosire ale comenzii \cmd{tar}.
 
-\begin{screen}
+\begin{screen}[caption={Folosirea comenzii tar},label={lst:fs:tar}]
 student@uso:~$ tar cvf 01-fs.tar uso.git/labs/01-fs/
 uso.git/labs/01-fs/
 uso.git/labs/01-fs/wiki/
@@ -1295,9 +1291,9 @@ Cele mai folosite utilitare în Linux care realizează comprimarea unui fișier 
 
 Comanda \cmd{tar} poate să utilizeze oricare dintre programele de
 compresie de mai sus și se folosește de parametrul \texttt{z} pentru gzip și
-\texttt{j} pentru bzip2 ca mai jos:
+\texttt{j} pentru bzip2 ca în \labelindexref{Listing}{lst:fs:tar-zip}.
 
-\begin{screen}
+\begin{screen}[caption={Arhivarea cu compresie folosind tar},label={lst:fs:tar-zip}]
 student@uso:~$ tar czf 01-fs.tar.gz uso.git/labs/01-fs/
 student@uso:~$ tar cjf 01-fs.tar.bz2 uso.git/labs/01-fs/
 student@uso:~$ file 01-fs.tar.*
@@ -1305,7 +1301,7 @@ student@uso:~$ file 01-fs.tar.*
 01-fs.tar.gz:  gzip compressed data, last modified: Sun Sep 30 17:02:19 2018, from Unix
 \end{screen}
 
-În exemplul de mai sus am folosit, respectiv, opțiunea \texttt{z} (în cadrul opțiunii \texttt{czf}) pentru a comprima folosind \cmd{gzip}, și apoi opțiunea \texttt{j} (în cadrul opțiunii \texttt{cjf}) pentru a comprima folosind \cmd{bzip2}. Apoi am folosit comanda \cmd{file} pentru a verifica tipul fișierelor și am confirmat tipul de compresie aferent celor două fișiere rezultate.
+În \labelindexref{Listing}{lst:fs:tar-zip} am folosit, respectiv, opțiunea \texttt{z} (în cadrul opțiunii \texttt{czf}) pentru a comprima folosind \cmd{gzip}, și apoi opțiunea \texttt{j} (în cadrul opțiunii \texttt{cjf}) pentru a comprima folosind \cmd{bzip2}. Apoi am folosit comanda \cmd{file} pentru a verifica tipul fișierelor și am confirmat tipul de compresie aferent celor două fișiere rezultate.
 
 Există, de asemenea, posibilitatea folosirii și a altor opțiuni, în afară de
 cele de compresare și arhivare, cele mai utilizare fiind \texttt{-{}-preserve},
@@ -1451,19 +1447,16 @@ fișier trebuie să redirectăm mai întâi ieșirea de erori către stdout
 (\texttt{2$>$\&1}) și apoi să redirectăm ieșirea standard într-un fișier
 (\file{fișier_erori_și_ieșiri}).
 
-Exemplu de redirectare a intrării:
+\labelindexref{Listing}{lst:fs:redirect-stdin} conține redirectarea intrării standard comenzii \cmd{mail} din conținutul
+fișierului \file{message.txt}. Utilizatorului \texttt{gabriel} i se va trimite un email cu informațiile din fișier.
 
-\begin{screen}
+\begin{screen}[caption={Redirectarea intrării standard},label={lst:fs:redirect-stdin}]
 student@uso:~$ mail gabriel < message.txt
 \end{screen}
 
-În comanda anterioară intrarea pentru comanda \cmd{mail} este redirectată din conținutul
-fișierului \file{message.txt}. Utilizatorului \texttt{gabriel} i se va trimite un email cu informațiile din
-fișier.
+Similar, \labelindexref{Listing}{lst:fs:redirect-stdout} conține comanda care va scrie în fișierul \file{listare} toate fișierele și directoarele ce se află în directorul curent.
 
-Comanda următoare va scrie în fișierul listare toate fișierele și directoarele ce se află în directorul curent.
-
-\begin{screen}
+\begin{screen}[caption={Reidrectarea ieșirii standard},label={lst:fs:redirect-stdout}]
 student@uso:~$ ls > listare
 student@uso:~$ cat listare
 01-fs.tar
@@ -1484,9 +1477,9 @@ uso.git
 vm-actions-log.txt
 \end{screen}
 
-Pentru a adăuga la sfârșitul fișierului rezultatul unei comenzi folosim operatorul $>>$:
+Pentru a adăuga la sfârșitul fișierului rezultatul unei comenzi folosim operatorul $>>$ ca în \labelindexref{Listing}{lst:fs:redirect-append}.
 
-\begin{screen}
+\begin{screen}[caption={Redirectarea cu adăugare (append)},label={lst:fs:redirect-append}]
 student@uso:~$ date >> listare
 student@uso:~$ cat listare
 [...]
@@ -1494,19 +1487,19 @@ vm-actions-log.txt
 duminica 30 septembrie 2018, 20:17:50 +0300
 \end{screen}
 
-Comanda de mai jos încearcă să copieze un fișier fără a spune unde dorește să-l
+În \labelindexref{Listing}{lst:fs:redirect-stderr} este redirectată ieșirea de eroare standard. Comanda de la linia 1 încearcă să copieze un fișier fără a spune unde dorește să-l
 copieze, comandă ce va genera o eroare care va fi redirectată în fișierul \file{errors.out}.
 
-\begin{screen}
+\begin{screen}[caption={Redirectarea ieșirii de eroare standard},label={lst:fs:redirect-stderr}]
 student@uso:~$ cp listare 2> errors.out
 student@uso:~$ cat errors.out
 cp: missing destination file operand after 'listare'
 Try 'cp --help' for more information.
 \end{screen}
 
-Comanda următoare va scrie atât erorile cât și rezultatele comenzii \cmd{strace ls} în fișierul \file{strace-all.out}:
+Putem redirecta și ieșirea standard și ieșirea de eraore standard în același fișier. În \labelindexref{Listing}{lst:fs:redirect-both}, atât ieșirea standard cât și ieșirea de eroare standard ale comenzii \cmd{strace ls} de pe linia 1 vor fi redirectate în fișierul \file{strace-all.out}.
 
-\begin{screen}
+\begin{screen}[caption={Redirectarea ieșirii standard și ieșirii de eroare standard în același fișier},label={lst:fs:redirect-both}]
 student@uso:~$ strace ls > strace-all.out 2>&1
 student@uso:~$ cat strace-all.out
 execve("/bin/ls", ["ls"], 0x7ffd95189350 /* 36 vars */) = 0
