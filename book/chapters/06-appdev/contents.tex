@@ -169,7 +169,7 @@ numește compilare. Astfel, instrucțiunile specifice limbajului de programare
 sunt transformate de compilator în instrucțiuni pe care procesorul le înțelege.
 
 În procesul de compilare codul sursă este prelucrat și trece prin mai multe
-etape intermediare:
+etape intermediare ca în \labelindexref{Figura}{fig:appdev:compile-phases}.
 
 \begin{enumerate}
 	\item Compilare - codul sursă este transformat în cod în limbaj de
@@ -182,7 +182,13 @@ etape intermediare:
 		implementarea funcției trebuie legată de apelul ei.
 \end{enumerate}
 
-TODO - schemă
+\begin{figure}[htbp]
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/06-appdev/img/comp-steps.svg}
+  \caption{Etapele compilării}
+  \label{fig:appdev:compile-phases}
+\end{figure}
 
 În teorie, pentru fiecare limbaj de programare ar trebui să existe un compilator
 care să cunoască gramatica specifică acestuia, gramatica și instrucțiunile
@@ -192,9 +198,16 @@ mașină.
 Pentru că există un număr foarte mare de limbaje și un număr mare de procesoare
 diferite, în practică, nu avem cate un compilator diferit. În general, există
 framework-uri de compilator care au suport pentru mai multe limbaje de programare (de exemplu C sau C++ sau D), respectiv alte
-componente care au suport pentru mai multe arhitecturi de procesor (de exemplu x86 sau ARM sau MIPS). Astfel, un compilator poate genera cod pentru diferite arhitecturi pornind de la diferite tipuri de limbaje. În general aceste compilatoare au un limbaj intern, numit limbaj intermediar care facilitează aceste traduceri din limbaj în cod mașină de procesor, așa cum este indicat în figura TODO.
+componente care au suport pentru mai multe arhitecturi de procesor (de exemplu x86 sau ARM sau MIPS). Astfel, un compilator poate genera cod pentru diferite arhitecturi pornind de la diferite tipuri de limbaje. În general aceste compilatoare au un limbaj intern, numit limbaj intermediar care facilitează aceste traduceri din limbaj în cod mașină de procesor, așa cum este indicat în \labelindexref{Figura}{fig:appdev:intermediary}.
 
-TODO - schemă
+\begin{figure}[htbp]
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/02-fs/def-fs.svg}
+  \caption{Traducerea în limbaj intermediar}
+  \label{fig:appdev:intermediary}
+  % TODO - schemă cu folosirea unui limbaj intermediar
+\end{figure}
 
 \subsection{Exemple de limbaje de programare compilate}
 \label{sec:appdev-langs-comp-ex}
@@ -351,15 +364,6 @@ același cod de mai multe ori, deci făcând procesul și mai eficient. Totuși,
 deosebire de compilarea ahead-of-time, JIT \abbrev{JIT}{just-in-time} are un
 timp de execuție mai mare, dar timpul de pornire al aplicației scade.
 
-TODO - schema trebuie schimbata (e luata de pe Internet)
-\begin{figure}[htbp]
-	\centering
-	\def\svgwidth{\columnwidth}
-	\includesvg{chapters/06-appdev/img/comp-steps.svg}
-	\caption{Etapele compilării}
-\end{figure}
-
-
 \subsection{Exemple de limbaje de programare hibride}
 \label{sec:appdev-langs-hybrid-ex}
 
@@ -416,7 +420,7 @@ scripturi simple. Este de asemenea foarte folosit în educație, codul sursă fi
 ușor de urmărit. În plus, Python impune reguli de indentare, ceea ce îl face
 potrivit ca prim limbaj de programare care obișnuiește elevii cu necesitatea de
 a indenta codul. Limbajul mai este folosit în cercetare, find o variantă mai
-“ușoară” față de alte limbaje științifice cum ar fi Matlab, R sau Julia.
+,,ușoară'' față de alte limbaje științifice cum ar fi Matlab, R sau Julia.
 
 O altă utilizare a limbajului Python este pentru dezvoltarea de servere web, cu
 ajutorul bibliotecilor Flask și Django. În ultimii ani a început să piardă teren
@@ -469,7 +473,7 @@ ne ajută în procesul de dezvoltare cum ar fi:
 \begin{itemize}
 	\item indentarea automată a codului
 	\item evidențierea cuvintelor cheie
-	\item semnalarea erorilor.
+	\item semnalarea erorilor
 \end{itemize}
 
 Ținând cont de numărul mare de limbaje de programare existente, fiecare cu
@@ -498,30 +502,30 @@ acest lucru poate reprezenta un avantaj aducând rapiditate în folosire, pentru
 începători, lipsa cursorului și necesitatea de a memora comenzi îngreunează
 folosirea editorului.
 
-Deoarece multi programatori sunt foarte familiari cu comenzile din vim, o parte
+Deoarece multi programatori sunt foarte familiari cu comenzile din Vim, o parte
 din editoarele de text ce au interfață grafică oferă și posibilitatea folosirii
-comenzilor din vim.
+comenzilor din Vim.
 
 Chiar dacă există multe variante de editoare mai intuitive, vă recomandam
-familiarizarea cu vim, sau chiar cu varianta redusă, vi, tocmai pentru că este
+familiarizarea cu Vim, sau chiar cu varianta redusă, vi, tocmai pentru că este
 unul din puținele editoare disponibile pe orice sistem Unix.
 
-Pentru familiarizarea cu vim și comenzile de bază, recomandăm parcurgerea
-tutorialului vimtutor. Este suficient să rulați comanda vimtutor în terminal și
+Pentru familiarizarea cu Vim și comenzile de bază, recomandăm parcurgerea
+tutorialului \cmd{vimtutor}. Este suficient să rulați comanda \cmd{vimtutor} în terminal și
 tutorialul va începe.
 
 Deși putem găsi vi pe orice sistem Unix, doar unele distribuții vin cu editorul
-vim instalat. Pentru a instala vim este suficient să rulăm comanda \cmd{apt-get
+vim instalat. Pentru a instala Vim este suficient să rulăm comanda \cmd{apt-get
 install vim}.
 
 \subsubsection{Nano, Pico și Emacs}
 \label{sec:appdev-textedit-nano-pico-emacs}
 
-Alte editoare similare cu vim, care funcționează tot în linie de comandă, sunt
-nano și emacs. La fel ca vim, este se găsesc frecvent pe sistemele Unix, sunt
+Alte editoare similare cu Vim, care funcționează tot în linie de comandă, sunt
+Nano, Pico și Emacs. La fel ca Vim, este se găsesc frecvent pe sistemele Unix, sunt
 folosite la editarea rapidă, cum ar fi editarea unor fișiere de configurare.
 
-Similar cu vim, pentru instalarea nano sau emacs, este suficient să rulăm în
+Similar cu Vim, pentru instalarea Nano, Pico sau Emacs, este suficient să rulăm în
 terminal comanda \cmd{apt-get install nano}, \cmd{apt-get install pico} sau
 \cmd{apt-get install emacs}.
 
@@ -531,7 +535,7 @@ terminal comanda \cmd{apt-get install nano}, \cmd{apt-get install pico} sau
 \subsubsection{Sublime Text}
 \label{sec:appdev-graphicedit-sublime}
 
-Sublime Text este un editor de cod avansat. El permite crearea sau editarea
+Sublime Text este un editor de cod avansat. Permite crearea sau editarea
 facilă a unor programe complexe, alcătuite din mai multe fișiere. Pe lângă
 posibilitatea de a edita structura de fișiere și directoare a proiectului,
 editorul recunoaște limbajele de programare cele mai folosite și evidențiază
@@ -576,7 +580,7 @@ adresa https://code.visualstudio.com/Download/.
 Am vorbit despre editoare și importanța lor în dezvoltarea programelor. Pe lângă
 editoare avansate, avem posibilitatea de a folosi medii integrate de dezvoltare.
 La o primă vedere, acestea sunt similare cu editoarele de text. IDE
-\abbrev{IDE}{Integrated Development environment}-urile au, în schimb, anumite
+\abbrev{IDE}{Integrated Development Environment}-urile au, în schimb, anumite
 funcționalități avansate, multe din ele fiind adaptate unui singur limbaj de
 programare, sau unui număr redus de limbaje. În primul rând, orice IDE are
 integrat un compilator sau interpretor pentru limbajul sau limbajele de
@@ -603,9 +607,15 @@ Multe din limbajele de programare existente sunt folosite pentru dezvoltarea de
 aplicații grafice, cum ar fi Objective-C pentru aplicații iOS. Pentru aceste
 cazuri, IDE-urile oferă un mediu vizual pentru dezvoltarea interfeței grafice în
 care programatorul poate să construiască vizual interfața și codul specific este
-generat automat.
+generat automat, ca în \labelindexref{Figura}{fig:appdev:gui-interface}.
 
-TODO - poza cu exemplu
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth]{chapters/06-appdev/img/screenshot.png}
+  \caption{Construirea vizuală a interfeței unei aplicații într-un IDE}
+  \label{fig:appdev:gui-interface}
+  % TODO - poza cu exemplu
+\end{figure}
 
 Un alt avantaj important al mediilor de dezvoltare integrate sunt metodele
 avansate de a depana programele. Folosind sistemul de depanare integrat în IDE,
@@ -700,20 +710,18 @@ folosite, pasul final este să rulăm programul. Complexitatea acestui pas depin
 de complexitatea programului obținut. Pentru un program simplu, cu un fișier
 care conține codul sursă și care nu folosește nicio bibliotecă, în general, este
 suficient să specificăm fișierul sursă și compilatorul sau interpretorul se
-ocupă de restul procesului.
+ocupă de restul procesului. \labelindexref{Listing}{lst:appdev:simple-compile} conține comanda de compilare și de rulare a unui program simplu.
 
-
-\begin{screen}
+\begin{screen}[caption={Compilarea și rularea unui program simplu},label={lst:appdev:simple-compile}]
 gcc main.c -o main
 ./main
 \end{screen}
 
 În cazul unui program complex care conține mai multe fișiere și folosește
 biblioteci sau framework-uri, vom rula comenzi mai complexe, care specifică
-elementele folosite și dependența între fișiere.
+elementele folosite și dependența între fișiere, ca în \labelindexref{Listing}{lst:appdev:multiple-compile}
 
-
-\begin{screen}
+\begin{screen}[caption={Compilarea și rularea unui program din mai multe surse},label={lst:appdev:multiple-compile}]
 gcc -c utils.c
 gcc -c main.c
 gcc utils.o main.o -o main
@@ -770,17 +778,17 @@ compilatorului, este suficient să rulăm comanda standard pentru instalarea
 pachetelor (apt sau yum în funcție de distribuția folosită).
 
 Pentru sistemele derivate din Debian, există un pacet special numit
-\textit{build-essential}.
+\textit{build-essential}, instalabil folosind comanda:
 
 \begin{screen}
-apt-get install build-essential
+sudo apt install build-essential
 \end{screen}
 
 Pentru sistemele derivate din Redat, precum Fedora, CentOS etc. trebuie
-instalate pachetele separat:
+instalate pachetele separat folosind comanda:
 
 \begin{screen}
-yum install make gcc g++
+sudo dnf install make gcc g++
 \end{screen}
 
 Toate aceste pachete vor instala și limbajul C++.
@@ -803,9 +811,9 @@ compilarea limbajului C++.
 
 La folosirea gcc, sistemul analizează fișierele de intrare și hotărăște dacă
 limbajul compilat este C sau C++. Pentru a eficientiza procesul, se poate folosi
-direct g++, adică compilatorul de C++ integrat în gcc.
+direct g++, adică compilatorul de C++ integrat în gcc, ca în \labelindexref{Listing}{lst:appdev:simple-cpp}.
 
-\begin{screen}[caption={Exemplu compilare si rulare C++}]
+\begin{screen}[caption={Exemplu compilare si rulare C++},label={lst:appdev:simple-cpp}]
 g++ main.cpp -o main
 ./main
 \end{screen}
@@ -838,45 +846,32 @@ etape intermediare:
 \end{enumerate}
 
 La simpla rulare a comenzii \cmd{gcc}, se trece prin toate etapele menționate.
-De exemplu, pentru un program C simplu (main.c fără nicio bibliotecă) vom rula
-următoarea comandă pentru a genera executabilul main.out.
-
-\begin{screen}
-gcc main.c -o main.out
-./main.out
-\end{screen}
+De exemplu, pentru un program C simplu (\texttt{main.c} fără nicio bibliotecă) vom rula comenzile indicate în \labelindexref{Listing}{lst:appdev:simple-compile}.
 
 În schimb, pentru programe mai complexe, alcătuite din mai multe fișiere, e
 necesar să generăm fișierul obiect aferent fiecărui fișier sursă și apoi sa le
-link-edităm pentru a obține executabilul final.
-
-\begin{screen}
-gcc -c utils.c
-gcc -c main.c
-gcc utils.o main.o -o main.out
-./main.out
-\end{screen}
+link-edităm pentru a obține executabilul final, așa cum am indicat în \labelindexref{Listing}{lst:appdev:multiple-compile}.
 
 Cum am menționat mai devreme, este obositor să rulăm toate comenzile de mai sus
 pentru fiecare modificare adusă în codul sursă. De aceea există posibilitatea de
 a crea un fișier care conține toate aceste comenzi și care le poate rula pe
 toate printr-un singur apel.
 
-Utilitarul de automatizare cel mai folosit pentru aplicațiile C/C++ este make.
-Pentru a folosi make e suficient să creăm un fișier cu numele Makefile în
+Utilitarul de automatizare cel mai folosit pentru aplicațiile C/C++ este utilitarul Make.
+Pentru a folosi Make e suficient să creăm un fișier cu numele \file{Makefile} în
 structura programului nostru. La rularea comenzii \cmd{make}, utilitarul găsește
 acel fișier și execută instrucțiunile descrise.
 
-Formatul unui fișier makefile este următorul:
+Un fișier \file{Makefile} urmează formatul din \labelindexref{Listing}{lst:appdev:makefile-format}.
 
-\begin{screen}
-Regula: dependinte
+\begin{screen}[caption={Formatul unui fișier Maefile},label={lst:appdev:makefile-format}]
+Regula: dependente
 <TAB> comanda
 \end{screen}
 
-Fișierul poate să conțină mai multe astfel de linii.
+Fișierul poate să conțină mai multe astfel de linii, precum fișierul \file{Makefile} din \labelindexref{Listing}{lst:appdev:makefile}.
 
-\begin{screen}[caption={Exemplu Makefile}]
+\begin{screen}[caption={Exemplu Makefile},label={lst:appdev:makefile}]
 build: utils.o hello.o help.o
        gcc utils.o help.o hello.o -o hello
 
@@ -896,25 +891,25 @@ clean:
        rm -f *.o hello
 \end{screen}
 
-Regula reprezintă numele unei instrucțiuni. La simpla rulare a comenzii make
+Regula reprezintă numele unei instrucțiuni. La simpla rulare a comenzii \cmd{make}
 prima regulă din fișier este cea care va fi executată. În schimb, dacă vom scrie
-make clean, se va executa comanda aferentă regulii clean.
+\cmd{make clean}, se va executa comanda aferentă regulii \texttt{clean}.
 
-Dependințele sunt fișiere și/sau reguli necesare pentru a putea rula o regulă.
-Practic, la rularea unei reguli se verifică dacă fișierul din dependință există.
+Dependențele sunt fișiere și/sau reguli necesare pentru a putea rula o regulă.
+Practic, la rularea unei reguli se verifică dacă fișierul din dependență există.
 Dacă acesta există, putem rula regula, dacă nu, se caută o altă regulă cu acel
-nume și se va rula acea regulă (dacă dependințele ei sunt îndeplinite, dacă nu,
-se continuă lanțul de dependințe). Bineînțeles, sunt cazuri în care dependințele
+nume și se va rula acea regulă (dacă dependențele ei sunt îndeplinite, dacă nu,
+se continuă lanțul de dependențe). Bineînțeles, sunt cazuri în care dependențele
 pot să lipsească.
 
 Acum să luăm cazul programului dezvoltat mai sus, care depinde de mai multe
 fișiere și să presupunem că am schimbat o linie într-un fișier. La rularea
-comenzii make, toate fișierele ar fi refăcute, ceea ce nu este eficient. De
-aceea, make ține cont de încă un aspect la verificarea dependințelor. Dacă
-dependința (fișierul) există, make va urmări lanțul de dependințe până ajunge la
+comenzii \cmd{make}, toate fișierele ar fi refăcute, ceea ce nu este eficient. De
+aceea, \cmd{make} ține cont de încă un aspect la verificarea dependențelor. Dacă
+dependența (fișierul) există, \cmd{make} va urmări lanțul de dependențe până ajunge la
 fișierele de baza ale acesteia. Dacă fișierele au fost modificate după ce
-dependința a fost creată, aceasta va fi regenerată, în caz contrar nu se va
-regenera dependința.
+dependența a fost creată, aceasta va fi regenerată, în caz contrar nu se va
+regenera dependența.
 
 \subsection{Java}
 \label{sec:appdev-ideinstall-java}
@@ -945,13 +940,7 @@ compilator. Ea este inclusă în JDK, dar poate fi instalată și separat. Astfe
 putem avea sisteme care doar rulează aplicații Java și care necesită bytecode-ul
 generat de JDK.
 
-Pe sisteme Linux putem instala openJDK folosind comenzile standard de instalare
-de aplicații.
-
-\begin{screen}
-sudo apt-get update
-sudo apt-get install openjdk-8-jdk
-\end{screen}
+Pe sisteme Linux OpenJDK este într-un pachet cu numele de forma \texttt{openjdk-X-jdk}, unde \texttt{X} este numele versiunii. De exemplu, pe Ubuntu 18.04 pachetul este \texttt{openjdk-8-jdk}.
 
 Pentru sisteme care rulează Windows, se recomandă instalarea OracleJDK. Deși se
 găsesc versiuni OpenJDK compatibile cu Windows, acestea nu sunt întreținute și
@@ -970,17 +959,14 @@ dezvoltăm. Fișierul jar conține resurse diverse, de la definiții de clase la
 imagini sau alte fișiere multimedia. Fiecare astfel de arhivă poate conține un
 fișier manifest ce oferă informații despre pachet și despre utilizarea sa.
 
-
 \subsection{C\#}
 \label{sec:appdev-ideinstall-cs}
 
 Pentru C\# sistemul de execuție este .NET, dezvoltat de Microsoft. Așadar,
 sistemele cu Windows au deja sistemul instalat.
 
-Pentru sisteme Unix, se recomanda folosirea mono. Mono este platforma
+Pentru sisteme Unix, se recomanda folosirea Mono, cu ajutorul pachetului \texttt{mono-devel}. Mono este platforma
 open-source pentru C\#, susținută tot de Microsoft.
-
-sudo apt install mono-devel
 
 \subsubsection{Dezvoltarea în C\#}
 \label{sec:appdev-ideinstall-cs-dev}
@@ -997,13 +983,7 @@ La fel ca Java, Python e un limbaj de programare hibrid. Diferența între cele
 două este că pentru Python nu se diferențiază compilatorul de mașina virtuală,
 cele două sunt integrate.
 
-Pentru a folosi Python pe un sistem Unix este suficient să rulăm comanda
-\cmd{apt-get install python+<versiune>}.
-
-\begin{screen}
-sudo apt-get update
-sudo apt-get install python3.6
-\end{screen}
+Pentru a folosi Python pe un sistem Unix este suficient să instalăm pachetul \texttt{python}.
 
 Pentru sistemele Windows, site-ul \textit{python.org} ne oferă resursele
 necesare pentru instalare.
@@ -1027,9 +1007,9 @@ ii spunem acestuia care e programul pe care dorim să îl interpreteze.
 Pentru că în general vom lucra la proiecte complexe, care conțin mai multe
 fișiere, similar cu programele din C, în Python vom avea un fișier de bază care
 depinde de celelalte fișiere. Astfel, pentru a rula aplicația e suficient să
-specificăm fișierul de pornire.
+specificăm fișierul de pornire, ca în \labelindexref{Listing}{lst:appdev:python-example}.
 
-\begin{screen}[caption={Exemplu rulare python}]
+\begin{screen}[caption={Exemplu rulare Python},label={lst:appdev:python-example}]
 python main.py
 \end{screen}
 
@@ -1037,12 +1017,10 @@ Cum am menționat mai sus, Python oferă un număr mare de biblioteci și
 framework-uri care pot fi integrate în programele pe care le dezvoltăm. Pentru a
 putea folosi o bibliotecă, aceasta trebuie să existe pe sistemul care rulează
 programul. Pentru instalarea unei biblioteci, folosim utilitarul \cmd{pip}.
+\cmd{pip} este un utilitar care permite manipularea pachetelor Python, cum ar fi
+instalarea sau dezinstalarea unor biblioteci. \labelindexref{Listing}{lst:appdev:pip} conține un exemplu de folosire utilitarului \cmd{pip}.
 
-Pip este un utilitar care permite manipularea pachetelor Python, cum ar fi
-instalarea sau dezinstalarea unor biblioteci. Pentru a instala un astfel de
-pachet e suficient să rulăm comanda \cmd{pip install <pachet>}
-
-\begin{screen}[caption={Exemplu instalare de framework-uri}]
+\begin{screen}[caption={Instalarea de pachete Python folosind pip},label={lst:appdev:pip}]
 pip install wiringpi
 \end{screen}
 
@@ -1073,11 +1051,8 @@ din interpretoarele de JavaScript este V8, dezvoltat de Google și integrat în
 Google Chrome. Node.js integrează acest interpretor.
 
 Pentru a instala Node.js pe sisteme Linux, se recomandă descărcarea binarului de
-pe site. Platforma se poate instala si rulând comanda \cmd{sudo apt-get install
-nodejs}, dar se va descărca o versiune foarte veche a platformei. De aceea
-recomandăm descărcarea binarului.
-
-Urmatorul exemplu ilustrează instalarea NodeJS versiune 8 pentru Linux pe 64 de
+pe site. Platforma se poate instala și instalând pachetul \texttt{nodejs}, dar se va descărca o versiune foarte veche a platformei. De aceea
+recomandăm descărcarea binarului. \labelindexref{Listing}{lst:appdev:install-nodejs} prezintă instalarea NodeJS versiune 8 pentru Linux pe 64 de
 biți. Pentru alte versiuni sau aritecturi, este suficient să descărcă arhiva
 corespunzatoare de pe pagina https://nodejs.org/en/download/.
 
@@ -1109,10 +1084,14 @@ Când dezvoltăm o aplicație în Node.js, aspectele de care trebuie să ținem 
 sunt similare cu cele care au legătură cu Python. Similar cu Python, pentru
 rularea codului sursă scris avem nevoie de interpretorul necesar instalat.
 
-Pentru a rula o aplicație Node.js folosim comanda \cmd{node main.js}.
+Pentru a rula o aplicație Node.js folosim comanda
+
+\begin{screen}
+node main.js
+\end{screen}
 
 Pentru manipularea modulelor externe se folosește utilitarul \cmd{npm}. Pentru
-instalarea unei bilioteci comanda necesară este \cmd{npm install <biblioteca>}.
+instalarea unei bilioteci comanda necesară este \cmd{npm install $<$biblioteca$>$}.
 Similar cu pipenv, putem folosi parametrul --save pentru a obține un fișier
 numit package.json în care sunt trecute toate modulele externe necesare. La
 rularea comenzii \cmd{npm install} toate acele module sunt instalate.
@@ -1130,9 +1109,9 @@ Pentru că sunt multe astfel de operații pe care vrem să le aplicăm codului s
 folosite la această automatizare este \cmd{grunt}. Putem să ne gândim la grunt
 ca la un utilitar semănător cu make, doar că operațiile pe care grunt le
 efectuează implică preprocesarea codului sursă. Similar cu Makefile-ul, pentru
-grunt, vom crea un Gruntfile care conține toate regulile.
+\cmd{grunt}, vom crea un fișier numit \file{Gruntfile} care conține toate regulile, ca în \labelindexref{Listing}{lst:appdev:gruntfile}.
 
-\begin{screen}[caption={Exemplu cod Gruntfile}]
+\begin{screen}[caption={Exemplu cod Gruntfile},label={lst:appdev:gruntfile}]
 module.exports = function(grunt) {
 
  grunt.initConfig({
@@ -1175,11 +1154,17 @@ Am menționat mai sus că unul din aspectele importante ale unui IDE este
 posibilitatea de a seta puncte de oprire în execuția programului. Astfel, odată
 ce o linie de cod este executată, întregul proces se oprește și noi putem
 monitoriza starea curentă. Adică putem vizualiza valorile pe care le au
-variabilele sau adresele de memorie la care se găsesc.
+variabilele sau adresele de memorie la care se găsesc, ca în \labelindexref{Figura}{fig:appdev:ide-debug}.
 
-TODO - poză cu debug
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth]{chapters/06-appdev/img/screenshot.png}
+  \caption{Interfață de depanare într-un IDE}
+  \label{fig:appdev:ide-debug}
+  % TODO - poză cu debug
+\end{figure}
 
-Unul din cele mai cunoscute utilitare pentru depanare este \cmd{gdb}. El suportă
+Unul din cele mai cunoscute utilitare pentru depanare este GDB. GDB oferă suport pentru
 toate operațiile menționate mai sus și este compatibil cu toate sistemele de
 operare existente. Pe sisteme Linux, este ușor de instalat.
 
@@ -1228,25 +1213,25 @@ orice moment putem descărca o versiune anterioară a codului sursă. Pentru a
 realiza toate acestea avem la dispoziție următoarele operații de bază:
 
 \begin{itemize}
-	\item clone - se clonează întreg repository-ul pe sistemul local;
+  \item \cmd{clone} - se clonează întreg repository-ul pe sistemul local;
 		practic se va crea un director care conține toate fișierele
 		aferente programului, plus niște fișiere care stochează
 		informații despre proiect (ex, cine a creat repository-ul, ce
 		modificări au fost aduse etc. );
-	\item commit - se salvează toate modificările aduse proiectului; starea
+  \item \cmd{commit} - se salvează toate modificările aduse proiectului; starea
 		actuală este salvată local; dacă modificările nu sunt publicate
 		online, acestea nu sunt vizibile colaboratorilor;
-	\item push - se publică modificările salvate prin commit; odată
+  \item \cmd{push} - se publică modificările salvate prin commit; odată
 		publicate aceste modificări, colaboratorii pot să vizualizeze
 		cine le-a adus și pot să urmărească schimbările linie cu linie
-	\item pull - se descarcă local ultimele modificări publicate de ceilalți
+  \item \cmd{pull} - se descarcă local ultimele modificări publicate de ceilalți
 		colaboratori și se integrează în versiunea locală a proiectului.
 \end{itemize}
 
 \section{Licențe pentru programe}
 \label{sec:appdev-licensing}
 
-Un aspect foarte important când vine vorba de dezvoltarea programelor este
+Un aspect important când vine vorba de dezvoltarea programelor este
 licența acestuia.
 
 Licența unui program oferă informații despre dreptul de folosire și distribuție
