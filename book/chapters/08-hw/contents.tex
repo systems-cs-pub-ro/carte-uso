@@ -69,7 +69,7 @@ Vom porni de la o descriere logica a hardware-ului numită și \texttt{Arhitectu
 von Neumann}. Numele arhitecturii provine de la matematicianul și fizicianul
 John von Neumann care a scris primul draft al raportului EDVAC
 \abbrev{EDVAC}{Electronic Discrete Variable Automatic Computer} în 1945 ce
-descria arhitectura unui sistem de calcul
+descria arhitectura unui sistem de calcul.
 
 %(https://sites.google.com/site/michaeldgodfrey/vonneumann/vnedvac.pdf?attredirects=0&d=1)
 
@@ -106,7 +106,6 @@ ca un tampon pentru prelucrarea datelor. Odată prelucrate, acestea sunt trimise
 către dispozitivele de ieșire și folosite în diverse scopuri (afișare, stocare
 permanentă).
 
-Fig. X. Arhitectura von Neumann
 \begin{figure}[!htbp]
 	\centering
 	\def\svgwidth{\columnwidth}
@@ -214,7 +213,7 @@ Trecerea de la 32 de biți la 64 de biți s-a realizat atunci când dimensiunea
 memoriei a crescut mai mult de patru gigaocteți (gigabytes). Folosind 32 biți
 putem itera prin adrese de la 0 la 4 gigaocteți ($2^{32}$). Pentru a rezolva
 acest deficit s-a trecut la o arhitectură pe 64 de biți ce poate adresa
-semnificativ mai mult ($2^{64}$ teoric, $2^{48}$ în practică din cauza
+semnificativ mai mult ($2^{64}$ teoretic, $2^{48}$ în practică din cauza
 limitărilor hardware cum ar fi folosirea unui număr mai mic de tranzistori).
 
 \subsection{Arhitectura x86 și arhitectura ARM}
@@ -318,7 +317,7 @@ integrare a componentelor:
 \textit{Serverul} este specific centrelor de date având o construcție robustă,
 sisteme de prindere speciale în locurile special amenajate, o circulație a
 aerului pe orizontală foarte bună (în general din față în spate). Dimensiunea
-serverelor este dată de numărul unităților de rack ocupate (1U = 4,445cm). In
+serverelor este dată de numărul unităților de rack ocupate (1U = \texttt{4,445cm}). In
 \labelindexref{Figura}{fig:hw-server} este ilustrat un server de dimensiune 1U
 (1 unitate de rack), cu sisteme de prindere în lateral. După cum se poate
 observa aerul va circula din față în spate și niciodată pe deasupra sau dedesubt
@@ -503,7 +502,7 @@ integrate în poziții diferite.
 		practic magistrala de comunicație și sloturile în care sunt
 		introduse procesorul, memoriile și plăcile de extensie.
 
-% this doesn't fit
+% TODO: this doesn't fit
 %\begin{figure}[!htbp]
 %	\centering
 %	\includegraphics[width=8cm]{chapters/08-hw/img/mb-img.png}
@@ -640,6 +639,7 @@ operare nu trebuie să se mai preocupe să scrie programe de control (driver)
 pentru fiecare dispozitiv din lumea aceasta, iar această sarcina cade în rolul
 vendorului respectiv.
 
+Funcționarea unui driver și relația sa cu sistemul de operare și hardware-ul este prezentată schematic în \labelindexref{Figura}{fig:hw-so-driver}.
 
 Pornind de la considerentele enumerate mai sus, putem identifica două tipuri de drivere:
 
@@ -663,10 +663,9 @@ să navigați pe site-ul producătorului fiecărei componente să luați ultimul
 driver compatibil. Nu de multe ori ați observat că după instalarea sistemului de
 operare, experiența grafică lăsa de dorit (rezoluție mică, mișcări sacadate)
 până la instalarea software-ului recomandat de producător (acestea fiind
-driver-ele). Așadar recomandăm instalarea ultimelor versiuni de driver-e pentru
+driver-ele). Așadar recomandăm instalarea ultimelor versiuni de drivere pentru
 a beneficia de performanță și stabilitate maximă.
 
-Fig. X. Relația sistem de operare - driver - controller - dispozitiv
 \begin{figure}[htbp]
 	\centering
 	\def\svgwidth{\columnwidth}
@@ -800,10 +799,8 @@ acestui paragraf am vrea să accentuăm faptul că o placa de extensie conține 
 chipset care implementează logica necesară și de multe ori nu e suficient să
 căutăm un vendor de renume, ci trebuie să ne uităm și la chipset de renume.
 
-
 În continuare vom trece prin trei dintre cele mai importante plăci de extensie:
 video, sunet, și rețea.
-
 
 \subsection{Ce rol are placa video?}
 \label{sec:hardware-extensii-gpu}
@@ -890,7 +887,6 @@ asigura accesul la Internet). Plăcile de rețea sunt de obicei interne
 conectându-se pe porturile PCI, respectiv PCIe. Există și plăci de rețea externe
 ce se pot conecta la portul USB dar de obicei acestea sunt mai lente.
 
-
 La achiziția unei plăci de rețea trebuie ținut cont de următoarele caracteristici:
 
 \begin{itemize}
@@ -925,7 +921,7 @@ unității de procesare. Pentru o performanță sporită, mai ales în medii und
 realizează transmisii de date cu volum ridicat, sunt recomandate plăcile de
 rețea ce nu se bazează pe CPU atunci când trebuie să trimită/primească date.
 
-% No license :(
+% TODO: No license :(
 %\begin{figure}[!htbp]
 %	\centering
 %	\includegraphics[width=8cm]{chapters/08-hw/img/net-img.png}
@@ -1012,11 +1008,10 @@ două tipuri de dispozitive în calea \file{/dev}:
 	\item Virtuale - nu au un corespondent hardware, sunt create de sistemul de operare.
 \end{itemize}
 
-Un exemplu de dispozitiv fizic este discul. Acesta începe cu litere \file{sd}
-sau \file{hd} în funcție de inferfața de conectare. Vom lista toate discurile
-prezente pe o mașină dată:
+Un exemplu de dispozitiv fizic este discul. Acesta este identificat printr-o intrare în sistemul de fișiere în directorul \file{/dev/}, intrare al cărei nume începe cu șirul \file{sd}
+sau \file{hd} în funcție de inferfața de conectare. \labelindexref{Listing}{lst:hw:list-disks} prezintă rularea unei comenzi care afișează intrările din directorul \file{/dev/} corespunzătoare discurilor unui sistem.
 
-\begin{screen}
+\begin{screen}[caption={Afișarea intrărilor de tip disc},label={lst:hw:list-disks}]
 [root@monitor ~]# ls -l /dev/sd*
 brw-rw---- 1 root disk 8,  0 Jul  9 02:23 /dev/sda
 brw-rw---- 1 root disk 8,  1 Jul  9 02:23 /dev/sda1
@@ -1028,10 +1023,9 @@ brw-rw---- 1 root disk 8, 17 Jul  9 02:23 /dev/sdb1
 
 După cum se poate observa, avem 2 discuri (\file{sda} și \file{sdb}) fiecare cu
 un număr diferit de partiții (vezi \labelindexref{Capitolul}{chapter:file-system}).
-Asupra acestora putem executa aceleași operații ce se aplică și fișierelor. Vom
-citi primi 10 octeți de pe discul \file{sda}:
+Asupra acestora putem executa aceleași operații ce se aplică și fișierelor. De exemplu, în \labelindexref{Listing}{lst:hw:disk-copy-bytes} sunt citiți primi 10 octeți de pe discul \file{sda}.
 
-\begin{screen}
+\begin{screen}[caption={Citirea datelor dintr-o intrare de tip disc},label={lst:hw:disk-copy-bytes}]
 [root@monitor ~]# dd if=/dev/sda bs=1 count=10 -- | hexdump
 0000000 48eb 1090 d08e 00bc b8b0
 000000a
@@ -1050,26 +1044,22 @@ virtuale cum ar fi:
 		\labelindexref{Capitolul}{chapter:file-system})
 \end{itemize}
 
-Vom genera 10 zerou-uri într-un fișier (atenție este vorba ca numărul 0 și nu de
-caracterul 0, la un cat pe fișier, acesta nu se va afișa, de aceea am folosit
-\cmd{hexdump}, pentru a vedea numerele codificate):
+Un exemplu de folosire a acestor dispozitive virtuale este prezentat în \labelindexref{Listing}{lst:hw:copy-dev-zero}. În acest exemplu sunt generate 10 octeți \texttt{0} într-un fișier. \textbf{Atenție!} Este vorba ca numărul \texttt{0} și nu de caracterul \texttt{0}; dacă am folosi comanda \cmd{cat} pe fișier, nu s-ar afișa nimic; de aceea am folosit
+\cmd{hexdump}, pentru a vedea numerele codificate.
 
-\begin{screen}
+\begin{screen}[caption={Folosirea dispozitivelor virtuale},label={lst:hw:copy-dev-zero}]
 [root@monitor ~]# dd if=/dev/zero of=test.zero bs=1 count=10
 10+0 records in
 10+0 records out
 10 bytes (10 B) copied, 0.000491188 s, 20.4 kB/s
 [root@monitor ~]# cat test.zero | hexdump
 0000000 0000 0000 0000 0000 0000
-\end{screen}
-
-La exemplul de mai sus, dacă dorim să nu se mai afișeze informații despre cât a
-scris comanda \cmd{dd} o putem redirecta către dispozitivul \file{/dev/null}:
-
-\begin{screen}
 [root@monitor ~]# dd if=/dev/zero of=test.zero bs=1 count=10 2> /dev/null
 [root@monitor ~]#
 \end{screen}
+
+Dacă dorim să nu se mai afișeze informații despre cât a
+scris comanda \cmd{dd} o putem redirecta către dispozitivul \file{/dev/null} ca în linia TODO din \labelindexref{Listing}{lst:hw:copy-dev-zero}.
 
 \section{Anexă: Vizualizarea componentelor hardware pe Linux vs Windows}
 \label{sec:hardware-virtualizare}
@@ -1079,9 +1069,9 @@ scris comanda \cmd{dd} o putem redirecta către dispozitivul \file{/dev/null}:
 
 \begin{enumerate}
 	\item Pentru a vizualiza dispozitivele descoperite la runtime de către
-		nucleul Linux putem folosi comanda \cmd{dmesg}:
+          nucleul Linux putem folosi comanda \cmd{dmesg}, ca în \labelindexref{Listing}{lst:hw:dmesg}.
 
-\begin{screen}
+\begin{screen}[caption={Afișarea mesajelor nucleului Linux (dmesg)},label={lst:hw:dmesg}]
 Initializing cgroup subsys cpuset
 Initializing cgroup subsys cpu
 Linux version 2.6.32-573.8.1.el6.x86_64 (mockbuild@x86-ol6-builder-05) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-16) (GCC) ) #1 SMP Tue Nov 10 02:36:19 PST 2015
@@ -1126,9 +1116,9 @@ sistemul de calcul.
 		hardware putem folosi comanda \cmd{lshw}, ce va afișa toate
 		componentele sistemului sub formă arborescentă. Ieșirea comenzii
 		este destul de stufoasă. O opțiune este folosirea parametrului
-		\texttt{-short}, ce va face o sumarizare a configurației sistemului:
+                \texttt{-short}, ce va face o sumarizare a configurației sistemului, ca în \labelindexref{Listing}{lst:hw:lshw}.
 
-\begin{screen}
+\begin{screen}[caption={Informații despre componentele hardware (lshw)},label={lst:hw:lshw}]
 [root@monitor ~]# lshw -short
 H/W path              Device       Class      Description
 =========================================================
@@ -1145,9 +1135,9 @@ H/W path              Device       Class      Description
 \end{screen}
 
 	\item Pentru a afișa doar componentele ce țin de interconectarea PCI,
-		putem folosi comanda \cmd{lspci}:
+          putem folosi comanda \cmd{lspci}, ca în \labelindexref{Listing}{lst:hw:lspci}.
 
-\begin{screen}
+\begin{screen}[caption={Informații despre componentele PCI (lspci)},label={lst:hw:lspci}]
 [root@monitor ~]# lspci
 00:00.0 Host bridge: Intel Corporation E7520 Memory Controller Hub (rev 0c)
 00:00.1 Unassigned class [ff00]: Intel Corporation E7525/E7520 Error Reporting Registers (rev 0c)
@@ -1174,9 +1164,9 @@ H/W path              Device       Class      Description
 
 	\item Pentru a afișa informații despre procesor putem interoga intrarea
 		virtuală \file{/proc/cpuinfo} sau pentru o afișare mai sumarizată putem
-		folosi comanda \cmd{lscpu}:
+                folosi comanda \cmd{lscpu}, ca în \labelindexref{lst:hw:lscpu}.
 
-\begin{screen}
+\begin{screen}[caption={Informații despre procesor},label={lst:hw:cpu}]
 [root@monitor ~]# cat /proc/cpuinfo
 processor       : 0
 vendor_id       : GenuineIntel
@@ -1229,9 +1219,9 @@ NUMA node0 CPU(s):     0,1
 
 	\item Pentru a afișa informații despre memorie putem interoga intrarea
 		virtuală \file{/proc/meminfo} sau putem folosi comanda
-		\cmd{free}:
+                \cmd{free}, ca în \labelindexref{Listing}{lst:hw:memory}.
 
-\begin{screen}
+\begin{screen}[caption={Informații despre memorie},label={lst:hw:memory}]
 [root@monitor ~]# free
              total       used       free     shared    buffers     cached
 Mem:       5990840    5554088     436752          0     291060    2268304
@@ -1289,9 +1279,9 @@ Swap:      4194300      57328    4136972
 
 
 	\item Pentru a monitoriza parametrii discului, putem folosi comanda
-		\cmd{hdparm}:
+          \cmd{hdparm}, ca în \labelindexref{Listing}{lst:hw:disk}.
 
-\begin{screen}
+\begin{screen}[caption={Parametrii discului},label={lst:hw:disk}]
 [root@monitor ~]# hdparm /dev/sda
 
 
@@ -1309,8 +1299,8 @@ SG_IO: bad/missing sense data, sb[]:  70 00 05 00 00 00 00 0a 00 00 00 00 20 00 
 \label{sec:hardware-virtualizare-windows}
 
 Pe sistemul de operare Windows pentru a vedea detalii despre componentele
-atașate sistemului se poate folosi modulul \textit{Device Manager} (Start -> Run
--> devmgmt.msc):
+atașate sistemului se poate folosi modulul \textit{Device Manager} (\texttt{Start -$>$ Run
+-$>$ devmgmt.msc}).
 
 \begin{figure}[!htbp]
 	\centering
@@ -1323,7 +1313,7 @@ După cum se poate observa în \labelindexref{Figura}{fig:hw-devmanager}
 componentele sunt grupate, dispuse arborescent (asemănător comenzii \cmd{lshw}
 din Linux). Pentru a vedea ce dispozitive, respectiv modelul acestora, se
 extinde grupul de interes. Pentru exemplu, vom extinde grupul
-\textit{Processors}:
+\textit{Processors}.
 
 \begin{figure}[!htbp]
 	\centering
@@ -1353,9 +1343,9 @@ care e versiunea acestora.
 \label{sec:hardware-virtualizare-linux}
 
 Pe un sistem de operare cu nucleu Linux, vizualizarea driverelor se face cu
-ajutorul comenzii \cmd{lsmod}:
+ajutorul comenzii \cmd{lsmod}, exemplificată în \labelindexref{Listing}{lst:hw:lsmod}.
 
-\begin{screen}
+\begin{screen}[caption={Vizualizarea modulelor / driverelor (lsmod)},label={lst:hw:lsmod}]
 [root@monitor ~]# lsmod
 Module                  Size  Used by
 nfs                   431188  0
@@ -1372,9 +1362,9 @@ exportfs                4236  1 nfsd
 După cum se poate observa mai sus, comanda \cmd{lsmod} afișează doar driverele (sau
 module în terminologia Linux), dimensiunea acestora în memorie și daca acestea
 sunt folosite de alte drivere. Pentru a afla informații despre versiunea unui
-driver/modul folosim comanda \cmd{modinfo}:
+driver/modul folosim comanda \cmd{modinfo}, ca în \labelindexref{Listing}{lst:hw:modinfo}.
 
-\begin{screen}
+\begin{screen}[caption={Informații despre un modul / driver (modinfo)},label={lst:hw:modinfo}]
 [root@monitor ~]# modinfo nfs
 filename:       /lib/modules/2.6.32-573.8.1.el6.x86_64/kernel/fs/nfs/nfs.ko
 license:        GPL
