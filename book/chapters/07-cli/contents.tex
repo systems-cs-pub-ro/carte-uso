@@ -1,104 +1,5 @@
 \chapter{Interfața în linia de comandă}
 \label{chapter:cli}
-%
-%\section{Shell-ul. Funcționarea shell-ului}
-%\label{sec:cli-shell}
-%
-%\subsection{Interacțiunea cu shell-ul}
-%\label{sec:cli-shell-interact}
-%
-%\subsection{Facilități shell}
-%\label{sec:cli-shell-characteristics}
-%
-%\subsubsection{Completarea comenzilor}
-%\label{sec:cli-completion}
-%
-%\subsubsection{Istoricul de comenzi}
-%\label{sec:cli-history}
-%
-%\subsubsection{Editarea comenzilor}
-%\label{sec:cli-editing}
-%
-%\subsubsection{Biblioteca Readline}
-%\label{sec:cli-readline}
-%
-%\subsection{Funcționarea shell-ului}
-%\label{sec:cli-shell-func}
-%
-%\subsubsection{Variabila de mediu PATH}
-%\label{sec:cli-path}
-%
-%\subsubsection{Crearea unui proces nou}
-%\label{sec:cli-new-process}
-%
-%\section{Funcționalități shell}
-%\label{sec:cli-shell-func}
-%
-%\subsection{Operatori shell}
-%\label{sec:cli-operators}
-%
-%\subsection{Subshell}
-%\label{sec:cli-subshell}
-%
-%\subsection{Variabile shell}
-%\label{sec:cli-shell-variable}
-%
-%\subsection{Expandări}
-%\label{sec:cli-expansion}
-%
-%\subsubsection{Globbing}
-%\label{sec:cli-globbing}
-%
-%\subsubsection{Expandarea comenzilor}
-%\label{sec:cli-comm-expansion}
-%
-%\subsection{Escaping}
-%\label{sec:cli-escaping}
-%
-%\section{Pornirea și personalizarea shell-ului}
-%\label{sec:cli-customize-shell}
-%
-%\subsection{Configurarea la pornire a shell-ului}
-%\label{sec:cli-shell-startup}
-%
-%\subsection{Personalizarea promptului}
-%\label{sec:cli-prompt}
-%
-%\subsection{Multiplexoare de terminal}
-%\label{sec:cli-tmux}
-%
-%\section{Expresii regulate}
-%\label{sec:cli-regex}
-%
-%\section{Prelucrare de text de bază: filtre de text și one linere}
-%\label{sec:cli-basic-proc}
-%
-%\subsection{Generatoare de text}
-%\label{sec:cli-text-gen}
-%
-%\subsection{Prelucratoare de text}
-%\label{sec:cli-text-proc}
-%
-%\subsection{One linere}
-%\label{sec:cli-one-liners}
-%
-%\section{Utilitare avansate}
-%\label{sec:cli-advanced-utils}
-%
-%\subsection{find, xargs}
-%\label{sec:cli-find-xargs}
-%
-%\subsection{sed}
-%\label{sec:cli-sed}
-%
-%\subsection{awk}
-%\label{sec:cli-awk}
-%
-%\section{Anexă: Folosirea variabilelor de mediu în C}
-%\label{sec:cli-c-env-vars}
-%
-%\section{Sumar}
-%\label{sec:cli-summary}
 
 O aplicație sau un sistem oferă uzual o interfață de interacțiune cu
 utilizatorul.
@@ -115,24 +16,63 @@ acestora și când să le folosească. Va urmări eficiența operațiilor și va
 interfețe CLI pentru a ajunge cât mai rapid la rezultat.
 
 Interfețele GUI și WebUI sunt intuitive, atractive și accesibile. Sunt folosite
-pe toate mediile mobile și în cele mai multe medii desktop. Elementele GUI,
-descrise în capitolul 1. Interfața cu utilizatorul: componente grafice, mouse,
-touchscreen.
+pe toate mediile mobile și în cele mai multe medii desktop. Elementele GUI, descrise în \labelindexref{Capitolul}{chapter:ui}, sunt WIMP: Window, Icon, Menu, Pointer. Pe sistemele mobile se folosește un ecran tactil (\textit{touchscreen}). \labelindexref{Figura}{fig:cli:gui} conține exemple de interfețe GUI.
 
-* screenshot cu exemplu desktop, exemplu mobile, exemplu dintr-un joc
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth]{chapters/11-net/img/screenshot.png}
+  \caption{Exemple de interfețe GUI}
+  \label{fig:cli:gui}
+  % TODO: screenshot cu exemplu desktop, exemplu mobile, exemplu dintr-un joc
+\end{figure}
 
 Interfețele CLI sunt simple, eficiente și cu facilități complexe. Sunt folosite
 în medii specializate, în servere și în medii desktop pentru utilizatori cu
 profil tehnic.
 
 Exemple de CLI: shell-ul Linux, PowerShell, python shell, game consoles,
-MATLAB/Octave, AutoCAD
+MATLAB/Octave, AutoCAD. \labelindexref{Figura}{fig:cli:cli} conține exemple de interfețe CLI.
 
-* screenshot cu terminal virtual Linux, exemplu shell Octave, exemplu consolă dintr-un joc
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth]{chapters/11-net/img/screenshot.png}
+  \caption{Configurarea grafică a rețelei în Windows}
+  \label{fig:net:windows-config}
+  %TODO: screenshot cu terminal virtual Linux, exemplu shell Octave, exemplu consolă dintr-un joc
+\end{figure}
 
-Avantaje/dezavantaje CLI vs GUI
+Avantaje/dezavantaje CLI vs GUI descrise în \labelindexref{Tabelul}{tab:cli:cli-vs-gui}
 
-* tabel cu criteriu și nivel de satisfacere CLI și GUI
+\begin{table}[!htb]
+  \caption{Comparație CLI / GUI}
+  \begin{center}
+    \begin{tabular}{ p{0.25\textwidth} p{0.35\textwidth} p{0.35\textwidth} }
+      \toprule
+        \textbf{Criteriu} &
+        \textbf{GUI} &
+        \textbf{CLI} \\
+      \midrule
+        \textbf{Consum de resurse} &
+        mare &
+        redus \\
+
+        \textbf{Interactivitate} &
+        foarte bună &
+        mai redusă \\
+
+        \textbf{Automatizare} &
+        posibilă, dar nu evidentă &
+        implicită \\
+
+        \textbf{TODO} &
+        TODO \\
+        TODO \\
+      \bottomrule
+    \end{tabular}
+    \label{tab:cli:cli-vs-gui}
+    % TODO: tabel cu criteriu și nivel de satisfacere CLI și GUI
+  \end{center}
+\end{table}
 
 Cel mai cunoscut tip de interfață CLI este shell-ul care însă nu se referă doar la CLI după cum vom prezenta în continuare.
 
@@ -140,9 +80,16 @@ Cel mai cunoscut tip de interfață CLI este shell-ul care însă nu se referă 
 \label{sec:cli-shell}
 
 Numim shell interfața oferită utilizatorului pentru a interacționa cu sistemul
-de operare.
+de operare, prezentată în \labelindexref{Figura}{fig:cli:shell-os}.
 
-* diagramă cu kernel și shell-ul și utilizatorul[a]
+\begin{figure}[htbp]
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/02-fs/def-fs.svg}
+  \caption{Shell-ul în sistemul de operare}
+  \label{fig:cli:shell-overview}
+  % TODO: diagramă cu kernel și shell-ul și utilizatorul
+\end{figure}
 
 Putem spune că și o aplicație are un shell care să ajungă la serviciile oferite
 de aceasta: Python shell, dar ne vom referi la shell ca fiind shell-ul unui
@@ -161,9 +108,16 @@ comenzi în shell.
 Funcționarea în linii mari a unui shell CLI: prompt oferit utilizator, rularea
 unei comenzi, interpretarea acelei comenzi și declanșarea unei operații care
 oferă o formă de rezultat (de obicei un rezultat text al rulării comenzii).
-Shell-ul CLI se mai numește intepretor de comenzi.
+Shell-ul CLI se mai numește intepretor de comenzi. (\labelindexref{Figura}{fig:cli:shell-os-interact}).
 
-* diagramă: utilizator -> comandă -> shell (interpretor) -> sistem de operare -> acțiune - > rezultat utilizator[b]
+\begin{figure}[htbp]
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/02-fs/def-fs.svg}
+  \caption{Interacțiunea shell-ului cu sistemul de operare}
+  \label{fig:cli:shell-os-interact}
+  % TODO: diagramă: utilizator -> comandă -> shell (interpretor) -> sistem de operare -> acțiune - > rezultat utilizator[b]
+\end{figure}
 
 În general la CLI folosim tastatura (input) și ecranul (output). Interacțiune
 shell-ului inputul și outputul sunt gestionate de un terminal.
@@ -200,51 +154,60 @@ Pentru generarea rapidă a unei comenzi shell-ul oferă facilitățile de comple
 Completarea comenzilor, numită și completion sau command-line completion permite
 completare (expandare) automată a unei comenzi sau a unui argument fără a fi
 nevoie de tastarea acesteia în totalitate. Acest lucru se întâmplă folosind
-tasta <TAB>.
+tasta \texttt{$<$TAB$>$}. Cu ajutorul tastei \texttt{$<$TAB$>$} putem completa fie numele unei comenzi, fie numele unui argument, așa cum este prezentat în \labelindexref{Listing}{lst:cli:tab-completion}.
 
-* exemplu de completare comandă
-* exemplu de completare argument
+\begin{screen}[caption={Completarea comenzilor},label={lst:cli:tab-completion}]
+TODO: exemplu de completare comanda
+TODO: exemplu de completare argument
+TODO: exemplu cu TAB TAB
+\end{screen}
 
-Dacă sunt mai multe posibilități. La apăsarea de două ori a tastei TAB se
-afișează posibilitățile de atunci. În mod uzual se mai scrie o secvență
-neambiguă și apoi se apasă iar TAB. În felul acesta scriem foarte repede
+Dacă sunt mai multe posibilități, la apăsarea de două ori a tastei \texttt{$<$TAB$>$} se
+afișează posibilitățile de atunci, ca în liniile TODO-TODO din \labelindexref{Listing}{lst:cli:tab-completion}. În mod uzual se mai scrie o secvență
+neambiguă și apoi se apasă iar \texttt{$<$TAB$>$}. În felul acesta scriem foarte repede
 comenzile, este o facilitate esențială în folosirea shell-ului.
-
-* exemplu cu TAB TAB
 
 \subsubsection{Istoricul de comenzi}
 \label{sec:cli-history}
 
 Shell-ul menține un istoric de comenzi. Acest lucru e util pentru un utilizator
-care dorește să refolosească o comandă anterioară.
+care dorește să refolosească o comandă anterioară. (\labelindexref{Listing}{lst:cli:show-history})
 
-* afișarea history (command history)
+\begin{screen}[caption={Afișarea istoricului de comenzi},label={lst:cli:show-history}]
+TODO: afisarea history (command history)
+\end{screen}
+
+Istoricul de comenzi poate fi folosit folosind combinații de taste sau comenzi specifice shell-ului. \labelindexref{Listing}{lst:cli:use-history} prezintă exemple uzuale de folosire a istoricului comenzilor.
+
+\begin{screen}[caption={Folosirea istoricului de comenzi},label={lst:cli:use-history}]
+TODO: folosirea istoricului de comenzi
+TODO: exemplu cu Ctrl+n si Ctr+p
+TODO: exemplu cu sudo !!
+TODO: exemplu cu which ls urmata de dpkg -S \$(!!)
+TODO: exemplu cu !-3 si !-2
+TODO: exemplu cu prompt de string
+TODO: exemplu de cautare inapoi
+\end{screen}
 
 Cel mai direct mod de folosirea a istoricului de comenzi este prin intermediul
-tastelor săgeată care parcurg comenzile. Alternativ putem folosi Ctrl+p sau
-Ctrl+n (din Emacs) pentru a ajunge la comanda anterioară sau cea ulterioară.
+tastelor săgeată care parcurg comenzile. Alternativ putem folosi combinațiile de taste \texttt{Ctrl+p} sau
+\texttt{Ctrl+n} (din Emacs) pentru a ajunge la comanda anterioară sau cea ulterioară.
 
-Dacă vrem să refolosim comanda anterioară avem construcția !!. Aceasta e utilă
+Dacă vrem să refolosim comanda anterioară avem construcția \texttt{!!}. Aceasta e utilă
 în special când vrem să folosim comanda anterioară împreună cu altă comandă. De
-exemplu dacă am rulat o comandă fără sudo:
-
-* exemplu
+exemplu dacă am rulat o comandă fără \cmd{sudo}.
 
 sau dacă vrem să folosim comanda anterioară într-o construcție shell
 
-* exemplu cu which ls urmată de dpkg -S \$(!!)
-
 Mai general putem folosi !-3 sau !-2 ca să accesăm comenzi rulate în istoric.
 
-Mai adesea însă folosim funcționalitatea de căutare înapoi (reverse search) în
+Mai adesea însă folosim funcționalitatea de căutare înapoi (\textit{reverse search}) în
 istoricul unei comenzi. Atunci căutăm o comandă anterioară, prezentă la un
 moment dat în istoric, pe care o putem rula din nou sau edita pentru o nouă
 rulare.
 
-Ca să folosim căutarea înapoi în istoric, tastăm Ctrl+r. În acel moment se
-schimbă promptul shell-ului și putem introduce un string:
-
-* exemplu cu prompt de string
+Ca să folosim căutarea înapoi în istoric, tastăm \texttt{Ctrl+r}. În acel moment se
+schimbă promptul shell-ului și putem introduce un șir de caractere.
 
 În momentul introducerii șirului, pe măsură ce tastăm, shell-ul va face căutare
 înapoi și va face match pe acele comenzi care corespund. Putem să și ștergem din
@@ -255,8 +218,6 @@ pentru a găsi match-ul rămas.
 Apoi dacă apăsăm pe taste precum săgeți sau combinații de taste pentru editare
 se revine în modul normal de lucru, se părăsește modul de căutare înapoi.
 
-* exemplu de căutare înapoi
-
 Facilitatea de căutare înapoi este, din nou, esențială pentru folosirea
 eficientă a shell-ului. Împreună cu command-line completion sunt facilități
 indispensabile unui utilizator productiv în shell.
@@ -265,36 +226,60 @@ indispensabile unui utilizator productiv în shell.
 \label{sec:cli-editing}
 
 După ce am generat în shell o comandă (folosindu-ne și de facilități de
-command-line completion) sau după ce am regăsit o comandă în istoricul
+completare a comenzii) sau după ce am regăsit o comandă în istoricul
 shell-ului, de multe ori va trebui să o modificăm. Poate un parametru este
 greșit, poate vrem să schimbăm comanda dar să păstrăm parametru, poate am avem
 un cuvânt sau o parte a unei căi în plus.
 
 În mod simplist, editarea unei comenzi se face parcurgând comanda cu tastele
-săgeți (stânga și dreapta) și folosind tastele Backspace și Delete. Anumite
-deplăsari mai rapide în cadrul comenzii se pot face folosind tastele Home și
-End.
+săgeți (stânga și dreapta) și folosind tastele \texttt{Backspace} și \texttt{Delete}. Anumite
+deplăsari mai rapide în cadrul comenzii se pot face folosind tastele \texttt{Home} și
+\texttt{End}.
 
 O formă mai bună de editare este folosind combinațiile de taste furnizate de
 shell. Aceste combinații de taste au două avantaje:
 
 \begin{enumerate}
 	\item Nu îndepărtează degetele de pe tastele comune, așa cum le
-		îndepărtăm când folosim taste săgeți, Home, End.
+          îndepărtăm când folosim taste săgeți, \texttt{Home}, \texttt{End}.
 	\item Permit editări mai rapide și mai complexe ale comenzii.
 \end{enumerate}
 
-\paragraph{Despre Ctrl+c}
+\labelindexref{Tabelul}{tab:cli:key-bindings} prezintă cele mai comune astfel de combinații de taste și efectul lor.
 
-Mai jos prezentăm cele mai comune astfel de combinații de taste și efectul lor:
+\begin{table}[!htb]
+  \caption{Combinații de taste în shell}
+  \begin{center}
+    \begin{tabular}{ p{0.25\textwidth} p{0.75\textwidth} }
+      \toprule
+        \textbf{Combinație de taste} &
+        \textbf{Efect} \\
+      \midrule
+        \texttt{Ctrl+c} &
+        terminarea procesului interactiv curent / anularea comenzii tastate în shell \\
 
-* Tabel cu capul de tabel “combinație de taste” și “efect”
+        \texttt{Ctrl+q} &
+        terminarea procesului interactiv curent \\
 
-\paragraph{Despre Alt+.}
+        \texttt{Alt+.} &
+        completarea în shell a ultimului argument al ultimei comenzi \\
+
+        \texttt{TODO} &
+        TODO \\
+      \bottomrule
+    \end{tabular}
+    \label{tab:cli:key-bindings}
+    % TODO: tabel cu capul de tabel "combinație de taste" și "efect"
+  \end{center}
+\end{table}
+
+TODO: Despre \texttt{Ctrl+c}
+
+TODO: Despre \texttt{Alt+.}
 
 Aceste combinații de taste sunt împrumutate din editorul Emacs. Mai mult,
-inclusiv tastele Ctrl+r (pentru căutare în istoric), Ctrl+p (comanda anterioară)
-și Ctrl+n (comanda anterioară) sunt împrumutate tot din editorul Emacs[1].
+inclusiv tastele \texttt{Ctrl+r} (pentru căutare în istoric), \texttt{Ctrl+p} (comanda anterioară)
+și \texttt{Ctrl+n} (comanda anterioară) sunt împrumutate tot din editorul Emacs.
 
 Recomandăm folosirea acestor combinații de taste cât mai mult pentru editarea
 comenzilor. Ajută la creșterea eficienței utilizării shell-ului și concentrarea
@@ -305,37 +290,37 @@ timpului și efortului pe rezolvarea sarcinii propuse.
 
 Editarea comenzilor în shell cu ajutorul combinațiilor de taste de mai sus este
 disponibilă și în alte interfețe în linia de comandă precum Python shell sau
-MySQL shell sau SQlite shell sau altceva. De exemplu, mai jos, pornim un shell
-SQlite și folosim facilitatea de reverse search:
+MySQL shell sau SQlite shell sau altceva. De exemplu, în \labelindexref{Listing}{lst:cli:universal-reverse-search}, pornim un shell
+SQlite și folosim facilitatea de \textit{reverse search}. La fel în cazul Python shell.
 
-* Exemplu cu SQlite și reverse search
+\begin{screen}[caption={Folosirea reverse search în alte interfețe tip CLI},label={lst:cli:universal-reverse-search}]
+TODO: Exemplu cu SQlite si reverse search
+TODO: Exemplu cu Python shell si reverse search
+\end{screen}
 
-La fel în cazul Python shell:
-
-* Exemplu cu Python shell și reverse search
-
-Toate combinațiile de taste prezentate în tabelul TODO sunt prezente și în
+Toate combinațiile de taste prezentate în tabelul \labelindexref{Tabelul}{tab:cli:key-bindings} sunt, în general, prezente și în
 aceste interfețe.
 
 Acest lucru se întâmplă pentru că funcționalitatea de editare de comenzi este
-oferită de biblioteca Readline[2], bibliotecă la care sunt legate majoritatea
+oferită de biblioteca Readline (TODO: link), bibliotecă la care sunt legate majoritatea
 shell-urilor și a interfețelor în linia de comandă.
 
 Facilitățile Readline sunt apelate de shell pentru prelucrarea intrării de la
 utilizator, adică a comenzilor și parametrilor ei. Biblioteca permite asocierea
-între comenzi Readline și o combinație de taste. De exemplu: beginning-of-line
-(C-a) înseamnă că pentru a ajunge la începutul liniei, vom tasta Ctrl+a.
+între comenzi Readline și o combinație de taste. De exemplu: \textit{beginning-of-line
+(C-a)} înseamnă că pentru a ajunge la începutul liniei, vom tasta \texttt{Ctrl+a}.
 
 O listă exhaustivă a comenzilor Readline și a combinației de taste (numită
 keybinding) găsiți în documentația bibliotecii Readline (online sau pagina de
 manual) sau a shell-ului Bash (online sau pagina de manual). Pentru accesarea
-paginilor de manual folosiți comenzile de mai jos:
+paginilor de manual folosiți comenzile din \labelindexref{Listing}{lst:cli:man-readline}.
 
+\begin{screen}[caption={Documentație pentru combinațiile de taste din shell (prin Readline)},label={lst:cli:man-readline}]
 Man 3 readline
-
 Man bash
+\end{screen}
 
-În cazul comenzii “man bash” căutați în pagina de manual după șirul READLINE. În
+În cazul comenzii "man bash" căutați în pagina de manual după șirul \texttt{READLINE.} În
 documentație aveți listate comenzile și combinațiile de taste uzuale și moduri
 prin care puteți să modificați combinațiile și să configurați biblioteca
 Readline.
@@ -349,97 +334,106 @@ comandă și argumentele acesteia. Separatorul este spațiu.
 O dată obținută comanda, shell-ul va trebui să execute acțiunea aferentă acelei
 comenzi. Pentru acesta, în mod uzual, se găsește un fișier executabil aferent
 comenzii și se creează un proces din acel fișier. De exemplu, pentru comanda ls
-fișierul executabil este /bin/ls, pentru comanda sudo, fișierul executabil este
-/usr/bin/sudo.
+fișierul executabil este \file{/bin/ls}, pentru comanda \cmd{sudo}, fișierul executabil este
+\file{/usr/bin/sudo}.
 
 Pentru localizarea fișierului executabil aferent unei comenzi, shell-ul se
-folosește de variabila de mediu PATH.
+folosește de variabila de mediu \texttt{PATH}.
 
 \subsubsection{Variabila de mediu PATH}
 \label{sec:cli-path}
 
-Despre variabile de mediu vom discuta detaliat în secțiunea TODO. Pe moment e
+Despre variabile de mediu vom discuta detaliat în \labelindexref{Secțiunea}{sec:cli-shell-variable}. Pe moment e
 suficient sa știm că o variabilă are un nume și o valoare.
 
-Variabila de mediu PATH are o valoare de forma de mai jos:
+Pentru a afișa valoarea/conținutul unei variabile folosim comanda \cmd{echo} și prefixăm numele variabilei cu simbolul \texttt{\$} (dolar)
+ca în \labelindexref{Listing}{lst:cli:show-vars}. Variabila de mediu \texttt{PATH} are o valoare ca cea de pe linia TODO.
 
-\begin{itemize}
-	\item Echo \$PATH
-	\item TODO
-\end{itemize}
+\begin{screen}[caption={Afișarea valorii variabilelor shell},label={lst:cli:show-vars}]
+TODO: afisare valoare variabile
+TODO: afisare valoare PATH
+\end{screen}
 
-Folosim comanda echo și prefixăm numele variabilei cu simbolul \$ (dolar) pentru
-a afișa valoarea/conținutul variabilei.
-
-Variabila PATH conține directoarele în care sunt căutate fișiere executabile
-pentru o comandă, separate prin : (două puncte). Shell-ul va prefixa numele
-comenzii cu numele fiecărui director din variabila PATH și va verifica existența
+Variabila \texttt{PATH} conține directoarele în care sunt căutate fișiere executabile
+pentru o comandă, separate prin \texttt{:} (două puncte). Shell-ul va prefixa numele
+comenzii cu numele fiecărui director din variabila \texttt{PATH} și va verifica existența
 unui fișier cu acel nume. Dacă există, va crea un executabil din acel
 executabil, altfel trece la următorul director. Astfel, în cazul comenzii ls,
-dacă valoarea variabilei PATH e cea din exemplu de mai sus, se caută, pe rând
-existența fișierelor executabile /usr/bin/ls, /usr/sbin/ls ...
+dacă valoarea variabilei \texttt{PATH} e cea din exemplu de mai sus, se caută, pe rând
+existența fișierelor executabile /usr/bin/ls, /usr/sbin/ls și așa mai departe.
 
-Dacă nu găsește nici un fișier executabil, se afișează mesaj de eroare
+Dacă nu găsește nici un fișier executabil, se afișează mesaj de eroare ca în \labelindexref{Listing}{lst:cli:path-error}.
 
-* Exemplu erorare command not found
+\begin{screen}[caption={Eroare localizare fișier executabil},label={lst:cli:path-error}]
+TODO: Exemplu erorare command not found
+\end{screen}
 
-O dată identificat fișierul executabil aferent comenzii, shell creează un proces
+O dată identificat fișierul executabil aferent comenzii, shell-ul creează un proces
 din acel executabil.
 
 Dacă se transmite comanda prin cale (absolută sau relativă) nu se mai caută în
-PATH.
+\texttt{PATH}.
 
-Directorul curent este absent diin PATH, de aceea trebuie să rulăm explicit un
-executabil ./nume_executabil.
+Directorul curent este absent din \texttt{PATH,} de aceea trebuie să rulăm explicit un
+executabil \texttt{./nume\_executabil}.
 
 Pentru a afla fără a rula care este fișierul executabil aferente unei comenzi
-folosim comanda which:
+folosim comanda \cmd{which} ca în \labelindexref{Listing}{lst:cli:which}.
 
-* exemple cu which
+\begin{screen}[caption={Aflarea executabilului unei comenzi (which)},label={lst:cli:which}]
+TODO: exemple cu which
+\end{screen}
 
 \subsubsection{Crearea unui proces nou}
 \label{sec:cli-new-process}
 
-Așa cum am precizat în \labelindexref{Secțiunea}{process-operatii}.
-Interacțiunea între procese, un proces nou este creat prin intermediul unui alt
+Așa cum am precizat în \labelindexref{Secțiunea}{sec:process-operatii}, un proces nou este creat prin intermediul unui alt
 proces, de obicei shell-ul. Shell-ul este procesul care pornește de la o
 comandă, identifică fișierul executabil aferent acelei comenzi din variabila
-PATH și apoi creează un proces din acel executabil.
+\texttt{PATH} și apoi creează un proces din acel executabil.
 
 Procesul este creat printr-un API intern al sistemului de operare, care în Linux
-este dat de două funcții: fork() și exec(). Fork() este un apel care creează un
-proces copil identic procesului părinte (o clonă a acestuia) iar exec() este
+este dat de două funcții: \texttt{fork()} și \texttt{exec()}. \texttt{fork()} este un apel care creează un
+proces copil identic procesului părinte (o clonă a acestuia) iar \texttt{exec()} este
 apelul care modifică imaginea procesului copil cu cea din executabilul primit ca
 parametru.
 
-Astfel când shell-ul primește comanda ls și identifică executabilul /bin/ls, va
-crea un proces copil identic (tot shell) folosind fork() și apoi va înlocui
-imagina de executabil cu /bin/ls folosind exec așa cum este indicat în imagina
-de mai jos:
+Astfel când shell-ul primește comanda \cmd{ls} și identifică executabilul \file{/bin/ls}, va
+crea un proces copil identic (tot shell) folosind \texttt{fork()} și apoi va înlocui
+imagina de executabil cu \file{/bin/ls} folosind \cmd{exec} așa cum este indicat în \labelindexref{Figura}{fig:cli:fork-exec}.
 
-* Diagramă cu shell + fork() + exec()[c]
+\begin{figure}[htbp]
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/02-fs/def-fs.svg}
+  \caption{Pornirea unui proces nou (fork() și exec()}
+  \label{fig:cli:fork-exec}
+  % TODO: Diagramă cu shell + fork() + exec()[c]
+\end{figure}
 
 Procesul nou creat are ca proces părinte shell-ul. De exemplu, dacă într-un
-shell rulăm comanda sleep 100 care nu face nimic timp de 100 de secunde, iar în
+shell rulăm comanda \cmd{sleep 100} care nu face nimic timp de \texttt{100} de secunde, iar în
 alt shell afișam informații despre procesul creat din această comandă, vedem că
-procesul părinte aferent este chiar shell-ul:
+procesul părinte aferent este chiar shell-ul, ca în \labelindexref{Listing}{lst:cli:shell-child}.
 
-* Exemplu cu sleep 100 și afișarea procesului părinte
+\begin{screen}[caption={Shell-ul ca proces părinte},label={lst:cli:shell-child}]
+TODO: exemplu cu sleep 100 si afisarea procesului parinte
+\end{screen}
 
 În momentul în care procesul copil este creat, shell-ul se blochează așteptând
 încheierea procesului. După ce procesul se încheie, shell-ul se deblochează. În
-acest moment shell-ul reține codul de ieșire (exit code) al procesului creat.
-Acest cod poate fi afișat cu ajutorul construcției \$?
+acest moment shell-ul reține codul de ieșire (\textit{exit code}) al procesului creat.
+Acest cod poate fi afișat cu ajutorul construcției \texttt{\$?}.
 
 După ce shell-ul creează un proces copil, shell-ul se blochează așteptând ca
 acesta să își încheie execuția. În acest timp informațiile transmise la terminal
 la intrarea standard sunt fie citite de procesul nou fie sunt ținute într-un
-buffer al terminalului. De exemplu, dacă rulăm comanda sleep 5 și tastăm rapid
+buffer al terminalului. De exemplu, dacă rulăm comanda \cmd{sleep 5} și tastăm rapid
 informații, acele informații vor fi transmise shell-ului după încheierea
-procesului creat din comanda sleep 5.
+procesului creat din comanda \cmd{sleep 5}.
 
 Dacă dorim ca shell-ul să nu aștepte încheierea procesului nou creat, atunci
-rulăm comanda în background cu ajutorul operatorului \&, așa cum am arătat în
+rulăm comanda în background cu ajutorul operatorului \texttt{\&}, așa cum am arătat în
 \labelindexref{Secțiunea}{sec:process-ierarhie-foreground-background}.
 
 \subsection{Comenzi interne și comenzi externe}
@@ -464,22 +458,51 @@ proces nou din executabilul cd care ar schimba directorul și și-ar încheia
 execuția, fără a afecta însă shell-ul.
 
 Comenzile interne sunt folosite și din rațiuni de eficiență. Crearea unui proces
-nou înseamnă un cost de timp (overhead) la nivelul shell-ului.
+nou înseamnă un cost de timp (\textit{overhead}) la nivelul shell-ului.
 
 Cu toate acestea comenzile externe sunt prevalente pentru modularitate: o nouă
 funcționalitate este adăugată prin adăugarea unui nou fișier executabil, fără a
 fi nevoie de modificarea shell-ului, cum ar fi cazul comenzilor interne.
 
-În tabelul de mai jos sumarizăm diferențele între comenzi interne și comenzi
-externe
+\labelindexref{Tabelul}{tab:cli:internal-vs-external} sumarizează diferențele între comenzi interne și comenzi
+externe.
 
-* Tabel cu “criteriu, comanzi interne, comenzi externe”
+\begin{table}[!htb]
+  \caption{Combinații de taste în shell}
+  \begin{center}
+    \begin{tabular}{ p{0.25\textwidth} p{0.35\textwidth} p{0.35\textwidth} }
+      \toprule
+        \textbf{Criteriu} &
+        \textbf{Comenzi interne} &
+        \textbf{Comenzi externe} \\
+      \midrule
+        \texttt{TODO} &
+        TODO &
+        TODO \\
 
-Pentru a identifica rapid tipul unei comenzi, se poate folosi comanda which
+        \texttt{TODO} &
+        TODO &
+        TODO \\
+
+        \texttt{TODO} &
+        TODO &
+        TODO \\
+
+        \texttt{TODO} &
+        TODO &
+        TODO \\
+      \bottomrule
+    \end{tabular}
+    \label{tab:cli:internal-vs-external}
+    % TODO: tabel cu "criteriu, comanzi interne, comenzi externe"
+  \end{center}
+\end{table}
+
+Pentru a identifica rapid tipul unei comenzi, se poate folosi comanda \cmd{which}
 pentru a vedea dacă pentru o comandă are un fișier executabil. Mai robust de
-folosit este însă comanda type, așa cum este folosită mai jos
+folosit este însă comanda \cmd{type}, așa cum este folosită în \labelindexref{Listing}{lst:cli:type}.
 
-\begin{screen}
+\begin{screen}[caption={Tipul unei comenzi (type)},label={lst:cli:type}]
 razvan@einherjar:~/.../current/examene/2018-septembrie\$ type echo
 echo is a shell builtin
 razvan@einherjar:~/.../current/examene/2018-septembrie\$ type exit
@@ -502,12 +525,12 @@ razvan@einherjar:~/.../current/examene/2018-septembrie\$ type type
 type is a shell builtin
 \end{screen}
 
-Comanda type este, desigur, internă, pentru a putea investiga comenzile interne
+Comanda \cmd{type} este, desigur, internă, pentru a putea investiga comenzile interne
 ale shell-ului.
 
 Când un shell rulează, va căuta întâi intern comanda introdusă de utilizator,
 apoi va căuta dacă este o comandă externă cu un corespondent într-un fișier
-executabil localizabil prin intermediul variabilei PATH.
+executabil localizabil prin intermediul variabilei \texttt{PATH}.
 
 \section{Funcționalități shell}
 \label{sec:cli-shell-func}
@@ -517,8 +540,8 @@ parametri/opțiuni. Shell-ul are funcționalități care permit înlănțuirea �
 combinarea mai multor comenzi și configurarea modului în care acestea rulează.
 
 Aceste funcționalități sunt oferite de operatori shell, variabile shell,
-expandări în shell și construcții agregate (globbing). Le discutăm în
-continuare:
+expandări în shell și construcții agregate (\textit{globbing}). Le discutăm în
+continuare.
 
 \subsection{Operatori shell}
 \label{sec:cli-operators}
@@ -527,47 +550,85 @@ Operatorii din shell frecvent folosiți sunt cei de redirectare, prezentați în
 \labelindexref{Capitolul}{chapter:storage} și cei de înlănțuire,
 prezentați în \labelindexref{Capitolul}{chapter:process}.
 
-Operatorii de redirectare sunt >, <, >>, 2>, cu rolurile din tabelul de mai jos:
+Operatorii de redirectare cei mai întâlniți sunt \texttt{$>$}, \texttt{$<$}, \texttt{$>$$>$}, \texttt{2$>$}, cu rolurile din \labelindexref{Tabelul}{tab:cli:redirection}.
 
-* Tabel cu operatorul de redirectare
+\begin{table}[!htb]
+  \caption{Operatorii de redirectare în shell}
+  \begin{center}
+    \begin{tabular}{ p{0.25\textwidth} p{0.75\textwidth} }
+      \toprule
+        \textbf{Operator} &
+        \textbf{Rol / Efect} \\
+      \midrule
+        \texttt{$>$} &
+        TODO \\
+
+        \texttt{$<$} &
+        TODO \\
+
+        \texttt{$>$$>$} &
+        TODO \\
+
+        \texttt{2$>$} &
+        TODO \\
+      \bottomrule
+    \end{tabular}
+    \label{tab:cli:key-bindings}
+    % TODO: Tabel cu operatorul de redirectare
+  \end{center}
+\end{table}
 
 Dacă dorim să redirectăm și ieșirea standard și ieșirea de eroare standard
-atunci folosim operatorul de duplicare 2>\&1 care redirectează ieșirea de eroare
-standard (2) în ieșirea standard (1). Astfel în construcția de mai jos, ambele
-tipuri de ieșiri sunt redirectate la fișierul special /dev/null.
+atunci folosim operatorul de duplicare \texttt{2$>$\&1} care redirectează ieșirea de eroare
+standard (\texttt{2}) în ieșirea standard (\texttt{1}). Astfel în construcția de mai jos, ambele
+tipuri de ieșiri sunt redirectate la fișierul special \file{/dev/null}.
 
-Pentru înlănțuirea comenzilor avem operatorii |, ||, \&\& cu rolurile de mai
-jos:
+Pentru înlănțuirea comenzilor avem operatorii \texttt{$\textbar$}, \texttt{$\textbar$$\textbar$}, \texttt{\&\&} cu rolurile din \labelindexref{Tabelul}{tab:cli:chaining}.
 
-* Tabel cu operatorii de înlănțuire
+\begin{table}[!htb]
+  \caption{Operatorii de înlănțuire în shell}
+  \begin{center}
+    \begin{tabular}{ p{0.25\textwidth} p{0.75\textwidth} }
+      \toprule
+        \textbf{Operator} &
+        \textbf{Rol / Efect} \\
+      \midrule
+        \texttt{$\textbar$} &
+        TODO \\
 
-Atunci când dorim să rulăm un proces în background folosim operatorul \&. Acesta
+        \texttt{$\textbar$$\textbar$} &
+        TODO \\
+
+        \texttt{\&\&} &
+        TODO \\
+
+      \bottomrule
+    \end{tabular}
+    \label{tab:cli:key-bindings}
+    % TODO: Tabel cu operatorii de înlănțuire
+  \end{center}
+\end{table}
+
+Atunci când dorim să rulăm un proces în background folosim operatorul \texttt{\&}. Acesta
 va trimite procesul în background. Putem să vedem procesele care se găsesc la un
-moment dat în background folosind comanda jobs. Este o formă de paralelism.
+moment dat în background folosind comanda \cmd{jobs}. Este o formă de paralelism.
 
 \subsection{Subshell}
 \label{sec:cli-subshell}
 
 Atunci când folosim operatorii shell putem dori să operăm asupra unei compoziții
-de comenzi. De exemplu dorim să reținem output-ul a două comenzi într-un fișier.
-La o rulare precum cea de mai jos nu funcționează:
-
-\begin{screen}
-razvan@einherjar:~/.../current/examene/2018-septembrie\$ ls ; ps > a.out
-An1.xls  An2.xls  An3.xls  An4.xls  An5.xls  An6.xls
-\end{screen}
+de comenzi. De exemplu dorim să reținem output-ul a două comenzi într-un fișier. În \labelindexref{Listing}{lst:cli:subshell}, în liniile TODO-TODO, redirectarea nu funcțîonează.
 
 Doar rezultatul rulării comenzii ps este redirectat. Pentru a redirecta o
 înlănțuire de comenzi folosim un subshell, adică vom crea un proces nou shell
-care va rula cele două comenzi și va transfera rezultatul amândurora în fișier.
+care va rula cele două comenzi și va transfera rezultatul amândurora în fișier, ca în liniile TODO-TODO din \labelindexref{Listing}{lst:cli:subshell}. Aici ambele comenzi sunt redirectate în fișierul \file{a.out}.
 
-Un subshell este creat cu ajutorul parantezelor la fel ca mai jos:
+\begin{screen}[caption={Subshell-uri și redirectare},label={lst:cli:subshell}]
+razvan@einherjar:~/.../current/examene/2018-septembrie\$ ls ; ps > a.out
+An1.xls  An2.xls  An3.xls  An4.xls  An5.xls  An6.xls
 
-\begin{screen}
 \$ ( ls ; ps ) > a.out
 \end{screen}
-
-Aici ambele comenzi sunt redirectate în fișierul a.out.
 
 \subsection{Variabile shell}
 \label{sec:cli-shell-variable}
@@ -577,140 +638,235 @@ acestuia. Variabilele oferă informații despre configurația shell-ului sau
 afectează execuția acestuia.
 
 O variabilă are un nume și o valoare. Pentru a afișa valoarea unei variabile
-prefixăm numele cu simbolul \$. Așa cum am văzut și mai sus pentru a afișa
-valoarea variabilei PATH folosim construcția:
-
-* Echo \$PATH
+prefixăm numele cu simbolul \texttt{\$}, așa cum am văzut în \labelindexref{Listing}{lst:cli:show-vars}.
 
 Există o serie de parametri speciali ai shell-ului care sunt asemuiți unor
-variabile. Nu pot fi configurați/modificați, doar citiți, prezentați în tabelul
-de mai jos
+variabile. Nu pot fi configurați/modificați, doar citiți. Sunt prezentați în \labelindexref{Tabelul}{tab:cli:special-shell-vars}.
 
-* Tabel cu parametri shell: \$\$, \$!, \$?
+\begin{table}[!htb]
+  \caption{Parametri speciali ai shell-ului}
+  \begin{center}
+    \begin{tabular}{ p{0.25\textwidth} p{0.75\textwidth} }
+      \toprule
+        \textbf{Nume} &
+        \textbf{Efect} \\
+      \midrule
+        \texttt{\$} &
+        TODO \\
+
+        \texttt{\!} &
+        TODO \\
+
+        \texttt{\&} &
+        TODO \\
+
+        \texttt{\_} &
+        TODO \\
+      \bottomrule
+    \end{tabular}
+    \label{tab:cli:special-shell-vars}
+    % Tabel cu parametri shell: \$\$, \$!, \$?
+  \end{center}
+\end{table}
 
 Alți parametri special sunt folosiți în special în shell scripting și vor fi
 prezentați în \labelindexref{Secțiunea}{sec:auto-funct-vars}.
 
 Shell-ul Bash are o serie de variabile predefinite, care au rolul specifice în
-funcționarea shell-ului, indicate în tabelul de mai jos:
+funcționarea shell-ului, o parte indicate în \labelindexref{Tabelul}{tab:cli:shell-vars}.
 
-* Tabel cu variabile Bash
+\begin{table}[!htb]
+  \caption{Variabile predefinite Bash}
+  \begin{center}
+    \begin{tabular}{ p{0.25\textwidth} p{0.75\textwidth} }
+      \toprule
+        \textbf{Nume variabilă} &
+        \textbf{Rol / Efect} \\
+      \midrule
+        \texttt{TODO} &
+        TODO \\
+
+        \texttt{TODO} &
+        TODO \\
+
+        \texttt{TODO} &
+        TODO \\
+      \bottomrule
+    \end{tabular}
+    \label{tab:cli:shell-vars}
+    % TODO: Tabel cu variabile Bash
+  \end{center}
+\end{table}
 
 Pentru a vedea toate variabilele definite la un moment dat într-un shell Bash
-putem folosi comanda:
+putem folosi comanda internă \cmd{declare}, ca în \labelindexref{Listing}{lst:cli:print-vars}.
 
-* declare -p
+\begin{screen}[caption={Afișarea variabilelor definite în shell},label={lst:cli:print-vars}]
+TODO: declare -p
+\end{screen}
 
 Pentru a inițializa o variabilă oarecare în shell folosim o construcție de forma
-nume=valoare, la fel ca mai jos:
+\texttt{nume=valoare} ca în exemplele din \labelindexref{Listing}{lst:cli:init-var}.
 
-* Exemplu cu inițializări și afișări de variabile
+\begin{screen}[caption={Inițializarea variabilelor în shell},label={lst:cli:init-var}]
+TODO: Exemple de initializari si afisari de variabile
+\end{screen}
 
 O variabilă poate fi folosită pentru a porni un program și afectează doar
 rularea acelui program. De exemplu în folosirea clientului Bittorrent în linia
-de comandă transmission-cli, putem folosi:
+de comandă \cmd{transmission-cli}, putem folosi o comandă precum cea din \labelindexref{Listing}{lst:cli:transmission-cli}.
 
-* TR_DEBUG=1 transmission-cli
+\begin{screen}[caption={Folosirea unei variabile pentru a afecta funcțîonarea unui program},label={lst:cli:transmission-cli}]
+TODO: TR_DEBUG=1 transmission-cli
+TODO: echo \$TR_DEBUG
+\end{screen}
 
-* echo \$TR_DEBUG
+Vedem că variabila \texttt{TR_DEBUG} este inițializată doar pentru rularea comenzii
+\cmd{transmission-cli}, nu la nivelul shell-ului.
 
-Vedem că variabila TR_DEBUG este inițializată doar pentru rularea comenzii
-transmission-cli, nu la nivelul shell-ului.
+Dacă vrem să anulăm definirea unei variabile folosim comanda \cmd{unset} ca în \labelindexref{Listing}{lst:cli:unset}.
 
-Dacă vrem să anulăm definirea unei variabile folosim comanda unset, ca mai jos:
-
-* exemplu unset
+\begin{screen}[caption={Anularea definirii unei variabile},label={lst:cli:unset}]
+iTODO exemplu unset
+\end{screen}
 
 Anumite variabile pot fi variabile de mediu. O variabilă de mediu este o
 variabilă care este moștenită de procesele create din shell. Multe dintre
-variabilele shell-ului indicate în tabelul TODO sunt variabile de mediu. Pentru
-a vedea toate variabilele de mediu definite într-un shell folosim comanda:
+variabilele shell-ului indicate în \labelindexref{Tabelul}{tab:cli:shell-vars} sunt variabile de mediu. Pentru
+a vedea toate variabilele de mediu definite într-un shell folosim comanda \cmd{export} ca în linia TODO din \labelindexref{Listing}{lst:cli:export}.
 
-* export -p
+\begin{screen}[caption={Gestiunea variabilelor de mediu (export)},label={lst:cli:export}]
+TODO: export -p
+TODO: exemple cu export
+TODO: export -n
+\end{screen}
 
-Pentru a defini o variabilă ca variabilă de mediu folosim comanda export:
-
-* exemple cu export
+Pentru a defini o variabilă ca variabilă de mediu folosim comanda \cmd{export} ca în în liniile TODO din \labelindexref{Listing}{lst:cli:export}.
 
 Dacă dorim ca o variabilă să nu mai fie definitivă va variabilă de mediu (să fie
-neexportată), folosim opțiunea -n la comanda export:
+neexportată), folosim opțiunea \texttt{-n} la comanda \cmd{export} ca în liniile TODO din \labelindexref{Listing}{lst:cli:export}.
 
-* export -n
-
-În folosirea variabilelor e de avut în vedere ce variabile există deja și care
-este rolul lor. De folosit comanda declare -p.
+În folosirea variabilelor e de avut în vedere ce variabile există deja și care este rolul lor. Pentru aceasta putem afișa toate variabilele, inclusiv cele de mediu folosind comanda \cmd{declare} ca în \labelindexref{Listing}{lst:cli:declare}.
 
 \subsection{Expandări}
 \label{sec:cli-expansion}
 
 După ce un shell primește comenzile, parametrii și operatorii de la intrare, și
 după ce îi separă, realizează operațiile de expandare. Expandarea este de mai
-multe tipuri, detaliate în documentația Bash, vom indica aici cele mai
-importante forme.
+multe tipuri, detaliate în documentația Bash. În \labelindexref{Listing}{lst:cli:expansion} sunt prezentate exempl de comenzi cu cele mai
+importante forme de expandare.
 
-Expandarea de acolade înseamnă trecerea prin mai multe opțiuni. De exemplu:
+\begin{screen}[caption={Forme de expandare în shell},label={lst:cli:expansion}]
+TODO: exemplu cu ls {a,b,c}.tex
+TODO: cd ~/projects/
+TODO: echo \$\{algorithm\}
+TODO: echo \$a_b
+TODO: echo \$\{a\}_b
+TODO: echo \$((a+b))
+\end{screen}
 
-* Exemplu cu ls {a,b,c}.tex
+Expandarea de acolade înseamnă trecerea prin mai multe opțiuni. De exemplu în linia TODO din \labelindexref{Listing}{lst:cli:expansion}
 
 Acoladele sunt folosite pentru a selecta între mai multe opțiuni
 
-Expandarea tildei este folosită pentru expandarea directorului home. Atunci când
-rulăm
+Expandarea caracterului \texttt{$\sim$} (tildă) este folosită pentru expandarea directorului home. De exemplu, în linia TODO din \labelindexref{Listing}{lst:cli:expansion} tilda este înlocuită cu valoarea variabilei \texttt{HOME} a shell-ului curent.
 
-* cd ~/projects/
-
-Tilda este înlocuită cu valoarea variabilei HOME a shell-ului curent.
-
-Expandarea parametrică se referă la construcții care încep cu \$\{
+Expandarea parametrică se referă la construcții care încep cu \texttt{\$\{}
 (dolar-acoladă). Cea mai simplă formă este chiar expandarea valorii unei
-variabile:
+variabile ca în linia TODO din \labelindexref{Listing}{lst:cli:expansion}.
 
-* echo \$\{algorithm\}
-
-Comanda de mai sus este echivalentă cu echo \$algorithm. Este însă, utilă pentru
+Comanda de la linia TODO este echivalentă cu \cmd{echo \$algorithm}. Este utilă pentru
 situații în care vrem să afișăm valoarea unei variabile urmată de un șir. De
-exemplu:
+exemplu, linia TODO din \labelindexref{Listing}{lst:cli:expansion} va încerca afișarea valorii variabilei \texttt{a_b}, nu a valorii variabilei \texttt{a} urmată de
+șirul \texttt{_b}. Pentru aceasta o rulare corectă este cea de la linia TODO din \labelindexref{Listing}{lst:cli:expansion}.
 
-* echo \$a_b
+Expandarea parametrică are mai multe forme, le amintim pe cele relevante în \labelindexref{Tabelul}{tab:cli:param-expansion}.
 
-Va încerca afișarea valorii variabilei a_b, nu a valorii variabilei a urmată de
-șirul _b. Pentru aceasta o rulare corectă este
+\begin{table}[!htb]
+  \caption{Expandarea parametrică în shell}
+  \begin{center}
+    \begin{tabular}{ p{0.15\textwidth} p{0.25\textwidth} p{0.35\textwidth} p{0.35\textwidth} }
+      \toprule
+        \textbf{Construcție} &
+        \textbf{Rol / Efect} &
+        \textbf{Exemplu de comandă } &
+        \textbf{Rezultat comandă} \\
+      \midrule
+        \texttt{TODO} &
+        TODO &
+        \texttt{TODO} &
+        \texttt{TODO} \\
 
-* Echo \$\{a\}_b
+        \texttt{TODO} &
+        TODO &
+        \texttt{TODO} &
+        \texttt{TODO} \\
 
-Expandarea parametrică are mai multe forme, le amintim pe cele relevante în
-tabelul de mai jos
+        \texttt{TODO} &
+        TODO &
+        \texttt{TODO} &
+        \texttt{TODO} \\
 
-* Tabel cu “construcție, rol, exemplu construcție, ce afișează
+        \texttt{TODO} &
+        TODO &
+        \texttt{TODO} &
+        \texttt{TODO} \\
+
+      \bottomrule
+    \end{tabular}
+    \label{tab:cli:param-expansion}
+    % TODO: Tabel cu construcție, rol, exemplu construcție, ce afișează
+  \end{center}
+\end{table}
 
 Expandarea aritmetică se folosește de construcția \$((...)). Are loc atunci când
-dorim să efectuăm calcule în shell. De exemplu, dacă rulăm
-
-* Echo \$a+\$b
-
-Rezultatul va fi 2+3
-
-Ca să aibă sens aritmetic trebuie să folosim expandare aritmetică:
-
-* Echo \$((a+b))
+dorim să efectuăm calcule în shell. De exemplu, așa cum vedem în \labelindexref{Listing}{lst:cli:expansion}, rularea comenzii de la linia TODO duce la afișarea șirului \texttt{2+3} în loc de rezultatul dorit (\texttt{5}).  Ca să aibă sens aritmetic trebuie să folosim expandare aritmetică ca în liniile TODO-TODO din \labelindexref{Listing}{lst:cli:expansion}.
 
 \subsubsection{Globbing}
 \label{sec:cli-globbing}
 
-Termenul globbing înseamnă în limba engleză chiar expandare. Globbing se referă
+Termenul \textit{globbing} înseamnă în limba engleză chiar expandare. Globbing se referă
 la construcții specifice shell-ului care pot fi expandate la a se potrivi cu mai
-multe opțiuni. Se mai numește expandarea căilor (pathname expansion). De exemplu
-construcția “a*” se potrivește cu orice nume care începe cu litera a; este util
-în shell în interacțiunea cu sistemul de fișiere:
+multe opțiuni. Se mai numește expandarea căilor (\textit{pathname expansion}). De exemplu
+construcția \texttt{a*} se potrivește cu orice nume care începe cu litera \texttt{a}; este util
+în shell în interacțiunea cu sistemul de fișiere, ca în \labelindexref{Listing}{lst:cli:globbing}.
 
-* exemplu cu ls a*
+\begin{screen}[caption={Folosirea globbing în shell},label={lst:cli:globbing}]
+TODO: exemplu cu ls a*
+TODO: exemplu cu ls *.c
+\end{screen}
 
-* exemplu cu ls *.c
+Globbing folosește de regulă caractere speciale, așa cum sunt indicate în construcțiile din \labelindexref{Tabelul}{tab:cli:globbing}.
 
-Globbing folosește de regulă 3 caractere, așa cum sunt indicate în construcțiile
-de mai jos:
+\begin{table}[!htb]
+  \caption{Caractere speciale în globbing}
+  \begin{center}
+    \begin{tabular}{ p{0.25\textwidth} p{0.75\textwidth} }
+      \toprule
+        \textbf{Caracter special din globbing} &
+        \textbf{Rol / Efect} \\
+      \midrule
+        \texttt{TODO} &
+        TODO \\
 
-* Tabel cu globbing
+        \texttt{TODO} &
+        TODO \\
+
+        \texttt{TODO} &
+        TODO \\
+
+        \texttt{TODO} &
+        TODO \\
+
+        \texttt{TODO} &
+        TODO \\
+
+      \bottomrule
+    \end{tabular}
+    \label{tab:cli:key-bindings}
+    % TODO: Tabel cu globbing
+  \end{center}
+\end{table}
 
 Construcțiile ce folosesc globbing, expandarea cu acolade și expandarea tildei
 sunt frecvent folosite în operațiile cu sistemul de fișiere.
@@ -720,22 +876,24 @@ sunt frecvent folosite în operațiile cu sistemul de fișiere.
 
 O situație întâlnită frecvent este folosirea output-ului unei comenzi ca
 parametru al unei alte comenzi sau ca să reținem într-o variabilă. De exemplu,
-TODO: ceva practic: În acest caz folosim expandarea comenzilor folosind
-construcția \$(...) ca mai jos:
+atunci când vrem să reținem într-o variabilă numărul de procese ale unui utilizator. În acest caz folosim expandarea comenzilor ca în \labelindexref{Listing}{lst:cli:comm-expansion}.
 
-* TODO
-
-Alte exemple de expandare a comenzilor sunt prezentate în continuare.
+\begin{screen}[caption={Expandarea comenzilor},label={lst:cli:comm-expansion}]
+TODO: num_proc=$(pgrep -u student | wc -l)
+TODO: alte exemple
+\end{screen}
 
 \subsection{Escaping}
 \label{sec:cli-escaping}
 
 După cum am văzut shell-ul folosește caractere cu roluri dedicate în rularea sa:
 separare de comenzi și parametri, operatori, expandare. Aceste metacaractere pot
-fi însă parte a unor nume de parametri primiți de comenzi. De exemplu, dacă avem
-fișierul uso curs 05.pdf și rulăm comanda de mai jos vom primi eroare:
+fi însă parte a unor nume de parametri primiți de comenzi. De exemplu, în \labelindexref{Listing}{lst:cli:space-error} avem
+fișierul \file{uso curs 05.pdf} dar comanda de la linia TODO rezultă în eroare.
 
-* ls uso curs 05.pdf
+\begin{screen}[caption={Caracterul spațiu în numele unui fișier},label={lst:cli:space-error}]
+ls udo curs 05.pdf
+\end{screen}
 
 Aceasta deoarece shell-ul interpretează intrarea primită ca fiiind o comandă și
 3 parametri.
@@ -744,7 +902,7 @@ Pentru a împiedica shell-ul să interpreteze caracterele, folosim escaping, adi
 metode prin care acele caractere să fie interpretate literal.
 
 Există trei moduri de escaping: prin ghilimele, prin apostrofuri și prin
-backslash.
+\texttt{$\textbackslash$} (\textit{backslash}).
 
 În cazul escapării prin apostrofuri, caracterele plasate între două apostrofuri
 vor avea interpretare literală. Escaparea prin ghilimele este similară escapării
@@ -755,31 +913,34 @@ expandările) își păstrează semnificația între ghilimele.
 Escaparea prin bacsklash păstrează sensul literal al caracterului imediat
 următor.
 
-Mai jos sunt exemple de folosire a celor trei forme de escaping:
+\labelindexref{Listing}{lst:cli:escaping} conține exemple de folosire a celor trei forme de escaping.
 
-* Exemple escaping
+\begin{screen}[caption={Forme de escaping în shell},label={lst:cli:escaping}]
+TODO: Exemple escaping
+TODO: Exemple cu escaping intre ele
+\end{screen}
 
-Fiecare formă poate fi la rândul său folosită pentru a escapa celelalte forme:
+Fiecare formă poate fi la rândul său folosită pentru a escapa celelalte forme, așa cum apare în liniile TODO-TODO din \labelindexref{Listing}{lst:cli:escaping}. Este similar cu escaping-ul ghilimelelor într-un șir dintr-un limbaj de programare (precum C sau Python), ca în construcția din \labelindexref{Listing}{lst:cli:c-escaping}.
 
-* Exemple cu escaping între ele
+\begin{screen}[caption={Permisiuni pe fișiere cu parole},label={lst:cli:c-escaping}]
+printf("Use the word \"must\", if you must\n");
+\end{screen}
 
 \section{Pornirea și personalizarea shell-ului}
 \label{sec:cli-customize-shell}
 
 După ce un utilizator se autentifică în sistem, acesta are configurat un shell
-de login în fișierul /etc/passwd. Acesta este procesul pornit după
+de login în fișierul \file{/etc/passwd}. Acesta este procesul pornit după
 autentificarea utilizatorului.
 
-În mod uzual acest shell este /bin/bash pe sistemele Linux, înseamnă că
+În mod uzual acest shell este \file{/bin/bash} pe sistemele Linux, înseamnă că
 utilizatorul pornește shell-ul Bash.
 
 Atunci când este pornit un shell, sunt încărcate configurări pentru acesta.
 Configurările sunt stocate în fișiere globale și locale și au în general rolul
 de a stabili variabilele shell-ului sau alți parametri ai acestuia. De exemplu,
 personalizarea promptului unui shell se realizează prin configurarea variabilei
-PS1 în Bash.
-
-Exemple mai multe de configurare a shell-ului.
+\texttt{PS1} în Bash, așa cum vedea în \labelindexref{Listing}{lst:cli:custom-prompt} din \labelindexref{Secțiunea}{sec:cli-prompt}.
 
 Locul unde se găsesc fișierele de configurare globale și locale depind de tipul
 de shell. Vom prezenta în continuare shell-ul Bash.
@@ -789,24 +950,24 @@ de shell. Vom prezenta în continuare shell-ul Bash.
 
 Există mai multe moduri de pornire a shell-ului Bash: login/non-login sau
 interactiv/neinteractiv. Aceste diferențe nu le vom detalia aici, sunt
-prezentate în documentația Bash online[3] sau folosind comanda:
+prezentate în documentația Bash online (TODO: link) sau folosind comanda \texttt{man bash} și căutând în manual după șirul \texttt{INVOCATION}.
 
-* man bash
+În cazul cel mai uzual (shell de login și interactiv) shell-ul Bash parcurge
+întâi fișierul global \file{/etc/profile}, apoi primul fișier găsit dintre
+\file{$\sim$/.bash_profile}, \file{$\sim$/.bash\_login}, \file{$\sim$/.profile}. În mașina virtuală USO, avem
+următoarea secvență de parcurgere a fișierelor:
 
-Și căutând în manual după șirul INVOCATION.
+\begin{enumerate}
+  \item TODO
+  \item TODO
+  \item TODO
+\end{enumerate}
 
-În cazul cel mai uzual, shell de login și interactiv, shell-ul bash parcurge
-întâi fișierul global /etc/profile, apoi primul fișier găsit dintre
-~/.bash_profile, ~/.bash_login, ~/.profile. În mașina virtuală USO, avem
-situația:
+În general, Bash va avea configurate linii precum cele din \labelindexref{Listing}{lst:cli:etc-profile} în fișierul
+\file{/etc/profile}, ceea ce înseamnă că va fi interpretat conținutul fișierului
+\file{/etc/bash.bashrc} și conținutul fișierelor din directorul \file{/etc/profile.d/}.
 
-* listare startup files
-
-În general, Bash va avea configurate linii precum cele de mai jos în fișierul
-/etc/profile, ceea ce înseamnă că va fi interpretat conținutul fișierului
-/etc/bash.bashrc și conținutul fișierelor din directorul /etc/profile.d/:
-
-\begin{screen}
+\begin{screen}[caption={Secvență de configurare Bash (/etc/profile)},label={lst:cli:etc-profile}]
         if [ -f /etc/bash.bashrc ]; then
             . /etc/bash.bashrc
         fi
@@ -821,11 +982,9 @@ if [ -d /etc/profile.d ]; then
 fi
 \end{screen}
 
-De asemenea, fișierul ~/.bash_profile va avea configurate linii precum cele de
-mai jos, ceea ce înseamnă că se va interpreta și conținutul fișierului
-~/.bashrc.
+De asemenea, fișierul \file{$\sim$/.bash\_profile} va avea configurate linii precum cele din \labelindexref{Listing}{lst:cli:home-profile}, ceea ce înseamnă că se va interpreta și conținutul fișierului \file{$\sim$/.bashrc}.
 
-\begin{screen}
+\begin{screen}[caption={Secvență de configurare Bash (~/.bashrc)},label={lst:cli:home-profile}]
     if [ -f "\$HOME/.bashrc" ]; then
         . "\$HOME/.bashrc"
     fi
@@ -835,15 +994,19 @@ De aceea, dacă faceți configurări pentru personalizarea și configurarea porn
 shell-ului, le veți face, de obicei:
 
 \begin{itemize}
-	\item Global, la nivelul sistemului, în fișierul /etc/bash.bashrc
-
-	\item Local, la nivelul utilizatorului, în fișierul ~/.bashrc
-
-	\item TODO Un scenariu de configurare a shell-ului și configurarea în
-		/etc/bash.bashrc și în ~/.bashrc
+  \item global, la nivelul sistemului, în fișierul \file{/etc/bash.bashrc}
+  \item local, la nivelul utilizatorului, în fișierul \file{$\sim$/.bashrc}
 \end{itemize}
 
-La închiderea unei sesiuni de shell aceasta interpretează fișierul ~/.bash_logout.
+De exemplu, putem adăuga secvența din \labelindexref{Listing}{lst:cli:config-bashrc} fie în fișierul \file{/etc/bash.bashrc} fie în fișierul \file{$\sim$/.bashrc}. Acest lucru va conduce o configurare globală sau locală care va TODO.
+
+\begin{screen}[caption={Configurare în Bash (bashrc)},label={lst:cli:config-bashrc}]
+TODO: PROMPT_DIRTRIM
+TODO: LC_COLLATE
+TODO: PATH update cu ~/bin/ sau ~/.local/config/
+\end{screen}
+
+La închiderea unei sesiuni de shell aceasta interpretează fișierul \file{$\sim$/.bash\_logout}.
 
 \subsection{Personalizarea promptului}
 \label{sec:cli-prompt}
@@ -853,43 +1016,73 @@ Personalizarea acestuia poate înseamna personalizarea conținutului sau a
 aspectului (culorilor).
 
 Promptul afișat de shellul Bash este definit de variabila PS1. De exemplu pe
-mașina virtuală USO promptul arată ca mai jos iar valoarea variabilei PS1 este
-cea indicată:
+mașina virtuală USO promptul arată ca în liniile TODO din \labelindexref{Listing}{lst:cli:custom-prompt} cu valoarea \texttt{PS1} cea indicată. Liniile TODO-TODO conțin exemple de prompt-uri personalizate prin modificarea variabilei \texttt{PS1}.
 
-* Exemplu prompt VM USO
+\begin{screen}[caption={Personalizarea prompt-ului},label={lst:cli:custom-prompt}]
+TODO: Exemplu prompt VM USO
+TODO: exemple de configurari de prompt de shell
+\end{screen}
 
-Conținutul promptului din variabila PS1 reprezintă elemente care sunt apoi
-interpretate de shell, precum cele de mai jos:
+Conținutul promptului din variabila \texttt{PS1} reprezintă elemente care sunt apoi
+interpretate de shell, precum cele din \labelindexref{Tabelul}{tab:cli:prompt}.
 
-* Tabel cu elemente din prompt
+\begin{table}[!htb]
+  \caption{Elemente pentru personalizarea prompt-ului}
+  \begin{center}
+    \begin{tabular}{ p{0.25\textwidth} p{0.75\textwidth} }
+      \toprule
+        \textbf{Construcție} &
+        \textbf{Efect} \\
+      \midrule
+
+        \texttt{TODO} &
+        TODO \\
+
+        \texttt{TODO} &
+        TODO \\
+
+        \texttt{TODO} &
+        TODO \\
+
+        \texttt{TODO} &
+        TODO \\
+
+        \texttt{TODO} &
+        TODO \\
+
+      \bottomrule
+    \end{tabular}
+    \label{tab:cli:prompt}
+    % TODO: Tabel cu elemente din prompt
+  \end{center}
+\end{table}
 
 O listă completă a elementelor ce pot fi parte din variabila PS1 găsiți în
-documentația online[4] sau în pagina de manual Bash în secțiunea PROMPTING.
+documentația online (TODO: link) sau în pagina de manual Bash în secțiunea \texttt{PROMPTING}.
 
-Variabila PS1 poate conține în cadrul său și facilități de shell expansion și
+Variabila \texttt{PS1} poate conține în cadrul său și facilități de shell expansion și
 rularea de comenzi. O facilitate utilă este ca promptul să conțină branch-ul Git
-curent atunci când directorul curent este un repository Git.
+curent atunci când directorul curent este un repository Git, ca în liniile TODO-TODO din \labelindexref{Listing}{lst:cli:custom-prompt}.
 
-Dacă doriți să personalizați promptul, va trebui să modificați valoarea
-variabilei PS1 într-un fișier de configurare a shell-ului (global
-/etc/bash.bashrc, local ~/.bashrc). Puteți încerca site-ul Easy Bash Prompt
-Generator (http://ezprompt.net/) pentru o formă interactivă și vizuală de
-generare de conținut PS1 pentru personalizarea prompt-ului.
+Dacă doriți să personalizați permanent promptul, va trebui să modificați valoarea
+variabilei \texttt{PS1} într-un fișier de configurare a shell-ului așa cum am precizat în \labelindexref{Secțiunea}{sec:cli-shell-startup}. Puteți încerca site-ul Easy Bash Prompt
+Generator (\url{http://ezprompt.net/}) pentru o formă interactivă și vizuală de
+generare de conținut \texttt{PS1} pentru personalizarea prompt-ului.
 
 \subsection{Multiplexoare de terminal}
 \label{sec:cli-tmux}
 
 Atunci când dorim shell-uri multiple, avem posibilitatea să deschidem sau să
 folosim mai multe ferestre de shell sau mai multe tab-uri de shell sau să
-folosim multiplexoare de terminal precum screen, tmux pe care le-am prezentat în
-\labelindexref{Capitolul}{chapter:process}.
+folosim multiplexoare de terminal precum \cmd{screen}, \cmd{tmux} pe care le-am prezentat în
+\labelindexref{Secțiunea}{sec:process-interactivitate-screen}.
 
 Multiplexoarele de terminal sunt utile în situația în care vrem să rulăm
 aplicații interactive și apoi să ne detașăm de la terminal.
 
-Tmux și screen au fișiere de configurare specifice în care pot configura
+\cmd{tmux} și \cmd{screen} au fișiere de configurare specifice în care pot configura
 aspectul terminalului, combinații de taste și au facilități dedicate, precum
-salvarea sesiunii curente și restaurarea acesteia la alt moment de timp.
+salvarea sesiunii curente și restaurarea acesteia la alt moment de timp. Sunt detaliate în \labelindexref{Secțiunea}{sec:process-interactivitate-screen}.
 
 \section{Expresii regulate}
 \label{sec:cli-regex}
@@ -901,43 +1094,101 @@ extragere de linii, extragere de coloane, verificarea apariției unor secvențe.
 Pentru verificarea apariției unei secvențe (acțiune numită pattern matching)
 folosim expresii regulate. O expresie regulată este un șir de caractere; unele
 caractere au rol special și le numim metacaractere. O expresie regulată este
-folosită pentru a îngloba reprezentarea mai multor șiruri. Exemplu.
+folosită pentru a îngloba reprezentarea mai multor șiruri. TODO: exemplu
 
 Expresiile regulate sunt prezente în majoritatea limbajelor, într-o formă sau
 alta: Python, Perl, PHP, Ruby, JavaScript, în biblioteci C.
 
-Există utilitare care folosesc expresii regulate, cel mai cunoscut fiind grep
-pentru a extrage linii de conțin o anumită expresie regulată.
+Există utilitare care folosesc expresii regulate, cel mai cunoscut fiind \cmd{grep}
+pentru a extrage linii de conțin o anumită expresie regulată, ca în \labelindexref{Listing}{lst:cli:grep}.
 
-În continuare sunt câteva exemple de folosire a grep și a expresiilor regulate:
+\begin{screen}[caption={Expresii regulate în grep},label={lst:cli:grep}]
+TODO: exemple grep
+\end{screen}
 
-* Exemple de folosire grep
+Expresiile regulate conțin metacaractere prezentate în \labelindexref{Tabelul}{tab:cli:regex-chars}.
 
-Expresiile regulate conțin metacaractere pe care le prezentăm mai jos:
+\begin{table}[!htb]
+  \caption{Metacaractere în expresii regulate}
+  \begin{center}
+    \begin{tabular}{ p{0.25\textwidth} p{0.75\textwidth} }
+      \toprule
+        \textbf{Construcție} &
+        \textbf{Rol / Efect} \\
+      \midrule
+        \texttt{TODO} &
+        TODO \\
 
-* Tabel cu antetul metacaracter, rol
+        \texttt{TODO} &
+        TODO \\
+
+        \texttt{TODO} &
+        TODO \\
+
+        \texttt{TODO} &
+        TODO \\
+
+        \texttt{TODO} &
+        TODO \\
+
+      \bottomrule
+    \end{tabular}
+    \label{tab:cli:regex-chars}
+    % TODO: Tabel cu antetul metacaracter, rol
+  \end{center}
+\end{table}
 
 Dacă dorim să folosim într-o expresie regulată un metacaracter în sensul său
 literal, adică escaping, vom folosi backslash.
 
-Mai jos prezentăm alte câteva exemple de expresii regulate:
+\labelindexref{Tabelul}{tab:cli:regex-example} conține exemple de expresii regulate.
 
-* Exemple de expresii regulate:
+\begin{table}[!htb]
+  \caption{Exemple de construcții cu expresii regulate}
+  \begin{center}
+    \begin{tabular}{ p{0.25\textwidth} p{0.75\textwidth} }
+      \toprule
+        \textbf{Construcție} &
+        \textbf{Efect} \\
+      \midrule
+        \texttt{TODO} &
+        TODO \\
 
-În cazul grep, în mod special, anumite caractere trebuie prefixate de backslash
-pentru a avea rolul lor de metacaracter: +, |, <, >, (, ).
+        \texttt{TODO} &
+        TODO \\
 
-De avut în vedere că există mai multe tipuri de expresii regulate (regex
-flavours[5])
+        \texttt{TODO} &
+        TODO \\
+
+        \texttt{TODO} &
+        TODO \\
+
+        \texttt{TODO} &
+        TODO \\
+
+      \bottomrule
+    \end{tabular}
+    \label{tab:cli:regex-example}
+    % TODO: exemple de expresii regulate
+  \end{center}
+\end{table}
+
+În cazul \cmd{grep}, în mod special, anumite caractere trebuie prefixate de backslash
+pentru a avea rolul lor de metacaracter: \texttt{+}, \texttt{$\textbar$}, \texttt{$<$}, \texttt{$>$}, \texttt{$($}, \texttt{$)$}.
+
+De avut în vedere că există mai multe tipuri de expresii regulate (\textit{regex
+flavours}), prezentate la TODO - link.
 
 Un caz util de folosire a expresiilor regulate este atunci când vrem să extragem
 informații care se repetă. De exemplu să extragem dintr-o listă pe cei al căror
-nume și prenume începe cu aceeași literă, ca mai jos:
+nume și prenume începe cu aceeași literă, ca în exemplul din \labelindexref{Listing}{lst:cli:regex-var}.
 
-* Exemplu de folosire \\1
+\begin{screen}[caption={Expresii regulate cu variabile},label={lst:cli:regex-var}]
+TOOD: Exemplu de folosire \\1
+\end{screen}
 
-Utilitarele avansate de prelucrare text sed și awk folosesc expresii regulate și
-le vom prezenta în secțiunea Utilitare avansate.
+Utilitarele avansate de prelucrare text \cmd{sed} și \cmd{awk} folosesc expresii regulate și
+le vom prezenta în \labelindexref{Secțiunea}{sec:cli-advanced-utils}.
 
 \section{Prelucrare de text de bază: filtre de text și one linere}
 \label{sec:cli-basic-proc}
@@ -952,22 +1203,25 @@ transferul între utilitare se face prin obiecte, bazându-se pe tehnologia .NET
 O bună parte din comenzile Linux lucrează cu text. Le grupăm în generatoare de
 text sau în prelucratoare de text. Utilitarele prelucratoare de text le mai
 numim filtre de text. Un filtru de text primește la intrare text, îl prelucrează
-și afișează, de obicei, tot text:
+și afișează, de obicei, tot text, ca în \labelindexref{Figura}{fig:cli:text-filters}.
 
-* Diagramă cu intrare text, filtru de text, ieșire text[d]
+\begin{figure}[htbp]
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/02-fs/def-fs.svg}
+  \caption{Filtre de text}
+  \label{fig:cli:text-filters}
+  % TODO: Diagramă cu intrare text, filtru de text, ieșire text[d]
+\end{figure}
 
 \subsection{Generatoare de text}
 \label{sec:cli-text-gen}
 
-Exemple de generatoare text sunt:
-
-* Ps,pstree,ls,find,stat,df,lsblk,tree,strace,diff și în general orice comenzi care afișează informații
-
-De avut în vedere că generatoarele de comenzi intră în două scenarii de utilizare:
+Exemple de generatoare text sunt ps,pstree,ls,find,stat,df,lsblk,tree,strace,diff și în general orice comenzi care afișează informații. Aceste comenzi afișează informații la ieșirea standard. Aceste informații sunt utile fie utilizatorului fie altor comenzi care le pot prelucra, sau amândurar. Spunem, astfel, că generatoarele de comenzi au două scenarii de utilizare:
 
 \begin{enumerate}
-	\item Rezultatul rulării este util în special utilizatorului
-	\item Rezultatul rulării lor este util în special unei prelucrări
+  \item rezultatul rulării este util în special utilizatorului
+  \item rezultatul rulării lor este util în special unei prelucrări
 \end{enumerate}
 
 De exemplu ls vs find sau ls vs stat sau ps vs pgrep. În scenariile de
@@ -982,103 +1236,181 @@ generatoare.
 Prelucrarea text presupune acțiuni de forma:
 
 \begin{itemize}
-	\item Selecție: linii sau coloane
-	\item Înlocuiri: înlocuirea unor părți cu alte părți
-	\item Extrageri: doar anumite părți din text
-	\item Ordonări: ordonarea rezultatelor după un criteriu dat, de exemplu
+	\item selecție: linii sau coloane
+	\item înlocuiri: înlocuirea unor părți cu alte părți
+	\item extrageri: doar anumite părți din text
+	\item ordonări: ordonarea rezultatelor după un criteriu dat, de exemplu
 		ordonare alfabetică
-	\item Sumărizări: obținerea unor informații numerice sau statistice
-	\item Reformatări: plasarea unor caractere în plus, reordonarea unor
+	\item sumărizări: obținerea unor informații numerice sau statistice
+	\item reformatări: plasarea unor caractere în plus, reordonarea unor
 		elemente pe o linie
 \end{itemize}
 
-Mai jos sunt exemple de comenzi și rolul lor din acțiunile de mai sus:
+\labelindexref{Tabelul}{tab:cli:text-processsing} prezintă comenzi de prelucrare și rolul lor din acțiunile de mai sus.
 
-* Tabel cu comenzile de mai jos, capul de tabel va fi comandă, acțiune
+\begin{table}[!htb]
+  \caption{Prelucratoare de text}
+  \begin{center}
+    \begin{tabular}{ p{0.15\textwidth} p{0.5\textwidth} p{0.3\textwidth} }
+      \toprule
+        \textbf{Comandă} &
+        \textbf{Rol / efect} &
+        \textbf{Tip de acțiune} \\
+      \midrule
+        \cmd{grep} &
+        TODO &
+        TODO \\
 
-* Grep,cut,nl,wc,sort,uniq,sed,awk,fmt,paste,join,rev,tail,head,tac,tr,tee
+        \cmd{cut} &
+        TODO &
+        TODO \\
+
+        \cmd{nl} &
+        TODO &
+        TODO \\
+
+        \cmd{wc} &
+        TODO &
+        TODO \\
+
+        \cmd{sort} &
+        TODO &
+        TODO \\
+
+        \cmd{uniq} &
+        TODO &
+        TODO \\
+
+        \cmd{sed} &
+        TODO &
+        TODO \\
+
+        \cmd{awk} &
+        TODO &
+        TODO \\
+
+        \cmd{fmt} &
+        TODO &
+        TODO \\
+
+        \cmd{paste} &
+        TODO &
+        TODO \\
+
+        \cmd{join} &
+        TODO &
+        TODO \\
+
+        \cmd{rev} &
+        TODO &
+        TODO \\
+
+        \cmd{tail} &
+        TODO &
+        TODO \\
+
+        \cmd{head} &
+        TODO &
+        TODO \\
+
+        \cmd{tac} &
+        TODO &
+        TODO \\
+
+        \cmd{tr} &
+        TODO &
+        TODO \\
+
+        \cmd{tee} &
+        TODO &
+        TODO \\
+
+      \bottomrule
+    \end{tabular}
+    \label{tab:cli:text-processing}
+    % TODO: tabel cu comenzile de mai jos, capul de tabel va fi comandă, acțiune
+  \end{center}
+\end{table}
 
 \subsubsection{One linere}
 \label{sec:cli-one-liners}
 
 În momentul în care avem nevoie să prelucrăm text vom combina un generator de
 text sau un fișier text pur și simplu cu una sau mai multe prelucratoare de
-text. Combinarea o vom face prin intermediul operatorului I (referință) și vom
-forma one linere.
+text. Combinarea o vom face prin intermediul operatorului \texttt{$\textbar$} și vom
+forma one-linere (\textit{one-liners}).
 
 O altă formă de combinare este prin intermediul expandării comenzilor.
 
-Exemple concrete de one linere (use case de prelucrare):
+Exemple concrete de one linere sunt în \labelindexref{Listing}{lst:cli:one-liners}.
 
-generare de parolă
+\begin{screen}[caption={Exemple de one-linere},label={lst:sec:one-liners}]
+generare de parola
 
-Generare de fișiere 1...100.txt
+Generare de fisiere 1...100.txt
 
-Generare fișiere cu conținut aleator
+Generare fisiere cu continut aleator
 
-Sortare fișiere după dimensiune, selectare primele 10 fișiere
+Sortare fisiere dupa dimensiune, selectare primele 10 fisiere
+\end{screen}
+
+Exemple de one-linere găsiți pe Internet folosind șirul de căutare ,,bash one-liners'', de exemplu link-urile TODO, TODO sau TODO.
 
 \section{Utilitare avansate}
 \label{sec:cli-advanced-utils}
 
-În lucrul în shell, în one linere și scripturi există cazuri de utilizare în
-care este foarte greu să ne descurcăm fără trei utilitare avansate: find, sed și
-awk, utilitare cu rol distinct. Le numim avansate datorită funcționalităților și
+În lucrul în shell, în one-linere și scripturi există cazuri de utilizare în
+care este foarte greu să ne descurcăm fără trei utilitare avansate: \cmd{find}, \cmd{sed} și
+\cmd{awk}, utilitare cu rol distinct. Le numim avansate datorită funcționalităților și
 opțiunilor complexe și diverse pe care le au și pentru că folosirea lor este
 uneori anevoioasă pentru cazuri de utilizare complicate.
 
 \subsection{find, xargs}
 \label{sec:cli-find-xargs}
 
-Utilitarul find este folosit pentru listarea intrărilor într-o ierarhie din
-sistemul de fișiere care corespund unor anumite criterii. Prezentăm prin exemplu
-funcționalități de afișare de intrări corespunzătoare unor criterii
+Utilitarul \cmd{find} este folosit pentru listarea intrărilor într-o ierarhie din
+sistemul de fișiere care corespund unor anumite criterii. \labelindexref{Listing}{lst:cli:find} conține exemple de folosire a comenzii \cmd{find}.
 
-* Exemple de la find la find -perm -type …
+\begin{screen}[caption={Folosirea find},label={lst:cli:find}]
+TODO: exemple de la find la find -perm -type ...
+TODO: exemplu cu -delete
+TODO: exemplu cu -exec
+TODO: xargs
+\end{screen}
 
-Pe lângă criterii de selectare (numite TESTS), find permite acțiuni care să fie
-executate pe intrările descoperite. Acțiuni uzuale sunt -delete și -exec, ca în
-exemplele de mai jos:
+Pe lângă criterii de selectare (numite \textit{TESTS}), \cmd{find} permite acțiuni care să fie
+executate pe intrările descoperite. Acțiuni uzuale sunt \texttt{-delete} și \texttt{-exec}, ca în liniile TODO-TODO.
 
-* Exemplu cu -delete
+Opțiunea cu \texttt{-exec} este echivalentă folosirii utilitarului \cmd{xargs}, ca în linia TODO.
 
-* Exemplu cu -exec
-
-Opțiunea cu -exec este echivalentă folosirii utilitarului xargs, ca în exemplu
-de mai jos:
-
-* xargs
-
-Construcția -I\{\} din xargs spune că acolo unde se va întâlni {} se va înlocui cu
+Construcția \texttt{-I\{\}} din \cmd{xargs} precizează că acolo unde se va întâlni secvența \texttt{\{\}} se va înlocui cu
 numele fișierului citit de la intrarea standard.
 
-Construcțiile care folosesc find și xargs sunt echivalente, diferențele între
-ele fiind minore.
+Construcțiile care folosesc \cmd{find -exec} și \cmd{xargs} sunt echivalente, diferențele între ele fiind minore.
 
 \subsection{sed}
 \label{sec:cli-sed}
 
-Utilitarul sed este folosit în principal pentru a face înlocuiri într-un fișier
-sau prelucrare text. În forma sa cea mai simplă, utilitarul este folosit sub
-forma:
+Utilitarul \cmd{sed} este folosit în principal pentru a face înlocuiri într-un fișier
+sau prelucrare text.
 
-* sed ‘s/alpha/beta/g’
+\labelindexref{Listing}{lst:cli:sed} conține exemple de folosire a comenzii \cmd{sec}.
 
-S înseamnă substitute și duce la înlocuirea unei secvențe cu altă secvență.
+\begin{screen}[caption={Folosirea sed},label={lst:cli:sed}]
+TODO: s/a/b
+TODO: range
+TODO: delete
+TODO: print cu -n
+TODO: eliminarea fiecarei a treia linii
+\end{screen}
 
-Sed are în spate un limbaj de programare și are și alte comenzi în afară de
-substitute. Mai jos sunt scenarii care reliefează facilități ale limbajului:
+În forma sa cea mai simplă, din linia 1, utilitarul înlocuiește o secvență cu altă secvență. Caracterul \texttt{s} înseamnă \textit{substitute}.
 
-\begin{itemize}
-	\item Range
-	\item Delete
-	\item Print cu -n
-	\item Eliminarea fiecărei a treia linii
-\end{itemize}
+Utilitarul \texttt{sed} are în spate un limbaj de programare și are și alte comenzi în afară de substituire, indicat și în liniile TODO-TODO din \labelindexref{Listing}{lst:cli:sed}.
 
 Interesante sunt de parcurs sed oneliners
-(http://sed.sourceforge.net/sed1line.txt). Și mai interesant e de parcurs sed
-sokoban (https://github.com/aureliojargas/sokoban.sed/blob/master/sokoban.sed)
+(\url{http://sed.sourceforge.net/sed1line.txt}). Și mai interesant e de parcurs sed
+sokoban (\url{https://github.com/aureliojargas/sokoban.sed/blob/master/sokoban.sed}).
 
 \subsection{awk}
 \label{sec:cli-awk}
@@ -1090,50 +1422,55 @@ să facem prelucrări text fără a intra într-un limbaj de programare complet
 precum Perl sau Python vom folosi awk.
 
 În forma sa simplă un one liner awk are forma de mai jos, cu utilitatea unui
-separator care poate fi o expresie regulată:
+separator care poate fi o expresie regulată, ca în linia TODO din \labelindexref{Listing}{lst:cli:awk}.
 
-* Exemplu awk -F ‘’
+\begin{screen}[caption={Folosirea awk},label={lst:cli:awk}]
+TODO: exemplu awk -F ''
+TODO: exemplu cu '/regex/ \{print \$1;\}'
+\end{screen}
 
-Un alt exemplu este de a selecta doar anumite linii, ce conțin o anumită
+Un alt exemplu, din linia TODO din \labelindexref{Listing}{lst:cli:awk} este de a selecta doar anumite linii, ce conțin o anumită
 secvență.
 
-* Exemplu cu ‘/regex/ \{print \$1;\}’
+În forma sa programatică, awk poate executa secvețe de cod pe anumite linii ca în \labelindexref{Listing}{lst:cli:awk-prog}.
 
-În forma sa programatică, awk poate executa secvețe de cod pe anumite linii:
-
-* Exemplu de intrare și program și ieșire
+\begin{screen}[caption={Forma programatică a awk},label={lst:cli:awk-prog}]
+TODO: exemplu de intrare si program si iesire
+\end{screen}
 
 Detalii complete despre awk se găsesc parcurgând documentația
-(https://www.gnu.org/software/gawk/manual/).
+(\url{https://www.gnu.org/software/gawk/manual/}).
 
 \section{Use case: Folosirea variabilelor de mediu în C}
 \label{sec:cli-c-env-vars}
 
-În Link repository avem un exemplu de fișier C care afișează valorile
-variabilelor de mediu. Programul este simplist, folosește variabila environ și
-apelul getenv pentru a obține valoarea variabilelor de mediu.
+În TODO repository avem un exemplu de fișier C care afișează valorile
+variabilelor de mediu. Programul este simplist, folosește variabila \texttt{environ} și
+apelul \texttt{getenv()} pentru a obține valoarea variabilelor de mediu.
 
-Pentru început, îl compilăm: make
+\labelindexref{Listing}{lst:cli:c-env} conține exemple de rulare a programului.
 
-Și apoi rulăm executabil în diferite forme.
+\begin{screen}[caption={Rularea unui program C care afișează variabilele de mediu},label={lst:cli:c-env}]
+TODO: make
+TODO: rulare simpla
+TODO: variabila neexportata
+TODO: variabila exportata
+TODO: HERO=lothar ./envtest
+TODO: env -i ./envtest
+ăâîțșĂÂÎȚȘ
+\end{screen}
 
-Pentru început îl rulăm simplu și obținem toate variabilele programului, transmise de shell:
+Pentru început, în linia TODO îl compilăm. Și apoi rulăm executabil în diferite forme.
 
-* TODO
+Pentru început, pe liniile TODO-TODO îl rulăm simplu și obținem toate variabilele programului, transmise de shell.
 
-Dacă definim o nouă variabilă shell, aceasta nu va modifica variabilele programului:
+Dacă definim o nouă variabilă shell, aceasta nu va modifica variabilele programului, așa cum observăm în liniile TODO.
 
-* TODO
+Dacă însa exportăm acea variabilă, va apărea programului, ca în linia TODO.
 
-Dacă însa exportăm acea variabilă, va apărea programului.
+Un alt mod de a personaliza mediul programului este de a defini o variabilă doar pentru rularea programului, ca în linia TODO.
 
-Un alt mod de a personaliza mediul programului este de a defini o variabilă doar pentru rularea programului
-
-* HERO=lothar ./envtest
-
-Dacă avem nevoie sa rulăm programul cu mediul gol, folosim comanda env cu parametrul -i:
-
-* Env -i ./envtest
+Dacă avem nevoie sa rulăm programul cu mediul gol, folosim comanda env cu parametrul -i ca în linia TODO.
 
 \section{Sumar}
 \label{sec:cli-summary}
