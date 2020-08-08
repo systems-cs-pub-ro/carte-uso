@@ -123,6 +123,8 @@
 % Support for including graphics
 \usepackage{graphicx}
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}
+\usepackage{svg}
+\usepackage{subcaption}
 
 % Code listings support
 \usepackage{listings}
@@ -537,5 +539,3 @@ frame=single,rulecolor=\color{red},framerule=0.8mm}
   \hspace{1em}
   \thispagestyle{empty}
 }
-
-\usepackage{svg}
