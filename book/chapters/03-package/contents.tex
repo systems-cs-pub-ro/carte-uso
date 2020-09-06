@@ -3,35 +3,59 @@
 
 Spre deosebire de hardware, software-ul are marele avantaj al flexibilității: pe un sistem hardware putem rula diferite tipuri de software, putem adăuga și șterge software, putem modifica ușor. Atunci când avem o nevoie, putem fie să dezvoltăm software nou sau putem instala software existent în sistem. Vom prezenta partea de dezvoltare software, de aplicații, în \labelindexref{Capitolul}{chapter:appdev}, și ne vom concentra în acest capitol pe partea de instalare și configurare de aplicații existente.
 
-Atunci când un dezvoltator sau o firmă software produce o aplicație nouă, este interesul să ajungă cât mai eficient la utilizator. Această acțiune, de distribuție software, necesită ca aplicația și datele sale să fie agregate într-o formă care să fie instalabilă de utilizator. Această formă este numită pachet software. După instalarea unui pachet software utilizatorul va putea să ruleze aplicația pe sistemul său.
+Atunci când un dezvoltator sau o firmă software produce o aplicație nouă, este interesul acestora să ajungă cât mai eficient la utilizator. Această acțiune, de distribuire a software-ului, necesită ca aplicația și datele sale să fie agregate într-o formă care să fie instalabilă de utilizator. Această formă este numită pachet software. După instalarea unui pachet software utilizatorul va putea să ruleze aplicația pe sistemul său.
 
-Pentru ca o aplicație să ruleze, aceasta are nevoie de un fișier executabil și fișiere de date și fișiere de configurare. De exemplu, un browser web are un executabil, are fișier de date în care reține parole de acces la site-uri și bookmark-uri și are o zonă de configurare precum pagina de start, prezența unor intrări în meniu, directorul implicit în care se descarcă fișierele. Aceste fișiere sunt împachetate de firma de dezvoltare. Fișierul rezultat în urma împachetării, pachetul software, este apoi transmis utilizatorului pentru instalare. 
+Pentru ca o aplicație să ruleze, aceasta are nevoie de un fișier executabil și fișiere de date și fișiere de configurare. De exemplu, un browser web dispune de un fișier executabil, are fișier de date în care reține parole de acces la site-uri și bookmark-uri și are o zonă de configurare precum pagina de start, prezența unor intrări în meniu, directorul implicit în care se descarcă fișierele. Aceste fișiere sunt împachetate de cei care se ocupă de dezvoltare. Fișierul rezultat în urma împachetării, pachetul software, este apoi transmis utilizatorului pentru instalare.
 
-Instalarea unui pachet înseamnă că fișierul executabil, fișierele de date și fișierele de configurare sunt dispuse în sistemul local de fișiere de unde vor fi folosite. De exemplu, pe Windows, toate fișierele sunt de obicei dispuse într-un subdirector din directorul \file{C:\textbackslash{}Program Files\textbackslash{}}. Pe macOS toate fișierele sunt dispuse într-un subdirectorul din directorul /Applications/. Pe Linux fișierele sunt distribuite în funcție de tipul lor: în /usr/bin fișierele executabile, în /usr/share/ și /var/ fișiere de date, în /etc/ fișiere de configurare.
+Instalarea unui pachet înseamnă că fișierul executabil, fișierele de date și fișierele de configurare sunt dispuse în sistemul local de fișiere de unde vor fi folosite. De exemplu, pe Windows, toate fișierele sunt de obicei dispuse într-un subdirector din directorul \file{C:\textbackslash{}Program Files\textbackslash{}}. Pe macOS toate fișierele sunt dispuse într-un subdirectorul din directorul \file{/Applications/}. Pe Linux fișierele sunt distribuite în funcție de tipul lor: în \file{/usr/bin/} fișierele executabile, în \file{/usr/share/} și \file{/var/} fișiere de date, în \file{/etc/} fișiere de configurare.
 
 Cea mai simplă formă de împachetare a unei aplicații este o arhivă. O arhivă este un fișier reprezentând o colecție de fișiere puse unul lângă altul. Arhiva nu are informații dedicate despre aplicație, astfel încât instalarea aplicației presupune dezarhivarea. Avantajul folosirii arhivelor este simplitatea. Dezavantajul este gestiunea dificilă a pachetelor: dezinstalarea devine greoaie, pentru că trebuie șterse manual toate fișierele; unele pachete pot fi incompatibile unele cu altele și trebuie instalate alte versiuni.
 
-Forma modernă de livrare a aplicațiilor o reprezintă pachetele software. Un pachet, spre deosebire de o arhivă conține informații despre aplicație, precum descrierea pachetului, versiune, dependențe de alte pachete, pachetele similare. Un pachet respectă un format cunoscut de o aplicație specifică de gestiune a pachetelor, aplicație care mai este numită și installer.
+Forma modernă de livrare a aplicațiilor o reprezintă pachetele software. Un \textbf{pachet}, spre deosebire de o arhivă simplă, conține informații despre aplicație, precum descrierea pachetului, versiune, dependențe de alte pachete, pachetele similare; numim aceste informații \textbf{metadatele pachetului}. Un pachet respectă un format; acest format este cunoscut de o aplicație specifică de gestiune a pachetelor, numită \textbf{manager de pachete}.
 
-În anumite situații dorim anumite versiuni de pachete. Aceste versiuni riscă să afecteze celelalte pachete instalate, sau să necesite configurări mai complexe. Sau să aibă nevoie de alte pachete și diferite versiuni care duce la o problemă numită “dependency hell”. Din acest motiv o formă de livrare a pachetelor este “toate-în-unul” (all-in-one) cu toate dependențele în aceeași arhivă. Vom vorbi despre acestea în \labelindexref{Secțiunea}{sec:package:all-in-one}.
+În anumite situații dorim anumite versiuni de pachete. Aceste versiuni riscă să afecteze celelalte pachete instalate, sau să necesite configurări mai complexe. Sau să aibă nevoie de alte pachete și diferite versiuni care duce la o problemă numită ,,dependency hell'' Din acest motiv o formă de livrare a pachetelor este ,,toate-în-unul'' (\textit{all-in-one}) cu toate dependențele în aceeași arhivă. Vom vorbi despre acestea în \labelindexref{Secțiunea}{sec:package:all-in-one}.
 
-În cele ce urmează vom prezenta partea de pachete software în forma lor tradițională și apoi vom discuta despre pachete all-in-one.
+În cele ce urmează vom prezenta partea de pachete software în forma lor tradițională și apoi vom discuta despre pachete \textit{all-in-one}.
 
 \section{Pachete software}
 \label{sec:package:overview}
 
-Un pachet software este o colecție de fișiere: executabile, de date și de configurare. Un pachet este distribuit și apoi instalat pe un sistem pentru a adăuga o nouă funcționalitate acelui sistem. În urma instalării fișierele din colecție se găsesc în sistemul de fișiere. Fișierele executabile sunt cele folosite pentru rula aplicațiile în formă de procese, așa cum vom preciza în \labelindexref{Secțiunea}{sec:process-v-programe}. Fișierele de date sunt baze de date, imagini, sunete, filme folosite de aplicație pentru a rula. Fișierele de configurare permit modificarea parametrilor de funcționare a aplicației.
+Un \textbf{pachet software} este o colecție de fișiere: executabile, de date, de configurare, de documentație. Un pachet este distribuit și apoi instalat pe un sistem pentru a adăuga o nouă funcționalitate acelui sistem. În urma instalării pachetului, fișierele din colecție ajung în sistemul de fișiere. Fișierele executabile sunt cele folosite pentru rula aplicațiile în formă de procese, așa cum vom preciza în \labelindexref{Secțiunea}{sec:process-v-programe}. Fișierele de date sunt baze de date, imagini, sunete, filme folosite de aplicație pentru a rula. Fișierele de configurare permit modificarea parametrilor de funcționare a aplicației. Fișierele de documentație vor fi citite de utilizator pentru a ști cum să folosească și cum este proiectată aplicația.
 
-Tipurile de fișiere care vor fi instalate reprezintă datele unui pachet. Pe lângă date, un pachet conține și metadate, adică informații despre acele date. Metadatele sunt folosite pentru gestiunea versiunilor și dependențelor pachetelor. De exemplu un pachet Debian (\texttt{.deb}) conține două directoare: \file{data/} și \file{metadata/} ca în \labelindexref{Listing}{lst:package:deb-contents}.
+Tipurile de fișiere care vor fi instalate reprezintă datele unui pachet. Pe lângă date, un pachet conține și metadate, adică informații despre acele date. \textbf{Metadatele unui pachet} sunt folosite pentru gestiunea versiunilor și dependențelor acelui pachet. De exemplu un pachet Debian (\texttt{.deb}) conține două fișiere comprimate: \file{data.tar.xz/} și \file{control.tar.xz} ca în \labelindexref{Listing}{lst:package:deb-contents}.
 
 \begin{screen}[caption={Conținutul unui pachet Debian (.deb)},label={lst:package:deb-contents}]
-TODO: continutul unui pachet .deb
+student@uso:~$ ar tf /var/cache/apt/archives/grep_3.1-2build1_amd64.deb
+debian-binary
+control.tar.xz
+data.tar.xz
 \end{screen}
 
-Pe un sistem Debian, dacă dorim să vedem metadatele unui pachet folosim o comandă precum cea din \labelindexref{Listing}{lst:package:metadata}.
+Pentru a vedea metadatele pachetului, putem desface pachetul și vedea conținutul. Mai simplu, putem folosi o comandă dedicată ca în \labelindexref{Listing}{lst:package:metadata}.
 
-\begin{screen}[caption={Metadatele unui pachet Debian (.deb)},label={lst:sec:metadata}]
-TODO: metadatele unui pachet .deb (firefox)
+\begin{screen}[caption={Metadatele unui pachet Debian (.deb)},label={lst:package:metadata}]
+student@uso:~$ dpkg -I /var/cache/apt/archives/grep_3.1-2build1_amd64.deb
+ new Debian package, version 2.0.
+ size 158964 bytes: control archive=1416 bytes.
+    1219 bytes,    29 lines      control
+     746 bytes,    13 lines      md5sums
+ Package: grep
+ Version: 3.1-2build1
+ Architecture: amd64
+ [...]
+ Pre-Depends: libc6 (>= 2.14), libpcre3
+ Depends: dpkg (>= 1.15.4) | install-info
+ Suggests: libpcre3 (>= 7.7)
+ [..]
+
+student@uso:~$ apt show grep
+Package: grep
+Version: 3.1-2build1
+[...]
+Pre-Depends: libc6 (>= 2.14), libpcre3
+Depends: dpkg (>= 1.15.4) | install-info
+Suggests: libpcre3 (>= 7.7)
+[...]
 \end{screen}
 
 Conținutul unui pachet, cuprinzând datele și metadatele acestuia, este descris în \labelindexref{Figura}{fig:package:content}.
@@ -45,11 +69,11 @@ Conținutul unui pachet, cuprinzând datele și metadatele acestuia, este descri
   % TODO: imagine cu pachet cuprinzând date (fișiere executabile, fișiere de date și fișiere de configurare) și metadate (informații, versiuni, pachet dependente)
 \end{figure}
 
-Metadatele au rol în informarea utilizatorului și să asigure funcționarea corespuzătoare a aplicațiilor pe sistemelor. Pentru o funcționare corespunzătoare pachetele trebuie să fie compatibile cu sistemul și lucreze bine împreună: un pachet are nevoie de o anumită versiune de sistem de operare și de pachete să fie instalate pentru a funcționa. De exemplu, pachetul firefox, analizat mai sus, are nevoie de pachetele TODO.
+Metadatele au rol în informarea utilizatorului și să asigure funcționarea corespuzătoare a aplicațiilor pe sistemelor. Pentru o funcționare corespunzătoare pachetele trebuie să fie compatibile cu sistemul și lucreze bine împreună: un pachet are nevoie de o anumită versiune de sistem de operare și de pachete să fie instalate pentru a funcționa. De exemplu, pachetul \texttt{grep}, analizat în \labelindexref{Listing}{lst:package:metadata}, analizat mai sus, are nevoie de pachetele \texttt{libc6} (versiune mai mare sau egală cu \texttt{2.14}) și \texttt{libpcre3}.
 
 În plus, un pachet software evoluează și numărul său de versiune crește. Acea versiune necesită o anumită versiune a altui pachet sau altă versiune de sistem de operare. Prin analizarea versiunii, vom ști dacă acel pachet este instalabil pe un sistem dat și ce pachete (și versiuni) trebuie să fie instalate.
 
-Spunem că un pachet are dependențe de alte pachete. Fără ca acele pachete să fie instalate, aplicația din pachet nu va funcționa. Este responsabilitatea unui manager de pachete să asigure instalarea și a pachetelor de care pachetul curent depinde; numim aceste pachete dependențe. Vom prezenta soluții de tip manager de pachete în secțiunile următoare.
+Spunem că un pachet are dependențe de alte pachete. Fără ca acele pachete să fie instalate, aplicația din pachet nu va funcționa. Este responsabilitatea unui \textbf{manager de pachete} să asigure instalarea și a pachetelor de care pachetul curent depinde; numim aceste pachete \textbf{dependențe}. Vom prezenta soluții de tip manager de pachete în secțiunile următoare.
 
 Modul în care sunt organizate datele și metadatele într-un pachet software determină formatul acestuia și tipul de pachet. Fiecare sistem de operare și fiecare distribuție are un format de pachete și aplicații specifice pentru gestiunea acelui tip de pachete. Aplicațiile specifice pentru gestiunea pachetelor se ocupă de instalarea, dezinstalarea și investigarea pachetelor, acțiuni ce vor fi descrise în \labelindexref{Secțiunea}{sec:package:ops}.
 
@@ -60,28 +84,28 @@ Așa cum e prezentat în \labelindexref{Figura}{fig:package:content}, în genera
 
 Un prim tip de pachete software sunt arhive simple care conțin datele aplicației. Așa cum am precizat mai sus, această formă este simplă dar nu permite dezinstalarea facilă și rezolvarea dependențelor. Din acest motiv nu este foarte întâlnită, preferându-se tipuri de pachete care conțin metadate care sunt gestionate de aplicațiile specifice.
 
-Atunci când nu se dorește folosirea unei aplicații specifice de gestiunea pachetelor, se pot livra pachetele în format de arhivă auto-extractivă (self extracting archive) sau pachet executabil auto-extractiv (self-extracting executable). Acest pachet este rulat și apoi are loc instalarea.
+Atunci când nu se dorește folosirea unei aplicații specifice de gestiunea pachetelor, se pot livra pachetele în format de arhivă auto-extractivă (\textit{self extracting archive}) sau pachet executabil auto-extractiv (\textit{self-extracting executable}). Acest pachet este rulat și apoi are loc instalarea.
 
-Aplicațiile de pe sistemele Windows nu sunt livrate în general, cu un format de instalare. De multe ori aplicațiile au un fișier numit setup.exe care este folosit pentru instalarea și configurarea aplicației. Alte aplicații pot fi instalate dintr-un pachet software de tip MSI (Microsoft Install), folosite de aplicația de instalare numită Windows Installer.
+Aplicațiile de pe sistemele Windows nu sunt livrate în general, cu un format de instalare. De multe ori aplicațiile au un fișier numit \file{setup.exe} care este folosit pentru instalarea și configurarea aplicației. Alte aplicații pot fi instalate dintr-un pachet software de tip MSI (\textit{Microsoft Install}), folosite de aplicația de instalare numită Windows Installer.
 
-Pe macOS aplicațiile sunt livrate în pachete de tip imagine de disk, fișiere cu extensia .dmg sau fișiere de tip .pkg. Fișierele .pkg au avantajul că pot fi adăugate scripturi instalare și de configurare; fișiere .dmg sunt imagini de disc care conțin aplicația care se instalează de obicei prin copierea ei, fără o operație de instalare.
+Pe macOS aplicațiile sunt livrate în pachete de tip imagine de disk, fișiere cu extensia \texttt{.dmg} sau fișiere de tip \texttt{.pkg}. Fișierele \texttt{.pkg} au avantajul că pot să conțină scripturi instalare și de configurare; fișiere \texttt{.dmg} sunt imagini de disc care conțin aplicația care se instalează de obicei prin copierea ei, fără o operație de instalare.
 
-În Linux există cea mai mare variație de tipuri de pachete și de soluții pentru gestiunea lor. În vreme ce la macOS și la Windows există o singură organizație responsabilă de gestiunea sistemului de operare (Apple, respectiv Microsoft), lumea Linux este foarte diversă cu multe surse de aplicații, multe distribuții care livrează acele aplicații în pachete și care întrețin soluțiile de gestiunea lor. Cele mai răspândite formate de pachete sunt formatul deb (pe distribuțiile bazate pe Debian) și formatul rpm (pe distribuțiile bazate pe RedHat). Le vom prezenta detaliat, respectiv în \labelindexref{Secțiunea}{sec:package:deb} și \labelindexref{Secțiunea}{sec:package:rpm}.
+În Linux există cea mai mare variație de tipuri de pachete și de soluții pentru gestiunea acestora. În vreme ce la macOS și la Windows există o singură organizație responsabilă de gestiunea sistemului de operare (Apple, respectiv Microsoft), lumea Linux este diversă și are multe surse de aplicații, multe distribuții care livrează acele aplicații în pachete și care întrețin soluțiile de gestiunea lor. Cele mai răspândite formate de pachete sunt formatul \texttt{.deb} (în distribuțiile bazate pe Debian) și formatul \texttt{rpm} (în distribuțiile bazate pe RedHat). Le vom prezenta detaliat, respectiv în \labelindexref{Secțiunea}{sec:package:deb} și \labelindexref{Secțiunea}{sec:package:rpm}.
 
-Sistemele de operare mobile (precum Android și iOS) folosesc un depozit central de pachete: Google Play pentru Android și AppStore pentru iOS. Aplicația dedicată de pe telefonul mobil descarcă și instalează pachetul din depozit. Formatul folosit pe iOS este formatul .ipa (iPhone Archive) iar pe Android este formatul .apk (Android Package).
+Sistemele de operare mobile (precum Android și iOS) folosesc un depozit (\textit{repository}) central de pachete: Google Play pentru Android și AppStore pentru iOS. Aplicația dedicată de pe telefonul mobil descarcă și instalează pachetul din depozit. Formatul folosit pe iOS este formatul \texttt{.ipa} (\textit{iPhone Archive}) iar pe Android este formatul \texttt{.apk} (\textit{Android Package}).
 
 Indiferent de sistem de operare, distribuție și aplicație, formatele de pachete au caracteristici comune: conțin date și metadate, sunt un fișier de tip arhivă, există o aplicație dedicată pentru gestiunea acestora: instalare, dezinstalare, configurare, investigare. În continuare vom prezenta cum gestionăm aceste pachete în sistemele de operare moderne.
 
 \section{Gestiunea pachetelor}
 \label{sec:package:manage}
 
-Pentru a putea fi instalate pe sistemele utilizatorilor finali, pachetele trebuie să fie distribuite către aceștia. Utilizatorii pot accesa manual un site sau un depozit (repository) de pachete de unde descarcă pachetul și apoi îl instalează. Sau pot folosi o aplicație specifică pentru localizarea, descărcarea și instalarea pachetelor. Aceste aplicații poartă numele de manager de pachete (package manager).
+Pentru a putea fi instalat pe sistemele utilizatorilor finali, un pachet trebuie să fie distribuit către aceștia. Utilizatorii pot accesa manual un site sau un depozit de pachete (\textit{package repository}) de unde descarcă pachetul și unde apoi îl instalează. Sau pot folosi o aplicație specifică pentru localizarea, descărcarea și instalarea pachetelor. Aceste aplicații poartă numele de manager de pachete (\textit{package manager}).
 
-Un depozit (repository) este locul sunt stocate pachetele software. În general un sistem de operare sau o distribuție de sistem de operare are un repository sau mai multe cu pachetele corespunzătoare. De exemplu, pentru Ubuntu există repository-uri pentru fiecare versiune: un repository pentru Ubuntu 18.04 Bionic Beaver și un repository pentru Ubuntu 18.10 Cosmic Cuttlefish. Pe sistemele de operare mobile putem considera Google Play sau Apple AppStore repository-urile de pachete. Depozitele conțin pachetele în formatul specific distribuției sau sistemului de operare; de exempl pachete .deb pentru distribuțiile Debian/Ubuntu, pachete .rpm pentru distribuțiile RedHat, sau pachete .ipa în Apple AppStore.
+Un \textbf{depozit de pachete} (\textit{package repository}) este locul sunt stocate pachetele software. În general un sistem de operare sau o distribuție de sistem de operare are un repository sau mai multe cu pachetele corespunzătoare. De exemplu, pentru Ubuntu există repository-uri pentru fiecare versiune: un repository pentru Ubuntu 18.04 Bionic Beaver și un repository pentru Ubuntu 18.10 Cosmic Cuttlefish. Pe sistemele de operare mobile putem considera Google Play sau Apple AppStore repository-urile de pachete. Depozitele conțin pachetele în formatul specific distribuției sau sistemului de operare; de exemplu pachete \texttt{.deb} pentru distribuțiile Debian/Ubuntu, pachete \texttt{.rpm} pentru distribuțiile RedHat, sau pachete \texttt{.ipa} în Apple AppStore.
 
-Un repository este identificat printr-un URL (Uniform Resource Locator). De exemplu URL-ul pentru un repository Ubuntu este \url{http://archive.ubuntu.com/ubuntu/}. Acest URL este folosit de manager-ul de pachete pentru a afla lista de pachete și pentru a descărca pachetele.
+Un repository este identificat printr-un URL (\textit{Uniform Resource Locator}). De exemplu URL-ul pentru un repository Ubuntu este \url{http://archive.ubuntu.com/ubuntu/}. Acest URL este folosit de managerul de pachete pentru a afla lista de pachete și pentru a descărca pachetele.
 
-Manager-ul de pachete este instalat cu un sistem de operare/distribuție de la bun început. Pentru acesta se configurează URL-ul repository-ului / repository-urilor folosite. Apoi utilizatorul folosește manager-ul pentru a instala sau dezinstala pachete. Managerul ține cont de URL-ul repository-ului și de dependențele pachetelor pentru instalare și dezinstalarea comandată de utilizator la fel ca în \labelindexref{Figura}{fig:package:manager}.
+Managerul de pachete este instalat într-un sistem de operare/distribuție de la bun început. Pentru a fi folosit se configurează URL-ul repository-ului / repository-urilor folosite. Apoi utilizatorul folosește managerul pentru a instala sau dezinstala pachete. Managerul ține cont de URL-ul repository-ului și de dependențele pachetelor pentru instalare și dezinstalarea comandată de utilizator la fel ca în \labelindexref{Figura}{fig:package:manager}.
 
 \begin{figure}[htbp]
   \centering
@@ -94,59 +118,65 @@ Manager-ul de pachete este instalat cu un sistem de operare/distribuție de la b
 
 În momentul instalării pachetelor managerul de pachete reține fișierele care au fost instalate pentru a putea să le șteargă la dezinstalare. Tot în momentul instalării, managerul de pachete va investiga dependențele pachetului care se dorește instalat pentru a le instala și pe acestea. Tipurile de operații efectuate de managerul de pachete, la comanda utilizatorului, sunt descrise în \labelindexref{Secțiunea}{sec:package:ops}.
 
-Noțiunea de manager de pachete este răspândită îndeosebi în distribuții Linux/BSD. Cu toate acestea există soluții de acest tip pe Windows, precum Chocolatey. Pe macOS se poate folosi Homebrew sau MacPorts. Spre deosebire de distribuțiile Linux/BSD, soluțiile de tip manager de pachete de pe Windows și macOS nu sunt distribuite oficiale de companiile producătoare, Microsoft și Apple.
+Noțiunea de manager de pachete este răspândită îndeosebi în distribuții Linux/BSD. Cu toate acestea există soluții de acest tip pe Windows, precum Chocolatey~\footnote{\url{https://chocolatey.org/}}. Pe macOS se poate folosi Homebrew~\footnote{\url{https://brew.sh/}} sau MacPorts~\footnote{\url{https://www.macports.org/}}. Spre deosebire de distribuțiile Linux/BSD, soluțiile de tip manager de pachete de pe Windows și macOS nu sunt distribuite oficiale de companiile producătoare, Microsoft și Apple.
 
-În \labelindexref{Tabelul}{tab:package:types} prezentăm cele mai cunoscute tipuri de managere de pachete cu tipurile de pachete și distribuțiile pe care le folosesc împreună cu aplicațiile și comenzile specifice.
+\labelindexref{Tabelul}{tab:package:types} conține cele mai cunoscute tipuri de managere de pachete cu tipurile de pachete și distribuțiile pe care le folosesc, împreună cu aplicațiile și comenzile specifice.
 
 \begin{table}[!htb]
   \caption{Managere și tipuri de pachete}
+  \scriptsize
   \begin{center}
-    \begin{tabular}{ p{0.2\textwidth} p{0.2\textwidth} p{0.3\textwidth} p{0.2\textwidth} }
+    \begin{tabular}{ p{0.2\textwidth} p{0.15\textwidth} p{0.27\textwidth} p{0.23\textwidth} }
       \toprule
         \textbf{Manager de pachete} &
         \textbf{Tip de pachet} &
         \textbf{Sistem de operare / distribuție} &
         \textbf{Comenzi specifice} \\
       \midrule
-        APT (Advanced Package Tool) &
-        .deb &
+        APT &
+        \texttt{.deb} &
         distribuții bazate pe Debian &
-        apt/aptitude/dpkg \\
+        \cmd{apt}, \cmd{aptitude}, \cmd{dpkg} \\
 
-        DNF (Dandified yum) &
-        yum (Yellowdog Updated Modified) &
-        .rpm &
-        distribuții bazate pe RedHat, dnf/rpm \\
+        YUM \& DNF &
+        \texttt{.rpm} &
+        distribuții bazate pe RedHat &
+        \cmd{dnf}, \cmd{rpm} \\
+
+        ZYpp &
+        \texttt{.rpm} &
+        distribuții bazate pe openSUSE &
+        \cmd{zypper}, \cmd{rpm} \\
 
         Pacman &
-        .tar &
+        \texttt{.tar} &
         Arch &
-        pacman/pactree/paccache \\
+        \cmd{pacman}, \cmd{pactree}, \cmd{paccache} \\
 
         Portage &
-        .tar.gz &
+        \texttt{.tar.gz} &
         Gentoo &
-        emerge/equery/eix \\
+        \cmd{emerge}, \cmd{equery}, \cmd{eix} \\
 
         Port &
-        .txz &
+        \texttt{.txz} &
         FreeBSD &
-        pkg \\
+        \cmd{pkg} \\
 
         Homebrew &
-        .tar.gz &
+        \texttt{.tar.gz} &
         macOS &
-        brew \\
+        \cmd{brew} \\
 
         MacPorts &
-        .tbz2 &
+        \texttt{.tbz2} &
         macOS &
-        port \\
+        \cmd{port} \\
 
         Chocolatey &
-        .nupkg &
+        \texttt{.nupkg} &
         Windows &
-        choco \\
+        \cmd{choco} \\
 
       \bottomrule
     \end{tabular}
@@ -157,98 +187,193 @@ Noțiunea de manager de pachete este răspândită îndeosebi în distribuții L
 \subsection{Operații cu pachete}
 \label{sec:package:ops}
 
-Un utilizator realizează operații cu pachete prin intermediul comenzilor oferite de un manager de pachete. Aceste operații sunt tipic de instalare, dezinstalare, actualizarea versiunii (upgrade), investigare de pachete. Un utilizator nu trebuie să știi internele funcționării unui manager de pachete sau formatul pachetelor. Utilizatorului trebuie să știe cum configurează repository-urile unui manager de pachete și apoi să instaleze sau să dezinstaleze pachetele.
+Un utilizator realizează operații cu pachete prin intermediul comenzilor oferite de un manager de pachete. Operațiile tipice sunt de instalare, dezinstalare, actualizarea versiunii (\textit{update}), investigare de pachete. Un utilizator nu trebuie să cunoască anatomia funcționării unui manager de pachete sau formatul pachetelor. Utilizatorul trebuie să știe cum configurează repository-urile unui manager de pachete și apoi să instaleze sau să dezinstaleze pachetele.
 
 Operațiile uzuale realizate de un utilizator sunt descrise în continuare. Vom descrie în detaliul modul în care se realizează aceste operații pe distribuțiile bazate pe Debian și cele bazate pe RedHat în \labelindexref{Secțiunea}{sec:package:deb}, respectiv \labelindexref{Secțiunea}{sec:package:rpm}. Pentru alte distribuții/sisteme de operare și, deci, alte managere de pachete, agregăm comenzile uzuale în tabele în \labelindexref{Secțiunea}{sec:package:other}.
 
-Cele mai directe operații realizate cu pachete sunt instalarea și dezinstalarea pachetelor. Instalarea presupune că un pachet este despachetat și conținutul său este distribuit în sistemul de fișiere, eventual împreună cu rularea unui scripturi de configurare. Dezinstalarea înseamnă ștergerea din sistemul de fișiere a conținutului unui pachet împreună cu rularea unor scripturi de deconfigurare. Prin intermediul unui manager de pachete, instalarea poate însemna descărcarea pachetului dorit dintr-un depozit împreună cu pachete de care acesta depinde. În cazul interacțiunii cu depozitul de pachete putem opta pentru descărcarea pachetului fără instalare.
+Cele mai directe operații realizate cu pachete sunt instalarea și dezinstalarea pachetelor. Instalarea presupune că un pachet este despachetat și conținutul său este distribuit în sistemul de fișiere, eventual împreună cu rularea unui scripturi de configurare. Dezinstalarea înseamnă ștergerea din sistemul de fișiere a conținutului unui pachet împreună cu rularea unor scripturi de deconfigurare. Prin intermediul unui manager de pachete, instalarea poate însemna descărcarea pachetului dorit dintr-un repository de pachete împreună cu pachete de care acesta depinde. În cazul interacțiunii cu repository-ul de pachete putem opta pentru descărcarea pachetului fără instalare.
 
-Pentru a menține sistemul la zi, atât cu cele mai noi caracteristici ale pachetelor cât și cu rezolvarea anumitor probleme de programare (bug-uri) sau de securitate, se recomandă acțiunea de actualizare a pachetelor (upgrade). Operația de upgrade înseamnă descărcarea din depozit a celor mai recente versiuni și înlocuirea versiunilor mai vechi în sistemul de fișiere.
+Pentru a menține sistemul la zi, atât cu cele mai noi caracteristici ale pachetelor cât și cu rezolvarea anumitor probleme (\textit{bug}-uri) de programare sau de securitate, se recomandă acțiunea de actualizare a pachetelor (\textit{update}). Operația de actualizare înseamnă descărcarea din depozit a celor mai recente versiuni și înlocuirea versiunilor mai vechi în sistemul de fișiere.
 
 De multe ori nu știm ce pachet să instalăm, dat fiind numărul mare al acestora și faptul că mai multe pachete pot face același lucru: mai multe editoare, mai multe navigatoare web, mai multe playere de muzică. De aceea o operație frecventă este căutarea unui pachet după cuvinte cheie relevante. Căutarea se face de regulă în metadatele pachetelor din depozitul de pachete.
 
-În cazul în care pachetul este corespunzător unei aplicații open source, putem opta pentru descărcarea surselor acelui pachet pentru a le putea investiga ulterior.
-
-Pe un sistem cu mai multe pachete instalate putem investiga sistemul de fișiere și pachetele. De exemplu putem să listăm pachetele instalate sau să le căutăm pe acele care corespund unei expresii. Pute să vedem conținutul unui pachet instalat, adică ce fișiere din sistemul de fișiere corespund acelui pachet. Altă operație este să afișăm care este pachetul care conține un anumit fișier din sistemul de fișiere.
+Alte acțiuni, mai puțin frecvente, sunt:
+\begin{itemize}
+  \item descărcarea surselor acelui pachet pentru a le putea investiga ulterior
+  \item listarea pachetele instalate
+  \item căutarea unui pachet al cărui nume se potrivește unei expresii
+  \item vizualizarea conținutului unui pachet instalat, adică ce fișiere din sistemul de fișiere corespund acelui pachet
+  \item identificarea pachetului care conține un anumit fișier din sistemul de fișiere
+\end{itemize}
+Aceste acțiuni au comenzi și opțiuni specifice fiecărui manager de pachete.
 
 \subsection{Pachete în sistemele de operare mobile}
 \label{sec:package:mobile}
 
-Operațiile de mai sus au corespondent și în cazul sistemelor de operare mobile. Prin intermediul aplicațiilor GooglePlay și AppStore utilizatorii interacționează cu depozitele de pachete oferite de Google și de Apple, numite magazine de aplicații (app store). Așa caută pachete sau instalează pachete.
+Operațiile de mai sus au corespondent și în cazul sistemelor de operare mobile. Prin intermediul aplicațiilor GooglePlay~\footnote{\url{https://play.google.com/store}} și AppStore~\footnote{\url{https://www.apple.com/ios/app-store/}} utilizatorii interacționează cu depozitele de pachete oferite de Google și de Apple, numite magazine de aplicații (\textit{app store}). Într-un magazin de aplicații, utilizatorii caută pachete sau instalează pachete.
 
-În urma unei comenzi de instalare, transparent utilizatorului, aplicația GooglePlay sau AppStore descarcă din depozitul pachetul în format respectiv .apk și .ipa. După instalare, aplicația are fișiere executabile, de date, de configurare în sistemul de fișiere și este, în general, accesibilă prin intermediul unei icoane pe ecranul telefonului mobil.
+În urma unei comenzi de instalare, transparent utilizatorului, aplicația GooglePlay sau AppStore descarcă din depozit pachetul în format respectiv (\texttt{.apk} sau \texttt{.ipa}). După instalare, aplicația arele fișiere executabile, de date, de configurare, de documentație în sistemul de fișiere și este, în general, accesibilă prin intermediul unei icoane pe ecranul telefonului mobil.
 
-Depozitele de pachete folosite de aplicațiile GooglePlay și AppStore nu pot fi configurate, sunt preconfigurate în aplicație. Cu toate acestea pot fi folosite aplicații cu depozite neoficiale de aplicații, precum Cydia pe iOS. De avut în vedere, însă, că folosirea unor depozite neaprobate de producătorul dispozitivului mobil reprezintă un risc de securitate; instalarea acestor aplicații poate însemna instalarea de aplicații malițioase (malware).
+Depozitele de pachete folosite de aplicațiile GooglePlay și AppStore nu pot fi configurate, sunt preconfigurate în aplicație. Cu toate acestea pot fi folosite aplicații cu depozite neoficiale de aplicații, precum Cydia pe iOS~\footnote{\url{https://cydia-app.com/}}. De avut în vedere, însă, că folosirea unor depozite neaprobate de producătorul dispozitivului mobil reprezintă un risc de securitate; instalarea acestor aplicații poate însemna instalarea de aplicații malițioase (\textit{malware}).
 
 \section{Gestiunea pachetelor în Linux}
 \label{sec:package:linux}
 
-În Linux, pachetele sunt strânse în depozite pentru fiecare distribuție. Fiecare distribuție are apoi sub-depozite pentru fiecare versiune a distribuției, sub-depozit ce conține versiunile de pachete corespunzătoare. Sistemul de gestiunea a pachetelor, cuprinzând managerul de pachete și alte componente, este cel responsabil pentru interacțiunea cu depozitul de pachete, la comanda utilizatorului.
+În Linux, pachetele sunt colectate în depozite (\textit{repository}-uri) pentru fiecare distribuție. Fiecare distribuție are apoi sub-depozite pentru fiecare versiune a distribuției, sub-depozit ce conține versiunile de pachete corespunzătoare. Sistemul de gestiunea a pachetelor, cuprinzând managerul de pachete și alte componente, este cel responsabil pentru interacțiunea cu depozitul de pachete, la comanda utilizatorului.
 
 Repository-ul de pachete este identificat printr-un URL care poate fi local (de exemplu CD-ROM) sau poate fi la distanță (acesta este modul uzual). Managerul de pachete are o zonă de configurare în care putem specifica URL-urile repository-urilor folosite.
 
-Pentru interacțiunea cu sistemul de gestiune a pachetelor, avem aplicații dedicate. Acestea pot fi grafice sau în linia de comandă. De exemplu, pe sistemele bazate pe Debiam, există aplicația grafică Synaptic și aplicația în linia de comandă apt. La fel, pe Fedora și alte distribuții, există aplicația grafică PackageKit și aplicația în linia de comandă dnf. Aceste aplicații interacționează cu sistemul de gestiune a pachetelor, cu depozite și instalează pachete. Pentru operarea directă asupra pachetelor aceste aplicații folosesc o comandă dedicată care cunoaște formatul pachetelor: dpkg pe sistemele derivate din Debian și rpm pe sistemele derivate din RedHat.
+Pentru interacțiunea cu sistemul de gestiune a pachetelor, există aplicații dedicate. Acestea pot fi grafice sau în linia de comandă. De exemplu, pe sistemele bazate pe Debiam, există aplicația grafică Synaptic și utilitarul în linia de comandă \cmd{apt}. La fel, pe Fedora și alte distribuții, există aplicația grafică PackageKit și utilitarul în linia de comandă \cmd{dnf}. Aceste aplicații interacționează cu sistemul de gestiune a pachetelor, cu repository-uri și instalează pachete. Pentru operarea directă asupra pachetelor aceste aplicații folosesc o comandă dedicată care cunoaște formatul pachetelor: \cmd{dpkg} pe sistemele derivate din Debian și \cmd{rpm} pe sistemele derivate din RedHat.
 
 În continuare vom detalia comenzile folosite pe sistemele derivate din Debian (cu pachete DEB) și pe sistemele derivate din RedHat (cu pachete RPM).
 
 \subsection{Gestiunea pachetelor format DEB}
 \label{sec:package:deb}
 
-Sistemele derivate din Debian folosesc pachete în format DEB, cu extensia .deb. Aceste pachete sunt arhive ar care conțin datele și metadatele.
+Sistemele derivate din Debian folosesc pachete în format DEB, cu extensia \texttt{.deb}. Aceste pachete sunt arhive \texttt{.ar} care conțin datele și metadatele.
 
-Sistemul de gestiune a pachetelor este APT (Advanced Package Tool). Configurația acestuia se găsește în directorul /etc/apt. În fișierul /etc/apt/sources.list sunt configurate URL-uri de depozite de pachete. \labelindexref{Listing}{lst:package:deb-config} prezintă o configurație uzuală.
+Sistemul de gestiune a pachetelor este APT (\textit{Advanced Package Tool}). Configurația acestuia se găsește în directorul \file{/etc/apt/}. În fișierul \file{/etc/apt/sources.list} sunt configurate URL-uri de depozite de pachete.
 
 \begin{screen}[caption={Configurație APT (Debian)},label={lst:package:deb-config}]
-TODO: selectie din /etc/apt/sources.list
+student@uso:~$ cat /etc/apt/sources.list
+[...]
+deb http://ro.archive.ubuntu.com/ubuntu/ bionic main restricted
+deb-src http://ro.archive.ubuntu.com/ubuntu/ bionic main restricted
+deb http://ro.archive.ubuntu.com/ubuntu/ bionic-updates main restricted
+deb-src http://ro.archive.ubuntu.com/ubuntu/ bionic-updates main restricted
+deb http://ro.archive.ubuntu.com/ubuntu/ bionic universe
+deb-src http://ro.archive.ubuntu.com/ubuntu/ bionic universe
+deb http://ro.archive.ubuntu.com/ubuntu/ bionic-updates universe
+deb-src http://ro.archive.ubuntu.com/ubuntu/ bionic-updates universe
+[...]
 \end{screen}
 
-Mai sus este o selecție a fișierului /etc/apt/sources.list de pe o distribuție Ubuntu 18.04 Bionic Beaver. URL-ul indicat este folosit pentru pachete (deb) și pentru surse (deb-src). După URL urmează versiunea distribuției (bionic) și apoi sunt componente de repository unde sunt clasificate pachetele.
+\labelindexref{Listing}{lst:package:deb-config} prezintă o selecție a fișierului de configurație \file{/etc/apt/sources.list} de pe o distribuție Ubuntu 18.04 Bionic Beaver. Fișierul conține o listă de URL-uri de repository-uri. URL-uri precizează dacă repository-ul este folosit pentru descărcarea pachetelor (liniile care încep cu \texttt{deb}) sau pentru descărcarea surselor (liniile care încep cu \texttt{deb-src}). După URL urmează versiunea distribuției (\texttt{bionic}) și apoi sunt componente de repository unde sunt clasificate pachetele (\texttt{main}, \texttt{restricted}, \texttt{universe}).
 
-Interacțiunea cu APT se face în mod uzual în linia de comandă prin intermediul comenzii apt. \labelindexref{Listing}{lst:package:apt} prezintă operații frecvente folosind comanda apt. Fiecare comandă este prefixată de un comentariu care explică rolul acelei comenzi.
+Interacțiunea cu APT se face în mod uzual în linia de comandă prin intermediul utilitarului \cmd{apt}. \labelindexref{Listing}{lst:package:apt} prezintă operații frecvente folosind comanda \texttt{apt}. Fiecare comandă este prefixată de un comentariu care explică rolul acelei comenzi.
 
 \begin{screen}[caption={Operații frecvente cu apt},label={lst:package:apt}]
-TODO: apt: comenzi de cautare, instalare, dezinstalare, actualizare informatii, actualizare versiuni, download fara instalare, descarcare surse
+# Cauta pachete care au in nume sau in descrire sirul "svg".
+student@uso:~$ apt search svg
+
+# Instaleaza pachetul inkscape.
+# Sau actualizeaza pachetul daca este deja instalat si exista o versiune mai noua.
+student@uso:~$ sudo apt install inkscape
+
+# Afiseaza informatii despre pachetul inkscape (instalat sau nu).
+student@uso:~$ apt show inkscape
+
+# Dezinstaleaza pachetul inkscape.
+student@uso:~$ sudo apt remove inkscape
+
+# Actualizeaza informatiile locale despre pachete.
+student@uso:~$ sudo apt update
+
+# Actualizeaza pachetele sistemului.
+student@uso:~$ sudo apt upgrade
+
+# Descarca pachetul inkscape fara sa fie instalat.
+student@uso:~$ sudo apt -d remove inkscape
+
+# Descarca sursele pachetului inkscape.
+student@uso:~$ apt source inkscape
 \end{screen}
 
-Pentru operațiile din spate, de lucru cu pachete, comanda apt folosește comanda dpkg. Comanda dpkg are informații despre pachet și despre instalările din sistem. \labelindexref{Listing}{lst:package:dpkg} prezintă operații frecvente folosind comanda dpkg. Fiecare comandă este prefixată de un comentariu care explică rolul acelei comenzi.
+Majoritatea acțiunilor realizate folosind utilitarul \cmd{apt} sunt privilegiate; de aceea sunt prefixate de comanda \cmd{sudo}. Excepție fac, în \labelindexref{Listing}{lst:package:apt}, acțiune de căutare a unui pachet și cea de descărcare a surselor pachetului. Acestea sunt exceptate pentru că nu modifică fișiere de sistem.
 
-\begin{screen}[caption={Operații frecvente cu dpkg},label={lst:package:dpkg}]
-TODO: dpkg: afisare informatii despre un pachet, cautare pachet, cautare pachete locale, cautare pachet ce contine un fisier, vazut ce contine un pachet (listare interna si dezarhivat)
+Pentru operațiile din spate, de lucru cu pachete, utilitarul \cmd{apt} apelează uilitarul \cmd{dpkg}. Utilitarul \cmd{dpkg} are informații despre pachete și despre instalările din sistem. \labelindexref{Listing}{lst:package:dpkg} prezintă operații frecvente folosind utilitarul \cmd{dpkg}. Fiecare comandă este prefixată de un comentariu care explică rolul acelei comenzi.
+
+\begin{screen}[caption={Operații frecvente cu dpkg},escapechar=,label={lst:package:dpkg}]
+# Afiseaza pachetele instalate local.
+student@uso:~$ dpkg -l | grep '^ii'
+
+# Cauta pachetele instalate local dupa expresia book.
+student@uso:~$ dpkg -l *book*
+
+# Identifica pachetul care contine fisierul /usr/bin/ssh.
+student@uso:~$ dpkg -S /usr/bin/ssh
+
+# Afiseaza continutul pachetului inkscape, instalat local.
+student@uso:~$ dpkg -L inkscape
 \end{screen}
 
 \subsection{Gestiunea pachetelor format RPM}
 \label{sec:package:rpm}
 
-Similar distribuțiilor derivate din Debian, distribuțiile derivate din RedHat folosesc pachete RPM (RPM Package Manager) cu extensia .rpm.
- Aceste pachete sunt arhive ar care conțin datele și metadatele.
+Similar distribuțiilor derivate din Debian, distribuțiile derivate din RedHat folosesc pachete RPM (RPM Package Manager) cu extensia \texttt{.rpm}. Aceste pachete sunt arhive \texttt{cpio} care conțin datele și metadatele.
 
-Sistemul de gestiune a pachetelor este DNF (Dignified yum), care este o îmbunătățire a vechiului sistem care numea YUM (Yellowdog Updater Modified) care la rândul său era o îmbunătățire de la YUP (Yellowdog Updater); Yellowdog a fost o distribuție Linux care a creat sistemul YUP. Configurația DNS se găsește în directorul /etc/dnf. În fișierul TODO sunt configurate URL-uri de depozite de pachete. \labelindexref{Listing}{lst:package:rpm-config} prezintă o configurație uzuală.
+Sistemul de gestiune a pachetelor pe Fedora este DNF (\textit{Dignified yum}), care este o îmbunătățire a vechiului sistem care numea YUM (\textit{Yellowdog Updater Modified}) care la rândul său era o îmbunătățire de la YUP (\textit{Yellowdog Updater}); Yellowdog a fost o distribuție Linux care a creat sistemul YUP. Versiunile mai vechi (și mai stabile) de Red Hat Enterprise Linux (RHEL) sau CentOS (derivat din RHEL) folosesc în continuare YUM; probabil la un moment dat vor tranzita spre DNF. Configurația DNF se găsește în directorul \file{/etc/dnf/}. În directorul \file{/etc/yum/yum.repos.d/} sunt configurate URL-uri repository-uri depozite de pachete. \labelindexref{Listing}{lst:package:rpm-config} prezintă o configurație uzuală.
 
-\begin{screen}[caption={Configurație DNF (RedHat)},label={lst:package:rpm-config}]
-TODO: selectie din /etc/dnf/...
+\begin{screen}[caption={Configurație de repository YUM/DNF (RedHat)},label={lst:package:rpm-config}]
+[student@uso:~]$ cat /etc/yum.repos.d/fedora.repo
+[fedora]
+name=Fedora $releasever - $basearch
+failovermethod=priority
+#baseurl=http://download.fedoraproject.org/pub/fedora/linux/releases/$releasever/Everything/$basearch/os/
+metalink=https://mirrors.fedoraproject.org/metalink?repo=fedora-$releasever&arch=$basearch
+enabled=1
+[...]
 \end{screen}
 
-Interacțiunea cu DNF se face în mod uzual în linia de comandă prin intermediul comenzii dnf. La fel ca în cazul Debian, \labelindexref{Listing}{lst:package:dns} prezintă operații frecvente folosind comanda dnf. Fiecare comandă este prefixată de un comentariu care explică rolul acelei comenzi.
+Interacțiunea cu DNF se face în mod uzual în linia de comandă prin intermediul utilitarului \cmd{dnf}. La fel ca în cazul Debian, \labelindexref{Listing}{lst:package:dnf} prezintă operații frecvente folosind utilitarul \cmd{dnf}. Fiecare comandă este prefixată de un comentariu care explică rolul acelei comenzi.
 
 \begin{screen}[caption={Operații frecvente cu dnf},label={lst:package:dnf}]
-TODO: apt: comenzi de cautare, instalare, dezinstalare, actualizare informatii, actualizare versiuni, download fara instalare, descarcare surse
+# Afiseaza pachetele instalate local.
+[student@uso:~]$ dnf list installed
+
+# Afiseaza lista de repository-uri folosite.
+[student@uso:~]$ dnf repolist all
+
+# Cauta pachete care au in nume sau in descrire sirul "svg".
+[student@uso:~]$ dnf search svg
+
+# Instaleaza pachetul inkscape.
+[student@uso:~]$ sudo dnf install inkscape
+
+# Afiseaza informatii despre pachetul inkscape (instalat sau nu).
+[student@uso:~]$ dnf info inkscape
+
+# Dezinstaleaza pachetul inkscape.
+[student@uso:~]$ sudo dnf remove inkscape
+
+# Actualizeaza pachetul inkscape.
+[student@uso:~]$ sudo dnf update inkscape
+
+# Actualizeaza pachetele sistemului.
+[student@uso:~]$ sudo dnf upgrade
+
+# Descarca pachetul inkscape fara sa fie instalat.
+[student@uso:~]$ sudo dnf download inkscape
+
+# Descarca sursele pachetului inkscape.
+[student@uso:~]$ dnf download --source inkscape
 \end{screen}
 
-Pentru operațiile din spate, de lucru cu pachete, comanda apt folosește comanda rpm. Comanda rpm are informații despre pachet și despre instalările din sistem. \labelindexref{Listing}{lst:package:rpm} prezintă operații frecvente folosind comanda rpm. Fiecare comandă este prefixată de un comentariu care explică rolul acelei comenzi.
+Pentru operațiile din spate, de lucru cu pachete, utilitarul \cmd{dnf} folosește utilitarul \cmd{rpm}. Utilitarul \cmd{rpm} are informații despre pachet și despre instalările din sistem. \labelindexref{Listing}{lst:package:rpm} prezintă operații frecvente folosind utilitarul \cmd{rpm}. Fiecare comandă este prefixată de un comentariu care explică rolul acelei comenzi.
 
 \begin{screen}[caption={Operații frecvente cu rpm},label={lst:package:rpm}]
-TODO: dpkg: afisare informatii despre un pachet, cautare pachet, cautare pachete locale, cautare pachet ce contine un fisier, vazut ce contine un pachet (listare interna si dezarhivat)
+# Afiseaza pachetele instalate local.
+[student@uso:~]$ rpm -qa
+
+# Afiseaza informatii despre pachetul inkscape.
+[student@uso:~]$ rpm -qi inkscape
+
+# Identifica pachetul care contine fisierul /usr/bin/ssh.
+[student@uso:~]$ rpm -qf /usr/bin/ssh
+
+# Afiseaza continutul pachetului inkscape, instalat local.
+[student@uso:~]$ rpm -ql inkscape
 \end{screen}
 
 \subsection{Gestiunea pachetelor în alte formate}
 \label{sec:package:other}
 
-În continuare prezentăm în format tabelar comenzi comparative între diferite sisteme de gestiune a pachetelor descrise în \labelindexref{Tabelul}{tab:package:types}. Pentru completitudine vom include și APT și DNF. O coloană va descrie tipul de sistem de gestiune a pachetelor iar alte coloane vor prezenta comenzile corespunzătoare fiecărui tip de operație. Din limitări de spațiu sunt mai multe tabele cu aceeași primă coloană. În tabele vom folosi numele de pachet generic hello; când apare cuvântul hello într-o comandă presupunem că e vorba de numele unui pachet.
+În continuare prezentăm în format tabelar comenzi comparative între diferite sisteme de gestiune a pachetelor descrise în \labelindexref{Tabelul}{tab:package:types}. Pentru completitudine vom include și APT și DNF. O coloană va descrie tipul de sistem de gestiune a pachetelor iar alte coloane vor prezenta comenzile corespunzătoare fiecărui tip de operație. Din limitări de spațiu sunt mai multe tabele cu aceeași primă coloană. În tabele vom folosi numele de pachet generic \texttt{hello}; când apare cuvântul \texttt{hello} într-o comandă presupunem că e vorba de numele unui pachet.
 
 Sunt prezente următoarele tabele:
 \begin{itemize}
   \item \labelindexref{Tabelul}{tab:package:config-repository} prezintă fișierul de configurare pentru sistemul de gestiune a pachetelor și comenzile pentru configurarea acestuia.
-  \item \labelindexref{Tabelul}{tab:package:config-update} prezintă comenzile pentru actualizarea informațiilor despre pachete și actualizarea sistemului (\textit{upgrade}).
+  \item \labelindexref{Tabelul}{tab:package:config-update} prezintă comenzile pentru actualizarea informațiilor despre pachete și actualizarea sistemului (\textit{update}).
   \item \labelindexref{Tabelul}{tab:package:config-install} prezintă comenzile pentru instalarea și dezinstalarea pachetelor.
   \item \labelindexref{Tabelul}{tab:package:config-download} prezintă comenzile pentru descărcarea pachetelor (fără instalare) și descărcarea codului sursă al pachetelor.
   \item \labelindexref{Tabelul}{tab:package:config-list} prezintă comenzile pentru afișarea de informații și conținut al pachetelor.
@@ -256,16 +381,49 @@ Sunt prezente următoarele tabele:
 
 \begin{table}[!htb]
   \caption{Configurare repository}
+  \scriptsize
   \begin{center}
-    \begin{tabular}{ p{0.2\textwidth} p{0.4\textwidth} p{0.4\textwidth} }
+    \begin{tabular}{ p{0.15\textwidth} p{0.4\textwidth} p{0.25\textwidth} }
       \toprule
         \textbf{Sistem de pachete} &
-        \textbf{Fișier de configurare} &
-        \textbf{Comandă de configurare} \\
+        \textbf{Fișier / director de configurare} &
+        \textbf{Utilitar(e) de configurare} \\
       \midrule
-        TODO &
-        TODO &
-        TODO \\
+        APT &
+        \file{/etc/apt/sources.list} &
+        \cmd{apt}, \cmd{dpkg} \\
+
+        DNF / YUM &
+        \file{/etc/dnf/dnf.conf}, \file{/etc/yum.repos.d/} &
+        \cmd{dnf}, \cmd{rpm} \\
+
+        Pacman &
+        \file{/usr/local/etc/pacman.conf} &
+        \cmd{pacman} \\
+
+        Portage &
+        \file{/etc/portage} &
+        \cmd{emerge} \\
+
+        ZYpp &
+        \file{/etc/zypp/zypp.conf} &
+        \cmd{zypper}, \cmd{rpm} \\
+
+        Port &
+        \file{/etc/portsnap.conf} &
+        \cmd{portsnap}, \cmd{pkg} \\
+
+        Homebrew &
+        N/A &
+        \cmd{brew} \\
+
+        MacPorts &
+        \file{/etc/macaports/} &
+        \cmd{port} \\
+
+        Chocolatey &
+        se folosește \cmd{choco config} &
+        \cmd{choco} \\
       \bottomrule
     \end{tabular}
     \label{tab:package:config-repository}
@@ -274,16 +432,49 @@ Sunt prezente următoarele tabele:
 
 \begin{table}[!htb]
   \caption{Actualizare / Upgrade}
+  \scriptsize
   \begin{center}
-    \begin{tabular}{ p{0.2\textwidth} p{0.4\textwidth} p{0.4\textwidth} }
+    \begin{tabular}{ p{0.15\textwidth} p{0.3\textwidth} p{0.33\textwidth} }
       \toprule
         \textbf{Sistem de pachete} &
         \textbf{Actualizare cache / versiuni} &
         \textbf{Upgrade sistem / pachete} \\
       \midrule
-        TODO &
-        TODO &
-        TODO \\
+        APT &
+        \cmd{apt update} &
+        \cmd{apt upgrade} \\
+
+        DNF / YUM &
+        \cmd{dnf makecache} &
+        \cmd{dnf update} \\
+
+        Pacman &
+        \cmd{pacman -Fy} &
+        \cmd{pacman -Syu} \\
+
+        Portage &
+        \cmd{emerge -{}-sync} &
+        \cmd{emerge -{}-update -{}-deep world} \\
+
+        ZYpp &
+        N/A &
+        \cmd{zypper update} \\
+
+        Port &
+        \cmd{portsnap fetch update} &
+        \cmd{pkg upgrade} \\
+
+        Homebrew &
+        \cmd{brew update} &
+        \cmd{brew upgrade} \\
+
+        MacPorts &
+        \cmd{port selfupdate}, \cmd{port sync} &
+        \cmd{port upgrade outdated} \\
+
+        Chocolatey &
+        N/A &
+        \cmd{choco upgrade all} \\
       \bottomrule
     \end{tabular}
     \label{tab:package:config-update}
@@ -292,20 +483,59 @@ Sunt prezente următoarele tabele:
 
 \begin{table}[!htb]
   \caption{Instalare / Dezinstalare}
+  \scriptsize
   \begin{center}
-    \begin{tabular}{ p{0.2\textwidth} p{0.2\textwidth} p{0.2\textwidth} p{0.2\textwidth} p{0.2\textwidth} }
+    \begin{tabular}{ p{0.15\textwidth} p{0.25\textwidth} p{0.2\textwidth} p{0.2\textwidth} }
       \toprule
         \textbf{Sistem de pachete} &
+        \textbf{Căutare} &
         \textbf{Instalare} &
-        \textbf{Dezinstalare} &
-        \textbf{Curățare pachet (purge)} &
-        \textbf{Instalare pachet local} \\
+        \textbf{Dezinstalare} \\
       \midrule
-        TODO &
-        TODO &
-        TODO &
-        TODO &
-        TODO \\
+        APT &
+        \cmd{apt search hello} &
+        \cmd{apt install hello} &
+        \cmd{apt remove hello} \\
+
+        DNF / YUM &
+        \cmd{dnf search hello} &
+        \cmd{dnf install hello} &
+        \cmd{dnf remove hello} \\
+
+        Pacman &
+        \cmd{pacman -Ss hello} &
+        \cmd{pacman -S hello} &
+        \cmd{pacman -R hello} \\
+
+        Portage &
+        \cmd{emerge -{}-search hello} &
+        \cmd{emerge hello} &
+        \cmd{emerge -C hello} \\
+
+        ZYpp &
+        \cmd{zypper search hello} &
+        \cmd{zypper install hello} &
+        \cmd{zypper remove hello} \\
+
+        Port &
+        \cmd{pkg search hello} &
+        \cmd{pkg install hello} &
+        \cmd{pkg remove hello} \\
+
+        Homebrew &
+        \cmd{brew search hello} &
+        \cmd{brew install hello} &
+        \cmd{brew uninstall hello} \\
+
+        MacPorts &
+        \cmd{port search hello} &
+        \cmd{port install hello} &
+        \cmd{port uninstall hello} \\
+
+        Chocolatey &
+        \cmd{choco search hello} &
+        \cmd{choco install hello} &
+        \cmd{choco uninstall hello} \\
       \bottomrule
     \end{tabular}
     \label{tab:package:config-install}
@@ -314,16 +544,49 @@ Sunt prezente următoarele tabele:
 
 \begin{table}[!htb]
   \caption{Descărcare pachet / sursă}
+  \scriptsize
   \begin{center}
-    \begin{tabular}{ p{0.2\textwidth} p{0.4\textwidth} p{0.4\textwidth} }
+    \begin{tabular}{ p{0.15\textwidth} p{0.4\textwidth} p{0.35\textwidth} }
       \toprule
         \textbf{Sistem de pachete} &
         \textbf{Descărcare (fără instalare)} &
         \textbf{Descărcare sursă pachet} \\
       \midrule
-        TODO &
-        TODO &
-        TODO \\
+        APT &
+        \cmd{apt install -d hello} &
+        \cmd{apt source hello} \\
+
+        DNF / YUM &
+        \cmd{dnf download hello} &
+        \cmd{dnf download -{}-sourcehello} \\
+
+        Pacman &
+        \cmd{pacman -Sw hello} &
+        \cmd{asp export hello} \\
+
+        Portage &
+        \cmd{emerge -{}-fetchnly hello} &
+        N/A \\
+
+        ZYpp &
+        \cmd{zypper install -{}-download-only hello} &
+        \cmd{zypper source-install hello} \\
+
+        Port &
+        \cmd{pkg fetch hello} &
+        \cmd{pkg fetch hello} \\
+
+        Homebrew &
+        N/A &
+        \cmd{brew fetch hello} \\
+
+        MacPorts &
+        N/A &
+        \cmd{port fetch hello} \\
+
+        Chocolatey &
+        \cmd{choco download hello} &
+        N/A \\
       \bottomrule
     \end{tabular}
     \label{tab:package:config-download}
@@ -332,20 +595,59 @@ Sunt prezente următoarele tabele:
 
 \begin{table}[!htb]
   \caption{Căutare / Listare}
+  \scriptsize
   \begin{center}
-    \begin{tabular}{ p{0.2\textwidth} p{0.2\textwidth} p{0.2\textwidth} p{0.2\textwidth} p{0.2\textwidth} }
+    \begin{tabular}{ p{0.15\textwidth} p{0.2\textwidth} p{0.2\textwidth} p{0.2\textwidth} }
       \toprule
         \textbf{Sistem de pachete} &
         \textbf{Căutare pachet local} &
         \textbf{Conținut pachet instalat} &
-        \textbf{Pachet al unui fișier existent} &
-        \textbf{Conținut pachet local} \\
+        \textbf{Pachet al unui fișier existent} \\
       \midrule
-        TODO &
-        TODO &
-        TODO &
-        TODO &
-        TODO \\
+        APT &
+        \cmd{dpkg -l hello} &
+        \cmd{dpkg -L hello} &
+        \cmd{dpkg -S /usr/bin/hello} \\
+
+        DNF / YUM &
+        \cmd{rpm -qi hello} &
+        \cmd{rpm -ql hello} &
+        \cmd{rpm -qf /usr/bin/hello} \\
+
+        Pacman &
+        \cmd{packman -Qs hello} &
+        \cmd{packman -Ql hello} &
+        \cmd{packman -Qo hello} \\
+
+        Portage &
+        N/A &
+        \cmd{emerge files hello} &
+        \cmd{emerge belongs /usr/bin/hello} \\
+
+        ZYpp &
+        \cmd{rpm -qi hello} &
+        \cmd{rpm -ql hello} &
+        \cmd{rpm -qf /usr/bin/hello} \\
+
+        Port &
+        \cmd{pkg info hello} &
+        \cmd{pkg info -l hello} &
+        \cmd{pkg provides /usr/bin/hello} \\
+
+        Homebrew &
+        \cmd{brew ls | grep -i hello} &
+        \cmd{brew ls hello} &
+        N/A \\
+
+        MacPorts &
+        \cmd{port list} &
+        \cmd{port contents hello} &
+        \cmd{port provides /usr/bin/hello} \\
+
+        Chocolatey &
+        \cmd{choco search -{}-local-only hello} &
+        N/A &
+        N/A \\
       \bottomrule
     \end{tabular}
     \label{tab:package:config-list}
@@ -357,79 +659,293 @@ Sunt prezente următoarele tabele:
 
 Atunci când instalăm un pachet pe un sistem trebuie să avem grijă să fie compatibil cu celelalte pachete, adică să fie versiuni de pachete care pot lucra împreună. În unele situații avem nevoie de o anumită versiune, lucru imposibil de realizat câtă vreme versiunile altor pachete sunt incompatibile. Ne interesează să avem un mediu relativ izolat în care să avem instalat pachetul: o ierarhie în care pachetul să fie instalat împreună cu dependențele sale fără legătură cu ce este deja instalat la nivelul sistemului.
 
-Această abordare de instalare numit all-in-one folosește un alt sistem de gestiune decât cel al sistemului. Sistemul de gestiune a pachetelor sistemului este la nivelul global al sistemului; soluțiile all-in-one lucrează independent de acesta. Soluțiile all-in-one permit actualizarea (upgrade) mai facilă a pachetelor prin actualizarea directorului în care sunt instalate. Suplimentar permit configurări de securitate care pot fi realizate granular, doar la nivelul pachetului în cauză, nu la nivelul sistemului.
+Această abordare de instalare numită \textit{all-in-one} folosește un alt sistem de gestiune decât cel al sistemului. Sistemul de gestiune a pachetelor sistemului este la nivelul global al sistemului; soluțiile all-in-one lucrează independent de acesta. Soluțiile all-in-one permit actualizarea (\textit{update}) mai facilă a pachetelor prin actualizarea directorului în care sunt instalate. Suplimentar permit configurări de securitate care pot fi realizate granular, doar la nivelul pachetului în cauză, nu la nivelul sistemului.
 
 Un caz de utilizare pentru aceste sisteme de gestiune a pachetelor sunt soluțiile IoT (Internet of Things) despre care vom discuta în \labelindexref{Capitolul}{chapter:embed}. Aceasta pentru că sistemele IoT au de obicei roluri foarte bine definite și dorim să instalăm ușor o aplicație software cu toate dependențele sale.
 
 În aceste sisteme există un pachet (o arhivă) care conține toate informațiile necesare rulării aplicație: aplicația, depdendențe, metadate, scripturi de instalare și configurare.
 
-Sistemele Ubuntu folosesc Snapcraft, o soluție care înglobează aplicațiile în pachete; un pachet se numește snap. Un serviciu local numit snapd este responsabil de instalarea unei aplicații folosind snap. \labelindexref{Listing}{lst:package:snap-list} prezintă aplicațiile instalate implicit în format snap pe Ubuntu 18.04.
+Sistemele Ubuntu folosesc Snapcraft~\footnote{\url{https://snapcraft.io/}}, o soluție care înglobează aplicațiile în pachete; un pachet se numește \textbf{snap}. Un serviciu local numit \cmd{snapd} este responsabil de instalarea unei aplicații folosind utilitarul \cmd{snap}. \labelindexref{Listing}{lst:package:snap-list} prezintă aplicațiile instalate implicit în format \textbf{snap} pe Ubuntu 18.04.
 
 \begin{screen}[caption={Pachete instalate în format snap pe Ubuntu 18.04},label={lst:package:snap-list}]
-TODO: listare pachete instalate in format snap
+student@uso:~$ snap list
+Name                  Version                     Rev   Tracking         Publisher   Notes
+core                  16-2.45.3.1                 9804  latest/stable    canonical   core
+core18                20200724                    1885  latest/stable    canonical   base
+gnome-3-26-1604       3.26.0.20200529             100   latest/stable/   canonical   -
+gnome-3-28-1804       3.28.0-17-gde3d74c.de3d74c  128   latest/stable    canonical   -
+gnome-3-34-1804       0+git.3009fc7               36    latest/stable    canonical   -
+gnome-calculator      3.36.0+git9.96b95fd2        748   latest/stable/   canonical   -
+gnome-characters      v3.34.0+git8.a46106b        550   latest/stable/   canonical   -
+gnome-logs            3.34.0                      100   latest/stable/   canonical   -
+gnome-system-monitor  3.36.0-12-g35f88a56d7       148   latest/stable/   canonical   -
+gtk-common-themes     0.1-36-gc75f853             1506  latest/stable/   canonical   -
 \end{screen}
 
-\labelindexref{Listing}{lst:package:snap} prezintă operații uzuale folosind comanda \cmd{snap}.
+Pe un sistem pot coexista pachete instalate folosind managerul de pachete al sistemului și pachete snap.
+
+\labelindexref{Listing}{lst:package:snap} prezintă operații uzuale folosind utilitarul \cmd{snap}.
 
 \begin{screen}[caption={Operații uzule cu snap},label={lst:package:snap}]
-TODO: comenzi snap
+# Cauta pachete care au in nume sau in descrire sirul "svg".
+student@uso:~$ snap find svg
+
+# Instaleaza pachetul inkscape.
+student@uso:~$ sudo snap install inkscape
+
+# Afiseaza informatii despre pachetul inkscape (instalat sau nu).
+student@uso:~$ snap info inkscape
+
+# Dezinstaleaza pachetul inkscape.
+student@uso:~$ sudo snap remove inkscape
+
+# Actualizeaza pachetul inkscape.
+student@uso:~$ sudo snap refresh inkscape
+
+# Actualizeaza pachetele sistemului.
+student@uso:~$ sudo snap refresh
+
+# Descarca pachetul inkscape fara sa fie instalat.
+student@uso:~$ snap download inkscape
 \end{screen}
 
-Alte soluții de tip all-in-one sunt Flatpak și AppImage. Flatpak creează un mediu izolat folosind o formă de virtualizare de aplicație, similar unui container, descris în \labelindexref{Secțiunea}{sec:vm-intro-containers}. În acest mediu izolat rulează aplicații. Sunt disponibile pachete format Flatpack pentru câteva aplicații. AppImage este o soluție care permite instalarea unei aplicații fără a fi nevoie de cont privilegiat; există aplicații care sunt descărcabile în format de pachet AppImage și instalabile astfel de un utilizator neprivilegiat.
+Alte soluții de tip all-in-one sunt Flatpak~\footnote{\url{https://www.flatpak.org/}} și AppImage~\footnote{\url{https://appimage.org/}}. Flatpak creează un mediu izolat folosind o formă de virtualizare de aplicație, similar unui container, descris în \labelindexref{Secțiunea}{sec:vm-intro-containers}. În acest mediu izolat rulează aplicații. AppImage este o soluție care permite instalarea unei aplicații fără a fi nevoie de cont privilegiat; există aplicații care sunt descărcabile în format de pachet AppImage și instalabile astfel de un utilizator neprivilegiat.
+
+Un avantaj al folosirii soluțiilor all-in-one este că folosesc versiuni mai recente ale aplicațiilor. În vreme ce aplicațiile care folosesc managerul de pachete al sistemului vor folosi versiunea disponibilă în repository, care ține de versiunea curentă a distribuției.
 
 \subsection{Medii specifice pentru limbaje de programare}
 \label{sec:package:specific}
 
-Limbaje de programare precum Python sau Ruby permit dezvoltarea de aplicații în aceste limbaje și distribuirea acestora ca pachete. Pentru aceasta cele două limbaje au sisteme de gestiune ale pachetelor: pip pentru Python și gem pentru Ruby.
+Limbaje de programare precum Python sau Ruby permit dezvoltarea de aplicații în aceste limbaje și distribuirea acestora ca pachete. Pentru aceasta cele două limbaje au sisteme de gestiune ale pachetelor: \cmd{pip} pentru Python și \cmd{gem} pentru Ruby.
 
 Sistemele de gestiune a pachetelor pentru limbaje de programare sunt independente de sistemele de gestiune a pachetelor la nivel de sistem. Folosesc în mod similar sistemul de fișiere, dar se ocupă de gestiunea acestor noi pachete.
 
-Pachetele specifice Python sau Ruby se pot găsi însă și în depozitul sistemului de gestiune a pachetelor la nivelul sistemului. Astfel că dacă se instalează pachete în ambele sisteme (cel al sistemului și pip sau gem) pot apărea conflicte. În mod ideal, vom folosi doar pachetele de la nivelul sistemului. Dar pentru că nu se găsesc toate pachetele în depozitul de la nivelul sistemului și pentru că versiunile pot fi nepotrivite, ne dorim să folosim pip sau gem.
+Pachetele specifice Python sau Ruby se pot găsi însă și în repository-ul sistemului de gestiune a pachetelor la nivelul sistemului. Astfel că, dacă se instalează pachete în ambele sisteme (cel al sistemului și \cmd{pip} sau \cmd{gem}), pot apărea conflicte.
 
-\labelindexref{Listing}{lst:package:pip-gem} conține exemple de folosire a comenzilor pip și gem pentru căutarea, instalarea, listarea și dezinstalarea de pachete.
+În mod ideal, vom folosi doar pachetele de la nivelul sistemului. Dar sunt situații în care ne dorim să folosim \cmd{pip} sau \cmd{gem}:
+\begin{itemize}
+  \item dorim să instalăm pachetele într-o zonă locală (un mediu virtual) pentru o aplicație, fără a fi afectate de pachetele din sistem
+  \item pachetele respective nu se găsesc în repsitory-ul sistemului de gestiune a pachetelor
+  \item pachetele de la nivelul sistemului au versiuni nepotrivite (prea vechi)
+  \item dorim să instalăm pachetele doar la nivelul utilizatorului curent, nu la nivelul sistemului
+\end{itemize}
 
-\begin{screen}[caption={Gestiunea pachetelor în medii specifice (pip și gem)},label={lst:package:pip-gem}]
-TODO: listing pip si gem
+Pentru a instala \cmd{pip} și \cmd{gem} pe un sistem Ubuntu folosim comenzile din \labelindexref{Listing}{lst:package:install-pip-gem}.
+
+\begin{screen}[caption={Instalarea Python pip și Ruby gem pe Ubuntu},label={lst:package:install-pip-gem}]
+student@uso:~$ sudo apt install python3-pip python-dev
+
+student@uso:~$ sudo apt install rubygems
 \end{screen}
 
-Pentru a preveni conflicte, sau pentru a lucra la un proiect specific în Python sau Ruby, se pot crea medii specifice unde se instalează pachete folosind ruby sau gem. Aceste medii se numesc medii virtuale și sunt similare celor create de sisteme precum Snappy sau Flatpack. Aceste medii sunt create cu ajutorul comenzilor virtualenv pentru Python sau rvm pentru Ruby. \labelindexref{Listing}{lst:package:env-create} conține secvențe de comenzi pentru crearea unui mediu virtual Python și instalarea unui pachet, respectiv pentru crearea unui mediu virtual Ruby și instalarea unui pachet.
+\labelindexref{Listing}{lst:package:pip} conține exemple de folosire a utilitarului \cmd{pip} iar \labelindexref{Listing}{lst:package:gem} conține exemple de folosire a utilitarului \cmd{gem} pentru căutarea, instalarea, listarea și dezinstalarea de pachete.
 
-\begin{screen}[caption={Crearea unui mediu virtual (Python și Ruby)},label={lst:package:env-create}]
-TODO: mediu virtual Ruby si mediu virtual Python
+\begin{screen}[caption={Gestiunea pachetelor folosind pip},label={lst:package:pip}]
+# Afiseaza pachetele instalate local.
+student@uso:~$ pip3 list
+
+# Cauta pachete care au in nume sau in descrire sirul "pwn".
+student@uso:~$ pip3 search pwn
+
+# Instaleaza pachetul pwntools.
+student@uso:~$ sudo pip3 install pwntools
+
+# Afiseaza informatii despre pachetul pwntools (instalat sau nu).
+student@uso:~$ pip3 show pwntools
+
+# Dezinstaleaza pachetul pwntools.
+student@uso:~$ sudo pip3 uninstall pwntools
+
+# Actualizeaza pachetul pwntools.
+student@uso:~$ sudo pip3 install -U pwntools
+
+# Actualizeaza pachetele sistemului.
+student@uso:~$ sudo pip3 install -U
+
+# Descarca pachetul pwntools fara sa fie instalat.
+student@uso:~$ pip3 install -d pwntools
+
+# Instaleaza pachetul pwntools doar pentru utilizatorul curent.
+student@uso:~$ pip3 install --user pwntools
 \end{screen}
 
-O soluție similară pentru JavaScript (Node.js) folosește npm ca sistem de gestiune a pachetelor și nvm pentru crearea unui mediu izolat.
+\begin{screen}[caption={Gestiunea pachetelor folosind gem},label={lst:package:gem}]
+# Afiseaza pachetele instalate local.
+student@uso:~$ gem list
+
+# Cauta pachete care au in nume sau in descrire sirul "rake".
+student@uso:~$ gem search pwn
+
+# Instaleaza pachetul rake.
+student@uso:~$ sudo gem install rake
+
+# Afiseaza informatii despre pachetul rake (instalat sau nu).
+student@uso:~$ gem list -d rake
+
+# Dezinstaleaza pachetul rake.
+student@uso:~$ sudo gem uninstall rake
+
+# Actualizeaza pachetul rake.
+student@uso:~$ sudo gem update rake
+
+# Actualizeaza pachetele sistemului.
+student@uso:~$ sudo gem update
+
+# Descarca pachetul rake fara sa fie instalat.
+student@uso:~$ gem fetch rake
+
+# Instaleaza pachetul rake doar pentru utilizatorul curent.
+student@uso:~$ gem install --user-install rake
+\end{screen}
+
+Pentru a preveni conflicte, sau pentru a lucra la un proiect specific în Python sau Ruby, se pot crea medii specifice unde se instalează pachete folosind ruby sau gem. Aceste medii se numesc medii virtuale și sunt similare celor create de sisteme precum Snapcraft sau Flatpack; aceste medii se mai numesc și \textit{sandbox}-uri. Aceste medii sunt create cu ajutorul utilitarelor \cmd{virtualenv} pentru Python și \cmd{bundler}. Mediile create folosind \cmd{virtualenv} și \cmd{bundler} sunt îndeosebi utile dezvoltatorilor în Python și Ruby. Aceștia vor crea un astfel de mediu izolat de lucru, în care vor instala versiunile de pachete necesare pentru dezvoltarea aplicației lor.
+
+Pentru a fi disponibile aceste utilitare, trebuie să instalăm utilitarele respective. Putem opta pentru a le instala chiar folosind \cmd{pip} și \cmd{gem} ca în \labelindexref{Listing}{lst:package:install-venv-bundler}.
+
+\begin{screen}[caption={Instalarea utilitarelor virtualenv și rvm},label={lst:package:install-venv-bundler}]
+student@uso:~$ sudo pip3 install virtualenv
+
+student@uso:~$ sudo gem install bundler
+\end{screen}
+
+\labelindexref{Listing}{lst:package:python-env-create} conține secvențe de comenzi pentru crearea unui mediu virtual Python și instalarea unui pachet. Aceste pachete sunt instalate doar în mediul virtual din directorul \file{myenv/} fără a fi afectate de pachetele instalate în sistem.
+
+\begin{screen}[caption={Crearea unui mediu virtual (Python și Ruby)},label={lst:package:python-env-create}]
+student@uso:~$ virtualenv myenv
+
+student@uso:~$ cd myenv/
+student@uso:~/myenv$ ls -F
+bin/  lib/  pyvenv.cfg
+
+student@uso:~/myenv$ source bin/activate
+
+(myenv) student@uso:~/myenv$ pip3 install grip
+Collecting grip
+  Downloading grip-4.5.2.tar.gz (145 kB)
+[...]
+
+(myenv) student@uso:~/myenv$ ls bin/grip
+bin/grip
+
+(myenv) student@uso:~/myenv$ grip
+[...]
+
+(myenv) student@uso:~/myenv$ deactivate
+student@uso:~/myenv$
+\end{screen}
+
+O soluție similară pentru JavaScript (Node.js~\footnote{\url{https://nodejs.org/en/}}) folosește utilitarul \cmd{npm}~\footnote{\url{https://www.npmjs.com/}} ca sistem de gestiune a pachetelor și \cmd{nvm}~\footnote{\url{https://github.com/nvm-sh/nvm}} pentru crearea unui mediu izolat.
 
 \section{Anexă: Instalarea unui pachet din surse}
 \label{sec:package:source}
 
 Modul uzual de a obține o aplicație este prin intermediul unui pachet software și a unui sistem de gestiune a pachetelor ca mai sus. Aceste pachete conțin de obicei executabile și cod compilat pentru a face cât mai rapid procesul de compilare.
 
-Cu toate acestea, există situații în care suntem interesați de obținerea codului sursă al unei aplicații și compilarea acesteia și instalarea manuală din codul compilat. În mod evident, doar pentru aplicațiile open source, la care avem acces la codul sursă. În trecut, această formă era frecventă pentru că distribuțiile erau reduse și nu aveau toate pachetele; singurul mod de a instala pachetul era obținând sursele și compilându-l. În zilele noastre, nu mai este cazul; majoritatea distribuțiilor au foarte multe pachete în depozitele lor de pachete. Rămân însă câteva motive pentru care ne-am dori instalarea din surse:
+Cu toate acestea, există situații în care suntem interesați de obținerea codului sursă al unei aplicații și compilarea acesteia și instalarea manuală din codul compilat. În mod evident, doar pentru aplicațiile open source, la care avem acces la codul sursă. În trecut, această formă era frecventă pentru că distribuțiile erau puține și nu aveau toate pachetele; singurul mod de a instala pachetul era obținând sursele și compilându-l. În zilele noastre, nu mai este cazul; majoritatea distribuțiilor au foarte multe pachete în depozitele lor de pachete. Rămân însă câteva motive pentru care ne-am dori instalarea din surse:
 
 \begin{itemize}
-  \item acea aplicație este suficient de obscur încât să nu se găsească în depozitul de pachete al distribuției
-  \item dorim să edităm codul sursă al aplicației pentru a adăuga anumite funcționalități punctuale nevoilor noastre; acest scenariu e mai degrabă util unei companii, nu unui utilizator obișnuit
-  \item vrem să compilăm aplicația într-un anumit mod, folosind funcționalități de compilare care țin cont de particularități ale arhitecturii procesorului sistemului
+  \item aplicația este suficient de obscură încât să nu se găsească în depozitul de pachete al distribuției
+  \item dorim să edităm codul sursă al aplicației pentru a adăuga anumite funcționalități punctuale nevoilor noastre; acest scenariu e mai degrabă util unui dezvoltator, nu unui utilizator obișnuit
+  \item aplicația este în dezvoltare, nu este încă lansată și nu există pachete; acest scenariu este de asemenea util unui dezvoltator
+  \item vrem să compilăm aplicația într-un anumit mod, folosind funcționalități de compilare care țin cont de particularități ale sistemului (de exemplu arhitectura procesorului sau componente hardware specifice)
 \end{itemize}
 
-Instalarea din codul sursă presupune obținerea unei arhive care are codul sursă al aplicației sau clonarea repository-ului sursă al aplicației. În cadrul codului sursă astfel obținut se regăsesc în mod uzual un fișier README cu indicații de instalare și scripturi sau componente de compilare.
+Instalarea din codul sursă presupune obținerea unei arhive care are codul sursă al aplicației sau clonarea repository-ului sursă al aplicației. În cadrul codului sursă astfel obținut se regăsesc în mod uzual un fișier \file{README} cu indicații de instalare și scripturi sau componente de compilare.
 
-În general pentru compilare se folosesc sisteme de build care automatizează procesul. Acestea pot fi make, cmake, Scons, Maven, Ant, Gradle depinzând de limbajul de programare folosit și de preferințele dezvoltatorului. Mai multe informații despre sistemele de build se găsesc în \labelindexref{Capitolul}{chapter:appdev}.
+În general pentru compilare se folosesc sisteme de build care automatizează procesul. Acestea pot fi Make, Cmake, Scons, Maven, Ant, Gradle depinzând de limbajul de programare folosit și de preferințele dezvoltatorului. Mai multe informații despre sistemele de build se găsesc în \labelindexref{Capitolul}{chapter:appdev}.
 
-În cazul aplicațiilor scrise în limbajele C/C++ cel mai frecvent sistem de build este cel bazat pe make, împreună cu utilitarele complementare. Acest sistem se numește Autotool, sau sistemul de build GNU.
+În cazul aplicațiilor scrise în limbajele C/C++ cel mai frecvent sistem de build este cel bazat pe Make, împreună cu utilitarele complementare. Acest sistem se numește Autotool, sau sistemul de build GNU.
 
-\labelindexref{Listing}{lst:package:src-install} secvența de comenzi care duce la instalarea pachetului librasterbar (o bibliotecă Bittorrent) din surse.
+Ca exaemplu, \labelindexref{Listing}{lst:package:src-install} conține secvența de comenzi care duce la instalarea OpenSC~\footnote{\url{https://github.com/OpenSC/OpenSC/wiki}}, un set de aplicații și biblioteci pentru a lucra cu smart carduri.
 
-\begin{screen}[caption={Instalarea bibliotecii librasterbar din surse},label={lst:package:src-install}]
-TODO: instalare din surse
+\begin{screen}[caption={Instalarea OpenSC din surse},label={lst:package:src-install}]
+student@uso:~$ cd Downloads/
+student@uso:~/Downloads$ wget https://github.com/OpenSC/OpenSC/releases/download/0.20.0/opensc-0.20.0.tar.gz
+[...]
+Saving to: 'opensc-0.20.0.tar.gz'
+
+student@uso:~/Downloads$ tar xzf opensc-0.20.0.tar.gz
+student@uso:~/Downloads$ cd opensc-0.20.0/
+student@uso:~/Downloads/opensc-0.20.0$ ls
+aclocal.m4  bootstrap.ci  config.guess  config.sub  configure.ac  depcomp  etc         ltmain.sh  MacOSX       Makefile.in   missing  packaging  src          tests          win32
+bootstrap   compile       config.h.in   configure   COPYING       doc      install-sh  m4         Makefile.am  Makefile.mak  NEWS     README     test-driver  version.m4.ci
+
+student@uso:~/Downloads/opensc-0.20.0$ ./configure
+[...]
+configure: error: winscard.h is required for pcsc
+
+student@uso:~/Downloads/opensc-0.20.0$ apt-file search winscard.h
+libpcsclite-dev: /usr/include/PCSC/winscard.h
+libwine-dev: /usr/include/wine/windows/winscard.h
+libwine-development-dev: /usr/include/wine-development/wine/windows/winscard.h
+mingw-w64-common: /usr/share/mingw-w64/include/winscard.h
+mingw-w64-i686-dev: /usr/i686-w64-mingw32/include/winscard.h
+mingw-w64-x86-64-dev: /usr/x86_64-w64-mingw32/include/winscard.h
+
+student@uso:~/Downloads/opensc-0.20.0$ sudo apt install libpcsclite-dev
+[...]
+
+student@uso:~/Downloads/opensc-0.20.0$ ./configure
+[..]
+configure: creating ./config.status
+config.status: creating Makefile
+[...]
+
+student@uso:~/Downloads/opensc-0.20.0$ ls
+aclocal.m4    compile       config.h.in    config.sub    COPYING  etc         ltmain.sh  Makefile     Makefile.mak  packaging  stamp-h1     version.m4.ci
+bootstrap     config.guess  config.log     configure     depcomp  install-sh  m4         Makefile.am  missing       README     test-driver  win32
+bootstrap.ci  config.h      config.status  configure.ac  doc      libtool     MacOSX     Makefile.in  NEWS          src        tests
+
+student@uso:~/Downloads/opensc-0.20.0$ make
+make  all-recursive
+make[1]: Entering directory '/home/student/Downloads/opensc-0.20.0'
+Making all in etc
+  [...]
+  CC       compat_getopt_main.o
+  CC       compat_dummy.lo
+  CC       compat_strlcat.lo
+  [...]
+
+student@uso:~/Downloads/opensc-0.20.0$ ls src/tools/
+cardos-tool                  goid-tool.c                    openpgp-tool.c                         opensc-notify.plist.in                     pkcs15-crypt
+[...]
+student@uso:~/Downloads/opensc-0.20.0$ sudo make install
+[...]
+student@uso:~/Downloads/opensc-0.20.0$ sudo ldconfig
+student@uso:~/Downloads/opensc-0.20.0$ cardos-tool
+No smart card readers found.
+student@uso:~/Downloads/opensc-0.20.0$ pkcs15-tool
+Usage: pkcs15-tool [OPTIONS]
+Options:
+      --version                 Print OpenSC package version
+      --list-info               List card information
 \end{screen}
+
+În secvența de comenzi pentru instalarea din surse de mai sus, am urmat pașii:
+\begin{enumerate}
+  \item liniile \texttt{1-X}: am descărcat arhiva ce conține sursele OpenSC
+  \item liniile \texttt{X-Y}: am despachetat arhiva
+  \item liniile \texttt{X-Y}: am văzut că nu am avem fișier \file{Makefile} dar există fișierul \file{configure}
+  \item liniile \texttt{X-Y}: am rulat scriptul \file{configure}; am observat că nu există în sistemul fișierul header \file{winscard.h}
+  \item liniile \texttt{X-Y}: am căutat fișierul header \file{winscard.h} în pachete folosind \cmd{apt-file}; am descoperit pachetul \texttt{libpcslite-dev} pe care l-am instalat
+  \item liniile \texttt{X-Y}: am rulat din nou scriptul \file{configure}; acum a rulat cu succes
+  \item liniile \texttt{X-Y}: am observat prezența fișierului \file{Makefile} generat din rularea cu succes a scriptului \file{configure}
+  \item liniile \texttt{X-Y}: am rulat comanda \cmd{make} pentru a compila sursele și a obține fișierele executabile și bibliotecile dorite
+  \item liniile \texttt{X-Y}: am observat existența fișierelor executabile dorite în directorul \file{src/tools/}, precum \file{cardos-tool} sau \file{pkcs15-crypt}
+  \item liniile \texttt{X-Y}: am instalat pachetele în sistem folosind comanda \cmd{make install} și actualizând cacheul de biblioteci (\cmd{ldconfig}), astfel că executabilele generate (\cmd{cardos-tool}, \cmd{pkcs15-tool} sunt acum folosibile)
+\end{enumerate}
+
+După cum se observă, compilarea din surse necesită cunoștințe tehnice mai avansate legate de sisteme de build, despre care vom discuta în \labelindexref{Capitolul}{chapter:appdev}. De aceea sunt de evitat pentru majoritatea utilizatorilor. Pentru aproape toate scenariile acestora, sistemele de gestiune ale pachetelor prezentate mai sus vor fi suficiente.
 
 \section{Sumar}
 \label{sec:package:summary}
 
 Un dezvoltator sau firmă de dezvoltare are nevoie de o formă de distribuție a aplicației create pentru a ajunge la utilizatori. Uzual este în formă de pachete software.
+
 Pachetele conțin date și metadate care sunt prelucrate de un sistem de gestiune a pachetelor pentru instalare, dezinstalare.
+
 Sistemele de gestiune sunt aplicații care cunosc formatul pachetelor. Exemplu sunt APT sau YUM pe Linux.
-Pachetele se găsesc într-un depozit (repository sau AppStore) de unde aplicația de gestiune a pachetelor le obține. Altfel, un pachet poate fi obținut dintr-un loc anume și instalat.
-Gestiunea pachetelor poate fi dificilă, pot fi versiuni incompatibile. O soluție este folosirea sistemelor “all-in-one”.
+
+Pachetele se găsesc într-un depozit (\textit{repository}) sau magazin de apicații de unde aplicația de gestiune a pachetelor le obține. Pachetul este obținut dintr-un repository și instalat.
+
+Gestiunea pachetelor poate fi dificilă, pot fi versiuni incompatibile. O soluție este folosirea sistemelor \textit{all-in-one}.
