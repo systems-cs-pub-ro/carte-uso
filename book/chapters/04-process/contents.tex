@@ -1,6 +1,8 @@
 \chapter{Procese}
 \label{chapter:process}
 
+Un proces este o aplicație ce se execută în sistemul de operare, folosind resursele sistemului, pentru a realiza o acțiune cerută de utilizator. Acțiunile utilizatorului pot fi să deschidă o pagină web, să creeze o imagine, să asculte o melodie. Utilizatorul face aceste acțiuni folosind aplicații precum un browser web, o suită Office, un player audio.
+
 La nivelul sistemului de operare, aceste aplicații sau comenzi pornite de
 utilizator sunt procese. Atunci când o aplicație sau un program rulează, spunem
 că face acest lucru în contextul unui proces. Spunem despre procese că
@@ -17,49 +19,48 @@ Un inginer de sistem va monitoriza procesele sistemului pentru a se asigura de
 buna funcționare a acestuia și pentru a preveni atacuri de securitate sau abuz
 de resurse.
 
-O parte dintre procese sunt pornite la acțiuni ale utilizatorilor, precum
+O parte dintre procese sunt pornite de la acțiuni ale utilizatorilor, precum
 rularea unei aplicații grafice sau a unei comenzi. Numim aceste procese
 \textbf{interactive} pentru că interacționează cu utilizatorul pe parcursul
 rulării lor. Alte procese sunt pornite de sistem și nu interacționează cu
-utilizatorul; acestea au rol în gestiunea sistemului sau oferirea de servicii:
+utilizatorul. Acestea au rol în gestiunea sistemului sau oferirea de servicii;
 de exemplu conectarea la rețea în momentul în care există o rețea wireless
 disponibilă sau actualizarea ceasului sistemului sau indexarea fișierelor pentru
 căutare rapidă. Aceste procese sunt \textbf{neinteractive}. Le numim
 \textbf{servicii} sau, pe Unix, procese \textbf{daemon}. Vom discuta mai în
-detaliu în \labelindexref{Secțiunea}{sec:process-interactivitate-daemon}.
+detaliu în \labelindexref{Secțiunea}{sec:process:daemon}.
 
-Unele aplicații pot fi compuse din mai multe procese. De exemplu, un navigator
+Unele aplicații pot fi compuse din mai multe procese. De exemplu, un browser
 web precum Google Chrome pornește un proces pentru fiecare tab; un server web
 care servește cereri în rețea poate avea mai multe procese care fac servirea; o
 fereastră de terminal are un proces shell deschis pentru fiecare tab;
 mai mult, într-o fereastră de terminal pot rula mai multe procese așa cum vom
-vedea în \labelindexref{Secțiunea}{sec:process-ierarhie-foreground-background}.
+vedea în \labelindexref{Secțiunea}{sec:process:foreground-background}.
 Altfel spus, când folosim interfața grafică, o fereastră de aplicație care
 rulează poate avea în spate mai multe procese. Sistemul de operare folosește
 noțiunea de proces; este preocuparea dezvoltatorului de aplicații dacă o
-aplicație folosește, când rulează, unul sau mai multe procese. \labelindexref{Figura}{fig:process-overview} este o perspectivă a proceselor și resurselor folosite de acestea.
+aplicație folosește, când rulează, unul sau mai multe procese. \labelindexref{Figura}{fig:process:overview} este o perspectivă a proceselor și resurselor folosite de acestea.
 
 \begin{note}[procese și cerințe]
-Esențial este că orice aplicație care rulează folosește unul sau mai multe procese pentru a satisface cerințele utilizatorului.
+Esențial este că orice aplicație care rulează în sistem, folosește unul sau mai multe procese pentru a satisface cerințele utilizatorului.
 \end{note}
 
 \begin{figure}[!htbp]
 	\centering
-	\def\svgwidth{0.8\textwidth}
+	\def\svgwidth{0.5\textwidth}
 	\includesvg{chapters/04-process/img/proc-overview.svg}
 	\caption{Procese și resursele lor}
-	\label{fig:process-overview}
+	\label{fig:process:overview}
 \end{figure}
 
 Pentru utilizator și sistemul de operare, procesele sunt necesare ca formă de
-încapsulare. Un proces execută o anumită acțiune fără a afecta negativ alt
+încapsulare. Un proces execută o anumită acțiune fără a afecta alt
 proces. În general, procesele au resurse proprii oferite de sistemul de operare,
 dar pot și partaja anumite resurse. Acest lucru este util pentru a realiza
 acțiuni ce nu pot fi obținute cu un singur proces. De exemplu, un proces
 descărcă un fișier video, alt procese îl convertește într-un format adecvat, alt
 proces îl vizualizează. Vom vedea mai multe despre comunicarea și interacțiunea
-între procese în \labelindexref{Secțiunea}{sec:process-operatii}. Interacțiunea
-între procese.
+între procese în \labelindexref{Secțiunea}{sec:process:operations}
 
 Concret, sistemul de operare oferă:
 
@@ -74,7 +75,7 @@ Concret, sistemul de operare oferă:
 		nu suprascrie un proces informațiile celuilalt.
 	\item mecanisme explicite de comunicare între procese: procesele
 		comunică între ele pentru realizarea unei acțiuni mai complexe.
-                Vom discuta în \labelindexref{Secțiunea}{sec:process-operatii-semnale}, respectiv \labelindexref{Secțiunea}{sec:process-operatii-pipe} despre semnale și pipe-uri,
+                Vom discuta în \labelindexref{Secțiunea}{sec:process:signal}, respectiv \labelindexref{Secțiunea}{sec:process:pipe} despre semnale și pipe-uri,
 		două mecanisme de bază de comunicare între procese.
 	\item comportament echitabil al proceselor, prin asigurarea că un proces
 		nu utiliza prea multe resurse: un proces poate utiliza foarte
@@ -84,10 +85,10 @@ Concret, sistemul de operare oferă:
 \end{itemize}
 
 \section{Programe și procese}
-\label{sec:process-v-programe}
+\label{sec:process:process-program}
 
 Am precizat mai sus că un proces rulează și folosește resursele sistemului
-pentru un anumit rezultat. Pentru aceasta, un proces stochează în memorie
+pentru o anumită. Pentru aceasta, un proces stochează în memorie
 instrucțiunile pe care trebuie să le execute. Cum ajung aceste instrucțiuni în
 memorie?
 
@@ -99,14 +100,14 @@ pornim o aplicație sau rulăm o comandă, un program este încărcat
 înseamnă, așadar, copierea instrucțiunilor ce vor fi executate din fișierul
 executabil în memoria viitorului proces și pornirea procesului. Mai multe
 informații despre magia din spatele acțiunii de încărcare (\textit{loading}) se
-găsesc în \labelindexref{Secțiunea}{sec:process-loading}.
+găsesc în \labelindexref{Secțiunea}{sec:process:loading}.
 
-De exemplu, atunci când pornim navigatorul web Firefox, se creează un proces cu
-care interacționăm. Putem vedea acest proces pe Linux/Unix/macOS folosind
-utilitarul ps sau putem să-l vizualizăm pe Windows folosind Task Manager; în
+De exemplu, atunci când pornim browserul web Firefox, se creează un proces cu
+care interacționăm. Putem vedea acest proces în Linux/Unix/macOS folosind
+utilitarul \cmd{ps} sau putem să-l vizualizăm în Windows folosind Task Manager; în
 momentul vizualizării putem să vedem care este programul (fișierul executabil)
 din care a fost creat procesul Firefox, așa cum se vede în \labelindexref{Listing}{lst:process:exec-for-process}.
-În \labelindexref{Listing}{lst:process:exec-for-process} prima rulare este pe Linux, iar a doua pe macOS. În cazul Linux, programul (fișierul executabil) aferent procesului Firefox este \texttt{/usr/lib/firefox/firefox} iar în cazul macOS, programul (fișierul executabil) este \texttt{/Applications/Firefox.app/Contents/MacOS/firefox}.
+În \labelindexref{Listing}{lst:process:exec-for-process} prima rulare este în Linux, iar a doua în macOS. În cazul Linux, programul (fișierul executabil) aferent procesului Firefox este \texttt{/usr/lib/firefox/firefox} iar în cazul macOS, programul (fișierul executabil) este \texttt{/Applications/Firefox.app/Contents/MacOS/firefox}.
 
 \begin{screen}[caption={Fișierul executabil al unui process},label={lst:process:exec-for-process}]
 student@uso:~$ ps -ef | grep firefox
@@ -127,22 +128,22 @@ dinamică, una care rulează și care folosește resursele sistemului.
 \end{definition}
 
 Pentru un proces spunem că programul executabil din care a fost creat este
-imaginea sa (\textit{process image}). Mai multe procese pot fi create din
+\textbf{imaginea procesului} (\textit{process image}). Mai multe procese pot fi create din
 același program executabil. De exemplu, în Google Chrome orice tab este un
-proces creat din același program, orice tab de terminal creează un nou proces
-shell, un utilizator poate porni un proces Vim într-un terminal și un proces Vim
+proces creat din același program; de asemenea, orice tab de terminal creează un nou proces
+shell; la fel, un utilizator poate porni un proces Vim într-un terminal și un proces Vim
 în alt terminal. În toate aceste situații, se vor crea procese distincte pronind
 de la același executabil, adică procese ce au aceeași imagine.
 
-\labelindexref{Figura}{fig:process-process-exec} de mai jos arată cum unul sau mai multe procese sunt create dintr-un
-fișier executabil (imaginea procesului):
+\labelindexref{Figura}{fig:process:exec} arată cum unul sau mai multe procese sunt create dintr-un
+fișier executabil (imaginea procesului).
 
 \begin{figure}[!htbp]
 	\centering
-	\def\svgwidth{0.8\textwidth}
+	\def\svgwidth{0.7\textwidth}
 	\includesvg{chapters/04-process/img/program-proc.svg}
 	\caption{Procese și programe (executabile)}
-	\label{fig:process-process-exec}
+	\label{fig:process:exec}
 \end{figure}
 
 Întrucât mai multe procese pot fi create din același fișier executabil, este
@@ -150,19 +151,19 @@ tehnic incorect să ne referim la procesul Firefox sau procesul Apache. Putem
 folosi termenul \textbf{un} proces Firefox sau \textbf{un} proces Apache. Numele
 unui proces identifică imaginea de proces, executabil din care a fost creat;
 numele nu este folosit pentru a identifica în mod unic un proces. Procesul este
-identificat la nivelul sistemului de un număr unic, numit Process Id sau PID\abbrev{PID}{Process Id}. Prezentăm mai multe despre atributele unui proces,
+identificat la nivelul sistemului de un număr unic, numit \textit{Process Id} sau PID\abbrev{PID}{Process Id}. Prezentăm mai multe despre atributele unui proces,
 inclusiv identificatorul său, în secțiunea următoare.
 
 \section{Resursele și atributele unui proces}
-\label{sec:process-resurse}
+\label{sec:process:resources}
 
 Un proces rulează și folosește resursele sistemului de calcul: memorie,
 procesor, elemente de input/output (I/O \abbrev{I/O}{Input/Output}): disc,
 rețea, tastatură etc. Un proces folosește memoria sistemului pentru a stoca
 instrucțiunile din executabil și a stoca date prelucrate. Instrucțiunile sunt
 apoi executate pe procesor, iar procesorul operează cu date din memorie. Pe
-parcursul execuției procesul comunică și cu elemente de I/O sau cu alte procese.
-\labelindexref{Figura}{fig:process-resources} arată modul în care un proces folosește resursele
+parcursul execuției, procesul comunică și cu elemente de I/O sau cu alte procese.
+\labelindexref{Figura}{fig:process:resources} arată modul în care un proces folosește resursele
 sistemului.
 
 \begin{figure}[!htbp]
@@ -170,7 +171,7 @@ sistemului.
 	\def\svgwidth{0.8\textwidth}
 	\includesvg{chapters/04-process/img/cpu-resources.svg}
 	\caption{Procese și resursele sistemului}
-	\label{fig:process-resources}
+	\label{fig:process:resources}
 \end{figure}
 
 Unui proces i se alocă resurse (de exemplu zone de memorie) în momentul creării
@@ -185,9 +186,9 @@ Este important să putem investiga și monitoriza resursele folosite de un proce
 pentru a identifica procesele care acaparează resurse excesiv și care pot
 îngreuna sistemul. Putem modifica parametri și atribute ale proceselor pentru a
 afecta cât de multe resurse utilizează. De aceea sistemele de operare oferă
-primitive de listare și monitorizare a proceselor, precum utilitare \cmd{ps} și \cmd{top} în
-Linux sau Task Manager în Windows. \labelindexref{Listing}{lst:process:ps} conține exemple de rulare a comenzii ps, iar 
-ri cu rularea \cmd{top} \labelindexref{Figura}{fig:process-top} și \labelindexref{Figura}{fig:process-task-manager} conțin screenshot-uri, respectiv cu rularea \cmd{top} (în Linux) și Task Manager (în Windows). Vedem în aceste figuri și secvențe resursele de procesor, memorie și
+primitive de listare și monitorizare a proceselor, precum utilitarele \cmd{ps} și \cmd{top} în
+Linux sau aplicația Task Manager în Windows. \labelindexref{Listing}{lst:process:ps} conține exemple de rulare a comenzii ps, iar
+\labelindexref{Figura}{fig:process:top} și \labelindexref{Figura}{fig:process:task-manager} conțin screenshot-uri, respectiv cu rularea \cmd{top} (în Linux) și Task Manager (în Windows). Vedem în aceste figuri și secvențe resursele de procesor, memorie și
 I/O (de obicei disc) folosite de proces.
 
 \begin{screen}[caption={Investigarea proceselor folosind ps},label={lst:process:ps}]
@@ -225,27 +226,27 @@ student@uso:~$ ps -e -o pid,ppid,user,rss,%cpu
 [...]
 \end{screen}
 
-În \labelindexref{Listing}{lst:process:ps} este folosită comanda \cmd{ps} cu diferite opțiuni. Astfel, comanda de la linia 1 adfișează procesele din terminalul curent, la linia 5 se rulează comanda pentru afișarea proceselor de la terminalul curent în format complet (\textit{full}), la linia 9 se rulează comandă pentru afișarea tuturor proceselor (\texttt{-e} pentru \textit{everything} în format complet, la linia 18 se rulează comanda pentru afișarea, pentru procesele din terminalul curent, a atributelor PID, PPID, utilizator, memoria rezidentă și procentul de procesor consumat, iar la linia 22 la fel ca la comanda anterioară doar că pentru toate procesele sistemului.
+În \labelindexref{Listing}{lst:process:ps} este folosit utilitarul \cmd{ps} cu diferite opțiuni. Astfel, comanda de la linia 1 adfișează procesele din terminalul curent, la linia 5 se rulează comanda pentru afișarea proceselor de la terminalul curent în format complet (\textit{full}), la linia 9 se rulează comandă pentru afișarea tuturor proceselor (\texttt{-e} pentru \textit{everything} în format complet, la linia 18 se rulează comanda pentru afișarea, pentru procesele din terminalul curent, a atributelor PID, PPID, utilizator, memoria rezidentă și procentul de procesor consumat, iar la linia 22 la fel ca la comanda anterioară doar că pentru toate procesele sistemului.
 
 \begin{figure}[!htbp]
 	\centering
 	\includegraphics[width=0.8\textwidth]{chapters/04-process/img/top.png}
 	\caption{Utilitarul top}
-	\label{fig:process-top}
+	\label{fig:process:top}
 \end{figure}
 
 \begin{figure}[!htbp]
 	\centering
 	\includegraphics[width=0.8\textwidth]{chapters/04-process/img/task-manager.png}
 	\caption{Utilitarul Task Manager}
-	\label{fig:process-task-manager}
+	\label{fig:process:task-manager}
 \end{figure}
 
 Mai multe informații despre investigarea proceselor și monitorizarea resurselor
-utilizate se găsesc în \labelindexref{Secțiunea}{sec:process-investigare}.
+utilizate se găsesc în \labelindexref{Secțiunea}{sec:process:investigation}.
 
 \subsection{Atributele unui proces}
-\label{sec:process-resurse-atribute}
+\label{sec:process:attributes}
 
 Un proces are atribute stabilite în mod normal la pornirea sa (la \textit{load-time}):
 identificatorul procesului, procesul părinte, utilizatorul, prioritatea de
@@ -255,9 +256,9 @@ un proces cu prioritate mai bună va avea acces mai des la procesor sau la disc
 decât procese cu prioritate mai slabă.
 
 Atributele unui proces au rolul de identifica un proces, de a stabili ce și cât
-de multe resurse poate folosiși de a contabiliza resursele utilizate. O listă de
+de multe resurse poate folosi și de a contabiliza resursele utilizate. O listă de
 atribute de bază ale unui proces împreună cu o descriere a lor se găsește în
-\labelindexref{Tabelul}{table:process-attributes}.
+\labelindexref{Tabelul}{table:process:attributes}.
 
 \begin{table}[!htb]
 \caption{Atributele unui proces}
@@ -289,7 +290,7 @@ atribute de bază ale unui proces împreună cu o descriere a lor se găsește �
                 spațiu virtual de adrese & harta memoriei unui proces & pornire & da \\
 	\bottomrule
 	\end{tabular}
-        \label{table:process-attributes}
+        \label{table:process:attributes}
 \end{center}
 \end{table}
 
@@ -297,9 +298,9 @@ Atributul PID este identificatorul unic al procesului la nivelul sistemului de
 operare. Fiecare proces primește un identificator în momentul creării, atribut
 ce nu se schimbă pe parcursul rulării. În general, comenzile sau funcțiile care
 lucrează cu un proces primesc ca argument PID-ul acestui proces. De exemplu,
-dacă vrem să terminăm un proces, vom folosi comanda \cmd{kill} cu parametru PID-ul
+dacă vrem să terminăm un proces, vom folosi comanda \cmd{kill} cu argument PID-ul
 acelui proces, ca în \labelindexref{Listing}{lst:process:kill-pid}.
-În \labelindexref{Listing}{lst:process:kill-pid} se observă că există un proces generat din programul \cmd{sleep} cu PID-ul \texttt{9982}. Apoi procesul este omorât folosind comanda \cmd{kill} cu PID-ul acelui proces.
+În \labelindexref{Listing}{lst:process:kill-pid} se observă că există un proces generat din programul \cmd{sleep} cu PID-ul \texttt{9982}. Apoi procesul este omorât folosind comanda \cmd{kill} având ca argument PID-ul acelui proces.
 
 \begin{screen}[caption={Terminarea unui proces folosind comanda kill},label={lst:process:kill-pid}]
 student@uso:~$ ps -e | grep 9982
@@ -315,9 +316,9 @@ resurse. Utilizatorii sunt modul principal de separare/izolare între procese.
 Mai multe detalii vom prezenta în \labelindexref{Capitolul}{chapter:users}.
 
 \subsection{Utilitare pentru urmărirea proceselor}
-\label{sec:process-resurse-monitorizare}
+\label{sec:process:monitoring}
 
-Sistemul de operare pune la dispoziție utilitare și comenzi pentru a afișa
+Sistemul de operare oferă utilitare și comenzi pentru a afișa
 procese și pentru a urmări atributele și resursele lor.
 
 Utilitarele din această categorie sunt de două tipuri:
@@ -333,11 +334,11 @@ Din prima categorie fac parte, în Linux, utilitarele \cmd{ps}, \cmd{pgrep}, \cm
 utilitarele precum Task Manager, Process Explorer monitorizează procesele
 sistemului.
 
-Sunt prezentate respectiv în \labelindexref{Figura}{fig:process-top} și \labelindexref{Figura}{fig:process-task-manager} screenshot-uri cu utilitarele top și Task Manager, utilitare de monitorizare a proceselor. Monitorizarea
+Am prezentat în \labelindexref{Figura}{fig:process:top} și \labelindexref{Figura}{fig:process:task-manager} screenshot-uri cu utilitarele \cmd{top} și Task Manager, utilitare de monitorizare a proceselor. Monitorizarea
 proceselor e utilă pentru a urmări procesele din sistem, a observa tendințe, a
 vedea consumul de resurse și pentru a investiga de ce sistemul sau un proces
 funcționează anevoios. Mai multe informații despre monitorizarea și investigarea
-proceselor vom prezenta în \labelindexref{Secțiunea}{sec:process-investigare}.
+proceselor vom prezenta în \labelindexref{Secțiunea}{sec:process:investigation}.
 
 Mai jos sunt descrise utilitarele pentru afișarea de informații de tip snapshot
 despre procese:
@@ -348,13 +349,13 @@ despre procese:
 		curent. Poate afișa selectiv procese și atribute ale acestora.
   \item \cmd{pidof} afișează PID-ul proceselor care au un anumit program
 		(imagine de proces)
-  \item \cmd{pgrep} are funcționalitatea lui pidof extinsă: afișează procesele
+  \item \cmd{pgrep} are funcționalitatea utilitarului \cmd{pidof} extinsă: afișează procesele
 		care corespund unei anumite condiții. Condiția poate fi
 		,,aparține unui anumit utilizator'', ,,are un anumit program ca
 		imagine'', ,,are un anumit proces părinte'', ,,rulează într-un
 		anumit terminal'', la fel ca în exemplele de mai jos.
   \item \cmd{pstree} afișează ierarhia de procese a sistemului, îl vom detalia
-		în \labelindexref{Secțiunea}{sec:file-system-baza-struct}.
+    în \labelindexref{Secțiunea}{sec:process:linux-hierarchy}.
   \item \cmd{pmap} (\textit{process map}) afișează harta memoriei unui proces,
 		adică zonele de memorie ocupate de acesta. Este un utilitar
 		adecvat în special pentru programatori și pentru cei care sunt
@@ -362,7 +363,7 @@ despre procese:
 		el.
   \item \cmd{lsof} (\textit{list open files}) este utilitarul care afișează
 		fișierele deschise de un proces. Îl vom folosi în
-		\labelindexref{Secțiunea}{sec:process-fisiere}
+		\labelindexref{Secțiunea}{sec:process:files}
 \end{itemize}
 
 Așa cum am precizat, utilitarul \cmd{ps} este utilitarul principal pentru listarea
@@ -515,7 +516,7 @@ Atunci când dorim să obținem doar PID-urile anumitor procese, este mai simplu
 folosim \cmd{pgrep} în loc de \cmd{ps}.
 
 \subsection{Starea proceselor}
-\label{sec:process-resurse-stare}
+\label{sec:process:state}
 
 Într-unul din exemplele de folosire a utilitarului \cmd{ps} de mai sus am vorbit
 despre starea unui proces. Un proces are o stare care arată dacă acesta rulează
@@ -527,14 +528,14 @@ procesele pot rula. Astfel unele procese rulează pe procesor, altele așteaptă
 ruleze pe procesor; când un proces ajunge să ruleze pe un procesor spunem că
 este planificat (\textit{scheduled}) să ruleze pa acel procesor. Iar unele
 procese pot fi blocate (\textit{sleeping}) în așteptarea unei operații de
-input/output. Simplificat, avem precizate stările și tranzițiile între stările unui proces în \labelindexref{Figura}{fig:process-state}.
+input/output. Simplificat, avem precizate stările și tranzițiile între stările unui proces în \labelindexref{Figura}{fig:process:state}.
 
 \begin{figure}[!htbp]
 	\centering
 	\def\svgwidth{0.8\textwidth}
 	\includesvg{chapters/04-process/img/proc-status.svg}
 	\caption{Starea proceselor}
-	\label{fig:process-state}
+	\label{fig:process:state}
 \end{figure}
 
 Putem investiga starea proceselor cu utilitare de urmărire și monitorizare.
@@ -542,7 +543,7 @@ Acest lucru este util pentru a vedea dacă un proces este blocat și pentru ca
 apoi să investigam cauza pentru care este blocat. Sau să vedem cât de multe
 procese sunt active, gata să ruleze. În \labelindexref{Listing}{lst:process:ps-monitor} am afișat PID-ul,
 imaginea, starea, timpul de rulare și procentul curent de procesor ocupat pentru
-toate procesele din sistem, sortate în ordinea inversă a procesului de procesor ocupat. În rezultatul comenzii \cmd{ps}, \texttt{R} înseamnă \textit{runnable} (nu \textit{running}), adică fie rulează
+toate procesele din sistem, sortate în ordinea inversă a procentului de procesor ocupat. În rezultatul comenzii \cmd{ps}, \texttt{R} înseamnă \textit{runnable} (nu \textit{running}), adică fie rulează
 atunci pe procesor (starea \textit{running}) fie poate fi pregătit să ruleze (starea
 \textit{ready}).
 
@@ -558,7 +559,7 @@ student@uso:~$ ps -e -o pid,cmd,state,time,%cpu --sort -%cpu
 
 Un sistem este cu atât mai încărcat cu cât are mai multe procese gata să ruleze,
 dar care nu au fost planificate. Aceste procese se cheamă \textit{ready} sau \textit{runnable} așa
-cum sunt prezente în \labelindexref{Figura}{fig:process-state}. Când multe procese sunt \textit{ready} înseamnă
+cum sunt prezente în \labelindexref{Figura}{fig:process:state}. Când multe procese sunt \textit{ready} înseamnă
 că vor acapara un procesor imediat ce acesta devine disponibil și vor ține
 procesorul și sistemul încărcat.
 
@@ -570,6 +571,8 @@ minut, în ultimele 5 minute și în ultimele 15 minute, ca în exemplul de mai 
 student@uso:~$ uptime
 13:48:40  up 9 days 16:13,  5 users,  load average: 1.61, 2.05, 2.81
 \end{screen}
+
+Încărcarea unui sistem (\textit{load average}) este deci \texttt{1.61} (în ultimul minut), \texttt{2.05} (în ultimele 5 minute), \texttt{2.81} în ultimele 15 minute. Valoarea încărcării este corelată cu numărul de procese în starea \textit{ready}: pregătite de execuție dar care încă nu pot rula pentru că procesoarele sistemului sunt ocupate.
 
 Utilitarul \cmd{top} afișează, în partea superioară, informații despre încărcarea
 sistemului:
@@ -583,30 +586,30 @@ KiB Swap:   777300 total,   699476 free,    77824 used.   531880 avail Mem
 \end{screen}
 
 \subsection{Prioritatea proceselor}
-\label{sec:process-resurse-prioritate}
+\label{sec:process:priority}
 
 Procesele concurează la folosirea procesorului. Sistemul de operare planifică un
-proces ready pe procesor ținând cont de prioritatea sa. Procesele cu prioritate
+proces \textit{ready} pe procesor ținând cont de prioritatea sa. Procesele cu prioritate
 mai bună sunt planificate mai des și rulează mai mult timp pe procesor.
 Prioritatea unui proces este afectată de comportamentul acestuia (procesele mai
 ,,flămânde'' primesc o prioritate mai slabă) și poate fi afectată de utilizator.
 
-În Windows, utilizatorul poate afecta prioritatea unui proces folosind Task Manager, așa cum apare în \labelindexref{Figura}{fig:process-priority-task-manager}.
+În Windows, utilizatorul poate afecta prioritatea unui proces folosind Task Manager, așa cum apare în \labelindexref{Figura}{fig:process:priority-task-manager}.
 
 \begin{figure}[!htbp]
 	\centering
 	\includegraphics[width=0.8\textwidth]{chapters/04-process/img/task-manager-priority.png}
 	\caption{Priorități de procese în Windows}
-	\label{fig:process-priority-task-manager}
+	\label{fig:process:priority-task-manager}
 \end{figure}
 
-În Linux, putem modifica prioritatea unui proces prin alterarea valorii \texttt{nice} a
-unui proces. Valoarea \texttt{nice} arată cât de ,,drăguț'' este acel proces cu alte
+În Linux, putem modifica prioritatea unui proces prin schimbarea atributului \texttt{nice} al procesului.
+Valoarea \texttt{nice} arată cât de ,,drăguț'' este acel proces cu alte
 procese. O valoare mai mare a \texttt{nice} înseamnă că procesul este mai drăguț, deci
 lasă alte procese să fie planificate; o valoare mai mică a \texttt{nice} înseamnă că
 procesul nu este drăguț, deci ,,va lua fața'' altor procese. Aceste lucru înseamnă
-că o valorea nice mică înseamnă un proces cu prioritate mai bună, iar o valoare
-nice mare înseamnă un proces cu prioritate mai slabă.
+că o valore \texttt{nice} mică înseamnă un proces cu prioritate mai bună, iar o valoare
+\texttt{nice} mare înseamnă un proces cu prioritate mai slabă.
 
 \begin{note}[Exprimări legate de prioritatea proceselor]
 Din cauză că există această inconsecvență între valoarea \texttt{nice} și prioritate
@@ -620,15 +623,15 @@ Valoarea poate fi modificatăla pornirea procesului (\textit{load-time}) sau în
 rulează (\textit{run-time}). Un utilizator obișnuit (neprivilegiat) poate doar crește
 valoarea \texttt{nice} a unui proces pe care îl deține, adică în sensul slăbirii
 priorității procesului. Doar un utilizator privilegiat poate scădea valoarea
-nice a unui proces, adică în sensul îmbunătățirii priorității procesului.
+\texttt{nice} a unui proces, adică în sensul îmbunătățirii priorității procesului.
 
 Pentru a modifica prioritatea unui proces la pornire (\textit{load-time}) folosim
 utilitarul \cmd{nice}. Pentru a modifica prioritatea unui proces la rulare (\textit{run-time})
 folosim utilitarul \cmd{renice}. \labelindexref{Listing}{lst:process:nice} conține exemple de comenzi care
 modifică prioritatea unui proces; după fiecare comandă \cmd{nice} / \cmd{renice} folosim \cmd{ps}
-pentru a vedea acum noua prioritate a procesului:.
-În \labelindexref{Listing}{lst:process:nice} a fost folosită comanda \cmd{renice} pentru a modifica valoarea \texttt{nice} a unui proces. Comanda poate fi folosită de un utilizator neprivilegiat doar pentru a crește, nu și pentru a scădea valoarea \texttt{nice} a unui proces. Pentru scădea valoarea \texttt{nice} a unui proces folosim contul privilegiat, cu ajutorul comenzii \cmd{sudo}. Similar, comanda \cmd{nice} poate porni un proces cu valoarea \texttt{nice} modificată.
+pentru a vedea acum noua prioritate a procesului.
 
+În \labelindexref{Listing}{lst:process:nice} am folosit comanda \cmd{renice} pentru a modifica valoarea \texttt{nice} a unui proces. Comanda poate fi folosită de un utilizator neprivilegiat doar pentru a crește, nu și pentru a scădea valoarea \texttt{nice} a unui proces. Pentru scădea valoarea \texttt{nice} a unui proces folosim contul privilegiat, cu ajutorul comenzii \cmd{sudo}. Similar, comanda \cmd{nice} poate porni un proces cu valoarea \texttt{nice} modificată.
 
 \begin{screen}[caption={Modificarea priorității unui process (nice)},label={lst:process:nice}]
 student@uso:~$ sleep 1000 &
@@ -669,53 +672,57 @@ student@uso:~$ ps -C sleep -o pid,uid,nice,cmd
 
 Prioritatea unui proces este principalul mijloc prin care un proces poate folosi
 mai mult sau mai puțin procesorul unui sistem. Dacă vrem ca un proces să
-folosească mai mult resurse sistemului, vom îmbunătăți prioritatea acestuia;
-dacă un proces utilizează multe resurse (\textit{resource hog}) și vrem să-l
-,,temperăm'' îi slăbim prioritatea; la nevoie un astfel de proces este omorât.
+folosească mai mult resursele sistemului, vom îmbunătăți prioritatea acestuia;
+dacă un proces utilizează prea mult resursele sistemului (\textit{resource hog}) și vrem să-l
+,,temperăm'', îi slăbim prioritatea; la nevoie un astfel de proces este omorât.
 
 \section{Ierarhia de procese}
-\label{sec:process-ierarhie}
+\label{sec:process:hierarhy}
 
 Un proces este creat la comanda utilizatorului sau la un eveniment de declanșare
-(o nouă conexiune în rețea, expirarea unui interval de timp). Crearea unui
-proces are loc dintr-un fișier executabil (numit imagine de proces); după creare
+(o nouă conexiune în rețea, expirarea unui interval de timp). Așa cum am precizat un proces este creat la \textbf{load-time}
+dintr-un fișier executabil (numit imagine de proces); după creare
 procesului îi sunt alocate resurse (precum timp de procesor și zone de memorie)
-și rulează. Crearea unui proces dintr-un executabil se mai numește
-\textit{loading} (încărcare executabilului în memorie).
+și rulează (\textbf{run-time}).
+
+\begin{definition}{Loading}
+Crearea unui proces dintr-un executabil se mai numește
+\textit{loading} (încărcare executabilului în memorie), iar momentul creării se numește \textbf{load-time}.
+\end{definition}
 
 Un proces este creat prin intermediul unui alt proces, numit \textbf{proces părinte} (\textit{parent process}). Un
 proces poate crea oricâte \textbf{procese copil} (\textit{child process}), în limita resurselor sistemului. Un
 proces poate avea, însă, un singur proces părinte. Pentru crearea unui proces,
 procesul părinte folosește o interfață specifică a sistemului de operare:
-folosește grupul de apeluri \texttt{fork() + exec()} pe Linux și \texttt{CreateProcess()} pe
+folosește grupul de apeluri \texttt{fork()} și \texttt{exec()} în Linux și \texttt{CreateProcess()} pe
 Windows. Nu insistăm pe aceste apeluri în această carte; câteva detalii găsiți
 în \labelindexref{Secțiunea}{sec:cli-new-process}. Vizual,
-crearea unui proces este indicată în \labelindexref{Figura}{fig:process-create}.
+crearea unui proces este indicată în \labelindexref{Figura}{fig:process:create}.
 
 \begin{figure}[!htbp]
 	\centering
-	\def\svgwidth{0.8\textwidth}
+	\def\svgwidth{0.5\textwidth}
 	\includesvg{chapters/04-process/img/fork-exec.svg}
 	\caption{Crearea unui proces}
-	\label{fig:process-create}
+	\label{fig:process:create}
 \end{figure}
 
-În general, procesul care creează un nou process este un shell. Shell-ul poate
+În general, procesul care creează un nou process este un shell. Shellul poate
 fi grafic (precum \textbf{Windows Explorer}) sau poate fi în linia de comandă (precum
 \textbf{Bash}). De exemplu, în mediul grafic, atunci când folosim dublu click pe o icoană
-de pe ecran, pornim un proces; acel proces este creat de shell-ul grafic, care
-define procesul părinte al noului proces. Altfel, în linia de comandă, shell-ul
+de pe ecran, pornim un proces; acel proces este creat de shellul grafic, care
+define procesul părinte al noului proces. Altfel, în linia de comandă, shellul
 creează un proces nou la introducerea unei comenzi. Prezentăm mai multe detalii
 în \labelindexref{Capitolul}{chapter:cli}.
 
-Legătura proces părinte-proces copil este utilă pentru a afla informații legate
+Legătura proces părinte - proces copil este utilă pentru a afla informații legate
 de încheierea unui proces. Un proces își poate încheia execuția în mai multe
 moduri: ajunge la sfârșitul zonei de execuție, este omorât de alt proces,
 execută o acțiune nevalidă. Procesul părinte este cel care poate furniza
 informații despre condițiile de încheiere ale unui proces copil.
 
 \subsection{Ierarhia de procese în Linux/Unix}
-\label{sec:process-ierarhie-linux}
+\label{sec:process:linux-hierarchy}
 
 În Linux, întrucât un proces creează alt proces care la rândul său poate crea
 alt proces, procesele sunt organizate într-o ierarhie de procese, într-o
@@ -749,22 +756,24 @@ systemd(1)-+-ModemManager(447)-+-{ModemManager}(466)
 [...]
 \end{screen}
 
-Observăm că în vârful ierarhie, rădăcina proceselor, este procesul \textbf{init},
-procesul cu PID-ul 1. Acesta este primul proces al sistemului, procesul care
-pornește serviciile sistemului și procesele de bază. De asemenea, observăm că un
+Observăm că în vârful ierarhiei, în rădăcina proceselor, se găsește procesul \textbf{systemd},
+procesul cu PID-ul 1. \textbf{systemd} este o implementare de proces \textbf{init}. În mod generic, spunem că primul proces al sistemului, rădăcina ierarhiei de procese, este \textbf{init}, cu diferite forme de implementare. Implementarea folosită curent în majoritatea distribuțiilor Linux este \textbf{systemd}.
+
+\textbf{init} este primul proces al sistemului, procesul care
+pornește serviciile sistemului și procesele de bază. În \labelindexref{Listing}{lst:process:pstree} observăm că un
 proces are un singur proces părinte și oricâte procese copil. Ierarhia nu are
 foarte multe niveluri. În general procesul init creează servicii de bază și
-shell-uri, iar shell-urile creează alte procese. Detalii despre procesul init
-prezentăm în \labelindexref{Secțiunea}{sec:process-ierarhie-init}.
+shelluri, iar shellurile creează alte procese. Detalii despre procesul init
+prezentăm în \labelindexref{Secțiunea}{sec:process:init}
 
 În mod obișnuit, un proces dat are, de la creare până la încheiere, un proces
 părinte. Se poate întâmpla însă ca un proces să rămână ,,orfan'' adică procesul
 părinte să își încheie execuția înaintea sa. În acest caz, în Linux, procesul
 init ,,adoptă'' procesul rămas orfan și devine noul proces părinte. Vom prezenta
-detalii în \labelindexref{Secțiunea}{sec:process-ierarhie-init}.
+detalii în \labelindexref{Secțiunea}{sec:process:init}.
 
 \subsection{Ierarhia de procese în Windows}
-\label{sec:process-ierarhie-windows}
+\label{sec:process:windows-hierarchy}
 
 În Windows, în mod similar, un proces creează alt proces. Cu toate acestea
 ierarhia de procese în Windows este o ierarhie cu legături mai slabe. În vreme
@@ -776,54 +785,54 @@ ierarhic. Un proces are o referință (\textit{handle}) către un proces pe care
 poate obține informații.
 
 O imagine a ierarhiei de procese în Windows putem obține folosind utilitarul
-Process Explorer, așa cum vedem în \labelindexref{Figura}{fig:process-process-explorer-hierarchy}
+Process Explorer, așa cum vedem în \labelindexref{Figura}{fig:process:process-explorer-hierarchy}
 
 \begin{figure}[!htbp]
 	\centering
 	\includegraphics[width=0.8\textwidth]{chapters/04-process/img/process-explorer.png}
 	\caption{Vizualizare ierarhie de procese folosind Process Explorer}
-	\label{fig:process-process-explorer-hierarchy}
+	\label{fig:process:process-explorer-hierarchy}
 \end{figure}
 
-Shell-ul Windows este un shell grafic reprezentat de procesul Explorer. Acest
+Shellul Windows este un shell grafic reprezentat de procesul Explorer, prezent în \labelindexref{Figura}{fig:process:process-explorer-hierarchy}. Acest
 proces creează aplicațiile/procesele pornite în mediul grafic în Windows.
 
 \subsection{Foreground și background}
-\label{sec:process-ierarhie-foreground-background}
+\label{sec:process:foreground-background}
 
 Un proces shell în linia de comandă creează procese în momentul introducerii de
-comenzi din partea utilizatorului. Procesul nou creat și shell-ul folosesc
+comenzi din partea utilizatorului. Procesul nou creat și shellul folosesc
 simultan terminalul, adică modul în care utilizatorul poate transmite informații
 la ieșirea standard și modul în care se afișează mesaje la ieșirea standard.
-Dacă atât procesul nou creat cât și shell-ul afișează informații la ieșirea
+Dacă atât procesul nou creat cât și shellul afișează informații la ieșirea
 standard, aceste afirmații vor fi agregate și afișate la terminal. Dacă însă
 trimitem informații la intrarea standard, prin terminal, doar procesul nou creat
 la va accesa.
 
-Spunem că în cadrul terminalului avem un singur proces care deține controlul
+Spunem că, în cadrul terminalului, avem un singur proces care deține controlul
 intrării standard, adică un singur proces care este în \textbf{foreground}. În
-mod obișnuit, modul de funcționare a shell-ului, detaliat în \labelindexref{Secțiunea}{sec:cli-shell-func} este:
+general, modul de funcționare a shellului, detaliat în \labelindexref{Secțiunea}{sec:cli-shell-func}, este:
 
 \begin{enumerate}
-	\item shell-ul citește de la intrarea standard (din terminal) comenzi și
+	\item shellul citește de la intrarea standard (din terminal) comenzi și
 		opțiuni ale utilizatorului
-	\item shell-ul creează un nou proces pornind de la comanda introdusă
-	\item procesul nou creat rulează în foreground și are controlul
+	\item shellul creează un nou proces pornind de la comanda introdusă
+        \item procesul nou creat rulează în \textbf{foreground} și are controlul
 		terminalului (și a intrării acestuia)
-	\item procesul nou creat își încheie execuția; shell, în calitate de
+	\item procesul nou creat își încheie execuția; shellul, în calitate de
 		proces părinte, reține informații despre încheierea execuției
-	\item shell-ul redobândește controlul terminalului și reîncepem acțiunea
+	\item shellul redobândește controlul terminalului și reîncepem acțiunea
 		de la punctul 1
 \end{enumerate}
 
 Acest mod de funcționare devine problematic în momentul în care procesul nou
 creat nu își încheie rapid execuția: fie rulează mai mult, fie este o aplicație
 grafică folosită interactiv de utilizartor. În această situație, procesul nou
-creat ,,acaparează'' terminalul și împiedică shell-ul să citească noi comenzi și
-să creeze noi proces. De exemplu dacă introducem comanda \cmd{firefox}, shell-ul va
+creat ,,acaparează'' terminalul și împiedică shellul să citească noi comenzi și
+să creeze noi proces. De exemplu dacă introducem comanda \cmd{firefox}, shellul va
 crea un proces Firefox care va acapara terminalul.
 
-Pentru a trece de această problemă și pentru a permite shell-ului rularea
+Pentru a trece de această problemă și pentru a permite shellului rularea
 continuă de comenzi și crearea de mai multe procese, există un mod de folosire a
 terminalului numit \textbf{background}. Background este modul în care un proces
 cedează accesul la intrarea terminalului curent; procesul poate rula în
@@ -831,7 +840,7 @@ continuare dar nu mai are acces la informații furnizate de utilizator.
 
 Întrucât un singur proces poate avea acces la intrarea terminalului, putem avea
 un singur proces în foreground. Putem avea însă oricâte procese în background.
-În background procesle se pot găsi în două stări: rulând (\textit{running}) sau
+În background proceswle se pot găsi în două stări: rulând (\textit{running}) sau
 suspendate (\textit{stopped}, \textit{suspeneded}, \textit{paused}). Decizia de a suspenda și de a scoate
 un proces din starea suspendat aparține utilzatorului. Un proces suspendat nu se
 poate găsi în foreground, ci doar în background.
@@ -839,9 +848,9 @@ poate găsi în foreground, ci doar în background.
 Un proces poate rula de la început în background sau poate fi transferat în
 background după pornire. De exemplu, pentru a rula un proces în background
 folosim operatorul \texttt{\&} imediat după comanda aferentă și parametrii acesteia. În \labelindexref{Listing}{lst:process:background-start},
-în prima rulare a comenzii procesul Firefox a fost pornit în foreground,
+în prima rulare a comenzii, procesul Firefox a fost pornit în foreground,
 iar apoi, folosind operatorul \texttt{\&}, procesul Firefox a fost pornit în background.
-Comanda \cmd{jobs} este folosită pentru a afișa job-urile din shell-ul curent, adică
+Comanda \cmd{jobs} este folosită pentru a afișa job-urile din shellul curent, adică
 procesele care se găsesc în background.
 
 \begin{screen}[caption={Pornirea unui process în background},label={lst:process:background-start}]
@@ -858,9 +867,9 @@ de taste \texttt{Ctrl+z}. Această combinație de taste are ca efect suspendarea
 procesului. Întrucât procesul nu poate rula suspendat în foreground, este trecut
 în background, ca în \labelindexref{Listing}{lst:process:background-suspend}.
 
-\begin{screen}[caption={Suspendarea unui process în background},label={lst:process:background-suspend}]
+\begin{screen}[caption={Suspendarea unui process în background},escapechar=,label={lst:process:background-suspend}]
 student@uso:~$ sleep 100
-^\verb+^+^Z
+^Z
 [1]+  Stopped                 sleep 100
 student@uso:~$ jobs
 [1]+  Stopped                 sleep 100
@@ -872,18 +881,18 @@ background în starea suspendat. O dată dus un proces în background acesta poa
 fi readus în foreground folosind comanda \cmd{fg}, ca în \labelindexref{Listing}{lst:process:fg}.
 În \labelindexref{Listing}{lst:process:fg} rulăm o comandă obișnuit și procesul rezultat rulează în
 background. Ulterior, folosim \texttt{Ctrl+z} pentru a plasa procesul în background. Apoi
-folosim \cmd{fg} pentru a-l readuce în foreground. În momentul în care este în background apare ca job, afișat în rezultatul rulării comenzii \cmd{jobs}. Când un proces este în background acesta acaparează terminalul și alte intrări (precum introducerea comanda \cmd{ls}) nu sunt interpretate de shell.
+folosim \cmd{fg} pentru a-l readuce în foreground. În momentul în care este în background, procesul apare ca job, afișat în rezultatul rulării comenzii \cmd{jobs}. Când un proces este în background, acesta acaparează terminalul; în acest caz, alte informații trimise la intrare (precum introducerea comanda \cmd{ls}) nu sunt interpretate de shell.
 
-\begin{screen}[caption={Readucerea unui process în foreground},label={lst:process:fg}]
+\begin{screen}[caption={Readucerea unui process în foreground},escapechar=,label={lst:process:fg}]
 student@uso:~$ sleep 100
-^\verb+^+^Z
+^Z
 [1]+  Stopped                 sleep 100
 student@uso:~$ jobs
 [1]+  Stopped                 sleep 100
 student@uso:~$ fg
 sleep 100
 ls
-^\verb+^+^C
+^C
 student@uso:~$ jobs
 student@uso:~$
 \end{screen}
@@ -891,11 +900,11 @@ student@uso:~$
 Un proces dus în background în starea suspendat folosind combinația de taste
 \texttt{Ctrl+z} poate fi apoi trecut în starea \textit{running}, tot în background. Facem acest
 lucru folosind comanda \cmd{bg}, ca în \labelindexref{Listing}{lst:process:bg}.
-În \labelindexref{Listing}{lst:process:bg} se observă că după folosirea combinației de taste \texttt{Ctrl+z} procesul ajunge în starea \texttt{Stopped} în background. Apoi, prin folosirea comenzii \texttt{bg} acesta ajunge în starea \texttt{Running} în background.
+În \labelindexref{Listing}{lst:process:bg} se observă că, după folosirea combinației de taste \texttt{Ctrl+z}, procesul ajunge în starea \texttt{Stopped} în background. Apoi, prin folosirea comenzii \texttt{bg} acesta ajunge în starea \texttt{Running} în background.
 
-\begin{screen}[caption={Trecerea unui proces în starea running în background},label={lst:process:bg}]
+\begin{screen}[caption={Trecerea unui proces în starea running în background},escapechar=,label={lst:process:bg}]
 student@uso:~$ sleep 100
-^\verb+^+^Z
+^Z
 [1]+  Stopped                 sleep 100
 student@uso:~$ jobs
 [1]+  Stopped                 sleep 100
@@ -905,7 +914,7 @@ student@uso:~$ jobs
 [1]+  Running                 sleep 100 &
 \end{screen}
 
-Sumarizând, \labelindexref{Figura}{fig:process-fg-bg} prezintă modul în care poate rula un proces în
+Sumarizând, \labelindexref{Figura}{fig:process:fg-bg} prezintă modul în care poate rula un proces în
 background/foreground: ce comenzi și operatori sunt folosiți în fiecare caz, ce
 stări au procesele și cum pot tranzita între stări (\textit{running}, \textit{stopped}) și între
 moduri de rulare (foreground, background).
@@ -915,15 +924,15 @@ moduri de rulare (foreground, background).
 	\def\svgwidth{0.8\textwidth}
 	\includesvg{chapters/04-process/img/status-mov.svg}
 	\caption{Foreground și background}
-	\label{fig:process-fg-bg}
+	\label{fig:process:fg-bg}
 \end{figure}
 
 Am precizat că mai multe procese pot rula în background. Procesele care rulează
-în background se numesc job-uri și au un identificator de job pentru shell-ul
-curent. Dacă avem mai multe job-uri dorim să controlăm starea unui job folosind
+în background se numesc joburi și au un identificator de job pentru shellul
+curent. Dacă avem mai multe joburi dorim să controlăm starea unui job folosind
 comenzile \cmd{fg} și \cmd{bg}, atunci vom adăuga ca parametru către aceste comenzi
-identificatorul job-ului, așa cum facem în \labelindexref{Listing}{lst:process:job-id}.
-În \labelindexref{Listing}{lst:process:job-id} am folosit construcțiile \texttt{\%1} și \texttt{\%2} pentru a opera job-urile cu indexul 1 și 2 din background. Am trimis indexul ca argument comenzilor \cmd{bg} și \cmd{fg}.
+identificatorul jobului, așa cum facem în \labelindexref{Listing}{lst:process:job-id}.
+În \labelindexref{Listing}{lst:process:job-id} am folosit construcțiile \texttt{\%1} și \texttt{\%2} pentru a opera joburile cu indexul 1 și 2 din background. Am trimis indexul ca argument comenzilor \cmd{bg} și \cmd{fg}.
 
 \begin{screen}[caption={Gestiunea job-urilor},label={lst:process:job-id}]
 student@uso:~$ sleep 100 &
@@ -956,7 +965,7 @@ student@uso:~$ jobs
 Un scenariu util pentru trecerea unui proces în background este când pornim un
 proces GUI \abbrev{GUI}{Graphical User Interface} din shell și pierdem în shell
 accesul la terminal. De exemplu am pornit procesul Emacs (grafic) în foreground.
-Pentru a putea readuce shell-ului controlul terminalului, vom trece procesul
+Pentru a putea readuce shellului controlul terminalului, vom trece procesul
 Emacs în background (suspendat) folosind combinația de taste \texttt{Ctrl+z} și vom muta
 apoi procesul din starea supendat în starea running folosind comanda bg. Adică
 la fel în \labelindexref{Listing}{lst:process:background-gui}.
@@ -976,28 +985,28 @@ combinația \texttt{Ctrl+d} sau este închisă fereastra terminalului în care r
 procesele active în terminalul respectiv sunt, de asemenea, omorâte. Sunt
 omorâte procesele aflate în background și, eventual, procesul aflat în
 foreground. Dacă dorim să menținem anumite procese active după încheierea
-procesului shell, avem opțiuni; vom discuta despre aceste optiuni în
-\labelindexref{Secțiunea}{sec:process-interactivitate-daemon}
+procesului shell, avem opțiuni de lucru; vom discuta despre aceste opțiuni în
+\labelindexref{Secțiunea}{sec:process:daemon}.
 
 \subsection{Procesul init}
-\label{sec:process-ierarhie-init}
+\label{sec:process:init}
 
-După cum am indicat în \labelindexref{Secțiunea}{sec:file-system-baza-struct},
+După cum am indicat în \labelindexref{Secțiunea}{sec:process:linux-hierarchy},
 în vârful ierarhiei proceselor din Linux se găsește procesul \textbf{init}. Acesta este
 primul proces al sistemului și creatorul primelor procese. Serviciile de bază
-ale sistemului, shell-urile inițiale, mediul grafic sunt pornite direct sau
+ale sistemului, shellurile inițiale, mediul grafic sunt pornite direct sau
 indirect din procesul init. Spunem că un sistem Linux a bootat în momentul
 creării procesului init. În această secțiune discutăm minimal despre init, cu
 accent pe rolul său în gestiunea proceselor sistemului. Detalii despre pornirea
 sistemului până la pornirea init, și detalii despre init și configurarea sa
 prezentăm în \labelindexref{Capitolul}{chapter:boot}.
 
-Pe lângă rolul în pornierea proceselor inițiale, init are și rol în întreținerea
+Pe lângă rolul în pornirea proceselor inițiale, init are și rol în întreținerea
 sistemului prin adoptarea proceselor orfane. Un proces orfan este un proces al
 cărui proces părinte și-a încheiat execuția. Pentru a menține ierarhia de
 procese, acest proces trebuie să aibă un proces părinte; acest proces părinte
 este procesul init. În codul sursă de suport al cărții în directorul \file{code/04-process/code/parent-child/} este un exemplu în care creăm un proces părinte (implementat fișierul sursă C \file{parent.c}) care apoi creează un proces (implementat în fișierul sursă C \file{child.c}). \labelindexref{Listing}{lst:process:init-adopt} conține o secvență în care rulăm programul ce creează procesul părinte, program care apoi creează procesul copil.
-În \labelindexref{Listing}{ps:process:init-adopt} în prima parte am pornit procesul \texttt{parent} care apoi a pornit și procesul \texttt{child}. Apoi din alt terminal urmărim cele două procese și observăm că procesul copil (\texttt{child}) cu PID-ul \texttt{11305} are ca părinte procesul părinte (\texttt{parent}) cu PID-ul \texttt{11304}. Apoi omorâm procesul părinte și investigăm din nou procesul copil. Observăm că acum procesul părinte este procesul \texttt{init} cu PID-ul \texttt{1}.
+În \labelindexref{Listing}{lst:process:init-adopt} în prima parte am pornit procesul \texttt{parent} care apoi a pornit și procesul \texttt{child}. Apoi din alt terminal urmărim cele două procese și observăm că procesul copil (\texttt{child}) cu PID-ul \texttt{11305} are ca părinte procesul părinte (\texttt{parent}) cu PID-ul \texttt{11304}. Apoi omorâm procesul părinte și investigăm din nou procesul copil. Observăm că acum procesul părinte este procesul \texttt{init} cu PID-ul \texttt{1}.
 
 \begin{screen}[caption={Adoptarea unui proces orfan de către proces init},label={lst:process:init-adopt}]
 # start process
@@ -1028,13 +1037,13 @@ Pentru a evita ca un singur proces să aibă rolurile procesului init, pe
 sistemele Ubuntu a apărut soluția folosirii mai multor procese init: câte un
 proces init pentru fiecare sesiune. Când o sesiune dată este creată, se creează
 un proces init dedicat acelei sesiuni, care va fi vârful ierarhiei de procese
-din acea sesiune. Acest proces init de sesiune adoptă procesele orfane din acea
+din acea sesiune. Acest proces init al sesiune adoptă procesele orfane din acea
 sesiune. Mai multe despre această caracteristică sunt prezentate în \labelindexref{Secțiunea}{sec:auto-infosys-services}.
 
 \section{Procese și fișiere}
-\label{sec:process-fisiere}
+\label{sec:process:files}
 
-Așa cum am precizat în \labelindexref{Capitolul}{chapter:file-system},
+Așa cum am precizat în \labelindexref{Capitolul}{chapter:fs},
 fișierele sunt componenta cea mai vizibilă din sistemul de operare. Fișierele
 sunt folosite pentru a stoca informații care sunt ulterior accesate, prelucrate
 sau transferate.
@@ -1051,47 +1060,44 @@ pentru a le compila și fișiere obiect unde să stocheze codul obiect generat.
 Când un proces deschide un fișier (de exemplu folosind apelul \texttt{fopen()} în C),
 primește un handle către acel fișier. Un handle (reprezentat de \texttt{FILE *} în C)
 este interfața prin care procesul poate lucra cu fișierul. Acel handle este
-identificat de o intrare într-o tabelă a procesului numită tabela descriptorilor
-de fișiere. Aceasta este tabela prin care un proces gestionează fișierele pe
-care le folosește, așa cum este prezentat în \labelindexref{Figura}{fig:process-fdtab}.
+identificat de o intrare într-o tabelă a procesului numită \textbf{tabela descriptorilor
+de fișiere}. Aceasta este tabela prin care un proces gestionează fișierele pe
+care le folosește, așa cum este prezentat în \labelindexref{Figura}{fig:process:fdtab}.
+Indexul intrării din acea tabelă este numit \textbf{descriptor de fișier} și este identificatorul folosirii
+fișierului în cadrul procesului.
 
 \begin{figure}[!htbp]
 	\centering
 	\def\svgwidth{0.8\textwidth}
 	\includesvg{chapters/04-process/img/fd-table.svg}
 	\caption{Tabela descriptorilor de fișiere a unui proces}
-	\label{fig:process-fdtab}
+	\label{fig:process:fdtab}
 \end{figure}
 
-Fiecare fișier folosit de un proces este gestionat prin intermediul unei intrări
-din această tabelă, \textbf{tabela descriptorilor de fișiere}. Indexul intrării din acea
-tabelă este numit \textbf{descriptor de fișier} și este identificatorul folosirii
-fișierului în cadrul procesului.
-
 \subsection{Descriptori de fișiere}
-\label{sec:process-fisiere-description}
+\label{sec:process:fd}
 
 Un descriptor de fișiere identifică pentru un proces fișierul pe care îl
 operează. Pornind de la descriptorul de fișiere, procesul accesează intrarea
-aferentă în tabela de descriptori de fișiere și folosind informațiile de acolo
-folosește procesul. În mod uzual folosit pentru fișiere, un descriptor de fișier
+aferentă în tabela de descriptori de fișiere, și folosind informațiile de acolo
+folosește fișierul. Un descriptor de fișier
 poate referi și alte tipuri de intrări: poate referi un dispozitiv de terminal
 sau poate referi un socket pentru comunicare în rețea.
 
-Tabela de descriptori de fișiere are o dimensiune limitată (pe Linux 1024 de
+Tabela de descriptori de fișiere are o dimensiune limitată (în Linux 1024 de
 intrări) astfel că un proces nu poate deschide un număr infinit de fișiere.
-Acesta e un mod care să prevină folosirea abuzivă de resurse ale sistemului
+Acesta e un mod care să prevină folosirea abuzivă de resurse ale sistemului,
 deschizând foarte multe fișiere din cadrul unui proces; adică să prevină un atac
-de tipul denial of service. În momentul deschiderii unui fișier i se alocă o
+de tipul \textit{denial of service}. În momentul deschiderii unui fișier i se alocă o
 intrare din tabelă, iar fișierul va fi referit prin indexul din tabelă, acela
 devenind descriptorul său. În momentul închiderii unui fișier, intrarea
 respectivă va fi eliberată.
 
 Pentru a investiga tabela de descriptori de fișiere a unui proces folosim
-comanda lsof ca în \labelindexref{Listing}{lst:process:lsof}.
+utilitarul \cmd{lsof} ca în \labelindexref{Listing}{lst:process:lsof}.
 În \labelindexref{Listing}{lst:process:lsof} \texttt{9585} este PID-ul procesului investigat, în cazul de față este un proces shell, creat din executabilul \texttt{/bin/bash}. Utilitarul \texttt{lsof} afișează mai multe informații, incluzând biblioteci încărcate. Aici sunt relevante ultimele intrări, care au pe coloana \texttt{FD} numere (\texttt{0u}, \texttt{1u}, \texttt{2u}, \texttt{255u}).
 
-\begin{screen}[caption={Investigarea descriptorilor de fișiere pentru un process (lsof)},label={lst;process:lsof}]
+\begin{screen}[caption={Investigarea descriptorilor de fișiere pentru un process (lsof)},label={lst:process:lsof}]
 student@uso:~$ lsof -p 9585
 COMMAND  PID    USER   FD   TYPE DEVICE SIZE/OFF   NODE NAME
 bash    9585 student  cwd    DIR    8,1     4096 681167 /home/student
@@ -1120,14 +1126,14 @@ input}), ieșirea standard (\textit{standard output}) și ieșirea de eroare sta
 descriptorul 3; în momentul în care un proces deschide primul său fișier,
 acestuia îi va fi alocat descriptorul 3. Astfel că primul fișier deschis va avea
 indexul 3. Alocarea și eliberarea indecșilor (adică descriptorilor de fișier)
-sunt descrise, respectiv, în \labelindexref{Figura}{fig:process-alloc-fd} și \labelindexref{Figura}{fig:process-free-fd}.
+sunt descrise, respectiv, în \labelindexref{Figura}{fig:process:alloc-fd} și \labelindexref{Figura}{fig:process:free-fd}.
 
 \begin{figure}[!htbp]
 	\centering
 	\def\svgwidth{0.8\textwidth}
 	\includesvg{chapters/04-process/img/fd-alloc.svg}
 	\caption{Alocarea unui descriptor de fișier}
-	\label{fig:process-alloc-fd}
+	\label{fig:process:alloc-fd}
 \end{figure}
 
 \begin{figure}[!htbp]
@@ -1135,7 +1141,7 @@ sunt descrise, respectiv, în \labelindexref{Figura}{fig:process-alloc-fd} și \
 	\def\svgwidth{0.8\textwidth}
 	\includesvg{chapters/04-process/img/fd-free.svg}
 	\caption{Eliberarea unui descriptor de fișier}
-	\label{fig:process-free-fd}
+	\label{fig:process:free-fd}
 \end{figure}
 
 Fiecare proces are o tabelă de descriptori de fișier proprie. Astfel că o
@@ -1182,18 +1188,18 @@ către fișier: fie la acțiuni explicite de salvare din partea utilizatorului f
 dacă este cazul, la acțiuni de salvare automată (\textit{autosave}).
 
 \subsection{Redirectarea în/din fișiere}
-\label{sec:process-fisiere-redirectare}
+\label{sec:process:redirect}
 
 Am văzut că descriptorii de fișiere pot să refere terminalul, cum este cazul
-descriptorilor standard (0, 1 și 2) sau pot să refer fișiere. Legăturile
+descriptorilor standard (0, 1 și 2) sau pot să refere fișiere. Legăturile
 descriptorilor standard cu terminalul nu sunt fixe, pot fi modificate.
 Modificarea referinței unui descriptor poartă numele de ,,redirectare'' sau
 ,,redirectarea unui descriptor de fișier'' (\textit{redirecting a file
-descriptor}), așa cum am precizat în \labelindexref{Secțiunea}{sec:file-system-redirect}.
+descriptor}), așa cum am precizat în \labelindexref{Secțiunea}{sec:fs:redirect}.
 
 În mod uzual, redirectarea înseamnă modificarea descriptorilor standard să
 refere un fișier (sau altceva) în loc de terminal. De exemplu, redirectăm
-descriptorul 1 (ieșirea standard) a unui proces să nu mai refere terminalul ci
+descriptorul 1 (ieșirea standard) al unui proces ca să nu mai refere terminalul ci
 fișierul \file{lshw.out}, cum este cazul comenzii din \labelindexref{Listing}{lst:process:redirect-stdout}.
 Această operație, de redirectare, este utilă pentru a putea salva ieșirea unei
 comenzi pentru prelucrarea ulterioară sau pentru a transfera un fișier către
@@ -1211,9 +1217,9 @@ uso
 \end{screen}
 
 În general redirectările apar în comenzi înlănțuite, mai ample, numite
-one-linere, în cadrul cărora rezultatul unei comenzi ajunge intrare pentru
-altul, așa cum vom vedea în
-\labelindexref{Secțiunea}{sec:process-operatii-pipe}.
+one-linere. Într-un one liner rezultatul unei comenzi ajunge intrare pentru
+altă comandă, așa cum vom vedea în
+\labelindexref{Secțiunea}{sec:process:pipe}.
 
 Putem urmări redirectarea descriptorilor cu ajutorul comenzii \cmd{lsof}. În \labelindexref{Listing}{lst:process:fd-investigate} toți descriptorii standard au fost redirecați în/din fișierele \texttt{out}, \texttt{err} și \texttt{in}, lucru precizat și de rezultatul rulării comenzii \cmd{lsof}.
 
@@ -1237,44 +1243,40 @@ sleep   11432 student    2w   REG    8,1        0 680072 /home/student/err
 \end{screen}
 
 \section{Operații cu procese. Interacțiunea între procese}
-\label{sec:process-operatii}
+\label{sec:process:operations}
 
 Un proces ia naștere dintr-un executabil (un program) prin intermediul unui alt
-proces, de obicei shell-ul, care este procesul părinte. În linia de comanda
-folosim comenzi care vor conduce la crearea de procese. Shell-ul folosește o
+proces, de obicei shellul, care este procesul părinte. În linia de comandă
+folosim comenzi care vor conduce la crearea de procese. Shellul folosește o
 interfață specifică a sistemului de operare pentru a crea un proces și devine
 părintele acelui proces. Apoi procesul rulează până la încheierea sa, folosind
 resurse puse la dispoziție de sistemul de operare.
 
 \subsection{Încheierea unui proces}
-\label{sec:process-operatii-incheiere}
+\label{sec:process:terminate}
 
-Un proces își încheie execuția din diferite cauze. Poate fi o încheiere a
-codului aferent programului (a ajuns la sfârșitul programului), poate fi o
-condiție anormală sau poate fi omorât de alt proces. Există următoarele situații
+Un proces își încheie execuția din diferite cauze. Există următoarele situații
 pentru încheierea unui proces:
 
 \begin{itemize}
-  \item atingerea sfârșitului programului (încheierea funcției \texttt{main()} în
-		C)
-              \item apelul unei rutine de încheiere (precum funcția \texttt{exit()} în C)
-	\item întâlnirea unei condiții neașteptate: accesarea unei zone nevalide
-		de memorie, rularea unei intrucțiuni nevalide
-	\item omorârea sa de un alt proces
+  \item atingerea sfârșitului programului (încheierea funcției \texttt{main()} în C)
+  \item apelul unei rutine de încheiere (precum funcția \texttt{exit()} în C)
+  \item întâlnirea unei condiții neașteptate: accesarea unei zone nevalide de memorie, rularea unei intrucțiuni nevalide
+  \item omorârea sa de un alt proces
 \end{itemize}
 
 Terminare (omorârea) unui proces se realizează de un alt proces care are permisiuni; în
 general, acest lucru înseamnă un proces care aparține aceluiași utilizator sau
-utilizatorului administrativ. În Windows terminarea unui proces are rol prin
+utilizatorului administrativ. În Windows terminarea unui proces are loc prin
 transmiterea unei notificări, numite excepție, de la un proces la altul. În mod
 similar, în Linux, terminaraea unui proces are loc prin transmiterea unui semnal
 către acesta. Primirea unui semnal duce, în multe situații (nu toate), la
 terminarea procesului. Transmiterea unui semnal se face prin intermediul
-comenzilor din familia \cmd{kill}.
+utilitarelor din familia \cmd{kill}.
 În \labelindexref{Listing}{lst:process:kill-terminate} comanda \cmd{kill} trimite un semnal procesului \cmd{sleep}, care are PID-ul \texttt{11450} ducând la terminarea procesului.
 După folosirea comenzii \cmd{kill} procesul creat a fost omorât. Vom detalia semnale
 și folosire comenzii \cmd{kill} în
-\labelindexref{Secțiunea}{sec:process-operatii-semnale}.
+\labelindexref{Secțiunea}{sec:process:signal}.
 
 \begin{screen}[caption={Terminarea unui proces (kill)},label={lst:process:kill-terminate}]
 student@uso:~$ sleep 100  # run command
@@ -1286,11 +1288,11 @@ student@uso:~$ pidof sleep
 student@uso:~$ kill 11450
 \end{screen}
 
-Indiferent de situație, procesul transmite către procesul părinte informații
+Indiferent de caz, procesul terminat transmite către procesul părinte informații
 despre cum și-a încheiat execuția (\textit{exit status}) și un cod de ieșire
 (\textit{exit code}). În Linux, un cod de ieșire 0 înseamnă că programul s-a
 încheiat cu succes, în vreme ce alt cod de ieșire înseamnă încheiere cu insucces
-sau eroare. \labelindexref{Listing}{lst:process:exit-status} conține exemple de investigare a codului de eroare după
+sau eroare. \labelindexref{Listing}{lst:process:exit-code} conține exemple de investigare a codului de eroare după
 încheierea unui proces.
 Construcția \texttt{\$?} afișează în shell codul de ieșire al ultimei comenzi rulate. În exemplu de mai sus, atunci când comanda \cmd{grep} reușește (adică găsește șirul primit ca prim argument în fișierul primit ca al doilea argument), valoarea construcției \texttt{\$?} este 0 (succes). Altfel este 1 (insucces).
 
@@ -1304,16 +1306,16 @@ student@uso:~$ echo $?
 \end{screen}
 
 \subsection{Semnale}
-\label{sec:process-operatii-semnale}
+\label{sec:process:signal}
 
 Semnalele sunt, în Linux, mecanisme de interacțiune între procese. Un proces
 trimite un semnal unui alt proces pentru a-i semnaliza acestuia o situație
 deosebită. Pentru ca un proces să poată trimită semnale altui proces trebuie să
 aibă permisiuni adecvate; în mod normal acest lucru înseamnă să aparțină
 aceluiași utilizator ca cel al procesului care primește semnalul sau să aparțină
-utiizatorului root.
+utiizatorului \texttt{root}
 
-Semnalele sunt la bază mecanisme de notificare din partea unui proces către
+Semnalele sunt, la bază, mecanisme de notificare din partea unui proces către
 altul, dar sunt folosite în multe situații pentru omorârea unui proces. De
 exemplu semnalul \texttt{SIGSTOP} suspendă un proces (și îl trece în background), iar
 semnalul \texttt{SIGTERM} îl omoară. În \labelindexref{Listing}{lst:process:kill-signal} este pornită comanda \cmd{sleep 100} și apoi sunt trimise semnale procesului nou creat din alt terminal.
@@ -1334,8 +1336,8 @@ student@uso:~$ kill -STOP 11537
 student@uso:~$ kill -TERM 11537
 \end{screen}
 
-Un semnal este identificat de un număr sau de un nume. Atunci când se folosește
-la comanda \cmd{kill} poate fi folosit atât numele cât și numărul. În \labelindexref{Listing}{lst:process:signal-id} afișăm numerele și numele semnalelor; apoi prezentăm trei comenzi care pot fi folosit echivalente pentru a transmite semnalul \texttt{SIGUSR1} unui proces.
+Un semnal este identificat de un număr sau de un nume. Comanda \cmd{kill} poate primi ca argument atât numele cât și numărul unui semnal.
+În \labelindexref{Listing}{lst:process:signal-id} afișăm numerele și numele semnalelor; apoi prezentăm trei comenzi care pot fi folosit echivalente pentru a transmite semnalul \texttt{SIGUSR1} unui proces.
 
 \begin{screen}[caption={Identificarea semnalelor},label={lst:process:signal-id}]
 student@uso:~$ kill -l
@@ -1358,9 +1360,9 @@ student@uso:~$ kill -10 $(pidof sleep)
 student@uso:~$ kill -SIGUSR1 $(pidof sleep)
 \end{screen}
 
-Un semnal are asociat o acțiune pe care o întreprinde procesul care-l
-recepționează. Am văzut mai sus că această acțiuni este suspendarea procesului
-în cazul semnalului \texttt{SIGSTOP} și omorârea procesului în cazul \texttt{SIGTERM}. Aceată
+Un semnal are asociată o acțiune pe care o întreprinde procesul care-l
+recepționează. Am văzut mai sus că această acțiune este suspendarea procesului
+în cazul semnalului \texttt{SIGSTOP} și omorârea procesului în cazul \texttt{SIGTERM}. Această
 acțiune implicită poate fi modificată programatic pentru un proces dat; nu vom
 discuta acest lucru aici, vedeți câteva informații în pagina de manual \cmd{man 7
 signal}. De exemplu, un proces poate alege să ignore anumite semnale. Cu toate
@@ -1368,9 +1370,9 @@ acestea, două semnale nu pot fi ignorate: semnalul \texttt{SIGSTOP} și semnalu
 care duc, respectiv, la suspendarea și omorârea procesului.
 
 Dacă dorim să transmitem semnale mai multor procese putem folosi comanda \cmd{pkill}.
-Aceasta permite transmiterea proceselor cu un anumit atribut, de exemplu create
-dintr-un anumit proces sau care țin de un anumit utilizator.
-În \labelindexref{Listing}{lst:process:pkill} cele trei comenzi trimit semnalul implicit (\texttt{SIGTERM}) respectiv tuturor proceselor \cmd{sleep}, tuturor proceselor utilizatorului \texttt{dan} și tuturor proceselor al căror proces părinte este \texttt{18291}.
+Aceasta permite transmiterea unui semnale către procesele care au un anumit atribut; de exemplu către
+procesele care aparțin unui anumit utilizator.
+În \labelindexref{Listing}{lst:process:pkill} cele trei comenzi trimit semnalul implicit (\texttt{SIGTERM}), respectiv tuturor proceselor \cmd{sleep}, tuturor proceselor utilizatorului \texttt{dan} și tuturor proceselor al căror proces părinte este \texttt{18291}.
 
 \begin{screen}[caption={Trimiterea de semnale mai multor procese (pkill)},label={lst:process:pkill}]
 student@uso:~$ pkill sleep
@@ -1405,7 +1407,7 @@ decât semnalul \texttt{SIGINT} (transmis folosind combinația de taste \texttt{
 puternic înseamnă că pot exista procese care ignoră semnalul \texttt{SIGINT} dar nu
 semnalul \texttt{SIGQUIT}; astfel că dacă folosim combinația de taste \texttt{Ctrl+c} și nu are
 loc terminarea procesului, vom folosi combinația de taste \texttt{Ctrl+\textbackslash{}}
-cu șanse mai mari de reușit.
+cu șanse mai mari de reușită.
 
 Pe scurt, atunci când vrem să omorâm un proces aflat în foreground folosim, în
 ordine:
@@ -1427,11 +1429,11 @@ viață, consumând resurse ale sistemului.
 \end{note}
 
 \subsection{Înlănțuirea comenzilor}
-\label{sec:process-operatii-inlantuire}
+\label{sec:process:command-chaining}
 
 În unele situații dorim să rulăm mai multe procese unul după altul și să folosim
 o singură linie de comandă. De exemplu să compilăm o aplicație și apoi să o
-instalăm și apoi să o rulăm. Pentru aceasta, shell-ul ne pune la dispoziție
+instalăm și apoi să o rulăm. Pentru aceasta, shellul ne pune la dispoziție
 operatori de înlănțuire de comenzi.
 
 Cel mai simplu operator este cel de înlănțuire necondiționată (\texttt{;}, punct și virgulă). Acesta
@@ -1440,21 +1442,19 @@ operatori sunt cei de înlănțuire condiționată (\texttt{\textbar{}\textbar{}
 de-a doua comenzi de codul de ieșire al primei. Astfel:
 
 \begin{itemize}
-  \item \cmd{comm1 \textbar{}\textbar{} comm2} rulează comanda \cmd{comm2} doar dacă \cmd{comm1} s-a încheiat
-		cu insuccess
-  \item \cmd{comm1 \&\& comm2} rulează comanda \cmd{comm2} doar dacă \cmd{comm1} s-a
-		încheiat cu succes
+  \item \cmd{comm1 \textbar{}\textbar{} comm2} rulează comanda \cmd{comm2} doar dacă \cmd{comm1} s-a încheiat cu insuccess
+  \item \cmd{comm1 \&\& comm2} rulează comanda \cmd{comm2} doar dacă \cmd{comm1} s-a încheiat cu succes
 \end{itemize}
 
-În exemplul de mai jos se rulează executabilul \texttt{main_args} din directorul curent doar dacă a reușit comanda de compilare \texttt{make}:
+În exemplul de mai jos se rulează executabilul \texttt{main\_args} din directorul curent doar dacă a reușit comanda de compilare \texttt{make}:
 \begin{screen}
 student@uso:~/.../code/04-process/main-args$ make && ./main_args
 \end{screen}
 
 \subsection{Comunicarea prin pipe-uri}
-\label{sec:process-operatii-pipe}
+\label{sec:process:pipe}
 
-Atunci când înlănțuim comenzi urmărim, de obicei, transferul de informație de la
+Atunci când înlănțuim comenzi, urmărim, de obicei, transferul de informație de la
 o comandă la alta: rezultatul unei comenzi să fie folosit de altă comandă.
 Transferul de informație se poate face în mod simplu, printr-un fișier: o
 comandă redirectează ieșirea într-un fișier iar altă comandă redirectează
@@ -1489,7 +1489,7 @@ student@uso:~$ grep -rwc FILE /usr/include/ | grep -v ':0' | sort -n -t ':' -k2 
 /usr/include/stdio.h:82
 \end{screen}
 
-Astfel de comenzi înlănțuite care pot folosi și redirectări și alți operatori de
+Astfel de comenzi înlănțuite, care pot folosi și redirectări și alți operatori de
 înlănțuire sunt numite \textbf{one-linere}. Sunt un mod rapid de a combina mai
 multe comenzi existente pentru un efect nou. Vom discuta în detaliu despre one-linere în \labelindexref{Secțiunea}{sec:cli-one-liners}.
 
@@ -1500,13 +1500,13 @@ mai complexe sunt combinate comenzi/procese într-un one-liner.
 \end{note}
 
 \section{Interactivitatea proceselor}
-\label{sec:process-interactivitate}
+\label{sec:process:interactivity}
 
-Din punctul de vedere al interacțiunii cu utilizator clasificăm procesele în
+Din punctul de vedere al interacțiunii cu utilizatorul, clasificăm procesele în
 interactive și neinteractive. \textbf{Procesele interactive} au nevoie de date de intrare
 de la utilizator (de la tastatură sau de la mouse) și oferă informații pe ecran.
-\textbf{Procesele neinteractive} rulează fără intervenția utilizatorului, le mai numim procese
-batch. Procesele interactive sunt utile pentru a prelua comenzi de la
+\textbf{Procesele neinteractive} rulează fără intervenția utilizatorului, le mai numim \textbf{procese
+batch}. Procesele interactive sunt utile pentru a prelua comenzi de la
 utilizator; cele neinteractive sunt utile pentru gestiunea și buna funcționare a
 sistemului (de exemplu obținerea adresei de rețea sau actualizarea timpului
 sistemului), pentru oferirea de servicii (de exemplu un server web) sau pentru
@@ -1514,37 +1514,37 @@ automatizarea sarcinilor (de exemplu să fie indexate pentru căutare fișierele
 din sistem la un moment de timp).
 
 Unul dintre cele mai importante tipuri de procese interactive dintr-un sistem
-este \textbf{shell-ul}, adică procesul ce primește intrare de la utilizator și comandă
-apoi sistemul de operare. Un shell poate fi grafic sau în linia de comandă. Un
+este \textbf{shellul}, adică procesul ce primește intrare de la utilizator și comandă
+apoi sistemul de operare sau alte procese. Un shell poate fi grafic sau în linia de comandă. Un
 shell în linia de comandă (numit interpretor de comenzi) va primi un șir de la
 intrare de la utilizator, va interpreta acel șir într-o comandă (sau mai multe
 comenzi înlănțuite) și va crea un proces sau mai multe procese. Vom detalia
-funcționarea shell-ului în \labelindexref{Capitolul}{chapter:cli}.
+funcționarea shellului în \labelindexref{Capitolul}{chapter:cli}.
 
 \subsection{Terminale}
-\label{sec:process-interactivitate-terminale}
+\label{sec:process:terminal}
 
 Un shell rulează în cadrul unui \textbf{terminal}, care este interfața acestuia de
-interacțiune cu utilizatorul. Descriptorii standard ai shell-ului (intrarea
+interacțiune cu utilizatorul. Descriptorii standard ai shellului (intrarea
 standard, ieșirea standard, ieșirea de eroare standard) referă terminalul.
-Altfel spus, când transmitem comenzi shell-ului, le tastăm la terminal, care
-este asociat descriptorului de intrare standard al shell-ului, care apoi
+Altfel spus, când transmitem comenzi shellului, le tastăm la terminal, care
+este asociat descriptorului de intrare standard al shellului, care apoi
 interpretează șirul introdus. Terminalul este, așadar, un dispozitiv care
 intermediază transmiterea intrării și ieșirii de la utilizator prin tastatură/monitor către
-shell. \labelindexref{Figura}{fig:process-terminal-shell} prezintă legătura utilizator, terminal, shell.
+shell. \labelindexref{Figura}{fig:process:terminal-shell} prezintă legătura utilizator, terminal, shell.
 
 \begin{figure}[!htbp]
 	\centering
-	\def\svgwidth{0.8\textwidth}
+	\def\svgwidth{0.4\textwidth}
 	\includesvg{chapters/04-process/img/user-terminal-shell.svg}
 	\caption{Utilizator, terminal, shell}
-	\label{fig:process-terminal-shell}
+	\label{fig:process:terminal-shell}
 \end{figure}
 
 Terminalul este identificat printr-un nume și are asociată, în Linux, o intrare
 în directorul \file{/dev}. Comanda \texttt{tty} ne indică terminalul curent pentru un shell.
-Putem să identificăm terminalul unui proces (inclusiv shell-ul) folosind comanda
-\cmd{ps}. De exemplu, în \labelindexref{Listing}{lst:process:get-terminal} terminalul aferent shell-ului curent este \texttt{/dev/pts/1}.
+Putem să identificăm terminalul unui proces (inclusiv shellul) folosind comanda
+\cmd{ps}. De exemplu, în \labelindexref{Listing}{lst:process:get-terminal} terminalul aferent shellului curent este \texttt{/dev/pts/1}.
 
 \begin{screen}[caption={Identificarea terminalului unui proces},label={lst:process:get-terminal}]
 student@uso:~$ tty
@@ -1555,14 +1555,14 @@ student  10765 10764  0 10:50 pts/1    00:00:00 -bash
 student  11724 10765  0 11:49 pts/1    00:00:00 ps -f
 \end{screen}
 
-Procesele create dintr-un shell, adică procesele copil ale shell-ului, vor
+Procesele create dintr-un shell, adică procesele copil ale shellului, vor
 moșteni acest terminal. Procesele care se află la un moment dat în rulare în
 acel shell vor partaja ieșirea standard. Dar doar procesul aflat în foreground
-(shell-ul sau altul) va avea acces la intrarea standard. Așa cum am precizat în
-\labelindexref{Secțiunea}{sec:process-ierarhie-foreground-background} procesul
+(shellul sau altul) va avea acces la intrarea standard. Așa cum am precizat în
+\labelindexref{Secțiunea}{sec:process:foreground-background} procesul
 din foreground ,,acaparează'' intrarea standard dată de terminal.
 
-În \labelindexref{Listing}{lst:process:shell-terminal} arătăm cum procesele create din shell-ul curent au
+În \labelindexref{Listing}{lst:process:shell-terminal} arătăm cum procesele create din shellul curent au
 același terminal.
 Observăm că terminalul (coloana \texttt{TTY}) pentru procesul shell (\texttt{-bash}) și pentru procesele copil create de acesta (procesul \cmd{sleep} și \cmd{ps}) este același: \texttt{pts/1}.
 
@@ -1577,7 +1577,7 @@ student  11729 10765  0 11:50 pts/1    00:00:00 ps -f
 \end{screen}
 
 \subsection{Procese neinteractive}
-\label{sec:process-interactivitate-neinteractive}
+\label{sec:process:non-interactive}
 
 Am precizat mai sus că procesele neinteractive nu au nevoie de interacțiune cu
 utilizatorul și servesc bunei funcționări a sistemului și automatizării
@@ -1598,18 +1598,18 @@ anumite procese nu au terminal asociate. Acestea sunt procese neinteractive,
 care rulează în background, detașate de terminal.
 
 \subsection{Procese daemon}
-\label{sec:process-interactivitate-daemon}
+\label{sec:process:daemon}
 
 O bună parte dintre procesele care rulează neinteractiv, în background, detașate
 de terminal se numesc \textbf{procese daemon}. În anumite descrieri, orice proces care
 rulează neinteractiv, în background, detașat de terminal este un proces daemon.
 Într-o definiție mai riguroasă, un proces daemon are ca proces părinte procesul
 init, descriptorii săi standard referă intrarea \file{/dev/null} în Linux și oferă un
-anumit serviciu în sistem (de exemplu procesul daemon atd este folosit pentru
+anumit serviciu în sistem (de exemplu procesul daemon \cmd{atd} este folosit pentru
 planificarea execuției unui proces la un moment dat). Din acest motiv, procesele
 daemon se mai numesc servicii; în Windows procesele care rulează neinteractiv,
 în background, detașate de terminal, se numesc servicii. De asemenea, în Linux,
-gestiunea serviciilor se face folosind comanda service, așa cum vom prezenta în
+gestiunea serviciilor se face folosind comanda \cmd{service}, așa cum vom prezenta în
 \labelindexref{Capitolul}{chapter:boot}.
 
 Interacțiunea cu aceste procese se face prin intermediul semnalelor, fișierelor
@@ -1618,16 +1618,14 @@ sunt:
 
 \begin{itemize}
 	\item procesul init
-	\item procese de tip servicii: cron, servicii de rețea
-	\item alte procese rulate de utilizator pentru a rula fără un terminal
-		asociat
+        \item procese de tip servicii: \cmd{cron}, servicii de rețea
+	\item alte procese rulate de utilizator pentru a rula fără un terminal asociat
 \end{itemize}
 
 Concluzionând, în general un proces daemon are următoarele caracteristici:
 
 \begin{itemize}
-	\item rulează în background, fără o formă de interacțiune directă cu
-		utilizatorul
+	\item rulează în background, fără o formă de interacțiune directă cu utilizatorul
 	\item oferă un serviciu sistemului: planificare, indexare de fișiere
 	\item nu are un terminal asociat
 	\item are ca proces părinte init
@@ -1648,19 +1646,21 @@ syslog     450     1  0 oct05 ?        00:00:00 /usr/sbin/rsyslogd -n
 [...]
 \end{screen}
 
+\begin{note}[Aplicații grafice interactive]
 Aplicațiile din mediul grafic nu au un terminal asociat dar nu le putem numi
 procese daemon întrucât au o interfață (grafică) de interacțiune cu
 utilizatorul, deci sunt procese interactive.
+\end{note}
 
 \subsection{Detașarea de terminal}
-\label{sec:process-interactivitate-detasare}
+\label{sec:process:detach}
 
-În mod uzual procesele daemon sunt create la pornirea sistemului, în general de
+În general, procesele daemon sunt create la pornirea sistemului, de
 procesul init. Pe lângă serviciile pornite de init/sistem, un utilizator poate
 decide să transforme un proces în proces daemon: neinteractiv, detașat de
 terminal. În felul acesta un utilizator va permite unui proces să ruleze
-independent de shell-ul curent iar dacă shell-ul curent este închis, acel proces
-continuă să ruleze. Numim această acțiune daemonizarea unui proces.
+independent de shellul curent iar dacă shellul curent este închis, acel proces
+continuă să ruleze. Numim această acțiune \textbf{daemonizarea unui proces}.
 
 Un caz de utilizare pentru daemonizarea unui proces este rularea unei comenzi
 complexe la distanță. Să presupunem că ne dorim să pornim o descărcare de fișier
@@ -1668,31 +1668,27 @@ prin Bittorrent pe un server la distanță, accesat prin SSH. Vom urma pașii:
 
 \begin{enumerate}
 	\item Ne conectăm prin SSH la serverul de la distanță.
-	\item Pornim procesul bittorrent detașat de terminal.
-	\item Închidem conexiunea la shell-ul curent. Procesul bittorrent
-		continuă execuția.
-	\item Ulterior ne reconectăm prin SSH și putem investiga rularea
-		procesului.
+        \item Pornim procesul \cmd{bittorrent} detașat de terminal.
+        \item Închidem conexiunea la shellul curent. Procesul \cmd{bittorrent} continuă execuția.
+	\item Ulterior ne reconectăm prin SSH și putem investiga rularea procesului.
 \end{enumerate}
 
-Partea dificilă este punctul 3 în care închiderea shell-ului nu duce la
-închiderea execuției procesului bittorrent. Pentru a realiza acest lucru sunt
+Partea dificilă este punctul 3 în care închiderea shellului nu duce la
+închiderea execuției procesului \cmd{bittorrent}. Pentru a realiza acest lucru sunt
 două opțiuni:
 
 \begin{itemize}
-	\item Daemonizarea procesului bittorrent: rulare în background, detașat
-		de terminal
-	\item Folosirea unui utilitar care să creeze o sesiune de terminal
-		detașabilă în care procesul rulează în continuare interactiv
+  \item Daemonizarea procesului \cmd{bittorrent}: rulare în background, detașat de terminal
+  \item Folosirea unui utilitar care să creeze o sesiune de terminal detașabilă în care procesul rulează în continuare interactiv
 \end{itemize}
 
 În prima categorie sunt utilitarele \cmd{nohup}, \cmd{disown}, despre care vom discuta în
 continuare. În a doua categorie sunt utilitarele \cmd{screen}, \cmd{tmux}, \cmd{byobu}, \cmd{dtach}
 despre care vom discuta în
-\labelindexref{Secțiunea}{sec:process-interactivitate-screen}.
+\labelindexref{Secțiunea}{sec:process:screen-tmux}.
 
 \subsubsection{nohup, disown}
-\label{sec:process-interactivitate-detasare-nohup}
+\label{sec:process:nohup-disown}
 
 Utilitarele \cmd{nohup} și \cmd{disown} permit daemonizarea unui proces pornit din shell.
 Strict tehnic, după cum vom vedea, procesele create astfel nu sunt daemoni pentru că nu
@@ -1703,8 +1699,8 @@ de daemonizare.
 
 Pentru a înțelege funcționarea utilitarelor \cmd{nohup} și \cmd{disown}, e nevoie de
 cunoașterea pașilor din momentul închiderii unui proces shell. Atunci când
-terminalul aferent unui shell este închis, shell-ul își încheie, de asemenea, execuția.
-Atunci shell-ul trimite semnalul \texttt{SIGHUP} proceselor aflate în background, iar
+terminalul aferent unui shell este închis, shellul își încheie, de asemenea, execuția.
+Atunci shellul trimite semnalul \texttt{SIGHUP} proceselor aflate în background, iar
 procesele își încheie execuția la primirea acestui semnal. Pentru a preveni ca
 un proces aflat în background să își încheie execuția în momentul închiderii
 terminalului, trebuie ca acesta să ignore semnalul \texttt{SIGHUP}.
@@ -1715,9 +1711,9 @@ Pentru ignorarea semnalului \texttt{SIGHUP} de un proces, putem folosi utilitaru
 Comanda \cmd{nohup} prefixează o altă comandă care creează un proces ce ignoră
 semnalul \texttt{SIGHUP}. În \labelindexref{Listing}{lst:process:nohup} rulăm comanda \cmd{sleep 100} folosind
 utilitarul \cmd{nohup}.
-Acum procesul \cmd{sleep} nou creat va ignora semnalul \texttt{SIGHUP} și închiderea
-terminalului și shell-ului nu va duce la încheierea execuției sale. După
-închiderea shell-ului, procesul este adoptat de init, care devine noul părinte
+Acum procesul \cmd{sleep} nou creat va ignora semnalul \texttt{SIGHUP}; închiderea
+terminalului și shellului nu va duce la încheierea execuției sale. După
+închiderea shellului, procesul este adoptat de init, care devine noul părinte
 al procesului.
 
 \begin{screen}[caption={Ignorarea semnalului SIGHUP},label={lst:process:nohup}]
@@ -1731,10 +1727,10 @@ student@uso:~$
 Întrucât procesul rulat sub \cmd{nohup} va pierde controlul terminalului, nu poate
 folosi terminalul pentru ieșirea standard sau ieșirea de eroare standard. Dacă
 nu precizăm explicit redirectare, ieșirea standard și ieșirea de eroare standard
-vor fi redirectate în fișierul nohup.out. Altfel, putem explicit preciza locul
+vor fi redirectate în fișierul \file{nohup.out}. Altfel, putem explicit preciza locul
 unde dorim redirectarea ieșirii standard și ieșirii de eroare standard, de multe
 ori fiind vorba de \file{/dev/null}. În \labelindexref{Listing}{lst:process:nohup-dev-null} rulăm un client Bittorrent
-folosind \cmd{nohup} cu redirectarea ieșirii standard și a ieșirii de eroare standard
+(cu utilitarul \cmd{transmission-cli}) folosind \cmd{nohup} cu redirectarea ieșirii standard și a ieșirii de eroare standard
 în \file{/dev/null}.
 
 \begin{screen}[caption={Ignorarea semnalului nohup și detașarea de terminal},label={lst:process:nohup-dev-null}]
@@ -1747,11 +1743,11 @@ student@uso:~$ nohup transmission-cli ubuntu-18.04.1-desktop-amd64.iso.torrent >
 \end{screen}
 
 Dacă am uitat să pornim un proces folosind comanda \cmd{nohup}, putem în continuare
-configura shell-ul să nu îi trimită acestuia semnalul \texttt{SIGHUP} folosind comanda
+configura shellul să nu îi trimită acestuia semnalul \texttt{SIGHUP} folosind comanda
 \cmd{disown}. Practic comanda \cmd{nohup} afectează procesul nou creat și acesta ignoră
-semnalul \texttt{SIGHUP}, pe când comanda \cmd{disown} afectează shell-ul și nu trimite
+semnalul \texttt{SIGHUP}, pe când comanda \cmd{disown} afectează shellul și nu trimite
 semnalul unui proces din background.
-În \labelindexref{Listing}{lst:process:disown} folosim comanda \cmd{disown} iar procesul aflat în background va dispărea din lista de job-uri. Acest proces va fi persistent și după încheierea procesului shell.
+În \labelindexref{Listing}{lst:process:disown} folosim comanda \cmd{disown} iar procesul aflat în background va dispărea din lista de joburi. Acest proces va fi persistent și după încheierea procesului shell.
 
 \begin{screen}[caption={Detașarea de shell folosind disown},label={lst:process:disown}]
 student@uso:~$ transmission-cli ubuntu-18.04.1-desktop-amd64.iso.torrent > /dev/null 2>&1
@@ -1764,10 +1760,11 @@ student@uso:~$ jobs
 [1]+  Running                 transmission-cli ubuntu-18.04.1-desktop-amd64.iso.torrent > /dev/null 2>&1 &
 student@uso:~$ disown
 student@uso:~$ jobs
+student@uso:~$
 \end{screen}
 
 \subsection{screen, tmux, byobu, dtach}
-\label{sec:process-interactivitate-screen}
+\label{sec:process:screen-tmux}
 
 Folosirea \cmd{nohup} și \cmd{disown} are dezavantajul pierderii interactivității. Se
 creează procese daemon, detașate de terminal și care rulează în background.
@@ -1775,10 +1772,10 @@ Uneori avem nevoie să rulăm o aplicație interactivă de la care să ne
 ,,deconectăm'' și la care să ne reconectăm din nou. Acest lucru îl putem realiza
 folosind utilitarele \cmd{screen}, \cmd{tmux}, \cmd{byobu} sau \cmd{dtach}.
 
-\cmd{screen}, \cmd{tmux}, \cmd{byobu} sunt numite multiplexoare de terminal. Au două roluri:
+\cmd{screen}, \cmd{tmux}, \cmd{byobu} sunt numite \textbf{multiplexoare de terminal}. Au mai multe funcționalități cele mai utile fiind
 posibilitatea creării de ,,subferestre de terminal'' într-o singură sesiune și
 posibilitatea detașării de la sesiunea de terminal și apoi reatașarea la
-aceasta. În acest capitol ne interesează al doilea rol. Când pornim utilitarele
+aceasta. În acest capitol ne interesează al doilea rol. Când pornim oricare dintre utilitare
 se creează o sesiune de terminal de la care ne putem detașa și la care apoi ne
 putem reatașa. \labelindexref{Listing}{lst:process:tmux} conține un exemplu de folosire a \cmd{tmux} pentru a crea o
 sesiune de terminal și apoi pentru a ne detașa de la ea.
@@ -1804,19 +1801,19 @@ de la terminal. Uzual, urmăm pașii de mai jos:
 	\item Se poate, ulterior, realizare reconectarea la terminal.
 \end{enumerate}
 
-Shell-ul în care a fost pornit terminalul \cmd{screen}, \cmd{tmux} sau \cmd{byobu} poate fi
+Shellul în care a fost pornit terminalul \cmd{screen}, \cmd{tmux} sau \cmd{byobu} poate fi
 închis, terminalul rămânând activ. Apoi din alt shell se poate face
 reconectarea. Acest lucru este foarte util pentru scenariul precizat mai sus, al
 pornirii unui client Bittorrent la distanță, într-o conexiune SSH.
 
-În \labelindexref{Tabelul}{table:cli-tmux-screen-byobu} sunt prezentate cele mai frecvente comenzi \cmd{tmux}, \cmd{byobu} și echivalentul
-lor \cmd{screen}. \cmd{tmux} și \cmd{byobu} sunt aplicații mai bogate în funcționalități și le
-recomandăm în defavoarea screen. De avut în vedere că multe opțiuni pot fi personalizate.
+În \labelindexref{Tabelul}{table:cli-tmux-screen-byobu} sunt prezentate cele mai frecvente comenzi pentru \cmd{tmux}, \cmd{byobu} și \cmd{screen}. \cmd{tmux} și \cmd{byobu} sunt aplicații mai bogate în funcționalități și le
+recomandăm în defavoarea \cmd{screen}. De avut în vedere că multe opțiuni pot fi personalizate.
 
 \begin{table}[!htb]
+\scriptsize
 \caption{Comparație de comenzi de multiplexor de terminal}
 \begin{center}
-	\begin{tabular}{ p{0.30\textwidth} p{0.20\textwidth} p{0.20\textwidth} p{0.20\textwidth} }
+	\begin{tabular}{ p{0.20\textwidth} p{0.23\textwidth} p{0.23\textwidth} p{0.23\textwidth} }
 	\toprule
                 \textbf{funcționalitate} & \textbf{tmux} & \textbf{byobu} & \textbf{screen} \\
 	\midrule
@@ -1826,7 +1823,7 @@ recomandăm în defavoarea screen. De avut în vedere că multe opțiuni pot fi 
 	\midrule
           listare sesiuni & \texttt{tmux list-sessions} & \texttt{byobu list-sessions} & \texttt{screen -ls} \\
 	\midrule
-          reatașare sesiune & \texttt{tmux attach $[$session-name$]$} & \texttt{tmux attach $[$session-name$]$} & \texttt{screen -r $[$session-id$]$} \\
+          reatașare sesiune & \texttt{tmux attach $[$session-name$]$} & \texttt{byobu attach $[$session-name$]$} & \texttt{screen -r $[$session-id$]$} \\
 	\midrule
           schimbare fereastră & \texttt{Ctrl+b \textless{}window-id>} & \texttt{F3, F4} & \texttt{Ctrl+a \textless{}window-id>} \\
 	\midrule
@@ -1839,9 +1836,9 @@ recomandăm în defavoarea screen. De avut în vedere că multe opțiuni pot fi 
 
 Dacă ne interesează strict rularea unei sesiuni de terminal, nu și partea de
 multiplexare și subferestre, putem folosi comanda \cmd{dtach}. Comanda creează o
-sesiune de terminal și rulează o comandă în cadrul ei (uzual shell-ul) și apoi
-ne putem deconecta din acea sesiune. \labelindexref{Listing}{lst:process:dtach} conține un exemplu de folosire a comenzii \cmd{dtach}; 
-detalii găsiți în pagina de manual a comenzii. În prima comandă din \labelindexref{Listing}{lst:process:dtach} creăm o sesiune shell nouă folosind socket-ul numit \texttt{this_socket}. Apoi, în cadrul sesiunii deschise, folosim combinația de taste \texttt{Ctrl+\textbackslash{}} pentru a ne detașa. Apoi a doua comandă ne permite reconectarea la sesiunea shell deschisă.
+sesiune de terminal și rulează o comandă în cadrul ei (uzual shellul) și apoi
+ne putem deconecta din acea sesiune. \labelindexref{Listing}{lst:process:dtach} conține un exemplu de folosire a comenzii \cmd{dtach};
+detalii găsiți în pagina de manual a comenzii. În prima comandă din \labelindexref{Listing}{lst:process:dtach} creăm o sesiune shell nouă folosind socket-ul numit \texttt{this\_socket}. Apoi, în cadrul sesiunii deschise, folosim combinația de taste \texttt{Ctrl+\textbackslash{}} pentru a ne detașa. Apoi a doua comandă ne permite reconectarea la sesiunea shell deschisă.
 
 \begin{screen}[caption={Folosirea dtach},label={lst:process:dtach}]
 student@uso:~$ dtach -c this_socket /bin/bash
@@ -1851,7 +1848,7 @@ student@uso:~$ dtach -a this_socket
 \end{screen}
 
 \section{Investigarea proceselor}
-\label{sec:process-investigare}
+\label{sec:process:investigation}
 
 Procesele folosesc resursele sistemului de calcul pentru realizarea unor
 acțiuni. Se poate întâmpla să avem nevoie să eliberăm resurse sau ca sistemul
@@ -1865,24 +1862,24 @@ listare a proceselor sau monitorizare a lor. Utilitarul \cmd{ps} este utilitar d
 în Linux. Pentru monitorizare folosim \cmd{top} sau \cmd{htop}. Pe Windows putem folosi Task
 Manager sau Process Explorer.
 
-Utilitarele top și htop oferă o interfață interactivă de afișare periodică a
+Utilitarele \cmd{top} și \cmd{htop} oferă o interfață interactivă de afișare periodică a
 informațiilor despre procese. Sun utile pentru o privire dinamică a proceselor
 sistemului. Simpla rulare a comenzilor \cmd{top} sau \cmd{htop} duce la afișarea unui ecran.
 În acel ecran putem folosi apoi diferite opțiuni pentru a selecta anumite
 procese sau anumite atribute sau moduri de sortare.
 
-Am prezentat exemple și screenshot-uri de folosire a acestor utilitare în \labelindexref{Secțiunea}{sec:process-resurse-atribute}.
+Am prezentat exemple și screenshoturi de folosire a acestor utilitare în \labelindexref{Secțiunea}{sec:process:attributes}.
 
-Similar utilitarelor top și htop de investigare a folosirii procesorului și
+Similar utilitarelor \cmd{top} și \cmd{htop} de investigare a folosirii procesorului și
 memoriei, putem folosi utilitarul \cmd{iotop} pentru investigarea folosirii discului (doar în mod privilegiat, este nevoie de folosirea \cmd{sudo}):
 
 \begin{screen}
 student@uso:~$ sudo iotop
 \end{screen}
 
-Atunci când dorim să investigăm fișierele sau sockeții deschiși de un proces,
+Atunci când dorim să investigăm fișierele sau socketurile deschise de un proces,
 putem folosi utilitarul \cmd{lsof}, pe care l-am prezentat și în
-\labelindexref{Secțiunea}{sec:process-fisiere} Pentru monitorizarea folosirii
+\labelindexref{Secțiunea}{sec:process:files} Pentru monitorizarea folosirii
 resurselor unui proces, în afara utilitarului \cmd{top}, putem folosi utilitarele din
 familia \cmd{sysstat}. Acestea afișează periodic informații despre procentul de
 procesor ocupat, procentul de memorie ocupată, utilizarea de I/O. Monitorizarea
@@ -1894,7 +1891,7 @@ cum vom prezenta în \labelindexref{Capitolul}{chapter:sec}.
 program/proces putem urmări apelurile de bibliotecă sau de sistem realizate.
 Pentru aceasta folosim, respectiv, utilitarele \cmd{ltrace} și \cmd{strace}. Utilitarele pot
 rula un program pentru a crea un proces nou și a-l investiga, și pot fi atașate
-unui proces existent. De exemplu, pentru a vedea ce operații de scriere realizează comanda \cmd{ls} folosim comenzile \cmd{strace} și \cmd{ltrace} ca în \labelindexref{Listing}{lst:process:trace}.
+unui proces existent. De exemplu, pentru a vedea ce operații de scriere realizează comanda \cmd{ls}, folosim comenzile \cmd{strace} și \cmd{ltrace} ca în \labelindexref{Listing}{lst:process:trace}.
 
 \begin{screen}[caption={Investigarea apelurilor de sistem și de blbliotecă},label={lst:process:trace}]
 student@uso:~$ strace -e write ls > /dev/null
@@ -1911,7 +1908,7 @@ ls->fwrite_unlocked("Pictures", 1, 8, 0x7feee1c54760)                           
 \end{screen}
 
 \section{Anexă: Sistemul de fișiere procfs}
-\label{sec:process-proc}
+\label{sec:process:proc}
 
 În Linux, utilitarele de lucru cu procese își iau informațiile din sistemul de
 fișiere virtual \textbf{procfs}, accesibil din \file{/proc}. Un sistem de fișiere virtual este
@@ -1953,13 +1950,13 @@ Dintre intrările din \labelindexref{Listing}{lst:process:proc} selectăm câtev
   \item \cmd{exe}: legătură simbolică către executabilul aferent procesului
   \item \cmd{fd}: director cu tabela de descriptori de fișiere a procesului
   \item \cmd{status}: informații despre starea procesului
-  \item \cmd{task}: director cu firele de execuție (\textit{thread}-urile) procesului
+  \item \cmd{task}: director cu firele de execuție (\textit{threadurile}) procesului
 \end{itemize}
 
 Un utilizator poate, astfel, obține informații despre procese fie investigând
-fișierele din \file{/proc} fie folosind utilitarele \cmd{ps}, \cmd{pgrep}, \cmd{top}, \cmd{lsof}. De avut în
-vedere că \file{/proc} se găsește doar pe Linux, pe când utilitarele sunt disponibile,
-într-un mod sau altul pe majoritatea Unix-urilor.
+fișierele din \file{/proc}, fie folosind utilitarele \cmd{ps}, \cmd{pgrep}, \cmd{top}, \cmd{lsof}. De avut în
+vedere că \file{/proc} se găsește doar în Linux, pe când utilitarele sunt disponibile,
+într-un mod sau altul în majoritatea Unix-urilor.
 
 În afara directoarelor aferente, \file{/proc} deține și alte intrări pentru investigarea sistemului. De exemplu:
 
@@ -1977,47 +1974,47 @@ Aceste intrări sunt consultate de utilitare puse la dispoziție în Linux precu
 \cmd{mount}, \cmd{lscpu}, \cmd{free}, \cmd{df}, \cmd{lsblk} și altele.
 
 \begin{note}[Folosire procfs]
-Dacă, pe Linux, doriți să aflați sau să prelucrați informații despre
+Dacă, în Linux, doriți să aflați sau să prelucrați informații despre
 procese sau despre sistem și utilitarele existente nu vă ajută, puteți să
   urmăriți intrările din \file{/proc}.
 \end{note}
 
 \section{Anexă: Internele pornirii unui proces. Loading}
-\label{sec:process-loading}
+\label{sec:process:loading}
 
 Un proces este creat de un alt proces (de obicei un proces shell) dintr-un
 program executabil. Spunem că procesul este un program aflat în execuție, iar
 programul este imaginea procesului. Crearea unui proces dintr-un program
-executabil poartă numele de \textbf{loading}. Momentul în care are loc loading-ul se
+executabil poartă numele de \textbf{loading}. Momentul în care are loc loadingul se
 cheamă \textbf{load time}. Iar crearea procesului este facilitată de o componentă a
 sistemului de operare numită \textbf{loader}.
 
-Loader-ul interpretează programul executabil, apoi alocă memoria aferentă pentru
+Loaderul interpretează programul executabil, apoi alocă memoria aferentă pentru
 proces și copiază din programul executabil datele și instrucțiunile în memorie.
-În același timp loader-ul face legătura cu biblioteci dinamice și le încarcă la
+În același timp loaderul face legătura cu biblioteci dinamice și le încarcă la
 nevoie în memorie, pentru rularea corespunzătoare a procesului. După aceasta se
 stabilește ca procesul să înceapă execuția de la \textbf{punctul de intrare} (\textit{entry
 point}) care este o funcție similară funcției \texttt{main()}. Apoi procesul începe să ruleze din momentul în care este planificat pe
 un procesor.
 
-Acțiunille unui loader sunt prezentate în \labelindexref{Figura}{fig:process-loader}.
+Acțiunille unui loader sunt prezentate în \labelindexref{Figura}{fig:process:loader}.
 
 \begin{figure}[!htbp]
 	\centering
 	\def\svgwidth{0.8\textwidth}
 	\includesvg{chapters/04-process/img/loader-actions.svg}
 	\caption{Acțiunile loader-ului}
-	\label{fig:process-loader}
+	\label{fig:process:loader}
 \end{figure}
 
 Două sau mai multe procese pot fi rulate din același program executabil.
 Funcționarea acestora diferă însă încă de la load-time în funcție de doi
 factori: argumentele programului și variabilele de mediu. Argumentele sunt
 transmise de utilizator/shell în momentul rulării unei comenzi. Iar variabilele
-de mediu sunt variabile proprii shell-ului care sunt moștenite de procesele
+de mediu sunt variabile proprii shellului care sunt moștenite de procesele
 create de acesta. Mai multe informații vom prezenta în \labelindexref{Capitolul}{chapter:cli}.
 
-Astfel, pe lângă pașii descriși mai sus, loader-ul plasează pe stiva procesului
+Astfel, pe lângă pașii descriși mai sus, loaderul plasează pe stiva procesului
 (accesibil funcției \texttt{main()}) argumentele programului și variabilele de mediu.
 Acestea sunt apoi disponibile programului din argumentele funcției \texttt{main()} (în C). Găsiți o exemplificare a investigării variabilelor de mediu într-un program C în codul sursă de suport al cărții în directorul \file{code/04-process/main-args/}.
 
@@ -2026,7 +2023,7 @@ Aici procesul folosește resursele sistemului, comunică cu exteriorul și cu al
 procese și poate fi monitorizat și controlat de utilizator.
 
 \section{Sumar}
-\label{sec:process-sumar}
+\label{sec:process:summary}
 
 Pe un sistem de calcul procesele sunt necesare pentru realizarea acțiunilor
 utilizatorilor.
@@ -2041,7 +2038,7 @@ Procesele au atribute de identificare, de contabilizare a resurselor folosite ș
 de stabilire a ce resurse și cât de mult pot folosi. Un proces aparține unui
 utilizator și poate folosi resursele acelui utilizator.
 
-Există o ierarhie de procese, shell-ul creează majoritatea proceselor. Un proces
+Există o ierarhie de procese, shellul creează majoritatea proceselor. Un proces
 poate avea mai multe procese copil și un singur proces părinte. În vârful
 ierarhiei este procesul init.
 
@@ -2063,5 +2060,5 @@ Este util să monitorizăm procesele și resursele folosite de acestea pentru a
 detecta abuzuri de folosire a resurselor sau pentru a identifica sursele de
 încărcare ale sistemului.
 
-Pe Linux, informațiile despre procese se găsesc în sistemul de fișiere procfs. De
+În Linux, informațiile despre procese se găsesc în sistemul de fișiere procfs. De
 aici sunt interpretate de utilitarele de lucru cu procese.

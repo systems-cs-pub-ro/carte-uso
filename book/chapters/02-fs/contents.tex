@@ -1044,7 +1044,7 @@ Informații detaliate despre backupuri periodice folosind \cmd{rsync} vor fi pre
 \section{Redirectarea intrării sau ieșirii}
 \label{sec:fs:redirect}
 
-Așa cum veți întâlni în \labelindexref{Secțiunea}{sec:process-fisiere-description}, o aplicație care rulează folosește niște intrări speciale (standard); în folosirea acestor intrări și a altor fișiere folosește descriptori de fișiere.
+Așa cum veți întâlni în \labelindexref{Secțiunea}{sec:process:fd}, o aplicație care rulează folosește niște intrări speciale (standard); în folosirea acestor intrări și a altor fișiere folosește descriptori de fișiere.
 
 Există 3 \textbf{fișiere speciale} utilizate de programele în execuție pentru a interacționa cu utilizatorii:
 
@@ -1179,7 +1179,7 @@ fstat(3, {st_mode=S_IFREG|0644, st_size=91329, ...}) = 0
   }
 \end{table}
 
-Detalii despre internele redirectării și ce se întâmplă la nivelul unei aplicații găsiți în \labelindexref{Secțiunea}{sec:process-fisiere-redirectare}.
+Detalii despre internele redirectării și ce se întâmplă la nivelul unei aplicații găsiți în \labelindexref{Secțiunea}{sec:process:redirect}.
 
 \section{Tipuri de sisteme de fișiere}
 \label{sec:fs:types}
@@ -1237,7 +1237,7 @@ Sistemele de fișiere pot fi clasificate după locul în care datele sunt stocat
 \end{center}
 \end{table}
 
-Sistemele de fișiere virtuale (precum \texttt{procfs}) sunt sisteme care nu au suport fizic pe disc. Accesul prin comenzi la aceste sisteme de fișiere duce de obicei la date care se găsesc în memorie. Despre sistemul de fișiere \texttt{procfs} vor fi prezentate detalii în \labelindexref{Secțiunea}{sec:process-proc}.
+Sistemele de fișiere virtuale (precum \texttt{procfs}) sunt sisteme care nu au suport fizic pe disc. Accesul prin comenzi la aceste sisteme de fișiere duce de obicei la date care se găsesc în memorie. Despre sistemul de fișiere \texttt{procfs} vor fi prezentate detalii în \labelindexref{Secțiunea}{sec:process:proc}.
 
 \subsection{Integritatea datelor}
 \label{sec:fs:integrity}
