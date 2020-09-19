@@ -1,8 +1,8 @@
 \chapter{Utilizatori}
-\label{chapter:users}
+\label{chapter:user}
 
 Sistemul de operare oferă resurse pe care utilizatorii să le poată folosi. În
-mod tipic utilizatorii creează procese (aplicații) care folosesc resursele
+mod obișnuit, utilizatorii creează procese (aplicații) care folosesc resursele
 sistemului (procesor, memorie, I/O) pentru a realiza o activitate.
 Utilizatorii stochează și transferă date în/din sistemul de calcul, de exemplu
 folosind sistemul de fișiere sau rețeaua.
@@ -16,7 +16,7 @@ cont de utilizator pe un sistem de calcul.
 Sistemele de operare moderne sunt în general multi-utilizator
 (\textit{multi-user}), adică permit existența mai multor conturi de utilizator
 pe un sistem și rularea simultană a mai multor procese aparținând diferiților
-utilizatori. Mai mulți utilizatori pot simultan rula shell-uri și porni comenzi
+utilizatori. Mai mulți utilizatori pot simultan deschide shelluri locale și rula comenzi
 pe un sistem prin conexiuni de rețea la sistem, precum folosind SSH
 \abbrev{SSH}{Secure shell}, despre care vom discuta în \labelindexref{Capitolul}{chapter:sec}. Un
 cont de utilizator este separat de alt cont astfel că procesele unui utilizator
@@ -40,7 +40,7 @@ general, pentru a garanta securitatea sistemului.
 Din punctul de vedere al sistemului de operare, un cont de utilizator este
 reprezentat de obicei sub forma unui nume de utilizator (\textit{username}).
 Acesta este un șir de caractere cu care este identificat utilizatorul. Pentru a
-permite accesul în sistem acestui nume de utilizator i se asociază o formă de
+permite accesul în sistem, acestui nume de utilizator i se asociază o formă de
 autentificare, precum parolă sau autentificare biometrică. Dacă utilizatorul
 fizic furnizează în interfața de acces la sistem un nume de utilizator valid și
 forma de autentificare corectă, i se permite accesul în sistem.
@@ -60,22 +60,22 @@ aplicației. Toate numele de utilizator și formele de autentificare valide sunt
 menținute într-o bază de date. Când un utilizator fizic transmite aceste date,
 sistemul sau aplicația le verifică dacă sunt prezente în baza de date; în
 caz afirmativ se oferă accesul la resurse. Acest mod de folosire este descris în
-\labelindexref{Figura}{fig:user-acces-bd}
+\labelindexref{Figura}{fig:user:db-access}.
 
 \begin{figure}[htbp]
 	\centering
-	\def\svgwidth{\columnwidth}
+	\def\svgwidth{0.9\columnwidth}
 	\includesvg{chapters/05-user/img/acces-bd.svg}
-	\caption{Acces bază de date și resurse}
-	\label{fig:user-acces-bd}
+        \caption{Bază de date de access}
+        \label{fig:user:db-access}
 \end{figure}
 
-În continuare ne vom referi în special la conturile de utilizator de sistem, cu
+În continuare ne vom referi în general la conturile de utilizator de sistem, cu
 precizarea că multe concepte se aplică și la conturile de utilizator de
 aplicație.
 
 \section{Utilizatori de sistem}
-\label{sec:users-sistem}
+\label{sec:user:system-users}
 
 Așa cum am precizat mai sus conturile de utilizator de sistem sunt folosite
 pentru a obține acces la resursele gestionate de sistemul de operare. Conturile
@@ -90,22 +90,22 @@ la o parte din sistemul de fișiere numită \textbf{directorul home al utilizato
 reprezentând directorul personal al acestuia. Fiecare sistem de operare are, în
 general, un astfel de director pentru utilizatorul de sistem (\file{/home/student} pe
 Linux, \file{C:\textbackslash{}Users\textbackslash{}student} pe Windows,
-\file{/Users/student} pe macOS). Apoi utilizatorul poate crea procese care pot
-accesa fișiere sau alte resurse ale utilizatorului.
+\file{/Users/student} pe macOS). După autentificare, utilizatorul poate crea procese care apoi
+accesează fișiere sau alte resurse ale utilizatorului.
 
 \subsection{Permisiuni și privilegii}
-\label{sec:users-sistem}
+\label{sec:user:permissions}
 
-Odată autentificat în sistem (sau în aplicație), un utilizator are anumite
+Odată autentificat în sistem, un utilizator are anumite
 permisiuni de folosire a sistemului. De exemplu, un utilizator obișnuit poate
 crea fișiere doar în directorul său home, dar nu poate instala pachete. Un
 alt utilizator poate avea permisiunea de a instala pachete. Sistemul de operare,
-pe baza unor configurări aferente, permite unui utilizator anumite acțiuni.
+pe baza unor configurări, permite unui utilizator anumite acțiuni.
 
 În unele sisteme și aplicații există noțiunea de rol. Un utilizator poate avea
 un rol care îi conferă anumite permisiuni. De exemplu, rolul de \texttt{Administrator}
 înseamnă, în general, într-o instalare de platformă precum Moodle\footnote{\url{http://www.moodle.org}}, permisiuni complete în cadrul platformei; un rol de
-\texttt{Profesor} înseamnă controlul conținutului pe cursurile aferente; un rol de
+\texttt{Profesor} înseamnă controlul conținutului cursurilor; un rol de
 \texttt{Student} înseamnă posibilitatea accesării conținutului.
 
 În general, sistemele oferă anumite permisiuni utilizatorilor.
@@ -148,15 +148,15 @@ Linux/Unix este numit \texttt{root}, în vreme ce pe sistemele Windows este numi
 privilegiate, se accesează contul de \textit{superuser}.
 
 \section{Utilizatorul administrativ (superuser)}
-\label{sec:users-superuser}
+\label{sec:user:superuser}
 
-Utilizatorul administrativ, \textit{superuser}-ul, deține controlul complet al
+Utilizatorul administrativ, \textit{superuserul}, deține controlul complet al
 sistemului. Toate operațiile privilegiate, inaccesibile unui utilizator obișnuit
 neprivilegiat, sunt permise acestuia. Un utilizator obișnuit va accesa acest
 cont special (dacă știe parola sau forma de autentificare a acestuia) pentru a
 realiza o operație privilegiată.
 
-Faptul că superuser-ul are acces complet la sistem îl face foarte periculos de
+Faptul că superuserul are acces complet la sistem îl face foarte periculos de
 folosit. Dacă un atacator obține acces neautorizat la contul de superuser,
 atunci sistemul este compromis. La fel, dacă rulăm greșit o comandă
 privilegiată, aceasta poate afecta iremediabil sistemul.
@@ -167,7 +167,7 @@ Comanda \cmd{rm -fr /} este celebră pentru că poate fi folosită pentru a ște
 
 De aceea, sistemele de operare moderne pun la dispoziția utilizatorul metode de
 realizare de acțiuni privilegiate care să nu necesite accesarea directă a
-contului privliegiat. Astfel că, în folosirea superuser-ului, există următoarele
+contului privliegiat. Astfel că, în folosirea superuserului, există următoarele
 recomandări de folosire:
 
 \begin{itemize}
@@ -182,7 +182,7 @@ recomandări de folosire:
 
 Sistemele de operare moderne oferă opțiuni alternative de executare a acțiunilor
 privilegiate. În Linux/Unix se poate folosi \cmd{sudo}, bitul setuid, capabilități; le
-vom prezenta în \labelindexref{Secțiunea}{sec:users-superuser-altroot}.
+vom prezenta în \labelindexref{Secțiunea}{sec:user:altroot}.
 
 În Windows, începând cu Windows Vista se folosește \textit{User Account Control}
 (UAC\abbrev{UAC}{User Acount Control}), prezentat în \labelindexref{Figura}{fig:user:uac}. \textit{User Account Control} este o tehnologie
@@ -192,23 +192,26 @@ li se permite rularea de acțiuni privilegiate prin User Account Control.
 
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=0.8\textwidth]{chapters/05-user/img/screenshot.png}
+  \includegraphics[width=0.6\textwidth]{chapters/05-user/img/uac.png}
   \caption{User Account Control}
   \label{fig:user:uac}
-  % TODO: screenshot cu user account control
 \end{figure}
 
 \subsection{Utilizatorul administrativ în Linux (root)}
-\label{sec:users-superuser-root}
+\label{sec:user:root}
 
 Utilizatorul administrativ în Linux este numit \texttt{root}. Utilizatorul \texttt{root}
 are acces complet la resursele sistemului și poate face orice operații. În
 general, accesarea contului de \texttt{root} este evidențiată în linia de comandă prin
-prezența simbolului \# (diez) în cadrul promptului ca în \labelindexref{lst:user:prompt-types}.
+prezența simbolului \texttt{\#} (\textit{diez}) în cadrul promptului ca în \labelindexref{Listing}{lst:user:prompt-types}.
 
 \begin{screen}[caption={Prompt neprivilegiat și privilegiat (root)},label={lst:user:prompt-types}]
-TODO: exemplu prompt de utilizator neprivilegiat si root
+student@uso:~$ sudo su
+[sudo] password for student:
+root@uso:/home/student#
 \end{screen}
+
+În secvența de mai sus, utilizatorul inițial este \texttt{student}, iar promptul său este marcat de simbolul \texttt{\$} (\textit{dolar}) la finalul promptului. Atunci când folosim comanda \texttt{sudo su} și după ce introducem parola utilizatorului \texttt{student}, obținem un shell privilegiat, marcat de simbolul \texttt{\#} (\textit{diez}) la finalul promptului.
 
 Accesarea unui cont (inclusiv a contului \texttt{root}) se poate face în două moduri:
 
@@ -228,11 +231,19 @@ privilegiate și apoi revenirea în consola utilizatorului neprivilegiat folosin
 comanda \cmd{exit}, așa cum este ilustrat în \labelindexref{Listing}{lst:user:root-access}.
 
 \begin{screen}[caption={Accesarea contului root},label={lst:user:root-access}]
-TODO: listare de comenzi folosind su pentru obtinerea unui cont de root si instalarea unui pachet (operatie privilegiata)
+student@uso:~$ su
+Password:
+root@uso:/home/student# apt install deluge
+[...]
+root@uso:/home/student# exit
+exit
+student@uso:~$
 \end{screen}
 
+În \labelindexref{Listing}{lst:user:root-access} am folosind comanda \texttt{su} urmată de introducerea parolei utilizatorului \texttt{root} pentru a accesa contul privilegiat. Acum putem executa acțiuni privilegiate, precum instalarea pachetului \texttt{deluge}. La final folosim comanda \texttt{exit} pentru a încheia sesiunea curentă privilegiată și a reveni la un shell de utilizator neprivilegiat (\texttt{student}).
+
 \subsection{Utilitarul su}
-\label{sec:users-superuser-su}
+\label{sec:user:su}
 
 Utilitarul \cmd{su} este folosit pentru schimbarea utilizatorului, nu neapărat în
 \texttt{root}. Dacă \cmd{su} nu primește nici un argument sau primește ca argument \texttt{root}, va
@@ -240,22 +251,31 @@ schimba utilizatorul în \texttt{root}. Altfel va schimba în utilizatorul primi
 parametru. Așa cum apare în \labelindexref{Listing}{lst:user:su}, la rularea comenzii \cmd{su} se cere parola noului utilizator; fără
 introducerea parolei acelui utilizator nu se poate schimba utilizatorul.
 
-\begin{screen}[caption={Schimbarea contului de utilizator folosind comanda su},label={lst:user:su-pass}]
-TODO: listare de comenzi cu su
-TODO: listare cu su - sau su -l
-TODO: listare cu su -c
+\begin{screen}[caption={Schimbarea contului de utilizator folosind comanda su},label={lst:user:su}]
+student@uso:~$ su teacher
+Password:
+teacher@uso:/home/student$ exit
+student@uso:~$ su - teacher
+Password:
+teacher@uso:~$ logout
+student@uso:~$ su -l teacher
+Password:
+teacher@uso:~$ logout
+student@uso:~$ su -l teacher -c whoami
+Password:
+teacher
 \end{screen}
 
-Liniile TODO-TODO din \labelindexref{Listing}{lst:user:su} prezintă o formă uzuală de rulare a comenzii \cmd{su} cu opțiunea \texttt{-l} sau \texttt{-}; această formă schimbă mediul de
-lucru al viitoarei comenzi, incluzând directorul home.
+Liniile 4 și 7 din \labelindexref{Listing}{lst:user:su} prezintă o formă uzuală de rulare a comenzii \cmd{su} cu opțiunea \texttt{-l} sau \texttt{-}; această formă schimbă mediul de
+lucru al viitoarei comenzi, incluzând directorul home. După cum se poate observa, există o diferență între linia \texttt{3} și liniile \texttt{6} și \texttt{9}, care folosesc opțiunile \texttt{-} și \texttt{-l}: după schimbarea utilizatorului se schimbă și directorul curent în directorul home al noului utilizator. Acest lucru se observă în promptul expus de shell.
 
 Utilitarul \cmd{su} permite rularea unei comenzi fără a deschide un shell prin
-intermediul opțiunii \texttt{-c}, ca în liniile TODO din \labelindexref{Listing}{lst:user:su}. În felul acesta se rulează direct comanda primită ca
+intermediul opțiunii \texttt{-c}, ca în liniile \texttt{10--12} din \labelindexref{Listing}{lst:user:su}. În felul acesta se rulează direct comanda primită ca
 argument și apoi se revine la shell-ul utilizatorului curent, fără a se deschide
 un shell al noului utilizator.
 
 \subsection{Alternative la root în Linux}
-\label{sec:users-superuser-altroot}
+\label{sec:user:altroot}
 
 Așa cum am precizat anterior, utilizatorul \texttt{root} deține controlul întregului
 sistem. Dacă un atacator obține acces neautorizat la contul \texttt{root}, sistemul va fi
@@ -269,33 +289,31 @@ Bitul setuid (\textit{set-user-id-on-execution}) este un bit asociat unui fișie
 executabil. Atunci când executăm acel fișier procesul nou creat nu va aparține
 utilizatorului care a rulat comanda, ci utilizatorului care deține fișierul, în
 mod obișnuit utilizatorul \texttt{root}. \labelindexref{Listing}{lst:user:setuid} conține un exemplu de
-folosire a bitului \texttt{setuid}.
+folosire a bitului \texttt{setuid}. Observăm în permisiunile fișierelo \texttt{/bin/ping}, \texttt{/bin/su}, \texttt{/usr/bin/sudo} prezența literei \texttt{s}, însemnând bitul setuid.
 
 \begin{screen}[caption={Bitul set-user-id-on-execution (setuid)},label={lst:user:setuid}]
-TODO: exemplu cu setuid
+student@uso:~$ ls -l /bin/ping
+-rwsr-xr-x 1 root root 64424 Mar 10  2017 /bin/ping
+student@uso:~$ ls -l /bin/su
+-rwsr-xr-x 1 root root 44664 Jan 25  2018 /bin/su
+student@uso:~$ ls -l /usr/bin/sudo
+-rwsr-xr-x 1 root root 149080 Jan 31  2020 /usr/bin/sudo
 \end{screen}
 
 Prezența bitului \texttt{setuid} pe un executabil deținut de \texttt{root} (de exemplu \cmd{passwd}, \cmd{su},
 \cmd{sudo}) înseamnă că acele comenzi pot fi rulate de orice utilizator pentru a crea
-procese privilegiate. Vom explica în \labelindexref{Secțiunea}{sec:users-auth}
+procese privilegiate. Vom explica în \labelindexref{Secțiunea}{sec:user:auth}
 de ce aceste comenzi sunt privilegiate.
 
-Bitul de \texttt{setuid} are dezavantajul că procesul nou creat rulează cu privilegii
+Bitul \texttt{setuid} are dezavantajul că procesul nou creat rulează cu privilegii
 complete de \texttt{root}. Dacă acel proces este exploatat, atacatorul va deține un
 proces cu permisiuni de \texttt{root} și sistemul va fi compromis. De aceea, pe Linux
 există un alt mecanism numit \textbf{capabilități}. Capabilitățile sunt un concept de
 bază în sisteme de operare însemnând atașarea unui privilegiu
 unui agent (unui obiect). De exemplu, pe sistemele Linux moderne, executabilul
-aferent utilitarului ping are atașată capabilitatea \texttt{cap_net_raw}. Această
+aferent utilitarului ping are atașată capabilitatea \texttt{cap\_net\_raw}. Această
 capabilitate înseamnă că procesele create din executabilul \cmd{ping} vor avea
 privilegiul de a crea resurse privilegiate necesare utilitarului \cmd{ping}.
-
-%
-%\begin{note}[NOTĂ]
-%Discuția despre sockeți raw depășește cadrul acestei cărți. Pentru detalii
-%consultați TODO: Richard Stevens: Unix Network Programming.
-%\end{note}
-%
 
 Spre deosebire de bitul de setuid, capabilitățile sunt granulare. Privilegiile
 aferente contului \texttt{root} sunt separate în capabilități. Un proces are atașate, la
@@ -306,10 +324,10 @@ capabilitățile, nu la toate privilegiile contului de \texttt{root}.
 Exemple de capabilități pe Linux sunt:
 
 \begin{itemize}
-  \item \texttt{cap_net_raw}: permite folosirea de sockeți speciali (numiți \textit{raw})
-  \item \texttt{cap_net_admin}: permite configurarea rețelei
-  \item \texttt{cap_fowner}: permite configurare de permisiuni pe orice fișier
-  \item \texttt{cap_kill}: permite transmiterea de semnale către orice procese
+  \item \texttt{cap\_net\_raw}: permite folosirea de sockeți speciali (numiți \textit{raw})
+  \item \texttt{cap\_net\_admin}: permite configurarea rețelei
+  \item \texttt{cap\_fowner}: permite configurare de permisiuni pe orice fișier
+  \item \texttt{cap\_kill}: permite transmiterea de semnale către orice procese
 \end{itemize}
 
 \begin{note}[Documentație despre capabilități]
@@ -319,7 +337,7 @@ granulare. Pentru mai multe detalii urmăriți pagina de manual, folosind comand
 \end{note}
 
 \subsubsection{Utilitarul sudo}
-\label{sec:users-superuser-altroot-sudo}
+\label{sec:user:sudo}
 
 Bitul \texttt{setuid} și capabilitățile sunt mecanisme care oferă privilegii unor
 executabile și a proceselor pornite din acestea sau, în cazul capabilităților, și mai granular, unor procese. Nu permit ușor atașarea de privilegii unui utilizator
@@ -334,32 +352,39 @@ precizarea explicită a ce comenzi să fie rulate. Spre deosebire de utilitarul
 utilizator, ci a utilizatorului curent.
 
 În mod tipic, când rulăm \cmd{sudo}, îl succedăm cu comanda pe care vrem să o
-executăm ca \texttt{root}, ca în exemplele din \labelindexref{Listing}{lst:user:sudo}.
+executăm ca \texttt{root}, ca în exemplele din \labelindexref{Listing}{lst:user:sudo}. Liniile \texttt{1} și \texttt{3} arată rularea unei comenzi în mod privilegiat prin prefixarea acesteia cu \texttt{sudo}.
+Adesea dorim obținerea unui shell de \texttt{root} pentru a rula mai multe comenzi
+privilegiate. Pentru aceasta rulăm tipic una dintre cele două comenzi de pe liniile \texttt{4--8} din \labelindexref{Listing}{lst:user:sudo}: \texttt{sudo su} sau \texttt{sudo bash}.
 
 \begin{screen}[caption={Folosirea sudo},label={lst:user:sudo}]
-TODO: exemple de folosire sudo pentru actiuni privilegiate
-TODO: rulare sudo su si sudo bash
+student@uso:~$ sudo apt install inkscape
+[...]
+student@uso:~$ sudo adduser dean
+student@uso:~$ sudo su
+root@uso:/home/student# exit
+student@uso:~$ sudo bash
+root@uso:~# exit
+student@uso:~$
 \end{screen}
-
-Adesea dorim obținerea unui shell de \texttt{root} pentru a rula mai multe comenzi
-privilegiate. Pentru aceasta rulăm tipic una dintre cele două comenzi de pe liniile TODO-TODO din \labelindexref{Listing}{lst:user:sudo}.
-
 
 Utilitarul \cmd{sudo} permite unui utilizator să ruleze comenzi ca \texttt{root} (sau ca alt
 utilizator) printr-o configurație din fișierul de configurare
-\file{/etc/sudoers}. \labelindexref{Listing}{lst:user:sudoers} conține secvențe din fișierul de configurare \file{/etc/sudoers}. De exemplu, conform liniei de configurare TODO utilizatorul \texttt{student} poate rula comenzi ca \texttt{root}.
+\file{/etc/sudoers}. \labelindexref{Listing}{lst:user:sudoers} conține secvențe din fișierul de configurare \file{/etc/sudoers}. De exemplu, conform liniei de configurare \texttt{2} utilizatorul \texttt{student} poate rula comenzi ca \texttt{root}.
 
 \begin{screen}[caption={Secvențe din fișierul /etc/sudoers},label={lst:user:sudoers}]
-* exemplu de linie din /etc/sudoers
+# User privilege specification
+student ALL=(ALL:ALL) ALL
+teacher ALL=(ALL:ALL) /bin/cat
 
 # Allow members of group admin to execute any command.
 %admin  ALL=(ALL) ALL
+
 # Allow members of group sudo to execute any command.
 %sudo        ALL=(ALL) ALL
 \end{screen}
 
-În mod uzual, fișierul \file{/etc/sudoers} are linii de configurare care permit
-utilizatorilor din grupul admin sau grupul \cmd{sudo} să poată rula comenzi ca \texttt{root}, precum liniile TODO-TODO din \labelindexref{Listing}{lst:user:sudoers}.
+În mod obișnuit, fișierul \file{/etc/sudoers} are linii de configurare care permit
+utilizatorilor din grupul \texttt{admin} sau grupul \cmd{sudo} să poată rula comenzi ca \texttt{root}, precum liniile \texttt{5} și \texttt{9} din \labelindexref{Listing}{lst:user:sudoers}.
 
 În această situație, dacă dorim ca un utilizator să poată rula comenzi ca \texttt{root} îl
 adăugăm în grupul admin sau în grupul \cmd{sudo}, nu este nevoie de editarea
@@ -373,8 +398,17 @@ poate duce la compromiterea sistemului.
 \end{note}
 
 \cmd{sudo} permite configurări mai avansate în fișierul \file{/etc/sudoers}; de exemplu linia
-de configurare TODO din \labelindexref{Listing}{lst:user:sudoers} permite utilizatorul alin rularea doar a comenzii cat
-ca \texttt{root}, permițând vizualizarea tuturor fișierelor din sistem.
+de configurare \texttt{3} din \labelindexref{Listing}{lst:user:sudoers} permite utilizatorului \texttt{teacher} rularea doar a comenzii \texttt{cat}
+ca \texttt{root}, permițând vizualizarea tuturor fișierelor din sistem, ca în \labelindexref{Listing}{lst:user:sudo-command}. Utilizatorul \texttt{teacher} nu poate vizualiza conținutul fișierului \file{/etc/sudoers} (folosind comanda \cmd{cat}). Dar poate dacă prefixează cu \texttt{sudo} comanda de afișare.
+
+\begin{screen}[caption={Rularea unei comenzi privilegiate cu sudo},label={lst:user:sudo-command}]
+teacher@uso:~$ cat /etc/sudoers
+cat: /etc/sudoers: Permission denied
+teacher@uso:~$ sudo cat /etc/sudoers
+[sudo] password for teacher:
+#
+# This file MUST be edited with the 'visudo' command as root.
+\end{screen}
 
 Fișierul \file{/etc/sudoers} este un fișier important în sistem și de aceea există mai
 multe restricții și convenții pentru accesarea acestuia. Astfel, deoarece
@@ -395,19 +429,19 @@ care nu avem de obicei acces). De exemplu, dacă dorim să activăm rutarea pe u
 sistem Linux, vom rula, ca \texttt{root}, comanda:
 
 \begin{screen}
-echo 1 > /proc/sys/net/ipv4/ip_forward
+student@uso:~$ echo 1 > /proc/sys/net/ipv4/ip_forward
 \end{screen}
 
 În momentul în care folosim un utilizator neprivilegiat dar care poate folosi \cmd{sudo},
 am fi tentați să încercăm să rulăm comanda:
 
 \begin{screen}
-sudo echo 1 > /proc/sys/net/ipv4/ip_forward
+student@uso:~$ sudo echo 1 > /proc/sys/net/ipv4/ip_forward
 \end{screen}
 
 Acest lucru însă nu funcționează pentru că, deși comanda \cmd{echo 1} rulează ca \texttt{root},
 comanda \cmd{sudo}, al cărei output este redirectat, rulează ca utilizator
-neprivilegiat. Adică redirectarea cu operatorul \texttt{>} are loc pentru comanda \cmd{sudo},
+neprivilegiat. Adică redirectarea cu operatorul \texttt{$>$} are loc pentru comanda \cmd{sudo},
 rulată de utilizator neprivilegiat, și nu va reuși.
 
 Soluția la această situație este să nu folosim redirectare ci să folosim o
@@ -415,23 +449,23 @@ comandă care primește ca argument acel fișier, iar comanda să ruleze privile
 ca \cmd{sudo}. Adică soluția este folosirea comenzii \cmd{tee}, ca mai jos:
 
 \begin{screen}
-echo 1 | sudo tee /proc/sys/net/ipv4/ip_forward
+student@uso:~$ echo 1 | sudo tee /proc/sys/net/ipv4/ip_forward
 \end{screen}
 
 În forma de mai sus comanda \cmd{tee} este rulată ca \texttt{root} prin intermediul
 utilitarului \cmd{sudo}. Comanda scrie informația primită la intrarea standard (adică
-\texttt{1}) în fișierul primit ca argument (\file{/proc/sys/netc/ipv4/ip_forward}) în mod
+\texttt{1}) în fișierul primit ca argument (\file{/proc/sys/netc/ipv4/ip\_forward}) în mod
 privilegiat.
 
 \begin{note}[Folosire \cmd{tee} pentru a scrie într-un fișier privilegiat]
 Atunci când dorim să scriem într-un fișier privilegiat fără a accesa o
 consolă de \texttt{root}, folosim comanda tee cu \cmd{sudo}. Comanda \cmd{tee} are și opțiunea \texttt{-a}
-pentru adăuga informație la sfârșitul fișierului (\textit{append}); în mod obișnuit
+pentru adăuga informație la sfârșitul fișierului (\textit{append}); în mod obișnuit,
 comanda suprascrie conținutul fișierului primit ca argument.
 \end{note}
 
 \section{Operații cu utilizatori}
-\label{sec:users-ops}
+\label{sec:user:operations}
 
 În sistemul de operare un utilizator este reprezentat de procesele și resursele
 acestuia. Procesele și resursele (de exemplu fișierele) sunt marcate ca
@@ -441,24 +475,36 @@ Pentru un utilizator fizic (o persoană), un utilizator este identificat printr-
 nume de utilizator (\textit{username}); atunci când ne autentificăm, pentru acces folosim
 numele de utilizator. La nivelul sistemului de operare, însă, un utilizator este
 identificat printr-un număr, numit în mod uzual \textit{user identifier} sau
-\textbf{UID}, similar cum un proces este identificat printr-un process identifier (PID).
+\textbf{UID}, similar cum un proces este identificat printr-un \textit{process identifier} (PID).
 
 Procesele și fișierele unui utilizator au în atributele acestora câmpul UID.
 Pentru procese, acest câmp oferă informații despre ce operații asupra resurselor
 sistemului de operare pot fi executate de proces, în timp ce câmpul UID al
 fișierelor identifică utilizatorul care le deține. În \labelindexref{Listting}{lst:user:print-uid} afișăm
 UID-ul proceselor folosind comanda \cmd{ps} și listăm UID-ul unui fișier folosind
-comand \cmd{stat}.
+comand \cmd{stat}. Observăm că UID-ul utilizatorului \texttt{student} este \texttt{1000}: liniile \texttt{3}, \texttt{4} și \texttt{9}.
 
 \begin{screen}[caption={Afișare UID pentru procese și fișiere},label={lst:user:print-uid}]
-TODO: listare cu ps si stat
+student@uso:~$ ps -o pid,ppid,uid,user,cmd
+  PID  PPID   UID USER     CMD
+24104 24103  1000 student  -bash
+24610 24104  1000 student  ps -o pid,ppid,uid,user,cmd
+student@uso:~$ stat vm-actions-log.txt
+  File: vm-actions-log.txt
+  Size: 4827      	Blocks: 16         IO Block: 4096   regular file
+Device: 801h/2049d	Inode: 659107      Links: 1
+Access: (0644/-rw-r--r--)  Uid: ( 1000/ student)   Gid: ( 1000/ student)
+Access: 2020-08-08 16:32:44.086193999 +0300
+Modify: 2018-08-21 14:37:44.316527432 +0300
+Change: 2018-08-21 14:37:44.320529432 +0300
+ Birth: -
 \end{screen}
 
 De obicei, un proces poate avea acces la o resursă dacă UID-ul procesului este
 marcat în cadrul resursei ca având acces.
 
 \subsection{Atribute ale utilizatorilor. Informații despre utilizatori}
-\label{sec:users-ops-atribute}
+\label{sec:user:attributes}
 
 Un utilizator are atribute care îi permit identificarea în sistem,
 autentificarea și accesul la resurse. Așa cum am precizat mai sus, cele mai
@@ -466,7 +512,7 @@ importante două atribute sunt numele de utilizator (\textit{username}) și iden
 de utilizator (\textit{user identifier}, UID).
 
 Un utilizator de sistem are acces la un director home (un subdirector în
-sistemul de fișiere unde are acces complet). Pentru utilizatorul student acesta
+sistemul de fișiere unde are acces complet). Pentru utilizatorul \texttt{student} acesta
 este, în mod uzual, \file{/home/student} (pe Linux), \file{/Users/student} (pe macOS) sau
 \file{C:\textbackslash{}Users\textbackslash{}student} (pe Windows).
 
@@ -485,14 +531,14 @@ administrator care dorește ca mai mulți utilizatori să aibă acces la o anumi
 resursă va crea un grup, va adăuga utilizatorii la acel grup și va oferi
 grupului permisiuni asupra resursei respective. Un grup poate conține 0 sau mai
 mulți utilizatori, iar un utilizator poate aparține unui sau mai multor grupuri,
-așa cum este indicat în \labelindexref{Figura}{fig:user-multi-user}.
+așa cum este indicat în \labelindexref{Figura}{fig:user:multi-user}.
 
 \begin{figure}[htbp]
 	\centering
 	\def\svgwidth{\columnwidth}
 	\includesvg{chapters/05-user/img/multi-user.svg}
         \caption{Asocierea utilizatori la grupuri}
-	\label{fig:user-multi-user}
+	\label{fig:user:multi-user}
 \end{figure}
 
 De exemplu, în Windows, există grupul \texttt{Administrators}. Un utilizator care este
@@ -501,10 +547,10 @@ parte din grupul \texttt{Administrators} are acces complet la sistem.
 Aceste atribute sunt definite în fișiere de configurare sau de tip bază de date.
 Aceste atribute pot fi, de obicei, vizualizate de orice utilizator, dar
 modificate doar de un utilizator privilegiat. Mai multe informații prezentăm în
-\labelindexref{Secțiunea}{sec:users-ops-atribute}.
+\labelindexref{Secțiunea}{sec:user:attributes}
 
 \subsection{Obținerea de informații despre utilizatori}
-\label{sec:users-ops-info}
+\label{sec:user:user:info}
 
 Informațiile despre utilizatori (nume de utilizator, identificator de
 utilizator, director home) pot fi obținute folosind interfețele grafice
@@ -512,21 +558,21 @@ aferente unui sistem de operare sau distribuții sau folosind utilitare în lini
 de comandă.
 
 În Windows, pentru obținerea de informații despre utilizatori folosim în mod
-obișnuit interfața grafică din Control Panel -> TODO -> TODO.
+obișnuit interfața grafică: \textit{Control Panel $\rightarrow$ User Accounts $\rightarrow$ User Accounts}.
 
 \subsubsection{Obținerea de informații despre utilizatori în Linux}
-\label{sec:users-ops-info-linux}
+\label{sec:user:linux-user-info}
 
 În Linux, informațiile despre utilizatori sunt stocate în fișiere de configurare
 dedicate. În scenarii de administrare mai complexe (care nu fac subiectul
 acestei cărți), aceste informații sunt stocate într-o baza de date. Fișierele de
 configurare în care sunt reținute informații despre utilizatori sunt indicate în
-\labelindexref{Tabelul}{table:user-info}.
+\labelindexref{Tabelul}{table:user:info-files}.
 
 \begin{table}[!htb]
 \caption{Informații despre utilizatori}
 \begin{center}
-  \begin{tabular}{ p{0.20\textwidth} p{0.35\textwidth} p{0.35\textwidth} }
+  \begin{tabular}{ p{0.18\textwidth} p{0.22\textwidth} p{0.55\textwidth} }
 	\toprule
                 \textbf{Fișier} & \textbf{Rol} & \textbf{Informații} \\
 	\midrule
@@ -537,7 +583,7 @@ configurare în care sunt reținute informații despre utilizatori sunt indicate
                 \file{/etc/group} & informații grupuri & nume grup, GID, utilizatori aferenți \\
 	\bottomrule
 	\end{tabular}
-        \label{table:user-info}
+        \label{table:user:info-files}
 \end{center}
 \end{table}
 
@@ -545,17 +591,30 @@ Fișierele de configurare au formă tabelară cu coloane: fiecare linie este o
 intrare în tabel iar fiecare coloană este un atribut al acelei intrări. Mai jos
 sunt prezentate câteva linii din fiecare fișier de configurare și explicațiile
 pentru rolul acestora. Detalii despre fișierele \file{/etc/passwd} și \file{/etc/shadow}
-prezentăm în \labelindexref{Secțiunea}{sec:users-auth}.
+prezentăm în \labelindexref{Secțiunea}{sec:user:auth}.
 
 Putem obține informații despre utilizatori direct din fișierele de configurare
 de mai sus, așa cum facem în \labelindexref{Listing}{lst:user:config-files}.
 
 \begin{screen}[caption={Investigarea fișierelor de configurare pentru utilizatori},label={lst:user:config-files}]
-TODO: snippet cu comenzi de investigatii de fisiere de configurare de utilizatori
+student@uso:~$ grep student /etc/passwd
+student:x:1000:1000:Student User,,,:/home/student:/bin/bash
+student@uso:~$ grep student /etc/group
+adm:x:4:syslog,student
+cdrom:x:24:student
+sudo:x:27:student
+dip:x:30:student
+plugdev:x:46:student
+lpadmin:x:116:student
+student:x:1000:
+sambashare:x:126:student
+student@uso:~$ sudo grep student /etc/shadow
+[sudo] password for student:
+student:$6$VNq0Dxyc$[...].:17749:0:99999:7:::
 \end{screen}
 
 Altfel, informații despre utilizatori obținem folosind utilitare precum cele din
-\labelindexref{Tabelul}{table:user-tools-files}. Aceste utilitare investighează fișierele de configurare din \labelindexref{Tabelul}{table:user-info}.
+\labelindexref{Tabelul}{table:user:tools-files}. Aceste utilitare investighează fișierele de configurare din \labelindexref{Tabelul}{table:user:info-files}.
 
 \begin{table}[!htb]
 \caption{Utilitare de investigare utilizatori}
@@ -575,19 +634,47 @@ Altfel, informații despre utilizatori obținem folosind utilitare precum cele d
                 \cmd{finger}, \cmd{pinky} & informații complete despre un utilizator & \file{/etc/passwd}, \file{/etc/group} \\
 	\bottomrule
 	\end{tabular}
-        \label{table:user-tools-files}
+        \label{table:user:tools-files}
 \end{center}
 \end{table}
 
 În \labelindexref{Listing}{lst:user:commands} sunt câteva exemple de folosire ale comenzilor de mai sus.
 
 \begin{screen}[caption={Investigarea utilizatorilor prin comenzi},label={lst:user:commands}]
-TODO: xemple de folosire id, groups, users, whoami, who, finger, pinky
+student@uso:~$ id
+uid=1000(student) gid=1000(student) groups=1000(student),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),116(lpadmin),126(sambashare)
+student@uso:~$ id teacher
+uid=1001(teacher) gid=1001(teacher) groups=1001(teacher)
+student@uso:~$ groups
+student adm cdrom sudo dip plugdev lpadmin sambashare
+student@uso:~$ groups teacher
+teacher : teacher
+student@uso:~$ users
+student student
+student@uso:~$ whoami
+student
+student@uso:~$ su - teacher -c whoami
+Password:
+teacher
+student@uso:~$ finger
+Login     Name           Tty      Idle  Login Time   Office     Office Phone
+student   Student User  *:0             Sep  4 17:42 (:0)
+student   Student User   pts/0          Sep 19 20:05 (192.168.56.1)
+student@uso:~$ finger teacher
+Login: teacher        			Name: Teacher User
+Directory: /home/teacher            	Shell: /bin/bash
+Never logged in.
+No mail.
+No Plan.
+student@uso:~$ pinky
+Login    Name                 TTY      Idle   When             Where
+student  Student User        ?:0       ?????  2020-09-04 17:42 :0
+student  Student User         pts/0           2020-09-19 20:05 192.168.56.1
 \end{screen}
 
 În Linux, anumiți utilizatori au configurat ca shell de login \cmd{/bin/false} sau
 \cmd{/bin/nologin}. Aceasta înseamnă că acești utilizatori nu se pot autentifica în
-sistem și obține un shell de login. Acești utilizatori mai sunt numiți și
+sistem și nu pot obține un shell de login. Acești utilizatori mai sunt numiți și
 utilizatori de sistem, iar ceilalți sunt numiți utilizatori interactivi.
 Utilizatorii de sistem sunt cei care pot avea procese dar nu pot obține shell de
 login. Cei interactivi pot obține shell și pot rula apoi comenzi. La o instalare
@@ -595,11 +682,26 @@ simplă, o foarte bună parte dintre utilizatorii unui sistem Linux sunt
 utilizatori de sistem, așa cum se observă în \labelindexref{Listing}{lst:user:system-users}.
 
 \begin{screen}[caption={Afișarea utilizatorilor de sistem},label={lst:user:system-users}]
-TODO: afisare utilizatori din /etc/passwd care au shell de login /bin/false sau /bin/nologin
+student@uso:~$ grep /bin/false /etc/passwd
+speech-dispatcher:x:111:29:Speech Dispatcher,,,:/var/run/speech-dispatcher:/bin/false
+whoopsie:x:112:117::/nonexistent:/bin/false
+hplip:x:118:7:HPLIP system user,,,:/var/run/hplip:/bin/false
+gnome-initial-setup:x:120:65534::/run/gnome-initial-setup/:/bin/false
+gdm:x:121:125:Gnome Display Manager:/var/lib/gdm3:/bin/false
+vboxadd:x:999:1::/var/run/vboxadd:/bin/false
+
+student@uso:~$ grep nologin /etc/passwd
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+[...]
 \end{screen}
 
 \subsection{Gestiunea utilizatorilor și grupurilor}
-\label{sec:users-ops-groups}
+\label{sec:user:groups}
 
 Gestiunea utilizatorilor și grupurilor, însemnând crearea, ștergerea sau
 modificarea utilizatorilor și grupurilor poate fi făcută, în mod normal, doar de
@@ -624,31 +726,28 @@ un utilizator privilegiat. Operațiile de gestiune a utilizatorilor sunt:
 Aceste operații de gestiune duc la modificarea fișierelor de configurare sau de
 tip baze de date din sistem care rețin informațiile despre grupuri și
 utilizatori. Operațiile sunt realizate prin utilitare specifice fie din
-interfața grafică fie din linie de comandă, ca mai jos.
+interfața grafică fie din linie de comandă, ca în \labelindexref{Listing}{lst:user:user-group-linux}.
 
 \subsection{Gestiunea utilizatorilor și grupurilor în Windows}
-\label{sec:users-ops-windows}
-
 În Windows, gestiunea utilizatorilor și grupurilor o facem din interfața din
-panoul de control. Aceasta este uzual accesibilă din Control Panel -> TODO ->
-TODO, ca în \labelindexref{Figura}{fig:user-windows-users}.
+panoul de control. Aceasta este uzual accesibilă din \textit{Control Panel $\rightarrow$ User Accounts $\rightarrow$ User Accounts}, ca în \labelindexref{Figura}{fig:user:windows-users}.
 
 \begin{figure}[!htbp]
 	\centering
-        \includegraphics[width=0.8\textwidth]{chapters/05-user/img/screenshot.png}
+        \includegraphics[width=\textwidth]{chapters/05-user/img/windows-user-accounts.png}
         \caption{Gestiunea utilizatorilor în Windows}
-        \label{fig:user-windows-users}
+        \label{fig:user:windows-users}
 \end{figure}
 
 Pe lângă interfața grafică, uzuală, Windows oferă și utilitare în linia de
 comandă pentru gestiunea utilizatorilor folosind interfața \cmd{netsh}\footnote{\url{https://docs.microsoft.com/en-us/windows-server/networking/technologies/netsh/netsh-contexts}}.
 
 \subsubsection{Gestiunea utilizatorilor și grupurilor în Linux}
-\label{sec:users-ops-groups-linux}
+\label{sec:user:user-group-linux}
 
 În Linux există interfețe grafice pentru gestiunea utilizatorilor în funcție de
 mediul desktop folosit (GNOME, KDE, XFCE etc.) În mod tradițional, gestiunea se
-face în linia de comandă cu ajutorul utilitarelor specifice, indicate în \labelindexref{Tabelul}{table:user-tools-manage}.
+face în linia de comandă cu ajutorul utilitarelor specifice, indicate în \labelindexref{Tabelul}{table:user:tools-manage}.
 
 \begin{table}[!htb]
 \caption{Utilitare de gestiune a utilizatorilor}
@@ -676,13 +775,13 @@ face în linia de comandă cu ajutorul utilitarelor specifice, indicate în \lab
                 schimbare parolă & \cmd{passwd} & \file{/etc/shadow} \\
 	\bottomrule
 	\end{tabular}
-        \label{table:user-tools-manage}
+        \label{table:user:tools-manage}
 \end{center}
 \end{table}
 
 Pe distribuțiile bazate pe Debian (Debian, Ubuntu, Linux Mint etc.) există un
 set de utilitare mai ușor de folosit care înglobează comenzile de mai sus,
-indicate în \labelindexref{Tabelul}{table:user-debian-wrapper}
+indicate în \labelindexref{Tabelul}{table:user:debian-wrapper}
 
 \begin{table}[!htb]
 \caption{Utilitare wrapper Debian}
@@ -700,7 +799,7 @@ indicate în \labelindexref{Tabelul}{table:user-debian-wrapper}
                 \cmd{delgroup} & \cmd{groupdel} \\
 	\bottomrule
 	\end{tabular}
-        \label{table:user-debian-wrapper}
+        \label{table:user:debian-wrapper}
 \end{center}
 \end{table}
 
@@ -711,8 +810,8 @@ poate fi folosit pentru modificarea grupurilor din care face parte un utilizator
 primar și pentru modificarea grupurilor secundare.
 
 Un utilizator neprivilegiat are posibilitatea de a-și modifica anumite
-informații proprii: shell-ul de login, numele de utilizator, datele personale,
-parola. Pentru aceasta folosește utilitarele din \labelindexref{Tabelul}{table:user-self-manage}.
+informații proprii: shellul de login, numele de utilizator, datele personale,
+parola. Pentru aceasta folosește utilitarele din \labelindexref{Tabelul}{table:user:self-manage}.
 
 \begin{table}[!htb]
 \caption{Utilitare pentru modificare informații proprii}
@@ -728,24 +827,57 @@ parola. Pentru aceasta folosește utilitarele din \labelindexref{Tabelul}{table:
                 schimbare parolă & \cmd{passwd} \\
 	\bottomrule
 	\end{tabular}
-        \label{table:user-self-manage}
+        \label{table:user:self-manage}
 \end{center}
 \end{table}
 
 Un grup care este grupul primar al unui utilizator nu poate fi șters. Întâi trebuie să fie șters utilizatorul, apoi grupul.
 
-În \labelindexref{Listing}{lst:user:user-group} este prezentat un scenariu de lucru cu utilizatori și grupuri în care sunt
+În \labelindexref{Listing}{lst:user:user-group-linux} este prezentat un scenariu de lucru cu utilizatori și grupuri în care sunt
 folosite comenzile specifice din Linux.
 
-\begin{screen}[caption={Gestiunea utilizatorilor și grupurilor în Linux},label={lst:sec:user-group}]
-TODO: snippet cu comenzi si apoi in continuare explicatiile pentru acestea
+\begin{screen}[caption={Gestiunea utilizatorilor și grupurilor în Linux},label={lst:user:user-group-linux}]
+student@uso:~$ sudo groupadd courses
+student@uso:~$ sudo adduser teacher courses
+Adding user `teacher' to group `courses' ...
+Adding user teacher to group courses
+Done.
+student@uso:~$ users teacher
+student@uso:~$ id teacher
+uid=1001(teacher) gid=1001(teacher) groups=1001(teacher),1002(courses)
+student@uso:~$ sudo adduser george
+[...]
+student@uso:~$ id george
+uid=1002(george) gid=1003(george) groups=1003(george)
+student@uso:~$ sudo adduser george courses
+Adding user `george' to group `courses' ...
+Adding user george to group courses
+Done.
+student@uso:~$ id george
+uid=1002(george) gid=1003(george) groups=1003(george),1002(courses)
+student@uso:~$ sudo deluser george courses
+Removing user `george' from group `courses' ...
+Done.
+student@uso:~$ id george
+uid=1002(george) gid=1003(george) groups=1003(george)
+student@uso:~$ sudo delgroup courses
+Removing group `courses' ...
+Done.
+student@uso:~$ id teacher
+uid=1001(teacher) gid=1001(teacher) groups=1001(teacher)
+student@uso:~$ sudo deluser george
+Removing user `george' ...
+Warning: group `george' has no more members.
+Done.
+student@uso:~$ id george
+id: 'george': no such user
 \end{screen}
 
 Gestiunea parolelor este o componentă critică a sistemului de operare și o vom
 prezenta în secțiunea de mai jos.
 
 \section{Autentificare. Gestiunea parolelor}
-\label{sec:users-auth}
+\label{sec:user:auth}
 
 Atunci când un utilizator dorește accesul la sistemul de operare trebuie să se
 autentifice. Autentificarea presupune, în mod tipic, furnizarea unui nume de
@@ -757,7 +889,7 @@ autentificare, autentificare cu cheie publică. În această secțiune vom preze
 doar autentificarea pe bază de parole.
 
 \subsection{Baza de date de parole}
-\label{sec:users-auth-pass}
+\label{sec:user:password-db}
 
 Pentru ca autentificarea să reușească, adică utilizatorului să îi fie permis
 accesul în sistem, trebuie ca numele de utilizator și parola să fie valide.
@@ -791,27 +923,29 @@ aceea parolele nu sunt reținute în format citibil (\textit{plain text}), ci su
 Dacă un atacator obține în mod nevalid accesul la baza de date de parole, acesta
 va trebui să decripteze parolele, lucru dificil de realizat. Atacuri celebre în
 lume au avut ca rezultat obținerea bazelor de date de
-parole\footnote{\url{https://en.wikipedia.org/wiki/List_of_data_breaches}}, deci
+parole\footnote{\url{https://en.wikipedia.org/wiki/List\_of\_data\_breaches}}, deci
 criptarea acestora e foarte importantă.
 
 În Linux, baza de date de utilizatori este reprezentată de fișierul \file{/etc/passwd}.
 Întrucât multe comenzi au nevoie de accesul la acest fișier pentru a obține
-UID-ul când se știe numele de utilizator sau pentru a afla shell-ul
+UID-ul când se știe numele de utilizator sau pentru a afla shellul
 utilizatorului curent, acest fișier nu poate reține parola. Dacă ar fi așa,
 orice comenzi uzuale ar putea obține parolele utilizatorilor. Baza de date de
 parole este reprezentată în Linux de fișierul \file{/etc/shadow}. Fișierul \file{/etc/shadow}
 poate fi accesat doar de utilizatori privilegiați așa cum putem vedea în \labelindexref{Listing}{lst:user:shadow-perm}.
 
 \begin{screen}[caption={Permisiuni de acces pe fișierele de parole},label={lst:user:shadow-perm}]
-TODO: secventa cu permisiuni /etc/passwd si /etc/shadow
-TODO: ls -l /etc/passwd, ls -l /etc/shadow
+student@uso:~$ ls -l /etc/passwd
+-rw-r--r-- 1 root root 2620 Sep 19 21:08 /etc/passwd
+student@uso:~$ ls -l /etc/shadow
+-rw-r----- 1 root shadow 1573 Sep 19 21:08 /etc/shadow
 \end{screen}
 
 O intrare în fișierul \file{/etc/shadow} conține numele de utilizator, parola criptată
 și informații legate de gestiunea parolei, așa cum se observă în \labelindexref{Listing}{lst:user:shadow}.
 
 \begin{screen}[caption={Conținutul fișierului /etc/shadow},label={lst:user:shadow}]
-TODO: Intrare din fisierul /etc/shadow
+student:$6$VNq0Dxyc$[...].:17749:0:99999:7:::
 \end{screen}
 
 Pentru informații detaliate despre formatul intrării și al parolei criptate,
@@ -824,7 +958,7 @@ Windows Registry și este, similar cu \file{/etc/shadow}, permis numai acțiunil
 definite. Similar cu \file{/etc/shadow}, parolele sunt reținute criptate.
 
 \subsection{Gestiunea parolelor}
-\label{sec:users-auth-pass-gestiune}
+\label{sec:user:manage-passwords}
 
 Un utilizator își poate gestiona parola proprie, iar un utilizator administrativ
 poate gestiona parola tuturor utilizatorilor. Gestiunea parolelor înseamnă în
@@ -841,29 +975,40 @@ acțiuni de gestiune a parolelor:
 \end{itemize}
 
 În Windows se folosește interfața grafică pentru gestiunea parolelor. Se
-accesează Control Panel -> User Accounts -> .. ca în \labelindexref{Figura}{fig:user-windows-password}.
+accesează \textit{Control Panel $\rightarrow$ User Accounts $\rightarrow$ User Accounts $\rightarrow$ Manage Accounts $\rightarrow$ Change an Account $\rightarrow$ Channge password} ca în \labelindexref{Figura}{fig:user:windows-password}.
 
 \begin{figure}[!htbp]
 	\centering
-        \includegraphics[width=0.8\textwidth]{chapters/05-user/img/screenshot.png}
+        \includegraphics[width=\textwidth]{chapters/05-user/img/windows-password.png}
         \caption{Gestiunea parolelor în Windows}
-        \label{fig:user-windows-password}
+        \label{fig:user:windows-password}
 \end{figure}
 
 În Linux, modul uzual de gestiune a parolei este prin linia de comandă folosind
 utilitarul \cmd{passwd}. Cu ajutorul utilitarului \cmd{passwd}, un utilizator neprivilegiat
 își poate gestiona parola proprie iar unul privilegiat parola tuturor
 utilizatorilor. Atunci când un utilizator neprivilegiat își gestionează parola
-folosind utilitarul passwd trebuie să introducă parola la promptul afișat. În \labelindexref{Listing}{lst:user:passwd}
+folosind utilitarul \cmd{passwd} trebuie să introducă parola la promptul afișat. În \labelindexref{Listing}{lst:user:passwd}
 avem exemple de folosire a comenzii \cmd{passwd} pentru gestiunea conturilor.
 
 \begin{screen}[caption={Gestiunea conturilor în Linux folosind passwd},label={lst:user:passwd}]
-TODO: exemple de folosire passwd
+student@uso:~$ passwd
+Changing password for student.
+(current) UNIX password:
+Enter new UNIX password:
+Retype new UNIX password:
+passwd: password updated successfully
+
+root@uso:~# passwd teacher
+Enter new UNIX password:
+Retype new UNIX password:
+passwd: password updated successfully
+root@uso:~#
 \end{screen}
 
 Expirarea parolelor și blocarea parolelor poate fi utilă pentru crearea de
 conturi temporare. Cineva primește un cont și apoi nu mai poate să acceseze prin
-parolă acel cont pentru că nu mai este parte a unui organizații, are de plătit o
+parolă acel cont pentru că nu mai este parte a unei organizații, are de plătit o
 sumă de bani sau altă situație.
 
 De avut în vedere că o parolă blocată nu înseamnă că acel cont nu poate fi
@@ -873,8 +1018,12 @@ dezactivăm acel cont și să nu mai poată fi folosit cu nici o formă de
 autentificare, putem folosi comanda \cmd{usermod} ca în \labelindexref{Listing}{lst:user:disable}.
 
 \begin{screen}[caption={Dezactivarea unui cont},label={lst:user:disable}]
-TODO: prompt, verify
-usermod --expirydate 1 alice
+student@uso:~$ sudo usermod --expiredate 1 teacher
+student@uso:~$ su - teacher
+Password:
+Your account has expired; please contact your system administrator
+su: Authentication failure
+student@uso:~$
 \end{screen}
 
 Comanda configurează contul să expire la \textit{1 ianuarie 1970} făcându-l, astfel,
@@ -886,12 +1035,12 @@ să creăm \texttt{100} de conturi pe un sistem cu anumite parole. Pentru aceast
 folosi utilitarul \cmd{chpasswd}, ca în \labelindexref{Listing}{lst:user:chpasswd}.
 
 \begin{screen}[caption={Schimbarea neinteractivă a parolei folosind chpasswd},label={lst:user:chpasswd}]
-TODO: exemplu chpasswd
+student@uso:~$ echo "teacher:woof2PhaiNiphooS" | sudo chpasswd
 \end{screen}
 
 Utilitarul \cmd{chpasswd} primește la intrarea standard linii de forma
 \texttt{username:password} și le schimbă în mod neinteractiv, folosibil în scripturi. Mai
-sus am schimbat parola utilizatorului \texttt{gabriel} la valoarea \texttt{Aethee9epiw8}.
+sus am schimbat parola utilizatorului \texttt{teacher} la valoarea \texttt{woof2PhaiNiphooS}.
 
 Dincolo de folosirea lor într-un sistem de operare, pentru o persoană, parolele
 sunt importante și trebuie avut grijă cum se folosesc. Așa cum vom discuta
@@ -916,17 +1065,17 @@ Pentru o gestiune corespunzătoare a parolelor există următoarele recomandări
                 precum utilitarul \cmd{pwgen}.
 	\item Nu notați parolele în clar pe hârtii sau în fișiere de unde pot fi
 		ușor citite.
-              \item Folosiți un utilitar de tipul \textit{password manager} care să rețină
+        \item Folosiți un utilitar de tipul \textit{password manager} care să rețină
 		parolele și să minimizeze riscul expunerii lor la un atacator.
 		În același timp să ajute să fie accesibile de pe dispozitive
 		multiple.
 \end{itemize}
 
 \subsection{Autentificare centralizată}
-\label{sec:users-auth-central}
+\label{sec:user:centralized-auth}
 
 De multe ori în cadrul unei organizații există mai multe tipuri de aplicații și
-interfețe pe care le folosiți: un site web, un wiki, un cont Linux, un site
+interfețe pe care le folosim: un site web, un wiki, un cont Linux, un site
 pentru cursuri, un sistem de gestiune a codului sursă. Este problematic pentru
 un utilizator să aibă un cont și o parolă diferită pentru fiecare acest tip de
 aplicație; utilizatorul poate uita din parole, poate le va nota undeva, sau le
@@ -934,15 +1083,14 @@ va face simple ca să le țină minte.
 
 Soluția la această situație este autentificarea centralizată. Autentificarea
 centralizată presupune existența unui serviciu de autentificare care gestionează
-baza de date de parole, serviciu accesat de diferitele aplicații, ca în \labelindexref{Figura}{fig:user-auth-central}.
+baza de date de parole, serviciu accesat de diferitele aplicații, ca în \labelindexref{Figura}{fig:user:centralized-auth}.
 
-%* Diagramă cu aplicații + serviciu de autentificare centralizată + bază de date parole
 \begin{figure}[htbp]
 	\centering
-	\def\svgwidth{\columnwidth}
+	\def\svgwidth{0.7\columnwidth}
 	\includesvg{chapters/05-user/img/auth-central.svg}
         \caption{Autentificare centralizată}
-	\label{fig:user-auth-central}
+        \label{fig:user:centralized-auth}
 \end{figure}
 
 În situația autentificării centralizate, un utilizator folosește același nume de
@@ -959,7 +1107,7 @@ subiectul acestei cărți. Important este înțelegerea nevoii de autentificare
 centralizată și principalele soluții pentru asigurarea acesteia.
 
 \section{Accesul la sistemul de fișiere}
-\label{sec:users-fs}
+\label{sec:user:fs-access}
 
 Conturile de utilizator sunt folosite în sistemul de operare pentru a separa
 resursele la care are acces fiecare utilizator. Una dintre cele mai folosite resurse
@@ -970,14 +1118,14 @@ are permisiuni complete.
 De exemplu, utilizatorul \texttt{ana} poate modifica fișierul \file{note.xls} dacă îi sunt
 asociate permisiuni de modificare a acelui fișier. La nivel conceptual, un agent
 sau un subiect are anumite permisiuni de acces al unei resurse sau un obiect,
-așa cum este descris în \labelindexref{Figura}{fig:user-agent-perm}.
+așa cum este descris în \labelindexref{Figura}{fig:user:user-file-perm}.
 
 \begin{figure}[htbp]
 	\centering
-	\def\svgwidth{\columnwidth}
+	\def\svgwidth{0.7\columnwidth}
 	\includesvg{chapters/05-user/img/agent-perm.svg}
-        \caption{Agenți și resurse}
-	\label{fig:user-agent-perm}
+        \caption{Utilizatori, fișiere, permisiuni}
+        \label{fig:user:user-file-perm}
 \end{figure}
 
 Schema de mai sus este o schemă generală. În cazul particular al secțiunii
@@ -986,25 +1134,24 @@ agentul este un proces aparținând unui utilizator. Spunem că un proces poate
 accesa un anumit fișier dacă utilizatorul căruia aparține procesul are
 permisiunile aferente la acel fișier.
 
-În sistemele de operare curente, informațiile despre permisiuni sunt reținute în
+În multe dintre sistemele de operare moderne, informațiile despre permisiuni sunt reținute în
 fiecare fișier. În cadrul fișierului se rețin metadate, printre care și
 permisiunile de acces pentru utilizatori. Modul în care sunt structurate aceste
 metadate ține de sistemul de operare.
 
 \subsection{Gestiunea permisiunilor în Windows}
-\label{sec:users-fs-perms-windows}
+\label{sec:user:windows-perm}
 
 În Windows permisiunile sunt reținute în forma unor liste de access (\textit{access
 control lists}, ACL \abbrev{ACL}{Access Control Lists}). Adică se creează o listă
-de utilizatori sau grupuri de utilizatori și permisiuni aferente, ca în \labelindexref{Figura}{fig:user-acl}.
+de utilizatori sau grupuri de utilizatori și permisiuni aferente, ca în \labelindexref{Figura}{fig:user:acl}.
 
-%+ listă cu utilizator1, utilizator2, grup1, grup2 și permisiuni
 \begin{figure}[htbp]
 	\centering
-	\def\svgwidth{\columnwidth}
+	\def\svgwidth{0.7\columnwidth}
 	\includesvg{chapters/05-user/img/acl.svg}
         \caption{Liste de acces (Windows)}
-	\label{fig:user-acl}
+	\label{fig:user:acl}
 \end{figure}
 
 În momentul accesului unui fișier de către un proces, se obține utilizatorul
@@ -1014,28 +1161,28 @@ accesul procesului la fișier. Dacă nu există sau dacă nu are permisiuni, acc
 nu este permis. De obicei în Windows, există o intrare în lista de acces numită
 \texttt{Everyone} care precizează permisiunile pentru toți utilizatorii. Dacă, în urma
 căutării, un utilizator nu este găsit în listă, atunci se folosesc permisiunile
-pentru intrarea \texttt{Everyone}. \labelindexref{Figura}{fig:user-check-perm} verifică modul în care sunt
+pentru intrarea \texttt{Everyone}. \labelindexref{Figura}{fig:user:windows-check-perm} verifică modul în care sunt
 analizate permisiunile în Windows.
 
 \begin{figure}[htbp]
 	\centering
-	\def\svgwidth{\columnwidth}
+	\def\svgwidth{0.9\columnwidth}
 	\includesvg{chapters/05-user/img/check-perm.svg}
 	\caption{Verificarea permisiunilor în Windows}
-	\label{fig:user-check-perm}
+	\label{fig:user:windows-check-perm}
 \end{figure}
 
 În Windows permisiunile sunt prezente doar pe sistemul de fișiere NTFS
 \abbrev{NTFS}{New Technology File System}, nu și pe FAT32 \abbrev{FAT32}{File
 Allocation Table 32}. Permisiunile sunt în mod tipic configurate folosind
 interfața grafică: \textit{click dreapta pe fișier $\rightarrow$ Properties $\rightarrow$ Security}, obținând o
-fereastră ca cea din \labelindexref{Figura}{fig:user-windows-permissions}.
+fereastră ca cea din \labelindexref{Figura}{fig:user:windows-permissions}.
 
 \begin{figure}[!htbp]
 	\centering
-        \includegraphics[width=0.8\textwidth]{chapters/05-user/img/screenshot.png}
+        \includegraphics[width=0.5\textwidth]{chapters/05-user/img/windows-permissions.png}
         \caption{Permisiuni în Windows}
-        \label{fig:user-windows-permissions}
+        \label{fig:user:windows-permissions}
 \end{figure}
 
 Pentru un utilizator dat pot fi precizate mai multe tipuri de permisiuni, dintre
@@ -1044,9 +1191,9 @@ care amintim:
 \begin{itemize}
   \item \texttt{List Folder}/\texttt{Read Data}: utilizatorul poate lista conținutul unui
 		director și datele unui fișier
-              \item \texttt{Create Files}/\texttt{Write Data}: utilizatorul poate crea fișiere într-un
+  \item \texttt{Create Files}/\texttt{Write Data}: utilizatorul poate crea fișiere într-un
 		director și poate scrie date într-un fișier
-              \item \texttt{Traverse Folder}/\texttt{Execute File}: utilizatorul poate traversa un
+  \item \texttt{Traverse Folder}/\texttt{Execute File}: utilizatorul poate traversa un
 		director și poate executa un fișier
 \end{itemize}
 
@@ -1055,7 +1202,7 @@ vom prezenta în continuare pentru Linux. O listă completă a permisiunilor în
 Windows, pentru NTFS, găsiți pe site-ul care prezintă sistemul de fișiere NTFS\footnote{\url{http://www.ntfs.com/ntfs-permissions-file-folder.htm}}.
 
 \subsection{Gestiunea permisiunilor în Linux}
-\label{sec:users-fs-perms-linux}
+\label{sec:user:linux-perm}
 
 În Linux fiecare fișiere are metadate. Metadatele relevante pentru permisiuni sunt:
 
@@ -1080,9 +1227,9 @@ Permisiunile în Linux sunt, de asemenea, simplificate la 3 tipuri:
 
 \begin{itemize}
   \item \texttt{read} (citire): fișierul poate fi citit, directorul poate fi listat
-    \\texttt{item} write (scriere): fișierul poate fi modificat, pot fi adăugate /
+  \item \texttt{item} write (scriere): fișierul poate fi modificat, pot fi adăugate /
 		șterse intrări în director
-              \item \texttt{execute} (execuție): fișierul poate fi executat, directorul poate
+  \item \texttt{execute} (execuție): fișierul poate fi executat, directorul poate
 		fi parcurs
 \end{itemize}
 
@@ -1113,7 +1260,7 @@ Fie următoarea situație de metadate pentru un fișier \file{curs.txt}:
 \begin{itemize}
   \item utilizator: \texttt{ana}
   \item grup: \texttt{students}
-	\item permisiuni: citire, scriere pentru utilizator, citire pentru grup,
+  \item permisiuni: citire, scriere pentru utilizator, citire pentru grup,
 		nici o permisiune pentru ceilalți
 \end{itemize}
 
@@ -1123,7 +1270,7 @@ Utilizatorul \texttt{corina} încearcă accesarea pentru citire a fișierului fo
   \item Se obține utilizatorul procesului care accesează procesul: \texttt{corina}.
   \item Se compară utilizatorul procesului (\texttt{corina}) cu utilizatorul
     fișierului (\texttt{ana}). Nu corespund. Se trece la pasul următor.
-	\item Se obțin toate grupurile din care face parte utilizatorul
+  \item Se obțin toate grupurile din care face parte utilizatorul
           procesului (\texttt{corina}). Grupul fișirului \file{curs.txt} este \texttt{students}, grup din care face și utilizatorul \texttt{corina}. În această situație verificăm dacă acțiunea este
 		permisă. Acțiunea este de citire, se găsește în permisiunile
                 pentru grup (citire), și atunci comanda \cmd{cat curs.txt} reușește.
@@ -1164,19 +1311,19 @@ lucru cu sistemul de fișiere:
 \end{itemize}
 
 \subsubsection{Formatul permisiunilor}
-\label{sec:users-fs-perms-format}
+\label{sec:user:perm-format}
 
-În mod uzual, permisiunile sunt listate pentru un fișier dat în forma din \labelindexref{Figura}{fig:user-octal-perm}.
+În mod uzual, permisiunile sunt listate pentru un fișier dat în forma din \labelindexref{Figura}{fig:user:octal-perm}.
 
 \begin{figure}[htbp]
 	\centering
-	\def\svgwidth{\columnwidth}
+	\def\svgwidth{0.7\columnwidth}
 	\includesvg{chapters/05-user/img/octal-perm.svg}
         \caption{Permisiuni în Linux}
-	\label{fig:user-octal-perm}
+	\label{fig:user:octal-perm}
 \end{figure}
 
-Adică permisiunile sunt listate ca un șir de 9 caractere:
+Adică permisiunile sunt listate ca un șir de nouă caractere:
 
 \begin{itemize}
   \item primele trei caractere sunt permisiunile pentru \texttt{user} (utilizator)
@@ -1185,7 +1332,28 @@ Adică permisiunile sunt listate ca un șir de 9 caractere:
 \end{itemize}
 
 \begin{screen}[caption={Listare permisiuni pe fișiere},label={lst:user:list-perm}]
-TODO: exemplu listare cu permisiuni
+student@uso:~$ ls -l invoice.pdf
+-rw-rw-r-- 1 dan staff 0 Sep 19 21:40 invoice.pdf
+student@uso:~$ ls -l export_grades
+-rwxr-x--- 1 dan adm 0 Sep 19 21:41 export_grades
+student@uso:~$ stat invoice.pdf
+  File: invoice.pdf
+  Size: 0         	Blocks: 0          IO Block: 4096   regular empty file
+Device: 801h/2049d	Inode: 658479      Links: 1
+Access: (0664/-rw-rw-r--)  Uid: ( 1002/     dan)   Gid: (   50/   staff)
+Access: 2020-09-19 21:40:40.242001000 +0300
+Modify: 2020-09-19 21:40:40.242001000 +0300
+Change: 2020-09-19 21:41:55.110001000 +0300
+ Birth: -
+student@uso:~$ stat export_grades
+  File: export_grades
+  Size: 0         	Blocks: 0          IO Block: 4096   regular empty file
+Device: 801h/2049d	Inode: 683312      Links: 1
+Access: (0750/-rwxr-x---)  Uid: ( 1002/     dan)   Gid: (    4/     adm)
+Access: 2020-09-19 21:41:26.414001000 +0300
+Modify: 2020-09-19 21:41:26.414001000 +0300
+Change: 2020-09-19 21:42:00.170001000 +0300
+ Birth: -
 \end{screen}
 
 Astfel, în \labelindexref{Listing}{lst:user:list-perm} avem următoarele:
@@ -1199,7 +1367,7 @@ Astfel, în \labelindexref{Listing}{lst:user:list-perm} avem următoarele:
                   grupul \texttt{staff}
 		\item permisiuni de citire pentru ceilalți
 	\end{itemize}
-      \item fișierul \file{myscript} are:
+  \item fișierul \file{export_grades} are:
 	\begin{itemize}
           \item permisiuni de citire, scriere și execuție pentru \texttt{user},
                   adică pentru utilizatorul \texttt{dan}
@@ -1210,7 +1378,7 @@ Astfel, în \labelindexref{Listing}{lst:user:list-perm} avem următoarele:
 \end{itemize}
 
 Pentru gestiunea mai rapidă a permisiunilor acestea sunt gestionate în format pe
-biți. Adică fiecare dintre cele 9 caractere de permisiuni ocupă un bit; bitul
+biți. Adică fiecare dintre cele nouă caractere de permisiuni ocupă un bit; bitul
 este 1 dacă permisiunea este activă și pe 0 dacă este inactivă. Adică avem
 corespondențe de forma:
 
@@ -1220,8 +1388,8 @@ corespondențe de forma:
   \item \texttt{rw-rw-{}-{}-{}-} corespunde \texttt{110110000}
 \end{itemize}
 
-Pentru a fi mai rapid, grupurile de biți se grupează câte 3 (3 biți pentru \texttt{user},
-3 biți pentru \texttt{group}, 3 biți pentru \texttt{others}) și cei trei biți se transformă într-o
+Pentru a fi mai rapid, grupurile de biți se grupează câte trei (trei biți pentru \texttt{user},
+trei biți pentru \texttt{group}, trei biți pentru \texttt{others}) și cei trei biți se transformă într-o
 cifră în octal (baza 8); de aceea mai numim reprezentarea octală. Avem, așadar,
 corespondența:
 
@@ -1235,28 +1403,34 @@ Pentru că este ușor de modificat și rapid de folosit, gestiunea permisiunilor
 se face, adesea, în format octal.
 
 \subsection{Comenzi pentru gestiunea permisiunilor}
-\label{sec:users-fs-perms-cmd}
+\label{sec:user:perm-cmd}
 
 Pentru gestiunea permisiunilor avem comenzi de afișare a metadatelor de
 fișierului (utilizator, grup și permisiuni) și comenzi de modificare a
 metadatelor.
 
 Pentru afișarea metadatelor, cele două comenzi folosite sunt \cmd{ls -l} și \cmd{stat}
-ca în \labelindexref{Listing}{lst:user:print-metadata}. În rezultatul rulării comenzilor avem utilizatorul, grupul și permisiunile.
-
-\begin{screen}[caption={Afișarea metadatelor pe fișiere},label={lst:user:print-metadata}]
-TODO: exemplu folosire ls -l si stat
-\end{screen}
+ca în \labelindexref{Listing}{lst:user:list-perm}. În rezultatul rulării comenzilor avem utilizatorul, grupul și permisiunile.
 
 Comenzile de modificare sunt \cmd{chown}, \cmd{chgrp} și \cmd{chmod}. Primele două comenzi (\cmd{chown}
-și \cmd{chgrp}) modifică utilizatorul și grupul, chmod modifică permisiunile. Comanda
+și \cmd{chgrp}) modifică utilizatorul și grupul, iar \cmd{chmod} modifică permisiunile. Comanda
 \cmd{chown} poate modifica și utilizatorul și grupul unui fișier, comanda \cmd{chgrp} doar
 grupul. Cele două comenzi pot fi rulate doar de utilizatorul privilegiat; doar
 acesta poate modifica utilizatorul și grupul unui fișier. \labelindexref{Listing}{lst:user:chown} conține exemple
 de folosire a comenzilor \cmd{chown} și \cmd{chgrp}.
 
-\begin{screen}[caption={Modificarea utilizatorului și grupului unui fișier},label={lst:sec:chown}]
-TODO: exemple chown si chgrp
+\begin{screen}[caption={Modificarea utilizatorului și grupului unui fișier},label={lst:user:chown}]
+student@uso:~$ ls -l  invoice.pdf
+-rw-rw-r-- 1 dan staff 0 Sep 19 21:40 invoice.pdf
+student@uso:~$ sudo chown student invoice.pdf
+student@uso:~$ ls -l  invoice.pdf
+-rw-rw-r-- 1 student staff 0 Sep 19 21:40 invoice.pdf
+student@uso:~$ sudo chown teacher:gdm invoice.pdf
+student@uso:~$ ls -l invoice.pdf
+-rw-rw-r-- 1 teacher gdm 0 Sep 19 21:40 invoice.pdf
+student@uso:~$ sudo chgrp avahi invoice.pdf
+student@uso:~$ ls -l invoice.pdf
+-rw-rw-r-- 1 teacher avahi 0 Sep 19 21:40 invoice.pdf
 \end{screen}
 
 Comanda \cmd{chmod} modifică permisiunile fișierelor. Comanda poate fi rulată de
@@ -1267,8 +1441,21 @@ modificare a permisiunilor și numele fișierului/fișierelor pentru care dorim
 schimbarea permisiunilor. \labelindexref{Listing}{lst:user:chmod} conține exemple
 de folosire a comenzii \cmd{chmod}:
 
-\begin{screen}[caption={Permisiuni pe fișiere cu parole},label={lst:sec:password-files}]
-TODO: exemple de folosire chmod
+\begin{screen}[caption={Modificarea permisiunilor unui fișîer},label={lst:user:chmod}]
+student@uso:~$ ls -l road-trip.png
+-rw-rw-r-- 1 student student 0 Sep 19 21:47 road-trip.png
+student@uso:~$ chmod g-w,o+w road-trip.png
+student@uso:~$ ls -l road-trip.png
+-rw-r--rw- 1 student student 0 Sep 19 21:47 road-trip.png
+student@uso:~$ chmod a-r road-trip.png
+student@uso:~$ ls -l road-trip.png
+--w-----w- 1 student student 0 Sep 19 21:47 road-trip.png
+student@uso:~$ chmod u=rw,g=r,o= road-trip.png
+student@uso:~$ ls -l road-trip.png
+-rw-r----- 1 student student 0 Sep 19 21:47 road-trip.png
+student@uso:~$ chmod 644 road-trip.png
+student@uso:~$ ls -l road-trip.png
+-rw-r--r-- 1 student student 0 Sep 19 21:47 road-trip.png
 \end{screen}
 
 Forma în octal a permisiunilor la \cmd{chmod} este preferată atunci când vrem să
@@ -1277,28 +1464,28 @@ permisiunile și modificările sunt mici, este de preferat să folosim forma în
 octal a permisiunilor.
 
 \subsubsection{Permisiuni de creare pentru fișiere}
-\label{sec:users-fs-perms-umask}
+\label{sec:user:umask}
 
 Atunci când creăm un fișier sau director, folosind, de exemplu, comenzile \cmd{touch}
 și \cmd{mkdir}, le sunt asociate metadate implicite la creare. Utilizatorul și grupul
 fișierului vor fi utilizatorul și grupul procesului, care sunt, de obicei,
 utilizatorul și grupul primar al utilizatorului care a lansat comanda.
-Stabilirea permisiunilor la creare ține de \textbf{masca de creare a shell-ului}.
+Stabilirea permisiunilor la creare ține de \textbf{masca de creare a shellului} (numită și \texttt{umask}).
 
-Masca de creare a shell-ului este o valoare pe biți care este folosită astfel:
+Masca de creare a shellului este o valoare pe biți care este folosită astfel:
 
 \begin{itemize}
   \item Pentru fișiere se face un \textbf{ȘI logic} între valoarea \texttt{666} (octal) și
 		masca inversată.
-              \item Pentru directoare se face un \textbf{ȘI logic} între valoarea \texttt{777} (octal)
+  \item Pentru directoare se face un \textbf{ȘI logic} între valoarea \texttt{777} (octal)
 		și masca inversată.
 \end{itemize}
 
-Diferența este pentru că directoarele au nevoie de permisiuni de execuție pentru
+Deosebirea între fișiere și directoare apare pentru că directoarele au nevoie de permisiuni de execuție pentru
 toate operațiile. Iar fișierele nu au nevoie de permisiuni de execuție; dacă
 este cazul acestea trebuie acordate explicit.
 
-Exemple sunt prezente în \labelindexref{Tabelul}{table:user-umask}.
+Exemple sunt prezente în \labelindexref{Tabelul}{table:user:umask}.
 
 \begin{table}[!htb]
 \caption{Permisiuni de creare fișier în funcție de mască}
@@ -1314,29 +1501,45 @@ Exemple sunt prezente în \labelindexref{Tabelul}{table:user-umask}.
                 \texttt{077} & \texttt{700} & \texttt{600} & \texttt{700} \\
 	\bottomrule
 	\end{tabular}
-        \label{table:user-umask}
+        \label{table:user:umask}
 \end{center}
 \end{table}
 
-Afișarea și modificarea măștii shell-ului se face folosind comanda \cmd{umask}. Fără
+Afișarea și modificarea măștii shellului se face folosind comanda \cmd{umask}. Fără
 parametru această comandă afișează masca de creare, iar cu parametru modifică
 masca de creare, ca în \labelindexref{Listing}{lst:user:umask}.
 
-\begin{screen}[caption={Masca de creare a fișirelor (umask)},label={lst:sec:umask}]
-TODO: exemplu cu umask
+\begin{screen}[caption={Masca de creare a fișirelor (umask)},label={lst:user:umask}]
+student@uso:~$ umask
+0002
+student@uso:~$ touch ana.txt
+student@uso:~$ ls -l ana.txt
+-rw-rw-r-- 1 student student 0 Sep 19 21:50 ana.txt
+student@uso:~$ mkdir bogdan.dir
+student@uso:~$ ls -ld bogdan.dir
+drwxrwxr-x 2 student student 4096 Sep 19 21:50 bogdan.dir
+student@uso:~$ umask 0022
+student@uso:~$ umask
+0022
+student@uso:~$ touch corina.txt
+student@uso:~$ ls -l corina.txt
+-rw-r--r-- 1 student student 0 Sep 19 21:51 corina.txt
+student@uso:~$ mkdir dan.dir
+student@uso:~$ ls -ld dan.dir
+drwxr-xr-x 2 student student 4096 Sep 19 21:51 dan.dir
 \end{screen}
 
-Tot în \labelindexref{Listing}{lst:user:mask} (liniile TODO-TODO) sunt exemple de modificare a umask-ului și crearea de fișiere și
+Tot în \labelindexref{Listing}{lst:user:umask} (liniile \texttt{9--17}) sunt exemple de modificare a umask-ului și crearea de fișiere și
 directoare pentru a vedea cum modificarea valorii umask duce la modificarea
-măștii de creare a shell-ului și, astfel, a permisiunilor de creare pentru
+măștii de creare a shellului și, astfel, a permisiunilor de creare pentru
 fișiere și directoare.
 
 \subsection{Biți speciali de acces: setuid, setgid, sticky}
-\label{sec:users-fs-perms-special}
+\label{sec:user:special-bits}
 
-Atunci când afișăm masca de creare a shell-ului, observăm că sunt 4 cifre octale
-afișate. În mod normal ar trebui să fie 3 cifre afișate, cu permisiuni pentru
-\texttt{user}, \texttt{group} și \texttt{others}. Prima cifră afișată reprezintă un set special de 3 de
+Atunci când afișăm masca de creare a shell-ului, observăm că sunt patru cifre octale
+afișate. În mod normal ar trebui să fie trei cifre afișate, cu permisiuni pentru
+\texttt{user}, \texttt{group} și \texttt{others}. Prima cifră afișată reprezintă un set special de trei de
 biți numiți \texttt{setuid}, \texttt{setgid} și \texttt{sticky}, și sunt activați în această ordine.
 Astfel, pentru permisiunile de mai jos avem explicațiile:
 
@@ -1357,7 +1560,7 @@ rulat comanda. Mai concret, dacă rulăm ca utilizator \texttt{student} executab
 care are activat bitul \texttt{setuid} și are ca utilizator \texttt{root}, atunci procesul creat
 din executabilul \cmd{myexec} va rula ca utilizatorul \texttt{root}.
 
-Bitul \texttt{setuid}, prezentat și în \labelindexref{Secțiunea}{sec:user-superuser-altroot} este folosit atunci când anumite utilitare necesită privilegii
+Bitul \texttt{setuid}, prezentat și în \labelindexref{Secțiunea}{sec:user:altroot} este folosit atunci când anumite utilitare necesită privilegii
 pentru accesarea unor fișiere speciale atunci când rulează. În \labelindexref{Listing}{lst:user:use-setuid},
 executabilul \file{/usr/bin/passwd} are activat bitul setuid pentru că procesul creat
 va trebui să acceseze fișierul \file{/etc/shadow}, fișier accesibil doar utilizatorilor
@@ -1377,7 +1580,7 @@ Change: 2018-08-06 17:34:29.848000000 +0300
  Birth: -
 \end{screen}
 
-Vedem în rezultatul rulării comenzilor prezența cifrei 4 pe prima poziție în forma octală a
+Vedem în rezultatul rulării comenzilor prezența cifrei \texttt{4} pe prima poziție în forma octală a
 permisiunilor și a caracterului \texttt{s} în forma literală a permisiunilor în locul
 caracterului de execuție pentru utilizator. Aceasta înseamnă prezența bitului \texttt{setuid} în permisiunile fișierului.
 
@@ -1399,7 +1602,14 @@ indiferent ce utilizatori au creat intrările.
 la crearea de intrări care moștenesc grupul directorului.
 
 \begin{screen}[caption={Folosirea bitului setgid},label={lst:user:setgid}]
-TODO: Exemplu cu setgid
+student@uso:~$ ls -ld top/
+drwxr-xr-x 2 student heroes 4096 Sep 19 21:54 top/
+student@uso:~$ sudo chmod g+s top/
+student@uso:~$ ls -ld top/
+drwxr-sr-x 2 student heroes 4096 Sep 19 21:54 top/
+student@uso:~$ mkdir top/alamar
+student@uso:~$ ls -ld top/alamar
+drwxr-sr-x 2 student heroes 4096 Sep 19 21:55 top/alamar
 \end{screen}
 
 Bitul \texttt{sticky} are sens când este folosit pe directoare la care au acces de
@@ -1414,11 +1624,12 @@ complete pe acel director, nu poate șterge fișiere care nu-i aparțin, așa cu
 avem prezentat în \labelindexref{Listing}{lst:user:sticky}.
 
 \begin{screen}[caption={Folosirea bitului sticky},label={lst:user:sticky}]
-TODO: Exemplu cu sticky
+student@uso:~$ ls -ld /tmp/
+drwxrwxrwt 13 root root 4096 Sep 19 21:54 /tmp/
 \end{screen}
 
 \section{Anexă: Resetarea parolei în Linux}
-\label{sec:users-pass-restore-linux}
+\label{sec:user:linux-password-recovery}
 
 Se poate întâmpla să fie uitată parola administrativă pe un sistem care rulează
 Linux. În această situație este nevoie de resetarea parolei contului \texttt{root}.
@@ -1438,10 +1649,9 @@ adăugăm șirul \texttt{init=/bin/bash}, ca în \labelindexref{Figura}{fig:user
 
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=0.8\textwidth]{chapters/05-user/img/screenshot.png}
+  \includegraphics[width=0.8\textwidth]{chapters/05-user/img/grub-init-bash.png}
   \caption{Pornirea în shell privilegiat din GRUB}
   \label{fig:user:grub-init-bash}
-  % TODO: screenshot cu editarea liniei de boot
 \end{figure}
 
 Apoi folosim combinația de taste \texttt{Ctrl+x} pentru a boota sistemul de operare. În
@@ -1450,7 +1660,9 @@ cu permisiuni de \texttt{root}. În acest shell vom rula comenzile din \labelind
 schimbarea parolei utilizatorului \texttt{root}.
 
 \begin{screen}[caption={Schimbarea parolei contului root în shell-ul privilegiat},label={lst:user:change-root-pw}]
-TODO: lant de comenzi
+root@none:~# mount -o remount /
+root@none:~# passwd
+[...]
 \end{screen}
 
 Mai sus am folosit comanda mount pentru a remonta sistemul de fișiere rădăcină
@@ -1465,28 +1677,32 @@ Apoi repornim sistemul fie din buton, fie folosind combinația de taste
 următorii pași:
 
 \begin{enumerate}
-	\item Montăm sistemul de fișiere rădăcină al sistemului Linux instalat
+  \item Montăm sistemul de fișiere rădăcină al sistemului Linux instalat
 		(pentru care vrem să resetăm parola contului \texttt{root}).
-              \item Folosim comanda \cmd{chroot} pentru a modifica sistemul de fișiere
+  \item Folosim comanda \cmd{chroot} pentru a modifica sistemul de fișiere
 		rădăcină în care rulăm în sistemul de fișiere al sistemului
 		Linux instalat
-              \item Folosim comanda \cmd{passwd} pentru a schimba parola contului \texttt{root} în
+  \item Folosim comanda \cmd{passwd} pentru a schimba parola contului \texttt{root} în
 		sistemul de fișiere rădăcină al sistemului Linux instalat.
-	\item Revenim la sistemul de fișiere al sistemului live, părăsind
-          shell-ul obținut prin \cmd{chroot}.
-	\item Demontăm sistemul de fișiere rădăcină al sistemului Linux
+  \item Revenim la sistemul de fișiere al sistemului live, părăsind
+        shell-ul obținut prin \cmd{chroot}.
+  \item Demontăm sistemul de fișiere rădăcină al sistemului Linux
 		instalat.
-	\item Repornim sistemul.
+  \item Repornim sistemul.
 \end{enumerate}
 
 Pașii de mai sus sunt reproduși în comenzile din \labelindexref{Listing}{lst:user:pw-reset-live-cd}.
 
 \begin{screen}[caption={Resetarea parolei contului root cu live CD},label={lst:user:pw-reset-live-cd}]
-TODO: Comenzile de resetare a parolei dupa ce am bootat cu un CD/stick USB live
+root@ubuntu:~# mkdir /mnt/rootfs
+root@ubuntu:~# mount /dev/sda1 /mnt/rootfs
+root@ubuntu:~# chroot /mnt/rootfs
+root@ubuntu:~# passwd
+[...]
 \end{screen}
 
 \section{Use case: Resetarea parolei în Windows}
-\label{sec:users-pass-restore-window}
+\label{sec:user:windows-password-recovery}
 
 Pentru resetarea parolei unui utilizator în Windows, cel mai important fiind
 utilizatorul \texttt{Administrator}, se poate folosi utilitarul \cmd{chntpw} (de la change NT
@@ -1503,7 +1719,7 @@ Pentru a nu ocupa spațiu din această carte cu detalii, recomandăm să parcurg
 tutorialul cu screenshot-uri despre folosirea Ultimate Boot CD pentru resetarea parole în Windows\footnote{\url{https://www.top-password.com/blog/reset-forgotten-windows-password-with-ultimate-boot-cd/}}.
 
 \section{Sumar}
-\label{sec:users-sumar}
+\label{sec:user:summary}
 
 Sistemele de operare moderne sunt sisteme multi-utilizator (\textit{multi-user}). Un sistem dispune de mai mulți utilizatori care coexistă simultan. Procesele care rulează în sistemul de operare rulează cu permisiunilor acelor utilizatori.
 
