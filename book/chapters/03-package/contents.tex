@@ -62,11 +62,10 @@ Conținutul unui pachet, cuprinzând datele și metadatele acestuia, este descri
 
 \begin{figure}[htbp]
   \centering
-  \def\svgwidth{\columnwidth}
-  \includesvg{chapters/02-fs/def-fs.svg}
+  \def\svgwidth{0.8\columnwidth}
+  \includesvg{chapters/03-package/img/package-content.svg}
   \caption{Conținutul unui pachet}
   \label{fig:package:content}
-  % TODO: imagine cu pachet cuprinzând date (fișiere executabile, fișiere de date și fișiere de configurare) și metadate (informații, versiuni, pachet dependente)
 \end{figure}
 
 Metadatele au rol în informarea utilizatorului și să asigure funcționarea corespuzătoare a aplicațiilor pe sistemelor. Pentru o funcționare corespunzătoare pachetele trebuie să fie compatibile cu sistemul și lucreze bine împreună: un pachet are nevoie de o anumită versiune de sistem de operare și de pachete să fie instalate pentru a funcționa. De exemplu, pachetul \texttt{grep}, analizat în \labelindexref{Listing}{lst:package:metadata}, analizat mai sus, are nevoie de pachetele \texttt{libc6} (versiune mai mare sau egală cu \texttt{2.14}) și \texttt{libpcre3}.
@@ -110,10 +109,9 @@ Managerul de pachete este instalat într-un sistem de operare/distribuție de la
 \begin{figure}[htbp]
   \centering
   \def\svgwidth{\columnwidth}
-  \includesvg{chapters/02-fs/def-fs.svg}
+  \includesvg{chapters/03-package/img/package-manager.svg}
   \caption{Folosirea managerului de pachete}
   \label{fig:package:manager}
-  % TODO: diagramă cu utilizator, manager de pachete, configurare manager, repository și dependențe locale
 \end{figure}
 
 În momentul instalării pachetelor managerul de pachete reține fișierele care au fost instalate pentru a putea să le șteargă la dezinstalare. Tot în momentul instalării, managerul de pachete va investiga dependențele pachetului care se dorește instalat pentru a le instala și pe acestea. Tipurile de operații efectuate de managerul de pachete, la comanda utilizatorului, sunt descrise în \labelindexref{Secțiunea}{sec:package:ops}.
