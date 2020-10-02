@@ -2,10 +2,10 @@
 \label{chapter:appdev}
 
 \section{Introducere}
-\label{sec:appdev-intro}
+\label{sec:appdev:intro}
 
 În momentul de față avem o varietate mare de dispozitive electronice cu care
-interacționăm, de la sisteme complexe, cum ar fi calculatoarele personale sau
+interacționăm: de la sisteme complexe, cum ar fi calculatoarele personale sau
 laptop-urile, la telefoanele mobile sau chiar ceasurile inteligente pe care le
 folosim intens zilnic. Deși foarte diferite, toate aceste sisteme electronice au
 un lucru în comun: toate rulează software.
@@ -18,20 +18,20 @@ aplicație adaptată dispozitivului fizic pe care va rula.
 
 De exemplu, dacă dezvoltăm o aplicație ce va rula pe un ceas inteligent, trebuie
 să ținem cont că avem resurse limitate comparativ la o aplicație ce va rula pe
-un computer. În cazul unui ceas inteligent, avem mai puțină memorie și putere de
+un sistem desktop. În cazul unui ceas inteligent, avem mai puțină memorie și putere de
 procesare și, mai mult, trebuie să ținem cont de consumul de energie pe care îl
 are dispozitivul.
 
 Alegerea unui limbaj potrivit pentru un program este esențială pentru succesul
 acestuia. În funcție de tipul aplicației, trebuie ales limbajul adecvat având în
-vedere diverse proprietăți precum: viteza de execuție, ușurința de scriere a
+vedere proprietăți precum: viteza de execuție, ușurința de scriere a
 codului, numărul de biblioteci existente, utilitarele existente, portabilitatea
 și comunitatea din jurul limbajului.
 
 \section{Limbaje de programare}
-\label{sec:appdev-langs}
+\label{sec:appdev:lang}
 
-Un limbaj de programare definește un set de reguli folosite pentru a formula
+Un \textbf{limbaj de programare} definește un set de reguli folosite pentru a formula
 instrucțiuni pe care calculatorul să le execute. Regulile limbajului constau în
 cuvinte cheie, instrucțiuni care pot fi folosite și gramatica acestora, care se
 mai numește și sintaxă.
@@ -41,16 +41,16 @@ executăm într-o anumite ordine. Acesta este practic programul pe care îl scri
 Operațiile sunt rulate pe procesorul sistemului pe care dorim sa îl programăm,
 dar înainte de a fi executate, ele trec printr-un proces de transformare.
 Fiecare procesor cunoaște un anumit set de instrucțiuni pe care le poate
-executa. Codul scris folosind aceste instrucțiuni se numește cod mașină și este
+executa. Codul scris folosind aceste instrucțiuni se numește \textbf{cod mașină} și este
 singurul limbaj pe care un procesor îl înțelege și îl execută. Prin urmare,
 programul scris de noi într-un limbaj de programare este transformat în cod
 mașină pentru a putea fi înțeles și executat.
 
 La început, calculatoarele erau niște mașini cu capacitate de calcul mult mai
-reduse, care puteau executa operații simple, în general stocate pe benzi
-magnetice sau perforate. Odată cu evoluția procesoarelor și a mediilor de
+redusă, care puteau executa operații simple, în general stocate pe benzi
+magnetice sau cartele perforate, ca în \labelindexref{Figura}{fig:appdev:card}. Odată cu evoluția procesoarelor și a mediilor de
 stocare, a apărut limbajul de asamblare, folosit pentru a scrie programe mai
-complexe. Limbajul de asamblare este un limbaj specific fiecărui procesor și are
+complexe. \textbf{Limbajul de asamblare} este un limbaj specific fiecărui procesor și are
 în general o corespondență de aproximativ unu-la-unu între instrucțiunile de
 asamblare și cele are procesorului. Practic, putem considera că fiecare
 instrucțiune a limbajului de asamblare este tradusă printr-o altă instrucțiune a
@@ -61,7 +61,7 @@ mașină de un asamblor.
 	\centering
 	\includegraphics[width=15cm]{chapters/06-appdev/img/fortran-card-img.png}
 	\caption{Program scris pe cartelă perforată\protect\footnotemark}
-	\label{fig:appdev-fortran}
+	\label{fig:appdev:card}
 \end{figure}
 
 \footnotetext{\url{https://en.wikipedia.org/wiki/Computer_programming_in_the_punched_card_era\#/media/File:FortranCardPROJ039.agr.jpg}
@@ -77,7 +77,7 @@ timp, au apărut limbajele mai complexe din punct de vedere al logicii, limbaje
 ce folosesc comenzi apropiate ca structură de limbajul natural, și care sunt mai
 ușor de urmărit. Acestea permit programatorilor să se concentreze pe logica
 aplicației, nu pe limbajul efectiv și implementarea acestuia. Ele se numesc
-limbaje de nivel înalt.
+\textbf{limbaje de nivel înalt}.
 
 În prezent, majoritatea aplicațiilor sunt dezvoltate folosind limbaje de
 programare de nivel înalt, care sunt mult mai ușor de “citit” de către
@@ -94,23 +94,24 @@ când scriem un program, totul pornește de la ideea clară a ce vrem să obțin
 prin acel program. Mai exact, trebuie să stabilim clar ce vrem să facă
 programul. După aceea, următorul pas este să structurăm ideea și să o
 \textit{traducem} în limbajul de programare folosit. Așa obținem programul final
-ce apoi poate fi rulat.
+ce apoi poate fi rulat, proces sumarizat în \labelindexref{Figura}{fig:appdev:idea-to-program}.
 
 \begin{figure}[htbp]
 	\centering
 	\def\svgwidth{\columnwidth}
 	\includesvg{chapters/06-appdev/img/lang-idea.svg}
-	\caption{TODO}
+        \caption{De la idee la program}
+	\label{fig:appdev:idea-to-program}
 \end{figure}
 
-Fișierele pe care programatorii le scriu se numesc fișiere cod sursă, ele conțin
+Fișierele pe care programatorii le scriu se numesc \textbf{fișiere cod sursă}, ele conțin
 practic instrucțiuni scrise într-un anume limbaj de programare, de cele mai
 multe ori, limbaj de nivel înalt. Codul sursă scris astfel nu poate fi executat
 pentru că procesorul nu îl înțelege. Cum am menționat deja, procesorul înțelege
-doar codul mașină, drept urmare, pentru a executa programul, e necesar să
+doar codul mașină. Drept urmare, pentru a executa programul, e necesar să
 transformăm codul sursă în cod mașină.
 
-Procesul de transformare a codului sursă în cod mașină se numește compilare.
+Procesul de transformare a codului sursă în cod mașină se numește \textbf{compilare}.
 
 Bazat pe modul în care codul de nivel înalt este transformat și rulat pe
 procesor, putem clasifica limbajele de programare în limbaje compilate sau
@@ -129,7 +130,7 @@ Principalul avantaj al unui limbaj compilat este viteza de execuție. Odată
 generat fișierul executabil, acesta va fi rulat de către procesor de oricâte ori
 dorim, astfel compilarea este un proces separat de execuția programului și are
 loc o singură dată. În schimb, în cazul unui limbaj interpretat, la fiecare
-rulare, codul sursă va fi interpretat \textit{linie cu linie} de către
+rulare, codul sursă va fi interpretat linie cu linie de către
 interpretor, acesta fiind de fapt cel care execută acțiunile programului, proces
 care e mai lent.
 
@@ -161,7 +162,7 @@ de rapiditate în execuție, față de o aplicație de organizare a lucrului în
 echipă, unde ne dorim să putem acoperi cât mai multe platforme.
 
 \section{Limbaje compilate}
-\label{sec:appdev-langs-comp}
+\label{sec:appdev:compiled-lang}
 
 Limbajele compilate sunt cele unde codul sursă este transformat în fișiere
 executabile, ce sunt apoi rulate pe procesor, în urma unui proces care se
@@ -172,11 +173,11 @@ sunt transformate de compilator în instrucțiuni pe care procesorul le înțele
 etape intermediare ca în \labelindexref{Figura}{fig:appdev:compile-phases}.
 
 \begin{enumerate}
-	\item Compilare - codul sursă este transformat în cod în limbaj de
+	\item compilare: codul sursă este transformat în cod în limbaj de
 		asamblare
-	\item Asamblare - codul în limbaj de asamblare este transformat în cod
+	\item asamblare: codul în limbaj de asamblare este transformat în cod
 		mașină;
-	\item Link-editare - se fac legăturile către fișiere externe care conțin
+        \item link-editare (sau linking): se fac legăturile către fișiere externe care conțin
 		simboluri sau funcții apelate din fișierul sursă; dacă avem o
 		funcție definită într-un fișier și folosită în altul,
 		implementarea funcției trebuie legată de apelul ei.
@@ -184,14 +185,14 @@ etape intermediare ca în \labelindexref{Figura}{fig:appdev:compile-phases}.
 
 \begin{figure}[htbp]
   \centering
-  \def\svgwidth{\columnwidth}
+  \def\svgwidth{0.6\columnwidth}
   \includesvg{chapters/06-appdev/img/comp-steps.svg}
   \caption{Etapele compilării}
   \label{fig:appdev:compile-phases}
 \end{figure}
 
 În teorie, pentru fiecare limbaj de programare ar trebui să existe un compilator
-care să cunoască gramatica specifică acestuia, gramatica și instrucțiunile
+care să cunoască gramatica specifică acestuia, instrucțiunile
 specifice unui procesor și care să facă transformarea din cod sursă în cod
 mașină.
 
@@ -202,15 +203,14 @@ componente care au suport pentru mai multe arhitecturi de procesor (de exemplu x
 
 \begin{figure}[htbp]
   \centering
-  \def\svgwidth{\columnwidth}
-  \includesvg{chapters/02-fs/def-fs.svg}
+  \def\svgwidth{0.6\columnwidth}
+  \includesvg{chapters/06-appdev/img/comp-backend-frontend.svg}
   \caption{Traducerea în limbaj intermediar}
   \label{fig:appdev:intermediary}
-  % TODO - schemă cu folosirea unui limbaj intermediar
 \end{figure}
 
 \subsection{Exemple de limbaje de programare compilate}
-\label{sec:appdev-langs-comp-ex}
+\label{sec:appdev:compiled-lang:ex}
 
 Deși am prezentat avantajele și dezavantajele folosirii unui limbaj de
 programare compilat, dacă alegem că aceasta este opțiunea potrivită, avem un
@@ -219,16 +219,15 @@ câteva din cele mai folosite și particularitățile de care trebuie să ținem
 în luarea unei decizii.
 
 \subsubsection{C}
-\label{sec:appdev-langs-comp-ex-c}
+\label{sec:appdev:compiled-lang:c}
 
-C este un limbaj de programare care a fost dezvoltat în anii ‘70 pentru a fi
+C este un limbaj de programare care a fost dezvoltat în anii 1970 pentru a fi
 folosit la implementarea sistemului de operare Unix. Până la apariția limbajului
 C, sistemele de operare erau scrise în limbaj de asamblare. C aduce un nivel de
-abstractizare peste limbajul de asamblare, ușurează scrierea programelor, dar
-presupune o cunoaștere avansată a funcționării procesorului.
+abstractizare peste limbajul de asamblare, care ușurează scrierea programelor.
 
 Pentru că limbajul permite accesarea ușoară a resurselor hardware, aplicațiile
-dezvoltate în C prezintă un risc mai mare, dacă acestea nu sunt implementate cu
+dezvoltate în C prezintă un risc mai mare de securitate, dacă acestea nu sunt implementate cu
 atenție. Din aceleași considerente și probabilitatea de a genera erori în timpul
 implementării este mai mare. În plus, C are un nivel de abstractizare foarte
 redus, adică nu avem la dispoziție funcții care să execute operații complexe, de
@@ -240,18 +239,15 @@ Preponderent, limbajul C este folosit pentru a dezvolta sisteme de operare și
 drivere pentru acestea.
 
 \subsubsection{C++}
-\label{sec:appdev-langs-comp-ex-cpp}
+\label{sec:appdev:compiled-lang:cpp}
 
 C++ este un limbaj de programare de nivel înalt gândit pentru dezvoltarea de
 aplicații. Este o adaptare a limbajului C pentru a-l face mai ușor de folosit.
-În comparație cu alte limbaje mai noi, C++ este un limbaj complex și dificil de
-utilizat. Din acest motiv, nu recomandăm folosirea lui pentru scrierea de
-aplicații noi. Totuși, un număr mare de aplicații existente, a căror dezvoltare
-a început demult, sunt implementate folosind C++, de aceea este un limbaj des
-folosit.
+În comparație cu alte limbaje mai noi, C++ este un limbaj mai complex și mai dificil de
+utilizat. Totuși, un număr mare de aplicații existente axate pe performanță sunt implementate folosind C++.
 
 \subsection{Pascal}
-\label{sec:appdev-langs-comp-ex-pascal}
+\label{sec:appdev:compiled-lang:pascal}
 
 Pascal a fost dezvoltat în anii 1960, având ca scop principal dezvoltarea de
 programe pentru descrierea de algoritmi. Limbajul a fost gândit pentru educație,
@@ -261,8 +257,11 @@ Deși nu este un limbaj pe care să îl luam în calcul în dezvoltarea aplicaț
 pentru că există alte limbaje mai moderne, poate fi în continuare luat în calcul
 în scopuri didactice.
 
+\subsection{Alte limbaje}
+\label{sec:appdev:compiled-lang:other}
+
 Alte limbaje compilate sunt D, Go (folosit pentru scrierea sistemului de
-containere docker) și Rust (folosit de Firefox pentru Servo, motorul de randare
+containere Docker) și Rust (folosit de Firefox pentru Servo, motorul de randare
 a paginilor web)
 
 \section{Limbaje interpretate}
@@ -283,9 +282,9 @@ crește timpul de execuție al aplicației, sunt avantaje pe care limbajele
 interpretate le au față de cele compilate.
 
 În primul rând, programele scrise în astfel de limbaje pot fi direct rulate pe
-orice arhitectură, atâta timp cât există un interpretor instalat. Asta înseamnă
+orice arhitectură, atâta timp cât există un interpretor instalat. Acest lucru înseamnă
 că putem copia codul sursă de pe un sistem care rulează Windows pe unul care
-rulează MacOS. În plus, pentru că toate instrucțiunile trec prin interpretor,
+rulează macOS. În plus, pentru că toate instrucțiunile trec prin interpretor,
 limbajele interpretate nu oferă acces direct la resursele hardware, ceea ce le
 face mai sigure, dar și mai ineficiente. De aceea astfel de limbaje sunt
 recomande pentru dezvoltarea de aplicații care nu țin de sistemul de operare.
@@ -296,7 +295,7 @@ aplicația dezvoltată, trebuie să conțină codul sursă ce va fi rulat. Sunt 
 compilat, care permite distribuirea unui executabil.
 
 \subsection{Exemple de limbaje de programare interpretate}
-\label{sec:appdev-langs-int-ex}
+\label{sec:appdev:interpreted-lang:ex}
 
 În prezent utilizarea limbaje de programare pur interpretate este în scădere.
 Acestea au ajuns să fie înlocuite de alte limbaje de programare, majoritatea
@@ -304,28 +303,22 @@ hibride. Totuși, dacă vom ajunge să lucrăm la aplicații complexe dezvoltate
 ani în urmă, există posibilitatea să ajungem să scriem cod sursă în limbaje
 precum PHP sau Perl.
 
-\subsubsection{PHP}
-\label{sec:appdev-langs-int-ex-php}
-
 PHP este un limbaj folosit preponderent pentru dezvoltarea de servere web. Mai
 nou este înlocuit de Node.js, dar încă mai putem găsi aplicații web dezvoltate
 în PHP.
-
-\subsection{Perl}
-\label{sec:appdev-langs-int-ex-perl}
 
 Perl e un alt limbaj interpretat folosit pentru dezvoltare web. Este considerat
 predecesorul PHP, deci este tot mai rar întâlnit.
 
 \section{Limbaje hibride}
-\label{sec:appdev-langs-hybrid}
+\label{sec:appdev:hybrid-lang}
 
 Limbajele de programare hibride îmbină elemente de compilare cu elemente de
 interpretare, pentru a rezulta în aplicații portabile, rapide și sigure.
 
 Pentru că principalul dezavantaj al programelor interpretate este timpul mare de
 execuție, una din îmbunătățirile aduse interpretoarelor este posibilitatea de a
-transforma codul sursă într-un cod intermediar, care se numește bytecode, care
+transforma codul sursă într-un cod intermediar, care se numește \textbf{bytecode}, care
 va fi apoi interpretat. Bytecode-ul este practic codul mașină al
 interpretorului, deci transformarea acestuia în cod mașină este mult mai rapidă.
 Practic, la rularea unui program, este generat un fișier intermediar care
@@ -333,9 +326,9 @@ conține bytecode, iar interpretorul ia apoi instrucțiuni din bytecode și le
 transformă în cod mașină. Putem deci considera că avem două etape în procesul de
 rulare: compilare către bytecode și apoi interpretare.
 
-Pentru că în acest caz interpretorul are propriul limbaj mașină, el nu cunoaște
+Pentru că în acest caz interpretorul are propriul limbaj mașină, acesta nu cunoaște
 un limbaj de programare anume, ci el transformă bytecode-ul specific în cod
-mașină, interpretorul se mai numește și mașină virtuală (ex. Java Virtual
+mașină, interpretorul se mai numește și \textbf{mașină virtuală} (ex. Java Virtual
 Machine). Un avantaj pe care mașina virtuală îl aduce este posibilitatea de a
 genera bytecode-ul și de a distribui fișiere bytecode în locul codului sursă.
 Astfel codul sursă al aplicației nu este făcut public odată cu distribuția
@@ -343,17 +336,17 @@ aplicației.
 
 Odată generat bytecode-ul, acesta poate fi transformat în cod mașină în două
 moduri diferite. Fie se ia tot bytecode-ul și se transformă în cod mașină, după
-care codul mașină este executat (compilare ahead-of-time), fie se iau bucăți din
+care codul mașină este executat (compilare \textit{ahead-of-time}, sau JIT\abbrev{JIT}{just-in-time}), fie se iau bucăți din
 bytecode și se transformă în cod mașină în timpul rulării (compilare
-just-in-time).
+\textit{just-in-time}).
 
-Compilarea ahead-of-time funcționează ca procesul normal de compilare, doar că
+Compilarea \textit{ahead-of-time} funcționează ca procesul normal de compilare, doar că
 se transformă bytecode în cod mașină. Odată generat codul mașină acesta este
 executat. Avantajul acestei metode este timpul rapid de execuție. În schimb,
 timpul de pornire a aplicației crește (timpul necesar pentru a transforma
 bytecode în cod mașină).
 
-Compilarea just-in-time presupune ca bucăți de cod care urmează să fie executate
+Compilarea \textit{just-in-time} (JIT) presupune ca bucăți de cod care urmează să fie executate
 să fie transformate în cod mașină în timpul rulării. Interpretorul analizează
 blocul de cod care urmează să fie executat și îl transformă în cod mașină.
 
@@ -361,11 +354,11 @@ blocul de cod care urmează să fie executat și îl transformă în cod mașin�
 factori precum frecvența de execuție a unui anumit bloc de cod și eficientizează
 procesul prin stocarea în memorie a codului mașină, pentru a nu transforma
 același cod de mai multe ori, deci făcând procesul și mai eficient. Totuși, spre
-deosebire de compilarea ahead-of-time, JIT \abbrev{JIT}{just-in-time} are un
+deosebire de compilarea ahead-of-time, JIT are un
 timp de execuție mai mare, dar timpul de pornire al aplicației scade.
 
 \subsection{Exemple de limbaje de programare hibride}
-\label{sec:appdev-langs-hybrid-ex}
+\label{sec:appdev:hybrid-lang:ex}
 
 În general, limbajele pe care le întâlnim cel mai frecvent astăzi sunt limbaje
 hibride, precum Java, Python sau JavaScript. Cum multe din aplicațiile pe care
@@ -373,7 +366,7 @@ le folosim zi de zi au devenit aplicații web, limbajele orientate spre așa cev
 au crescut în popularitate.
 
 \subsubsection{Java}
-\label{sec:appdev-langs-hybrid-ex-java}
+\label{sec:appdev:hybrid-lang:java}
 
 Java este un limbaj de programare folosit pentru dezvoltarea de aplicații
 enterprise care a fost dezvoltat de Sun Microsystems. Oracle a cumpărat Sun
@@ -385,11 +378,7 @@ Idee de bază care a stat la baza limbajului Java a fost portabilitatea. Se dore
 scrierea unui program o singură dată și rularea lui pe multe platforme diferite
 fără a face vreo modificare și fără a fi necesară distribuirea sursei. Inițial a
 fost folosit în programe de navigare sub forma de \textit{Java Applets}, mici
-aplicații scrie care se putea include intr-o pagină.
-
-Pe de altă parte, până și aplicațiile simple dezvoltate în Java necesită o
-structură complexă. De aceea nu recomandăm folosirea limbajului pentru programe
-simple sau în educație.
+aplicații scrie care se putea include într-o pagină.
 
 Fiind destinat dezvoltării de aplicații pentru companii, platforma Java este are
 două componente, compilatorul care generează bytecode-ul (Java Development Kit -
@@ -397,23 +386,20 @@ JDK \abbrev{JDK}{Java Development Kit}) și mașina care rulează bytecode-ul (J
 Runtime Environment - JRE \abbrev{JRE}{Java Runtime Environment}). Astfel pentru
 distribuția aplicației nu este necesară distribuția codului sursă.
 
-Recomandăm folosirea limbajului Java dacă dorim să dezvoltăm aplicațiilor de
-mari dimensiuni, în general folosite în scop industrial.
-
 \subsubsection{C\#}
-\label{sec:appdev-langs-hybrid-ex-cs}
+\label{sec:appdev:hybrid-lang:csharp}
 
 C\# este un limbaj de programare similar cu Java, dezvoltat de Microsoft. Este
 principalul limbaj de dezvoltare pentru platforma Windows, fiind integrat
 inclusiv în motoare de jocuri (de exemplu Unity).
 
 \subsubsection{Python}
-\label{sec:appdev-langs-hybrid-ex-python}
+\label{sec:appdev:hybrid-lang:python}
 
 Python este un limbaj dezvoltat inițial cu scopul de a fi folosit pentru a
-învata programare, principalul avantaj fiind ca oferă o lizibilitatea mare
-codului. A devenit foarte popular datorita unor proiecte precum GNOME (inițial)
-și OpenStack, precum și datorita bibliotecilor de matematica avansate.
+învăța programare, principalul avantaj fiind ca oferă o lizibilitatea mare
+codului. A devenit foarte cunoscut datorită unor proiecte precum GNOME (inițial)
+și OpenStack, precum și datorita bibliotecilor de matematică avansate.
 
 Python este folosit pentru automatizarea administrării sistemului, prin
 scripturi simple. Este de asemenea foarte folosit în educație, codul sursă fiind
@@ -423,11 +409,10 @@ a indenta codul. Limbajul mai este folosit în cercetare, find o variantă mai
 ,,ușoară'' față de alte limbaje științifice cum ar fi Matlab, R sau Julia.
 
 O altă utilizare a limbajului Python este pentru dezvoltarea de servere web, cu
-ajutorul bibliotecilor Flask și Django. În ultimii ani a început să piardă teren
-în acest domeniu.
+ajutorul bibliotecilor Flask și Django.
 
 \subsubsection{JavaScript}
-\label{sec:appdev-langs-hybrid-ex-js}
+\label{sec:appdev:hybrid-lang:js}
 
 JavaScript este un limbaj folosit pentru dezvoltarea de aplicații web. Are o
 sintaxa similară cu limbajele C și Java. Deși se numește JavaScript, în afară de
@@ -436,16 +421,15 @@ sintaxa similară, nu are nimic în comun cu Java.
 La început JavaScript a fost folosit pentru partea de interfață a aplicațiilor
 web, interpretorul de JavaScript fiind integrat în browsere. Odată cu apariția
 platformei Node.js, aplicațiile JavaScript pot fi rulate și în afara
-browser-ului. Astfel, JavaScript este folosit pentru aplicații simple, pentru
+browserului. Astfel, JavaScript este folosit pentru aplicații simple, pentru
 automatizarea operațiilor, dar mai ales pentru dezvoltarea de servere web, prin
 intermediul bibliotecii Express.
 
 În principiu, dacă ne dorim să dezvoltăm o aplicație web, JavaScript, împreună
-cu Node.js sunt o opțiune importantă de luat în calcul. În prezent, majoritatea
-aplicațiilor web tind spre această tehnologie.
+cu Node.js sunt o opțiune importantă de luat în calcul.
 
-\section{Etapele dezvoltării unui program}
-\label{sec:appdev-steps}
+\section{Dezvoltarea unui program}
+\label{sec:appdev:dev}
 
 Până acum am discutat despre limbajele de programare uzuale și cum acestea se
 diferențiază între ele și despre cum codul sursă pe care noi îl scriem rulează
@@ -453,12 +437,12 @@ pe procesor. Întrebarea pe care urmează să o punem este: \textit{ce presupune
 dezvoltarea unui program}?
 
 \subsection{Scrierea codului sursă}
-\label{sec:appdev-writing}
+\label{sec:appdev:dev-stages:write}
 
 În primul rând, dezvoltarea unui program constă în scrierea efectivă a codului
 sursă; practic, acest pas se rezumă la a crea fișiere text și a le edita. De
 aceea, aplicația principală de care avem nevoie în dezvoltarea unui program este
-un editor de text.
+un \textbf{editor de text}.
 
 În ceea ce privește editoarele de text, avem un număr mare de editoare diferite
 din care putem alege, pornind de la unele foarte simple care au ca scop editarea
@@ -468,43 +452,30 @@ din Microsoft Windows, totuși este de preferat să folosim unul adaptat scrieri
 de cod, pentru a ne ușura munca.
 
 Editoarele adaptate dezvoltării de programe vin cu anumite caracteristici care
-ne ajută în procesul de dezvoltare cum ar fi:
-
-\begin{itemize}
-	\item indentarea automată a codului
-	\item evidențierea cuvintelor cheie
-	\item semnalarea erorilor
-\end{itemize}
+ne ajută în procesul de dezvoltare cum ar fi indentarea automată a codului, evidențierea cuvintelor cheie, numerotarea liniilor, gruparea secvențelor de cod.
 
 Ținând cont de numărul mare de limbaje de programare existente, fiecare cu
-particularitățile sale, este imposibil ca un editor să cuprinsă toate aspectele
+particularitățile sale, este imposibil ca un editor să cuprindă toate aspectele
 fiecărui limbaj. De aceea, majoritatea acestor editoare permit instalarea de
 extensii care aduc funcționalități în plus sau aduc funcționalități specifice
 pentru un anumit limbaj.
 
-În continuare vom descrie cele mai populare editoare folosite pentru scrierea
+În continuare vom descrie cele mai cunoscute editoare folosite pentru scrierea
 programelor.
 
 \subsection{Editoare în mod text}
-\label{sec:appdev-textedit}
+\label{sec:appdev:dev-stages:editor}
 
 \subsubsection{Vim}
-\label{sec:appdev-textedit-vim}
+\label{sec:appdev:dev-stages:editor:vim}
 
 Vim este un editor care funcționează în linie de comandă, fiind versiunea
-îmbunătățită a vi, editor care se găsește pe toate sistemele Unix. El nu este
-neapărat adaptat pentru scrierea de cod sursă, dar pe de altă parte, poate fi
-configurat și adaptat acestui scop, acesta fiind și unul din avantajele
-principale ale sale. Este un editor foarte configurabil, dar nu foarte ușor de
+îmbunătățită a vi, editor care se găsește pe toate sistemele Unix. Este un editor foarte configurabil, dar nu foarte ușor de
 folosit pentru începători. Acest lucru este datorat lipsei interfeței grafice,
 tot meniul fiind transpus prin comenzi. Deși pentru utilizatorii experimentați
 acest lucru poate reprezenta un avantaj aducând rapiditate în folosire, pentru
 începători, lipsa cursorului și necesitatea de a memora comenzi îngreunează
 folosirea editorului.
-
-Deoarece multi programatori sunt foarte familiari cu comenzile din Vim, o parte
-din editoarele de text ce au interfață grafică oferă și posibilitatea folosirii
-comenzilor din Vim.
 
 Chiar dacă există multe variante de editoare mai intuitive, vă recomandam
 familiarizarea cu Vim, sau chiar cu varianta redusă, vi, tocmai pentru că este
@@ -515,37 +486,33 @@ tutorialului \cmd{vimtutor}. Este suficient să rulați comanda \cmd{vimtutor} �
 tutorialul va începe.
 
 Deși putem găsi vi pe orice sistem Unix, doar unele distribuții vin cu editorul
-vim instalat. Pentru a instala Vim este suficient să rulăm comanda \cmd{apt-get
+vim instalat. Pentru a instala Vim pe sistemele Debian/Ubuntu, rulăm comanda \cmd{sudo apt
 install vim}.
 
-\subsubsection{Nano, Pico și Emacs}
-\label{sec:appdev-textedit-nano-pico-emacs}
+\subsubsection{Alte editoare}
+\label{sec:appdev:dev:editor:other}
 
 Alte editoare similare cu Vim, care funcționează tot în linie de comandă, sunt
 Nano, Pico și Emacs. La fel ca Vim, este se găsesc frecvent pe sistemele Unix, sunt
 folosite la editarea rapidă, cum ar fi editarea unor fișiere de configurare.
 
-Similar cu Vim, pentru instalarea Nano, Pico sau Emacs, este suficient să rulăm în
-terminal comanda \cmd{apt-get install nano}, \cmd{apt-get install pico} sau
-\cmd{apt-get install emacs}.
-
 \subsection{Editoare în interfață grafică}
-\label{sec:appdev-graphicedit}
+\label{sec:appdev:dev:editor-gui}
 
 \subsubsection{Sublime Text}
-\label{sec:appdev-graphicedit-sublime}
+\label{sec:appdev:dev:editor-gui:sublime}
 
 Sublime Text este un editor de cod avansat. Permite crearea sau editarea
 facilă a unor programe complexe, alcătuite din mai multe fișiere. Pe lângă
 posibilitatea de a edita structura de fișiere și directoare a proiectului,
 editorul recunoaște limbajele de programare cele mai folosite și evidențiază
-cuvintele cheie specifice fiecărui limbaj. În plus, el recunoaște variabilele
+cuvintele cheie specifice fiecărui limbaj. În plus, recunoaște variabilele
 definite de utilizator și le sugerează acestuia în timpul scrierii codului.
 
 Pe lângă caracteristicile de bază, cum am menționat și mai sus, Sublime Text
-suportă extensii care aduc funcționalități cum ar fi integrarea cu sisteme de
-versionare a codului (ex. git), recunoașterea unor limbaje de programare mai
-puțin populare sau chiar diverse teme.
+oferă suport pentru extensii care aduc funcționalități cum ar fi integrarea cu sisteme de
+versionare a codului (ex. Git), recunoașterea unor limbaje de programare mai
+puțin cunoscute sau diverse teme.
 
 Pentru a instala Sublime Text, trebuie să urmăm pașii descriși pe pagina web
 dedicată editorului (https://www.sublimetext.com/3). În momentul de față este
@@ -554,28 +521,28 @@ curând. Editorul nu este gratis, el poate fi folosit pentru o perioadă limitat
 după care este necesară achiziționarea unei licențe de folosire.
 
 \subsubsection{Atom}
-\label{sec:appdev-graphicedit-atom}
+\label{sec:appdev:dev:editor-gui:atom}
 
 Atom este un editor asemănător cu Sublime Text, dezvoltat de GitHub. Principalul
 avantaj pe care acesta îl are față de Sublime Text este că are sursa deschisă și
 nu se percepe nicio taxă pentru folosire, deci poate fi considerat o variantă
 mai accesibilă față de Sublime Text.
 
-Pentru instalarea editorului Atom e suficient să accesăm pagina
+Informații despre instalarea editorului Atom se găsesc pe pagina acestuia:
 https://atom.io/.
 
 \subsubsection{Visual Studio Code}
-\label{sec:appdev-graphicedit-vsc}
+\label{sec:appdev:dev:editor-gui:vscode}
 
 Visual Studio Code (VSCode) este un editor de cod dezvoltat de Microsoft.
 Similar cu Atom, editorul are sursa deschisă și poate fi folosit gratuit.
 
 Precum cele două editoare descrise mai sus, VSCode poate fi folosit pe sisteme
-Windows, Linux și MacOS. Pentru a-l instala trebuie să urmăm pașii descriși la
+Windows, Linux și macOS. Pentru a-l instala urmăm pașii descriși la
 adresa https://code.visualstudio.com/Download/.
 
-\section{Medii integrate de dezvoltare (IDE)}
-\label{sec:appdev-ide}
+\subsection{Medii integrate de dezvoltare (IDE)}
+\label{sec:appdev:dev:ide}
 
 Am vorbit despre editoare și importanța lor în dezvoltarea programelor. Pe lângă
 editoare avansate, avem posibilitatea de a folosi medii integrate de dezvoltare.
@@ -603,7 +570,7 @@ programatorului. Un alt avantaj este posibilitatea de a refactoriza codul, adic�
 putem alege să schimbăm numele unei variabile și schimbarea va avea loc în toate
 fișierele, peste tot unde variabila este folosită.
 
-Multe din limbajele de programare existente sunt folosite pentru dezvoltarea de
+Multe dintre limbajele de programare existente sunt folosite pentru dezvoltarea de
 aplicații grafice, cum ar fi Objective-C pentru aplicații iOS. Pentru aceste
 cazuri, IDE-urile oferă un mediu vizual pentru dezvoltarea interfeței grafice în
 care programatorul poate să construiască vizual interfața și codul specific este
@@ -611,15 +578,14 @@ generat automat, ca în \labelindexref{Figura}{fig:appdev:gui-interface}.
 
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=0.8\textwidth]{chapters/06-appdev/img/screenshot.png}
+  \includegraphics[width=0.8\textwidth]{chapters/06-appdev/img/xcode-interface.png}
   \caption{Construirea vizuală a interfeței unei aplicații într-un IDE}
   \label{fig:appdev:gui-interface}
-  % TODO - poza cu exemplu
 \end{figure}
 
 Un alt avantaj important al mediilor de dezvoltare integrate sunt metodele
 avansate de a depana programele. Folosind sistemul de depanare integrat în IDE,
-putem seta puncte în care să oprim execuția programului, după care putem
+putem configura puncte în care să oprim execuția programului, după care putem
 inspecta valoarea curentă a variabilelor folosite sau valorile întoarse de
 funcții. Mai mult, putem chiar modifica valorile unor variabile pentru a
 influența execuția programului.
@@ -634,30 +600,30 @@ compilarea, rularea sau depanarea acestuia.
 Mai departe vom menționa câteva medii de dezvoltare importante pentru cele mai
 folosite limbaje de programare.
 
-\subsection{Microsoft Visual Studio și MonoDevelop}
-\label{sec:appdev-ide-vs-mono}
+\subsubsection{Microsoft Visual Studio și MonoDevelop}
+\label{sec:appdev:dev:ide:mono}
 
 Microsoft Visual Studio este editorul dedicat dezvoltării în C/C++ și C\#.
-Pentru că este suportat doar pe sisteme Windows sau MacOS, pentru sisteme Linux
+Pentru că este suportat doar pe sisteme Windows sau macOS, pentru sisteme Linux
 recomandăm folosirea IDE-ului MonoDevelop. MonoDevelop este open source, dar
 este susținut de Microsoft, împreună cu Microsoft Visual Studio.
 
-\subsection{Eclipse}
-\label{sec:appdev-ide-eclipse}
+\subsubsection{Eclipse}
+\label{sec:appdev:dev:ide:eclipse}
 
 Eclipse este unul din IDE-urile cele mai folosite pentru dezvoltarea de
 aplicații Java. Înainte de apariția Android Studio, era folosit chiar pentru
 dezvoltarea de aplicații Android, prin instalarea unei extensii.
 
-\subsection{NetBeans}
-\label{sec:appdev-ide-netbeans}
+\subsubsection{NetBeans}
+\label{sec:appdev:dev:ide:netbeans}
 
 NeatBeans e un IDE cu sursă deschisă specializat pentru limbajul Java. El oferă
 o modalitate ușoară de a crea interfețe grafice pentru aplicații Java, împreună
 cu editorul pentru dezvoltarea programelor.
 
-\subsection{Xcode}
-\label{sec:appdev-ide-xcode}
+\subsubsection{Xcode}
+\label{sec:appdev:dev:ide:xcode}
 
 Xcode este IDE-ul dezvoltat de Apple pentru crearea în principal de aplicații
 pentru iOS și macOS. Este adaptat pentru C, Objective-C și Swift. Objective-C e
@@ -665,7 +631,7 @@ un limbaj de programare ce extinde limbajului C, folosit pentru dezvoltarea de
 aplicații iOS și macOS. Swift este succesorul limbajului Objective-C.
 
 O caracteristică importantă a Xcode este editorul de interfețe grafice integrat
-(storyboard-ul), care permite generarea vizuală a interfețelor grafice și
+(storyboardul), care permite generarea vizuală a interfețelor grafice și
 conectarea mai multor ferestre fără necesitatea de a scrie cod.
 
 În ceea ce privește editorul pentru scrierea codului sursă, oricare din
@@ -675,8 +641,8 @@ editoare și să alegeți pe cel pe care îl considerați cel mai comod în folo
 iar pentru limbajele de programare care au un IDE dedicat, se recomandă
 folosirea IDE-ului.
 
-\section{Biblioteci și framework-uri}
-\label{sec:appdev-libs}
+\subsection{Biblioteci și framework-uri}
+\label{sec:appdev:dev:libs}
 
 Un alt aspect de care trebuie să ținem cont în dezvoltarea programelor este
 folosirea bibliotecilor și a framework-urilor.
@@ -702,8 +668,8 @@ dezvoltăm, acestea trebuie să existe pe sistemul pe care lucrăm. Vom vedea ma
 departe, că de multe ori fiecare platformă de dezvoltare specifică unui limbaj
 vine cu propriul sistem de instalare a acestor module.
 
-\section{Rularea programului}
-\label{sec:appdev-run}
+\subsection{Rularea programului}
+\label{sec:appdev:dev:run}
 
 Odată ce am scris codul sursă și am instalat bibliotecile sau framework-urile
 folosite, pasul final este să rulăm programul. Complexitatea acestui pas depinde
@@ -713,23 +679,21 @@ suficient să specificăm fișierul sursă și compilatorul sau interpretorul se
 ocupă de restul procesului. \labelindexref{Listing}{lst:appdev:simple-compile} conține comanda de compilare și de rulare a unui program simplu.
 
 \begin{screen}[caption={Compilarea și rularea unui program simplu},label={lst:appdev:simple-compile}]
-gcc main.c -o main
-./main
+student@uso:~$ gcc main.c -o main
+student@uso:~$ ./main
 \end{screen}
 
-În cazul unui program complex care conține mai multe fișiere și folosește
-biblioteci sau framework-uri, vom rula comenzi mai complexe, care specifică
-elementele folosite și dependența între fișiere, ca în \labelindexref{Listing}{lst:appdev:multiple-compile}
+În cazul unui program complex care conține mai multe fișiere, vom rula mai multe comenzi, ca în \labelindexref{Listing}{lst:appdev:multiple-compile}. Linia 1 și linia 2 conțin comenzi de compilare, linia 3 este comanda de linking, iar linia 4 este comanda de rulare.
 
 \begin{screen}[caption={Compilarea și rularea unui program din mai multe surse},label={lst:appdev:multiple-compile}]
-gcc -c utils.c
-gcc -c main.c
-gcc utils.o main.o -o main
-./main
+student@uso:~$ gcc -c utils.c
+student@uso:~$ gcc -c main.c
+student@uso:~$ gcc utils.o main.o -o main
+student@uso:~$ ./main
 \end{screen}
 
-\subsection{Automatizarea procesului de rulare}
-\label{sec:appdev-automation}
+\subsection{Automatizarea procesului de dezvoltare}
+\label{sec:appdev:automation}
 
 Cum am observat mai sus, pentru aplicații complexe, compilarea sau rularea
 acestora constă în rularea unei secvențe de comenzi. Toate aceste comenzi
@@ -744,16 +708,16 @@ similar unei rețete care descrie pașii necesari pentru a obține prăjitura, v
 scrie un fișier care conține pașii necesari obținerii rezultatului programului,
 iar utilitarul în cauză este bucătarul care urmează rețeta.
 
-Unele din utilitarele cele mai folosite pentru automatizarea acestor taskuri
+Unele dintre utilitarele cele mai folosite pentru automatizarea acestor taskuri
 sunt Make, Grunt, Gulp.
 
-\section{Instalarea mediilor de dezvoltare}
-\label{sec:appdev-ideinstall}
+\section{Medii de dezvoltare}
+\label{sec:appdev:dev-env}
 
-Pentru fiecare limbaj de programare folosit avem nevoie de mediul (aplicatii,
-biblioteci, compilator si/sau interpretor) de dezvoltare aferent, pentru a putea
+Pentru fiecare limbaj de programare folosit avem nevoie de mediul de dezvoltare aferent (aplicații,
+biblioteci, compilator și/sau interpretor), pentru a putea
 rula aplicațiile pe care le scriem. Bineînțeles că putem scrie codul sursă în
-orice editor, fără a folosi niciun alt program adiacent, dar am obține un fișier
+orice editor, fără a folosi nici un alt program adiacent, dar am obține un fișier
 cu instrucțiuni inutil, pe care nu îl putem compila sau interpreta. De aceea, în
 primul rând, în funcție de tipul limbajului, avem nevoie de un compilator sau un
 interpretor, care să ne permită acest lucru.
@@ -764,36 +728,31 @@ avem nevoie să instalăm bibliotecile folosite.
 Mai departe vom analiza particularități în instalarea compilatorului sau a
 interpretorului pentru mai multe limbaje de programare.
 
-\subsection{C}
-\label{sec:appdev-ideinstall-c}
+\subsection{C / C++}
+\label{sec:appdev:dev-env:c}
 
-Pentru limbajul C, compilatorul cel mai cunoscut este gcc \abbrev{gcc}{GNU
-Compiler Collection} (GNU Compiler Collection). Conceput inițial pentru a
-compila limbajul C, în momentul de față gcc a fost extins pentru a suporta
+Pentru limbajul C, compilatorul cel mai cunoscut este GCC \abbrev{GCC}{GNU
+Compiler Collection} (\textit{GNU Compiler Collection}). Conceput inițial pentru a
+compila limbajul C, în momentul de față GCC a fost extins pentru a suporta
 compilarea și a altor limbaje, cum ar fi C++ sau Java.
-
-Pe sisteme Unix compilatorul este deja instalat, există însă cazuri când ne
-dorim aducerea la zi a acestuia (update). Pentru a instala o versiune mai nouă a
-compilatorului, este suficient să rulăm comanda standard pentru instalarea
-pachetelor (apt sau yum în funcție de distribuția folosită).
 
 Pentru sistemele derivate din Debian, există un pacet special numit
 \textit{build-essential}, instalabil folosind comanda:
 
 \begin{screen}
-sudo apt install build-essential
+student@uso:~$ sudo apt install build-essential
 \end{screen}
 
 Pentru sistemele derivate din Redat, precum Fedora, CentOS etc. trebuie
 instalate pachetele separat folosind comanda:
 
 \begin{screen}
-sudo dnf install make gcc g++
+student@uso:~$ sudo dnf install make gcc g++
 \end{screen}
 
 Toate aceste pachete vor instala și limbajul C++.
 
-gcc poate fi instalat și pe sisteme Windows, prin intermediul unei aplicații
+GCC poate fi instalat și pe sisteme Windows, prin intermediul unei aplicații
 care care simulează un sistem Unix (Cygwin, MinGW etc.).
 
 Pentru sisteme Windows, compilatorul de baza este integrat în aplicația
@@ -802,11 +761,8 @@ constă într-un editor cu funcții avansate (sugestii de completare a codului,
 sugestii de posibile erori etc.) împreună cu compilatorul de C și C++ și se
 recomandă folosirea acestuia pentru dezvoltarea de programe C.
 
-\subsection{C++}
-\label{sec:appdev-ideinstall-cpp}
-
 Pentru C++ se poate folosi aceeași colecție de compilatoare ca pentru limbajul
-C, adică gcc. Cum am menționat mai sus, în momentul de față gcc suportă
+C, adică GCC. Cum am menționat mai sus, în momentul de față GCC suportă
 compilarea limbajului C++.
 
 La folosirea gcc, sistemul analizează fișierele de intrare și hotărăște dacă
@@ -814,16 +770,16 @@ limbajul compilat este C sau C++. Pentru a eficientiza procesul, se poate folosi
 direct g++, adică compilatorul de C++ integrat în gcc, ca în \labelindexref{Listing}{lst:appdev:simple-cpp}.
 
 \begin{screen}[caption={Exemplu compilare si rulare C++},label={lst:appdev:simple-cpp}]
-g++ main.cpp -o main
-./main
+student@uso:~$ g++ main.cpp -o main
+student@uso:~$ ./main
 \end{screen}
 
 De asemenea, pentru sisteme Windows mediul de dezvoltare recomandat rămâne
 același. Microsoft Visual C++ este recomandat și pentru dezvoltarea de aplicații
 C++.
 
-\subsection{Dezvoltarea în C/C++}
-\label{sec:appdev-ideinstall-c-dev}
+\subsubsection{Dezvoltarea în C/C++}
+\label{sec:appdev:dev-env:c-dev}
 
 Cum mai menționat anterior, compilatorul cel mai folosit pentru C și C++ este
 gcc/g++. Pentru folosirea compilatorului este suficient să rulăm comanda
@@ -833,13 +789,13 @@ gcc/g++. Pentru folosirea compilatorului este suficient să rulăm comanda
 etape intermediare:
 
 \begin{enumerate}
-	\item Preprocesare - se înlocuiesc macro-uri, se numerotează fiecare
+	\item preprocesare: se înlocuiesc macro-uri, se numerotează fiecare
 		linie de cod; rezultatul e un fișier cu extensia \textbf{.i}
-	\item Compilare - codul sursă este transformat în cod în limbaj de
+	\item compilare: codul sursă este transformat în cod în limbaj de
 		asamblare; rezultatul e un fișier cu extensia \textbf{.s}
-	\item Asamblare - codul în limbaj de asamblare este transformat în cod
+	\item asamblare: codul în limbaj de asamblare este transformat în cod
 		mașină; rezultatul e un fișier cu extensia \textbf{.o}
-	\item Link-editare - se fac legăturile către fișiere externe care conțin
+	\item link-editare: se fac legăturile către fișiere externe care conțin
 		simboluri sau funcții apelate din fișierul sursă; dacă avem o
 		funcție definită într-un fișier și folosită în altul,
 		implementarea funcției trebuie legată de apelul ei;
@@ -851,6 +807,9 @@ De exemplu, pentru un program C simplu (\texttt{main.c} fără nicio bibliotecă
 În schimb, pentru programe mai complexe, alcătuite din mai multe fișiere, e
 necesar să generăm fișierul obiect aferent fiecărui fișier sursă și apoi sa le
 link-edităm pentru a obține executabilul final, așa cum am indicat în \labelindexref{Listing}{lst:appdev:multiple-compile}.
+
+\subsubsection{Automatizarea compilării în C/C++}
+\label{sec:appdev:dev-env:c-dev}
 
 Cum am menționat mai devreme, este obositor să rulăm toate comenzile de mai sus
 pentru fiecare modificare adusă în codul sursă. De aceea există posibilitatea de
@@ -865,7 +824,7 @@ acel fișier și execută instrucțiunile descrise.
 Un fișier \file{Makefile} urmează formatul din \labelindexref{Listing}{lst:appdev:makefile-format}.
 
 \begin{screen}[caption={Formatul unui fișier Maefile},label={lst:appdev:makefile-format}]
-Regula: dependente
+regula: dependente
 <TAB> comanda
 \end{screen}
 
@@ -895,10 +854,10 @@ Regula reprezintă numele unei instrucțiuni. La simpla rulare a comenzii \cmd{m
 prima regulă din fișier este cea care va fi executată. În schimb, dacă vom scrie
 \cmd{make clean}, se va executa comanda aferentă regulii \texttt{clean}.
 
-Dependențele sunt fișiere și/sau reguli necesare pentru a putea rula o regulă.
-Practic, la rularea unei reguli se verifică dacă fișierul din dependență există.
-Dacă acesta există, putem rula regula, dacă nu, se caută o altă regulă cu acel
-nume și se va rula acea regulă (dacă dependențele ei sunt îndeplinite, dacă nu,
+Dependențele sunt fișiere și/sau reguli necesare pentru a putea rula o comandă.
+Practic, la rularea unei comenzi se verifică dacă fișierul din dependență există.
+Dacă acesta există, putem rula comanda, dacă nu, se caută o altă regulă cu acel
+nume și se va rula acea comandă (dacă dependențele ei sunt îndeplinite, dacă nu,
 se continuă lanțul de dependențe). Bineînțeles, sunt cazuri în care dependențele
 pot să lipsească.
 
@@ -912,7 +871,7 @@ dependența a fost creată, aceasta va fi regenerată, în caz contrar nu se va
 regenera dependența.
 
 \subsection{Java}
-\label{sec:appdev-ideinstall-java}
+\label{sec:appdev:dev-env:java}
 
 Fiind un limbaj hibrid, pentru Java sistemul de execuție a codului sursă este
 mai complex. Cum am menționat mai sus, în general limbajele hibride trec
@@ -950,17 +909,14 @@ Pentru a instala OracleJDK pe un sistem Windows, accesați site-ul Oracle și
 urmați instrucțiunile
 (https://www.oracle.com/technetwork/java/javase/overview/install-windows-142126.html).
 
-\subsubsection{Dezvoltarea în Java}
-\label{sec:appdev-ideinstall-java-dev}
-
 O particularitate a Java este aceea că bibliotecile sunt împachetate ca niște
-arhive (jar - Java Archive) care sunt incluse în aplicațiile pe care le
-dezvoltăm. Fișierul jar conține resurse diverse, de la definiții de clase la
+arhive (jar - \textit{Java Archive}) care sunt incluse în aplicațiile pe care le
+dezvoltăm. Fișierul \texttt{.jar} conține resurse diverse, de la definiții de clase la
 imagini sau alte fișiere multimedia. Fiecare astfel de arhivă poate conține un
 fișier manifest ce oferă informații despre pachet și despre utilizarea sa.
 
 \subsection{C\#}
-\label{sec:appdev-ideinstall-cs}
+\label{sec:appdev:dev-env:csharp}
 
 Pentru C\# sistemul de execuție este .NET, dezvoltat de Microsoft. Așadar,
 sistemele cu Windows au deja sistemul instalat.
@@ -968,16 +924,14 @@ sistemele cu Windows au deja sistemul instalat.
 Pentru sisteme Unix, se recomanda folosirea Mono, cu ajutorul pachetului \texttt{mono-devel}. Mono este platforma
 open-source pentru C\#, susținută tot de Microsoft.
 
-\subsubsection{Dezvoltarea în C\#}
-\label{sec:appdev-ideinstall-cs-dev}
-
-Pentru aplicațiile dezvoltate în C\# putem folosi fie Mono, fie .Net. Indiferent
+Pentru aplicațiile dezvoltate în C\# putem folosi fie Mono, fie .NET. Indiferent
 de platforma folosită, pentru a putea instala biblioteci putem folosi utilitarul
-NuGet, dezvoltat de Microsoft, similar cu pip sau npm. Ca în Java, bibliotecile
-sunt similare unei arhive.
+NuGet, dezvoltat de Microsoft.
+
+La fel ca în Java, în C\# bibliotecile sunt similare unei arhive.
 
 \subsection{Python}
-\label{sec:appdev-ideinstall-python}
+\label{sec:appdev:dev-env:python}
 
 La fel ca Java, Python e un limbaj de programare hibrid. Diferența între cele
 două este că pentru Python nu se diferențiază compilatorul de mașina virtuală,
@@ -996,13 +950,10 @@ Python pe care o folosim la dezvoltarea aplicațiilor.
 
 Se recomandă folosirea Python3 deoarece Python2 nu mai este adus la zi.
 
-\subsubsection{Dezvoltarea în Python}
-\label{sec:appdev-ideinstall-python-dev}
-
 Când vine vorba de dezvoltarea aplicațiilor folosind Python, abordarea e puțin
 diferită de C, pentru că Python e un limbaj interpretat. Drept urmare, pentru a
 putea rula programul pe care îl scriem, va trebui să rulăm interpretorul și să
-ii spunem acestuia care e programul pe care dorim să îl interpreteze.
+îi spunem acestuia care e programul pe care dorim să îl interpreteze.
 
 Pentru că în general vom lucra la proiecte complexe, care conțin mai multe
 fișiere, similar cu programele din C, în Python vom avea un fișier de bază care
@@ -1010,36 +961,16 @@ depinde de celelalte fișiere. Astfel, pentru a rula aplicația e suficient să
 specificăm fișierul de pornire, ca în \labelindexref{Listing}{lst:appdev:python-example}.
 
 \begin{screen}[caption={Exemplu rulare Python},label={lst:appdev:python-example}]
-python main.py
+student@uso:~$ python main.py
 \end{screen}
 
 Cum am menționat mai sus, Python oferă un număr mare de biblioteci și
 framework-uri care pot fi integrate în programele pe care le dezvoltăm. Pentru a
 putea folosi o bibliotecă, aceasta trebuie să existe pe sistemul care rulează
-programul. Pentru instalarea unei biblioteci, folosim utilitarul \cmd{pip}.
-\cmd{pip} este un utilitar care permite manipularea pachetelor Python, cum ar fi
-instalarea sau dezinstalarea unor biblioteci. \labelindexref{Listing}{lst:appdev:pip} conține un exemplu de folosire utilitarului \cmd{pip}.
-
-\begin{screen}[caption={Instalarea de pachete Python folosind pip},label={lst:appdev:pip}]
-pip install wiringpi
-\end{screen}
-
-Și acum să ne gândim ce înseamnă să rulăm un program pe un alt calculator.
-Bineînțeles că vom avea nevoie de interpretorul de Python instalat. Dar ce facem
-cu bibliotecile pe care le-am inclus în codul sursă? Trebuie să le instalăm din
-nou pe toate, adică ar trebui să rulăm \cmd{pip install} urmat de toate modulele
-externe necesare.
-
-Pentru a ușura acest pas, avem posibilitatea de a scrie toate bibliotecile
-necesare într-un fișier și prin rularea unei singure comenzi fișierul este
-parcurs și fiecare bibliotecă este instalată pe sistem. Utilitarul care permite
-acest lucru este \cmd{pipenv}. De exemplu, dacă instalam biblioteca requests
-rulând comanda \cmd{pipenv install requests}, se va crea un fișier numit pipfile
-în care apare menționat noul pachet instalat. La rularea comenzii \cmd{pipenv
-install}, toate bibliotecile din acel fișier sunt instalate.
+programul. Pentru instalarea unei biblioteci, folosim utilitarul \cmd{pip}, așa cum am precizat în \labelindexref{Secțiunea}{sec:package:specific}.
 
 \subsection{Node.js}
-\label{sec:appdev-ideinstall-js}
+\label{sec:appdev:dev-env:js}
 
 Când menționăm Node.js, ne referim deja la mediul de dezvoltare al aplicațiilor
 JavaScript.
@@ -1050,29 +981,21 @@ platformă ce permite executarea codului JavaScript în afară browserului. Unul
 din interpretoarele de JavaScript este V8, dezvoltat de Google și integrat în
 Google Chrome. Node.js integrează acest interpretor.
 
-Pentru a instala Node.js pe sisteme Linux, se recomandă descărcarea binarului de
-pe site. Platforma se poate instala și instalând pachetul \texttt{nodejs}, dar se va descărca o versiune foarte veche a platformei. De aceea
-recomandăm descărcarea binarului. \labelindexref{Listing}{lst:appdev:install-nodejs} prezintă instalarea NodeJS versiune 8 pentru Linux pe 64 de
-biți. Pentru alte versiuni sau aritecturi, este suficient să descărcă arhiva
-corespunzatoare de pe pagina https://nodejs.org/en/download/.
+Pentru a instala Node.js pe sisteme Linux, recomandăm folosirea instanței Snap ca în \labelindexref{Listing}{lst:appdev:install-nodejs}.
+Platforma se poate instala și instalând pachetul \texttt{nodejs} în mod clasic, dar se va descărca o versiune foarte veche a platformei.
 
-\begin{screen}
-wget https://nodejs.org/dist/v8.12.0/node-v8.12.0-linux-x64.tar.xz
-tar xvfJ node-v8.12.0-linux-x64.tar.xz
-cd node-v8.12.0-linux-x64
-sudo cp -R * /usr
+\begin{screen}[caption={Instalare Node.js},label={lst:appdev:install-nodejs}]
+student@uso:~$ sudo snap install --classic node
+node (12/stable) 12.18.4 from NodeSource, Inc. (nodesource) installed
+
+student@uso:~$ node
+Welcome to Node.js v12.18.4.
+Type ".help" for more information.
+>
 \end{screen}
-
-În plus, recomandăm instalarea unei versiuni LTS \abbrev{LTS}{Long Term Support}
-(Long Term Support) în detrimentul celei mai recente versiuni. Versiunea LTS
-este testată intensiv întainte de a fi lansată și este mult mai stabilă decat
-versiune curentă, care e încă în teste.
 
 Pentru instalarea pe sisteme ce rulează Windows, se recomandă descărcarea
 kitului de instalare de pe site-ul Node.js.
-
-\subsubsection{Dezvoltarea folosind NodeJS}
-\label{sec:appdev-ideinstall-js-dev}
 
 În general, dacă alegem să dezvoltăm o aplicație folosind Node.js, dorim să
 dezvoltăm o aplicație web la care atât partea de server, cât și cea de client să
@@ -1084,21 +1007,18 @@ Când dezvoltăm o aplicație în Node.js, aspectele de care trebuie să ținem 
 sunt similare cu cele care au legătură cu Python. Similar cu Python, pentru
 rularea codului sursă scris avem nevoie de interpretorul necesar instalat.
 
-Pentru a rula o aplicație Node.js folosim comanda
+Pentru a rula o aplicație Node.js folosim comanda:
 
 \begin{screen}
-node main.js
+student@uso:~$ node main.js
 \end{screen}
 
 Pentru manipularea modulelor externe se folosește utilitarul \cmd{npm}. Pentru
-instalarea unei bilioteci comanda necesară este \cmd{npm install $<$biblioteca$>$}.
-Similar cu pipenv, putem folosi parametrul --save pentru a obține un fișier
-numit package.json în care sunt trecute toate modulele externe necesare. La
-rularea comenzii \cmd{npm install} toate acele module sunt instalate.
+instalarea unei biblioteci comanda necesară este \cmd{npm install $<$biblioteca$>$}.
 
 Cum am menționat mai sus, de cele mai multe ori, când folosim Node.js, vom crea
 aplicații complexe, de cele mai multe ori, aplicații web. De aceea, după ce
-scriem codul sursă vom dori să îl prelucrăm. De exemplu putem alege să minifiem
+scriem codul sursă vom dori să îl prelucrăm. De exemplu putem alege să minimizăm
 codul, adică să restrângem tot codul într-un singur fișier, greu inteligibil
 pentru dezvoltatori, pentru a ne asigura că nu poate fi ușor copiat. Pe lângă
 asta, putem alege să trecem tot codul sursă printr-un utilitar care verifică
@@ -1106,9 +1026,9 @@ dacă există greșeli, cum ar fi nedeclararea unei variabile.
 
 Pentru că sunt multe astfel de operații pe care vrem să le aplicăm codului sursă
 înainte de a-l distribui, putem automatiza întregul proces. Unul din utilitarele
-folosite la această automatizare este \cmd{grunt}. Putem să ne gândim la grunt
-ca la un utilitar semănător cu make, doar că operațiile pe care grunt le
-efectuează implică preprocesarea codului sursă. Similar cu Makefile-ul, pentru
+folosite la această automatizare este \cmd{grunt}. Putem să ne gândim la \cmd{grunt}
+ca la un utilitar semănător cu Make, doar că operațiile pe care \cmd{grunt} le
+efectuează implică preprocesarea codului sursă. Similar cu un fișier \file{Makefile}, pentru
 \cmd{grunt}, vom crea un fișier numit \file{Gruntfile} care conține toate regulile, ca în \labelindexref{Listing}{lst:appdev:gruntfile}.
 
 \begin{screen}[caption={Exemplu cod Gruntfile},label={lst:appdev:gruntfile}]
@@ -1138,14 +1058,14 @@ module.exports = function(grunt) {
 \end{screen}
 
 \section{Depanarea programelor}
-\label{sec:appdev-debugging}
+\label{sec:appdev:debug}
 
 Pe măsură ce scriem tot mai multe programe, ne dăm seama că de cele mai multe
 ori acestea nu funcționează cum ne dorim de la început. De multe ori se va
 întâmpla ca programul rulat să arunce o eroare sau să nu obțină rezultatul
 dorit. Deși am dori să putem spune că \textit{e vina calculatorului}, orice
 eroare sau comportament eronat apare dacă noi nu am scris ceva bine în codul
-sursă. Erorile pot să varieze de la un simbol uitat, de cele mai multe ori un ;
+sursă. Erorile pot să varieze de la un simbol uitat,
 la accesări ilegale de memorie sau chiar erori în logica programului. Astfel, o
 mare parte din timpul destinat dezvoltării aplicațiilor îl dedicăm depanării. De
 aceea e de preferat să fim eficienți în descoperirea erorilor.
@@ -1158,15 +1078,14 @@ variabilele sau adresele de memorie la care se găsesc, ca în \labelindexref{Fi
 
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=0.8\textwidth]{chapters/06-appdev/img/screenshot.png}
-  \caption{Interfață de depanare într-un IDE}
+  \includegraphics[width=\textwidth]{chapters/06-appdev/img/codeblocks-debug.png}
+  \caption{Interfață de depanare într-un IDE (coblocks)}
   \label{fig:appdev:ide-debug}
-  % TODO - poză cu debug
 \end{figure}
 
-Unul din cele mai cunoscute utilitare pentru depanare este GDB. GDB oferă suport pentru
+Unul dintre cele mai cunoscute utilitare pentru depanare este GDB. GDB oferă suport pentru
 toate operațiile menționate mai sus și este compatibil cu toate sistemele de
-operare existente. Pe sisteme Linux, este ușor de instalat.
+operare existente.
 
 Cea mai simplă metodă de a depana un program este să afișăm mesaje pe parcursul
 execuției. Astfel putem vizualiza valorile variabilelor sau blocurile de cod
@@ -1186,9 +1105,9 @@ nu funcționează și va fi dificil să identificăm problema.
 \label{sec:appdev-versioning}
 
 De cele mai multe ori, vom lucra la proiecte complexe, în cadrul unei echipe.
-Asta înseamnă că vom avea multe fișiere cu cod sursă pe care le vom modifica în
+Acest lucru înseamnă că vom avea multe fișiere cu cod sursă pe care le vom modifica în
 paralel cu alte persoane. Drept urmare, avem nevoie de o modalitate de a împărți
-proiectul într-un mod eficient Deși la început acest lucru nu pare neapărat
+proiectul într-un mod eficient. Deși la început acest lucru nu pare neapărat
 dificil, pe măsură ce proiectul crește, este tot mai greu. Pe lângă partajarea
 efectivă a întregii structuri a programului, avem nevoie de o modalitate de a
 urmări modificările aduse și cine ce modificări a făcut. Să ne gândim la
@@ -1200,12 +1119,12 @@ identificăm eroarea. În cazul unui proiect avansat, problema e și mai mare.
 De aceea metode precum \textit{folosim un director online comun sau chiar
 trimitem sursele modificate prin email} nu sunt recomandate pentru a lucra în
 echipă la un proiect și de aceea există sisteme dedicate partajării de cod
-sursă. Un astfel de sistem este \cmd{git}.
+sursă. Un astfel de sistem este Git.
 
 Git este un sistem de management și versionare a codului sursă care permite
 partajarea unui proiect în cadrul unei echipe. Proiectul este stocat într-un
-\textit{repository}. Repository-ul conține fișierele efective ale proiectului și
-multe alte informații despre acesta. Folosind git, fiecare persoană lucrează la
+depozit (\textit{repository}). Repository-ul conține fișierele efective ale proiectului și
+multe alte informații despre acesta. Folosind Git, fiecare persoană lucrează la
 o versiune proprie a proiectului, pe care apoi o urcă online și este automat
 integrată în proiect. Ceilalți colaboratori descarcă modificările aduse când
 doresc. Sistemul urmărește modificările pe care fiecare persoană le aduce și la
@@ -1213,23 +1132,23 @@ orice moment putem descărca o versiune anterioară a codului sursă. Pentru a
 realiza toate acestea avem la dispoziție următoarele operații de bază:
 
 \begin{itemize}
-  \item \cmd{clone} - se clonează întreg repository-ul pe sistemul local;
+  \item \cmd{clone}: se clonează întreg repository-ul pe sistemul local;
 		practic se va crea un director care conține toate fișierele
 		aferente programului, plus niște fișiere care stochează
 		informații despre proiect (ex, cine a creat repository-ul, ce
 		modificări au fost aduse etc. );
-  \item \cmd{commit} - se salvează toate modificările aduse proiectului; starea
+  \item \cmd{commit}: se salvează toate modificările aduse proiectului; starea
 		actuală este salvată local; dacă modificările nu sunt publicate
 		online, acestea nu sunt vizibile colaboratorilor;
-  \item \cmd{push} - se publică modificările salvate prin commit; odată
+  \item \cmd{push}: se publică modificările salvate prin commit; odată
 		publicate aceste modificări, colaboratorii pot să vizualizeze
 		cine le-a adus și pot să urmărească schimbările linie cu linie
-  \item \cmd{pull} - se descarcă local ultimele modificări publicate de ceilalți
+  \item \cmd{pull}: se descarcă local ultimele modificări publicate de ceilalți
 		colaboratori și se integrează în versiunea locală a proiectului.
 \end{itemize}
 
 \section{Licențe pentru programe}
-\label{sec:appdev-licensing}
+\label{sec:appdev:license}
 
 Un aspect important când vine vorba de dezvoltarea programelor este
 licența acestuia.
@@ -1260,7 +1179,7 @@ cele mai cunoscute și folosite licențe software.
 \label{sec:appdev-licensing-gpl}
 
 GNU \abbrev{GNU}{GNU's Not Unix} GPL \abbrev{GNU GPL}{GNU General Public
-License} este prescurtarea de la GNU General Public License și de cele mai multe
+License} este prescurtarea de la \textit{GNU General Public License} și de cele mai multe
 ori ne referim la această licență drept GPL.
 
 Un program însoțit de o licență GPL poate fi distribuit doar dacă sursa acestuia
@@ -1273,8 +1192,8 @@ biblioteca integrată poate fi modificată
 \label{sec:appdev-licensing-lgpl}
 
 GNU LGPL \abbrev{GNU LGPL}{GNU Lesser General Public License} (simplu LGPL) este
-o licență cu restricții mai reduse față de GNU GPL. Numele vine de la GNU
-Lesser General Public License. În cazul acestei licențe programul în cauză poate
+o licență cu restricții mai reduse față de GNU GPL. Numele vine de la \textit{GNU
+Lesser General Public License}. În cazul acestei licențe programul în cauză poate
 fi integrat în alte programe care au orice altă licență. Singura restricție este
 ca modulul LGPL folosit să fie făcut public în cadrul aplicației. De asemenea,
 în cazul în care biblioteca LGPL este modificată și abia apoi integrată într-o
