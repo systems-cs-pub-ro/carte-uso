@@ -258,7 +258,7 @@ decât procese cu prioritate mai slabă.
 Atributele unui proces au rolul de identifica un proces, de a stabili ce și cât
 de multe resurse poate folosi și de a contabiliza resursele utilizate. O listă de
 atribute de bază ale unui proces împreună cu o descriere a lor se găsește în
-\labelindexref{Tabelul}{table:process:attributes}.
+\labelindexref{Tabelul}{tab:process:attributes}.
 
 \begin{table}[!htb]
 \caption{Atributele unui proces}
@@ -290,7 +290,7 @@ atribute de bază ale unui proces împreună cu o descriere a lor se găsește �
                 spațiu virtual de adrese & harta memoriei unui proces & pornire & da \\
 	\bottomrule
 	\end{tabular}
-        \label{table:process:attributes}
+        \label{tab:process:attributes}
 \end{center}
 \end{table}
 
@@ -313,7 +313,7 @@ Atributul UID \abbrev{UID}{User Id} este identificatorul utilizatorului ce
 deține procesul. Un proces cu un anumit UID va avea acces la resursele acelui
 utilizator. În mod normal, procesele aceluiași utilizator au acces la aceleași
 resurse. Utilizatorii sunt modul principal de separare/izolare între procese.
-Mai multe detalii vom prezenta în \labelindexref{Capitolul}{chapter:users}.
+Mai multe detalii vom prezenta în \labelindexref{Capitolul}{chapter:user}.
 
 \subsection{Utilitare pentru urmărirea proceselor}
 \label{sec:process:monitoring}
@@ -696,7 +696,7 @@ proces poate avea, însă, un singur proces părinte. Pentru crearea unui proces
 procesul părinte folosește o interfață specifică a sistemului de operare:
 folosește grupul de apeluri \texttt{fork()} și \texttt{exec()} în Linux și \texttt{CreateProcess()} pe
 Windows. Nu insistăm pe aceste apeluri în această carte; câteva detalii găsiți
-în \labelindexref{Secțiunea}{sec:cli-new-process}. Vizual,
+în \labelindexref{Secțiunea}{sec:cli:shell:working:new-process}. Vizual,
 crearea unui proces este indicată în \labelindexref{Figura}{fig:process:create}.
 
 \begin{figure}[!htbp]
@@ -811,7 +811,7 @@ la va accesa.
 
 Spunem că, în cadrul terminalului, avem un singur proces care deține controlul
 intrării standard, adică un singur proces care este în \textbf{foreground}. În
-general, modul de funcționare a shellului, detaliat în \labelindexref{Secțiunea}{sec:cli-shell-func}, este:
+general, modul de funcționare a shellului, detaliat în \labelindexref{Secțiunea}{sec:cli:shell}, este:
 
 \begin{enumerate}
 	\item shellul citește de la intrarea standard (din terminal) comenzi și
@@ -1491,7 +1491,7 @@ student@uso:~$ grep -rwc FILE /usr/include/ | grep -v ':0' | sort -n -t ':' -k2 
 
 Astfel de comenzi înlănțuite, care pot folosi și redirectări și alți operatori de
 înlănțuire sunt numite \textbf{one-linere}. Sunt un mod rapid de a combina mai
-multe comenzi existente pentru un efect nou. Vom discuta în detaliu despre one-linere în \labelindexref{Secțiunea}{sec:cli-one-liners}.
+multe comenzi existente pentru un efect nou. Vom discuta în detaliu despre one-linere în \labelindexref{Secțiunea}{sec:cli:basic-proc:proc:one-liners}
 
 \begin{note}[Filozofia înlănțuirii comenzilor]
 Înlănțuirea comenzilor face parte din filozofia Unix: ,,Do one thing, do
@@ -1806,7 +1806,7 @@ Shellul în care a fost pornit terminalul \cmd{screen}, \cmd{tmux} sau \cmd{byob
 reconectarea. Acest lucru este foarte util pentru scenariul precizat mai sus, al
 pornirii unui client Bittorrent la distanță, într-o conexiune SSH.
 
-În \labelindexref{Tabelul}{table:cli-tmux-screen-byobu} sunt prezentate cele mai frecvente comenzi pentru \cmd{tmux}, \cmd{byobu} și \cmd{screen}. \cmd{tmux} și \cmd{byobu} sunt aplicații mai bogate în funcționalități și le
+În \labelindexref{Tabelul}{tab:process:tmux-screen-byobu} sunt prezentate cele mai frecvente comenzi pentru \cmd{tmux}, \cmd{byobu} și \cmd{screen}. \cmd{tmux} și \cmd{byobu} sunt aplicații mai bogate în funcționalități și le
 recomandăm în defavoarea \cmd{screen}. De avut în vedere că multe opțiuni pot fi personalizate.
 
 \begin{table}[!htb]
@@ -1830,7 +1830,7 @@ recomandăm în defavoarea \cmd{screen}. De avut în vedere că multe opțiuni p
           închidere sesiune & \texttt{Ctrl+b :kill-session} & \texttt{Ctrl+a \textbackslash{}} & \texttt{Ctrl+a \textbackslash{}} \\
 	\bottomrule
 	\end{tabular}
-        \label{table:cli-tmux-screen-byobu}
+        \label{tab:process:tmux-screen-byobu}
 \end{center}
 \end{table}
 

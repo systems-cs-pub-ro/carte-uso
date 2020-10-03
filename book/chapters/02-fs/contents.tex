@@ -15,7 +15,7 @@ Sistemul de fișiere este una dintre componentele centrale ale sistemului de ope
 
 \begin{itemize}
   \item În primul rând, oferă posibilitatea \textbf{controlului unei cantități tot mai mari de documente}, permițându-ne să găsim un anumit fișier printre mii, milioane sau chiar miliarde de alte fișiere, în sistemele distribuite. Această contribuție este detaliată în \labelindexref{Secțiunea}{sec:fs:filesystem} privind structura ierarhică.
-  \item În al doilea rând, sistemele de fișiere \textbf{asigură separarea resurselor între utilizatorii multipli ai unui sistem de calcul}, fie cei umani sau non-umani. Vom discuta importanța acestei trăsături în \labelindexref{Secțiunea}{sec:users-fs} dedicată permisiunilor.
+  \item În al doilea rând, sistemele de fișiere \textbf{asigură separarea resurselor între utilizatorii multipli ai unui sistem de calcul}, fie cei umani sau non-umani. Vom discuta importanța acestei trăsături în \labelindexref{Secțiunea}{sec:user:fs-access} dedicată permisiunilor.
 \end{itemize}
 
 Sistemele de fișiere sunt diverse, \textbf{construite și optimizate pentru diferite contexte de utilizare}. Nu există un sistem de fișiere optim pentru toată lumea. Pentru a alege un sistem de fișiere trebuie să știm care sunt prioritățile în funcționarea sistemului. De exemplu, creșterea resurselor de stocare a dus la dispariția crizelor de spațiu și a problematicii comprimării în sistemele personale; aceasta este însă tot mai relevantă în arhitecturile \textit{cloud}. În zilele noastre, un utilizator stochează și folosește filme, poze, jocuri pe calculator, documente, mașini virtuale, arhive de informații; acestea ocupă spațiu considerabil pe un sistem laptop sau pe un dispozitiv mobil inteligent sau în Dropbox; acest spațiu ocupat nu mai este însă considerat o problemă dat fiind starea tehnologiilor și serviciilor de stocare.
@@ -403,7 +403,7 @@ Cele mai simple atribute ale unui fișier sunt numele, dimensiunea și tipul. Ti
 
 În rularea din \labelindexref{Listing}{lst:fs:long-listing} avem fișiere (primul caracter este \texttt{-}) și directoare (primul caracter este \texttt{d}).
 
-Alte atribute importante descriu permisiunile, adică operațiile pe care diferite tipuri de utilizatori le pot realiza asupra respectivului fișier. Informații detaliate privind \textbf{tipurile de utilizatori} și configurarea permisiunilor acestora se regăsesc în \labelindexref{Capitolul}{chapter:users}.
+Alte atribute importante descriu permisiunile, adică operațiile pe care diferite tipuri de utilizatori le pot realiza asupra respectivului fișier. Informații detaliate privind \textbf{tipurile de utilizatori} și configurarea permisiunilor acestora se regăsesc în \labelindexref{Capitolul}{chapter:user}.
 
 \begin{itemize}
   \item \texttt{r} = permisiunea de a citi fișierul
@@ -417,7 +417,7 @@ Alte atribute importante descriu permisiunile, adică operațiile pe care diferi
 
 Sistemul de fișiere ne permite realizarea mai multor tipuri de operațiuni asupra fișierelor. Operațiile uzuale asupra fișierelor includ: afișarea și schimbarea directorului, afișarea conținutului fișierului, listarea fișierelor dintr-un director, crearea fișierelor sau a directoarelor, copierea, mutarea, redenumirea sau ștergerea acestora, precum și arhivarea/dezarhivarea și realizarea unei versiuni de backup.
 
-O problemă poate apărea dacă doi utilizatori doresc să citească sau să modifice același fișier simultan, deoarece nu este clar dacă acțiunile celor doi nu se vor încurca reciproc. De aceea, una dintre responsabilitățile sistemului de fișiere este să mențină separarea resurselor resurselor între utilizatori. Vom prezenta detaliat aceste aspecte în \labelindexref{Capitolul}{chapter:users}.
+O problemă poate apărea dacă doi utilizatori doresc să citească sau să modifice același fișier simultan, deoarece nu este clar dacă acțiunile celor doi nu se vor încurca reciproc. De aceea, una dintre responsabilitățile sistemului de fișiere este să mențină separarea resurselor resurselor între utilizatori. Vom prezenta detaliat aceste aspecte în \labelindexref{Capitolul}{chapter:user}.
 
 \subsection{Afișarea și schimbarea directorului curent}
 \label{sec:fs:pwd-cd}
@@ -500,7 +500,7 @@ student@uso:~$ ls -l uso.git/README.md
 
 \begin{itemize}
   \item primul caracter ne spune tipul fișierului, în cazul de față fișier obișnuit
-  \item următoarele 3 grupuri de caractere (\texttt{rwx}) reprezintă permisiunile de acces, pe care le vom detalia în \labelindexref{Capitolul}{chapter:users}
+  \item următoarele 3 grupuri de caractere (\texttt{rwx}) reprezintă permisiunile de acces, pe care le vom detalia în \labelindexref{Capitolul}{chapter:user}
   \item \texttt{student} este utilizatorul fișierului \item \texttt{student} (a doua apariție) este grupul de care aparține fișierul
   \item \texttt{146} este dimensiunea fișierului, în octeți
   \item \texttt{aug 20 20:57} este data ultimei modificări a fișierului
