@@ -1,0 +1,13 @@
+[Unit]
+Description=My test dater service
+
+[Service]
+Type=simple
+WorkingDirectory=/home/student
+ExecStart=/bin/bash /home/student/uso-book/code/13-auto/systemd/dater
+Restart=always
+PrivateTmp=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=default.target

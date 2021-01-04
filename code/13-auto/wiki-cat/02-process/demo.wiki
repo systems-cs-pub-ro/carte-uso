@@ -1,0 +1,158 @@
+===== Demo =====
+
+==== Vizualizarea proceselor din sistem (ps, pstree, top, htop) ====
+
+Folosind ''ps'' fără nici un parametru vizualizăm procesele din shell-ul curent asociate utilizatorului curent.
+
+<code bash>
+student@uso:~$ ps
+  PID TTY          TIME CMD
+22101 pts/0    00:00:00 bash
+22209 pts/0    00:00:00 ps
+</code>
+
+Tot cu ''ps'' putem vizualiza un ''snapshot'' al tuturor proceselor. Aceasta se poate obține folosind două variante ale comenzii:
+
+<code bash>
+student@uso:~$ ps aux
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.3 160140  7044 ?        Ss   10:39   0:02 /sbin/init spla
+root         2  0.0  0.0      0     0 ?        S    10:39   0:00 [kthreadd]
+[...]
+student  22101  0.0  0.2  31236  5192 pts/0    Ss   19:38   0:00 bash
+student  22114  0.0  0.2  31236  5008 pts/1    Ss+  19:38   0:00 bash
+root     22151  0.0  0.3  25656  6260 ?        S    19:40   0:00 /sbin/dhclient 
+student  22191  0.0  0.1  46012  3656 pts/0    R+   19:48   0:00 ps aux
+</code>
+
+Un utilitar echivalent lui Windows Task Manager pentru vizualizarea în timp real a proceselor care rulează, în linie de comandă, este **htop**.
+
+<code bash>
+student@uso:~$ htop
+</code>
+
+==== Atributele unui proces ====
+
+În mod implicit, când afișăm procesele, ni se arată următoarele atribute:
+<code bash>
+student@uso:~$ ps aux
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+[...]
+</code>
+
+Putem specifica ce atribute să ne afișeze și în ce ordine dorim:
+
+<code bash>
+student@uso:~$ ps -ax -o ppid,pid,cmd
+ PPID   PID CMD
+    0     1 /sbin/init splash
+    0     2 [kthreadd]
+[...]
+</code>
+
+
+Pentru a selecta doar procesele pornite de utilizatorul student:
+
+<code bash>
+student@uso:~$ ps -f -u student
+UID        PID  PPID  C STIME TTY          TIME CMD
+student    900     1  0 11:10 ?        00:00:00 /lib/systemd/systemd --user
+student    901   900  0 11:10 ?        00:00:00 (sd-pam)
+[...]
+</code>
+
+==== Foreground & Background (&, fg, bg, jobs) ====
+
+Vom folosi ca exemplu utilitarul ''sleep''. Trebuie să știm dacă procesul nostru rulează sau nu. Pentru a verifica acest lucru, dintr-un alt terminal, ne folosim de utilitarul ''ps'':
+
+Terminal 1:
+<code bash>
+student@uso:~$ sleep 100
+</code>
+
+Terminal 2:
+<code bash>
+student@uso:~$ ps aux
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.3 160140  7044 ?        Ss   10:39   0:02 /sbin/init spla
+root         2  0.0  0.0      0     0 ?        S    10:39   0:00 [kthreadd]
+[...]
+student  22268  0.0  0.0  16116   884 pts/0    S    19:54   0:00 sleep 100
+student  22281  0.0  0.1  46012  3744 pts/0    R+   19:54   0:00 ps aux
+</code>
+
+Am găsit procesul ''sleep'' în sistem. Putem folosi utilitarul ''pgrep'' pentru a afla PID-ul procesului.
+
+<code bash>
+student@uso:~$ pgrep sleep
+22268
+</code>
+
+Pentru a opri procesul, vom folosi combinația de taste **Ctrl+Z**:
+
+<code bash>
+student@uso:~$ sleep 100
+student@uso:~$ ^Z
+[1]+  Stopped                 sleep 100
+student@uso:~$ jobs
+[1]+  Stopped                 sleep 100
+</code>
+
+Am folosit utilitarul ''jobs'' pentru a vedea ce procese sunt active în terminalul curent. De aici putem folosi **bg** (background) pentru a porni procesul în mod interactiv sau **fg** (foreground) pentru a porni procesul în mod neinteractiv. Mai simplu, la ''bg'' putem da alte comenzi în timp ce programul nostru rulează, iar la ''fg'' nu putem să dăm alte comenzi.
+
+==== Semnale (kill) ====
+
+Vom folosi în continuare comanda **kill** pentru a trimite semnale proceselor. Această comandă nu omoară neapărat procesul, în ciuda numelui.
+
+<code bash>
+student@uso:~$ kill --help
+kill: kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... or kill -l [sigspec]
+    Send a signal to a job.
+</code>
+
+Dintr-un alt terminal aflăm PID-ul procesului ''sleep'' folosind utilitarul **pgrep**. 
+Pentru a termina procesul, trimitem semnalul 9 (SIGKILL):
+
+<code bash>
+student@uso:~$ jobs
+[1]+  Stopped                 sleep 100
+student@uso:~$ pgrep sleep
+22286
+student@uso:~$ kill -9 22286
+student@uso:~$ jobs
+[1]+  Killed                  sleep 100
+</code>
+
+Am transmis semnalul 9 (SIGKILL) procesului 22286, iar acesta a fost terminat instant.
+
+==== Redirectare ====
+
+Pentru a redirecta lista proceselor într-un fișier, folosim următoarea comandă:
+
+<code bash>
+student@uso:~$ ps aux > procese.txt
+</code>
+
+Astfel, am specificat procesului să nu mai afișeze rezultatul pe ecran, ci într-un fișier. Diferența între **>** și **>>** este că primul înlocuiește conținutul fișierului **procese.txt**, pe când al2lea adaugă la sfârșitul fișierului.
+Astfel, executând a2a oară comanda:
+
+<code bash>
+student@uso:~$ ps aux > procese.txt
+</code>
+
+Vom avea în fișierul ''procese.txt'' afișat de 2 ori ieșirea comenzii.
+
+==== Comunicare interprocese, folosind | ====
+
+Operatorul **|** este foarte important și uzual folosit. Acesta ia rezultatul primei comenzi și îl oferă ca intrare la a2a comandă. Câteva exemple:
+
+<code bash>
+student@uso:~$ ps aux | grep sleep
+student  22406  0.0  0.0  16116   828 pts/0    S    20:28   0:00 sleep 1000
+student  22408  0.0  0.0  23076  1084 pts/0    S+   20:28   0:00 grep --color=auto sleep
+</code>
+
+<code bash>
+student@uso:~$ tree | grep Documents
+├── Documents
+</code>

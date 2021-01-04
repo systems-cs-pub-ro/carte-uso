@@ -1,0 +1,28 @@
+===== Get a life =====
+
+** 1. Structură de fișiere default **
+
+Să se configureze sistemul astfel încât la adăugarea unui nou utilizator să se creeze automat în directorul său ''home'' următoarea structură de fișiere și directoare:
+
+<code bash>
+.
+├── books
+│   └── to-read.txt
+├── movies
+│   └── movies-list.txt
+</code>
+
+<note tip>
+**HINT**: skeleton directory
+</note>
+
+** 2. SUID / GUID / Sticky bit **
+
+Până în acest moment ați folosit doar permisiunile ''r'' (read), ''w'' (write) și ''x'' (execute).
+Pe lângă acești biți, mai există încă trei, cunoscuți ca ''SUID'', ''GUID'' și ''Sticky bit''.
+Căutați care este diferența dintre aceste trei permisiuni, la ce se folosesc și dați câte un exemplu real de utilizare pentru fiecare în parte.
+Discutați între voi și cu asistentul pentru a verifica dacă ați înțeles corect.
+
+** 3. Script pentru crearea de utilizatori **
+
+Să se scrie un script care să creeze utilizatorul ''morty'' din grupul ''rick'', având parola ''rickandmorty''. Scriptul trebuie să fie neinteractiv.

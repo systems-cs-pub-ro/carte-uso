@@ -1,0 +1,53 @@
+===== Basics =====
+
+==== Vizualizarea proceselor din sistem (ps, pstree, top, htop) ====
+
+Folosind ''ps'' fără nici un parametru vizualizăm procesele din shell-ul curent asociate utilizatorului curent.
+
+<code bash>
+student@uso:~$ ps
+  PID TTY          TIME CMD
+22101 pts/0    00:00:00 bash
+22209 pts/0    00:00:00 ps
+</code>
+
+Parametrul **aux** asociat lui **ps** ne arată toate procesele din sistem:
+
+<code bash>
+student@uso:~$ ps aux
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.3 160140  7044 ?        Ss   10:39   0:02 /sbin/init spla
+root         2  0.0  0.0      0     0 ?        S    10:39   0:00 [kthreadd]
+[...]
+student  22101  0.0  0.2  31236  5192 pts/0    Ss   19:38   0:00 bash
+student  22114  0.0  0.2  31236  5008 pts/1    Ss+  19:38   0:00 bash
+root     22151  0.0  0.3  25656  6260 ?        S    19:40   0:00 /sbin/dhclient 
+student  22191  0.0  0.1  46012  3656 pts/0    R+   19:48   0:00 ps aux
+</code>
+
+==== Atributele unui proces ====
+
+Pentru a selecta doar procesele pornite de utilizatorul student folosim **-u**:
+
+<code bash>
+student@uso:~$ ps -f -u student
+UID        PID  PPID  C STIME TTY          TIME CMD
+student    900     1  0 11:10 ?        00:00:00 /lib/systemd/systemd --user
+student    901   900  0 11:10 ?        00:00:00 (sd-pam)
+[...]
+</code>
+
+Putem specifica ce atribute să ne afișeze și în ce ordine dorim:
+
+<code bash>
+student@uso:~$ ps -ax -o ppid,pid,cmd
+ PPID   PID CMD
+    0     1 /sbin/init splash
+    0     2 [kthreadd]
+[...]
+</code>
+
+Până a trece mai departe, trebuie să vă asigurați că ați înțeles cum trebuie navigarea printr-o ierarhie de procese. Pentru asta, parcurgeți următoarele exerciții după care verificați cu asistentul că totul este în regulă.
+  - Afișați toate procesele din sistem care să conțină date legate de PID, PID-ul părintelui, user-ul care deține procesul și comanda care a pornit procesul
+  - Filtrați procesele după utilizatorul curent (student)
+  - Afișați procesele în mod interactiv (folosind top/htop)

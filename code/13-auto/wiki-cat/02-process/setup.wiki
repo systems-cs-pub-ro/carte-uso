@@ -1,0 +1,82 @@
+===== Înainte de laborator =====
+
+==== Utilizare terminal ====
+
+Pentru a deschide un terminal nou:
+
+^ Scurtătură             ^ Descriere                                          ^
+| **''Ctrl+Alt+t''**   | pentru a deschide o nouă fereastră de terminal              |
+
+Puteți folosi următoarele scurtături în terminal:
+
+^ Scurtătură             ^ Descriere                                          ^
+| **''Ctrl+Shift+t''**   | pentru a deschide un nou tab                       |
+| **''Ctrl+PageDown''**  | pentru a merge la tab-ul următor                   |
+| **''Ctrl+PageUp''**    | pentru a merge la tab-ul precedent                 |
+| **''Alt+<index>''**    | pentru a sări direct la un tab                     |
+| **''Ctrl+d''**         | pentru a închide un tab (sau comanda **''exit''**) |
+
+Pentru a naviga (scrolling) în cadrul unui terminal, mai ales atunci când o comandă afișează mult text, folosiți următoarele scurtături:
+
+^ Scurtătură           ^ Descriere               ^
+| **''Shift+PgDown''** | pentru a derula în jos  |
+| **''Shift+PgUp''**   | pentru a derula în sus  |
+
+Alte scurtături utile: 
+
+^ Scurtătură           ^ Descriere               ^
+| **''Ctrl+Shift+c''** | copiere text din terminal  |
+| **''Ctrl+Shift+v''** | lipire text în terminal |
+| **''Shift+Insert''** | lipire text în terminal |
+
+==== Navigarea în paginile de manual ====
+
+Paginile de manual sunt adesea de mari dimensiuni și avem nevoie să le parcurgem rapid (să navigăm prin ele). Pentru aceasta, după ce deschidem pagina de manual a unei comenzi, putem folosi combinațiile de taste de mai jos pentru a naviga în pagină:
+
+^ Tastă                                  ^ Scurtă descriere                                          ^
+| /string_to_search                      | ''/'' (adică tasta //slash//) e folosită pentru a căuta **''string_to_search''** în pagina de manual |
+| **''n''** (next)                       | pentru a merge la următoarea apariție a cuvântului căutat cu / |
+| **''N''** (Shift + n)                  | pentru a merge la precedenta apariție a cuvântului             |
+| **''q''** (quit)                       | pentru a închide pagina de manual                              |
+| **''Enter''**                          | pentru a derula în jos o linie                            |
+| **''f''** (forward) sau **''Space''**  | pentru a derula în jos un ecran                           |
+| **''b''** (backward)                   | pentru a derula în sus un ecran                           |
+| **''d''** (down)                       | pentru a derula în jos jumătate de ecran                  |
+| **''u''** (up)                         | pentru a derula în sus jumătate de ecran                  |
+
+==== Suport laborator ====
+
+Pentru a obține informații detaliate despre noțiunile și tehnicile din acest laborator, recomandăm să consultați [[http://elf.cs.pub.ro/uso/res/carte/uso_cap-04-process.pdf|capitolul corespunzător din cartea de USO]].
+
+==== Obiective ====
+
+  * Înțelegerea conceptelor legate de procese
+  * Dobândirea de compențe de monitorizare și interacțiune cu procesele
+  * Obținerea de abilități de lucru cu utilitare și comenzi Linux
+  * Obținerea de noțiuni de bază legate de comunicarea inter-proces: pipe-uri și semnale
+
+==== Folosire Git pentru laborator ====
+
+Pe parcursul laboratoarelor, pentru descărcarea fișierelor necesare laboratorului, vom folosi Git. Git este un sistem de controlul versiunii și e folosit pentru versionarea codului în proiectele software mari. Celor interesați să aprofundeze conceptele din spatele comenzii ''git'', precum și utilizări avansate, le recomandăm cursul practic online de pe [[http://gitimmersion.com/|gitimmersion]].
+
+Informațiile despre laboratorul de USO se găsesc în [[https://github.com/systems-cs-pub-ro/uso|acest repository Git]].
+
+În laboratorul curent, pe sistemele din laborator (și pe [[https://ocw.cs.pub.ro/courses/uso/resurse/mv|mașina virtuală]]) aveți deja clonat repository-ul Git în directorul ''~/uso.git/''. Vom preciza acest lucru pe parcursul laboratorului.
+
+<note important>
+Pentru a pregăti infrastructura de laborator rulați comenzile de mai jos într-un terminal deschis în mașina virtuală. Deschideți un terminal folosind combinația de taste ''Ctrl+Alt+t''. În listarea de mai jos ''student@uso:~$'' este promptul unde introduceți comenzile, pe acela nu-l tastați. Recomandăm să **nu** folosiți //copy-paste// ca să vă acomodați cu linia de comandă:
+<code>
+student@uso:~$ cd uso.git/
+student@uso:~/uso.git$ git reset --hard
+student@uso:~/uso.git$ git clean -f -d
+student@uso:~/uso.git$ git fetch origin
+student@uso:~/uso.git$ git checkout -b lab-02-process
+student@uso:~/uso.git$ git rebase origin/lab-02-process
+</code>
+
+Dacă la a cincea comandă rulată (''git checkout -b lab-02-process'') primiți o eroare de forma ''fatal: A branch named 'lab-02-process' already exists.'', nu vă îngrijorați, nu e nici o problemă.
+
+Dacă la un moment dat în lucrul în repository ați șters sau modificat ceva și doriți să reveniți la starea inițială, rulați din nou comenzile de mai sus.
+</note>
+
+Cam atât cu pregătirea laboratorului. Acum haideți să ne apucăm de treabă! :-)

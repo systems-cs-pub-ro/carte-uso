@@ -1,0 +1,7 @@
+#!/bin/bash
+
+for i in *; do
+    if test -d "$i"; then
+        cat "$i"/{concepts,demo,recap,basics,need-to-know,nice-to-know,get-a-life,summary}.wiki > $(basename "$i").wiki
+    fi
+done

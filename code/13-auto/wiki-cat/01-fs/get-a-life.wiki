@@ -1,0 +1,33 @@
+===== Get a Life =====
+
+==== 1. Lucrul cu fișiere speciale (X Karma points) ====
+
+**[1a]** Intrați în directorul ''~/uso.git/labs/01-fs/support/get-a-life/1-to_delete''. Folosind linia de comandă, ștergeți fișierul ''-to_delete''.
+
+**[1b]** Creați și ștergeți un fișier cu **Enter** în nume, folosind linia de comandă.
+
+**[1c]** Creați un fișier de 32MB cu date random. (Hint: dd)
+
+==== 2. Path traversal (X Karma points) ====
+
+**[2a]** Intrați în directorul ''uso/labs/01-fs/support/get-a-life/2-passwd''. Rulați comanda ''make'' și verificați folosind **ls** că a fost creat executabilul ''reader''. Binarul afișează la consolă conținutul fișierului primit că argument (Ex: ''./reader ~/.bash_history''). În schimb, ''/etc/passwd'' a fost blocat de programator din motive de securitate. Încercați totuși să afișați ''/etc/passwd'' folosind executabilul dat.
+
+==== 3. Automatizarea lucrului cu fisiere (X Karma points) ====
+
+**[3a]** Intrați în directorul ''uso/labs/01-fs/support/get-a-life/3-template''. Creați fișierele ''laborator-01.wiki'' ... ''laborator-12.wiki'' care au același conținut că și ''template.wiki'', cu excepția primei linii în care se va modifica numărul laboratorului.
+
+**[3b]** Intrați în directorul ''uso/labs/01-fs/support/get-a-life/4-rename''. Redenumiți fișierele ''1.tex'', ''2.tex'', ... ''20.tex'' în ''01.tex'', ''02.tex'', ... , ''20.tex''.
+
+**[3c]** Creați o arhivă zip cu toate fișierele cu extensia ''.conf'' din ierarhia ''/etc/''. (Hint: find)
+
+==== 4. Grupuri si permisiuni (X Karma points) ====
+
+**[4a]** Găsiți toate fișierele executabile din ierarhia ''/etc/''.
+
+**[4b]** Găsiți toate fișierele care nu au ca grup root-ul din ierarhia ''/etc/''.
+
+==== 5. Întrebări (X Karma points) ====
+
+**[5a]** De ce useradd este vizibil doar pentru root (cu ''which'') dar nu și pentru utilizatorul obișnuit?
+
+**[5b]** De ce comanda cd sau exit nu este vizibilă cu ''which''?

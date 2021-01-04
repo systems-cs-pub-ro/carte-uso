@@ -1,0 +1,283 @@
+===== Demo =====
+
+În acest demo dorim să ne acomodăm cu cele mai importante comenzi utilizate atunci când lucrăm cu utilizatori, grupuri de utilizatori sau permisiuni în Linux.
+
+<note tip>
+Să nu uităm de [[uso:resurse:cheatsheet|cheatsheetul]] pe care îl putem folosi ca să ne reamintim cele mai frecvente comenzi.
+</note>
+
+<note warning>
+S-ar putea ca unele comenzi să nu fie instalate, folosiți ''sudo apt-get install <numele comeznii>'' pentru a le instala.
+Exemplu: ''sudo apt-get install finger''.
+</note>
+
+==== Utilizatori privilegiați si neprivilegiați (id, finger, whoami) ====
+
+În continuare, vom vedea cum putem afla informații despre utilizatori.
+În sistem exista cel puțin doi utilizatori: utilizatorul cu care ne-am logat (''student'') și utilizatorul privilegiat ''root''.
+
+Pentru a afla informații despre un utilizator sau pentru a verifica dacă un anumit utilizator există, putem folosi comanda ''finger''.
+
+<code bash>
+student@uso:~$ finger student
+Login: student                          Name: Student User
+Directory: /home/student                Shell: /bin/bash
+On since Sun Sep 16 15:07 (EEST) on :0 from :0 (messages off)
+No mail.
+No Plan.
+
+student@uso:~$ finger root
+Login: root                             Name: root
+Directory: /root                        Shell: /bin/bash
+Never logged in.
+No mail.
+No Plan.
+</code>
+
+În outputul comenzii observăm informatii despre utilizatorul ''student'', precum directorul ''home'', numele complet etc.
+
+O altă comandă utilă este ''id''. Cum și numele sugerează, ne dă id-ul utilizatorului (''uid'') dar și id-urile grupurilor (''gid'') din care face parte utilizatorul curent.
+
+<code bash>
+student@uso:~$ id
+uid=1000(student) gid=1000(student) groups=1000(student),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),116(lpadmin),126(sambashare)
+</code>
+
+Pentru a vedea cu ce utilizator suntem logați, putem folosi comanda ''whoami''.
+<code bash>
+student@uso:~$ whoami
+student
+</code>
+
+==== Rularea comenzilor ca utilizator privilegiat (sudo) ====
+
+Să presupunem că pe un sistem avem 100 de utilizatori și vrem ca toți să aibă drepturile necesare instalării de noi pachete, dar să nu poată adăuga/șterge alți utilizatori. Pe lângă faptul că ar fi foarte foarte nesigur ca 100 de persoane să știe parola contului de root, ar trebui să ne bazăm pe faptul că ei nu vor face altceva decât să instaleze pachete. Soluția acestei probleme este comanda ''sudo''.
+
+Această comandă permite execuția de comenzi de către utilizatori neprivilegiați cu drepturi de utilizatori privilegiați. Se poate configura ce utilizatori au drept să execute această comandă și ce comenzi pot rula ca utilizator privilegiat.
+
+De exemplu, dacă dorim să instalăm pachetul ''cowsay'' ca utilizatorul ''student'', vom primi o eroare de permisiune.
+
+<code bash>
+student@uso:~$ apt-get install cowsay
+E: Could not open lock file /var/lib/dpkg/lock - open (13: Permission denied)
+E: Unable to lock the administration directory (/var/lib/dpkg/), are you root?
+</code>
+
+După cum observăm din eroarea afișată în output, nu avem drepturi să instalăm pachete.
+Pentru a rezolva această problemă folosim comanda ''sudo''.
+
+<code bash>
+student@uso:~$ sudo apt-get install cowsay
+[sudo] password for student:
+student@uso:~$ cowsay "Meuh"
+ ______
+< Meuh >
+ ------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+
+</code>
+
+<note important>
+Comanda ''sudo'' cere parola utilizatorului curent (în cazul nostru utilizatorul ''student''), nu pe cea a utilizatorului ''root''.
+</note>
+
+==== Schimbarea utilizatorului curent (su) ====
+
+Pentru a schimba utilizatorul cu care suntem autentificați, folosim comanda ''su'' (switch user). Comanda lanseaza o sesiune nouă de terminal în contextul noului utilizator, deci pentru a reveni la utilizatorul precedent este suficient să rulăm comanda ''exit'' pentru a termina noua sesiune.
+
+Înlănțuirea de comenzi de mai jos schimbă utilizatorul curent din ''student'' în ''root'', verifică că acum utilizatorul logat este ''root'', închide sesiunea utilizatorului ''root'' și revine la utilizatorul ''student'' folosind comanda ''exit''.
+Întrucât nu cunoaștem parola utilizatorului ''root'', putem folosi această comanda împreună cu comanda ''sudo''.
+
+<code bash>
+student@uso:~$ sudo su root
+[sudo] password for student:
+root@uso:/home/student# whoami
+root
+root@uso:/home/student# exit
+exit
+student@uso:~$
+</code>
+
+<note important>
+De observat că atunci când schimbăm utilizatorul, nu se schimbă și directorul curent în directorul home al noului utilizator.
+</note>
+
+==== Gestiunea utilizatorilor (adduser/deluser) ====
+
+În continuare vom crea noi utilizatori iar ulterior îi vom șterge. Pnetru aceasta, vom folosi comenzile **adduser** și **deluser** .
+
+<note important>
+Cele două comenzi sunt de fapt niște scripturi //wrapper// scrise în [[https://www.perl.org|Perl]] prezente, în general, numai pe distribuții bazate pe [[http://www.debian.org|Debian]] (cum ar fi Ubuntu). Comenzile pe care le apelează ele în spate sunt ''useradd'' și ''userdel''.
+</note>
+
+Dorim să creăm utilizatorul ''bogdan''. Mai întâi verificăm că acesta nu există, după care îl adăugăm.
+
+<code bash>
+student@uso:~$ finger bogdan
+finger: bogdan: no such user.
+</code>
+
+<code bash>
+student@uso:~$ sudo adduser bogdan
+Adding user `bogdan' ...
+Adding new group `bogdan' (1002) ...
+Adding new user `bogdan' (1002) with group `bogdan' ...
+Creating home directory `/home/bogdan' ...
+Copying files from `/etc/skel' ...
+Enter new UNIX password:
+Retype new UNIX password:
+passwd: password updated successfully
+Changing the user information for bogdan
+Enter the new value, or press ENTER for the default
+        Full Name []: Bogdan
+        Room Number []:
+        Work Phone []:
+        Home Phone []:
+        Other []:
+Is the information correct? [Y/n] Y
+</code>
+
+În outputul comenzii anterioare observăm mai multe informații utile la adăugarea unui nou utilizator:
+  * se creează un nou grup cu același nume
+  * se creează home-ul utilizatorului
+  * directorul home va copia structura de fișiere și directoare din directorul ''/etc/skel''
+  * se cere o parolă și alte informații care sunt afișate la apelul comenzii ''finger''.
+
+<code bash>
+bogdan@uso:~$ finger bogdan
+Login: bogdan                           Name: Bogdan
+Directory: /home/bogdan                 Shell: /bin/bash
+Never logged in.
+No mail.
+No Plan.
+</code>
+
+După aceasta ne autentificăm ca utilizatorul ''bogdan''. Argumentul ''-'' este folosit pentru comanda ''su'' pentru a schimba directorul curent la home-ul noului utilizator.
+
+<code bash>
+student@uso:~$ su - bogdan
+Password:
+bogdan@uso:~$ pwd
+/home/bogdan
+bogdan@uso:~$ whoami
+bogdan
+</code>
+
+Dacă utilizatonul nu mai este necesar în sistem, îl ștergem folosind comanda ''deluser''.
+
+<code bash>
+student@uso:~$ sudo deluser bogdan
+Removing user `bogdan' ...
+Warning: group `bogdan' has no more members.
+Done.
+student@uso:~$ finger bogdan
+finger: bogdan: no such user.
+</code>
+
+==== Schimbarea parolei (passwd) ====
+
+Pentru a schimba parola utilizatorului curent folosim comanda ''passwd'', fără argumente. Înainte de introducere unei parole noi, trebuie să validăm parola veche.
+
+<code bash>
+student@uso:~$ passwd
+Changing password for student.
+(current) UNIX password:
+Enter new UNIX password:
+Retype new UNIX password:
+passwd: password updated successfully
+
+Dacă dorim schimbarea parolei altui utilizator, îi putem oferi comenzii ''passwd'' numele acestuia ca parametru.
+
+root@uso:~# passwd student
+Enter new UNIX password:
+Retype new UNIX password:
+passwd: password updated successfully
+</code>
+
+==== Ownership și permisiuni ====
+
+Pentru a inspecta permisiunile și deținătorii unui anumit director sau fișier folosim comanda ''ls'', împreună cu argumentul ''-l''.
+
+<code bash>
+student@uso:~$ ls -l /home/student
+total 56
+drwxr-xr-x  2 student student 4096 aug  6 17:41 Desktop
+drwxr-xr-x  3 student student 4096 aug 20 21:00 Documents
+drwxr-xr-x  2 student student 4096 aug  6 17:41 Downloads
+drwxr-xr-x  2 student student 4096 aug  6 17:41 Music
+drwxr-xr-x  2 student student 4096 aug  6 17:41 Pictures
+drwxr-xr-x  2 student student 4096 aug  6 17:41 Public
+drwxr-xr-x  2 student student 4096 aug  6 17:41 Templates
+drwxr-xr-x  2 student student 4096 aug  6 17:41 Videos
+-rw-r--r--  1 student student 8980 aug  6 17:37 examples.desktop
+drwxr-xr-x 14 student student 4096 aug 20 20:57 uso.git
+-rw-r--r--  1 student student 4827 aug 21 14:37 vm-actions-log.txt
+</code>
+
+Dacă rulăm comanda pe un director, implicit se vor lista fișierele din director și nu vom vedea permisiunile acestuia. Pentru a vedea permisiunile directorului, putem folosi argumentul ''-d'' pentru comanda ''ls'', împreună cu calea către director.
+
+<code bash>
+student@uso:~$ ls -ld uso.git/
+drwxr-xr-x 14 student student 4096 aug 20 20:57 uso.git/
+</code>
+
+Semnificația fiecărui câmp din outuput-ul anterior este prezentată în tabelul de mai jos, folosind ca exemplu informațiile afișate pentru directorul ''Desktop''.
+
+^ Tip ^ Permisiuni ^ Număr de referințe ^ Owner ^ Grup ^ Dimensiunea în octeți ^ Data și ora ultimei modificări ^ Nume ^
+| d | rwxr-xr-x | 2 | student | student | 4096 | aug  6 17:41 | Desktop |
+
+Coloanele din tabel au următoarea semnificație:
+
+  * Tip: indică dacă intrarea este un fișier (''-'') sau director (''d'')
+  * Permisiuni: specifică ce drepturi au asupra fișierului cele trei categorii de utilizatori (owner, grup și others). Fiecărui grup îi corespund 3 caractere (r -- read; w -- write, x -- execute). În acest caz, owner-ul fișierului (utilizatorul ''student'') are toate cele trei permisiuni (''rwx''), iar utilizatorii din grupul ce deține fișierul (grupul ''student'') și toți ceilalți utilizatori din sistem (''others'') au permisiuni de citire și execuție (''r-x'').
+  * Owner/Grup - utilizatorul/grupul care dețin fișierul
+
+Permisiunile se pot specifica și folosind cifre (notație în baza 8 -- //octal//):
+  * ''r'' = 4
+  * ''w'' = 2
+  * ''x'' = 1
+Pentru a determina permisiunile unei anumite categorii, adunăm cele 3 valori. Astfel, pentru exemplul de mai sus, permisiunile sunt ''755'' (7 pentru owner, 5 pentru grup și 5 pentru others).
+
+=== Modificarea permisiunilor ===
+
+La crearea unui fișier sau director se atribuie valori implicite pentru permisiuni. Acestea se pot modifica ulterior.
+
+Pentru a demonstra modul de lucru cu permisiunile, vom crea un fișier nou, după care îi vom modifica permisiunile.
+Permisiunile noi se pot specifica folosind comanda ''chmod'', folosind oricare din cele doua notații:
+
+  - În octal: 777 (drepturi depline: rwx), 740 (drepturi depline pentru owner, de citire pentru utilizatorii din grup și nicio permisiune pentru alți utilizatori).
+  - Alfabetică: +/-[rwx] -- o folosim de obicei atunci când dorim să modificăm o singură permisiune. De exemplu, ''+r'' permite accesul de citire, iar ''-w'' șterge accesul de scriere.
+
+<code bash>
+student@uso:~$ touch testfile.sh
+student@uso:~$ ls -l testfile.sh 
+-rw-r--r-- 1 student student 0 sep 16 16:47 testfile.sh
+</code>
+
+După cum observăm, nu vom putea executa scriptul nou creat, deoarece utilizatorul student nu are drepturi de execuție asupra lui. Ne propunem să permitem execuția, folosind ambele metode.
+
+#1
+<code bash>
+student@uso:~$ chmod +x testfile.sh
+student@uso:~$ ls -l testfile.sh
+-rwxr-xr-x 1 student student 0 sep 16 16:47 testfile.sh
+
+student@uso:~$ chmod -x testfile.sh
+student@uso:~$ ls -l testfile.sh
+-rw-r--r-- 1 student student 0 sep 16 16:47 testfile.sh
+</code>
+
+#2
+<code bash>
+student@uso:~$ ls -l testfile.sh
+-rw-r--r-- 1 student student 0 sep 16 16:47 testfile.sh
+student@uso:~$ chmod 755 testfile.sh
+student@uso:~$ ls -l testfile.sh
+-rwxr-xr-x 1 student student 0 sep 16 16:47 testfile.sh
+</code>
+

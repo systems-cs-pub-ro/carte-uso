@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -x
+salt=$(pwgen -N 1 -c 8)
+password=$(pwgen -N 1 -c 10)
+crypt=$(openssl passwd -1 -salt "$salt" "$password")
+set +x
+
+echo "password: $password"
+echo "crypt: $crypt"

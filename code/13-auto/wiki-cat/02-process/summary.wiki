@@ -1,0 +1,10 @@
+===== Sumar. Cuvinte cheie =====
+
+  * Procese: noțiunea de proces, resursele unui proces
+  * Vizualizarea și monitorizarea proceselor: ''ps'', ''top'', ''htop''
+  * Foreground & background: operatorul ''&'', ''fg'', ''bg'', ''jobs''
+  * Semnale, transmiterea semnalelor: ''kill'', ''pkill''
+  * Identificarea proceselor, PID-uri: ''pidof'', ''pgrep''
+  * Ierarhia proceselor: ''pstree''
+  * Redirectarea în/din fișiere: operatorii ''>'' și ''<''
+  * Comunicarea interproces prin pipe-uri: operatorul ''|''

@@ -1,0 +1,237 @@
+===== Demo =====
+
+În această secțiune vom urmări să obținem o mai bună înțelegere asupra
+procesului compilării precum și asupra utilității și utilizării fișierelor Makefile.
+
+Pentru această secțiune trebuie să vă asigurați că sunteți în directorul potrivit. Rulați comanda
+
+<code bash>
+student@uso:~$cd ~/uso.git/labs/04-appdev/support/
+</code>
+
+==== Compilarea codului în C/C++ ====
+
+După cum a fost precizat și înainte, compilatorul cel mai folosit pentru programele
+scrise în C este gcc, iar pentru C++, g++.
+
+Să presupunem că avem următorul fișier sursă ''print.c''.
+
+<code bash>
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+    printf("USO Rules! <3\n");
+    
+    return 0;
+}
+</code>
+
+În urma rulării comenzii ''gcc print.c'', procesul de compilare trece prin toate cele
+patru faze intermediare rezultând fișierul executabil a.out.
+
+<code bash>
+student@uso:~$ ls
+print.c
+student@uso:~$ gcc print.c
+student@uso:~$ ls
+a.out  print.c
+root@ebp:~$
+</code>
+
+''a.out'' este denumirea default în situația în care nu este specificat care să fie
+ numele executabilului. Pentru aceasta folosim parametrul ''[-o output_filename]''
+ la rularea comenzii. Parametrul poate să se găsească la orice poziție în cadrul
+ comenzii, dar este obligatoriu să fie urmat întotdeauna de numele dorit.
+
+<code bash>
+student@uso:~$ gcc print.c -o print
+student@uso:~$ ls
+a.out  print  print.c
+student@uso:~$
+</code>
+
+Observăm ca fișierul ''a.out'' este un fișier binar folosind comanda ''file''.
+
+<code bash>
+student@uso:~$ file a.out
+a.out: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked (uses shared libs), for GNU/Linux 2.6.32, BuildID[sha1]=c5ad78cfc1de12b9bb6829207cececb990b3e987, not stripped
+</code>
+
+Procesul de compilare are patru etape: preprocesare, compilare, asamblare și
+link-editare. La o rulare normală a comenzii gcc se trece prin toate aceste faze,
+însă există și posibilitatea de a întrerupe procesul la finalul uneia anume.
+  * folosirea parametrului -c spune compilatorului să se oprească după faza de
+    asamblare și să nu linkeze codul.
+
+<code bash>
+student@uso:~$ gcc -c print.c
+student@uso:~$ ls
+print.c  print.o
+student@uso:~$ cat print.o
+ELF>�@@
+UH��H�=��]�USO Rules! <3GCC: (Debian 8.2.0-7) 8.2.0zRx
+R                                                         �A�C
+ ��	$print.cmain_GLOBAL_OFFSET_TABLE_puts��������
+                                                                   
+                                                                    �������� .symtab.strtab.shstrtab.rela.text.data.bss.rodata.comment.note.GNU-stack.rela.eh_frame @@0
+&WW1W90eB�W�R@@
+� 
+       	�)Xaroot@ebp:~/Documents/uso/lab_04/support#
+</code>
+
+Se observă că rezultatul final este un fișier cu cod obiect.
+  * folosirea parametrului -S instruiește compilatorul să nu asambleze codul.
+<code bash>
+student@uso:~$ gcc -S print.c
+student@uso:~$ ls
+print.c  print.s
+student@uso:~$ cat print.s
+	.file	"print.c"
+	.text
+	.section	.rodata
+.LC0:
+	.string	"USO Rules! <3"
+	.text
+	.globl	main
+	.type	main, @function
+main:
+.LFB5:
+	.cfi_startproc
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register 6
+	leaq	.LC0(%rip), %rdi
+	call	puts@PLT
+	movl	$0, %eax
+	popq	%rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE5:
+	.size	main, .-main
+	.ident	"GCC: (Debian 8.2.0-7) 8.2.0"
+	.section	.note.GNU-stack,"",@progbits
+student@uso:~$
+</code>
+  *  folosirea parametrului -E oprește procesul de compilare după faza de preprocesare.
+
+<note>
+Toate opțiunile utilitarului ''gcc'' pot fi regăsite în pagina de manual (''man gcc'').
+</note>
+
+==== Makefile ====
+
+Utilitarul de automatizare cel mai folosit pentru aplicațiile C/C++ este **make**.
+În general numele unui fișier makefile este Makefile, însă te poți afla în
+situația în care ai nevoie de mai multe astfel de fișiere, moment în care
+pentru a alege unul dintre ele putem rula comanda make cu parametrul -f, urmat
+de numele makefile-ului pe care dorim să îl folosim.
+
+<code>
+student@uso:~$ ls
+Makefile Makefile.win
+student@uso:~$ make -f Makefile.win
+(..)
+</code>
+
+<note>
+Formatul unui fișier makefile este următorul:
+
+Regulă: dependențe\\
+<TAB> comandă
+
+Fișierul poate să conțină una sau mai multe astfel de linii.
+</note>
+
+Avem fișierul sursă ''print.c''. Un exemplu de Makefile care autmatizeaza procesul de compilare
+al acestuia este următorul:
+
+<code>
+build: print.c
+	gcc -Wall print.c -o print
+
+clean:
+	rm print
+</code>
+
+Acest fișier conține 2 reguli: una de **build** prin care se compilează fișierul ''print.c'' și una de ''clean''
+pe care o putem folosi să ștergem fișierele generate în urma compilării (cum ar fi fișierele executabile, obiect, etc.).
+
+Pentru a rula regula numită ''build'', rulăm comanda ''make build''.
+
+<code bash>
+student@uso:~$ make build
+gcc -Wall print.c -o print
+student@uso:~$ ls
+Makefile  print  print.c
+student@uso:~$
+</code>
+
+Pentru a șterge fișierul generat (''print''), rulăm comanda ''make clean''.
+
+<code bash>
+student@uso:~$ make clean
+rm print
+student@uso:~$ ls
+Makefile  print.c
+student@uso:~$
+</code>
+
+Dacă nu se precizează niciun argument comenzii ''make'', atunci aceasta va rula prima regulă întâlnită în fișier, adică regula ''build''.
+
+<code bash>
+student@uso:~$ make
+gcc -Wall print.c -o print
+student@uso:~$ ls
+Makefile  print  print.c
+student@uso:~$
+</code>
+
+<note>
+Regulile din Makefile pot avea și ''dependențe''. Aceastea sunt opționale, însă sunt încurajate.
+Ele reprezintă, de fapt, fișiere și/sau reguli necesare pentru a putea rula o altă regulă.
+Practic, la rularea unei reguli se verifică dacă fișierul din dependență există.
+Dacă acesta există, putem rula regula, dacă nu, se caută o altă regulă cu acel nume și se va
+rula acea regulă (dacă dependențele ei sunt îndeplinite, dacă nu, se continuă lanțul de dependențe).
+</note>
+
+Să considerăm următorul Makefile:
+
+<code bash>
+build: utils.o hello.o help.o
+        gcc utils.o help.o hello.o -o hello
+
+all:
+        gcc simple_hello.c -o simple
+
+utils.o: utils.c
+        gcc -c utils.c
+
+hello.o: hello.c
+        gcc -c hello.c
+
+help.o: help.c
+        gcc -c help.c
+
+clean:
+        rm -f *.o hello
+</code>
+
+Prima regulă care va fi rulată este ''build''. Când se încearcă rularea ei se verifică
+existența fișierelor obiect utils.o, hello.o și help.o. Cum ele nu au fost încă
+generate se caută în fișier o regulă cu numele lor. După cum se observă, aceste
+reguli se găsesc mai jos în Makefile și vor fi executate deoarece ele
+au ca dependențe doar fișiere cod sursă (despre care știm deja că există), comenzile
+aferente lor generând codul obiect necesar rulării regulii ''build''.
+
+De reținut este și faptul că ''make'' verifică dacă o dependență a fost sau nu modificată
+după momentul în care a fost creată. În caz afirmativ aceasta va fi regenerată, 
+altfel, pentru eficientizare, aceasta va fi reutilizată. 
+
+Spre exemplu, dacă avem fișierul Makefile de mai sus, am rulat deja o dată regula ''make build''
+și după modificăm fișierul ''utils.c'', atunci la următoarea rulare a regulii ''make build'' se
+va rula mai întâi (automat) regula ''utils.o'' și abia dupa ''make build''.
+

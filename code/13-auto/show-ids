@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if test $# -eq 0; then
+    echo "Usage: $0 username1 [username2 ...]" 1>&2
+    exit 1
+fi
+
+for i in $*; do
+    echo -n "$i: "
+    id -u "$i"
+done

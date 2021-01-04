@@ -1,0 +1,487 @@
+===== Demo =====
+
+Pentru început, vrem să ne acomodăm cu cele mai importante comenzi din linia de comandă, în special cele care lucrează cu fișiere și directoare. Îndrumați de asistent, vom descoperi împreună cum putem folosi linia de comandă pentru a lucra cu sistemul de fișiere și pentru a face acțiuni mai rapid ca în interfața grafică.
+
+<note tip>
+Avem și un [[uso:resurse:cheatsheet|cheatsheet]] pe care îl putem folosi ca să ne reamintim cele mai frecvente comenzi.
+</note>
+
+Să începem!
+==== 0. Autentificare cu utilizatorul root ====
+Ne propunem să schimbăm utilizatorul curent cu utilizatorul root.
+Una din metodele existente constă în folosirea comenzii su (abreviere de la en. switch user).
+
+<code bash>
+
+student@uso:~$ sudo su
+[sudo] password for student:
+root@uso:/home/student#
+
+</code>
+
+<note>
+
+Comanda a avut ca rezultat, pe lângă autentificarea ca utilizatorul root, schimbarea prompt-ului.
+Astfel, ''$'' a devenit ''#'' ceea ce ne indică faptul că în acest moment suntem autentificați ca root.
+
+</note>
+
+==== 1. Navigare în sistemul de fișiere ====
+
+Deschideți un terminal.
+
+Ne propunem să lucrăm cu acele comenzi care ne ajută să parcurgem directoarele din sistemul de fișiere (adică să-l traversăm). Apoi să folosim comenzile pentru listarea conținutului unui director și pentru afișarea conținutului unui fișier.
+
+Foarte importantă este distincția între o cale absolută (o cale către un director care pornește din directorul rădăcină, exemplu: ''/home/student'') și o cale relativă la directorul curent (folosind intrările speciale ''.'' - directorul curent și ''..'' - directorul părinte).
+
+Urmăriți cu atenție secvența de comenzi de mai jos. Dacă vreți să dați și voi comenzile pe stația la care lucrați, __folosiți cât mai des tasta ''**TAB**''__ atunci când dați un parametru comenzii ''ls'' sau ''cd''.
+
+<code bash>
+student@uso:~$ pwd
+/home/student
+student@uso:~$ ls
+Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos  examples.desktop  uso.git  vm-actions-log.txt
+student@uso:~$ cd uso.git/labs/01-fs/support/demo/
+student@uso:~/.../01-fs/support/demo$ pwd
+/home/student/uso.git/labs/01-fs/support/demo
+student@uso:~/.../01-fs/support/demo$ tree
+.
+├── empty_directory
+├── movies
+│   ├── movie0.mkv
+│   ├── movie0.srt
+│   ├── movie1.mkv
+│   ├── movie1.srt
+│   ├── movie2.mkv
+│   ├── movie2.srt
+│   ├── movie3.mkv
+│   ├── movie3.srt
+│   ├── movie4.mkv
+│   └── movie4.srt
+└── music
+    ├── ac_dc
+    │   ├── angus
+    │   ├── bon
+    │   ├── brian
+    │   ├── chris
+    │   ├── cliff
+    │   ├── dave
+    │   ├── george
+    │   ├── malcom
+    │   ├── mark
+    │   └── phil
+    ├── cargo
+    └── hammerfall
+        ├── anders
+        ├── jesper
+        ├── joacim
+        ├── magnus
+        ├── oscar
+        ├── pontus
+        └── stefan
+
+6 directories, 27 files
+
+</code>
+
+Acum că am văzut structura directoarelor, haideți să navigăm prin ele:
+
+<code bash>
+
+student@uso:~/.../01-fs/support/demo$ cd music   # aici am folosit o cale relativă la directorul curent
+student@uso:~/.../support/demo/music$ ls
+ac_dc  cargo  hammerfall
+student@uso:~/.../support/demo/music$ cd ac_dc   # aici am folosit o cale relativă la directorul curent
+student@uso:~/.../demo/music/ac_dc$ ls
+angus  bon  brian  chris  cliff  dave  george  malcom  mark  phil
+student@uso:~/.../demo/music/ac_dc$ cd .. # Am navigat în directorul părinte directorului ac_dc, care este /home/student/uso.git/labs/01-fs/support/demo/music
+student@uso:~/.../support/demo/music$ ls -R
+.:
+ac_dc  cargo  hammerfall
+
+./ac_dc:
+angus  bon  brian  chris  cliff  dave  george  malcom  mark  phil
+
+./cargo:
+
+./hammerfall:
+anders  jesper  joacim  magnus  oscar  pontus  stefan
+
+student@uso:~/.../support/demo/music$ cd /home/student/uso.git/labs/01-fs/support/demo/music/hammerfall  # am fi putut folosi și cd hammerfall, dar am folosit cale absolută
+student@uso:~/.../demo/music/hammerfall$ ls
+anders  jesper  joacim  magnus  oscar  pontus  stefan
+</code>
+
+Lui ls îi putem da argument atât o cale relativă către un director sau un fișier, cât și o cale absolută:
+
+<code bash>
+student@uso:~/.../demo/music/hammerfall$ ls ../ac_dc/
+angus  bon  brian  chris  cliff  dave  george  malcom  mark  phil
+
+student@uso:~/.../demo/music/hammerfall$ ls -l ../ac_dc/brian
+-rw-r--r-- 1 student student 0 aug 22 18:32 ../ac_dc/brian
+
+student@uso:~/.../demo/music/hammerfall$ ls -l anders
+-rw-r--r-- 1 student student 0 aug 22 18:43 anders
+
+student@uso:~/.../demo/music/hammerfall$ ls -l /home/student/uso.git/labs/01-fs/support/demo/music/hammerfall/oscar
+-rw-r--r-- 1 student student 0 aug 22 18:32 /home/student/uso.git/labs/01-fs/support/demo/music/hammerfall/oscar
+</code>
+
+<note important> Mare atenție la căile relative vs. cele absolute. O cale relativă este o cale raportată la directorul curent, în timp ce o cale absolută este raportată la directorul rădăcină (''/''). O cale relativă începe, de obicei, cu un nume, cu ''.'' sau cu ''..'', în timp ce o cale absolută începe întotdeauna cu ''/''. De reținut faptul că și ''~/uso'' este tot o cale absolută, chiar dacă începe cu caracterul ''~'', acest lucru fiind datorat faptului că ''~'' este doar un alias către directorul ''home'' al utilizatorului curent (''/home/student'').</note>
+
+Cum am văzut și mai sus, exemple de folosire a căilor relative sunt:
+<note tip>Țineți cont de folosirea tastei **''TAB''**.</note>
+
+<code bash>
+student@uso:~/.../support/demo/music$ ls hammerfall/        # ls h<TAB>
+student@uso:~/.../support/demo/music$ ls -l .
+student@uso:~/.../support/demo/music$ cd ac_dc/             # cd ./a<TAB>
+student@uso:~/.../demo/music/ac_dc$ ls ../hammerfall/       # ls ../h<TAB>
+</code>
+
+Câteva exemple de utilizare a căilor absolute:
+<code bash>
+student@uso:~/.../demo$ ls /
+student@uso:~/.../demo$ tree /home/student/uso.git/labs/01-fs/support/demo/music/hammerfall
+student@uso:~/.../demo$ tree -L 1 ~
+</code>
+
+Acum să vedem câteva erori care pot să apară. Ce credeți că se întâmplă mai jos? Care este cauza erorii apărute, ce greșeală a fost făcută?
+
+<code bash>
+student@uso:~/.../demo/music/hammerfall$ ls brian
+ls: cannot access 'brian': No such file or directory
+
+student@uso:~/.../demo/music/hammerfall$ cd /home/student/uso.git/labs/01-fs/support/demo/music/scorpions
+bash: cd: /home/student/uso.git/labs/01-fs/support/demo/music/scorpions: No such file or directory
+</code>
+
+<note important>
+Citiți cu atenție mesajele erorilor din Bash ori de câte ori o comandă nu funcționează. Oferă suficiente indicii despre rădăcina erorii.
+</note>
+
+<note important>În general, orice comandă ''cd'' ar trebui urmată de una ''ls'' sau ''pwd'' în scop de verificare. Cum am văzut mai sus, uneori pot apărea erori, fie directorul nu există, fie nu avem permisiuni să îl accesăm, iar comanda se poate executa fără succes, prin urmare este **foarte important** ca orice comandă de modificare/alterare a stării curente să fie urmată de una de verificare. Câteva exemple de comenzi care fac pereche bună sunt: ''cd'' -- ''pwd''; ''touch'', ''mv'', ''rm'' -- ''ls''; ''echo'' -- ''cat'' etc.
+</note>
+
+<note important>
+Folosiți tasta ''TAB'' ori de câte ori puteți. De multe ori e suficient să tastăm doar primele 2-3 litere din numele directorului sau fișierului pe care vrem să-l accesăm. Dacă există două sau mai multe directoare/fișiere care au același prefix, putem fie adăuga mai multe litere pentru a elimina ambiguitatea, fie tasta de două ori ''TAB'' pentru a afișa lista de hituri cu același prefix. Putem itera apoi prin lista de potriviri folosind tot tasta ''TAB''.
+</note>
+
+Urmăriți exemplele de mai jos.
+
+
+==== 2. Utilizarea scurtăturilor ====
+
+Ne propunem să navigăm rapid în directorul home al utilizatorului cu care suntem logați, indiferend de calea în care ne aflăm în momentul curent.
+
+Rețineți că simbolul ~ (numit tilda) este o prescurtare pentru directorul home al utilizatorului.
+Putem folosi acest simbol împreună cu comanda ''cd'' pentru a duce acest exercițiu la bun sfârșit.
+
+<code bash>
+
+student@uso:~/.../support/demo/movies$ cd ~
+student@uso:~$ pwd
+/home/student
+
+</code>
+
+Un alt simbol bine de reținut - este o prescurtare pentru directorul anterior accesat.
+
+<code bash>
+
+student@uso:~$ cd -
+/home/student/uso.git/labs/01-fs/support/demo/movies
+student@uso:~/.../support/demo/movies$ pwd
+/home/student/uso.git/labs/01-fs/support/demo/movies
+
+</code>
+
+==== 3. Listarea conținutului unui director recursiv ====
+
+Ca să putem lista recursiv conținutul unui director, putem folosi unul dintre
+utilitarele ''tree'' sau ''ls'' (cu opțiunea ''-R'').
+
+Vom folosi utilitarul ''tree''.
+
+<code bash>
+
+student@uso:~/.../01-fs/support/demo$ tree
+.
+├── empty_directory
+├── movies
+│   ├── movie0.mkv
+│   ├── movie0.srt
+│   ├── movie1.mkv
+│   ├── movie1.srt
+│   ├── movie2.mkv
+│   ├── movie2.srt
+│   ├── movie3.mkv
+│   ├── movie3.srt
+│   ├── movie4.mkv
+│   └── movie4.srt
+└── music
+    ├── ac_dc
+    │   ├── angus
+    │   ├── bon
+    │   ├── brian
+    │   ├── chris
+    │   ├── cliff
+    │   ├── dave
+    │   ├── george
+    │   ├── malcom
+    │   ├── mark
+    │   └── phil
+    ├── cargo
+    └── hammerfall
+        ├── anders
+        ├── jesper
+        ├── joacim
+        ├── magnus
+        ├── oscar
+        ├── pontus
+        └── stefan
+
+6 directories, 27 files
+
+</code>
+
+Putem limita adâncimea maximă pentru parcurgerea ierarhiei de fișiere folosind
+opțiunea ''-L <număr>'':
+
+<code bash>
+
+student@uso:~/.../01-fs/support/demo$ tree -L 1
+.
+├── empty_directory
+└── movies
+
+2 directories, 0 files
+
+</code>
+
+O altă opțiune pentru utilitarul ''tree'' este ''-a''. Folosind acest flag
+sunt afișate și fișierele ascunse (fișierele care au în componența numelui pe
+pe prima poziție caracterul ''.'').
+
+<code bash>
+
+student@uso:~/.../01-fs/support/demo$ tree -a empty_directory/
+empty_directory/
+└── .not_really
+
+0 directories, 1 file
+
+</code>
+
+==== 4. Crearea unei ierarhii de fișiere și directoare ====
+
+Crearea unei ierarhii de directoare poate părea anevoioasă. Până acum cunoaștem
+comenzile ''mkdir'' și ''cd''.
+
+Opțiunea ''-p'' a comenzii ''mkdir'' reduce semnificativ efortul pentru a crea
+o ierarhie de directoare:
+
+<code bash>
+
+student@uso:~/.../support/demo/movies$ mkdir -p a/long/chain/of/directories
+student@uso:~/.../support/demo/movies$ tree
+.
+├── a
+│   └── long
+│       └── chain
+│           └── of
+│               └── directories
+├── movie0.mkv
+├── movie0.srt
+├── movie1.mkv
+├── movie1.srt
+├── movie2.mkv
+├── movie2.srt
+├── movie3.mkv
+├── movie3.srt
+├── movie4.mkv
+└── movie4.srt
+
+5 directories, 10 files
+
+
+</code>
+
+
+==== 5. Editarea unui fișier folosind vim ====
+
+
+<code bash>
+
+student@uso:~/.../support/demo/movies$ vim movie0.srt
+
+</code>
+
+Pentru a insera caractere în fisierul pe care l-am deschis trebuie să intrăm
+în modul de inserare. Pentru a intra în modul de inserare se folosește tasta
+''i''.
+
+După ce am terminat de inserat caractere, ieșim dim modul de editare prin
+apăsarea tastei ''esc''.
+
+Pentru a ieși din fișier și pentru a salva introducem comanda '':wq''
+(: începe comanda nouă, w - write, q - quit).
+
+Inspectăm conținutul curent al fișierului editat folosind comanda ''cat''.
+
+<code bash>
+
+student@uso:~/.../support/demo/movies$ cat movie0.srt
+Prima linie din subtitrare
+
+</code>
+
+<note>
+
+''Vim'' este un editor text foarte complex, care a trecut cu brio testul timpului.
+Un punct de plecare pentru a stăpâni acest editor poate îl reprezintă
+urmărirea tutorialelor puse la dispoziție de utilitarul ''vimtutor''.
+
+</note>
+
+
+==== 6. Copierea, mutarea și ștergerea din ierarhia de fișiere ====
+
+Dorim să efectuăm o serie de operații (ex. copiere, mutare și ștergere) asupra
+unei ierarhii întregi de fișiere. O să folosim ierarhia de directoare pe
+care am creat-o în secțiunea 6.
+
+Pentru început o sa copiem toată ierarhia din directorul movies în directorul
+părinte al acestuia.
+
+<code bash>
+
+student@uso:~/.../support/demo/movies$ cp -r a ../
+student@uso:~/.../support/demo/movies$ tree ../a  # am folosit o cale relativă
+../a
+└── long
+    └── chain
+        └── of
+            └── directories
+
+4 directories, 0 files
+student@uso:~/.../support/demo/movies$ tree a
+a
+└── long
+    └── chain
+        └── of
+            └── directories
+
+4 directories, 0 files
+
+</code>
+
+În acest moment avem aceeași ierarhie în două locuri. Dorim să ștergem ierarhia
+din directorul ''movies''.
+
+
+<code bash>
+
+student@uso:~/.../support/demo/movies$ rm -r a/
+student@uso:~/.../support/demo/movies$ ls
+movie0.mkv  movie1.mkv  movie2.mkv  movie3.mkv  movie4.mkv
+movie0.srt  movie1.srt  movie2.srt  movie3.srt  movie4.srt
+
+</code>
+
+Am folosit comanda ''rm'' cu opțiunea ''-r'' (en. recursive) pentru a șterge întreaga ierarhie.
+Pentru mai multe opțiune a comenzii ''rm'' consultați maginile de manual (''man rm'').
+
+
+A rămas o singură operație de testat și anume mutarea. Vom folosi comanda
+''mv''.
+Vom muta directorul pe care l-am copiat mai devreme în directorul ''Desktop''
+al utilizatorului curent.
+
+<code bash>
+
+student@uso:~/.../support/demo/movies$ cd ..
+student@uso:~/.../01-fs/support/demo$ mv a ~/Desktop
+student@uso:~/.../01-fs/support/demo$ tree ~/Desktop
+/home/student/Desktop
+└── a
+    └── long
+        └── chain
+            └── of
+                └── directories
+
+5 directories, 0 files
+
+</code>
+
+Observăm că directorul pe care l-am mutat nu se mai află în directorul
+''demo''.
+
+<code bash>
+
+student@uso:~/.../01-fs/support/demo$ ls
+empty_directory  movies  music
+
+</code>
+
+
+==== 7. Wildcards ====
+
+Ne propunem să mutăm toate subtitrările din directorul ''movies'' într-un director
+separat.
+
+
+<code bash>
+
+student@uso:~/demo$ ls -l
+total 0
+-rw-r--r-- 1 student student 0 aug 22 10:56 movie0.mkv
+-rw-r--r-- 1 student student 0 aug 22 10:56 movie0.srt
+-rw-r--r-- 1 student student 0 aug 22 10:52 movie1.mkv
+-rw-r--r-- 1 student student 0 aug 22 10:52 movie1.srt
+-rw-r--r-- 1 student student 0 aug 22 10:52 movie2.mkv
+-rw-r--r-- 1 student student 0 aug 22 10:52 movie2.srt
+-rw-r--r-- 1 student student 0 aug 22 10:52 movie3.mkv
+-rw-r--r-- 1 student student 0 aug 22 10:52 movie3.srt
+-rw-r--r-- 1 student student 0 aug 22 10:52 movie4.mkv
+-rw-r--r-- 1 student student 0 aug 22 10:52 movie4.srt
+
+</code>
+
+Mai întâi trebuie să creăm un director destinație (sau să folosim unul existent).
+
+<code bash>
+
+student@uso:~/.../support/demo/movies$ mkdir subs
+student@uso:~/.../support/demo/movies$ ls
+movie0.mkv  movie1.mkv  movie2.mkv  movie3.mkv  movie4.mkv  subs
+movie0.srt  movie1.srt  movie2.srt  movie3.srt  movie4.srt
+
+</code>
+
+Pentru a muta ''toate'' fișierele ce reprezintă o subtitrare (fișierele care au
+în nume extensia ''.srt'') putem folosi un wildcard:
+
+
+<code bash>
+
+student@uso:~/demo$ mv *.srt subs/
+student@uso:~/demo$ ls -l
+total 4
+-rw-r--r-- 1 student student    0 aug 22 10:56 movie0.mkv
+-rw-r--r-- 1 student student    0 aug 22 10:52 movie1.mkv
+-rw-r--r-- 1 student student    0 aug 22 10:52 movie2.mkv
+-rw-r--r-- 1 student student    0 aug 22 10:52 movie3.mkv
+-rw-r--r-- 1 student student    0 aug 22 10:52 movie4.mkv
+drwxr-xr-x 2 student student 4096 aug 22 10:59 subs
+student@uso:~/demo$ cd subs
+student@uso:~/demo/subs$ ls -l
+total 0
+-rw-r--r-- 1 student student 0 aug 22 10:56 movie0.srt
+-rw-r--r-- 1 student student 0 aug 22 10:52 movie1.srt
+-rw-r--r-- 1 student student 0 aug 22 10:52 movie2.srt
+-rw-r--r-- 1 student student 0 aug 22 10:52 movie3.srt
+-rw-r--r-- 1 student student 0 aug 22 10:52 movie4.srt
+
+</code>

@@ -1,0 +1,107 @@
+===== Basics =====
+
+Înainte de a începe exercițiile nu uitați să rulați comenzile de ''Git'' din secțiunea [[http://ocw.cs.pub.ro/courses/uso/laboratoare/new/03-user?&#folosire_git_pentru_laborator|Folosire Git pentru laborator]].
+
+==== Gestiunea utilizatorilor ====
+
+În Linux există un fișier ce stochează informații despre toți utilizatorii din sistem.
+Acest fișier este ''/etc/passwd'', este un fișier text, și conține o listă cu utilizatorii din sistem și informații despre fiecare din ei, cum ar fi: ''user ID'', ''group ID'', ''home directory'', etc. Astfel, de fiecare dată când adăugăm un nou utilizator, se adaugă automat și o intrare în acest fișier.
+Pentru mai multe detalii puteți accesa pagina de [[https://en.wikipedia.org/wiki/Passwd|Wikipedia]].
+
+<code bash>
+student@uso:~$ cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+...
+</code>
+
+** Exerciții **
+  - Să se creeze utilizatorii: ''ana'', ''bogdan'' și ''david'' și să se afișeze informații utile despre aceștia (grupurile din care fac parte, directorul home, etc.).
+
+<note>
+Când schimbăm utilizatorul curent, nu se modifică și directorul curent. Pentru a ne ajunge direct în home-ul noului utilizator, folosim argumentul ''-'' pentru comanda ''su'':
+
+<code bash>
+student@uso:~$ su - ana
+Password: 
+ana@uso:~$
+</code>
+</note>
+
+==== Gestiunea grupurilor de utilizatori ====
+
+La crearea unui utilizator, se crează în mod automat și un grup cu același nume. Dacă dorim să realizăm o organizare diferită a utilizatorilor, putem să creăm noi grupuri.
+Pentru crearea unui grup se folosește comanda ''addgroup'', iar pentru ștergerea unui grup folosim ''delgroup''.
+
+<code bash>
+student@uso:~$ sudo addgroup studenti
+[sudo] password for student: 
+Adding group `studenti' (GID 1003) ...
+Done.
+</code>
+
+Pentru a adăuga un utilizator în unul sau mai multe grupuri se foloseste comanda ''usermod'' ca in exemplul de mai jos. 
+Comanda ''id'' a fost apelată înainte și după adăugarea utilizatorului ''bogdan'' în grupul ''studenti'' pentru a verifica dacă adăugarea a funcționat.
+
+<code bash>
+student@uso:~$ id bogdan
+uid=1002(bogdan) gid=1002(bogdan) groups=1002(bogdan)
+student@uso:~$ sudo usermod bogdan -G studenti
+student@uso:~$ id bogdan
+uid=1002(bogdan) gid=1002(bogdan) groups=1002(bogdan),1003(studenti)
+</code>
+
+**Exerciții**
+
+  - Adăugați și utilizatorii ''ana'' și ''david'' în grupul ''studenti''.
+  - Creați utilizatorii ''dan'' și ''elena'' și grupul ''asistenti'' și adăugați acești utilizatori în noul grup.
+  - Ștergeți grupul ''asistenți'' creat anterior și utilizatorii asociați.
+
+<note info>
+Pentru ștergere folosiți comenzile ''deluser'' și ''delgroup'' urmate de numele utilizatorului, respectiv numele grupului.
+</note>
+
+==== Permisiuni pentru grupuri ====
+
+După cum este explicat pe larg mai sus, pentru orice operație pe care un utilizator dorește să o facă asupra unui fișier sau director, acesta trebuie să aibă permisiunile necesare.
+
+Atunci când mai mulți utilizatori trebuie să aibă anumite permisiuni asupra unui fișier (citire, scriere, execuție), se crează un nou grup cu utilizatorii respectivi și se setează acest grup ca grupul ce deține fișierul.
+
+<note>
+Înainte să trecem la un exemplu, rulați comanda ''umask 0022''. Vom clarifica la secțiunea ''Nice to know'' ce face ea.
+</note>
+
+Să luăm exemplul următor. Utilizatorul ''student'' crează fișierul ''studenti.txt''.
+
+<code bash>
+student@uso:~$ touch student.txt
+student@uso:~$ ls -l student.txt 
+-rw-rw-r-- 1 student student 0 sep 25 21:42 student.txt
+</code>
+
+După ce a fost creat, ownerul fișierului este userul ''student'', iar grupul ce deține fișierul este ''student''.
+Dorim ca acest fișier să poată fi editat de utilizatorii ''ana'', ''bogdan'' și ''david''.
+Toți acești utilizatori sunt deja într-un grup comun: ''studenti''. Astfel, tot ce ne rămâne de făcut este să modificăm grupul fișierului.
+
+<note info>
+Pentru a modifica grupul fișierului putem folosi atât comanda ''chown'', cât și ''chgrp''.
+</note>
+
+<code bash>
+student@uso:~$ sudo chgrp studenti student.txt 
+student@uso:~$ ls -l student.txt 
+-rw-rw-r-- 1 student studenti 4 sep 25 21:54 student.txt
+</code>
+
+Acum putem verifica că și ceilalți utilizatori pot modifica conținutul fișierului:
+
+<code bash>
+ana@uso:/home/student$ echo Ana > student.txt
+ana@uso:/home/student$ cat student.txt 
+Ana
+</code>
+
+**Exerciții**
+  - Să se creeze fișierul ''shared'' de către utilizatorul ''student''. Faceți modificările necesare a.î. utilizatorul ''student'' să poată modifica fișierul, utilizatorii ''bogdan'' și ''david'' să poată vizualiza conținutul fișierului, iar oricine altcineva să nu aibă niciun drept (testați cu utilizatorul ''ana'').

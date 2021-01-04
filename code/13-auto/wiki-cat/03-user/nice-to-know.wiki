@@ -1,0 +1,75 @@
+===== Nice to know =====
+
+Înainte de a începe această secțiune trebuie să vă asigurați că sunteți în directorul potrivit.
+Rulați comanda ''cd ~/uso.git/labs/03-user/support/nice-to-know/''.
+
+**1. Schimbarea homedir-ului unui utilizator**
+
+Configurați sistemul astfel încât home directory-ul utilizatorului ''dan'', în loc de ''/home/dan'', să fie ''/home/public/dan''. Creați directorul dacă acesta nu există.
+
+<note tip>
+Indicație: Folosim [[http://linux.die.net/man/8/usermod|usermod (modify a user account)]]. Căutați după ''new login directory''.
+</note>
+
+**Pentru verificare** : Apăsați ''Ctrl+D'' sau tastați ''exit'' pentru a reveni la terminalul în care erați autentificați ca ''student'' după care încercați comanda ''su - dan''. Dați ''pwd'' și verificați că homedir-ul acestuia e cel configurat cu ''usermod''. Alt mod de a verifica este inspectarea fișierului ''/etc/passwd'' și căutând linia care conține ''dan''.
+
+**2. Permisiuni pentru executabile**
+
+<note important>
+Înainte de a începe următoarele trei exerciții trebuie să pregătiți setup-ul rulând următoarea comandă: ''./runme''.
+Exercițiul 2.1 trebuie să fie rezolvat primul.
+</note>
+
+2.1 În acest moment, la rularea comenzii ''ls'' ar trebui să primiți următorul mesaj de eroare:
+
+<code bash>
+student@uso:~$ ls
+bash: /bin/ls: Permission denied
+</code>
+
+Investigați de ce nu mai funcționează comanda ''ls'' și reparați problema.
+
+
+2.2 Se dă următorul script din directorul ''executable''. Să se rezolve permisiunile astfel încât să funcționeze următoarea lansare în execuție:
+
+<code bash>
+student@uso:~/.../03-user/support/nice-to-know$ ./executable/script.sh
+</code>
+
+2.3 Directorul ''music'' conține mai multe fișiere și directoare.
+Intrați în directorul ''music'' (''cd music''), iar apoi în directorul ''ac_dc''.
+Listați conținutul directorului ''ac_dc''.
+Mergeți înapoi în directorul ''music'' (''cd ..'') și listați conținutul. După cum ați observat primiți o eroare. Totuși ați putut accesa și vizualiza directorul ''ac_dc'', de ce nu puteți vizualiza și conținutul directorului ''music''? Rezolvați problema, astfel încât listarea să funcționeze.
+
+==== Permisiuni default - umask ====
+
+Comanda ''umask'' definește permisiunile default care sunt aplicate pentru fișierele sau directoarele nou create.
+Permisiunile default funcționează prin aplicarea unei măști formată din trei cifre, care se poate modifica folosind ''umask'', asupra permisiunilor de bază ale fișierelor și directoarelor.
+Permisiunile de bază pentru fișiere sunt ''666'', iar pentru directoare sunt ''777''.
+
+Pentru a vedea ce mască este aplicată pe sistemul nostru, folosim comanda ''umask'' fără parametri:
+<code bash>
+student@uso:~$ umask
+0002
+</code>
+
+Pentru a afla ce permisiuni se vor seta implicit, calculăm diferența între valorile de bază și mască, astfel (în acest exemplu masca este ''002''):
+
+  * pentru fișiere:
+
+    666 -
+    002
+    ___
+    664
+
+  * pentru directoare:
+
+    777 -
+    002
+    ___
+    775
+
+** Exerciții **
+  - Verificați faptul că la crearea unui nou fișier sau director sunt aplicate aceste permisiuni.
+  - Să se facă modificările necesare a.î. la crearea unui nou fișier ownerul să aibă drept de citire și scriere, iar grupul și toți ceilalți utilizatori să aibă doar drept de citire.
+

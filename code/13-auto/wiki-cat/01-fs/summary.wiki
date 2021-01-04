@@ -1,0 +1,20 @@
+===== Sumar. Cuvinte cheie =====
+
+  * Linie de comandă, comenzi, argumente/opțiuni
+  * Directorul curent: ''pwd''. Navigare prin directoare: ''cd''. Listarea conținutului: ''ls''. Sistemul de fișiere în Linux are o structură arborescentă/ierarhică: ''ls -R'', ''tree''
+  * Redenumire fișiere, mutare fișiere: ''mv''
+  * Copiere fișiere: ''cp''
+  * Linux manpages and offline help: ''man''
+  * Wildcard listing use-case: Listarea tuturor fișierelor cu extensia ''.conf'' din directorul ''etc'' din rădăcină:
+<code>
+ls /etc/*.conf
+</code>
+  * Copiere/ștergere recursivă a directoarelor care nu sunt goale: ''rm -r my_dir'', ''cp -r my_dir''
+  * ''rmdir'' vs. ''rm'' vs. ''rm -rf''
+  * Afișarea conținutului unor fișiere: ''cat file''. Semnificația ''cat'' este de concatenare a fișierelor primite ca argument de intrare și de afișare la ieșirea standard a conținutului: ''cat file1 file2 file3 ... ''. Dacă nici un fișier nu e dat ca argument de intrare, atunci ''cat'' va aștepta date de la intrarea standard (tastatură) până când este apăsata combinația de taste ''CTRL+d''.
+  * Căutarea în sistemul de fișiere: ''locate''
+  * Editarea de fișiere text: ''vim''
+  * Arhivare/dezarhivare: ''tar'', ''zip''
+  * Redirectări, ieșire standard, ieșire de eroare standard: ''>'', ''2>''
+  * Parcurgerea fișierelor dintr-o ierarhie: ''find''
+  * Comenzi și executabie: ''PATH'', ''which'', ''file''

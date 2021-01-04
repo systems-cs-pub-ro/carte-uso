@@ -1,0 +1,5 @@
+===== Get a Life =====
+
+  - Scrieți un Makefile astfel încât comanda make să eșueze. (Hint: cicluri în sortarea topologică)
+  - Decomentați linia din fișierul b.c, din folder-ul support/need-to-know și faceți modificările necesare astfel încât fișierul main.c să compileze cu succes din nou.
+

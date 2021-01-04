@@ -1,0 +1,4 @@
+===== Recapitulare =====
+
+    - Afișați recursiv, pornind din directorul ''uso.git'', toate fișiere și directoarele. Puteți alege oricare din variantele învățate anterior.
+    - Creați o arhivă cu fișierele menționate mai sus.

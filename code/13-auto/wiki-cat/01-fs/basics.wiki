@@ -1,0 +1,498 @@
+===== Basics =====
+
+Pentru a începe acest tutorial trebuie să vă asigurați că sunteți în
+directorul potrivit.
+Rulați comanda ''cd ~/uso.git/labs/01-fs/support/basics/''. 
+
+==== Navigarea printr-o ierarhie de directoare ====
+Listarea conținutului directorului curent se face folosind comanda
+''ls''.
+
+<code bash>
+student@uso:~/.../01-fs/support/basics$ ls
+grotesque  'hacker-s secret'   rookiss  'toddler-s bottle'
+</code>
+
+Observăm că prin utilizarea comenzii ''ls'' putem vedea ce avem în
+directorul curent, dar nu și în subdirectoarele acestuia. Un mod
+pentru a putea vizualiza întreaga ierarhie începând cu directorul
+curent este utilizarea utilitarului ''tree''.
+Dacă acesta nu este instalat, rulați comanda ''sudo apt-get install tree''.
+
+<code bash>
+student@uso:~/.../01-fs/support/basics$ tree .
+.
+├── grotesque
+│   ├── asg
+│   ├── coin2
+│   └── do you dare
+│       ├── ascii
+│       ├── dos4fun
+│       ├── elf
+│       ├── hunter
+│       ├── hunting
+│       ├── mipstake
+│       └── rootkit
+├── hacker-s secret
+│   ├── hard
+│   │   ├── malware
+│   │   └── pwnsandbox
+│   ├── medium
+│   │   ├── softmmu
+│   │   └── tiney
+│   └── really hard
+│       ├── exploitable
+│       └── nuclear
+├── rookiss
+│   ├── ascii easy.pdf
+│   ├── brain fuck
+│   ├── echo2
+│   ├── fix.pdf
+│   ├── loveletter
+│   ├── otp.pdf
+│   └── syscall
+└── toddler-s bottle
+    ├── bof
+    │   ├── easy
+    │   │   ├── bof-bof-bof
+    │   │   ├── bof1.txt
+    │   │   ├── bof2.txt
+    │   │   ├── bof3.txt
+    │   │   ├── bof4.txt
+    │   │   ├── bof5.txt
+    │   │   ├── can-you-bof
+    │   │   └── random-bof.txt
+    │   ├── hard
+    │   │   └── I bet you can-t
+    │   └── medium
+    │       └── getting-serious-here
+    ├── collision
+    ├── fd
+    ├── flag
+    ├── input
+    ├── passcode
+    │   ├── passcode1
+    │   ├── passcode2
+    │   └── random-org
+    └── random
+
+13 directories, 40 files
+</code>
+
+Vrem să afisăm calea curentă pentru a vedea în ce director ne aflăm.
+Vom folosi comanda ''pwd''. După aceea, vom lista conținutul
+directorului pentru a-l inspecta.
+
+<code bash>
+student@uso:~/.../01-fs/support/basics$ pwd
+/home/student/uso.git/labs/01-fs/support/basics
+student@uso:~/.../01-fs/support/basics$ ls
+grotesque  'hacker-s secret'   rookiss  'toddler-s bottle'
+</code>
+
+De multe ori avem nevoie să ne plasăm cu un director în spate.
+Pentru a ajunge în directorul părinte folosim comanda ''cd ..''.
+E bine să verificăm de fiecare dată că ne aflăm în directorul în care
+trebuie.
+
+<code bash>
+student@uso:~/.../01-fs/support/basics$ pwd
+/home/student/uso.git/labs/01-fs/support/basics
+student@uso:~/.../01-fs/support/basics$ cd ..
+student@uso:~/uso.git/labs/01-fs/support$ pwd
+/home/student/uso.git/labs/01-fs/support
+</code>
+
+După folosirea comenzii ''tree'' știm întreaga ierarhie și cunoaștem
+calea pană la un anumit subdirector. Vrem să ajungem acolo. Putem face
+asta prin comenzi succesive de tipul ''cd subdirector'' sau putem
+folosi o singură comandă pentru a ne ușura munca.
+
+<code bash>
+student@uso:~/uso.git/labs/01-fs/support$ cd ~/uso.git/labs/01-fs/support/basics/
+student@uso:~/.../01-fs/support/basics$ tree .
+.
+├── grotesque
+│   ├── asg
+│   ├── coin2
+│   └── do you dare
+│       ├── ascii
+│       ├── dos4fun
+│       ├── elf
+│       ├── hunter
+│       ├── hunting
+│       ├── mipstake
+│       └── rootkit
+├── hacker-s secret
+│   ├── hard
+│   │   ├── malware
+│   │   └── pwnsandbox
+│   ├── medium
+│   │   ├── softmmu
+│   │   └── tiney
+│   └── really hard
+│       ├── exploitable
+│       └── nuclear
+├── rookiss
+│   ├── ascii easy.pdf
+│   ├── brain fuck
+│   ├── echo2
+│   ├── fix.pdf
+│   ├── loveletter
+│   ├── otp.pdf
+│   └── syscall
+└── toddler-s bottle
+    ├── bof
+    │   ├── easy
+    │   │   ├── bof-bof-bof
+    │   │   ├── bof1.txt
+    │   │   ├── bof2.txt
+    │   │   ├── bof3.txt
+    │   │   ├── bof4.txt
+    │   │   ├── bof5.txt
+    │   │   ├── can-you-bof
+    │   │   └── random-bof.txt
+    │   ├── hard
+    │   │   └── I bet you can-t
+    │   └── medium
+    │       └── getting-serious-here
+    ├── collision
+    ├── fd
+    ├── flag
+    ├── input
+    ├── passcode
+    │   ├── passcode1
+    │   ├── passcode2
+    │   └── random-org
+    └── random
+
+13 directories, 40 files
+student@uso:~/.../01-fs/support/basics$ cd grotesque/do<TAB>
+student@uso:~/.../basics/grotesque/do you dare$ pwd
+/home/student/uso.git/labs/01-fs/support/basics/grotesque/do you dare
+</code>
+
+Câteodată vrem să ne plasăm într-un alt subdirector din ierarhia
+mare care nu se află în calea curentă. Avem iarăși de ales între
+pași mici, succesivi sau folosirea unei sigure comenzi pentru a ne
+poziționa altundeva.
+
+<code bash>
+student@uso:~/.../basics/grotesque/do you dare$ pwd
+/home/student/uso.git/labs/01-fs/support/basics/grotesque/do you dare
+student@uso:~/.../basics/grotesque/do you dare$ cd ../../rookiss
+student@uso:~/.../support/basics/rookiss$ pwd
+/home/student/uso.git/labs/01-fs/support/basics/rookiss
+</code>
+
+Până acum ne-am jucat cu ierarhia dată de echipa de USO, dar cum
+facem dacă vrem să ajungem în directorul ''/usr/local''? Folosim o
+cale **absolută** pentru a naviga direct acolo fără a ne face griji
+de directorul în care ne aflăm, cât va trebui să ne deplasăm în spate
+(sau în față) pentru a ajunge unde vrem.
+
+<code bash>
+student@uso:~/.../support/basics/rookiss$ cd /usr/local
+student@uso:/usr/local$ pwd
+/usr/local
+</code>
+
+Pentru a ajunge în directorul home al utilizatorului curent de
+oriunde ne-am afla, folosim:
+
+<code bash>
+student@uso:/usr/local$ cd ~ # 'tilda'
+student@uso:~$ pwd
+/home/student
+</code>
+
+Până a trece mai departe, trebuie să vă asigurați că ați înțeles cum
+trebuie navigarea printr-o ierarhie de directoare. Pentru asta,
+parcurgeți următoarele exerciții după care verificați cu asistentul
+că totul este în regulă.
+
+    - Plasați-vă în directorul ''hacker-s\ secret/medium''.
+    - Navigați în sistemul de fișiere către directorul ''toddler-s\ bottle/bof/easy''  pornind din directorul home al utilizatorului curent.
+    - Ajungeți înapoi în directorul home al utilizatorului curent fără a folosi simbolul **tilda**(~).
+
+<note tip>
+Dacă vrem să renunțăm la folosirea ghilimelelor în cazul fișierelor ale căror nume conțin spații, putem **escapa** caracterul special ''spațiu'' folosind ''\ ''.
+</note>
+
+==== Listarea fișierelor dintr-un director ====
+Plasați-vă din nou în directorul ''/uso.git/labs/01-fs/support/basics''.
+
+După cum am observat mai sus, listarea conținutului unui director se poate face folosind comanda ''ls''. Această formă de utilizator nu ne prezintă foarte multe informații despre fișierele din directorul inspectat (dimensiune, drepturi, tip, etc.). Folosind argumentul ''-l'' al lui ''ls'' putem lista conținutul unui director în format lung.
+Astfel, putem afla mai multe informații despre fișiere, cum ar fi (în ordine): drepturile asupra fișierului, numărul de linkuri către fișier, numele ownerului, numele grupului owner, dimensiunea fișierului, data ultimei modificări și numerele acestuia.
+
+<code bash>
+student@uso:~/.../01-fs/support/basics$ ls -l
+total 16
+drwxr-xr-x 3 student student 4096 aug 21 22:17  grotesque
+drwxr-xr-x 5 student student 4096 aug 21 22:17 'hacker-s secret'
+drwxr-xr-x 2 student student 4096 aug 21 22:17  rookiss
+drwxr-xr-x 4 student student 4096 aug 21 22:17 'toddler-s bottle'
+</code>
+
+Putem lista conținutul unui director altul decât cel în care ne aflăm dacă dăm comenzii ''ls'', ca argument, calea către acesta (fie absolută, fie relativă).
+
+<code bash>
+student@uso:~/.../01-fs/support/basics$ ls hacker-s\ secret/hard/
+malware     pwnsandbox
+</code>
+
+Utilizarea simplă a comenzii ''ls'' fără a-i da un argument special nu ne afisează fișierele acunse dintr-un director. Pentru asta, folosim argumentul ''-a''. De remarcat, numele fișierelor ascunse încep cu ''.''.
+
+<note tip>
+''.'' reprezintă directorul curent, iar ''..'' reprezintă directorul părinte.
+</note>
+
+<code bash>
+student@uso:~/.../01-fs/support/basics$ cd hacker-s\ secret/really\ hard/
+student@uso:~/.../basics/hacker-s secret/really hard$ ls -a
+.  ..  .unexploitable  exploitable  nuclear
+</code>
+
+Câteodată un director poate avea foarte multe intrări, iar noi să dorim inspectăm doar o parte dintre ele. Spre exemplu, vrem să aflăm mai multe informații despre fișierele cu extensia ''.pdf''. Pentru asta, vom folosi **wildcards**.
+
+<code bash>
+student@uso:~/.../basics/hacker-s secret/really hard$ cd ~/uso.git/labs/01-fs/support/basics
+student@uso:~/.../01-fs/support/basics$ cd rookiss
+student@uso:~/.../support/basics/rookis$ pwd
+/home/student/uso.git/labs/01-fs/support/basics/rookiss
+student@uso:~/.../support/basics/rookis$ ls *.pdf
+'ascii easy.pdf'   fix.pdf   otp.pdf
+</code>
+
+Până a trece mai departe, trebuie să vă asigurați că ați înțeles și reținut cum puteți lista conținutul unui director sub diverse forme. Pentru asta, parcurgeți următoarele exerciții după care verificați cu asistentul că totul este în regulă. Recomandăm folosirea paginii de manual pentru utilitarul ''ls'' (''man ls''). Vă va da informații despre toate argumentele pe care le puteți da comenzii ''ls''.
+Putem da oricate argumente comenzii ''ls'', fie sub forma ''ls -a -b -c'', fie ''ls -abc''.
+
+    - Să se listeze in format lung conținutul directorului ''grotesque/do\ you\ dare/'' cu afișarea dimensiunii fișierelor în format human readable. (Hint: ''man ls'' și căutați după șirul ''human readable'').
+    - Afișati conținutul directorului ''toddler-s\ bottle/'' cu afișarea unui simbol pentru tipul de fișier. Remarcați diferențele dintre fișiere. (Hint: ''classify'')
+    - Listați directorul ''hacker-s\ secret/hard'' fără a naviga către el.
+    - Listați întreg conținutul directorului ''grotesque/'' (inclusiv fișiere ascunse).
+    - Listați doar fișierele cu extensia ''.txt'' din directorul ''toddler-s\ bottle/bof/easy'' folosind o singură comandă.
+    - Plasati-vă în directorul ''toddler-s\ bottle/passcode'' și afisați toate fișierele ale căror nume au prefixul ''passcode''.
+
+==== Creare de noi directoare într-o ierarhie ====
+
+Pentru a crea un nou director în directorul curent folosim comanda ''mkdir''.
+
+<code bash>
+student@uso:~/.../basics/toddler-s bottle/passcode$ cd ~/uso.git/labs/01-fs/support/basics
+student@uso:~/.../01-fs/support/basics$ ls
+grotesque  'hacker-s secret'   rookiss  'toddler-s bottle'
+student@uso:~/.../01-fs/support/basics$ mkdir my-new-folder
+student@uso:~/.../01-fs/support/basics$ ls
+grotesque  'hacker-s secret'   my-new-folder   rookiss  'toddler-s bottle'
+</code>
+
+În cazul în care vrem să creăm un director al cărui nume conține spații, avem 2 posibilități.
+
+Varianta 1:
+<code bash>
+student@uso:~/.../01-fs/support/basics$ mkdir "weird directory"
+student@uso:~/.../01-fs/support/basics$ ls
+grotesque          my-new-folder  'toddler-s bottle'
+'hacker-s secret'   rookiss        'weird directory'
+</code>
+
+Varianta 2:
+<code bash>
+student@uso:~/.../01-fs/support/basics$ mkdir weird\ directory\ 2
+student@uso:~/.../01-fs/support/basics$ ls
+ grotesque          my-new-folder  'toddler-s bottle'  'weird directory 2'
+'hacker-s secret'   rookiss        'weird directory'
+</code>
+
+Intrați în primul director creat. Vrem să creăm un fișier cu conținutul "Hello, world".
+
+<code bash>
+student@uso:~/.../01-fs/support/basics$ cd w<TAB>
+student@uso:~/.../support/basics/weird directory$ echo "Hello, world" > my_file.txt
+student@uso:~/.../support/basics/weird directory$ ls -l
+total 4
+-rw-r--r-- 1 student student 13 aug 21 22:59 my_file.txt
+</code>
+
+Până a trece mai departe, trebuie să vă asigurați că ați înțeles cum puteți crea noi fișiere și directoare. Pentru asta, parcurgeți următoarele exerciții după care verificați cu asistentul că totul este în regulă. Recomandăm folosirea paginii de manual pentru utilitarul ''ls'' (''man ls''). Vă va da informații despre toate argumentele pe care le puteți da comenzii ''ls''.
+
+    - Vă aflați în ''weird directory''. Creați directorul cu numel ''third weird directory'' la calea ''basics/toddler-s\ bottle''. Mutați-vă la acea cale.
+    - Creați un fișier gol cu numele ''my_second_file.txt''.
+    - Modificați conținutul fișierului și afișați conținutul acestuia folosind comanda ''cat''. Puteți folosi orice editor de text doriți pentru face modificări asupra fișierului.
+
+==== Mutarea fișierelor și directoarelor ====
+
+Pentru a redenumi un fișier folosim comanda ''mv''. Comanda ''mv'' are formatul ''mv sursă destinație''. În cazul în care uitați, folosiți pagina de manual a acesteia.
+
+<code bash>
+student@uso:~/.../basics/toddler-s bottle/third weird directory$ cd ~/uso.git/labs/01-fs/support/basics/toddler-s\ bottle
+student@uso:~/.../support/basics/toddler-s bottle$ ls
+bof         fd     input      random
+collision   flag   passcode  'third weird directory'
+student@uso:~/.../support/basics/toddler-s bottle$ mv collision my-new-collision
+student@uso:~/.../support/basics/toddler-s bottle$ ls
+ bof   flag    my-new-collision   random
+ fd    input   passcode          'third weird directory'
+</code>
+
+Bineînțeles, putem redenumi un fișier aflat într-un alt director.
+
+<code bash>
+student@uso:~/.../support/basics/toddler-s bottle$ cd ~/uso.git/labs/01-fs/support/basics/toddler-s\ bottle
+student@uso:~/.../support/basics/toddler-s bottle$ ls ../grotesque/do\ you\ dare/
+ascii  dos4fun  elf  hunter  hunting  mipstake  rootkit
+student@uso:~/.../support/basics/toddler-s bottle$ mv ../grotesque/do\ you\ dare/mipstake ../grotesque/do\ you\ dare/mistake
+student@uso:~/.../support/basics/toddler-s bottle$ ls ../grotesque/do\ you\ dare?/
+ascii  dos4fun  elf  hunter  hunting  mistake  rootkit
+</code>
+
+Folosim tot comanda ''mv'' pentru a muta un fișier într-un alt director.
+
+<code bash>
+student@uso:~/.../support/basics/toddler-s bottle$ ls
+ bof   flag    my-new-collision   random
+ fd    input   passcode          'third weird directory'
+student@uso:~/.../support/basics/toddler-s bottle$ ls ../hacker-s\ secret/
+ hard   medium  'really hard'
+student@uso:~/.../support/basics/toddler-s bottle$ mv my-new-collision ../hacker-s\ secret/ # păstrand numele
+student@uso:~/.../support/basics/toddler-s bottle$ ls
+ bof   fd   flag   input   passcode   random  'third weird directory'
+student@uso:~/.../support/basics/toddler-s bottle$ ls ../hacker-s\ secret/
+ hard   medium   my-new-collision  'really hard'
+</code>
+
+Există posibilitatea să mutăm un fișier într-un alt director și să-i schimbăm numele în același timp.
+
+<code bash>
+student@uso:~/.../support/basics/toddler-s bottle$ ls
+ bof   fd   flag   input   passcode   random  'third weird directory'
+student@uso:~/.../support/basics/toddler-s bottle$ ls ../hacker-s\ secret/
+ hard   medium   my-new-collision  'really hard'
+student@uso:~/.../support/basics/toddler-s bottle$ mv flag ../hacker-s\ secret/my-new-flag # schimbând numele
+student@uso:~/.../support/basics/toddler-s bottle$ ls
+ bof   fd   input   passcode   random  'third weird directory'
+student@uso:~/.../support/basics/toddler-s bottle$ ls ../hacker-s\ secret/
+ hard   medium   my-new-collision   my-new-flag  'really hard'
+</code>
+
+În cazul în care avem mai multe fișiere de mutat într-un alt (același) director, folosim tot comanda ''mv''.
+
+<code bash>
+student@uso:~/.../support/basics/toddler-s bottle$ ls
+ bof   fd   input   passcode   random  'third weird directory'
+student@uso:~/.../support/basics/toddler-s bottle$ ls ../rookiss/
+'ascii easy.pdf'   echo2     loveletter   syscall
+'brain fuck'       fix.pdf   otp.pdf
+student@uso:~/.../support/basics/toddler-s bottle$ mv fd input ../rookiss
+student@uso:~/.../support/basics/toddler-s bottle$ ls
+ bof   passcode   random  'third weird directory'
+student@uso:~/.../support/basics/toddler-s bottle$ ls ../rookiss
+'ascii easy.pdf'   echo2   fix.pdf   loveletter   syscall
+'brain fuck'       fd      input     otp.pdf
+</code>
+
+Până a trece mai departe în cadrul acestei secțiuni, trebuie să ne asigurăm că ați înțeles cum funcționează comanda ''mv''. Rezolvați exercițiile următoare până să treceți mai departe. Consultați-vă cu asistentul pentru orice nelămurire.
+
+    - Mutați fișierul ''grotesque/asg'' în directorul ''grotesque/do\ you\ dare/'' din locul în care vă aflați.
+    - Mutați fisierele ''elf'' ''hunter'' ''mistake'' din directorul ''grotesque/do\ you\ dare/'' în directorul părinte al acestora.
+    - Navigați către directorul ''hacker-s\ secret'' și mutați directorul ''hard'' în directorul home al utilizatorului curent.
+    - Plasați-vă în directorul ''toddler-s\ bottle/bof/easy''. Mutați în directorul ''basics'' toate fișierele ale căror nume încep cu ''bof'' și se termină cu ''.txt''. (Hint: wildcards)
+
+Pentru a redenumi un fișier am văzut că folosim comanda ''mv''. În cazul în care vrem ca noul nume să conțină spații, procedăm ca mai devreme (vezi crearea directoarelor).
+
+<code bash>
+student@uso:~/.../toddler-s bottle/bof/easy$ cd ~/uso.git/labs/01-fs/support/basics
+student@uso:~/.../01-fs/support/basics$ ls
+ bof1.txt   bof4.txt   'hacker-s secret'  'toddler-s bottle'
+ bof2.txt   bof5.txt    my-new-folder     'weird directory'
+ bof3.txt   grotesque   rookiss           'weird directory 2'
+student@uso:~/.../01-fs/support/basics$ mv rookiss/ "my new rookiss"
+student@uso:~/.../01-fs/support/basics$ ls
+ bof1.txt   bof4.txt   'hacker-s secret'  'toddler-s bottle'
+ bof2.txt   bof5.txt    my-new-folder     'weird directory'
+ bof3.txt   grotesque   'my new rookiss'    'weird directory 2'
+</code>
+
+Putem întâlni sitația în care vrem să redenumim un fișier al cărui nume conține deja spații, acestea trebuie escapate ca mai devreme. Putem scrie numele între ghilimele, însă există riscul să greșim în cazul numelor complicate și lungi. Cel mai sigur și ușor este să abuzăm de tasta <TAB> pentru a fi siguri că nu greșim. Vrem să modificăm numele directorului ''weird directory'' în ''weird directory again''.
+
+<code bash>
+student@uso:~/.../01-fs/support/basics$ mv w<TAB> "weird directory again"
+student@uso:~/.../01-fs/support/basics$ ls
+ bof1.txt   bof4.txt   'hacker-s secret'  'toddler-s bottle'
+ bof2.txt   bof5.txt    my-new-folder     'weird directory 2'
+ bof3.txt   grotesque   'my new rookiss'    'weird directory again'
+</code>
+
+Până a trece mai departe, trebuie să ne asigurăm că ați reținut cum trebuie lucrat în cazul în care avem de-a face cu nume de fișiere/directoare care conțin spații. Până să treceți la următoarea secțiune, parcurgeți următoarele exerciții și consultați-vă cu asistentul.
+
+    - Mutați fișierul ''toddler-s\ bottle/passcode/random-org'' în directorul curent fără a naviga către acel fișier. (Hint: directorul curent este ''.'')
+    - Copiați toate fișierele ale căror nume conțin spații din directorul ''toddler-s\ bottle/bof/hard'' în directorul home al utilizatorului curent fără a schimba directorul curent. (Hint: ''man cp'')
+
+==== Ștergerea fișierelor și directoarelor ====
+
+Ne-a rămas o singură comandă de bază despre care nu am vorbit, ștergerea. Pentru a șterge un fișier, folosim comanda ''rm''. Înainte să
+
+<code bash>
+student@uso:~/.../01-fs/support/basics$ cd ~/uso.git/labs/01-fs/support/basics/grotesque
+ coin2  'do you dare'   elf   hunter   mistake
+student@uso:~/.../support/basics/grotesque$ rm coin2
+student@uso:~/.../support/basics/grotesque$ ls
+'do you dare'   elf   hunter   mistake
+</code>
+
+Avem posibilitatea de a șterge fișiere multiple folosind o singură comandă. Pentru asta, va trebui să pasăm ca argument comenzii toate fișierele pe care dorim să le ștergem.
+
+<code bash>
+student@uso:~/.../support/basics/grotesque$ cd ~/uso.git/labs/01-fs/support/basic/toddler-s\ bottle/bof/easy
+student@uso:~/.../toddler-s bottle/bof/easy$ ls
+bof-bof-bof  can-you-bof  random-bof.txt
+student@uso:~/.../toddler-s bottle/bof/easy$ rm bof-bof-bof can-you-bof
+student@uso:~/.../toddler-s bottle/bof/easy$ ls
+random-bof.txt
+</code>
+
+
+Ne aflăm în directorul ''~/uso.git/labs/01-fs/support/basics/grotesque'' și vrem să ștergem un fișier dintr-un alt director fără a schimba directorul în care ne aflăm. Putem face acest lucru ușor dându-i comenzii ''rm'' calea către acel fișier (fie absolută, fie relativă).
+
+<code bash>
+student@uso:~/.../support/basics/grotesque$ ls
+'do you dare'   elf   hunter   mistake
+student@uso:~/.../support/basics/grotesque$ rm ../toddler-s\ bottle/bof/medium/getting-serious-here  
+student@uso:~/.../support/basics/grotesque$ ls ../toddler-s\ bottle/bof/medium
+student@uso:~/.../support/basics/grotesque$
+</code>
+
+În cazul în care vrem să ștergem un întreg director, comanda ''rm <nume_director>'' nu va funcționa. Trebuie să îi precizăm că vrem să ștergem **recursiv** toate fișierele și subdirectoarele din aceasta ierarhie. Pentru acest lucru, folosim argumentul ''-r''
+al comenzii ''rm''.
+Dacă directorul pe care vrem să-l ștergem este gol, putem folosi și
+comanda ''rmdir''.
+
+<code bash>
+student@uso:~/.../support/basics/grotesque$ cd ~/uso.git/labs/01-fs/support/basics
+student@uso:~/.../01-fs/support/basics$ ls
+ bof1.txt   bof5.txt           'my new rookiss'      'weird directory again'
+ bof2.txt   grotesque          random-org
+ bof3.txt  'hacker-s secret'  'toddler-s bottle'
+ bof4.txt   my-new-folder     'weird directory 2'
+student@uso:~/.../01-fs/support/basic$ rm -r "weird directory again"
+student@uso:~/.../01-fs/support/basic$ ls
+ bof1.txt   bof4.txt   'hacker-s secret'   random-org
+ bof2.txt   bof5.txt    my-new-folder     'toddler-s bottle'
+ bof3.txt   grotesque   'my new rookiss'    'weird directory 2'
+student@uso:~/.../01-fs/support/basic$ rmdir weird\ directory\ 2/
+student@uso:~/.../01-fs/support/basic$ ls
+ bof1.txt   bof4.txt   'hacker-s secret'   random-org
+ bof2.txt   bof5.txt    my-new-folder     'toddler-s bottle'
+ bof3.txt   grotesque   'my new rookiss'
+</code>
+
+Pentru a vă asigura că ați înțeles cum se șterg fișierele și directoarele dintr-o ierarhie, parcurgeți următoarele exerciții și consultați-vă cu asistentul în cazul oricărei nelămuriri.
+
+    - Mergeți în directorul ''my new rookiss'' și ștergeți fișierul ''syscall''.
+    - În cadrul aceluiaș director, ștergeți fișierele ''loveletter'' și ''input'' folosind o singură comandă.
+    - Rămâneți în acest director. Ștergeți fișierul ''random-org'' din directorul părinte.
+    - Ștergeți directorul ''really hard'' din ''hacker-s secret''.
+    - Ștergeți toate fișierele ale căror nume conțin spații din directorul ''toddler-s\ bottle/bof/hard''.
+    - Ștergeți toate fișierele cu extensia ''.txt'' din directorul ''toddler-s\ bottle/bof/easy''.
+    - Folosind o singură comandă, ștergeți tot conținutul directorului ''basics''.

@@ -1,0 +1,16 @@
+===== Nice to Know =====
+
+==== GIT ====
+
+Înainte de a începe exercițiile reluați comenziile de bază de git prezentate în
+secțiunea Contents.
+
+  -Clonați repo-ul de git de la următorul link: https://github.com/dianagrecu/labUSO.
+  -În forma actuală, după câteva commit-uri, programul compilează, dar nu va rula. Găsiți ultimul commit pentru care acesta compila si rula cu succes (HINT: git revert/checkout)
+  -Creați un branch nou și mutați-vă pe acesta.
+  -Creați un program care calculează suma primelor 15 pătrate perfect și creați un commit nou de pe branch-ul de la punctul anterior.
+
+<note tip>
+Useful resources: https://dont-be-afraid-to-commit.readthedocs.io/en/latest/git/commandlinegit.html
+</note>
+

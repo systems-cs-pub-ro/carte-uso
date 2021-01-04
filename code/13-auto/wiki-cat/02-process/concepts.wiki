@@ -1,0 +1,116 @@
+===== Concepte =====
+
+==== Vizualizarea proceselor din sistem (ps, pstree, top, htop) ====
+
+Ierarhia de procese în Linux este sub formă arborescentă; putem vizualiza folosind pstree (similar cu tree de la sistemul de fișiere)
+
+Folosind ''ps'' fără nici un parametru vizualizăm procesele din shell-ul curent asociate utilizatorului curent.
+
+<code bash>
+student@uso:~$ ps
+  PID TTY          TIME CMD
+22101 pts/0    00:00:00 bash
+22209 pts/0    00:00:00 ps
+</code>
+
+Tot cu ''ps'' putem vizualiza un ''snapshot'' al tuturor proceselor. Aceasta se poate obține folosind două variante ale comenzii:
+
+<code bash>
+student@uso:~$ ps aux
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.3 160140  7044 ?        Ss   10:39   0:02 /sbin/init spla
+root         2  0.0  0.0      0     0 ?        S    10:39   0:00 [kthreadd]
+[...]
+student  22101  0.0  0.2  31236  5192 pts/0    Ss   19:38   0:00 bash
+student  22114  0.0  0.2  31236  5008 pts/1    Ss+  19:38   0:00 bash
+root     22151  0.0  0.3  25656  6260 ?        S    19:40   0:00 /sbin/dhclient 
+student  22191  0.0  0.1  46012  3656 pts/0    R+   19:48   0:00 ps aux
+</code>
+
+Un utilitar echivalent lui Windows Task Manager pentru vizualizarea în timp real a proceselor care rulează, în linie de comandă, este htop.
+
+<code bash>
+student@uso:~$ htop
+</code>
+
+==== Atributele unui proces ====
+
+Procesul este identificat în sistem cu ajutorul unui număr numit **PID** (process ID). Acesta este unic în sistem. Atunci când un proces este creat, se asignează un PID nou, următorul crescător liber.
+
+Un alt atribut important este PID-ul procesului părinte, **PPID**. Având o structură ierarhică, toate procesele au un părinte, părintele tuturor fiind **init** sau **systemd** (în funcție de sistem) și are PID-ul 1. 
+
+Atributul **COMMAND** ne spune numele procesului sau comanda cu care a fost creat:
+<code bash>
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+student  23176  0.0  0.1  46012  3644 pts/0    R+   22:06   0:00 ps aux
+</code>
+
+Pentru o listă completă de atribute, verificați **manualul**.
+
+
+==== Foreground & Background (&, fg, bg, jobs) ====
+
+Există mai multe stări în care un proces se poate afla:
+    - Starea în care rulează 
+    - Starea în care este oprit: se folosește **Ctrl+Z**
+    - Starea în care este terminat (procesul nu mai există): se folosește **Ctrl+C**
+
+Apăsând o combinație de taste din cele de mai sus, trimitem un semnal procesului:
+
+^ Taste     ^ Semnificație                                              ^
+| **''Ctrl+C''**     | trimite ''SIGINT''                           |
+| **''Ctrl+Z''**     | trimite ''SIGSTOP''       |
+| **''Ctrl+\''**    | trimite ''SIGQUIT''   |
+
+În secțiunea **Demo** exemplificăm cum se trece prin aceste stări.
+
+==== Semnale (kill) ====
+
+Un utilizator poate trimite un semnal unui proces folosind comanda kill! Este foarte important să înțelegem că scopul principal al utilitarului nu este omorârea de procese, deși poate face și asta. O listă a tuturor semnalelor posibile ce pot fi trimise aflăm prin
+
+<code bash>
+student@uso:~$ kill -l   
+</code>
+
+Utilitarele **pkill** și **killall** termină procesele folosind ca argument **numele** procesului și nu PID-ul (ca la **kill**).
+
+==== Redirectare (>, >>, <, |) ====
+
+Redirectare stdout (standard output, în general mesaje afișate prin comenzi similare cu printf din C). Pentru a redirecta lista proceselor într-un fișier, folosim următoarea comandă:
+
+<code bash>
+student@uso:~$ ps aux > procese.txt
+</code>
+
+Astfel, am specificat procesului să nu mai afișeze rezultatul pe ecran, ci într-un fișier. Diferența între **>** și **>>** este că primul înlocuiește conținutul fișierului **procese.txt**, pe când al2lea adaugă la sfârșitul fișierului.
+
+Operatorul **<** folosit ''comanda < fisier.txt'' setează comenzii intrarea ''fisier.txt''.
+
+<code bash>
+student@uso:~$ grep "Disable" < vm-actions-log.txt 
+* Disable terminal bell and scrolling in terminal:
+* Disable cursor blinking in terminal:
+* Disable DNS usage in SSH server:
+* Disable automated screen locking:
+</code>
+
+==== Comunicarea interprocese, folosind pipe | ====
+Operatorul **|** este foarte important și uzual folosit. Acesta ia rezultatul primei comenzi și îl oferă ca intrare la a2a comandă. Câteva exemple:
+
+<code bash>
+student@uso:~$ ps aux | grep sleep
+student  22406  0.0  0.0  16116   828 pts/0    S    20:28   0:00 sleep 1000
+student  22408  0.0  0.0  23076  1084 pts/0    S+   20:28   0:00 grep --color=auto sleep
+</code>
+
+<code bash>
+student@uso:~$ tree | grep Documents
+├── Documents
+</code>
+
+Se pot înlănțui 2 sau mai multe comenzi.
+
+==== Procesele daemon ====
+
+Procesele daemon sunt procese ce rulează în fundal. De obicei, acestea sunt servicii ce servesc anumite funcții specifice. Acestea pot fi recunoscute ca având procesul părinte cu PID 1 (procesul init sau systemd). 
+

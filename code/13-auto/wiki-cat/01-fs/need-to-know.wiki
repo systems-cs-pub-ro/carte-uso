@@ -1,0 +1,285 @@
+===== Need to Know =====
+
+==== 1. Lucrul cu Sistemul de Fișiere (X puncte) ====
+Pentru a căuta un fișier în sistemul de fișiere putem folosi comanda **locate**. Aceasta se folosește în felul următor:
+<code bash>
+student@uso:~$ locate --help
+Usage: locate [OPTION]... [PATTERN]...
+</code>
+
+Putem observa că după **locate** trebuie să menționăm opțiunile precum și pattern-ul, adică cuvântul cheie pe care îl căutam.
+Putem afla aceste opțiuni prin folosirea comenzii **man locate** sau **locate --help**.
+
+Vom căuta cuvântul cheie **slayer**, adică fișierul **slayer** în sistemul de fișiere.
+<code bash>
+student@uso:~$ locate slayer
+</code>
+
+Putem observa că nu există niciun rezultat. Asta deoarece locate caută într-o bază de date creată la un moment dat. Dacă fisierul **slayer** a fost adaugat ulterior, baza de date trebuie actualizată. Putem face asta folosind (folosiți parola **student** atunci când este cerută):
+<code bash>
+student@uso:~$ sudo updatedb
+[sudo] password for student: 
+</code>
+
+Încercând din nou:
+<code bash>
+student@uso:~$ locate slayer
+/home/student/uso.git/lab02/demo/slayer
+</code>
+
+**[1a]** Căutați fișierul **pwd** în ierarhia de fișiere a sistemului curent.
+
+**[1b]** Căutați fișiere cu extensia **.odt** în ierarhia de fișiere a sistemului curent.
+
+== Căutare în interiorul fișierelor ==
+Mai departe vom căuta în interiorul fișierelor dintr-o ierarhie. Vom folosi utilitarul **grep**. Acesta se folosește astfel:
+<code bash>
+student@uso:~/uso.git$ grep --help
+Usage: grep [OPTION]... PATTERN [FILE]...
+Search for PATTERN in each FILE.
+Example: grep -i 'hello world' menu.h main.c
+</code>
+Cuvântul cheie **grep** urmat de opțiuni și de cuvântul cheie pe care îl căutam.
+Putem afla aceste opțiuni prin folosirea comenzii **man grep** sau **grep --help** la fel ca la utilitarul **locate**.
+Astfel, putem observa că există opțiunea **-r** cu care putem căuta recursiv într-o ierarhie de fișiere.
+
+Vrem să căutăm apariția ''int main()'' in ierarhia de fișiere ''~/uso.git''. Mergem în această ierarhie folosind **cd ~/uso.git**.
+
+<code bash>
+student@uso:~/uso.git$ grep -r "int main()"
+tema1/year/year.c:int main(){
+lab03/ugly/ugly.c:}int main()
+tema4/headers/hello_5.c:int main()
+tema4/headers/hello_3.c:int main()
+tema4/headers/hello_7.c:int main()
+tema4/headers/hello_2.c:int main()
+tema4/headers/hello_1.c:int main()
+tema4/headers/hello_6.c:int main()
+tema4/headers/hello_4.c:int main()
+tema4/headers/hello_0.c:int main()
+lab02/anul_1/programare/simple_math.c:int main()
+lab02/anul_1/programare/hello.c:int main()
+lab02/anul_1/programare/teme/tema3/main.c:int main()
+lab02/anul_1/programare/teme/tema3/src/floats.c:int main()
+lab02/anul_1/programare/teme/tema3/src/constants.c:int main()
+lab02/anul_1/programare/teme/tema2/floats.c:int main()
+lab02/anul_1/programare/teme/tema2/constants.c:int main()
+lab02/anul_1/programare/teme/tema1/simple_math.c:int main()
+lab02/anul_1/programare/teme/tema1/hello.c:int main()
+lab02/anul_1/programare/teme/tema4/main.c:int main()
+lab02/anul_1/programare/teme/tema4/src/floats.c:int main()
+lab02/anul_1/programare/teme/tema4/src/constants.c:int main()
+</code>
+
+**[1c]** Căutați în interiorul fișierelor în ierarhia de fișiere ''~/uso.git'' patternul **"include <stdio.h>"**. Folosiți ''grep recursiv''.
+
+==== 2. Ierarhie de directoare (X puncte) ====
+
+Putem crea directoare folosind comanda **mkdir**. Aceasta se folosește în felul următor:
+<code bash>
+student@uso:~/uso.git$ mkdir --help
+Usage: mkdir [OPTION]... DIRECTORY...
+Create the DIRECTORY(ies), if they do not already exist.
+</code>
+Cuvântul cheie **mkdir** urmat de opțiuni și de numele directorului pe care vrem să îl creăm.
+Putem afla aceste opțiuni prin folosirea comenzii **man mkdir** sau **mkdir --help** la fel ca la utilitarele **locate** și **grep**.
+
+Să creăm un director pornind de la ''~/uso.git''. Mergem în acest director folosind **cd ~/uso.git**
+<code bash>
+student@uso:~/uso.git$ mkdir director_nou
+student@uso:~/uso.git$ ls -l director_nou/
+total 8
+drwxr-xr-x  2 student student 4096 aug 22 23:35 ./
+drwxr-xr-x 15 student student 4096 aug 22 23:35 ../
+</code>
+
+Am folosit utlitarul mkdir fără nicio opțiune. **Atentie!** După fiecare comandă executată este bine să verificăm că aceasta s-a executat cu succes. După cum vedeți, am verificat folosind utlitarul **ls -l**. Să creăm încă un director în cadrul acestuia, dar să rămânem în calea ''~/uso.git''.
+<code bash>
+student@uso:~/uso.git$ mkdir -p director_nou/alt_director
+student@uso:~/uso.git$ ls -l director_nou/
+total 4
+drwxr-xr-x 2 student student 4096 aug 22 23:38 alt_director
+</code>
+Am folosit opțiunea **-p** de data aceasta pentru a crea un director într-o altă cale față de cea curentă. Este echivalent cu:
+<code bash>
+student@uso:~/uso.git$ cd director_nou/
+student@uso:~/uso.git/director_nou$ mkdir un_al2lea_director
+student@uso:~/uso.git/director_nou$ ls -l
+total 8
+drwxr-xr-x 2 student student 4096 aug 22 23:38 alt_director
+drwxr-xr-x 2 student student 4096 aug 22 23:39 un_al2lea_director
+</code>
+
+**[2a]** Creați o ierarhie de directoare în directorul curent conform celei de mai jos. ''Hint: Frunzele sunt fișiere, nu directoare (nu se termină în /)''.
+<code bash>
+student@uso$ tree .
+.
+|-- ac_dc
+|   |-- angus
+|   |-- bon
+|   |-- brian
+|   |-- chris
+|   |-- cliff
+|   |-- dave
+|   |-- george
+|   |-- malcom
+|   |-- mark
+|   `-- phil
+|-- cargo
+|-- hammerfall
+|   |-- anders
+|   |-- jesper
+|   |-- joacim
+|   |-- magnus
+|   |-- oscar
+|   |-- pontus
+|   `-- stefan
+|-- iris
+|-- metallica
+|-- nightwish
+|-- nirvana
+|-- phoenix
+`-- slayer
+</code>
+
+Putem muta directorul ''un_al2lea_director'' în ''alt_director'' fiind în ''~/uso.git'':
+<code bash>
+student@uso:~/uso.git/director_nou$ cd ~/uso.git/
+student@uso:~/uso.git$ mv director_nou/un_al2lea_director/ director_nou/alt_director/
+student@uso:~/uso.git$ ls -l director_nou/
+total 4
+drwxr-xr-x 3 student student 4096 aug 22 23:41 alt_director
+student@uso:~/uso.git$ ls -l director_nou/alt_director/
+total 4
+drwxr-xr-x 2 student student 4096 aug 22 23:39 un_al2lea_director
+</code>
+
+Putem șterge acel director fiind în ''~/uso.git'':
+<code bash>
+student@uso:~/uso.git$ rmdir director_nou/alt_director/un_al2lea_director
+student@uso:~/uso.git$ ls -l director_nou/alt_director/
+total 0
+</code>
+Am folosit utilitarul **rmdir** pentru a sterge un director (remove directory). Bineînteles, am verificat la sfârșit că operația s-a executat cu succes și directorul nu mai există.
+
+
+**[2b]** În directorul **.** (conform ierarhiei de mai sus) creați un director numit **muzica** și mutați întregul conținut al **.** în **muzica**. Ștergeți directorul **hammerfall**.
+
+**[2c]** Editați fișierul **metallica** cu 5 nume de melodii. Pentru rezolvarea acestui exercițiu va trebui să folosiți **vim**.
+
+
+== Redirectare ==
+Utilitarul **df** afișează informații despre sistemul de fișiere precum ocuparea acestuia. Folosirea acestuia:
+<code bash>
+student@uso:~/uso.git$ df --help
+Usage: df [OPTION]... [FILE]...
+Show information about the file system on which each FILE resides,
+or all file systems by default.
+</code>
+
+Cuvântul cheie **df** urmat de opțiuni și de numele fișierului. Fără numele fișierului, afișează informații despre întreg sistemul.
+Putem afla aceste opțiuni prin folosirea comenzii **man df** sau **df --help** la fel ca la utilitarele **locate**, **mkdir** și **grep**.
+
+Redirectarea rezultatului se face prin operatorul **>**. Astfel:
+<code bash>
+student@uso:~/uso.git$ df -h > informatii_sistem
+student@uso:~/uso.git$ cat informatii_sistem
+Filesystem      Size  Used Avail Use% Mounted on
+udev            968M     0  968M   0% /dev
+tmpfs           200M  1,3M  199M   1% /run
+/dev/sda1        16G  6,1G  8,9G  41% /
+tmpfs           997M     0  997M   0% /dev/shm
+tmpfs           5,0M  4,0K  5,0M   1% /run/lock
+tmpfs           997M     0  997M   0% /sys/fs/cgroup
+/dev/loop0       87M   87M     0 100% /snap/core/5145
+/dev/loop1       87M   87M     0 100% /snap/core/4917
+/dev/loop2       13M   13M     0 100% /snap/gnome-characters/103
+/dev/loop3       35M   35M     0 100% /snap/gtk-common-themes/319
+/dev/loop7       15M   15M     0 100% /snap/gnome-logs/37
+/dev/loop4      3,8M  3,8M     0 100% /snap/gnome-system-monitor/51
+/dev/loop6      2,4M  2,4M     0 100% /snap/gnome-calculator/180
+/dev/loop5      141M  141M     0 100% /snap/gnome-3-26-1604/70
+tmpfs           200M   28K  200M   1% /run/user/1000
+</code>
+
+Bineînteles, am verificat că redirectarea a avut succes prin afișarea conținutului fișierului în care am redirectat.
+
+
+**[2d]** Redirectați în fișierul ''ierarhie.txt'' rezultatul comenzii **tree**. Comanda trebuie executată din vârful ierarhiei.
+
+**[2e]** Repetați redirectarea de mai sus în fișierul **ierarhie_ascii**, dar de data aceasta în format ASCII.
+
+==== 3. Compilare automata - Makefile (X puncte) ====  
+
+În directorul ''~/uso.git/labs/01-fs/support/need-to-know/3-compile'' avem 2 fișiere: Makefile si hello_world.c. Rolul fișierului Makefile este de a compila sursa hello_word.c. Putem compila și executa fișierul obținut astfel:
+
+<code bash>
+student@uso:~/.../support/need-to-know/3-compile$ make
+gcc -o hello_world hello_world.c
+student@uso:~/.../support/need-to-know/3-compile$ ./hello_world 
+Hello, World!
+</code>
+
+
+**[3a]** Intrați în directorul ''uso/labs/01-fs/support/need-to-know/''. Rulați executabilul din calea ''3-compile'' obtinut anterior **din directorul curent**. Hint: puteti vedea opțiunile utilitarului **make** folosind **man make** sau **make --help** la fel ca utilitarele folosite precedent.
+
+**[3b]** Rămâneți în directorul ''uso/labs/01-fs/support/need-to-know/''. Copiați ''3-compile/Makefile'' in directorul curent, rulați Makefile și executați binarul obținut.
+
+**[3c]** Creați un nou director numit ''nu_intrati'' și în cadrul acestuia un fișier sursă ''manele_2018.c'' în care să afișați un text la alegere. Copiați Makefile-ul folosit anterior și adaptați-l pentru cazul vostru. Compilați executabilul folosind Makefile și rulați executabilul. ''Hint: Pentru a crea un fișier puteți folosi utilitarul vim care primește ca argument un nume de fișier/o cale. În cazul în care fișierul există, se continuă editarea acestuia din starea în care se află, altfel este creat un nou fișier cu acel nume.''
+
+
+==== 4. Arhive (X puncte) ====
+
+Putem crea archive folosind diferite extensii. E bine să știm să creăm diferite tipuri de arhive deoarece fiecare are beneficiul ei. Astfel, pentru arhiva.zip folosim:
+<code bash>
+student@uso:~/uso.git$ zip backup.zip -r *
+  adding: README.md (deflated 18%)
+  adding: TW Warhammer/ (stored 0%)
+  adding: TW Warhammer/.gitignore (stored 0%)
+  adding: TW Warhammer/Greenskins/ (stored 0%)
+[...]
+</code>
+
+Pentru arhiva.tar.gz:
+
+<code bash>
+student@uso:~/uso.git$ tar -zcvf backup.tar.gz *
+README.md
+TW Warhammer/
+TW Warhammer/.gitignore
+TW Warhammer/Greenskins/
+[...] 
+</code>
+
+Pentru arhiva.tar.bz2:
+<code bash>
+student@uso:~/uso.git$ tar -cvjSf backup.tar.bz2 *
+README.md
+TW Warhammer/
+TW Warhammer/.gitignore
+TW Warhammer/Greenskins/
+TW Warhammer/Greenskins/Grimgor Ironhide/
+[...]
+</code>
+
+Putem observa rezultatul:
+<code bash>
+student@uso:~/uso.git$ ls -l
+total 91124
+drwxr-xr-x 15 student student     4096 aug 23 00:58  ./
+drwxr-xr-x 21 student student     4096 aug 23 00:58  ../
+drwxr-xr-x  8 student student     4096 aug 20 20:57  .git/
+-rw-r--r--  1 student student      146 aug 20 20:57  README.md
+drwxr-xr-x  4 student student     4096 aug 20 20:57 'TW Warhammer'/
+-rw-r--r--  1 student student 30916450 aug 23 00:58  backup.tar.bz2
+-rw-r--r--  1 student student 31132786 aug 23 00:58  backup.tar.gz
+-rw-r--r--  1 student student 31187418 aug 23 00:52  backup.zip
+</code>
+
+Utilitarele **zip** și **tar** au diferite opțiuni pentru arhivare și dezarhivare. Acestea se pot vedea folosind **man tar** / **man zip** sau **tar --help** / **zip --help**
+
+**[4a]** Folosind ierarhia ''uso/labs/01-fs'' creați arhive de tipul **zip**, **tar.gz** și **tar.bz2** ce vor conține întreaga ierarhie. Un exemplu de arhiva este ''01-fs.zip''.
+
+**[4b]** Afișați conținutul arhivei.
+
+**[4c]** Dezarhivați arhiva într-un director numit **backup**.

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+IFS=','
+while read name group final_grade test_grade practical_grade; do
+    if test "$final_grade" -eq 10; then
+        echo "$name,$group"
+    fi
+done < students.csv

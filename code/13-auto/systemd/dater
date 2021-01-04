@@ -1,0 +1,6 @@
+#!/bin/bash
+
+while true; do
+    date > /home/student/date
+    sleep 60
+done

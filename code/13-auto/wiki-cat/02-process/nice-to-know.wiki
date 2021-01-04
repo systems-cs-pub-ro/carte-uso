@@ -1,0 +1,58 @@
+===== Nice to Know =====
+
+==== Valori de eroare ====
+
+Putem verifica dacă comanda executată anterior s-a executat cu succes folosind **$?**:
+
+<code bash>
+student@uso:~/uso$ cat README.md 
+uso
+===
+
+   * Directorul ''lab02'' conține toate fișierele și structura de directoare necesare rezolvării laboratorului 2 de către studenți
+student@uso:~/uso$ echo $?
+0
+student@uso:~/uso$ cat fisier-care-nu-exista.txt
+cat: fisier-care-nu-exista.txt: No such file or directory
+student@uso:~/uso$ echo $?
+1
+</code>
+
+Atunci când valoarea este **0**, procesul s-a executat cu succes. Orice diferit de 0 este o eroare.
+
+**Exerciții**
+  - Încercați să afișați un fișier ce nu există. Ce cod de eroare primiți?
+  - Încercați să rulați o comandă cu parametri aleatori (ex: ps -ewqgew). Ce cod de eroare primiți?
+
+==== Structura arborescentă a proceselor ====
+
+Afișăm toate procesele din sistem cu atributele PID, PPID, CMD:
+
+<code bash>
+student@uso:~/uso$ ps ax -o pid,ppid,cmd
+  PID  PPID CMD
+    1     0 /sbin/init splash
+[...]
+19540     2 [jfsSync]
+22046     2 [kworker/0:1]
+22090   900 /usr/lib/gnome-terminal/gnome-terminal-server
+22101 22090 bash
+22114 22090 bash
+22234     1 /usr/bin/python3 /usr/bin/update-manager --no-update --no-focus-on-map
+22559     1 /usr/sbin/cupsd -l
+22560     1 /usr/sbin/cups-browsed
+22742     2 [loop10]
+22785     1 /usr/lib/snapd/snapd
+22913     2 [loop12]
+23200     2 [kworker/u2:0]
+23394   530 /sbin/dhclient -d -q -sf /usr/lib/NetworkManager/nm-dhcp-helper -pf /run/dhclient-enp0s8.pid -lf /var/lib/NetworkManager/dhclient-fda81623-2338-36f
+23519     2 [kworker/u2:1]
+23974     2 [kworker/u2:2]
+24107 22101 ps ax -o pid,ppid,cmd
+</code>
+
+Putem observa că părintele comenzii executate de noi este **bash**; are PID-ul 22101.
+
+**Exerciții**
+  - Pornind de la tutorialul de mai sus, urmăriți PID-ul și PPID-ul procesului ''ps'', **recursiv**
+  - Faceți asta cu 2-3 procese. Unde se opresc toate procesele?

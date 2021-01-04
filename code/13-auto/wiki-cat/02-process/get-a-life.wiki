@@ -1,0 +1,53 @@
+===== Get a Life =====
+
+==== Procese detașate de terminal ====
+
+Pentru acest exercițiu avem nevoie de pachetul **transmission-cli**. Îl putem instala folosind comanda:
+
+<code bash>
+student@eg306:~$ sudo apt-get install transmission-cli
+</code>
+
+Folosiți Transmission în linie de comandă pentru a descărca o imagine de Ubuntu, [[http://releases.ubuntu.com/17.04/ubuntu-17.04-desktop-amd64.iso.torrent?_ga=2.179407716.1129929276.1508229525-1809341997.1504894444|de aici]]. Descărcați fișierul .torrent în ''/home/student/Downloads''.
+
+<code bash>
+student@midgard:~$ transmission-cli ~/Downloads/ubuntu-17.04-desktop-amd64.iso.torrent
+</code>
+
+Dintr-un alt terminal determinați PID-ul acestui proces. Închideți terminalul din interfața grafică (X din colțul din dreapta sus). Căutați din nou procesul după identificator.
+
+**1.1** Ce s-a întâmplat cu procesul nostru transmission-cli tocmai creat? Care credeți că este cauza?
+
+Deschideți din nou un terminal, dar de data folosiți-vă de comanda **nohup** (man nohup) pentru a lansa procesul ''transmission-cli'' pentru descărcarea imaginii de Ubuntu. Închideți din nou terminalul din interfața grafică. Observați că procesul rămâne în viață. Determinați PID-ul acestui proces.
+
+**1.2** Ce fel de semnal se generează atunci când închidem terminalul și pe care a doua oară procesul transmission-gtk îl ignoră?
+
+==== Trimiterea de semnale unui proces ====
+
+Mergeți în directorul ''support'' aferent laboratorului unde găsiți scriptul ''batman.sh''.
+
+Rulați-l. Procesul interceptează toate semnalele cu indecși de la 1 la 13, mai puțin 9 (din motive evidente). De fiecare dată când primește un semnal cu indexul între 1 și 13 el afișează pe ecran un caracter. Mai jos aveți maparea dintre indecșii semnalelor și caracterul afișat:
+
+<columns 50% 50% ->
+
+^Index semnal ^ Caracter ^
+| 1           |  o       |
+| 2           |  u       |
+| 3           |  c       |
+| 4           |  d       |
+| 5           |  e       |
+| 6           |  z       |
+
+<newcolumn>
+
+^Index semnal ^ Caracter ^
+| 7           |  s       |
+| 8           |  h       |
+| 10          |  (space) |
+| 11          |  r       |
+| 12          |  k       |
+| 13          |  l       |
+
+</columns>
+
+**2.1** Într-un alt terminal aflați pid-ul procesului și trimiteți-i semnale astfel încât procesul să afișeze pe ecran șirul de caractere ''uso rullz''. 

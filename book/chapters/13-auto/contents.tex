@@ -1,1134 +1,1686 @@
 \chapter{Automatizarea sarcinilor}
 \label{chapter:auto}
 
-În utilizarea și administrarea sistemului de operare sau al unei rețele sau
-infrastructuri informatice mai ample, avem adesea acțiuni pe care le repetăm.
-Fie că avem de compilat o aplicație, de pornit o mașină virtuală, de prelucrat
-datele dintr-o bază de date, de testat o aplicație desktop, mobilă sau web, de
-generat un raport de folosire a rețelei, este util să avem moduri prin care să
+În utilizarea și administrarea sistemului de operare sau a unei rețele sau infrastructuri informatice mai ample, avem adesea acțiuni pe care le repetăm.
+Fie că avem de compilat o aplicație, de pornit o mașină virtuală, de prelucrat datele dintr-o bază de date, de testat o aplicație desktop, mobilă sau web, de generat un raport de folosire a rețelei, este util să avem moduri prin care să
 automatizăm aceste aceste acțiuni.
 
-Automatizarea unei acțiuni înseamnă executarea acesteia fără intermedierea unei
-persoane, fără ca aceasta să fie interactivă. O acțiune interactivă solicită
-intervenția utilizatorului în vreme ce o acțiune neinteractivă nu are nevoie de
-intervenția utilizatorului. Automatizarea înseamnă eliminarea sau înlocuirea
-părților interactive dintr-o acțiune sau un set de acțiuni.
+\begin{definition}{Automatizarea unei acțiuni}
+Automatizarea unei acțiuni înseamnă executarea acesteia fără intermedierea unei persoane, fără ca aceasta să fie interactivă.
+O acțiune interactivă solicită intervenția utilizatorului în vreme ce o acțiune neinteractivă nu are nevoie de intervenția utilizatorului.
+Automatizarea înseamnă eliminarea sau înlocuirea părților interactive dintr-o acțiune sau un set de acțiuni.
+\end{definition}
 
-Un exemplu de automatizare este asigurat de utilitarul Make. Fără utilitarul
-Make, un dezvoltator ar trebui să compileze toate fișierele obiect, apoi să le
-link-editeze împreună cu biblioteci și eventual să le compună cu alte fișiere
-într-un pachet software. Folosind Make și fișiere Makefile, dezvoltatorul
-automatizează procesul și permite ca toți pașii să fie executați la rularea
-comenzii make. Mai mult, utilizatorul poate să nu ruleze comanda make, ci
-rularea poate fi declanșată la un moment de timp sau la un alt eveniment; este
-cazul proceselor de tip nightly build de care vom discuta.
+Un exemplu de automatizare este asigurat de utilitarul Make, prezentat în \labelindexref{Secțiunea}{sec:appdev:automation}.
+Fără utilitarul Make, un dezvoltator ar trebui să compileze toate fișierele obiect, apoi să le link-editeze împreună cu biblioteci și, eventual, să le compună cu alte fișiere într-un pachet software.
+Folosind Make și fișiere Makefile, dezvoltatorul automatizează procesul și permite ca toți pașii să fie executați la rularea comenzii \cmd{make}.
+Mai mult, utilizatorul poate să nu ruleze comanda \cmd{make}, ci rularea poate fi declanșată la un moment de timp sau la un alt eveniment; este cazul proceselor de tip \textit{nightly build} de care vom discuta.
 
-Un alt exemplu de automatizare, de această dată la nivelul unui administrator de
-data, este crearea de mașini virtuale. Dacă un administrator are nevoie să
-creeze sute de mașini virtuale, nu le va crea pe rând, interactiv. Ar dura prea
-mult și ar fi repetitiv și plictisitor. Administratorul va automatiza procesul
-creării unei mașini virtuale și apoi va automatiza crearea mai multor mașini
-virtuale. În final prin rularea unei singure comenzi vor fi create toate
-mașinile virtuale.
+Un alt exemplu de automatizare, de această dată la nivelul unui administrator de datacenter, este crearea de mașini virtuale.
+Dacă un administrator are nevoie să creeze sute de mașini virtuale, nu le va crea pe rând, interactiv.
+Ar dura prea mult și ar fi repetitiv și plictisitor.
+Administratorul va automatiza procesul creării unei mașini virtuale și apoi va automatiza crearea mai multor mașini virtuale.
+În final, prin rularea unei singure comenzi vor fi create toate mașinile virtuale.
 
-Un utilizator tehnic, în special unul care are rol administrativ într-o
-infrastructură, are nevoie de cunoștințe și abilități de automatizare pentru a
-își eficientiza timpul de lucru. Un utilizator care face mereu aceleași acțiuni
-în mod repetat va consuma timp care ar putea fi investit în alte acțiuni. În
-momentul când automatizează acțiuni, acel timp de acțiuni repetitive va putea fi
-folosit în acțiuni creative. Acțiunile creative nu pot fi automatizate, însă
-cele repetitive da, și un utilizator înțelept le automatizează pe ultimele ca să
-aibă cât mai multă energie și timp pentru celelalte. Într-o notă mai amuzantă,
-după spusele unui prieten, un administrator de infrastructură informatică ar
-trebui plătit cu atât mai bine cu cât stă mai mult timp degeaba: înseamnă că
-acțiunile uzuale sunt automatizate iar cele critice apar rar și sunt bine
-tratate.
+Un utilizator tehnic, în special unul care are rol administrativ într-o organizație, are nevoie de cunoștințe și abilități de automatizare pentru a își eficientiza timpul de lucru.
+Un utilizator care face mereu aceleași acțiuni în mod repetat, va consuma timp care ar putea fi investit în alte acțiuni.
+În momentul când automatizează acțiuni, acel timp de acțiuni repetitive va putea fi folosit în acțiuni creative.
+Acțiunile creative nu pot fi automatizate, însă cele repetitive da, și un utilizator înțelept le automatizează pe ultimele ca să aibă cât mai multă energie și timp pentru celelalte.
+Într-o notă mai amuzantă, după spusele unui prieten, un administrator de infrastructură informatică ar trebui plătit cu atât mai bine cu cât stă mai mult timp degeaba: înseamnă că acțiunile uzuale sunt automatizate iar cele critice apar rar și sunt bine tratate.
 
-Termenul de automatizare este folosit în sens mai larg și la domenii diferite de
-domeniul IT \abbrev{IT}{Information Technology}: irigații automate, folosirea de
-roboți pentru automatizarea creării de componente, mașini autonome. Oriunde este
-nenecesară intervenția unei persoane în execuția unei acțiuni, spunem că avem
-automatizare. Automatizarea va necesita în continuare controlul din partea unei
-persoane, dar partea de execuție nu.
+Termenul de automatizare este folosit în sens mai larg și la domenii diferite de domeniul IT\abbrev{IT}{Information Technology}: irigații automate, folosirea de roboți pentru automatizarea creării de componente, mașini autonome.
+Oriunde este nenecesară intervenția unei persoane în execuția unei acțiuni, spunem că avem automatizare.
+Automatizarea va necesita în continuare controlul din partea unei persoane, dar partea de execuție nu.
 
-În domeniul IT, termenul de automatizare este asociat de obicei cu noțiunea de
-scripting. Acțiunea se mai numește “a scripta”. Acest lucru întrucât acțiunile
-automatizate sunt formate din comenzi și instrucțiuni care se trec într-un
-fișier numit script. Acest script este apoi interpretat și rulat la un moment
-convenabil și are loc automatizarea acțiunii.
+În domeniul IT, termenul de automatizare este asociat de obicei cu noțiunea de \textbf{scripting}.
+Acțiunea se mai numește ,,a scripta''.
+Acest lucru întrucât acțiunile automatizate sunt formate din comenzi și instrucțiuni care se trec într-un fișier numit script.
+Acest script este apoi interpretat și rulat la un moment convenabil, având astfel loc loc automatizarea acțiunii.
 
-Un script este asociat interfeței în linie de comandă; vorbim de scripturi
-shell, scripturi Python, scripturi Perl, scripturi Lua. Există însă și moduri de
-automatizare pentru interfețe grafice sau web. Există
-aplicații\footnote{\url{https://en.wikipedia.org/wiki/Graphical_user_interface_testing}}
-care testează interfețe grafice automatizând plasarea cursorului de mouse și
-evenimente grafice precum click, selectare, glisare. Similară este tehnologia
-RPA (Robotic Process Automation) care permite automatizarea unei activități pe
-care o execută cineva folosind interfața grafică, precum emiterea unei facturi
-care să cuprindă anumite date, sau citirea unor date dintr-un document și
-completarea acestora într-un formular web. În cele ce urmează ne vom concentra
-pe automatizarea în interfața în linia de comandă, modul uzual de automatizare
-în sistemele de operare și infrastructurile IT. De reținut însă tehnologiile și
-posibilitatea de automatizare și în interfața grafică.
 
-Așa cum am spus mai sus, automatizarea în linia de comandă folosește un script
-care conține comenzi și instrucțiuni pentru executarea unei acțiuni. Un conținut
-similar are însă și un program și poate apărea întrebarea cu ce diferă un
-program de un script. Nu avem o linie clară de demarcație între un script și un
-program. În general, un program se dorește a fi eficient în consumarea
-resurselor și execută o acțiune bine determinată. De partea cealaltă un script
-este ceva creat și folosit rapid (quick and dirty) și folosește programe deja
-existente pentru executarea unei acțiuni combinate, care leagă mai multe
-componente. De exemplu, un program va fi acela care generează un fișier PDF
-\abbrev{PDF}{Portable Document Format} dintr-un fișier DOC; un script este acela
-care parcurge o ierarhie ce conține fișiere DOC, le selectează pe acelea care
-sunt mai noi de anumită dată, le convertește în fișiere PDF și apoi creează o
-arhivă cu fișierele PDF pe care o stochează într-un director dat. Păstrând
-măsura, putem folosi interschimbabil noțiunea de script și program, preferând
-termenul de script pentru situațiile în care urmărim o formă de automatizare.
+Un script este, de obicei, asociat interfeței în linie de comandă; vorbim de scripturi shell, scripturi Python, scripturi Perl, scripturi Lua.
+Există însă și moduri de automatizare pentru interfețe grafice sau web.
+Există aplicații\footnote{\url{https://en.wikipedia.org/wiki/Graphical\_user\_interface\_testing}} care testează interfețe grafice automatizând plasarea cursorului de mouse și evenimente grafice precum click, selectare, glisare.
+Similară este tehnologia RPA (\textit{Robotic Process Automation}) care permite automatizarea unei activități pe care o execută cineva folosind interfața grafică, precum emiterea unei facturi care să cuprindă anumite date, sau citirea unor date dintr-un document și completarea acestora într-un formular web.
+În cele ce urmează ne vom concentra pe automatizarea în interfața în linia de comandă, modul uzual de automatizare în sistemele de operare și infrastructurile IT.
+Este de reținut că există tehnologii și posibilitate de automatizare și în interfața grafică.
 
-Într-un sistem informatic multe aplicații folosite au interfață grafică, care nu
-poate fi automatizată într-un script. Pentru automatizare acțiunilor
-corespunzătoare, avem două opțiuni:
+Așa cum am spus mai sus, automatizarea în linia de comandă folosește un script care conține comenzi și instrucțiuni pentru executarea unei acțiuni.
+Un conținut similar are însă și un program și poate apărea întrebarea cu ce diferă un program de un script.
+Nu există o linie clară de demarcație între un script și un program.
+În general, un program se dorește a fi eficient în consumarea resurselor și execută o acțiune bine determinată.
+De partea cealaltă un script este ceva creat și folosit rapid (\textit{quick and dirty}) și folosește programe deja existente pentru executarea unei acțiuni combinate, care leagă mai multe componente.
+De exemplu, un program va fi acela care generează un fișier PDF\abbrev{PDF}{Portable Document Format} dintr-un fișier de tip \texttt{.doc}; un script este acela care parcurge o ierarhie ce conține fișiere \texttt{.doc}, le selectează pe acelea care sunt mai noi de anumită dată, le convertește în fișiere PDF și apoi creează o arhivă cu fișierele PDF pe care o stochează într-un director dat.
+Păstrând măsura, putem folosi interschimbabil noțiunea de script și program, preferând termenul de script pentru situațiile în care urmărim o formă de automatizare.
 
+Într-un sistem informatic multe aplicații au interfață grafică, care nu poate fi automatizată într-un script.
+Pentru automatizare acțiunilor corespunzătoare, avem două opțiuni:
 \begin{enumerate}
-	\item Să folosim aplicații alternative, în interfață de comandă
-	\item Să folosim forme de rulare neinteractivă a acestora.
+ \item să folosim aplicații alternative, în interfață de comandă
+ \item să folosim forme de rulare neinteractivă a acestora
 \end{enumerate}
 
-Din prima categorie, de exemplu, folosim utilitarul wget sau curl în locul unui
-browser web grafic precum Firefox sau Chrome. Sau folosim utilitarul bc în locul
-unei aplicații grafice de calculator.
+Din prima categorie, de exemplu, folosim utilitarele \cmd{wget} sau \cmd{curl} în locul unui browser web grafic precum Firefox sau Chrome.
+Sau folosim utilitarul \cmd{bc} în locul unei aplicații grafice de calculator.
 
-Din a doua categorie fac parte aplicațiile care oferă o formă numită headless.
-Forma headless înseamnă o aplicație cu funcționalități similare dar fără
-interfață grafică. În general, aplicații headless sunt acele aplicații care nu
-au interfața grafică. De exemplu, clientul Bittorrent Transmission are varianta
-headless transmission-cli. Soluția de virtualizare VirtualBox are varianta
-headless VBoxManage, pentru controlul mașinilor virtuale. Folosind aplicații
-alternative sau forme headless ale unor aplicații putem automatiza acțiunile
-aferente acestora. Putem spune că, în privința automatizării rulării
-aplicațiilor, \textit{where there is a will, there is a way}.
+Din a doua categorie fac parte aplicațiile care oferă o formă de rulare numită \textit{headless}.
+Forma headless înseamnă o aplicație cu funcționalități similare dar fără interfață grafică.
+În general, aplicații headless sunt acele aplicații care nu au interfața grafică.
+De exemplu, clientul Bittorrent Transmission are varianta headless \cmd{transmission-cli}.
+Soluția de virtualizare VirtualBox are varianta headless \cmd{VBoxManage}, pentru controlul mașinilor virtuale.
+Folosind aplicații alternative sau forme headless ale unor aplicații putem automatiza acțiunile aferente acestora.
+Putem spune că, în privința automatizării rulării aplicațiilor, \textit{where there is a will, there is a way}.
 
-În cele ce urmează vom prezenta modul în care putem crea scripturi pentru
-automatizarea de acțiuni în linia de comandă, cu accentul pe cea mai simplă și
-accesibilă formă: shell scripting.
+În cele ce urmează vom prezenta modul în care putem crea scripturi pentru automatizarea de acțiuni în linia de comandă, cu accentul pe cea mai simplă și accesibilă formă: shell scripting.
 
 \section{Perspective pentru scripting}
-\label{sec:auto-why}
+\label{sec:auto:how}
 
-Am precizat mai sus că forma de automatizare în linia de comandă este folosind
-scripturi ce conțin comenzi și instrucțiuni. Atunci când automatizăm acțiuni în
-linia de comandă folosim scripturi în două cazuri mari de utilizare:
-
+Am precizat mai sus că forma de automatizare în linia de comandă este folosind scripturi ce conțin comenzi și instrucțiuni.
+Atunci când automatizăm acțiuni în linia de comandă folosim scripturi în două cazuri mari de utilizare:
 \begin{enumerate}
-	\item automatizarea unor acțiuni repetitive
-	\item prelucrarea datelor
+  \item automatizarea unor acțiuni repetitive
+  \item prelucrarea datelor
 \end{enumerate}
 
-În prima categorie intră acțiuni precum compilarea unei suite de aplicații,
-crearea de mai multe mașini virtuale, copierea unor fișiere pe o platformă la
-distanță pentru actualizarea conținutului. În general aceste scripturi conțin
-comenzi sau programe pe care utilizator le-ar rula pe rând în linia de comandă.
-Scriptul are avantajul de a agrega acele comenzi iar utilizatorul doar rulează
-scriptul.
+În prima categorie intră acțiuni precum compilarea unei suite de aplicații, crearea de mai multe mașini virtuale, copierea unor fișiere pe o platformă la distanță pentru actualizarea conținutului.
+În general, aceste scripturi conțin comenzi sau programe pe care utilizatorul le-ar rula pe rând în linia de comandă.
+Scriptul are avantajul de a agrega acele comenzi, iar utilizatorul doar rulează scriptul.
 
-În a doua categorie intră acțiuni precum crearea unui raport sau a unei diagrame
-din datele existente într-o bază de date sau într-un fișier jurnal sau afișate
-de o aplicație. În general aceste scripturi conțin comenzi specifice pentru
-prelucrarea datelor (text), adică filtre de text, așa cum le-am denumit în
-capitolul TODO: Interfața în linia de comandă.
+În a doua categorie intră acțiuni precum crearea unui raport sau a unei diagrame din datele existente într-o bază de date, sau dintr-un fișier jurnal sau din date afișate de o aplicație.
+În general aceste scripturi conțin comenzi specifice pentru prelucrarea datelor (text), adică filtre de text, așa cum le-am denumit în \labelindexref{Capitolul}{chapter:cli}.
 
-Putem spune că ambele cazuri automatizează acțiuni și că acele acțiuni sunt
-repetitive. Cea mai importantă diferență între cele două este însă tipul de
-comenzi și utilitare pe care scripturile le folosesc: comenzi obișnuite dar acum
-folosite agregat în cazul automatizării de acțiuni repetitive și filtre de text
-în cazul prelucrării datelor. Atunci când automatizăm o acțiune, ne putem da
-seama de tipul de comenzi și utilitare pe care le vom folosi în funcție de cazul
-de utilizare al acțiunii.
+Putem spune că ambele cazuri automatizează acțiuni și că acele acțiuni sunt repetitive.
+Cea mai importantă diferență între cele două este însă tipul de comenzi și utilitare pe care scripturile le folosesc: comenzi obișnuite, dar acum folosite agregat, în cazul automatizării de acțiuni repetitive și filtre de text în cazul prelucrării datelor.
+Atunci când automatizăm o acțiune, ne putem da seama de tipul de comenzi și utilitare pe care le vom folosi în funcție de cazul de utilizare al acțiunii.
 
-Atunci când dezvoltăm un script pentru automatizare, este recomandat să urmărim
-idei de bună proiectare, pe care le descriem mai jos.
+Atunci când dezvoltăm un script pentru automatizare, este recomandat să urmărim idei de bună proiectare, pe care le descriem mai jos.
 
-Există mai multe moduri de a face o acțiune. De exemplu pentru a afișa
-informații despre un proces putem folosi ps sau putem urmări intrările din
-/proc. Pentru a scrie informație într-un fișier putem folosi echo și redirectare
-sau comanda dd. Și în cazul general și când automatizăm, alegem soluția cea mai
-adecvată pentru cazul respectiv de utilizare. De exemplu utilitarul sed face tot
-ce face utilitarul tr și în plus; cu toate acestea vom folosi utiltarul tr
-pentru cazuri de utilizare simple. Nu există soluții universale, iar
-proiectantul scriptului va alege cele mai adecvate soluții în funcție de cazul
-de utilizare.
+Există mai multe moduri de a face o acțiune.
+De exemplu, pentru a afișa informații despre un proces putem folosi utilitarul \cmd{ps} sau putem urmări intrările din \file{/proc}.
+Pentru a scrie informație într-un fișier putem folosi comanda \cmd{echo} și redirectare sau putem folosi utilitarul \cmd{dd}.
+Și în cazul general și când automatizăm, \textbf{alegem soluția cea mai adecvată pentru cazul respectiv de utilizare}.
+De exemplu utilitarul \cmd{sed} face tot ce face utilitarul \cmd{tr} și în plus; cu toate acestea vom folosi utilitarul \cmd{tr} pentru cazuri de utilizare simple.
+Nu există soluții universale, iar proiectantul scriptului va alege cele mai adecvate soluții în funcție de cazul de utilizare.
 
-Când creăm un script folosim cât mai mult utilitare și scripturi existente. Nu
-reinventăm roata. Dacă o comandă face deja ce ne dorim, nu facem un script. Dacă
-o comandă cu anumiți parametri face deja ceea ce ne dorim, nu folosim două sau
-trei comenzi. De exemplu, dacă dorim să aflăm dimensiunea unui fișier, avem cele
-doua variante de mai jos:
+Când creăm un script folosim cât mai mult utilitare și scripturi existente.
+\textbf{Nu reinventăm roata}.
+Dacă o comandă face deja ce ne dorim, nu facem un script.
+Dacă o comandă cu anumiți parametri face deja ceea ce ne dorim, nu folosim două sau trei comenzi.
+De exemplu, dacă dorim să aflăm dimensiunea unui fișier, avem cele două variante din \labelindexref{Listing}{lst:auto:ls-vs-stat}.
 
-\begin{screen}
-razvan@jotunn:~/Projects/org.git$ ls -l my.org | tr -s ' ' | cut -d ' ' -f 5
-45309
-razvan@jotunn:~/Projects/org.git$ stat -c "%s" my.org
-45309
+\begin{screen}[caption={Afișarea informațiilor despre un fișier (ls vs stat)},label={lst:auto:ls-vs-stat}]
+student@uso:~$ ls -l vm-actions-log.txt  | tr -s ' ' | cut -d ' ' -f 5
+4827
+student@uso:~$ stat -c "%s" vm-actions-log.txt
+4827
 \end{screen}
 
-Vom prefera a doua variantă care este mai simplă și mai clară și mai puțin
-expusă la posibile erori de formatare ale utilitarului ls. Pentru aceasta e
-nevoie de o cunoaștere temeinică a comenzilor, utilitarelor și facilităților
-existente pentru a nu ajunge să reinventăm roata.
+Vom prefera a doua variantă care este mai simplă și mai clară și mai puțin expusă la posibile erori de formatare ale utilitarului \cmd{ls}.
+Pentru aceasta, este nevoie de o cunoaștere temeinică a comenzilor, utilitarelor și facilităților existente pentru a nu ajunge să reinventăm roata.
 
-Scripturile sunt folosite pentru acțiuni de tipul quick and dirty. Scripturile
-nu urmăresc să fie eficiente din punct de vedere al consumului de resurse
-(rapide, memorie redusă) ci urmăresc să fie eficace (să ducă treaba la bun
-sfârșit) și să eficientizeze munca utilizatorul, lăsându-i timp pentru alte
-activități. De aceea nu vom ajunge ca în scripturi să facem calcule numerice
-complexe sau acțiuni intens computaționale. Scripturile pot automatiza apelarea
-de programe scrise special pentru acțiuni intens computaționale, dar nu vor
-ajunge ele să facă astfel de acțiuni.
+Scripturile sunt folosite pentru acțiuni de tipul \textit{quick and dirty}.
+Scripturile nu urmăresc să fie eficiente din punct de vedere al consumului de resurse (rapide, memorie redusă) ci urmăresc să fie eficace (să ducă treaba la bun sfârșit) și să eficientizeze munca utilizatorul, lăsându-i timp pentru alte activități.
+De aceea nu vom ajunge ca în scripturi să facem calcule numerice complexe sau acțiuni intens computaționale.
+Scripturile pot automatiza apelarea de programe scrise special pentru acțiuni intens computaționale, dar nu vor ajunge ele să facă astfel de acțiuni.
 
-În lumea Unix, modul de transfer de informație este textul, conținut citibil de
-om. Acest lucru permite stocarea informației în fișiere text și, la nevoie,
-editarea lor de utilizator. De aceea, scripturile, mai ales cele de prelucrarea
-de date, se recomandă să folosească informații text: ușor de citit de
-utilizator, ușor de modificat. Cele mai multe utilitare shell lucrează cu
-informații text, de exemplu filtrele de text.
+În lumea Unix, \textbf{modul de transfer de informație este textul}, conținut citibil de om.
+Acest lucru permite stocarea informației în fișiere text și, la nevoie, editarea lor de utilizator.
+De aceea, scripturile, mai ales cele de prelucrarea de date, se recomandă să folosească informații text: ușor de citit de utilizator, ușor de modificat.
+Cele mai multe utilitare shell lucrează cu informații text, de exemplu filtrele de text.
 
-În linia de comandă avem utilitare care ne raportează informații de la nivelul
-sistemului. De exemplu ps ne raportează informații despre procese, iar ls ne
-raportează informații despre procese. Un rol oarecum similar îl au, respectiv,
-utilitarele pgrep și stat. Ne punem problema când folosim pe fiecare. Pentru
-aceasta clasificăm utilitarele în două:
-
+În linia de comandă avem utilitare care raportează informații de la nivelul sistemului.
+De exemplu, utilitarul \cmd{ps} raportează informații despre procese, iar utilitarul \cmd{ls} afișează informații despre fișiere.
+Un rol oarecum similar îl au, respectiv, utilitarele \cmd{pgrep} și \cmd{stat}.
+Ne punem problema când folosim pe fiecare.
+Pentru aceasta clasificăm utilitarele în două:
 \begin{enumerate}
-	\item Utilitare pentru afișarea de informații, pe ecran, pentru a fi
-		accesibile utilizatorului
-	\item Utilitare care afișează informația în format prelucrabil, util
-		pentru legarea de alte comenzi, adică pentru automatizare
+  \item utilitare pentru afișarea de informații, pe ecran, pentru a fi accesibile utilizatorului
+  \item utilitare care afișează informația în format prelucrabil, util pentru legarea de alte comenzi, adică pentru automatizare
 \end{enumerate}
 
-Utilitarele ps și ls fac parte din prima categorie. La va folosi utilizatorul
-atunci dorește să afișeze informații despre fișiere și procese. Dacă însă
-utilizatorul va avea nevoie de PID-ul anumitor procese sau dimensiunea anumitor
-fișiere, va fi complicată folosirea utilitarelor ps și ls; atunci se recomandă
-folosirea utilitarelor pgrep și stat, ca mai jos:
+Utilitarele \cmd{ps} și \cmd{ls} fac parte din prima categorie.
+La va folosi utilizatorul atunci dorește să afișeze informații despre fișiere și procese.
+Dacă însă utilizatorul va avea nevoie de PID-ul anumitor procese sau dimensiunea anumitor fișiere, va fi complicată folosirea utilitarelor \cmd{ps} și \cmd{ls}; atunci se recomandă folosirea utilitarelor \cmd{pgrep} și \cmd{stat}, ca în \labelindexref{Listing}{lst:auto:print-vs-process-cmd}.
+Observăm că folosirea \cmd{pgrep} este mai curată, extrăgând exact informația dorită: PID-urile proceselor cu numele \texttt{VBoxClient}.
+Folosirea \cmd{ps} este mai anevoioasă, necesitând operații suplimentare de prelucrare a rezultatului.
 
-* TODO: ps vs pgrep pentru afișarea unor pid-uri
-* TODO: ls vs stat pentru obținerea dimensiunii unui fișier
+\begin{screen}[caption={Utiltare pentru afișare și pentru prelucrare},label={lst:auto:print-vs-process-cmd}]
+student@uso:~$ ps -ef | grep VBoxClient | tr -s ' ' | cut -d ' ' -f 2
+1300
+1301
+1310
+1311
+1321
+1322
+1328
+1329
+10819
+student@uso:~$ pgrep VBoxClient
+1300
+1301
+1310
+1311
+1321
+1322
+1328
+1329
+\end{screen}
 
-În secțiunile ce urmează vom prezenta informații despre crearea de scripturi
-shell și vom furniza exemple în care vom ține cont de principiile enunțate mai
-sus.
+În secțiunile ce urmează vom prezenta informații despre crearea de scripturi shell și vom furniza exemple în care vom ține cont de principiile enunțate mai sus.
 
 \section{Dezvoltarea scripturilor}
-\label{sec:auto-dev}
+\label{sec:auto:dev}
 
-Un script este un fișier care conține comenzi, instrucțiuni și construcții care
-execută o anumită acțiune. Un script este similar unui program din punct de
-vedere al conținutului. Din punctul de vedere al execuției, un script este
-interpretat. Așa cum multe limbaje de programare sunt compilate și executate, un
-script este interpretat de un interpretor. În cazul unui script shell
-interpretorul este chiar shell-ul. Alte interpretoare pot fi utilitarul sed sau
-awk sau un interpretor de limbaj Python sau Perl sau Ruby sau Lua sau altceva.
+Un script este un fișier care conține comenzi, instrucțiuni și construcții care execută o anumită acțiune.
+Din punctul de vedere al conținutului, un script este similar unui program.
+Din punctul de vedere al execuției, un script este interpretat.
+Așa cum multe limbaje de programare sunt compilate și executate, un script este interpretat de un interpretor.
+În cazul unui script, shell interpretorul este chiar shellul.
+Alte interpretoare pot fi utilitarul \cmd{sed} sau \cmd{awk} sau un interpretor de limbaj Python sau Perl sau Ruby sau Lua sau altceva.
 
-\subsection{“Hello, World!” în scripting și shebang}
-\label{sec:auto-dev-hello}
+\subsection{,,Hello, World!'' în scripting și shebang}
+\label{sec:auto:dev:hello}
 
-Cel mai cunoscut exemplu în orice limbaj este un program care afișează șirul
-“Hello, World!” Vom exemplifica cele mai simple scripturi cu același rezultat:
-afișarea șirului “Hello, World!”.
+Cel mai cunoscut exemplu în orice limbaj este un program care afișează șirul ,,Hello, World!''.
+Vom exemplifica cele mai simple scripturi cu același rezultat: afișarea șirului ,,Hello, World!''.
 
-Dacă am creat fișierul hello.sh având conținutul de mai jos, atunci vom putea
-apela bash pentru interpretarea sa:
+Dacă am creat fișierul \file{hello.sh} având conținutul din \labelindexref{Listing}{lst:auto:hello} (liniile 1-4), atunci vom putea apela shellul Bash pentru interpretarea sa (liniile 5-6).
+În mod similar, dacă vom crea fișierul \file{hello.py} având conținutul din \labelindexref{Listing}{lst:auto:hello} (liniile 7-10), atunci vom putea apela Python pentru interpretarea sa (liniile 11-12).
+La fel ar fi cazul și cu scripturi Perl sau Ruby sau alte limbaje de scripting.
 
-* Cat hello.sh
-* Bash hello.sh
+\begin{screen}[caption={Hello, World! în script shell},label={lst:auto:hello}]
+student@uso:~/.../code/13-auto/hello$ cat hello.sh
+#!/bin/bash
 
-În mod similar, dacă facem fișierul hello.py având conținutul de mai jos, atunci
-vom putea apela python pentru interpretarea sa:
+echo "Hello, World!"
+student@uso:~/.../code/13-auto/hello$ bash hello.sh
+Hello, World!
+student@uso:~/.../code/13-auto/hello$ cat hello.py
+#!/usr/bin/env python3
 
-* Cat hello.py
-* Python hello.py
+print("Hello, World!")
+student@uso:~/.../code/13-auto/hello$ python hello.py
+Hello, World!
+\end{screen}
 
-La fel ar fi cazul și cu scripturi Perl sau Ruby sau altceva.
+Pentru a simplifica rularea unui script putem să-i oferim acestuia permisiuni de execuție și să-l rulăm ca pe un program.
+Pentru ca acest lucru să funcționeze, shellul va trebui să știe ce interpretor să folosească.
+Pentru a stabili interpretorul, folosim o construcție numită shebang (\texttt{\#!}).
+Această construcție este folosită la începutul scriptului pentru a indica interpretorul folosit.
+Este folosită la începutul scripturilor \file{hello.sh} și \file{hello.py}, așa cum se vede în \labelindexref{Listing}{lst:auto:hello}, liniile 2, respectiv 8.
 
-Pentru a simplifica rularea unui script putem să-i oferim acestuia permisiuni de
-execuție și să-l rulăm ca pe un program. În acest caz însă, shell-ul va trebui
-să știe ce interpretor să folosească. Pentru a stabili intepretorul, folosim o
-construcție numită shebang (\#!). Această contrucție este folosită la începutul
-scriptului pentru a indica interpretorul folosit. Astfel, dacă cele două fișiere
-hello.sh și hello.py vor avea formele de mai jos:
+Dacă este prezentă construcția shebang (\texttt{\#!}) pentru a indica interpretorul folosit (\texttt{/bin/bash}, respectiv \texttt{/usr/bin/env python3}), atunci scripturile pot fi executate ca un program obișnuit, după ce le vom acorda permisiuni de execuție, ca în \labelindexref{Listing}{lst:auto:exec-perm}.
 
-* Cat hello.sh
-* Cat hello.py
-
-Atunci le vom putea oferi permisiuni de execuție și executa:
-
-* Chmod a+x hello.sh
-* Chmod a+x hello.py
-* ./hello.sh
-* ./hello.py
-
-În ambele cazuri de execuție, shell-ul identifică cu ajutorul shebang
-intepretorul folosit și îl folosește în interpretarea scripturilor.
-
-Rețineți că shebang trebuie plasat la începutul scriptului.
+\begin{screen}[caption={Rularea directă a scripturilor},label={lst:auto:exec-perm}]
+student@uso:~/.../code/13-auto/hello$ chmod a+x hello.sh
+student@uso:~/.../code/13-auto/hello$ chmod a+x hello.py
+student@uso:~/.../code/13-auto/hello$ ./hello.sh
+Hello, World!
+student@uso:~/.../code/13-auto/hello$ ./hello.py
+Hello, World!
+\end{screen}
 
 În scripturile pe care le vom construi în continuare vom folosi mereu shebang.
 
 \subsection{Conținutul unui script shell}
-\label{sec:auto-dev-content}
+\label{sec:auto:dev:content}
 
-Am precizat anterior că în acest capitol ne vom concentra pe automatizare în
-linia de comandă, adică pe scripturi și dintre acestea pe cele mai simple și
+În acest capitol ne vom concentra pe automatizare în
+linia de comandă, adică pe scripturi, și, dintre acestea, pe cele mai simple și
 rapide: scripturile shell.
 
-Scripturile shell sunt scripturi interpretate direct de shell. În mod uzual,
-acestea vor începe cu simbolul shebang și apoi calea către executabilul aferent
-shell-ului. Pentru Bash, shell-ul predominant pe Linux, calea este /bin/bash,
-așa cum am văzut în exemplul “Hello, World!” de mai sus, astfel că prima linie
-într-un script shell/Bash va fi “\#!/bin/bash”.
+Scripturile shell sunt scripturi interpretate direct de shell.
+În mod uzual, acestea vor începe cu simbolul shebang și apoi calea către executabilul aferent shellului.
+Pentru Bash, shellul predominant pe Linux, calea este \file{/bin/bash}, așa cum am văzut în exemplul din \labelindexref{Listing}{lst:auto:hello}.
+Astfel că prima linie într-un script shell / Bash va fi \texttt{\#!/bin/bash}.
 
-Informațiile pe care le vom furniza și exemplele de scripturi vor fi specifice
-shell-ului Bash. Cu toate acestea multe dintre funcționalități sunt prezente și
-în alte scripturi. În general, cu modificări minore un script Bash poate ajunge
-să ruleze și pe un shell Zsh sau Tcsh. Nu vom intra în aceste specificuri în
-această carte, ne vom concentra pe shell-ul Bash, lăsăm utilizatorului interesat
-să folosească resursele puse la dispoziție pe Internet legate de scripting
-pentru shell-ul Zsh sau Tcsh. În continuare când folosim shell, vom înțelege
-implicit Bash, iar când vom folosi script shell, vom înțelege script Bash.
+Informațiile pe care le vom furniza și exemplele de scripturi vor fi specifice shellului Bash.
+Cu toate acestea multe dintre funcționalități sunt prezente și în alte shelluri.
+În general, cu modificări minore un script Bash poate ajunge să ruleze și pe un shell Zsh sau Tcsh.
+Nu vom intra în aceste detalii în această carte, ne vom concentra pe shellul Bash; lăsăm utilizatorului interesat să folosească resursele puse la dispoziție pe Internet legate de scripting pentru shellul Zsh sau Tcsh.
+În continuare, când folosim shell, vom înțelege implicit Bash, iar când vom folosi script shell, vom înțelege script Bash.
 
-Un script shell conține în cea mai mare parte comenzi de utilitare pe care
-utilizatorul le folosește în linia de comandă, agregate pentru o nouă
-funcționalitate. Pe lângă aceste comenzi, un script conține construcții
-specifice shell-ului așa cum au fost descrise în secțiunea TODO din capitolul
-TODO: Interfața în linia de comandă: operatori, expandare, escaping. Cu acestea
-un script combină comenzi pentru a obține noi funcționalități.
+Un script shell conține în cea mai mare parte comenzi pe care utilizatorul le folosește în linia de comandă, agregate pentru o nouă funcționalitate.
+Pe lângă aceste comenzi, un script conține construcții specifice shellului așa cum au fost descrise în \labelindexref{Secțiunea}{sec:cli:shell-func}: operatori, expandare, escaping.
+Cu ajutorul acestora, un script combină comenzi pentru a obține noi funcționalități.
 
-Pe lângă comenzile de utilitare, un script shell conține și comenzi interne
-folosite pentru controlul fluxului, funcții și parametri în linia de comandă. Pe
-acestea le vom discuta pe larg în secțiunea următoare.
+Pe lângă comenzile din linia de comandă, un script shell conține și comenzi interne (despre care am discutat în \labelindexref{Secțiunea}{sec:cli:shell:command-types}) folosite pentru controlul fluxului, funcții și parametri în linia de comandă.
 
 \subsection{Depanarea unui script shell}
-\label{sec:auto-dev-debugging}
+\label{sec:auto:dev:debug}
 
-Întrucât este conceput să fie quick and dirty, un script shell este de obicei
-mic, iar depanarea se face, în general, folosind print debugging: rularea sa de
-mai multe ori și afișarea de mesaje folosind comanda echo. Afișăm fie locuri în
-care a ajuns scriptul în cadrul execuției comenzilor, fie valorile unor
-variabile.
+Întrucât este conceput să fie \textit{quick and dirty}, un script shell este de obicei mic, iar depanarea se face, în general, folosind \textit{print debugging}: rularea sa de mai multe ori și afișarea de mesaje folosind comanda \cmd{echo}.
+Afișăm fie locuri în care a ajuns scriptul în cadrul execuției comenzilor, fie valorile unor variabile.
 
-La nevoie, dacă sunt foarte multe informații afișate pe ecran, scriem
-informațiile într-un fișier pentru a le consulta ulterior.
+La nevoie, dacă sunt foarte multe informații afișate pe ecran, scriem informațiile într-un fișier pentru a le consulta ulterior.
 
-Întrucât un script este format din comenzi de utilitare deja existente, putem
-rula pas cu pas fiecare comandă și apoi să vedem efectul ei. În fapt, este
-recomandată rularea comenzilor dorite înainte de adăugarea lor într-un script
-pentru a ne asigura de funcționarea corectă.
+Întrucât un script este format din comenzi de utilitare deja existente, putem rula pas cu pas fiecare comandă și apoi să vedem efectul ei.
+În fapt, este recomandată rularea comenzilor dorite înainte de adăugarea lor într-un script pentru a ne asigura de funcționarea corectă.
 
-Pentru depanare mai avansată, putem folosi comanda set -x așa cum vom descrise
-în \labelindexref{Secțiunea}{sec:auto-advancedfunc-other}.
+Pentru depanare mai avansată, putem folosi comanda \cmd{set -x} așa cum vom descrise în \labelindexref{Secțiunea}{sec:auto:script-advanced:other}.
 
 \subsection{Exemple de scripturi shell}
-\label{sec:auto-dev-ex}
+\label{sec:auto:dev:ex}
 
-În această secțiune prezentăm câteva exemple practice de scripturi shell și ce
-funcționalități sunt folosite în fiecare:
+În această secțiune prezentăm câteva exemple practice de scripturi shell și ce funcționalități sunt folosite în fiecare.
 
-* Script care creează fișierul all.wiki
-* Script care creează arhivă de laborator
-* Script care instalează programe
-* Script care prelucrează text
-
-\section{Funcționalități pentru scripturi shell}
-\label{sec:auto-func}
-
-Scripturile shell sunt secvențe de comenzi existente combinate pentru o
-funcționalitate. Shell-ul oferă și funcționalități similare unui program precum
-variabile, comenzi de control al fluxului, funcții. Aceste funcționalități ajută
-la crearea de scripturi mai complexe și care să țină cont de diferitele condiții
-în care se rulează un script.
-
-\subsection{Variabile}
-\label{sec:auto-func-vars}
-
-Variabilele au un rol similar altor limbaje de programare. Au un nume și o
-valoare. În shell (și în script-uri shell) variabilele nu au tip și intepretarea
-lor depinde de modul de utilizare. O variabilă cu valoarea “12” poate fi număr
-sau doar un simplu șir depinzând de cazul de folosire. Exemple de inițializare
-și folosire a unei variabile sunt prezentate mai jos:
-
-* Exemple variabile
-
-Detalii despre variabile și folosirea lor în shell am prezentat în Secțiunea
-TODO din Capitolul TODO din Interfața în linia de comandă.
-
-Variabilele sunt utile în scripturi shell pentru a menține o informație comună
-mai multor comenzi, similar unui limbaj de programare. De exemplu, în scriptul
-de mai jos:
-
-* Exemplu cu script shell cu variabilă care este folosită de mai multe comenzi
-
-În general folosim în scripturi shell o variabilă pentru a menține o valoare pe
-care o modificăm într-un singur loc și care apoi este folosită neschimbat în
-script. Similar unei variabile globale sau unei macrodefiniții în limbajul C.
-
-Așa cum am precizat în Secțiunea TODO din Capitolul TODO: Interfața în linia de
-comandă, shell-ul există forme de expandare precum expandarea aritmetică și
-expandarea comenzilor. Acestea sunt adesea folosite în shell pentru a inițializa
-anumite variabile.
-
-* Exemple cu expandare aritmetică și de comenzi
-
-Un tip special de variabile sunt parametrii unui script shell. Un shell poate
-primi unul sau mai mulți parametri care pot afecta funcționarea shell-ului. Mai
-jos avem un exemplu de astfel de script shell:
-
-* Exemplu cu parametri pentru scripturi shell
-
-Construcțiile aferente parametrilor unui script shell sunt prezentate în tabelul
-de mai jos:
-
-* Tabel cu antetul: construcție, semnificație
-
-În lucrul cu parametrii, shell-ul oferă comanda shift; comanda shift este
-folosită pentru a deplasa parametri o poziție la stânga, astfel încât $1 va avea
-acum valoarea celui de-al doilea parametru, $2 valoarea celui de-al treilea
-parametru etc.
-
-\subsection{Controlul fluxului}
-\label{sec:auto-func-flux}
-
-Așa cum am văzut și în exemplele de mai sus, shell-ul oferă construcții de
-controlul fluxului: comenzi pentru decizii condiționale (if, case) și comenzi de
-ciclare (for, while). De avut în vedere că pot exista scripturi care nu folosesc
-aceste comenzi; un script nu este un program în sine ci o înlănțuire de
-funcționalități existente care pot să nu necesite comenzi de control al
-fluxului. Deși while și for pot bucla prin valori întregi, similar unui limbaj
-de programare, cel mai uzual este ca aceste comenzi este să bucleze prin fișiere
-dintr-un director sau prin coloane/elemente ale unui fișier.
-
-\subsubsection{if}
-\label{sec:auto-func-flux-if}
-
-Comanda if este folosită pentru controlul fluxului. Comanda primește ca argument
-o altă comandă și interpretează codul de ieșire (exit code) al acesteia, în
-funcție de care ia o decizie. Sintaxa comenzii este:
-
-* Sintaxă if
-
-Un exemplu de folosire a comenzii if este mai jos:
-
-* Exemplu cu if fără test
-
-De multe ori comanda primită de comanda if este comanda test care la rândul său
-primește o condiție, pe sintaxa de mai jos:
-
-* Sintaxă if cu test
-
-Un exemplu de folosire a comenzii if în conjuncție cu test este:
-
-* Exemplu de if cu test
-
-Comanda test primește ca argumente o condiție care poate avea diferite forme.
-Condiția poate fi comparație între numere, între șiruri, tip de fișiere și
-altele. Mai jos avem o selecție a condițiilor folosite de comanda test. O listă
-completă găsiți în pagina de manual a comenzii test.
-
-* Tabel care să aibă capul de tabel “condiție, rol, exemplu”
-
-Comanda test are ca echivalent comanda [ sau comanda [[. Comanda [ este o
-comandă externă shell-ului, are un executabil aferent în vreme ce comanda [[
-este internă. Mai jos sunt exemple de folosire a acestora:
-
-* Exemple echivalente cu [ și [[
-
-Comenzile test și [ sunt echivalente, cu diferența că [ necesită un caracter ]
-care să închidă condițiile. Fiindcă [ este o comandă iar ] este o opțiune
-trebuie folosite spații pentru a le separa; astfel că mai jos prima construcție
-e validă în vreme ce a doua este nevalidă:
-
-* Exemplu [ cu spații, corect
-
-* Exemplu cu [ fără spații, incorect
-
-Din cauză că este nevoie de opțiunea ] și pentru că este nevoie de spații,
-cauzatoare de greșeli frecvente, recomandăm folosirea comenzii test în loc de [.
-
-Comanda [[ este o comandă internă și este posibil să nu fie prezentă în toate
-shell-urile. Are ca funcționalități suplimentare potrivirea șirurilor cu
-expresii regulate și operatori de test precum <, >, <=, ca în exemplele de mai
-jos:
-
-* Exemple de folosire [[
-
-În general se recomandă folosirea test pentru condiții uzuale și [[ pentru
-situații de potrivire cu expresii regulate. De avut în vedere că [[ poate avea
-probleme de portabilitate între diferite shell-uri, așa cum vom discuta în
-Secțiunea TODO.
-
-\subsubsection{case}
-\label{sec:auto-func-flux-case}
-
-Comanda case este echivalentul instrucțiunii switch din C; are rolul de a
-potrivi o variabilă la mai multe variante și de a executa comenzile echivalente.
-Potrivirea se face folosind globbing, despre care am vorbit în Secțiunea TODO
-din Capitolul TODO: Interfața în linia de comandă.
-
-Sintaxa comenzii este:
-
-* Sintaxă case
-
-Un exemplu de utilizare case este mai jos:
-
-* Exemplu case
-
-De avut în vedere construcția ;; pentru închiderea unei opțiuni case.
-
-Construcția *) defineste echivalentul etichetei default din programarea în C. Se
-potrivește cu orice șir; în mod obișnuit se plasează ca ultima opțiune pentru
-case iar comenzile corespunzătoare sunt executate dacă nu s-au potrivit cu nici
-o altă opțiune.
-
-\subsubsection{for}
-\label{sec:auto-func-flux-for}
-
-Atunci când dorim să trecem prin mai multe opțiuni folosim comanda for. O formă
-uzuală de folosire a comenzii for este pentru a bucla printr-o listă de șiruri,
-precum numele de fișiere dintr-un director, ca mai jos:
-
-* For f in *;
-
-O altă formă utilizare a comenzii for este folosirea unei expandări aritmetice:
-
-* For (())
-
-Comanda de mai sus este echivalentă cu:
-
-* For i in \$(seq ...)
-
-O altă formă, întâlnită doar în Bash este:
-
-* For i in {1..20}
-
-Un mod frecvent de folosire a for este trecerea prin parametrii unui script:
-
-* Exemplu parametri script
-
-O altă formă frecventă este trecerea printr-o listă reținută într-o variabilă:
-
-* Exemplu
-
-În general, sintaxa for este:
-
-* Sintaxă for
-
-De avut în vedere că folosirea for poate fi problematică sau ineficientă.
-Folosirea for este problematică atunci când există spații în nume:
-
-* Exemplu
-
-Vom discuta mijloace de rezolvare a spațiilor în nume în Secțiunea TODO.
-
-Folosirea for poate fi ineficientă când sunt alte forme de a folosi lista
-primită, fără a trece prin for:
-
-* Exemplu stat
-
-* Exemplu find -exec
-
-În primul exemplu rulăm comanda for și creăm mai multe procese stat, câte unul
-pentru fiecare fișier. În a doua variantă folosim expandarea comenzilor pentru a
-crea o singură comandă stat.
-
-Ca de obicei, în shell scripting, există mai multe moduri de a realiza un lucru.
-Ideal, cumulat cu experiența, vom prefera cea mai bună opțiune pentru o situație
-dată: opțiunea cea mai robustă, în primul rând, și cea mai eficientă, în al
-doilea rând. Vom discuta aceste aspecte în Secțiunea TODO.
-
-\subsubsection{while}
-\label{sec:auto-func-flux-while}
-
-Similar comenzii for, comanda while poate fi folosită pentru a bucla în
-așteptarea unei condiții, ca mai jos:
-
-* Exemplu while cu expresie numerică
-
-În mod uzual, comanda while este folosită pentru a face parsing la fișiere text
-structurate tabelar (linii și coloane), folosind comanda read, ca mai jos:
-
-* Exemplu while read
-
-Comanda read este folosită pentru a citi câte un câmp într-o variabilă care va
-fi folosită ulterior. În forma de mai jos, folosim interactiv comanda read:
-
-* Read a și apoi introducere Ctrl+d
-
-La final am tastat Ctrl+d pentru a închide intrarea.
-
-Într-o forma neinteractivă putem folosi un here string, despre care vom discuta
-în secțiunea TODO:
-
-* Read a <<<”aaaaa”
-
-Sintaxa uzuală pentru while este:
-
-* Sintaxă while read
-
-Pentru a face parsing, comanda read folosește variabila IFS \abbrev{IFS}{Input
-Field Separator} (Input Field Separator) a shell-ului. Aceasta este în mod
-implicit inițializată la caractere albe (spațiu, tab, linie nouă). Dacă dorim să
-folosim alt separator, vom actualiza variabila IFS ca mai jos:
-
-* Exemple while read cu IFS=’,’
-
-Construcția while read este utilă atunci când dorim să prelucrăm date în format
-tabelar, putând rula comenzi pentru intrările parsate. Este o formă cut extinsă;
-cut doar permite extragerea uneia sau mai multor coloane dar fără a permite
-execuția de comenzi pentru fiecare element extras.
-
-De avut în vederea că folosirea unei bucle pentru prelucrarea text poate fi
-problematică din punctul de vedere al robusteții, lizibilității și
-performanței\footnote{\url{https://unix.stackexchange.com/a/169765/227174}}.
-
-\subsection{Funcții}
-\label{sec:auto-func-flux-funcs}
-
-Atunci când avem secvențe de comenzi pe care vrem să le folosim modular, putem
-folosi funcții. La fel ca într-un limbaj de programare, o funcție are un nume și
-are un conținut; o funcție rulează când este apelată. O funcție este apelată
-folosind numele său, ca mai jos:
-
-* Exemplu simplu de funcție și apel
-
-Din punctul de vedere al funcționării shell-ului, o funcție este ca o comandă:
-are parametri și întoarce o valoare. Mai jos este un exemplu de funcție care
-primește parametri și întoarce o valoare care poate fi investigată:
-
-* Exemplu de funcție cu parametri și valoare întoarsă
-
-O altă formă este ca funcția să afișeze un mesaj care să poată fi reținut într-o
-variabilă:
-
-* Exemplu de funcție care afișează un mesaj reținut într-o variabilă
-
-Funcțiile ajung să fie folosite în scripturi shell mai complexe, de exemplu
-/etc/init.d/*, mai puțin în scripturi uzuale.
-
-\section{Facilități avansate și bune practici în shell scripting}
-\label{sec:auto-advancedfunc}
-
-Așa cum am precizat anterior, un script shell este o cale de mijloc între a rula
-comenzile în linia de comandă și a face un program într-un limbaj de programare.
-De asemenea, în shell sunt comenzi similare și funcționalități diferite care pot
-conduce la același rezultat. Fiind mai multe modurile de a ajunge la un rezultat
-în shell, cel mai bine este să fie scripturi shell cu cele mai bune opțiuni
-dintre cele existente urmărind:
-
+\labelindexref{Listing}{lst:auto:system-update} prezintă un script simplu folosit pentru actualizarea sistemului.
+Scriptul este folosit pentru a rula o singură comandă pentru a actualiza pachetele din sistem.
+Scriptul folosește:
 \begin{itemize}
-	\item Robustețea: script-ul să ruleze indiferent de condiții, să nu aibă
-		erori de rulare sau rezultate impredictibile
-	\item Lizibilitate: script-ul să fie ușor de citit și de înțeles de
-		altcineva; anumite construcții în shell sunt întortocheate și
-		pot face dificilă înțelegerea script-ului
-	\item Eficiență și performanță: deși nu poate ajunge la nivelul de
-		performanță al unui program, e indicat ca script-ul să ruleze
-		cât mai repede și să nu consume resurse în mod exagereat
-	\item Portabilitate: există mai multe tipuri de shell (Bash, dash, ksh,
-		tcsh) sau diferite versiune de shell; dacă se știe că un script
-		va rula pe shell-uri și în medii diferite trebuie să fie
-		portabil și să ruleze determinist.
+  \item \texttt{\#!} (\textit{shebang}) pentru precizarea interpretorului (\texttt{/bin/bash})
+  \item utilitarul \cmd{apt} pentru operare cu pachete
+  \item înlănțuirea comenzilor (operatorul \texttt{\&\&}); am discutat în \labelindexref{Secțiunea}{sec:cli:shell-func:operators}
 \end{itemize}
 
-Mai jos prezentăm construcții specifice acestor deziderate și recomandări de
-folosire în script-uri shell.
+\begin{screen}[caption={Script: Actualizarea systemului},label={lst:auto:system-update}]
+student@uso:~/uso-book/code/13-auto$ cat system-update
+#!/bin/bash
+
+sudo apt update && sudo apt -y upgrade && sudo apt -y dist-upgrade
+\end{screen}
+
+\labelindexref{Listing}{lst:auto:wiki-cat} prezintă folosirea scriptului \file{wiki-cat}.
+Scriptul este folosit în laboratoarele didactice pentru a agrega secțiuni de tip wiki din fișiere diferite într-un singur fișier.
+Există directoare pentru fiecare laborator (\texttt{01-fs}, \texttt{02-process}, \texttt{03-user}, \texttt{04-appdev}) care conțin secțiuni de wiki în fișiere diferite.
+Scriptul realizează fișiere agregate pentru fiecare laborator: \file{01-fs.wiki}, \file{02-process.wiki}, \file{03-user.wiki}, \file{04-appdev.wiki}.
+Scriptul folosește:
+\begin{itemize}
+  \item \texttt{\#!} (\textit{shebang}) pentru precizarea interpretorului (\texttt{/bin/bash})
+  \item \texttt{for} pentru parcurgerea intrărilor în directorul curent; variabila \texttt{i} reține fiecare intrare; detalii în \labelindexref{Secțiunea}{sec:auto:script-func:flow-control:if}
+  \item \texttt{*} (\textit{star}), metacaracter care expandează la toate intrările din directorul curent; am discutat în \labelindexref{Secțiunea}{sec:cli:shell-func:expansion:globbing}
+  \item \texttt{if} și \texttt{test} pentru a verifica intrările de tipul director (\texttt{-d "\$i"}); detalii în \labelindexref{Secțiunea}{sec:auto:script-func:flow-control:if}
+  \item expandarea opțiunilor (cu acolade, construcția \verb|{opt1,opt2,opt3}|); am discutat în \labelindexref{Secțiunea}{sec:cli:shell-func:expansion}
+  \item redirectarea ieșirii (operatorul \texttt{$>$}); am discutat în \labelindexref{Secțiunea}{sec:cli:shell-func:operators}
+  \item expandarea comenzii \texttt{basename} (construcția \verb|$(...)|); am discutat în \labelindexref{Secțiunea}{sec:cli:shell-func:expansion:commands}
+\end{itemize}
+
+\begin{screen}[caption={Script: Agregarea secțiunilor de tip wiki},label={lst:auto:wiki-cat}]
+student@uso:~/.../code/13-auto/wiki-cat$ ls
+01-fs  02-process  03-user  04-appdev  wiki-cat
+
+student@uso:~/.../code/13-auto/wiki-cat$ cat wiki-cat
+#!/bin/bash
+
+for i in *; do
+    if test -d "$i"; then
+        cat "$i"/{concepts,demo,recap,basics,need-to-know,nice-to-know,get-a-life,summary}.wiki > $(basename "$i").wiki
+    fi
+done
+
+student@uso:~/.../code/13-auto/wiki-cat$ ls 01-fs 02-process 03-user 04-appdev
+01-fs:
+basics.wiki  concepts.wiki  demo.wiki  get-a-life.wiki  need-to-know.wiki  nice-to-know.wiki  recap.wiki  setup.wiki  summary.wiki
+
+02-process:
+basics.wiki  concepts.wiki  demo.wiki  get-a-life.wiki  need-to-know.wiki  nice-to-know.wiki  recap.wiki  setup.wiki  summary.wiki
+
+03-user:
+basics.wiki  concepts.wiki  demo.wiki  get-a-life.wiki  need-to-know.wiki  nice-to-know.wiki  recap.wiki
+
+04-appdev:
+basics.wiki  concepts.wiki  demo.wiki  get-a-life.wiki  need-to-know.wiki  nice-to-know.wiki  recap.wiki
+
+student@uso:~/.../code/13-auto/wiki-cat$ ./wiki-cat
+cat: 03-user/summary.wiki: No such file or directory
+cat: 04-appdev/summary.wiki: No such file or directory
+
+student@uso:~/.../code/13-auto/wiki-cat$ ls
+01-fs  01-fs.wiki  02-process  02-process.wiki  03-user  03-user.wiki  04-appdev  04-appdev.wiki  wiki-cat
+\end{screen}
+
+\labelindexref{Listing}{lst:auto:gen-passwd} prezintă folosirea scriptului \file{gen-passwd}.
+Scriptul generează o parolă și afișează parola și formatul ei hash MD5.
+Parolele sunt reținute în format hash din rațiuni de securitate, așa cum vom preciza în \labelindexref{Secțiunea}{sec:sec:auth:password} și în \labelindexref{Secțiunea}{sec:user:password-db}.
+Scriptul folosește:
+\begin{itemize}
+  \item \texttt{\#!} (\textit{shebang}) pentru precizarea interpretorului (\texttt{/bin/bash})
+  \item expandarea comenzilor \texttt{pwgen} și \texttt{openssl} pentru a reține rezultatul lor (construcția \verb|$(...)|); am discutat în \labelindexref{Secțiunea}{sec:cli:shell-func:expansion:commands}
+  \item variabilele \texttt{salt}, \texttt{password} și \texttt{crypt} pentru a reține informații generate din expandarea comenzilor
+\end{itemize}
+
+\begin{screen}[caption={Script: Generator de parole și hash},label={lst:auto:gen-passwd}]
+student@uso:~/uso-book/code/13-auto$ cat gen-passwd
+#!/bin/bash
+
+salt=$(pwgen -N 1 -c 8)
+password=$(pwgen -N 1 -c 10)
+crypt=$(openssl passwd -1 -salt "$salt" "$password")
+
+echo "password: $password"
+echo "crypt: $crypt"
+
+student@uso:~/uso-book/code/13-auto$ ./gen-passwd
+password: fie3kac6Ta
+crypt: $1$Boongoh8$RPo3/ckltzviC4TXgxcAJ0
+
+student@uso:~/uso-book/code/13-auto$ ./gen-passwd
+password: Gei8ieno2i
+crypt: $1$Pei4Beak$zHBDNjWMj3ozZW/cV.rKj/
+\end{screen}
+
+\section{Funcționalități pentru scripturi shell}
+\label{sec:auto:script-func}
+
+Scripturile shell sunt secvențe de comenzi existente combinate pentru o funcționalitate.
+Shellul oferă și funcționalități similare unui program precum variabile, comenzi de control al fluxului, funcții.
+Aceste funcționalități ajută la crearea de scripturi mai complexe și care să țină cont de diferitele condiții în care se rulează un script.
+
+\subsection{Variabile}
+\label{sec:auto:script-func:vars}
+
+Variabilele au un rol similar altor limbaje de programare.
+Au un nume și o valoare.
+În shell (și în scripturi shell) variabilele nu au tip și inteepretarea lor depinde de modul de utilizare.
+O variabilă cu valoarea \texttt{12} poate fi număr sau doar un simplu șir depinzând de cazul de folosire.
+Exemple de inițializare și folosire a unei variabile sunt prezentate în \labelindexref{Listing}{lst:auto:use-vars}.
+Variabila \texttt{f} reține numele fișierului \file{/etc/passwd}.
+Ca să folosim valoarea variabilei \texttt{f}, prefixăm cu simbolul \texttt{\$} (\textit{dollar}).
+Este recomandat să folosim valorile variabilelor între ghilimele, pentru escaping, așa cum am prezentat în \labelindexref{Secțiunea}{sec:cli:shell-func:escaping}.
+La fel, variabile \texttt{num} reține numărul de linii din fișierul reținut de variabila \texttt{f}, folosind expandarea comenzii \cmd{wc}.
+
+\begin{screen}[caption={Folosirea variabilelor în shell},label={lst:auto:use-vars}]
+student@uso:~/uso-book/code/13-auto$ f=/etc/passwd
+student@uso:~/uso-book/code/13-auto$ wc -l < "$f"
+46
+student@uso:~/uso-book/code/13-auto$ num=$(wc -l < "$f")
+student@uso:~/uso-book/code/13-auto$ echo "$num"
+46
+\end{screen}
+
+Detalii despre variabile și folosirea lor în shell am prezentat în \labelindexref{Secțiunea}{sec:cli:shell-func:vars}.
+
+Variabilele sunt utile în scripturi shell pentru a reține o valoare.
+Acea valoare ar putea fi folosită și direct, dar e mai lizibil și mai ușor de înțeles scriptul când folosim un nume de variabilă.
+Este cazul scriptului \file{gen-passwd} prezentat în \labelindexref{Listing}{lst:auto:gen-passwd}.
+Altfel, variabilele sunt folosite implicit în comenzi / construcții shell, precum \cmd{for}, așa cum am folosit variabila \texttt{i} în scriptul \file{wiki-cat} din \labelindexref{Listing}{lst:auto:wiki-cat}.
+Adesea, vom folosi variabile pentru menține o informație comună mai multor comenzi, similar unui limbaj de programare.
+De exemplu, variabila \texttt{i} din scriptul \file{wiki-cat} din \labelindexref{Listing}{lst:auto:wiki-cat} este folosită împreună cu \cmd{for}, cu \cmd{if} / \cmd{test}, cu \cmd{cat} și cu \cmd{basename}.
+
+Valoarea unei variabile poate fi inițializată și folosită prin operație simplă de atribuire, respectiv prefizarea ei cu simbolul \texttt{\$} (\textit{dollar}).
+Pe lângă acestea, inițializarea și folosirea unei variabile poate fi realizată cu diferitele forme de expandare (aritmetică, a comenzilor, parametrică, cu opțiuni) pe care le-am prezentat în \labelindexref{Secțiunea}{sec:cli:shell-func:expansion} (cu exemple de folosire în \labelindexref{Listing}{lst:cli:expansion}).
+
+Un tip special de variabile sunt parametrii unui script shell.
+Un shell poate primi unul sau mai mulți parametri care pot afecta funcționarea shellului.
+În \labelindexref{Listing}{lst:auto:wiki-cat-param} avem o actualizare a scriptului \file{wiki-cat} din \labelindexref{Listing}{lst:auto:wiki-cat}.
+Scriptul \file{wiki-cat-param} primește un parametru: numele directorului de laborator ale cărui secțiuni wiki să fie unificate.
+Dacă scriptul este rulat fără argumente, se afișează un mesaj de utilizare corectă.
+La o rulare corectă, după transmiterea numelui unui director de laborator ca parametru (\texttt{01-fs/}), scriptul generează fișierul agregat corespunzător (\file{01-fs.wiki}).
+Scriptul \file{wiki-cat-param} folosește construcțiile scriptului \file{wiki-cat} și parametri de script:
+\begin{itemize}
+  \item \texttt{\$\#} (împreună cu \cmd{if}) pentru numărul de parametri ai scriptului
+  \item \texttt{\$0} pentru afișarea numelui scriptului atunci când nu se transmit numărul corect de parametri
+  \item \texttt{\$1} pentru primul parametru al scriptului: director al cărui conținut va fi agregat
+\end{itemize}
+În script am fi putut să nu folosim variabila \texttt{lab} ci construcția \texttt{\$1} (primul parametru al scriptului).
+Am preferat să definim o nouă variabilă pentru lizibilitate, fiind mai clar ce înseamnă construcția \texttt{\$lab} în loc de construcția \texttt{\$1}.
+
+\begin{screen}[caption={Script: Agregarea secțiunilor de tip wiki (cu parametru)},label={lst:auto:wiki-cat-param}]
+student@uso:~/.../code/13-auto/wiki-cat$ ls
+01-fs  02-process  03-user  04-appdev  wiki-cat  wiki-cat-param
+
+student@uso:~/.../code/13-auto/wiki-cat$ cat wiki-cat-param
+#!/bin/bash
+
+if test $# -ne 1; then
+    echo "Usage: $0 <lab-folder>" 1>&2
+    exit 1
+fi
+
+lab="$1"
+if test -d "$lab"; then
+    cat "$lab"/{concepts,demo,recap,basics,need-to-know,nice-to-know,get-a-life,summary}.wiki > $(basename "$lab").wiki
+fi
+
+student@uso:~/.../code/13-auto/wiki-cat$ ./wiki-cat-param
+Usage: ./wiki-cat-param <lab-folder>
+
+student@uso:~/.../code/13-auto/wiki-cat$ ./wiki-cat-param 01-fs/
+
+student@uso:~/.../code/13-auto/wiki-cat$ ls
+01-fs  01-fs.wiki  02-process  03-user  04-appdev  wiki-cat  wiki-cat-param
+\end{screen}
+
+Construcțiile aferente parametrilor unui script shell sunt prezentate în \labelindexref{Tabelul}{tab:auto:script-params}.
+Construcțiile \texttt{\$*} și \texttt{\$@} au, în aparență același efect.
+Diferență constă în escaparea celor două construcții prin ghilimele.
+Astfel construcția \texttt{"\$*"} se va expanda la o singură valoare care conține spații între parametrii scriptului; în vreme ce construcția \texttt{"\$@"} se va expanda la o listă de valori escapate fiecare prin ghilimele.
+
+\begin{table}[!htb]
+  \caption{Construcții pentru parametrii unui script shell}
+  \begin{center}
+    \begin{tabular}{ p{0.25\textwidth} p{0.65\textwidth} }
+      \toprule
+        \textbf{Nume construcție} &
+        \textbf{Rol / Efect} \\
+      \midrule
+        \texttt{\$\#} &
+        numărul de parametri ai scriptului (echivalentul \texttt{argc} în C) \\
+
+        \texttt{\$0} &
+        numele scriptului (echivalentul \texttt{argv$[$0$]$} în C) \\
+
+        \texttt{\$1}, \texttt{\$2}, \ldots &
+        primul, al doilea, \ldots{} parametru\\
+
+        \texttt{\$*} &
+        toți parametrii scriptului\\
+
+        \texttt{\$@} &
+        toți parametrii scriptului \\
+
+      \bottomrule
+    \end{tabular}
+    \label{tab:auto:script-params}
+  \end{center}
+\end{table}
+
+În lucrul cu parametrii, shellul oferă comanda \cmd{shift}.
+Comanda \cmd{shift} este folosită pentru a deplasa parametri o poziție la stânga.
+După o folosire a comenzii \cmd{shift}, construcția \texttt{\$1} va avea acum valoarea celui de-al doilea parametru, \texttt{\$2} valoarea celui de-al treilea parametru ș.a.m.d.
+
+\subsection{Controlul fluxului}
+\label{sec:auto:script-func:flow-control}
+
+Așa cum am văzut și în exemplele de mai sus, shellul oferă construcții de
+controlul fluxului: comenzi pentru decizii condiționale (\cmd{if}) și comenzi de
+ciclare (\cmd{for}).
+
+De avut în vedere că pot exista scripturi care nu folosesc
+aceste comenzi; un script nu este un program în sine ci o înlănțuire de
+funcționalități existente care pot să nu necesite comenzi de control al
+fluxului, cum este cazul scripturilor \file{system-update} (din \labelindexref{Listing}{lst:auto:system-update}) sau \file{gen-passwd} (din \labelindexref{Listing}{lst:auto:gen-passwd}).
+
+\subsubsection{if}
+\label{sec:auto:script-func:flow-control:if}
+
+Comanda \cmd{if} este folosită pentru controlul fluxului.
+Comanda primește ca argument o altă comandă și interpretează codul de ieșire (\textit{exit code}) al acesteia, în funcție de care ia o decizie.
+
+Sintaxa comenzii \cmd{if} este indicată în \labelindexref{Listing}{lst:auto:if-syntax}.
+Secțiunile care cuprind \texttt{elif} (liniile \texttt{6-9}) și \texttt{else} (liniile \texttt{10-13}) pot lipsi.
+Uzual, \texttt{then} apare pe aceeași linie cu \cmd{if}, separată cu operatorul de secvențiere (\texttt{;}), la modul \texttt{if command\_to\_check1; then}, așa cum apare și în \labelindexref{Listing}{lst:auto:wiki-cat} și \labelindexref{Listing}{lst:auto:wiki-cat-param}.
+Comenzile \texttt{command\_to\_check1} și \texttt{command\_to\_check2} vor fi executate și va fi verificat codul de ieșire.
+Dacă acest cod de ieșire înseamnă rulare cu succes, atunci se execută \texttt{command\_to\_execute1}, \texttt{command\_to\_execute2} și așa mai departe.
+
+\begin{screen}[caption={Sintaxa comenzii if},label={lst:auto:if-syntax}]
+if command_to_check1
+then
+    command_to_execute1
+    command_to_execute2
+    ...
+elif command_to_check2
+    command_to_execute3
+    command_to_execute4
+    ...
+else
+    command_to_execute5
+    command_to_execute6
+    ...
+fi
+\end{screen}
+
+Cel mai adesea, comanda primită de comanda \cmd{if}, comandă al cărei cod de ieșire va fi verificat, este comanda \cmd{test}, ca în \labelindexref{Listing}{lst:auto:wiki-cat} și \labelindexref{Listing}{lst:auto:wiki-cat-param}.
+Comanda \cmd{test} permite verificări de șiruri, numere, fișiere și întoarce succes / insucces dacă verificarea e adevărată sau nu.
+De exemplu, în \labelindexref{Listing}{lst:auto:wiki-cat-param}, în linia 7 comanda \cmd{test} face o verificare a numărului de parametri ai scriptului, iar în linia 13 comanda \cmd{test} verifică dacă valoarea variabilei \texttt{i} este un director.
+
+Un cod de ieșire egal cu \texttt{0} înseamnă succes.
+Un cod de ieșire diferit de \texttt{0} înseamnă insucces.
+Codul de ieșire al unei comenzi este reținut de construcția \texttt{\$?}, așa cum am precizat în \labelindexref{Secțiunea}{sec:cli:shell-func:vars}.
+Astfel că cele trei construcții din \labelindexref{Listing}{lst:auto:if-test-exit-code} sunt echivalente.
+
+\begin{screen}[caption={Verificarea codului de ieșire al unei comenzi},label={lst:auto:if-test-exit-code}]
+grep "ana" /etc/passwd > /dev/null && echo "found"
+
+if grep "ana" /etc/passwd > /dev/null; then
+    echo "found"
+fi
+
+grep "ana" /etc/passwd > /dev/null
+if test $? -eq 0; then
+    echo "found"
+fi
+\end{screen}
+
+Folosim \cmd{if} în locul operatorilor de secvențiere condiționată (\texttt{\&\&}, \texttt{$\textbar\textbar$}) atunci când executăm mai multe comenzi sau pentru lizibilitate.
+Folosim \cmd{if} cu \cmd{test} și verificarea codului de ieșire \texttt{\$?} din rațiuni de lizibilitate; dar e discutabil și probabil chestiune de gust care dintre variantele (liniile \texttt{3-5}, respectiv \texttt{7-10}) e mai nimerită.
+
+Comanda \cmd{test} primește ca argumente o condiție care poate avea diferite forme.
+Condiția poate fi comparație între numere, între șiruri, tip de fișiere și altele.
+\labelindexref{Tabelul}{tab:auto:test} conține o selecție a condițiilor folosite de comanda \cmd{test}.
+O listă completă găsiți în pagina de manual a comenzii \cmd{test}.
+
+\begin{table}[!htb]
+  \caption{Condiții folosite de comanda test}
+  \begin{center}
+    \begin{tabular}{ p{0.5\textwidth} p{0.45\textwidth} }
+      \toprule
+        \textbf{Exemplu condiție} &
+        \textbf{Rol / Efect} \\
+      \midrule
+        \cmd{test -f /etc/passwd} &
+        verifică dacă \file{/etc/passwd} este fișier \\
+
+        \cmd{test -d "\$d"} &
+        verifică dacă valoarea variabilei \texttt{d} este director \\
+
+        \cmd{test -x my\_script} &
+        verifică dacă \file{my\_script} are permisiuni de execuție \\
+
+        \cmd{test "\$\#" -gt 2} &
+        verifică dacă numărul de parametri ai scriptului este mai mare (strict) decât 2 \\
+
+        \cmd{test "\$v" -eq 10} &
+        verifică dacă valoarea variabilei \texttt{v} este egală cu 10 \\
+
+        \cmd{test "\$v" -eq 10} &
+        verifică dacă valoarea variabilei \texttt{v} este egală cu 10 \\
+
+        \cmd{test "\$1" = "/etc/passwd"} &
+        verifică dacă primul parametru al scriptului are ca valoare șirul \texttt{/etc/passwd} \\
+
+        \cmd{test -z "\$store"} &
+        verifică dacă variabila \texttt{store} nu conține nici o informație (este un șir vid) \\
+
+        \cmd{test ! -z "\$store"} &
+        verifică opusul condiției de mai sus \\
+
+      \bottomrule
+    \end{tabular}
+    \label{tab:auto:test}
+  \end{center}
+\end{table}
+
+Comanda \cmd{test} are ca echivalent comanda \cmd{$[$} (paranteză dreaptă deschisă).
+Cele două comenzi sunt echivalente: orice verificare se face cu \cmd{test}, se poate face și cu \cmd{$[$}, ca în \labelindexref{Listing}{lst:auto:test-bracket}.
+Diferența este că, în cazul comenzii \cmd{$[$}, la sfârșitul condiției de verificare, trebuie adăugată construcția \texttt{$]$}.
+Din cauză că această construcție este adesea omisă sau este ,,lipită'' de condiția de verificare, în loc să fie separată prin spațiu, recomandăm folosirea comenzii \cmd{test} în defavoarea comenzii \cmd{$[$}.
+
+\begin{screen}[caption={Comanda test și comanda {]}},label={lst:auto:test-bracket}]
+if test 3 -eq 3; then
+    echo "equal"
+fi
+
+if [ 3 -eq 3 ]; then
+    echo "equal"
+fi
+
+if test -f /etc/passwd; then
+  echo "exists"
+fi
+
+if [ -f /etc/passwd ]; then
+  echo "exists"
+fi
+\end{screen}
+
+O altă comandă pentru verificarea condițiilor este comanda \cmd{$[[$}.
+Comanda \cmd{$[[$} diferă în două moduri de comenzile \cmd{test} și \cmd{$[$}:
+\begin{itemize}
+  \item este o comandă internă shellului (cum am discutat în \labelindexref{Secțiunea}{sec:cli:shell:command-types}), în vreme ce \cmd{test} și \cmd{$[$} sunt comenzi externe
+  \item este proprie shellului Bash; este posibil să se găsească și în alte shelluri, dar nu ne putem baza pe acest lucru
+\end{itemize}
+
+Comanda \cmd{$[[$} poate fi considerată o extensie a comenzilor \cmd{test} și \cmd{$[$}.
+Aceleași verificări realizate cu \cmd{test} și \cmd{$[$} pot fi realizate și cu \cmd{$[[$}.
+Pe lângă acestea, \cmd{$[[$} permite verificări suplimentare, ca cele prezentate în \labelindexref{Listing}{lst:auto:shell-builtin-bracket}:
+\begin{itemize}
+  \item liniile \texttt{1-2}: verificare de condiții compuse, folosind operatorul \texttt{\&\&} (ȘI logic - \textit{logical AND})
+  \item liniile \texttt{4-5}: comparația unui șir cu o construcție de tip pattern / globbing (prezentate în \labelindexref{Secțiunea}{sec:cli:shell-func:expansion:globbing}), folosind operatorul \texttt{==}
+  \item liniile \texttt{7-8}: comparația unui șir cu o construcție de tip expresie regulată (prezentate în \labelindexref{Secțiunea}{sec:cli:regex}), folosind operatorul \texttt{=$\sim$}
+\end{itemize}
+
+\begin{screen}[caption={Folosirea comenzii interne {[[}},label={lst:auto:shell-builtin-bracket}]
+student@uso:~/.../code/13-auto$ if [[ 3 -eq 3 && 9 -eq 9 ]]; then echo "equal"; fi
+equal
+
+student@uso:~/.../code/13-auto/wiki-cat$ if [[ /etc/passwd == *c/p* ]]; then echo "match"; fi
+match
+
+student@uso:~/.../code/13-auto/wiki-cat$ if [[ /etc/passwd =~ /.*/.*d ]]; then echo "match"; fi
+match
+\end{screen}
+
+În general recomandăm folosirea \cmd{test} pentru condiții uzuale și întotdeauna atunci când scriptul se dorește portabil între mai multe shelluri, așa cum vom discuta în \labelindexref{Secțiunea}{sec:auto:script-advanced:portable}.
+Folosim \cmd{$[[$} pentru situații de potrivire cu expresii regulate sau patternuri.
+Dacă avem nevoie de potrivire cu expresii regulate sau patternuri și este nevoie de portabilitatea scriptului, putem crea construcții echivalente folosind comenzi de lucru cu expresii regulate precum \cmd{grep}
+
+\subsubsection{case}
+\label{sec:auto:script-func:flow-control:case}
+
+Comanda \cmd{case} este echivalentul instrucțiunii \texttt{switch} din C; are rolul de a
+potrivi o variabilă la mai multe variante și de a executa comenzile echivalente.
+Potrivirea se face folosind globbing / patternuri.
+La fel ca instrucțiunea \texttt{switch} în C, comanda \cmd{case} este o comandă mai puțin întâlnită în scripturi.
+
+Sintaxa comenzii \cmd{case} este indicată în \labelindexref{Listing}{lst:auto:case-syntax}.
+Valoarea variabilei \texttt{var} este comparată cu diferite patternuri, precum \texttt{abc*} sau \texttt{*$[$de$]$fg*}.
+În cazul fiecărei potriviri, se execută comenzile corespunzătoare.
+De avut în vedere construcția \texttt{;;} pentru închiderea unei opțiuni \cmd{case}.
+Construcția \texttt{*} definește echivalentul etichetei \texttt{default} din programarea în C: se potrivește cu orice șir.
+În mod obișnuit, se plasează ca ultima opțiune pentru \cmd{case}, iar comenzile corespunzătoare sunt executate dacă nu s-au potrivit cu nici o altă opțiune.
+
+\begin{screen}[caption={Sintaxa comenzii case},label={lst:auto:case-syntax}]
+case var in
+    abc*)
+        command1
+        command2
+        ...
+        ;;
+    *[de]fg*)
+        command3
+        command4
+        ...
+        ;;
+    *)
+        command5
+        command6
+        ...
+        ;;
+esac
+\end{screen}
+
+Un exemplu de utilizare a comenzii \cmd{case} este în fișierul de startup \file{/etc/init.d/ssh}, prezentat în \labelindexref{Listing}{lst:auto:case-example}.
+În cadrul fișierului, primul parametru al scriptului (\texttt{\$1}) este comanda de executat a scriptului cu valori precum \texttt{start}, \texttt{stop}, \texttt{reload}.
+În cazul fiecărei valori a parametrului se execută anumite comenzi.
+În cazul implicit (opțiunea \textit{default}: \texttt{*}) se afișează un mesaj legat de modul de utilizare a scriptului.
+
+\begin{screen}[caption={Exemplu de folosire case: /etc/init.d/ssh},label={lst:auto:case-example}]
+student@uso:~/uso-book/code/13-auto$ cat /etc/init.d/ssh
+[...]
+case "$1" in
+  start)
+	check_privsep_dir
+	check_for_no_start
+        [...]
+	;;
+
+  stop)
+	log_daemon_msg "Stopping OpenBSD Secure Shell server" "sshd" || true
+        [...]
+	;;
+
+  reload|force-reload)
+	check_for_no_start
+	check_config
+        [...]
+	;;
+
+  [...]
+  *)
+	log_action_msg "Usage: /etc/init.d/ssh {start|stop|reload|force-reload|restart|try-restart|status}" || true
+	exit 1
+esac
+
+exit 0
+\end{screen}
+
+\subsubsection{for}
+\label{sec:auto:script-func:flow-control:for}
+
+Atunci când dorim să trecem, pe rând, printr-o listă de valori posibile pentru o variabilă folosim comanda \cmd{for}.
+O formă uzuală de folosire a comenzii for este pentru a trece printr-o listă de fișiere, cum este linia \texttt{7} din \labelindexref{Listing}{lst:auto:wiki-cat}.
+Folosind construcția \texttt{for i in *}, variabila \texttt{i} primește, pe rând, ca valoare, numele fiecărei intrări din directorul curent.
+
+Dacă dorim să folosim comanda \cmd{for} pentru a parcurge o listă de indecși, similar instrucțiunii \texttt{for} din C, folosim una dintre construcțiile din \labelindexref{Listing}{lst:auto:for-number}.
+Prima construcție (linia \texttt{1}) este o formă de expandare aritmetică.
+A doua construcție (linia \texttt{4}) folosește expandarea comenzii \cmd{seq} pentru a genera o listă de numere care va fi parcursă de variabila \texttt{i}.
+A treia construcție (linia \texttt{7}) folosește o formă de expandare cu acolade (\textit{brace expansion}) pentru a genera lista de numere.
+Folosirea \cmd{for} pentru a parcurge o listă de indecși este mai puțin frecventă în scripturi shell față de alte scenarii.
+În general operațiile numerice / aritmetice, deși prezente în scripturi shell, sunt mai adecvate unor limbaje de programe complete, precum Python, Perl sau C.
+
+\begin{screen}[caption={Parcurgere numerică folosind for},label={lst:auto:for-number}]
+student@uso:~/uso-book/code/13-auto$ for ((i=1; i<=10; i++)); do echo "$i"; done
+[...]
+
+student@uso:~/uso-book/code/13-auto$ for i in $(seq 1 10); do echo "$i"; done
+[...]
+
+student@uso:~/uso-book/code/13-auto$ for i in {1..10}; do echo "$i"; done
+[...]
+\end{screen}
+
+Un mod de folosire a comenzii \cmd{for} este trecerea prin parametrii unui script, ca în \labelindexref{Listing}{lst:auto:for-param}.
+În linia \texttt{9} am folosit \cmd{for} pentru a parcurge parametrii scriptului, indicați de construcția \texttt{\$*}.
+
+\begin{screen}[caption={Parcurgerea parametrilor unui script},label={lst:auto:for-param}]
+student@uso:~/uso-book/code/13-auto$ cat show-ids
+#!/bin/bash
+
+if test $# -eq 0; then
+    echo "Usage: $0 username1 [username2 ...]" 1>&2
+    exit 1
+fi
+
+for i in $*; do
+    echo -n "$i: "
+    id -u "$i"
+done
+
+student@uso:~/uso-book/code/13-auto$ ./show-ids
+Usage: ./show-ids username1 [username2 ...]
+
+student@uso:~/uso-book/code/13-auto$ ./show-ids student root
+student: 1000
+root: 0
+\end{screen}
+
+În general, comanda \cmd{for} îmbracă una dintre formele din \labelindexref{Listing}{lst:auto:for-syntax}.
+În prima formă, \texttt{expression} este cel mai adesea o expresie aritmetică, precum cea din linia \texttt{1} din \labelindexref{Listing}{lst:auto:for-number}.
+În a doua formă, variabila \texttt{var} primește ca valoare, pe rând, elementele din lista \texttt{list}.
+Lista \texttt{list} poate fi definită explicit, prin scrierea de elemente separate prin spațiu, sau implicit, prin expandări care conduc la obținerea unei liste, cum am prezentat în exemplele de mai sus.
+
+\begin{screen}[caption={Sintaxa comenzii for},label={lst:auto:for-syntax}]
+for ((expression)); do
+    command_to_execute1
+    command_to_execute2
+    ...
+done
+
+for var in list; do
+    command_to_execute1
+    command_to_execute2
+    ...
+done
+\end{screen}
+
+De avut în vedere că folosirea \cmd{for} poate fi problematică sau ineficientă.
+Folosirea for este problematică atunci când există spații în elementele listei.
+În acel caz, în loc să fie preluate elementele efective, vor fi preluate părțile din fiecare element separate cu spații.
+Vom discuta mijloace de rezolvare a spațiilor în listă în \labelindexref{Secțiunea}{sec:auto:script-advanced:robust}.
+
+Folosirea for poate fi ineficientă când sunt alte forme de a folosi lista, fără a trece prin \cmd{for}, cum este cazul în \labelindexref{Listing}{lst:auto:for-inefficient}.
+În primul exemplu, rulăm comanda \cmd{for} și creăm mai multe procese \cmd{stat}, câte unul pentru fiecare fișier.
+În a doua variantă pur și simplu trimitem ca argument fișierele dorite comenzii \cmd{stat}.
+Prima variantă rămâne, însă, utilă pentru cazul în care dorim să executăm mai multe comenzi care folosesc un element al unei liste (intrare din directorul curent).
+În cazul nostru, am folosit doar comanda \cmd{stat} pentru fiecare element al listei.
+Dacă am fi dorit să folosim mai multe comenzi, atunci nu am fi putut folosi a doua variantă.
+
+\begin{screen}[caption={Alternativă la folosirea for},label={lst:auto:for-inefficient}]
+student@uso:~/uso-book/code/13-auto$ for i in *; do stat -c "%n,%s" "$i"; done
+gen-passwd,168
+hello,4096
+show-ids,158
+system-update,80
+wiki-cat,4096
+
+student@uso:~/uso-book/code/13-auto$ stat -c "%n,%s" *
+gen-passwd,168
+hello,4096
+show-ids,158
+system-update,80
+wiki-cat,4096
+\end{screen}
+
+Ca de obicei, în shell scripting, există mai multe moduri de a realiza un lucru.
+Ideal, cumulat cu experiența, vom prefera cea mai bună opțiune pentru o situație dată: opțiunea cea mai robustă, în primul rând, și cea mai eficientă, în al doilea rând.
+Vom discuta aceste aspecte în \labelindexref{Secțiunea}{sec:auto:script-advanced}.
+
+\subsubsection{while}
+\label{sec:auto:script-func:flow-control:while}
+
+Similar comenzii \cmd{for} și a instrucțiunii \texttt{while} din C, comanda \cmd{while} poate fi folosită pentru a bucla în așteptarea unei condiții, ca în \labelindexref{Listing}{lst:auto:while-numeric}.
+În a doua formă, am folosit expandare aritmetică pentru comparația valorii variabilei \texttt{i} cu \texttt{10}.
+
+\begin{screen}[caption={Folosirea numerică a comenzii while},label={lst:auto:while-numeric}]
+student@uso:~/uso-book/code/13-auto$ i=1; while test $i -le 10; do echo "$i"; ((i++)); done
+[...]
+student@uso:~/uso-book/code/13-auto$ i=1; while ((i <= 10)); do echo "$i"; ((i++)); done
+[...]
+\end{screen}
+
+La fel ca în cazul comenzii \cmd{for}, forma de parcurgere numerică a comenzii \texttt{while} este mai puțin frecventă.
+Astfel de folosiri numerice sunt preferate unor limbaje de programare precum Python, Perl sau C.
+Frecvent, comanda \cmd{while} este folosită pentru a face parsing la fișiere text structurate tabelar (linii și coloane), folosind comanda \cmd{read}, ca în scriptul \file{extract-10} din \labelindexref{Listing}{lst:auto:extract-10}.
+Scriptul afișează numele și grupa studenților care au nota finală 10.
+În script am folosit comanda \cmd{while} pentru a parcurge fiecare linie din fișierul \file{students-surnames-only.txt}; fișierul este redirectat către comanda \cmd{while}.
+Parsarea fiecărui element din linie este realizat de comanda \cmd{read}; fiecare element este reținut în câte o variabilă \texttt{name}, \texttt{group}, \texttt{final\_grade}, \ldots.
+
+\begin{screen}[caption={Script: Extragerea studenților cu nota 10},label={lst:auto:extract-10}]
+student@uso:~/.../code/13-auto/students$ ls
+extract-10  extract-10-csv  extract-10-tab  students.csv  students-surnames-only.txt  students.txt
+
+student@uso:~/.../code/13-auto/students$ cat extract-10
+#!/bin/bash
+
+while read name group final_grade test_grade practical_grade; do
+    if test "$final_grade" -eq 10; then
+        echo "$name,$group"
+    fi
+done < students-surnames-only.txt
+
+student@uso:~/.../code/13-auto/students$ ./extract-10
+GEORGIU,311CC
+MUȘATESCU,311CC
+RADU,311CC
+GONDOȘ,312CC
+NECULAI,313CC
+MUHCINĂ,313CC
+GRAMA,314CC
+VĂSII,314CC
+RĂDOI,314CC
+NEACȘU,314CC
+BARBU,315CC
+MĂNOIU,315CC
+ȘTIRBĂȚ,315CC
+\end{screen}
+
+Sintaxa uzuală pentru \cmd{while}, în combinație cu \cmd{read} este indicată în \labelindexref{Listing}{lst:auto:while-syntax}.
+În general intrarea este dată de la un fișier (prin redirectare) de la o altă comandă (prin înlănțuire cu operatorul \textit{pipe} - \texttt{$\textbar$}).
+
+\begin{screen}[caption={Sintaxa comenzii while (cu read)},label={lst:auto:while-syntax}]
+while read field1 field2 ...; do
+    command1
+    command2
+done < file_to_redirect
+
+command_to_redirect | while read field1 field2 ...; do
+    command1
+    command2
+done
+\end{screen}
+
+Pentru a face parsing, comanda \cmd{read} folosește variabila shell \texttt{IFS}\abbrev{IFS}{Input Field Separator} (\textit{Input Field Separator}).
+În mod implicit, variabila \texttt{IFS} este inițializată la caracterele albe (spațiu, Tab, linie nouă).
+Dacă dorim să folosim alt separator pentru parsare, vom actualiza variabila IFS ca în scripturile \file{extract-10-tab} și \file{extract-10-csv} din \labelindexref{Listing}{lst:auto:extract-10-tab}, respectiv \labelindexref{Listing}{lst:auto:extract-10-csv}.
+\labelindexref{Listing}{lst:auto:extract-10-tab} folosește Tab pe post de separator și fișierul de intrare \texttt{students.txt}, ale cărui elemente sunt separate de Tab în fiecare linie.
+\labelindexref{Listing}{lst:auto:extract-10-csv} folosește virgulă (\texttt{,}) pe post de separator și fișierul de intrare \texttt{students.csv} (de tip CSV - \textit{Comma Separated Values}), ale cărui elemente sunt separate de virgulă pe fiecare linie.
+
+\begin{screen}[caption={Script: Extragerea studenților cu nota 10 (Tab ca separator)},label={lst:auto:extract-10-tab}]
+student@uso:~/.../code/13-auto/students$ cat extract-10-tab
+#!/bin/bash
+
+IFS=$'\t'
+while read name group final_grade test_grade practical_grade; do
+    if test "$final_grade" -eq 10; then
+        echo "$name,$group"
+    fi
+done < students.txt
+
+student@uso:~/.../code/13-auto/students$ ./extract-10-tab
+GEORGIU V. Alexandra-Maria,311CC
+MUȘATESCU V. Alexandru-Petrișor,311CC
+RADU L. Alina,311CC
+GONDOȘ I. Gabriel,312CC
+NECULAI M. Alexandru-George,313CC
+MUHCINĂ V. Silviu-Mihai,313CC
+GRAMA C. Serban-Alexandru,314CC
+VĂSII I. Bogdan-Cristian,314CC
+RĂDOI D. Ghennadi,314CC
+NEACȘU C. Florin-Mărgărit,314CC
+BARBU I. Ștefan,315CC
+MĂNOIU I. Ioana-Veronica,315CC
+ȘTIRBĂȚ A. Steliana,315CC
+\end{screen}
+
+\begin{screen}[caption={Script: Extragerea studenților cu nota 10 (CSV)},label={lst:auto:extract-10-csv}]
+student@uso:~/.../code/13-auto/students$ cat extract-10-csv
+#!/bin/bash
+
+IFS=','
+while read name group final_grade test_grade practical_grade; do
+    if test "$final_grade" -eq 10; then
+        echo "$name,$group"
+    fi
+done < students.csv
+
+student@uso:~/.../code/13-auto/students$ ./extract-10-csv
+GEORGIU V. Alexandra-Maria,311CC
+MUȘATESCU V. Alexandru-Petrișor,311CC
+RADU L. Alina,311CC
+GONDOȘ I. Gabriel,312CC
+NECULAI M. Alexandru-George,313CC
+MUHCINĂ V. Silviu-Mihai,313CC
+GRAMA C. Serban-Alexandru,314CC
+VĂSII I. Bogdan-Cristian,314CC
+RĂDOI D. Ghennadi,314CC
+NEACȘU C. Florin-Mărgărit,314CC
+BARBU I. Ștefan,315CC
+MĂNOIU I. Ioana-Veronica,315CC
+ȘTIRBĂȚ A. Steliana,315CC
+\end{screen}
+
+Prin inițializarea variabilei \texttt{IFS} la un separator dat (Tab sau virgulă) am putut să afișăm numele complet al studenților, nu doar numele de familie, cum era cazul în scriptul \file{extract-10}.
+În scriptul \file{extract-10} am folosit o versiune modificată a fișierului de intrare, în care prima coloană a fișierului conține doar numele de familie.
+Dacă ar fi conținut și inițiala tatălui și prenumele, atunci acestea ar fi fost câmpuri parsate de comanda \cmd{read} la folosirea implicită a separatorului \texttt{IFS} (care conține caractere albe: spațiu, Tab, linie nouă); caz în care valorile câmpurilor \texttt{group}, \texttt{final\_grade} și altele ar fi fost necorespunzătoare.
+
+Așa cum am văzut în exemplele de mai sus, construcția \cmd{while read} este utilă atunci când dorim să prelucrăm date în format tabelar, putând rula comenzi pe câmpurile parsate din fiecare linie de la intrare.
+Putem privi construcția \cmd{while read} ca o comandă \cmd{cut} extinsă.
+\cmd{cut} doar permite extragerea uneia sau mai multor câmpuri / coloane dar fără a permite execuția de comenzi pentru fiecare element extras.
+\cmd{while read} permite prelucrarea suplimentară (nu doar extragerea) câmpurilor parsate de pe fiecare linie.
+
+La fel ca \cmd{for}, comanda \cmd{while} poate fi folosită necorespunzător într-un mod în care robustețea, lizibilitatea sau performanța sunt afectate.
+În general, folosirea buclelor, în special pentru prelucrarea text poate fi sursă de probleme în scripturi shell\footnote{\url{https://unix.stackexchange.com/a/169765/227174}}.
+
+\subsection{Funcții}
+\label{sec:auto:script-func:func}
+
+Atunci când avem secvențe de comenzi pe care vrem să le folosim modular, putem folosi funcții.
+La fel ca într-un limbaj de programare, o funcție are un nume și are un conținut; o funcție rulează când este apelată.
+O funcție este apelată folosind numele său, ca în \labelindexref{Listing}{lst:auto:functions}, care prezintă secvențe din scriptul \file{/etc/init.d/ssh}.
+Sunt definite funcțiile \texttt{check\_dev\_null}, \texttt{check\_privsep\_dir} și \texttt{check\_config}, care sunt apoi apelate pe parcursul programului.
+
+\begin{screen}[caption={Folosirea funcțiilor (/etc/init.d/ssh)},label={lst:auto:functions}]
+student@uso:~/uso-book/code/13-auto$ cat /etc/init.d/ssh
+[...]
+check_dev_null() {
+    if [ ! -c /dev/null ]; then
+	if [ "$1" = log_end_msg ]; then
+	    log_end_msg 1 || true
+	fi
+	if ! run_by_init; then
+	    log_action_msg "/dev/null is not a character device!" || true
+	fi
+	exit 1
+    fi
+}
+
+check_privsep_dir() {
+    # Create the PrivSep empty dir if necessary
+    if [ ! -d /run/sshd ]; then
+	mkdir /run/sshd
+	chmod 0755 /run/sshd
+    fi
+}
+
+check_config() {
+    if [ ! -e /etc/ssh/sshd_not_to_be_run ]; then
+	/usr/sbin/sshd $SSHD_OPTS -t || exit 1
+    fi
+}
+
+export PATH="${PATH:+$PATH:}/usr/sbin:/sbin"
+
+case "$1" in
+  start)
+	check_privsep_dir
+        [...]
+	check_dev_null
+        [...]
+        ;;
+
+  [...]
+  reload|force-reload)
+	check_for_no_start
+	check_config
+        [...]
+	;;
+[...]
+\end{screen}
+
+Din punctul de vedere al folosirii, o funcție sau o comandă sunt echivalente:
+\begin{itemize}
+  \item pentru apelarea unei funcții, se scrie numele funcției (fără paranteze, cum e cazul limbajelor de programare)
+  \item dacă funcția primește parametri, aceștia sunt transmiși în continuarea numelui funcției, separați prin spații.
+  \item o funcție poate întoarce un cod de ieșire (folosind comanda \texttt{return}), cod ce poate fi investigat
+  \item o funcție poate afișa mesaje ce pot fi reținute prin construcția de expandare a comenzilor (\texttt{\$(\ldots)})
+\end{itemize}
+Doar uitându-ne la un script care folosește comenzi sau funcții, nu am putea să ne diferențiem între cele două.
+
+Așa cum am observat și în \labelindexref{Listing}{lst:auto:functions}, funcțiile ajung să fie folosite în scripturi shell mai complexe, mai puțin în scripturi uzuale.
+Scripturi mai complexe sunt scripturile de inițializare din directorul \file{/etc/init.d/}, cum este și cazul scriptului \file{/etc/init.d/ssh} din \labelindexref{Listing}{lst:auto:functions}.
+
+\section{Facilități avansate și bune practici în shell scripting}
+\label{sec:auto:script-advanced}
+
+Așa cum am precizat anterior, un script shell este o cale de mijloc între a rula comenzile în linia de comandă și a face un program într-un limbaj de programare.
+Pe lângă acestea, în shell sunt comenzi similare și funcționalități diferite care pot conduce la același rezultat.
+Fiind mai multe modurile de a ajunge la un rezultat în shell, cel mai bine este să creăm scripturi shell folosind cea mai bună abordare dintre cele posibile.Pentru aceasta, pentru fiecare script vom urmări:
+
+\begin{itemize}
+  \item \textbf{robustețea}: scriptul să ruleze indiferent de condiții, să nu aibă erori de rulare sau rezultate impredictibile
+  \item \textbf{lizibilitate}: scriptul să fie ușor de citit și de înțeles de altcineva; anumite construcții în shell sunt întortocheate și pot face dificilă înțelegerea scriptului
+  \item \textbf{eficiența și performanța}: deși nu poate ajunge la nivelul de performanță al unui program, e indicat ca scriptul să ruleze cât mai repede și să nu consume resurse în mod exagerat
+  \item \textbf{portabilitatea}: există mai multe tipuri de shell (Bash, Dash, ksh, tcsh, zsh) sau diferite versiuni de shell; dacă se știe că un script va rula pe shelluri și în medii diferite trebuie să fie portabil și să ruleze determinist
+\end{itemize}
+
+Mai jos prezentăm construcții specifice acestor deziderate și recomandări de folosire în scripturi shell.
 
 \subsection{Robustețe}
-\label{sec:auto-advancedfunc-robust}
+\label{sec:auto:script-advanced:robust}
 
-Robustețea unui script înseamnă că acesta funcționează în condiții cât mai
-diverse. Acest lucru înseamnă că având intrări diferite, sau pe configurații
-diferite sau cu intrări în sistemul de fișiere diferite, scriptul va funcționa
-corespunzător.
+Robustețea unui script înseamnă că acesta funcționează în condiții cât mai diverse.
+Acest lucru înseamnă că având intrări diferite, sau pe configurații diferite sau cu intrări în sistemul de fișiere diferite, scriptul va funcționa corespunzător.
 
-Mai jos sunt indicate câteva surse de probleme care pot afecta robustețea
-scripturilor. Vom detalia ulterior soluții la acestea:
+Mai jos sunt indicate câteva surse de probleme care pot afecta robustețea scripturilor.
+Vom detalia ulterior soluții la acestea:
 
-* Inconsecvența formatului datelor prelucrate: unele comenzi afișează
-informațiile în formate care pot varia și care pot produce probleme. Soluția
-este folosirea de comenzi sau fișiere cu informație consecventă sau de avut în
-vedere, cât de mult se poate, toate cazurile
+\begin{itemize}
+  \item \textbf{inconsecvența formatului datelor prelucrate}:
+    Unele comenzi afișează informațiile în formate care pot varia și care pot produce probleme.
+    Soluția este folosirea de comenzi sau fișiere cu informație consecventă sau de avut în vedere, cât de mult se poate, toate cazurile.
+  \item \textbf{configurații diferite de sistem}: Un script presupune anumite configurații care nu sunt prezente pe toate sistemele.
+    Sau necesită rularea în anumite condiții în absența cărora rularea duce la erori.
+  \item \textbf{caractere speciale}: Intrările în sistemul de fișiere pot conține caractere speciale (precum spații sau chiar caractere newline) care nu sunt luate în considerare de script.
+\end{itemize}
 
-* Configurații diferite de sistem: un script presupune anumite configurații care
-nu sunt prezente pe toate sistemele sau rularea în anumite condiții ce-l fac
-nerobust.
-
-* Intrările în sistemul de fișiere pot conține caractere speciale precum spații
-sau chiar caractere newline care nu sunt luate în considerare de script.
-
-Așa cum am precizat în secțiunea TODO din Capitolul TODO: Interfața în linia de
-comandă, utilitarele generatoare de text sunt de două tipuri, în funcție de
-utilitatea rezultatului rulării:
+Așa cum am precizat în \labelindexref{Secțiunea}{sec:cli:basic-proc:gen} și în \labelindexref{Secțiunea}{sec:auto:how}, utilitarele generatoare de text sunt de două tipuri, în funcție de utilitatea rezultatului rulării:
 
 \begin{enumerate}
-	\item Rezultatul rulării este util în special utilizatorului
-	\item Rezultatul rulării lor este util în special unei prelucrări
+  \item utilitare pentru afișarea de informații, pe ecran, pentru a fi accesibile utilizatorului
+  \item utilitare care afișează informația în format prelucrabil, util pentru legarea de alte comenzi, adică pentru automatizare
 \end{enumerate}
 
-Pentru a nu fi afectate de inconsecvența datelor prelucrate, în scripturi e
-recomandată folosirea utilitarelor care au ca obiectiv prelucrarea. Astfel, dacă
-dorim să obținem pentru prelucrare dimensiunea unui fișier vom folosi stat în
-loc de ls:
+Pentru a nu fi afectate de inconsecvența datelor prelucrate, în scripturi e recomandată folosirea utilitarelor care au ca obiectiv prelucrarea, adică a doua categorie de mai sus.
+Astfel, dacă dorim să obținem pentru prelucrare dimensiunea unui fișier vom folosi \cmd{stat} în loc de \cmd{ls}, ca în  \labelindexref{Listing}{lst:auto:ls-vs-stat}.
+La fel, vom folosi \cmd{pidof} sau \cmd{pgrep} în loc de \cmd{ps}, ca în \labelindexref{Listing}{lst:auto:print-vs-process-cmd}.
 
-* Exemplu stat vs ls
+Forme precum \cmd{ps $\textbar$ grep} rămân în continuare utile atunci când vrem să fie afișate utilizatorului doar anumite informații din rezultatul comenzii \cmd{ps}.
+Dacă însă dorim prelucrarea acelor informații de alte comenzi, vom folosi \cmd{pidof} sau \cmd{pgrep}.
 
-La fel vom folosi pidof sau pgrep în loc de ps | grep.
+În partea de configurații diferite putem avea variabila de mediu \texttt{PATH} cu valori diferite.
+Drept urmare, e posibil ca o comandă să poată fi rulată doar furnizând calea completă.
+Adică să funcționeze \cmd{/bin/ls} dar nu \cmd{ls}.
+Mai mult, anumite utilitare pot să nu fie instalate.
+Dacă proiectăm scripturi de sistem (rulate cu permisiuni administrative) sau scripturi cu șanse de a a rula pe configurații diferite, vom calea completă către o comandă.
+În felul acesta, prevenim cazurile în care variabila de mediu \texttt{PATH} nu are conținutul așteptat.
 
-* Exemplu pidof, pgrep, ps | grep
+Dacă un script se dorește rulat ca \texttt{root} trebuie verificat acest lucru printr-o construcție de genul celei din \labelindexref{Listing}{lst:auto:check-root}.
+În caz contrar scriptul va fi rulat ca utilizator obișnuit (neprivilegiat) și vor apărea erori la rularea comenzilor privilegiate.
 
-Ps | grep rămâne în continuare util atunci când vrem să fie afișată informație
-pentru utilizator și vrem doar anumite linii să fie selectate pentru afișare.
-Dacă însă dorim prelucrarea acelor informații de în alte comenzi, vom folosi
-pidof sau pgrep.
+\begin{screen}[caption={Verificare root în script},label={lst:auto:check-root}]
+if test $(id -u) -ne 0; then
+    echo "You have to be root to run this script". 1>&2
+    exit 1
+fi
+\end{screen}
 
-În partea de configurații diferite putem avea variabila de mediu PATH cu valori
-diferite; drept urmare, e posibil ca o comandă să poată fi rulată decât
-furnizând calea completă; adică să funcționeze /bin/ls dar nu ls. Cel mai bine
-este ca în scripturi să folosim calea completă către o comandă, pentru a preveni
-cazul în care variabila de mediu PATH nu are conținutul așteptat. Mai mult,
-anumite utilitare pot să nu fie instalate. Drept urmare, trebuie verificat dacă
-o comandă sau un fișier se găsește pe acel sistem.
+Unele scripturi vor folosi \cmd{sudo} sau o conexiune SSH sau alte comenzi care pot cere (sau nu) introducerea unei parole.
+Este posibil ca pe un sistem să avem configurată autentificarea SSH sau rularea \cmd{sudo} fără cererea parolei iar pe alte sistem să nu fie configurată.
+Scriptul trebuie să aibă în vedere acest lucru și să configureze sistemul corespunzător sau să folosească un utilitar de automatizare a comenzilor neinteractive, așa cum vom preciza în \labelindexref{Secțiunea}{sec:auto:script-advanced:other}.
 
-Dacă un script se dorește rulat ca root trebuie verificat acest lucru printr-o
-construcție de genul:
+Când rulăm un script trebuie să avem în vedere din ce director îl rulăm.
+În script este posibil să existe căi relative la directorul din care rulăm.
+Din păcate, nu există nici o soluție care să funcționeze în toate cazurile\footnote{\url{http://mywiki.wooledge.org/BashFAQ/028}}.
+Sunt recomandate două abordări:
+\begin{enumerate}
+  \item folosirea căilor absolute către fișierele folosite în script, precum plasarea fișierelor de configurare într-un director cu o cale fixă
+  \item rularea scriptului doar din directorul în care se găsește scriptul
+\end{enumerate}
 
-* Exemplu verificare root cu if
+Atunci când lucrăm cu fișiere trebuie să ținem cont de numele acestora.
+Numele fișierelor pot conține caractere speciale precum spațiu (\textit{blank}), folosit de shell pentru separarea argumentelor.
+De exemplu, în \labelindexref{Listing}{lst:auto:blanks-in-filenames}, avem o situație în care un director conține două subdirectoare (\file{movies/} și \file{books/}), fiecare subdirector conținând două fișiere al căror nume conțin spații; așa cum se vede în liniile \texttt{1-5}.
+La o rulare a comenzii \cmd{for} în combinație cu \cmd{find}, nu vom obține o parcurgere corespunzătoare a fișierelor ce conțin spații; așa cum se vede în liniile \texttt{7-16}.
+Soluția este fie folosirea \cmd{while} (liniile \texttt{18-22}), fie inițializarea separatorului din variabila \texttt{IFS} (\textit{Input Field Separator}) la caracterul linie nouă (\textit{newline}), prin construcția \texttt{\$'\textbackslash{}n'} (liniile \texttt{24-28}).
 
-În caz contrar scriptul va fi rulat ca utilizator privilegiat și vor apărea
-erori la rularea comenzilor privilegiate.
+\begin{screen}[caption={Tratarea caracterelor speciale în numele fișierelor},label={lst:auto:blanks-in-filenames}]
+student@uso:~/.../code/13-auto/filenames$ find -type f
+./movies/The Godfather
+./movies/Shawshank Redemption
+./books/The Great Gatsby
+./books/The Stand
 
-Se poate întâmpla ca, într-un script, să folosim sudo sau o conexiune SSH. Este
-posibil ca pe un sistem să avem configurată autentificarea SSH sau rularea sudo
-fără cererea parolei iar pe alte sistem să nu fie configurată. Script-ul trebuie
-să aibă în vedere acest lucru și să configureze sistemul corespunzător sau să
-folosească un utilitar de automatizare a comenzilor neinteractive, așa cum vom
-preciza în Secțiunea TODO: Alte funcționalități.
+student@uso:~/.../code/13-auto/filenames$ for f in $(find -type f); do stat -c "%n,%s" "$f"; done
+stat: cannot stat './movies/The': No such file or directory
+stat: cannot stat 'Godfather': No such file or directory
+stat: cannot stat './movies/Shawshank': No such file or directory
+stat: cannot stat 'Redemption': No such file or directory
+stat: cannot stat './books/The': No such file or directory
+stat: cannot stat 'Great': No such file or directory
+stat: cannot stat 'Gatsby': No such file or directory
+stat: cannot stat './books/The': No such file or directory
+stat: cannot stat 'Stand': No such file or directory
 
-Când rulăm un script trebuie să avem în vedere din ce director îl rulăm. În
-script este posibil să existe căi relative la directorul din care rulăm. Din
-păcate, nu există nici o soluție care să funcționeze
-100\%\footnote{\url{http://mywiki.wooledge.org/BashFAQ/028}}. Soluția
-recomandată este fie folosirea căilor absolute către fișierele folosite în
-script (precum plasarea fișierelor de configurare într-un director cu o cale
-fixă) fie rularea scriptului doar din directorul în care se găsește scriptul.
+student@uso:~/.../code/13-auto/filenames$ find -type f | while read f; do stat -c "%n,%s" "$f"; done
+./movies/The Godfather,14
+./movies/Shawshank Redemption,12
+./books/The Great Gatsby,20
+./books/The Stand,13
 
-Atunci când lucrăm cu fișiere trebuie să ținem cont de numele acestora; numele
-fișierelor pot conține caractere problematice precum spațiu. O prelucrare precum
-cea de mai jos nu este robustă:
+student@uso:~/.../code/13-auto/filenames$ IFS=$'\n'; for f in $(find -type f); do stat -c "%n,%s" "$f"; done
+./movies/The Godfather,14
+./movies/Shawshank Redemption,12
+./books/The Great Gatsby,20
+./books/The Stand,13
+\end{screen}
 
-* Exemplu for
+Chiar și soluțiile care urmăresc citirea linie cu linie a intrărilor (precum folosirea \cmd{while} sau inițializarea \texttt{IFS} la \textit{newline}) pot avea probleme dacă un fișier conține caracterul linie nouă (\textit{newline} - \texttt{\textbackslash{}n}) în numele său.
+Deși ciudat, fișierele pot conține caracterul \textit{newline} în nume.
+Nu este uzual să fie astfel de nume de fișiere, dar un atacator poate crea fișiere cu astfel de nume pentru a sabota funcționarea scriptului.
+Trei dintre soluțiile posibile pentru cazul în care există \textit{newline} în numele unui fișier sunt prezentate în \labelindexref{Listing}{lst:auto:newline-in-names}:
+\begin{itemize}
+  \item Folosim globbing împreună cu \cmd{for}, ca în liniile \texttt{1-5}.
+    Forma cu globbing este robustă la prezența \textit{newline} în numele fișierelor.
+    Dar este problematică dacă avem nevoie de o parcurgere în adâncime (recursivă) a unor fișiere, caz în care preferăm să folosim \texttt{find}.
+  \item Folosim \cmd{find} (de care am discutat în \labelindexref{Secțiunea}{sec:cli:advanced:find}) împreună cu opțiunea \texttt{-exec}, ca în liniile \texttt{7-11}.
+    Această formă permite rularea unei singure comenzi pe intrare.
+    Funcționează în cazul nostru, pentru că dorim rularea comenzii \cmd{stat} pentru fiecare intrare.
+  \item Folosim \cmd{find} cu afișarea intrărilor separate de terminatorul de șir (\texttt{\textbackslash{}0}), ca în liniile \texttt{13-17}.
+    Caz în care separatorul \texttt{IFS} este resetat, la fel și delimitatorul folosit de comanda \cmd{read}.
+\end{itemize}
 
-O soluție este folosire separatorul newline (IFS=’\\n’) ca mai jos:
+Aici\footnote{\url{https://www.dwheeler.com/essays/filenames-in-shell.html}} sunt descrise un spectru larg de soluții la situația caracterelor problematice în numele de fișiere.
 
-* Exemplu cu IFS=’\\n’
+\begin{screen}[caption={Tratarea prezenței newline în numele fișierelor},label={lst:auto:newline-in-names}]
+student@uso:~/.../code/13-auto/filenames$ for f in ./*/*; do stat -c "%n,%s" "$f"; done
+./books/The Great Gatsby,20
+./books/The Stand,13
+./movies/Shawshank Redemption,12
+./movies/The Godfather,14
 
-Chiar și soluția aceasta (cu IFS=’\\n’) poate avea probleme atunci când o intrare
-conține caracterul newline.
-\begin{note}[NOTĂ]
-Deși ciudat, fișierele pot conține caracterul newline în nume. Deși nu este
-uzual să fie astfel de nume de fișiere un atacator poate crea fișiere cu
-astfel de nume pentru a sabota funcționarea scriptului.
-\end{note}
+student@uso:~/.../code/13-auto/filenames$ find -type f -print0 | while IFS="" read -r -d "" f; do stat -c "%n,%s" "$f"; done
+./movies/The Godfather,14
+./movies/Shawshank Redemption,12
+./books/The Great Gatsby,20
+./books/The Stand,13
 
-Câteva dintre soluțiile posibile pentru cazul în care avem newline în fișier
-sunt prezentate mai jos:
-
-* Soluție cu array-uri
-
-* Soluție cu IFS=\$’\\0’
-
-Aici\footnote{\url{https://www.dwheeler.com/essays/filenames-in-shell.html}}
-sunt descrise un spectru larg de soluții la situația caracterelor problematice
-în numele de fișiere.
-
-O formă preferată rămâne, dacă se poate, folosirea comenzii find, așa cum am
-precizat în Secțiunea TODO din Capitolul TODO: Interfața în linia de comandă:
-
-* Exemplu find
-
-Avantajul comenzii find este că nu necesită o formă de interpretare a numelui
-fișierului. Fiecare intrare este apoi transmisă comenzii de după -exec pentru a
-fi prelucrată. Neajunsul comenzii find este că se poate executa o singură
-comandă pentru intrările parcurse, nu se pot opera acțiuni mai complexe.
+student@uso:~/.../code/13-auto/filenames$ find -type f -exec stat -c "%n,%s" {} \;
+./movies/The Godfather,14
+./movies/Shawshank Redemption,12
+./books/The Great Gatsby,20
+./books/The Stand,13
+\end{screen}
 
 \subsection{Lizibilitate}
-\label{sec:auto-advancedfunc-readability}
+\label{sec:auto:script-advanced:readable}
 
-Scripturile sunt quick and dirty și trebuie să fie lizibile, ușor de înțeles.
-Pentru aceasta este de preferat să nu se folosească construcții în care se poate
-greși repede sau care sunt greu de înțeles.
+Scripturile sunt \textit{quick and dirty} și trebuie să fie lizibile, ușor de înțeles.
+Pentru aceasta este de preferat să nu se folosească construcții în care se poate greși repede sau care sunt greu de înțeles.
 
-De exemplu, pentru expandarea unei comenzi sunt posibile două forme, așa cum
-sunt indicate mai jos:
+De exemplu, pentru expandarea unei comenzi sunt posibile două forme, ca în \labelindexref{Listing}{lst:auto:command-expansion-options}:
+\begin{itemize}
+  \item Folosim caracterul \textit{backtick} (\texttt{`}) în sintaxa \texttt{`command`} ca în liniile \texttt{1-5}.
+  \item Folosim construcția (\texttt{\$(command)}) ca în liniile \texttt{7-11}.
+\end{itemize}
+Între cele două forme, recomandăm a doua formă, care folosește construcția (\texttt{\$(command)}).
+Prima formă are probleme de lizibilitate: caracterul \textit{backtick} poate fi confundat cu apostrof; pe lângă aceasta, este mai dificil de localizat pe tastatură.
+De partea cealaltă, construcția \texttt{\$(command)} este mai ușor de citit și tastat.
 
-* Exemplu cu `...`
-* Exemplu cu \$(...)
+\begin{screen}[caption={Moduri de expandare a comenzilor},label={lst:auto:command-expansion-options}]
+student@uso:~/.../code/13-auto/filenames$ IFS=$'\n'; for f in `find -type f`; do stat -c "%n,%s" "$f"; done
+./movies/The Godfather,14
+./movies/Shawshank Redemption,12
+./books/The Great Gatsby,20
+./books/The Stand,13
 
-Prima forma, care folosește caracterul backtick (`), este nerecomandată deoarece
-caracterul backtick poate fi confundat cu apostrof și se găsește greu pe
-tastatură. Mai mult, nu permite comenzi imbricate. Construcția \$(...) este mai
-ușor de văzut și tastat și permite comenzi imbricate, ca în exemplul de mai jos:
+student@uso:~/.../code/13-auto/filenames$ IFS=$'\n'; for f in $(find -type f); do stat -c "%n,%s" "$f"; done
+./movies/The Godfather,14
+./movies/Shawshank Redemption,12
+./books/The Great Gatsby,20
+./books/The Stand,13
+\end{screen}
 
-* Exemplu cu \$(... \$(...) ... )
+Similar, între folosire comenzii \cmd{test} și folosirea comenzii \cmd{$[$} preferăm folosirea comenzii \cmd{test}, așa cum am precizat și în \labelindexref{Secțiunea}{sec:auto:script-func:flow-control:if}.
+Întrucât construcția \cmd{$[$} poate să fie văzută ca un operator, nu o comandă, și se pot omite spații, recomandăm folosirea comenzii \cmd{test}.
 
-Similar, între folosire comenzii test și folosirea comenzii [ preferăm folosirea
-comenzii test, așa cum am precizat și în Secțiunea TODO. Aceasta pentru că
-tendința este să folosim o construcție fără spații de forma [$a -eq $b] care
-este greșită; trebuie folosită construcția [ \$a -eq \$b ], folosind spații
-pentru a separa comanda [ și argumentul ] de restul argumentelor.
+Atunci când avem de furnizat un mesaj unei comenzi putem folosi \textit{here documents} și \textit{here strings}, forme mai expresive de transmitere a informației.
+\textit{Here documents} și \textit{here strings} sunt forme ,,inline'' de transmitere a informației așa cum sunt prezentate în \labelindexref{Listing}{lst:auto:here}.
+Liniile \texttt{1-4} arată cum putem scrie 2 linii în fișierul \file{$\sim$/.inputrc} (\textit{here document}).
+Linia \texttt{6} arată cum putem efectua calculul $2^10$, folosind utilitarul \cmd{bc} (\textit{here string}).
+Ambele forme pot fi realizate și folosind redirectări / \textit{pipe}; dar, din rațiuni de lizibilitate, sau pentru a nu crea un proces nou, putem folosi \textit{here documents} și \textit{here strings}
 
-Atunci când avem de furnizat un mesaj unei comenzi putem folosi here documents
-și here strings, forme mai expresive de transmitere a informației. Here
-documents și here strings sunt forme “inline” de transmitere a informației așa
-cum sunt prezentate mai jos:
+\begin{screen}[caption={Here document și here string},label={lst:auto:here}]
+cat > ~/.inputrc <<END
+set show-all-if-ambiguous On
+set completion-ignore-case On
+END
 
-* Exemplu here document
-
-* Exemplu here string
+bc <<< "2^10"
+\end{screen}
 
 \subsection{Eficiență}
-\label{sec:auto-advancedfunc-efficiency}
+\label{sec:auto:script-advanced:efficient}
 
-Acolo unde avem mai multe opțiuni și avem robustețea asigurată, e de preferat să
-folosim soluția cea mai eficientă și performantă. De exemplu, între cele două
-secvențe de mai jos vom prefera secvența ce folosește find -exec:
+Acolo unde avem mai multe opțiuni și avem robustețea asigurată, e de preferat să folosim soluția cea mai eficientă și performantă.
+De exemplu, între variantele din \labelindexref{Listing}{lst:auto:newline-in-names}, am prefera ultima variantă, care folosește doar \cmd{find}, fără \cmd{while} sau \cmd{for}.
+Este cea mai simplă și, deci, cea mai eficientă.
+Pe lângă problemele inerente de robustețe posibile a procesului de parsing, o variantă precum cea cu \cmd{while} durează mai mult, trebuind să citească ieșirea comenzii \cmd{find} și apoi să o transfere către comandă.
+Variantele folosind \cmd{while} și \cmd{for} rămân utile atunci când vrem să rulăm mai multe comenzi; comanda \cmd{find} permite, împreună cu \texttt{-exec} rularea unei singure comenzi\footnote{Se poate trece peste această limitare prin rularea unui shell nou sau a unui script, dar se pierde lizibilitate.}.
 
-* While + find
+Altfel, atunci când folosim \cmd{find} pentru a executa o comandă, avem opțiunile din \labelindexref{Listing}{lst:auto:find-options}.
+Prima variantă (liniile \texttt{1-5}) execută comanda \cmd{stat} pentru fiecare intrare; sunt create astfel 4 procese \cmd{stat}, câte una pentru fiecare fișier.
+A doua (liniile \texttt{7-11}) și a treia (liniile \texttt{13-17}) variantă execută o singură comandă \cmd{stat} pentru toate intrările, fiind evident mai performantă.
+A doua și a treia variantă sunt aproape echivalente.
+Prima variantă creează câte un proces pentru fiecare fișier fiind mai costisitoare ca timp.
+Lucrurile de acest fel încep să conteze când scripturile prelucrează cantități mari de informații: multe fișiere sau multe date de intrare.
 
-* Find -exec
+\begin{screen}[caption={Forme de rulare de comenzi pe fișiere (cu find)},label={lst:auto:find-options}]
+student@uso:~/.../code/13-auto/filenames$ find -type f -exec stat -c "%n,%s" {} \;
+./movies/The Godfather,14
+./movies/Shawshank Redemption,12
+./books/The Great Gatsby,20
+./books/The Stand,13
 
-Pe lângă problemele inerente de robustețe a procesului de parsing, while durează
-mai mult, trebuind să citească ieșirea comenzii find și apoi să o transfere
-către comandă. Varianta folosind while rămâne utilă atunci când vrem să rulăm
-mai multe comenzi și nu le putem transfera prin find -exec; construcția find
--exec permite rularea unei singure comenzi.
+student@uso:~/.../code/13-auto/filenames$ find -type f -exec stat -c "%n,%s" {} +
+./movies/The Godfather,14
+./movies/Shawshank Redemption,12
+./books/The Great Gatsby,20
+./books/The Stand,13
 
-Atunci când folosim find pentru a executa o comandă, avem următoarele opțiuni:
+student@uso:~/.../code/13-auto/filenames$ find -type f -print0 | xargs -0 stat -c "%n,%s"
+./movies/The Godfather,14
+./movies/Shawshank Redemption,12
+./books/The Great Gatsby,20
+./books/The Stand,13
+\end{screen}
 
-* Find -exec \\;
-
-* Find -exec \\+
-
-* Find -print0 | xargs
-
-Prima variantă execută comanda TODO pentru fiecare intrare. Sunt create astfel N
-procese pornind de la comanda TODO, unde N este numărul de intrări furnizat de
-comanda find. A doua și a treia comandă execută o singură comandă TODO pentru
-toate intrările, fiind evident mai performantă.
-
-A doua și a treia variantă sunt aproape echivalente. Prima variantă creează câte
-un proces pentru fiecare fișier fiind mult mai costisitoare ca timp.
-
-\begin{note}[NOTĂ]
-Cu toate acestea, urmărind robustețea, există o situație în care prima
-forma a comenzii find este preferată: atunci când sunt foarte multe
-intrări descoperite celelalte forme pot eșua din cauza limitării
-numărului de argumente pe care le poate lua o comandă.
+\begin{note}{Important}
+Cu toate acestea, urmărind robustețea, există o situație în care prima forma a comenzii \cmd{find} (liniile \texttt{1-5} din \labelindexref{Listing}{lst:auto:find-options}) este preferată: atunci când sunt foarte multe intrări descoperite, celelalte forme pot eșua din cauza limitării numărului de argumente pe care le poate lua o comandă.
 \end{note}
 
-Dintre a doua și a treia variantă, varianta cu xargs poate fi utilă atunci când
-folosim opțiunea -P. Această opțiune permite precizarea numărului de core-uri
-folosite pentru rularea comenzilor în paralel, ceea ce poate duce la creșterea
-vitezei, ca mai jos:
-
-* Exemplu xargs cu -P
+Ca un plus de performanță, dintre a doua și a treia variantă, varianta a treia (care folosește comanda \cmd{xargs}) poate fi utilă atunci când folosim opțiunea \texttt{-P}.
+Această opțiune permite precizarea numărului de core-uri folosite pentru rularea comenzilor în paralel, ceea ce poate duce la creșterea performanței.
 
 \subsection{Portabilitate}
+\label{sec:auto:script-advanced:portable}
 
-Anumite construcții din scripturi shell sunt specifice unui tip de shell (precum
-Bash). Le mai numim bashisms. Dacă dorim să rulăm un script pe mai multe tipuri
-de
-shell\footnote{\url{https://stackoverflow.com/questions/19428418/what-is-the-use-of-portable-shell-scripts}}
-sau pe diferite versiuni de shell trebuie să avem în vedere ce construcții sunt
-standard și portabile. Pentru scripturi portabile recomandarea este folosirea de
-funcționalități care sunt recunoscut de standardul POSIX \abbrev{POSIX}{Portable
-Operating System Interface}. Un shell compatibil
-POSIX\footnote{\url{http://pubs.opengroup.org/onlinepubs/009695399/utilities/xcu_chap02.html}}
-va rula un script construit conform standardului.
+Anumite construcții din scripturi shell sunt specifice unui tip de shell (precum Bash).
+Le mai numim \textit{bashisms}.
+Dacă dorim să rulăm un script pe mai multe tipuri de shell\footnote{\url{https://stackoverflow.com/questions/19428418/what-is-the-use-of-portable-shell-scripts}} sau pe diferite versiuni de shell, trebuie să avem în vedere ce construcții sunt standard și portabile.
+Pentru scripturi portabile recomandarea este folosirea de funcționalități care sunt recunoscut de standardul POSIX\abbrev{POSIX}{Portable Operating System Interface}.
+Un shell compatibil POSIX\footnote{\url{http://pubs.opengroup.org/onlinepubs/009695399/utilities/xcu\_chap02.html}} va rula un script construit conform standardului.
 
-De exemplu, pentru redirectarea simultană a ieșirii standard și ieșirii de
-eroare standard avem două moduri:
+De exemplu, pentru redirectarea simultană a ieșirii standard și ieșirii de eroare standard avem două moduri: \verb|\&> file| sau \verb|> file 2>\&1|.
+Între cele două opțiuni, o preferăm pe a doua care este portabilă.
+Prima variantă nu funcționează, de exemplu, pe \texttt{sh} (Bourne Shell).
 
-* \&> file
+O altă formă de bashism este construcția \cmd{$[[$} pentru testarea condițiilor, despre care am discutat în \labelindexref{Secțiunea}{sec:auto:script-func:flow-control:if}, o construcție specifică Bash.
+Construcția se găsește și pe alte shelluri, dar nu este garantată prezența ei pe toate shellurile.
+Dacă dorim să avem scripturi portabile, vom evita folosirea \cmd{$[[$}.
+Dacă avem nevoie de comparația valorii unei variabile cu o expresie regulată, vom apela la o soluție alternativ, folosind \cmd{grep}, ca în \labelindexref{Listing}{lst:auto:grep-vs-if-brackets}.
+A doua variantă folosește \cmd{grep} pentru a realiza același lucru: verificarea că valoarea \texttt{ana} corespunde expresiei regulate \texttt{.*\$}.
+Varianta cu \cmd{grep} este mai complicată și mai puțin lizibilă, dar este portabilă.
 
-* > file 2>\&1
+\begin{screen}[caption={Alternativă la folosirea {[[} (grep)},label={lst:auto:grep-vs-if-brackets}]
+student@uso:~/uso-book/code/13-auto$ if [[ "ana" =~ .*a$ ]]; then echo "match"; fi
+match
 
-Între cele două opțiuni, o preferăm pe a doua care este portabilă. Prima
-variantă nu funcționează, de exemplu, pe sh (Bourne Shell).
+student@uso:~/uso-book/code/13-auto$ if grep '.*a$' <<< "ana" > /dev/null 2>&1; then echo "match"; fi
+match
+\end{screen}
 
-O altă formă de bashism este construcția [[ pentru testarea condițiilor, o
-construcție specifică Bash; construcția se găsește și pe alte shell-uri dar nu
-este garantat. Dacă este nevoie într-un script de o implementare portabilă
-pentru comparația unei variabile cu o expresie regulată putem folosi grep:
-
-* Exemplu echivalent grep și [[
-
-Vectorii (arrays) în Bash sunt o funcționalitate a acestui shell care nu se
-găsește în alte shell-uri sau în versiuni anterioare de Bash. În locul lor
-trebuie folosite liste sau refăcut scriptul.
-
-Am văzut mai sus că pentru a folosi robust prelucrarea fișierelor cu find,
-trebuie să folosim opțiunea -print0 a acestuia. Opțiunea -print0 la comanda find
-nu este însă în standardul POSIX și este posibil să nu fie prezentă pe anumite
-shell-uri. Din păcate, folosirea find -print0 este singura soluție pentru
-prelucrarea robustă a fișierelor dintr-o ierarhie, așa că aici trebuie optat
-între portabilitate 100\% și robustețe.
+Am văzut în \labelindexref{Listing}{lst:auto:newline-in-names} și în \labelindexref{Listing}{lst:auto:find-options} că, pentru a folosi robust prelucrarea fișierelor cu \cmd{find}, trebuie să folosim opțiunea \texttt{-print0}.
+Opțiunea \texttt{-print0} nu este, însă, în standardul POSIX și este posibil să nu fie prezentă pe anumite shelluri.
+Din păcate, folosirea \cmd{find} cu opțiunea \texttt{-print0} poate ajunge sa fie singura soluție pentru prelucrarea robustă a fișierelor dintr-o ierarhie; așa că aici trebuie optat între portabilitate 100\% și robustețe.
 
 \subsection{Alte funcționalități}
-\label{sec:auto-advancedfunc-other}
+\label{sec:auto:script-advanced:other}
 
-Atunci când dorim să facem debugging în shell, soluția cea mai directă este
-afișarea unui mesaj sau a valorilor unei variabile folosind printf sau echo. O
-altă variantă este să folosim în cadrul unui script shell construcțiile set -x
-și set +x care activează, respectiv dezactivează, afișarea comenzilor atunci
-când se execută. Acest lucru permite să vedem dacă o comandă se execută sau nu
-și toate expandările realizate (variabile, expandare de comenzi, expandare
-aritmetică). Un exemplu este mai jos:
+Atunci când dorim să facem debugging în shell, soluția cea mai directă este afișarea unui mesaj sau a valorilor unei variabile folosind comenzile \cmd{printf} sau \cmd{echo}.
+O altă variantă este să folosim în cadrul unui script shell construcțiile \texttt{set -x} și \texttt{set +x} care activează, respectiv dezactivează, afișarea comenzilor atunci când se execută.
+Acest lucru permite să vedem dacă o comandă se execută sau nu și toate expandările realizate (variabile, expandare de comenzi, expandare aritmetică).
+În scriptul \file{gen-passwd-dbg} din \labelindexref{Listing}{lst:auto:gen-passwd-dbg} activăm afișarea comenzilor pentru cele trei linii care folosesc expandarea comenzilor.
+Observăm că se afișează și comenzile executate și atribuirile de variabile.
+Dacă avem probleme într-un script, acest mod de depanare este util să depistăm rapid problemele.
 
-* Exemplu cu set -x și set +x
+\begin{screen}[caption={Permisiuni pe fișiere cu parole},label={lst:auto:gen-passwd-dbg}]
+student@uso:~/uso-book/code/13-auto$ cat gen-passwd-dbg
+#!/bin/bash
 
-Se întâmplă adesea să folosim comenzi care necesită intrare de la utilizator
-într-un script shell. Aceste comenzi sunt interactive și nu pot fi folosite în
-această formă într-un script shell în care se dorește automatizare completă. De
-exemplu comenzi precum update-alternatives, passwd, ftp, curl/wget, ssh, sudo.
-Pentru unele există forme de rulare neinteractivă: în loc de passwd se pot
-folosi chpasswd; curl și wget au opțiuni de furnizare de nume de utilizator și
-parolă. Atunci când nu există forme de rulare neinteractivă, se pot folosi
-utilitare din categoria expect care permit transmiterea de informații în mod
-automat către comenzi interactive. Le vom detalia în Anexă: Utilitare pentru
-interacțiunea cu programe interactive.
+set -x
+salt=$(pwgen -N 1 -c 8)
+password=$(pwgen -N 1 -c 10)
+crypt=$(openssl passwd -1 -salt "$salt" "$password")
+set +x
+
+echo "password: $password"
+echo "crypt: $crypt"
+
+student@uso:~/uso-book/code/13-auto$ ./gen-passwd-dbg
+++ pwgen -N 1 -c 8
++ salt=bohJ0noj
+++ pwgen -N 1 -c 10
++ password=uu2tiiGhoc
+++ openssl passwd -1 -salt bohJ0noj uu2tiiGhoc
++ crypt='$1$bohJ0noj$30nn0fhwx2RTHDS5SxmK30'
++ set +x
+password: uu2tiiGhoc
+crypt: $1$bohJ0noj$30nn0fhwx2RTHDS5SxmK30
+\end{screen}
+
+Se întâmplă adesea să folosim comenzi care necesită intrare de la utilizator într-un script shell.
+Aceste comenzi sunt interactive și nu pot fi folosite în această formă într-un script shell în care se dorește automatizare completă.
+De exemplu comenzi precum \cmd{update-alternatives}, \cmd{passwd}, \cmd{ftp}, \cmd{curl}, \cmd{wget}, \cmd{ssh}, \cmd{sudo}.
+Pentru unele există forme de rulare neinteractivă: în loc de \cmd{passwd} se poate folosi \cmd{chpasswd}; \cmd{curl} și \cmd{wget} au opțiuni de furnizare de nume de utilizator și parolă.
+Atunci când nu există forme de rulare neinteractivă, se pot folosi utilitare din categoria \cmd{expect} care permit transmiterea de informații în mod automat către comenzi interactive.
+Le vom detalia în \labelindexref{Secțiunea}{sec:auto:interactive}.
 
 \subsection{Resurse suplimentare}
-\label{sec:auto-advancedfunc-supl}
+\label{sec:auto:script-advanced:resources}
 
-Pentru sfaturi practice despre dezvoltarea shell scripturilor (și folosirea
-Bash) recomandăm ghidul BashFAQ: https://mywiki.wooledge.org/BashFAQ
+Pentru sfaturi practice despre dezvoltarea shell scripturilor (și folosirea Bash) recomandăm ghidul BashFAQ: \url{https://mywiki.wooledge.org/BashFAQ}
 
 \section{Automatizarea la nivelul sistemelor informatice}
-\label{sec:auto-infosys}
+\label{sec:auto:system}
 
 \subsection{Gestiunea serviciilor}
-\label{sec:auto-infosys-services}
+\label{sec:auto:system:service}
 
-În \labelindexref{Capitolul}{chapter:boot} am precizat că procesul init (de obicei
-systemd în distribuțiile Linux moderne) este responsabil pentru pornirea
-primelor procese ale sistemului, în particular serviciile. Serviciile sunt
-procese de tip daemon, care rulează în background și care gestionează sistemul
-sau oferă funcționalițăți pentru alte aplicații.
+În \labelindexref{Capitolul}{chapter:boot} am precizat că procesul \texttt{init} (de obicei implementat folosind \texttt{systemd} în distribuțiile Linux moderne) este responsabil pentru pornirea primelor procese ale sistemului, majoritatea fiind serviciile.
+Serviciile sunt procese de tip daemon, care rulează în background și care gestionează sistemul sau oferă funcționalități pentru alte aplicații.
+Serviciile sunt gestionate de \texttt{systemd} fie în modul compatibil System V (folosind intrările din directorul \file{/etc/init.d/}) fie în modul specific \texttt{systemd}, așa cum am precizat în \labelindexref{Secțiunea}{sec:boot:init-linux}.
 
-Serviciile sunt gestionate de systemd fie în modul compatibil System V (folosind
-intrările din directorul /etc/init.d/) fie în modul specific systemd. Am
-precizat în \labelindexref{Capitolul}{chapter:boot} că pentru interacțiunea cu
-serviciile (oprirea, pornirea, repornirea, aflarea stării lor) folosim fie
-scriptul aferent din /etc/init.d/, fie comanda service fie comanda systemctl.
+Dacă dorim să adăugăm un serviciu nou în sistem putem face acest lucru folosind \texttt{systemd}.
+Aceasta presupune crearea unui fișier de configurare pentru serviciu (numit \texttt{unit} în \texttt{systemd}) și apoi încărcarea sa în \texttt{systemd}\footnote{\url{https://www.devdungeon.com/content/creating-systemd-service-files}}.
+Putem face acest lucru cu un serviciu la nivelul utilizatorului (nu la nivelul sistemului), folosind instanța de \cmd{systemd} specifică utilizatorului (\cmd{systemd -{}-user})\footnote{\url{https://www.brendanlong.com/systemd-user-services-are-amazing.html}}.
 
-Dacă dorim să adăugăm un serviciu nou în sistem putem face acest lucru folosind
-systemd. Aceasta presupune crearea unui fișier de configurare pentru serviciu
-(numit unit în systemd) și apoi încărcarea sa în
-systemd\footnote{\url{https://www.devdungeon.com/content/creating-systemd-service-files}}.
-Putem face acest lucru cu un serviu per-user, folosind instanța de systemd
-specifică utilizatorului (systemd
---user)\footnote{\url{https://www.brendanlong.com/systemd-user-services-are-amazing.html}}.
+\labelindexref{Listing}{lst:auto:systemd-user} conține o secvență de comenzi pentru activarea unui serviciu \texttt{systemd} la nivelul utilizatorului.
+Serviciul este definit în fișierul \texttt{dater.service}, fișier care va fi plasat în directorul de configurare \texttt{systemd} de la nivelul utilizatorului: \file{$\sim$/.config/systemd/user/}.
+În fișierul serviciului, directiva de configurare \texttt{ExecStart} precizează care este comanda executată de serviciu, în cazul de față rularea scriptului \file{/home/student/uso-book/code/13-auto/systemd/dater}.
+Acest script este unul didactic, care afișează data curentă în fișierul \texttt{/home/student/date} la fiecare \texttt{60} de secunde.
+După activarea și pornirea serviciului, verificăm fișierul \texttt{/home/student/date} (liniile \texttt{40-44}) și validând, astfel, funcționarea corectă a scriptului.
+O dată instalat serviciul în directorul \file{$\sim$/.config/systemd/user/} rulăm comenzile de listare / verificare (linia \texttt{31}) și de activare, pornire, oprire, dezactivare.
 
-* Exemplu de configurare serviciu nou systemd de sistem
+\begin{screen}[caption={Creare serviciu systemd la nivelul utilizatorului},label={lst:auto:systemd-user}]
+student@uso:~/.../code/13-auto/systemd$ ls
+dater  dater.service
 
-* Exemplu de configurare serviciu nou systemd la nivelul utilizatorului
+student@uso:~/.../code/13-auto/systemd$ cat dater.service
+[Unit]
+Description=My test dater service
 
-Folosind comenzile de mai sus creăm un serviciu care acum este gestionat de
-systemd.
+[Service]
+Type=simple
+WorkingDirectory=/home/student
+ExecStart=/bin/bash /home/student/uso-book/code/13-auto/systemd/dater
+Restart=always
+PrivateTmp=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=default.target
+
+student@uso:~/.../code/13-auto/systemd$ cat /home/student/uso-book/code/13-auto/systemd/dater
+#!/bin/bash
+
+while true; do
+    date > /home/student/date
+    sleep 60
+done
+
+student@uso:~/.../code/13-auto/systemd$ mkdir -p ~/.config/systemd/user/
+
+student@uso:~/.../code/13-auto/systemd$ cp dater.service ~/.config/systemd/user/
+
+student@uso:~/.../code/13-auto/systemd$ systemctl --user list-unit-files | grep dater
+dater.service                         disabled
+
+student@uso:~/.../code/13-auto/systemd$ systemctl --user enable dater
+Created symlink /home/student/.config/systemd/user/default.target.wants/dater.service -> /home/student/.config/systemd/user/dater.service.
+
+student@uso:~/.../code/13-auto/systemd$ systemctl --user start dater
+dater.service                         enabled
+
+student@uso:~/.../code/13-auto/systemd$ cat /home/student/date
+joi 7 ianuarie 2021, 05:39:24 +0200
+
+student@uso:~/.../code/13-auto/systemd$ cat /home/student/date
+joi 7 ianuarie 2021, 05:42:24 +0200
+
+student@uso:~/.../code/13-auto/systemd$ systemctl --user stop dater
+
+student@uso:~/.../code/13-auto/systemd$ systemctl --user disable dater
+Removed /home/student/.config/systemd/user/default.target.wants/dater.service.
+
+student@uso:~/.../code/13-auto/systemd$ systemctl --user list-unit-files | grep dater
+dater.service                         disabled
+\end{screen}
 
 \subsubsection{supervisor}
-\label{sec:auto-infosys-services-supervisor}
+\label{sec:auto:system:service:supervisor}
 
-Supervisor este un daemon care permite configurarea de servicii și monitorizarea
-acestora. Are funcționalitate similară serviciilor configurate cu systemd, și în
-general configurările systemd pot fi realizate și în supervisor și
-invers\footnote{\url{https://gunes.io/2017/08/25/systemd-vs-supervisor/}}.
+Supervisor este un daemon care permite configurarea de servicii și monitorizarea acestora.
+Are funcționalitate similară serviciilor configurate cu \texttt{systemd}.
+În general, configurările \texttt{systemd} pot fi realizate și în supervisor și invers\footnote{\url{https://gunes.io/2017/08/25/systemd-vs-supervisor/}}.
 
-Supevisor conține un daemon (supervisord), un utilitar de gestiune
-(supervisorctl) și fișiere de configurare. Față de systemd, supervisor deține
-fișiere de configurare ceva mai simple de scris și poate fi configurat ușor să
-ruleze servicii ca alt utilizator.
+Supevisor conține un daemon (\texttt{supervisord}), un utilitar de gestiune (\cmd{supervisorctl}) și fișiere de configurare.
+Față de \texttt{systemd}, supervisor deține fișiere de configurare ceva mai simple de scris și poate fi configurat ușor să ruleze servicii ca alt utilizator.
 
-Mai jos este un exemplu de configurare de serviciu supervisor:
+\labelindexref{Listing}{lst:auto:supervisor} conține un exemplu configurare de serviciu supervisor pentru soluția vmchecker de verificare automată a submisiilor de teme\footnote{\url{https://vmchecker.cs.pub.ro/}}.
+Fișierul de configurare \file{/etc/supervisor/conf.d/vmchecker.conf} conține mai multe servicii configurate.
+Unul dintre aceste servicii este numit \texttt{vmchecker-ts} și rulează o comandă specifică pentru verificarea submisiilor pentru cursul de Teoria Sistemelor (TS).
+Folosind \cmd{supervisorctl} putem afla starea acestui serviciu, îl putem opri sau porni.
 
-* Exemplu supervisor
+\begin{screen}[caption={Configurare supervisor},label={lst:auto:supervisor}]
+root@checker:~# cat /etc/supervisor/conf.d/vmchecker.conf
+[...]
+[program:vmchecker-ts]
+command=/usr/local/bin/vmchecker-queue-manager --course_id=TS --stdin=/dev/null --stdout=/home/ts/tester/queue-manager.log --stderr=/home/ts/tester/queue-manager.log
+directory=/srv
+autostart=true
+autorestart=true
+startretries=3
+stderr_logfile=/dev/null
+stdout_logfile=/dev/null
+user=ts
 
-După configurarea serviciului, îl putem activa și apoi porni în supervisor:
-
-* Exemplu de configurare și pornire
+root@checker:~# supervisorctl status vmchecker-ts
+vmchecker-ts                     RUNNING    pid 29463, uptime 59 days, 7:31:15
+root@checker:~# supervisorctl stop vmchecker-ts
+vmchecker-ts: stopped
+root@checker:~# supervisorctl status vmchecker-ts
+vmchecker-ts                     STOPPED    Jan 07 05:52 AM
+root@checker:~# supervisorctl start vmchecker-ts
+vmchecker-ts: started
+root@checker:~# supervisorctl status vmchecker-ts
+vmchecker-ts                     RUNNING    pid 27707, uptime 0:00:03
+\end{screen}
 
 \subsection{Planificarea sarcinilor}
-\label{sec:auto-infosys-planning}
+\label{sec:auto:system:sched}
 
-De multe ori dorim rularea de sarcini periodice sau la un moment dat. Pentru
-aceasta în Linux avem servicii specifice: cron și atd. Cron este folosit pentru
-rularea periodică a unei comenzi sau script, iar at este folosit pentru rularea
-unei comenzi sau a unui script la un moment dat.
+De multe ori dorim rularea de sarcini periodice sau la un moment dat.
+Pentru aceasta în Linux avem servicii specifice: \cmd{cron} și \cmd{atd}.
+\cmd{cron} este folosit pentru rularea periodică a unei comenzi sau script.
+\cmd{at} este folosit pentru rularea unei comenzi sau a unui script la un moment dat.
 
-O formă apropiată ideii de rulare planificată, este rularea după un anumit
-eveniment cum este cazul procesului de continuous integration (CI
-\abbrev{CI}{Continuous Integration}). În cazul continuous integration, orice
-actualizare a unui proiect software declanșează în spate rularea unor scripturi
-de verificare. Exemple de utilitare de continuous integration sunt Travis CI,
-Jenkins, GitLabCI.
+O formă apropiată ideii de rulare planificată, este rularea după un anumit eveniment cum este cazul procesului de \textit{continuous integration} (CI\abbrev{CI}{Continuous Integration}).
+În cazul continuous integration, orice actualizare a unui proiect software declanșează în spate rularea unor scripturi de verificare.
+Exemple de utilitare de continuous integration sunt Travis CI, Jenkins, GitLabCI.
 
 \subsubsection{cron}
-\label{sec:auto-infosys-planning-cron}
+\label{sec:auto:system:sched:cron}
 
-Cron este un serviciu care duce la rularea periodică a unei comenzi. Un caz de
-utilizare pentru cron sunt scenariile de nightly builds în care la momente bine
-determinate se verifică infrastructura, sau se compilează aplicații. Sau
-situații în care dorim o reindexare a fișierelor de pe sistemul local; sau un
-backup periodic.
+\cmd{cron} este un serviciu care duce la rularea periodică a unei comenzi.
+Un caz de utilizare pentru \cmd{cron} sunt scenariile de \textit{nightly builds} în care la momente bine determinate se verifică infrastructura, sau se compilează aplicații.
+Sau situații în care dorim o reindexare a fișierelor de pe sistemul local sau un backup periodic care beneficiază de folosirea \cmd{cron}.
 
-Cron poate fi configurat la nivel global în fișiere de configurare sau la
-nivelul unui utilizator. Configurarea sa presupune adăugarea unei linii de
-forma:
+\cmd{cron} poate fi configurat la nivel global în fișiere de configurare sau la nivelul unui utilizator.
 
-* Exemplu linie cron
+La nivel global, \cmd{cron} este configurat în directoare / fișiere de configurare precum cele din linia \texttt{2} din \labelindexref{Listing}{lst:auto:cron}.
+O linie de configurare are formatul celor din liniile \texttt{10-13}.
+Liniile de configurare precizează momentul de periodicitate, utilizatorul folosit și comanda ce va fi executată.
+Momentul de periodicitate stabilește minutul, ora, ziua din lună, luna, ziua din săptămână.
+În felul acesta putem configura periodicități diverse de la rulare la fiecare minut până la rulare o dată pe an.
 
-La nivel unui utilizator pentru adăugarea unei configurări se folosește comanda
-crontab -e. Pentru vizualizarea intrărilor folosim comand crontab -l:
+\begin{screen}[caption={Configurarea cron},label={lst:auto:cron}]
+student@uso:~/uso-book/code/13-auto$ ls -dF /etc/cron*
+/etc/cron.d/  /etc/cron.daily/  /etc/cron.hourly/  /etc/cron.monthly/  /etc/crontab  /etc/cron.weekly/
 
-* Exemplu de crontab -e
+student@uso:~/uso-book/code/13-auto$ cat /etc/crontab
+[...]
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
-* Exemplu de crontab -i
+# m h dom mon dow user	command
+17 *	* * *	root    cd / && run-parts --report /etc/cron.hourly
+25 6	* * *	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.daily )
+47 6	* * 7	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.weekly )
+52 6	1 * *	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.monthly )
+#
+\end{screen}
+
+La nivel unui utilizator, configurarea \cmd{cron} se realizează prin intermediul comenzii \cmd{crontab -e}.
+Adică nu se editează direct un fișier, ci se apelează o comandă, similar configurării \cmd{sudo} folosind comanda \cmd{visudo}.
+\labelindexref{Listing}{lst:auto:cron-user} conține un exemplu de configurare \cmd{cron} la nivelul utilizatorului \texttt{student}.
+Folosind comanda \cmd{crontab -l} afișăm configurarea curentă a utilizatorului, inițial vidă.
+Folosind comanda \cmd{crontab -e} ni se prezintă un ecran de editare în care adăugăm o linie de configurare precum cea de la linia \texttt{10}.
+Linia de configurare va instrui \cmd{cron} să ruleze scriptul \file{/home/student/uso-book/code/13-auto/systemd/dater} la fiecare 10 secunde.
+Dacă dorim să ștergem configurația \cmd{cron} a unui utilizator, folosim comanda \cmd{crontab -r}.
+
+\begin{screen}[caption={Configurarea cron la nivelul utilizatorului},label={lst:auto:cron-user}]
+student@uso:~/uso-book/code/13-auto$ crontab -l
+no crontab for student
+
+student@uso:~/uso-book/code/13-auto$ crontab -e
+[...]
+
+student@uso:~/uso-book/code/13-auto$ crontab -l
+[...]
+# m h  dom mon dow   command
+*/10 * * * * /home/student/uso-book/code/13-auto/systemd/dater
+\end{screen}
 
 \subsubsection{at}
-\label{sec:auto-infosys-planning-at}
+\label{sec:auto:system:sched:at}
 
-Comanda at (care folosește în spate daemon-ul atd) permite rularea unei comenzi
-la un moment dat în viitor. Comanda primește ca argument timpul când să aibă loc
-execuția și la intrarea standard comanda care să fie executată, ca în exemplu de
-mai jos:
+Comanda \cmd{at} (care folosește în spate daemonul \texttt{atd}) permite rularea unei comenzi la un moment dat în viitor.
+Comanda primește ca argument timpul când să aibă loc execuția și la intrarea standard comanda care să fie executată, ca în \labelindexref{Listing}{lst:auto:at} (liniile \texttt{3} și \texttt{7}).
+Am instalat în prealabil pachetul \cmd{at}.
+Similar opțiunilor comenzii \cmd{crontab}, folosind opțiunea \texttt{-l} putem lista planificările curente, iar folosind opțiunea \texttt{-r} putem șterge planificări.
 
-* Exemplu folosire at
+\begin{screen}[caption={Planificarea unei acțiuni folosind at},label={lst:auto:at}]
+student@uso:~/uso-book/code/13-auto$ sudo apt install at
+
+student@uso:~/uso-book/code/13-auto$ echo /home/student/uso-book/code/13-auto/systemd/dater | at midnight
+warning: commands will be executed using /bin/sh
+job 1 at Fri Jan  8 00:00:00 2021
+
+student@uso:~/uso-book/code/13-auto$ echo /home/student/uso-book/code/13-auto/systemd/dater | at 2021-01-20
+warning: commands will be executed using /bin/sh
+job 2 at Wed Jan 20 06:18:00 2021
+
+student@uso:~/uso-book/code/13-auto$ at -l
+1	Fri Jan  8 00:00:00 2021 a student
+2	Wed Jan 20 06:18:00 2021 a student
+
+student@uso:~/uso-book/code/13-auto$ at -r 1
+student@uso:~/uso-book/code/13-auto$ at -r 2
+student@uso:~/uso-book/code/13-auto$ at -l
+student@uso:~/uso-book/code/13-auto$
+\end{screen}
 
 \section{Anexă: Utilitare pentru interacțiunea cu programe interactive}
-\label{sec:auto-gui}
+\label{sec:auto:interactive}
 
-Atunci când dorim să automatizăm și să folosim în scripturi programe
-interactive, lucrurile devin problematice; în general ne propunem ca un script
-să fie complet automatizat și neinteractiv. Dacă putem, căutăm variante
-neinteractive ale acelor programe. Altfel, unde se poate, folosim utilitarul
-expect.
+Atunci când dorim să automatizăm și să folosim în scripturi programe interactive, lucrurile devin problematice.
+În general, ne propunem ca un script să fie complet automatizat și neinteractiv.
+Dacă putem, căutăm variante neinteractive ale acelor programe.
+Altfel, unde se poate, folosim utilitarul \cmd{expect}.
 
-Utilitarul expect permite transmiterea de informații în mod automat la intrarea
-standard a unor programe interactive, ca în exemplul de mai jos:
+Utilitarul \cmd{expect} permite transmiterea de informații în mod automat la intrarea standard a unor programe interactive, ca în scriptul \file{ftp.exp} din \labelindexref{Listing}{lst:auto:expect}.
+Acest script deschide o conexiune FTP folosind utilitarul \cmd{nctftp} și transmite parola și comenzi FTP (\texttt{dir} și \texttt{quit}) în mod neinteractiv folosind \cmd{expect}.
 
-* Exemplu FTP interactiv
+\begin{screen}[caption={Folosire expect pentru programe interactive},label={lst:auto:expect}]
+student@uso:~/uso-book/code/13-auto$ cat ftp.exp
+#!/usr/bin/expect
 
-În exemplu de mai sus am folosit următoarele comenzi expect:
+set ftp_host repository.grid.pub.ro
+set ftp_user clusterncituso
+set ftp_password "XXXXXXXXXXXXXXXX"
 
-* Explicații comenzi
+spawn ncftp -u $ftp_user $ftp_host
+expect "Password: "
+send -- $ftp_password\r
+expect ">"
+send -- "dir\r"
+expect ">"
+send -- "quit\r"
+expect eof
 
-Comenzile expect creează un proces (spawn) căruia apoi îi pot controla intrarea
-standard și ieșirea standard, putând astfel realiza o comunicare neinteractivă.
+student@uso:~/uso-book/code/13-auto$ ./ftp.exp
+spawn ncftp -u clusterncituso repository.grid.pub.ro
+[...]
+Password requested by 141.85.241.222 for user "clusterncituso".
 
-Pentru o variantă programatică a utilitarului expect, putem folosi
-pexpect\footnote{\url{https://pexpect.readthedocs.io/en/stable/}}. pexpect
-oferă o interfață programatică Python în care pot fi operate funcționalitățile
-expect.
+    User clusterncituso OK. Password required
 
-O variantă similară pexect, folosită în comunitatea de securitate (hacking,
-competiții de tip CTF \abbrev{CTF}{Capture the Flag}: Capture the Flag) este
-pwntools\footnote{\url{http://docs.pwntools.com/en/stable/}}. Pe lângă modul de
-comunicare neinteractivă cu aplicații interactive, pwntools oferă
-funcționalități specifice pentru securitate și hacking analiză de executabile,
-construire de payload-uri pentru atacuri de securitate, formatări de date,
-integrare cu depanatoare etc.
+Password: *********
+
+OK. Current restricted directory is /
+Logged in to repository.grid.pub.ro.
+ncftp / > dir
+drwxr-xr-x                Aug 31  2018   2015-2016
+drwxr-xr-x                Aug 31  2018   2016-2017
+drwxr-xr-x                Oct 13  2017   2017-2018
+drwxr-xr-x                Nov  4  2018   2018-2019
+drwxr-xr-x                Sep 26 13:55   2019-2020
+drwxr-xr-x                Feb 22  2020   experimental
+drwxr-xr-x                Jan  4 22:45   old
+-rw-r-----   5239211520   Jan  7  2019   USO-CTF.ova
+-rw-r-----          124   Jan  7  2019   USO-CTF.ova.sums
+-rw-r-----   1090779648   Nov 22  2015   USO Demo.ova
+-rw-r-----   4818603008   Oct 27 00:04   USO.ova
+-rw-rw-r--           74   Oct 26 23:36   USO.ova.sums
+-rw-r-----   1607888384   Oct 29 21:14   USOTeme.ova
+-rw-rw-r--           78   Oct 29 21:10   USOTeme.ova.sums
+-rw-r-----   3370503680   Aug 31  2018   USO_tom_jerry.ova
+-rw-r-----          136   Aug 31  2018   USO_tom_jerry.ova.sums
+ncftp / > quit
+
+
+	Thank you for using NcFTP Client.
+	Ask your system administrator to try NcFTPd Server!
+	http://www.ncftp.com/ncftpd/
+\end{screen}
+
+Comenzile \cmd{expect} creează un proces (\cmd{spawn}) căruia apoi îi pot controla intrarea standard și ieșirea standard, putând astfel realiza o comunicare neinteractivă.
+Îi sunt transmise comenzi intrării standard a procesului interactiv folosind comanda \cmd{send}.
+Așa trimitem parola și comenzile FTP (\texttt{dir} și \texttt{quit}).
+Ieșirea procesului este capturată și este analizată folosind comanda \cmd{expect}.
+Cu ajutorul comenzii \cmd{expect} putem realiza acțiuni în funcție de ieșirea procesului; de exemplu, să știm ce trebuie să afișeze / transmită procesul pentru ca noi să-i transmitem o intrare specifică.
+
+Pentru o variantă programatică a utilitarului \cmd{expect}, putem folosi \cmd{pexpect}\footnote{\url{https://pexpect.readthedocs.io/en/stable/}}.
+\cmd{pexpect} oferă o interfață programatică Python în care pot fi operate funcționalitățile expect.
+
+O variantă similară \cmd{pexpect}, folosită în comunitatea de securitate (hacking, competiții de tip CTF\abbrev{CTF}{Capture the Flag} - \textit{Capture the Flag}) este \cmd{pwntools}\footnote{\url{http://docs.pwntools.com/en/stable/}}.
+Pe lângă modul de comunicare neinteractivă cu aplicații interactive, \cmd{pwntools} oferă funcționalități specifice pentru securitate și hacking analiză de executabile, construire de payloaduri pentru atacuri de securitate, formatări de date, integrare cu depanatoare etc.
 
 \section{Anexă: Gestiunea configurației}
-\label{sec:auto-conf}
+\label{sec:auto:config-management}
 
-Atunci un administrator de sistem și infrastructură gestionează mai multe
-sisteme, urmărește un mod rapid, automatizat de configurare a acelor sisteme. În
-general acest lucru înseamnă ca un set de configurații de pe un sistem central
-să ajungă pe sistemele administrate, rapid și scalabil. De obicei astfel de
-soluții oferă administratorului o interfața programatică pentru a configura ce
-informații de configurare ajung pe sisteme (numite de obicei noduri).
+Atunci când un administrator de sistem și infrastructură gestionează mai multe sisteme, urmărește un mod rapid, automatizat de configurare a acelor sisteme.
+În general acest lucru înseamnă ca un set de configurații de pe un sistem central să ajungă pe sistemele administrate, rapid și scalabil.
+De obicei, astfel de soluții oferă administratorului o interfața programatică, pentru a configura ce informații de configurare ajung pe sisteme (numite de obicei noduri).
 
-Soluții de gestiune a configurației (Configuration Management) sunt chef,
-puppet, ansible, salt stack, terraform.
+Soluții de gestiune a configurației (\textit{Configuration Management}) sunt Chef, Puppet, Ansible, SaltStack, Terraform.
 
-Astfel de soluții sunt folosite de cei care ocupă poziții de DevOps, persoane
-responsabile cu buna funcționare a infrastructurii IT a unei organizații
-(Operations) care folosesc facilități programatice (Development) furnizate de
-utilitare precum cele din categoria Configuration Management.
+Astfel de soluții sunt folosite de cei care ocupă poziții de \textit{DevOps} (\textit{Development and Operations}): persoane responsabile cu buna funcționare a infrastructurii IT a unei organizații (\textit{Operations}) care folosesc facilități programatice (\textit{Development}) furnizate de utilitare precum cele din categoria \textit{Configuration Management}.
 
 \section{Anexă: Bune practici în automatizare și scripting}
-\label{sec:auto-good}
+\label{sec:auto:good-practice}
 
-Atunci când folosim scripting sau, în general, când automatizăm, e util să avem
-în vedere bune practici și, mai ales, perspective de lucru. Aceste bune practici
-asigură o rulare rapidă, automată și robustă de sarcini repetitive astfel încât
-să obținem mai mult pentru activități creative.
+Atunci când folosim scripting sau, în general, când automatizăm, e util să avem în vedere bune practici și, mai ales, perspective de lucru.
+Aceste bune practici asigură o rulare rapidă, automată și robustă de sarcini repetitive astfel încât să obținem mai mult pentru activități creative.
 
-Pentru persoana care lucrează cu un sistem de operare, perspectiva trebuie să
-fie “orice fac poate fi automatizat; are sens să automatizez?” Dacă o acțiune se
-întâmplă frecvent, acea acțiune este candidat la automatizare pentru a
-eficientiza realizarea acțiunii: timp mai scurt pentru acțiune repetitivă, timp
-mai mult pentru alte acțiuni.
+Pentru persoana care lucrează cu un sistem de operare, perspectiva trebuie să fie ,,Orice fac poate fi automatizat. Are sens să automatizez?''
+Dacă o acțiune se întâmplă frecvent, acea acțiune este candidat la automatizare pentru a eficientiza realizarea acțiunii: timp mai scurt pentru acțiune repetitivă, timp mai mult pentru alte acțiuni.
 
-Atunci când automatizăm o acțiune, avem în vedere că sunt mai multe moduri de
-realizare a acesteia. Nu există un mod unic și recomandat de rezolvare. Pentru
-cazuri simple folosim comenzi simple, pentru cazuri complexe folosim utilitare
-avansate. Este nevoie de o cunoaștere bună a comenzilor, utilitarelor și
-facilităților oferite pentru a putea face alegerea optimă în situația
-respectivă.
+Atunci când automatizăm o acțiune, avem în vedere că sunt mai multe moduri de realizare a acesteia.
+Nu există un mod unic și recomandat de rezolvare.
+Pentru cazuri simple folosim comenzi simple, pentru cazuri complexe folosim utilitare avansate.
+Este nevoie de o cunoaștere bună a comenzilor, utilitarelor și facilităților oferite pentru a putea face alegerea optimă în situația respectivă.
 
-Pentru o situație dată, când avem mai multe moduri de a realiza un lucru,
-urmărim criterii precum: robustețe, lizibilitate, eficiență, portabilitate.
-Script-ul sau utilitarul folosit trebuie să meargă pe cât mai multe sisteme, în
-cât mai multe situații, cât mai performant și să fie cât mai ușor de înțeles.
+Pentru o situație dată, când avem mai multe moduri de a realiza un lucru, urmărim criterii precum: robustețe, lizibilitate, eficiență, portabilitate.
+Scriptul sau utilitarul folosit trebuie să meargă pe cât mai multe sisteme, în cât mai multe situații, cât mai performant și să fie cât mai ușor de înțeles.
 
-În Linux, formatul uzual de lucru este formatul text. Majoritatea utilitarelor
-citesc text și afișează text, ceea ce le face ușor de folosit de un utilizator
-uman; și ușor de combinat folosind operatorul pipe. Atunci când folosim
-scripturi, ne folosim de filtre de text care prelucrează text. Iar dacă
-dezvoltăm noi utilitare, urmărim ca intrarea, ieșirea și configurarea lor să fie
-făcute tot folosind format text.
+În Linux, formatul uzual de lucru este formatul text.
+Majoritatea utilitarelor citesc text și afișează text, ceea ce le face ușor de folosit de un utilizator uman; și ușor de combinat folosind operatorul \textit{pipe} (\texttt{\textbar}).
+Atunci când folosim scripturi, ne folosim de filtre de text care prelucrează text.
+Iar dacă dezvoltăm noi utilitare, urmărim ca intrarea, ieșirea și configurarea lor să fie făcute tot folosind format text.
 
-Multe utilitare fac un tip de acțiune. Acea acțiune înseamnă de multe ori
-prelucrarea unei intrări și afișarea unui rezultate. Astfel de utilitare pot fi
-combinate prin operator-ul pipe sau prin funcționalități precum expandarea
-comenzii. Când automatizăm în scripturi shell, e recomandat să avem perspectiva
-combinare de comenzi care pot duce la rezultatul dorit.
+Multe utilitare fac un tip de acțiune.
+Acea acțiune înseamnă de multe ori prelucrarea unei intrări și afișarea unui rezultate.
+Astfel de utilitare pot fi combinate prin operatorul pipe sau prin funcționalități precum expandarea comenzii.
+Când automatizăm în scripturi shell, e recomandat să avem perspectiva combinării de comenzi care pot duce la rezultatul dorit.
 
-Nu folosim shell scripting ca alternativă la un limbaj de programare. Shell
-scripting-ul este o formă de automatizare, de combinare rapidă de comenzi pentru
-a obține un rezultat cât mai rapid. Pentru calcule de înaltă performanță, pentru
-aplicații complexe, pentru eficiență în folosirea resurselor, folosim un limbaj
-de programare.
+Nu folosim shell scripting ca alternativă la un limbaj de programare.
+Shell scripting este o formă de automatizare, de combinare rapidă de comenzi pentru a obține un rezultat cât mai rapid.
+Pentru calcule de înaltă performanță, pentru aplicații complexe, pentru eficiență în folosirea resurselor, folosim un limbaj de programare.
 
 \section{Sumar}
-\label{sec:auto-sumar}
+\label{sec:auto:summary}
 
-Folosim automatizare pentru sarcini repetitive sau care necesită rulare
-neinteractivă la un moment dat, lăsând mai mult timp pentru sarcini creative.
+Folosim automatizare pentru sarcini repetitive sau care necesită rulare neinteractivă la un moment dat, lăsând mai mult timp pentru sarcini creative.
 
-Avem mai multe limbaje pentru scripting, cu use case-urile avantajoase
-fiecăruia.
+Avem mai multe limbaje pentru scripting, cu scenariile avantajoase fiecăruia.
 
-Preferăm folosirea shell scripting pentru quick and dirty actions.
+Preferăm folosirea shell scripting pentru acțiuni de tipul \textit{quick and dirty}.
 
-Scripturile shell combină comenzi existente, comenzi interne shell-ului și alte
-funcționalități ale shell-ului: înlănțuire comenzi, variabile, expandări,
-globbing, controlul fluxului.
+Scripturile shell combină comenzi existente, comenzi interne shellului și alte funcționalități ale shellului: înlănțuire comenzi, variabile, expandări, globbing, controlul fluxului.
 
-Când creăm scripturi shell avem în vedere că sunt mai multe opțiuni posibile și
-le alegem urmărim robustețe, lizibilitate, eficiență, portabilitate.
+Când creăm scripturi shell avem în vedere că sunt mai multe opțiuni posibile și le alegem urmărim robustețe, lizibilitate, eficiență, portabilitate.
 
-Pentru gestiunea unui sistem sau infrastructuri avem utilitare dedicate pentru
-automatizare.
+Pentru gestiunea unui sistem sau infrastructuri avem utilitare dedicate pentru automatizare.

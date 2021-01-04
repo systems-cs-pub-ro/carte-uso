@@ -1,0 +1,14 @@
+#!/usr/bin/expect
+
+set ftp_host repository.grid.pub.ro
+set ftp_user clusterncituso
+set ftp_password "XXXXXXXXXXXXXXXX"
+
+spawn ncftp -u $ftp_user $ftp_host
+expect "Password: "
+send -- $ftp_password\r
+expect ">"
+send -- "dir\r"
+expect ">"
+send -- "quit\r"
+expect eof

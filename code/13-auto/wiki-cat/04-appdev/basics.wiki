@@ -1,0 +1,65 @@
+===== Basics =====
+
+Înainte de a începe să rezolvați laboratorul asigurați-vă că ați parcurs și
+înțeles noțiunile prezentate în sectiuniile ''Concepte'' și ''Demo''.
+
+==== Scrierea unui program C ====
+
+La calea ''~/uso.git/labs/04-appdev/support/basics/simple.c'' un program simplu C care afișează bine-cunoscutul mesaj "Hello, World!".
+
+<note>
+Nu uita să folosești <TAB> pentru auto-completare, nu scrie de mână toată calea!
+</note>
+
+<code>
+#include <stdio.h>
+
+int main(void) {
+  puts("Hello, World!");
+  
+  return 0;
+}
+</code>
+
+==== Compilare folosind reguli din Makefile ====
+
+Tot acolo găsiți un fișier Makefile:
+
+<code bash>
+simple:
+	gcc -Wall simple.c -o simple
+
+clean:
+	rm simple
+</code>
+
+  - Folosind regulile din Makefile, compilați fișierul ''simple.c'' și asigurați-vă că această acțiune s-a terminat cu succes (hint: verificați existența fișierului generat ''simple'').
+  - Faceți orice modificare asupra fișierului ''simple.c'' și compilați din nou fișierul.
+  - Ștergeți fișierul ''simple'' după ce acesta a fost generat. Verificați că el nu mai există în sistem.
+
+Acum, fișierul Makefile va executa orice regula de fiecare dată când acest lucru este solicitat, indiferent
+dacă fișierele implicate au fost modificate sau nu. Putem (și vrem) să aducem o îmbunătățire în acest sens.
+Aceasta constă în adăugarea de **dependențe** în acest fișier.
+
+Mai jos este un exemplu de Makefile (găsit la calea ''~/uso.git/labs/04-appdev/support/demo/Makefile'') care
+conține dependențe:
+
+<code bash>
+rule1: print.c
+	gcc -Wall print.c -o print
+
+clean:
+	rm print
+</code>
+
+Regula ''rule1'' are dependența ''print.c''. Aceasta semnifică faptul că la rularea comenzii ''make rule1''
+se va executa regula ''rule1'' doar dacă fișierul ''print.c'' a fost modificat de ultima oară când a fost
+rulată aceasta regulă.
+
+  - Adăugați dependențe în fișierul Makefile de la calea ''~/uso.git/labs/04-appdev/support/basics/Makefile'' astfel încât fișierul ''simple.c'' să nu fie compilat de fiecare dată, ci doar după ce au fost produse modificări asupra lui. Pentru verificare, rulați comanda ''make simple'' de 2 ori consecutiv, prima dată ar trebui să execute comanda de compilare (''gcc ..''), iar a doua oară trebuie să vedeți mesajul ''make: Nothing to be done for `simple`''.
+  - Modificați din nou fișierul ''simple.c'' și compilați folosind regula din Makefile. Observați că regula s-a executat de data această și că fișierul ''simple'' a fost generat.
+  - Ștergeți fișierul generat folosind, desigur, regula ''clean'' din Makefile.
+
+==== Primii pași în lumea git-ului ====
+
+Așa cum a fost precizat și la secțiunea ''Concepte'', **git** ne ajută la versionarea codului. 

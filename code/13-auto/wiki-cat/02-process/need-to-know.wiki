@@ -1,0 +1,138 @@
+===== Need to Know =====
+
+==== Foreground & Background (&, fg, bg, jobs) ====
+
+Vom folosi ca exemplu programul bg-proc.sh. Acesta afișează în fiecare secundă câte un mesaj "Tick" sau "Tock". Pornim programul:
+
+<code bash>
+student@uso:~/uso/lab04$ ./bg-proc.sh 
+Tick!
+Tock!
+Tick!
+^C
+</code>
+
+L-am terminat cu **Ctrl+C**:
+
+Îl pornim din nou și de data asta îl oprim cu **Ctrl+Z**. Ce observăm?
+
+<code bash>
+student@uso:~/uso/lab04$ ./bg-proc.sh 
+Tick!
+Tock!
+Tick!
+^Z
+[1]+  Stopped                 ./bg-proc.sh
+</code>
+
+Verficăm dacă procesul încă există în sistem:
+
+<code bash>
+student@uso:~/uso/lab04$ ps aux
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.3 160140  7152 ?        Ss   oct08   0:03 /sbin/init splash
+root         2  0.0  0.0      0     0 ?        S    oct08   0:00 [kthreadd]
+[...]
+**student  23597  0.0  0.1  21532  3532 pts/0    T    09:53   0:00 /bin/bash ./bg-proc.sh**
+student  23600  0.0  0.0  16116   780 pts/0    T    09:53   0:00 sleep 1
+student  23601  0.0  0.1  46012  3784 pts/0    R+   09:53   0:00 ps aux
+</code>
+
+Pentru a reporni procesul avem 2 variante:
+  - Pornim procesul în mod **interactiv** folosind comanda **bg**. Asta înseamnă că noi putem da comenzi, chiar dacă în fundal este un proces care afișează text
+  - Pornim procesul în mod **neinteractiv** folosind comanda **fg**. Asta înseamnă că procesul oprit anterior a revenit în prim-plan în terminal. Nu vom putea da alte comenzi.
+
+<code bash>
+student@uso:~/uso/lab04$ ./bg-proc.sh
+Tick!
+Tock!
+
+[1]+  Stopped                 ./bg-proc.sh
+student@uso:~/uso/lab04$ bg
+[1]+ ./bg-proc.sh &
+student@uso:~/uso/lab04$ Tick!
+Tock!
+lsTick!
+
+batman.sh  bg-proc.sh  it-s-a-trap.sh
+student@uso:~/uso/lab04$ Tock!
+Tick!
+Tock!
+^C
+student@uso:~/uso/lab04$ Tick!
+Tock!
+</code>
+
+Puteți observa că am încercat să termin programul folosind **Ctrl+C**. Acest lucru nu a fost posibil pentru că acesta rula în fundal. Pentru asta trebuie să aducem procesul în prim-plan și să îl terminăm sau să îi aflăm PID-ul și să-l terminăm folosind utilitarul **kill**.
+
+**Exerciții**
+  - Porniți programul **bg-proc.sh**.
+  - Treceți-l în starea ''foreground'' și apoi în background.
+  - Terminați procesul cu **Ctrl+C** și cu utilitarul **kill**
+  - Faceți același lucru și cu programul **it-s-a-trap.sh**
+
+==== Redirectare ====
+
+Pentru a redirecta lista proceselor într-un fișier, folosim următoarea comandă:
+
+<code bash>
+student@uso:~$ ps aux > procese.txt
+</code>
+
+Un alt exemplu de redirectare este:
+
+<code bash>
+student@uso:~/uso/lab04$ echo "prima linie din fisier" > fis.txt
+student@uso:~/uso/lab04$ cat fis.txt 
+prima linie din fisier
+student@uso:~/uso/lab04$ echo "a2a linie din fisier" >> fis.txt 
+student@uso:~/uso/lab04$ cat fis.txt 
+prima linie din fisier
+a2a linie din fisier
+student@uso:~/uso/lab04$ echo "a3a linie din fisier" > fis.txt 
+student@uso:~/uso/lab04$ cat fis.txt 
+a3a linie din fisier
+</code>
+
+Putem observa că la a3a linie am folosit **>** în loc de **>>** și am șters conținutul anterior al fișierului.
+
+==== Comunicare interprocese, folosind | ====
+
+Putem căuta după un anumit proces din sistem astfel:
+
+<code bash>
+student@uso:~$ ps aux | grep sleep
+student  22406  0.0  0.0  16116   828 pts/0    S    20:28   0:00 sleep 1000
+student  22408  0.0  0.0  23076  1084 pts/0    S+   20:28   0:00 grep --color=auto sleep
+</code>
+
+Care este logica din spatele comenzii? În loc să ne afișeze nouă pe ecran rezultatul comenzii **ps aux**, acesta a fost transmis către următoarea comandă **grep**. Comanda din urmă a căutat cuvântul ''sleep'' în rezultatul comenzi ''ps aux''.
+
+Un alt exemplu:
+
+<code bash>
+student@uso:~/uso$ ls -lR | grep "hello"
+-rw-r--r-- 1 student student   72 sep 10 12:25 hello.c
+-rw-r--r-- 1 student student  72 sep 10 12:25 hello.c
+-rw-r--r-- 1 student student 154 sep 10 12:25 hello.c
+-rw-r--r-- 1 student student  95 sep 10 12:25 simple_hello.c
+-rw-r--r-- 1 student student 580 sep 10 12:25 hello.s
+-rw-r--r-- 1 student student 1192 sep 10 12:25 hello.o
+-rw-r--r-- 1 student student   15 sep 10 12:25 hello.h
+-rw-r--r-- 1 student student   64 sep 10 12:25 hello_0.c
+-rw-r--r-- 1 student student   82 sep 10 12:25 hello_1.c
+-rw-r--r-- 1 student student  111 sep 10 12:25 hello_2.c
+-rw-r--r-- 1 student student   83 sep 10 12:25 hello_3.c
+-rw-r--r-- 1 student student  142 sep 10 12:25 hello_4.c
+-rw-r--r-- 1 student student  145 sep 10 12:25 hello_5.c
+-rw-r--r-- 1 student student  150 sep 10 12:25 hello_6.c
+-rw-r--r-- 1 student student  162 sep 10 12:25 hello_7.c
+-rw-r--r-- 1 student student 16 sep 10 12:25 hello.h
+lrwxrwxrwx 1 student student  7 sep 10 12:25 hello_from_the_other_side.h -> hello.h
+</code>
+
+Am afișat recursiv (-R) directorul **uso** și am transmis rezultatul către utilitarul **grep** pentru a căuta fișierele ce conțin cuvântul ''hello''.
+
+**Exerciții**
+  - Afișați recursiv toate fișierele și directoarele din **uso.git**, redirectând totul într-un fișier. Înspectați fișierul pentru verificare.
+  - Înlănțuiți comanda precedentă cu **grep** pentru a căuta în **uso.git** fișierele ce conțin cuvântul **lab**.

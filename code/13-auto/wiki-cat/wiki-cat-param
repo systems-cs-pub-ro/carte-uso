@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if test $# -ne 1; then
+    echo "Usage: $0 <lab-folder>" 1>&2
+    exit 1
+fi
+
+lab="$1"
+if test -d "$lab"; then
+    cat "$lab"/{concepts,demo,recap,basics,need-to-know,nice-to-know,get-a-life,summary}.wiki > $(basename "$lab").wiki
+fi

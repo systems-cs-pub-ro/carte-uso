@@ -1,0 +1,51 @@
+===== Need to know =====
+
+==== Fișiere header vs Fișiere cod sursă în C====
+
+Nu există vreo diferență ''tehnică'' între cele două tipuri de fișiere; compilatorul
+îți permite să incluzi un fișier .c într-o altă sursă, sau să compilezi un fișier .h, dacă asta
+este ceea ce dorești să faci.
+Există însă o diferență culturală:
+    * ''Declarările'' se găsesc în fișierele .h; acestea pot fi vizualizate ca o interfață către orice este implementat în fișierul .c corespondent.
+    * ''Definițiile'' se găsesc în fișierele .c; ele implementează interfața specificată în fișierul .h.
+
+Un fișier .h poate (și este de obicei) inclus în mai multe fișiere .c. În cazul
+în care o funcție este definită în cadrul acestuia, va ajunge în mai multe fișiere
+cod obiect, iar linker-ul se 'va plange' de multiple definiții ale simbolului respectiv.
+Din acesta cauză definițiile nu trebuie să fie în fișierele header.
+
+====Variabile în Makefile====
+Un fișier ''Makefile'' permite folosirea de variabile. Astfel, un exemplu uzual de fișier ''Makefile'' este:
+ 
+<code make Makefile>
+CC = gcc
+CFLAGS = -Wall -g
+
+all: hello
+
+hello: hello.o
+        $(CC) hello.o -o hello
+
+hello.o: hello.c
+        $(CC) $(CFLAGS) -c hello.c
+
+clean:
+        rm *.o hello
+</code>
+
+În exemplul de mai sus au fost definite variabilele ''CC'' și ''CFLAGS''. Variabila ''CC'' reprezintă compilatorul folosit, iar variabila ''CFLAGS'' reprezintă opțiunile (flag-urile) de compilare utilizate; în cazul de față sunt afișarea avertismentelor și compilarea cu suport de depanare. Referirea unei variabile se realizează prin intermediul construcției %%$%%(VAR_NAME). Astfel, ''%%$%%(CC)'' se înlocuiește cu ''gcc'', iar ''%%$%%(CFLAGS)'' se înlocuiește cu ''-Wall -g''.
+
+Observăm că șirurile ''hello'', ''gcc'', precum și flagurile date la compilare apar în foarte multe locuri. Modificați fișierul ''Makefile'' astfel încât să avem de schimbat o singură linie în cazul în care dorim să schimbăm numele executabilului, compilatorului sau să mai adăugăm un alt flag.
+
+Exemple variabilele predefite:
+  * ** %%$%%@ ** se expandează la numele target-ului. 
+  * ** %%$%%^ ** se expandează la lista de cerințe.
+  * ** %%$%%< ** se expandează la prima cerință. 
+
+Înainte de a rezolva exercițiile, parcurgeți fișierele din directorul support/need-to-know și încercați să înțelegeți cum sunt legate între ele fișierele.
+
+  - Scrieți un Makefile astfel încât fișierul main.c să compileze cu succes. (Hint: Compilați separat fiecare fișier obiect)
+  - Rescrieți Makefile-ul de mai sus folosind variabile automate.  (Hint: https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html)
+<note>
+De ce nu generează eroare de compilare folosirea variabilei globalVar în fișierul main.c?
+</note>
