@@ -3,25 +3,31 @@ name: "pre-release"
 
 on:
   push:
-    branches:
-      - "master"
 
 jobs:
-  pre-release:
-    name: "Pre Release"
-    runs-on: "ubuntu-latest"
-
+  build-deploy:
+    runs-on: ubuntu-latest
+    container: sweisz/book-latex-container:1.0
     steps:
-      # ...
-      - name: "Build & test"
-        run: |
-          echo "done!"
-
-      - uses: "marvinpinto/action-automatic-releases@latest"
+      - name: Checkout
+        uses: actions/checkout@v2
+      - run: |
+          cd book; make
+        name: Build book
+      - uses: meeDamian/github-release@2.0
+        name: Deploy book
         with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "latest"
+          token: ${{ secrets.ACCESS_TOKEN }}
+          tag: latest
+          name: Development build
+          allow_override: true
           prerelease: true
-          title: "Development Build"
-          files: |
-            README.md
+          gzip: false
+          body: >
+            Aceasta este versiunea PDF a cărții "Utilizarea sistemelor de
+            operare". Mai jos găsiți fișierul PDF și sursele LaTeX și
+            codul sursă de suport a cărții.
+
+            Mulțumim că o citiți. Sperăm să o găsiți utilă.
+          files: >
+            uso.pdf:book/uso.pdf
