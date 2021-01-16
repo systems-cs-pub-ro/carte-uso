@@ -61,7 +61,7 @@ pe același sistem de calcul.
 Necesitățile prezentate anterior pentru rularea concomitentă a mai multor
 sisteme de operare pe același sistem de calcul au existat încă de la începutul
 unităților de calcul, dar resursele limitate nu au permis acest lucru (dacă ar
-fi fost implementată sistemul de operare ce rula pe frameworkul de virtualizare
+fi fost implementată, sistemul de operare ce rula pe frameworkul de virtualizare
 ar fi fost imposibil de folosit).
 
 Un prim pas spre rularea unui sistem de operare
@@ -69,10 +69,10 @@ Un prim pas spre rularea unui sistem de operare
 puterea de calcul a procesoarelor a crescut făcând posibil acest lucru. Una
 dintre primele implementări a fost dezvoltată de compania VMware, produsul
 denumit Workstation. \textit{VMware Workstation} oferea posibilitatea rulării
-unui alt tip de sistem de operare, alături de cel de bază (de exemplu rularea
+unui alt tip de sistem de operare alături de cel de bază (de exemplu rularea
 unei distribuții Linux pe un calculator ce are instalat Windows). Pentru a oferi
 izolarea corespunzătoare, acesta rula ca un nou proces în sistemul de operare
-gazdă (sistemul fizic). Astfel va fi izolat de celelalte procese sau sisteme de
+gazdă (sistemul fizic). Astfel, va fi izolat de celelalte procese sau sisteme de
 operare gazdă care ar putea rula.
 
 Problema cu abordarea VMware Workstation o constituie
@@ -95,7 +95,7 @@ de execuția instrucțiunilor privilegiate. De aceea, în zilele noastre, atunci
 când porniți o aplicație de virtualizare (fie că e vorba de VMware, fie că e
 vorba de VirtualBox), primiți o notificare în cazul în care nu aveți activate din BIOS
 aceste extensii de virtualizare (vedeți \labelindexref{Capitolul}{chapter:boot}
-pentru detalii despre configurare a BIOS-ului). Majoritatea versiunilor
+pentru detalii despre configurarea BIOS-ului). Majoritatea versiunilor
 aplicațiilor de virtualizare nu mai oferă suport de rulare fără prezența acestor
 extensii.
 
@@ -142,8 +142,8 @@ astăzi două tipuri de virtualizare:
 
 \begin{itemize}
   \item \textbf{hosted} - virtualizarea se realizează în cadrul unui sistem de
-		operare existent. Hipervizorul în cadrul acestui tip de
-		virtualizare se mai numește și \textit{Type-2 hypervisor}
+		operare existent. În cadrul acestui tip de
+		virtualizare, hipervizorul se mai numește și \textit{Type-2 hypervisor}
 		(hipervizor de tipul 2). Este tipul de virtualizare folosit de VirtualBox, VMware Workstation.
   \item \textbf{baremetal} - este dezvoltat un nou sistem de operare, numai pentru
 		a realiza virtualizarea, care rulează deasupra hardware-ului.
@@ -155,10 +155,12 @@ astăzi două tipuri de virtualizare:
 de virtualizare, iar în \labelindexref{Figura}{fig:vm:hypervisor-types} sunt
 reprezentate cele două tipuri de hipervizoare (se observă echivalența).
 
-În stânga este
+În partea stângă din
+\labelindexref{Figura}{fig:vm:hosted-baremetal} și, respectiv, din
+\labelindexref{Figura}{fig:vm:hypervisor-types}, este reprezentată
 virtualizarea de tip hosted în care avem sistemul de operare ce rulează deasupra
 hardware-ului, iar nivelul de virtualizare a fost dezvoltat deasupra acestuia,
-având un hipervizor de tipul 2 (Type-2 Hypervisor). De asemenea în paralel cu
+având un hipervizor de tipul 2 (Type-2 Hypervisor). De asemenea, în paralel cu
 mașinile virtuale pot rula și alte aplicații obișnuite. Acest tip de
 virtualizare este deseori folosit în sistemele desktop.
 
@@ -196,7 +198,6 @@ acesta. Faptul că rulează ca o mașină virtuală diferită este un lucru bun
 întrucât dacă există probleme în funcționarea acestuia, nu va afecta întregul
 nod (implicit și celelalte mașini fizice).
 
-\newpage
 \subsection{Aplicații/hipervizoare pentru rularea mașinilor virtuale}
 \label{sec:vm:concepts:apps}
 
@@ -261,7 +262,7 @@ arhitectură x86 (Intel și AMD), cât și pentru procesoarele ARM, la fel ca î
 
 Microsoft Hyper-V este implementat ca un rol (\textit{Role}) instalabil în cadrul distribuțiile Windows Server.
 Prima versiune la care a apărut este Windows Server 2008, fiind ulterior
-introdus în 2008R2, 2012, 2012R2 și, în acest moment, în 2016.
+introdus în 2008R2, 2012, 2012R2, 2016 și, în acest moment, în 2019.
 Hyper-V este livrat în mod gratuit ca un sistem de operare de sine
 stătător (practic, este un sistem de operare Microsoft Windows fără interfață grafică și cu rolul Hyper-V instalat).
 
@@ -287,7 +288,7 @@ de nucleu.
 În \labelindexref{Figura}{fig:vm:vm-container} este reprezentată
 diferența între mașini virtuale și containere. Se observă că, în primul caz
 (mașini virtuale - stânga), avem un hipervizor deasupra căruia rulează mașinile
-virtuale cu nucleele aferente, iar în cel de-al doilea (containere), avem un
+virtuale cu nucleele aferente, iar în cel de-al doilea (containere - dreapta), avem un
 mecanism de containerizare (în exemplul din figură tehnologia se numește Docker)
 peste care rulează direct aplicațiile. Se observă că mecanismul de container nu
 conține propriul nucleu.
@@ -359,7 +360,7 @@ refacerii unei mașini virtuale folosind snapshotul creat. Un caz aplicat al
 acestei facilități o reprezintă chiar partea didactică: pregătim o mașina
 virtuală cu o configurație dată, creăm un snapshot și dăm acces de administrare
 studenților. Aceștia pot să execute și să testeze absolut orice comandă, iar dacă
-se corupe sistemul de operare, se pot întoarce la snapshotul creat.
+se corupe sistemul de operare sau mediul de lucru, se pot întoarce la snapshotul creat.
 
 \subsection{Configurarea rețelei virtuale}
 \label{sec:vm:ops:net}
@@ -482,16 +483,16 @@ Pornind de la cele enumerate mai sus, serviciile de cloud poate fi clasificate �
 
 \begin{itemize}
   \item IaaS (\textit{infrastructure as a service}) - oferirea atât de mașini
-		virtuale utilizatorilor, precum și a unui mijloc prin care poate
-		să își gestioneze singur infrastructura de cloud pusă la
-		dispoziție. Ca exemplu aici intră operatorii de public cloud
+		virtuale utilizatorilor, precum și a unui mijloc prin care pot
+		să își gestioneze singuri infrastructura de cloud pusă la
+		dispoziție. Ca exemplu, aici intră operatorii de public cloud
 		prezentați anterior (AWS-EC2, OCI, DigitalOcean).
   \item PaaS (\textit{platform as a service}) - servicii ce pun la dispoziție un
 		framework pentru dezvoltarea aplicațiilor (tool-uri de
 		dezvoltare) fără a mai fi nevoie să realizăm instalarea acestora
                 local. Un astfel de serviciu este Google App Engine\footnote{\url{https://cloud.google.com/appengine}}, cu ajutorul căruia dezvoltatorii pot crea aplicații web în limbaje de programare precum PHP, Python, Ruby, JavaScript, Go.
   \item SaaS (\textit{software as a service}) - oferirea de servicii/aplicații care
-		sunt găzduite în medii cloud și utilizatorul trebuie să știe
+		sunt găzduite în medii cloud și utilizatorul nu trebuie să știe
 		detalii despre platformă, sisteme de operare, mod de stocare,
                 etc. Un astfel de serviciu este Overleaf\footnote{\url{https://www.overleaf.com/}}, un serviciu pentru scrierea de documente în \LaTeX  în mod colaborativ.
 \end{itemize}
@@ -551,8 +552,8 @@ creată denumită Windows 7 care este închisă (\textit{Powered Off}).
 \end{figure}
 
 Pentru a crea o mașină virtuală nouă, mergeți pe meniul \texttt{Machine $\rightarrow$ New}. O nouă
-fereastră va apărea în care trebuie să introduceți un nume pentru mașina
-virtuală precum și tipul sistemului de operare și varianta dorită. În
+fereastră va apărea, fereastră în care trebuie să introduceți un nume pentru mașina
+virtuală, precum și tipul sistemului de operare și varianta dorită. În
 \labelindexref{Figura}{fig:vm:vbox-create} este exemplificată crearea unei
 mașini virtuale ce va rula un sistem de operare Linux, baza pe distribuția
 Debian pe 64 de biți.
@@ -605,7 +606,7 @@ Printre cele mai relevante opțiuni de configurare sunt:
   \item \texttt{System} - cantitatea de memoriei, numărul de
 		procesoare.
   \item \texttt{Display} - cantitatea de memorie utilizată de placa video.
-  \item \texttt{Storage} - discurile sunt atașate, precum și ce proprietăți au.
+  \item \texttt{Storage} - discurile ce sunt atașate, precum și ce proprietăți au.
 		Tot aici putem adăuga și un disc virtual necesar instalării
 		mașinii virtuale. În \labelindexref{Figura}{fig:vm:vbox-iso}
 		este reprezentat modul prin care puteți selecta o imagine de tip
@@ -630,7 +631,7 @@ Printre cele mai relevante opțiuni de configurare sunt:
 	\label{fig:vm:vbox-iso}
 \end{figure}
 
-După configurarea mașinii virtuale, această poate fi pornită. Selectați mașina
+După configurarea mașinii virtuale, aceasta poate fi pornită. Selectați mașina
 virtuală și apăsați butonul \texttt{Start} din stânga sus. Aceasta va porni și va boota
 de pe discul virtual inserat. În
 \labelindexref{Figura}{fig:vm:vbox-install} este ilustrată pornirea mașinii
@@ -645,7 +646,7 @@ virtuale și pornirea sistemului de operare Windows în vedere instalării.
 
 După instalarea sistemului de operare, este important să instalați serviciile de
 integrare pe care le-am prezentat în \labelindexref{Secțiunea}{sec:vm:ops:services}.
-În cazul VirtualBox acestea poartă numele de \textit{VirtualBox Guest Additions}. Pentru a le instala, accesați meniul \texttt{Devices $\rightarrow$ Insert Guest
+În cazul VirtualBox, acestea poartă numele de \textit{VirtualBox Guest Additions}. Pentru a le instala, accesați meniul \texttt{Devices $\rightarrow$ Insert Guest
 Additions CD Image}. Această comandă va monta automat în mașina virtuală un disc
 virtual ce conține software-ul de instalat pentru serviciile de integrare. În
 \labelindexref{Figura}{fig:vm:vbox-additions} se poate observa noul disc virtual
@@ -753,7 +754,7 @@ face din OpenStack Dashboard, accesând \texttt{Project $\rightarrow$ Compute $\
 \begin{figure}[!htbp]
 	\centering
 	\includegraphics[width=0.7\textwidth]{chapters/14-vm/img/openstack-keypair-img.png}
-	\caption{Alegerea unui keypair la crearea unei instanțe}
+	\caption{Importarea unei perechi de chei în OpenStack}
 	\label{fig:vm:openstack-keypair}
 \end{figure}
 
@@ -781,7 +782,7 @@ procesoare, memorie și spatiu pe disk.
 \begin{figure}[!htbp]
 	\centering
 	\includegraphics[width=0.7\textwidth]{chapters/14-vm/img/openstack-keychoice-img.png}
-	\caption{Importarea unei perechi de chei în OpenStack}
+	\caption{Alegerea unui keypair la crearea unei instanțe}
 	\label{fig:vm:openstack-keychoice}
 \end{figure}
 
@@ -854,7 +855,7 @@ decât pornirea unei mașini virtuale.
 \begin{figure}[!htbp]
 	\centering
 	\includegraphics[width=0.5\textwidth]{chapters/14-vm/img/qemu-bootup-img.png}
-	\caption{Pornirea unui sistem de operare emulate}
+	\caption{Pornirea unui sistem de operare emulat}
 	\label{fig:vm:qemu-bootup}
 \end{figure}
 
@@ -869,7 +870,7 @@ pi@raspberrypi:~$
 \end{screen}
 
 În acest fel, avem acces la un sistem care rulează (emulat) o arhitectură de procesor ARM.
-
+\newpage
 \section{Sumar}
 \label{sec:vm:summary}
 
