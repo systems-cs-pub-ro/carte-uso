@@ -5,7 +5,7 @@ Hardware-ul reprezintă partea fizică a unui sistem informatic constituită din
 diverse componente mecanice, electronice și optice. Cu ajutorul hardware-ului
 se pot primi, prelucra și stoca informații. Mai generic, prin hardware
 înțelegem orice componentă într-un sistem complex de calcul ce poate fi atinsă,
-există fizic într-un loc anume (pornind de la monitor, tastatură până la
+există fizic într-un loc anume (pornind de la monitor, tastatură, până la
 componentele de comunicație, imprimante etc.). Prin comparație, software-ul
 este partea logică ce controlează diverse module din hardware pentru a îndeplini
 sarcinile utilizatorului.
@@ -54,7 +54,7 @@ sisteme de operare de uz general: Linux și Windows.
 \label{sec:hw:class}
 
 Rolul acestui capitol este dat de prezentarea componentelor hardware cu scopul
-de a putea alege un sistem de calcul, diagnostica o problema cu un sistem de
+de a putea alege un sistem de calcul, de a diagnostica o problema cu un sistem de
 calcul și de a instala software-ul potrivit. Pentru a îndeplini sarcinile dorite de utilizator, sistemul de calcul are nevoie de 3
 componente principale: procesare (echivalentul creierului la om), stocare
 (înmagazinarea datelor procesate pentru a fi accesate ulterior - echivalentul
@@ -100,7 +100,7 @@ periferice (intrare/ieșire) sunt, în general, mult mai lente decât unitatea d
 procesare și ar încetini-o. Unitatea de memorie este, în general, volatilă (la
 închiderea sistemului, datele din unitatea de memorie se pierd) fiind folosită
 ca un tampon pentru prelucrarea datelor. Odată prelucrate, acestea sunt trimise
-către dispozitivele de ieșire și folosite în diverse scopuri (afișare, stocare
+către dispozitivele de ieșire și folosite în diverse scopuri (ex. afișare, stocare
 permanentă).
 
 \begin{figure}[!htbp]
@@ -139,7 +139,7 @@ calcul.
 de la diverși producători. Aceste procesoare respectă în general două
 arhitecturi cunoscute: x86 și ARM. x86 este folosit în general în sistemele
 desktop, laptop-uri, servere, iar arhitectura ARM este folosită în general în
-dispozitivele mobile (smarthphone-uri, tablete).
+dispozitivele mobile (smartphone-uri, tablete).
 
 Pornind de la modelul von Neumann prezentat anterior, putem realiza o
 clasificare a unității de procesare în funcție de tipul instrucțiunilor pe care
@@ -163,11 +163,11 @@ asupra unor operanzi. Acești operanzi ar putea fi locații de memorie, dar aces
 lucru ar încetini unitatea de calcul la viteza de acces a datelor din memorie.
 Pentru a preveni accesul lent la date, au fost introduse registrele. Registrele
 sunt la baza memorii foarte rapide, de dimensiune fixă, dată de arhitectura
-constructivă a unității de procesare (32biți/64biți - cele mai frecvente în ziua
+constructivă a unității de procesare (32 biți/64 biți - cele mai frecvente în ziua
 de astăzi sunt arhitecturile pe 64 de biți). Instrucțiunile au în general zero
 sau mai mulți operanzi referiți prin registre. Inclusiv locațiile de memorie
 asupra cărora se fac modificări sunt referite tot prin registre (se încarcă
-adresa memoriei în registru iar acesta este folosit în execuția instrucțiunii).
+adresa memoriei în registru, iar acesta este folosit în execuția instrucțiunii).
 
 Arhitectura de tip RISC este cunoscută și sub numele de arhitectură
 \textit{load/store}:
@@ -181,7 +181,7 @@ utilizator mai multe operații numite micro-instrucțiuni: dacă dorim să adun�
 două numere din memorie, putem executa o singură instrucțiune care va referi
 cele două locuri din memorie; în spate instrucțiunea este tradusă în mai multe
 micro-instrucțiuni (încărcare operanzi în registre, adunare, salvare rezultate);
-pentru acest exemplu avem o singură instrucțiuni dată de utilizator pentru
+pentru acest exemplu avem o singură instrucțiune dată de utilizator pentru
 arhitectura CISC, iar pentru arhitectura RISC vom avea trei instrucțiuni specifice
 diferite.
 
@@ -274,12 +274,12 @@ mari vendori fiind Apple și Samsung). În cadrul telefoanelor smart există 2
 tipuri de procesoare: pe 32 de biți (majoritatea) și pe 64 de biți. Procesoarele
 ARMv7 au o adresare pe 32 de biți, iar procesoarele ARMv8 au o adresare pe 64 de
 biți. Avantajul ARM în fața x86 este consumul redus de energie și numărul
-ridicat de core-uri pe care îl poate oferi. La momentul scrierii ARM are
+ridicat de core-uri pe care îl poate oferi. La momentul scrierii, ARM are
 intenția de a intra pe piața serverelor concurând cu Intel și AMD. Există
 diverse prototipuri folosind procesoare ARMv8 ce ating performanțele
 procesoarelor Intel, la un cost redus. De asemenea, Intel a încercat folosirea
 procesoarelor x86 în telefoanele mobile smart, dar nu au reușit să creeze un
-produs stabil și să câștige o cotă de piață relevantă, fiind că sunt mereu în
+produs stabil și să câștige o cotă de piață relevantă, fiindcă sunt mereu în
 urma procesoarelor ARM cu 1-2 ani. În acest moment, Intel a renunțat să mai
 investească în acest segment.
 
@@ -289,11 +289,11 @@ integrare a componentelor:
 \begin{itemize}
 	\item x86 are o arhitectură modulară în care utilizatorul poate înlocui
 		separat procesorul, memoria, plăcile de procesare (grafică,
-		sunet, rețea)
+		sunet, rețea).
               \item ARM are o arhitectură integrată denumită și SoC (\textit{System on Chip}):
 		integratorii pun toate componentele (procesorul, memoria,
-		plăcile de procesare) pe aceeași plăcuță iar acestea nu pot fi
-                schimbate separat. Vom detalia aceste sissteme în \labelindexref{Capitolul}{chapter:embed}.
+		plăcile de procesare) pe aceeași plăcuță, iar acestea nu pot fi
+                schimbate separat. Vom detalia aceste sisteme în \labelindexref{Capitolul}{chapter:embed}.
 \end{itemize}
 
 \subsection{Forme constructive ale hardware-ului}
@@ -330,10 +330,10 @@ nici un spațiu.
 \end{figure}
 
 \footnotetext{\url{https://commons.wikimedia.org/wiki/File:Supermicro_SBI-7228R-T2X_blade_server.jpg}
-\textbf{CC BY SA 4.0}}
+\textbf{CC BY-SA 4.0}}
 
 \textit{Desktopul} este specific utilizatorilor finali având un raport
-preț/performanță foarte bun. După cum am precizat mai sus, laptopul tot
+preț/performanță foarte bun. După cum am precizat mai sus, și laptopul tot
 utilizatorului final se adresează. Avantajul desktopului în detrimentul
 laptopului este dat de faptul că poate fi ușor îmbunătățit, reparat și
 întreținut.
@@ -408,17 +408,28 @@ Componentele sunt prezentate vizual în \labelindexref{Figura}{fig:hw:components
 
 \begin{enumerate}
 	\item scanner - cu ajutorul acesteia se pozează conținutul documentelor
-		cu scopul de la fi digitalizate (transferate pe calculator).
+		cu scopul de a fi digitalizate (transferate pe calculator).
 		Acesta este un dispozitiv de intrare.
 	\item CPU (\labelindexref{Figura}{fig:hw:cpu}) - procesorul (unitatea de procesare) execută instrucțiunile
 		primite de la utilizator. Principalele caracteristici sunt
-		frecvența (în mega/giga herți - Mhz/Ghz) care determină numărul
+		frecvența (în mega/giga herți - MHz/GHz) care determină numărul
 		de instrucțiuni executate pe secundă, mărimea memoriei cache,
 		numărul de nuclee (un CPU poate avea mai multe unități de
 		execuție înglobate în aceeași pastilă) și viteza cu care
 		comunică cu restul componentelor prin intermediul magistralei
                 (se mai numește și frecvența magistralei FSB)
-		\abbrev{FSB}{Front-Side Bus}
+		\abbrev{FSB}{Front-Side Bus}.
+
+	\item memorie (\labelindexref{Figura}{fig:hw:ram}) - unitatea de memorie care este de tip RAM
+          \abbrev{RAM}{Random Access Memory} (\textit{Random Access Memory}) și
+		este reprezentată de o plăcuță îngustă care poate avea diferite
+		dimensiuni exprimate în megaocteți (MB \abbrev{MB}{megabytes} -
+		megabytes) sau gigaocteți (GB \abbrev{GB}{gigabytes} -
+		gigabytes). O altă caracteristică a memorie se referă la
+                frecvența acesteia în general exprimată în megaherți (MHz)
+		\abbrev{MHz}{megaherți}. Frecvența determină viteza cu care
+		se realizează comunicația între memorie și magistrală, respectiv
+		procesor.
 
 \begin{figure}[!htbp]
 	\centering
@@ -429,17 +440,6 @@ Componentele sunt prezentate vizual în \labelindexref{Figura}{fig:hw:components
 
 \footnotetext{\url{https://commons.wikimedia.org/wiki/File:Intel_CPU_Core_i7_6700K_Skylake_top.jpg}
 \textbf{CC BY SA}}
-
-	\item memorie (\labelindexref{Figura}{fig:hw:ram}) - unitatea de memorie care este de tip RAM
-          \abbrev{RAM}{Random Access Memory} (\textit{Random Access Memory}) și
-		este reprezentată de o plăcuță îngustă care poate avea diferite
-		dimensiuni exprimate în megaocteți (MB \abbrev{MB}{megabytes} -
-		megabytes) sau gigaocteți (GB \abbrev{GB}{gigabytes} -
-		gigabytes). O altă caracteristică a memorie se referă la
-                frecvența acesteia în general exprimată în megaherți (MHz)
-		\abbrev{MHz}{megaherți}. Frecvența reprezintă viteza cu care
-		se realizează comunicația între memorie și magistrală, respectiv
-		procesor.
 
 \begin{figure}[!htbp]
 	\centering
@@ -453,13 +453,13 @@ Componentele sunt prezentate vizual în \labelindexref{Figura}{fig:hw:components
 
 	\item plăci de extensie - sunt variante pornind de la plăcile de
 		procesare a sunetului (pentru redarea acestuia), a elementelor
-		grafice (pentru afișarea pe ecran) până la plăcile ce realizează
+		grafice (pentru afișarea pe ecran), până la plăcile ce realizează
 		conectivitatea cu alte calculatoare (respectiv Internetul). Vom
 		extinde subiectul plăcilor de extensie în secțiunile următoare
 	\item sursă de alimentare a unității de calcul - transformă curentul
-		alternativ în curent continuu la diferite voltaje/intensități
+		alternativ în curent continuu la diferite tensiuni/intensități
 		pentru fiecare componentă a sistemului de calcul. Principala
-		caracteristică a surselor de alimentare este data de putere
+		caracteristică a surselor de alimentare este dată de putere
 		(watt). Sursa trebuie sa fie dimensionată corespunzător pentru a
 		reuși să acopere toți consumatorii din sistem (ex.: dacă avem un
 		procesor mai puternic, cu o frecvență mai mare și mai multe
@@ -468,6 +468,15 @@ Componentele sunt prezentate vizual în \labelindexref{Figura}{fig:hw:components
 		este un dispozitiv de intrare/ieșire persistent pentru
 		redarea filmelor, a muzicii, dar se pot stoca și date care nu au
 		legătură cu aria multimedia (ex. documente)
+
+        \item unitate de stocare (HDD \abbrev{HDD}{Hard Disk Drive} - \textit{Hard Disk
+          Drive}) (\labelindexref{Figura}{fig:hw:hdd}) - este un dispozitiv de intrare/ieșire pentru
+		stocarea permanentă/persistentă a datelor. De exemplu, ori de
+		câte ori salvăm un fișier în curs de editare, acesta este scris
+		pe unitatea de stocare. Aceasta este mult mai lentă ca unitatea
+		de memorie și de aceea se preferă scrierea cât mai rară, în
+		special când se întreprind acțiuni în timp real.
+
 
 \begin{figure}[!htbp]
 	\centering
@@ -479,14 +488,6 @@ Componentele sunt prezentate vizual în \labelindexref{Figura}{fig:hw:components
 \footnotetext{\url{https://commons.wikimedia.org/wiki/File:ASUS_CD-ROM_CD-S520-A4_20080821.jpg}
 \textbf{CC BY 3.0}}
 
-        \item unitate de stocare (HDD \abbrev{HDD}{Hard Disk Drive} - \textit{Hard Disk
-          Drive}) (\labelindexref{Figura}{fig:hw:hdd}) - este un dispozitiv de intrare/ieșire pentru
-		stocarea permanentă/persistentă a datelor. De exemplu, ori de
-		câte ori salvăm un fișier în curs de editare, acesta este scris
-		pe unitatea de stocare. Aceasta este mult mai lentă ca unitatea
-		de memorie și de aceea se preferă scrierea cât mai rară, în
-		special când se întreprind acțiuni în timp real.
-
 \begin{figure}[!htbp]
 	\centering
 	\includegraphics[width=8cm]{chapters/08-hw/img/hdd-img.png}
@@ -497,12 +498,22 @@ Componentele sunt prezentate vizual în \labelindexref{Figura}{fig:hw:components
 \footnotetext{\url{https://commons.wikimedia.org/wiki/File:Hard_Drive_(11644419853).jpg}
 \textbf{CC BY 2.0}}
 
-        \item placă de bază (\labelindexref{Figura}{fig:hw:mb}) - reprezintă elementul central de conexiune între
+    \item placă de bază (\labelindexref{Figura}{fig:hw:mb}) - reprezintă elementul central de conexiune între
 		procesor, memorie și plăcile de extensie. Aceasta conține
 		practic magistrala de comunicație și sloturile în care sunt
 		introduse procesorul, memoriile și plăcile de extensie.
 
-% TODO: this doesn't fit
+	\item boxe conectate la placa de extensie (numită și placă de sunet)
+		pentru a reda sunetul emis de unitatea de calcul
+	\item monitor - conectat la placa de extensie (numită și placă grafică
+		sau GPU \abbrev{GPU}{Graphics Processing Unit} în acest caz)
+		pentru a reda elementele grafice.
+	\item sistem de operare - software-ul ce este responsabil cu
+		inițializarea și controlul componentelor hardware
+	\item o aplicație - proces ce rulează în sistemul de operare
+	\item tastatură - dispozitiv de intrare prin care utilizatorul poate trimite
+		comenzi către calculator sau poate redacta diverse documente
+			
 \begin{figure}[!htbp]
 	\centering
 	\includegraphics[width=8cm]{chapters/08-hw/img/mb-img.png}
@@ -513,16 +524,6 @@ Componentele sunt prezentate vizual în \labelindexref{Figura}{fig:hw:components
 \footnotetext{\url{https://commons.wikimedia.org/wiki/File:Mother_board.JPG}
 \textbf{CC BY SA 4.0}}
 
-	\item boxe conectate la placa de extensie (numită și placă de sunet)
-		pentru a reda sunetul emis de unitatea de calcul
-	\item monitor - conectat la placa de extensie (numită și placă grafică
-		sau GPU \abbrev{GPU}{Graphics Processing Unit} în acest caz)
-		pentru a reda elementele grafice.
-	\item sistem de operare - software-ul ce este responsabil cu
-		inițializarea și controlul componentelor hardware
-	\item o aplicație - proces ce rulează în sistemul de operare
-	\item tastatură - dispozitiv de intrare prin care utilizatorul trimite
-		comenzi către calculator sau poate redacta diverse documente
 	\item mouse - dispozitiv de intrare pentru a ușura controlul sistemului
 		de operare și a aplicațiilor (care este posibil prin intermediul
 		tastaturii, dar în medii grafice, operarea doar din tastatură
@@ -531,6 +532,8 @@ Componentele sunt prezentate vizual în \labelindexref{Figura}{fig:hw:components
 		același rol ca unitatea de stocare prezentată la punctul de mai sus,
 		cu avantajul de a fi portabilă și dezavantajul că este de obicei
 		mai lentă.
+	\item imprimantă - dispozitiv care permite transpunerea documentelor
+		sau imaginilor într-o formă fizică, pe suport de hârtie.
 
 \end{enumerate}
 
@@ -546,9 +549,9 @@ Până la această secțiune am prezentat arhitectura logică a unui sistem de
 calcul, am enumerat clasificări în funcție de mai multe criterii (arhitectura
 unității de procesare, forma constructivă a sistemului de calcul), am iterat
 principalele componente ale unui sistem de tip desktop. Toate acestea trebuie
-controlate de un o componentă software specializată: \textbf{sistemul de operare}.
+controlate de o componentă software specializată: \textbf{sistemul de operare}.
 Sistemul de operare (\textit{operating system} - OS) este primul program
-(software) ce rulează la pornirea unui sistem de calcul. Rolurile sistemul de
+(software) ce rulează la pornirea unui sistem de calcul. Rolurile sistemului de
 operare sunt:
 
 \begin{itemize}
@@ -563,11 +566,11 @@ Descoperirea dispozitivelor se face folosind următoarele procedee:
 
 \begin{itemize}
   \item \textit{autodiscovery} (descoperire automată de către sistemul de operare)
-		în general pe x86 - la pornirea sistemului rulează un program
+		- în general pe x86 - la pornirea sistemului rulează un program
 		proprietar al plăcii de bază denumit BIOS \abbrev{BIOS}{Basic
 		Input/Output System} (Basic Input/Output System - vezi
 		\labelindexref{Capitolul}{chapter:boot}) care testează toate
-		componentele conectate la placa de bază, certifică
+		componentele conectate la placa de bază și certifică
 		compatibilitatea acestora (între ele și cu placa de bază). Cel
 		mai important lucru este dat de faptul că încarcă sistemul de
 		operare de pe disc în memorie și pornește execuția acestuia. Din
@@ -600,7 +603,7 @@ loaderul are rolul de a încărca sistemul de operare în memorie. În cazul x86
 cel mai folosit boot loader pe sistemele Linux este GRUB, iar pe sistemele
 Windows este unul proprietar. În cazul ARM avem un singur boot loader numit
 U-BOOT. Mai multe detalii despre boot loader, motivul pentru care acesta a fost
-introdus, ce opțiuni de configurare oferă, sunt prezentate în \labelindexref{Capitolul}{chapter:boot}.
+introdus și ce opțiuni de configurare oferă, sunt prezentate în \labelindexref{Capitolul}{chapter:boot}.
 
 Un exemplu simplu, care apare proeminent în viața de zi cu zi este folosirea
 unei imprimante. În general pentru a putea folosi imprimanta, spunem că aceasta
@@ -614,7 +617,7 @@ fi folosit.
 \label{sec:hw:os-interact:driver}
 
 O dată încărcat sistemul de operare, acesta este lansat în execuție. Din acest
-punct se va începe descoperirea tuturor elementelor hardware (de la procesor,
+punct se va începe descoperirea tuturor elementelor hardware (de la procesor și
 memorie până la toate perifericele conectate), inițializarea și configurarea
 acestora, precum și controlul lor. Procesorul și memoria unui sistem de calcul
 sunt elementele centrale fără de care nu îl putem folosi (dacă am avea doar
@@ -632,7 +635,7 @@ Dezvoltatorii sistemelor de operare au venit în întâmpinarea acestei probleme
 prin crearea unui nou concept de program (software) numit \textit{driver}.
 
 Driverul este o subcomponentă a unui sistem de operare care este înglobat în
-acesta sau se pare încărcă după ce sistemul de operare pornește. Rolul unui
+acesta sau se poate încărca după ce sistemul de operare pornește. Rolul unui
 driver este bine definit de componenta pe care trebuie să o controleze.
 Avantajul introducerii noțiunii de driver în cadrul sistemului de operare este
 dat de faptul că fiecare vendor care dezvoltă o componentă hardware, își scrie
@@ -659,13 +662,13 @@ Pornind de la considerentele enumerate mai sus, putem identifica două tipuri de
 \end{itemize}
 
 La instalarea unui sistem de operare, în general există drivere generice pentru
-orice tip de dispozitiv, dar performantă/funcționalitatea sunt limitate. De
+orice tip de dispozitiv, dar performanța/funcționalitatea sunt limitate. De
 aceea este recomandat ca de fiecare dată după instalarea unui sistem de operare,
 să navigați pe site-ul producătorului fiecărei componente să luați ultimul
 driver compatibil. Nu de multe ori ați observat că după instalarea sistemului de
 operare, experiența grafică lăsa de dorit (rezoluție mică, mișcări sacadate)
-până la instalarea software-ului recomandat de producător (acestea fiind
-driverele). Așadar recomandăm instalarea ultimelor versiuni de drivere pentru
+până la instalarea software-ului recomandat de producător (acesta fiind
+driverul). Așadar recomandăm instalarea ultimelor versiuni de drivere pentru
 a beneficia de performanță și stabilitate maximă.
 
 \begin{figure}[htbp]
@@ -704,11 +707,11 @@ Controllerele au și ele la rândul lor drivere (programe) care le ajută la
 inițializarea, configurarea și controlul acestora. Recomandarea de mai sus este
 valabilă și în cazul controllerelor: la instalarea sistemului de operare există
 controllere generice, iar recomandarea este să fie instalate drivere de la
-producător (disponibile de obicei fără nici un cost pe site-ul acestora).
+producător (disponibile de obicei fără niciun cost pe site-ul acestora).
 
 Am prezentat până în acest punct comunicația între dispozitiv și procesor
 și faptul că aceasta este intermediată de controller. În rândurile ce urmează
-vom descrie procedeele de comunicație între dispozitive și procesor.
+vom descrie procedeele de comunicație între dispozitive și memorie.
 
 Un prim
 procedeu este DMA \abbrev{DMA}{Direct Memory Access} (\textit{Direct Memory
@@ -719,8 +722,8 @@ aștepte după dispozitiv să scrie.
 Dacă dispozitivul nu dispune de un controller
 DMA, se poate aplica un alt procedeu și anume: \textit{memory mapping} (maparea
 memoriei). Printr-un mecanism special aceeași zonă de memorie este vizibilă atât
-dispozitivului cât și procesorului. Astfel dispozitivul poate citi/scrie către
-și dinspre procesor.
+dispozitivului, cât și procesorului. Astfel dispozitivul poate citi/scrie către
+și dinspre memorie.
 
 În ambele cazuri (DMA și Memory Mapping) avem nevoie de un
 mecanism de notificare (când a terminat de citit/scris dispozitivul). Acesta
@@ -781,7 +784,27 @@ multe forme ce oferă performanțe diferite (viteză de comunicație):
 	\item USB 1.0 - 12Mbps
 	\item USB 2.0 - 480Mbps
 	\item USB 3.0 - 5Gbps
+	\item USB 3.1 - 10Gbps
+	\item USB 3.2 - 20Gbps
 \end{itemize}
+
+Până în acest punct am discutat despre formele de conectare ale plăcilor de
+extensie la unitatea de calcul. Plăcile de extensie au un element central de
+aceeași importanță cu unitatea de procesare dintr-un sistem de calcul. Acel
+element central poartă numele de \textit{chipset}. Chipsetul implementează logica
+centrală a dispozitivului, este cel care comunică cu sistemul de calcul.
+
+În
+general, driverele despre care am discutat anterior sunt dezvoltate pentru un anumit
+chipset, și nu pentru o placă anume. Pot exista plăci de la mai mulți vendori,
+care au același chipset. În acest caz același driver este compatibil și va fi
+dezvoltat de producătorul chipset-ului, nu te integratorul plăcii. Dăm un
+exemplu legat de o placă de rețea de 100 Mbps cu chipset RTL8139 (Realtek este
+producătorul chipset-ului): există cel puțin 2 producători (TP-Link și D-link)
+pentru această placă. Plăcile arată diferit, au serii diferite, dar au același
+chipset. Prin comparație putem lua două laptopuri produse de HP și Dell care au
+același procesor Intel. Aceste laptopuri vor putea rula același sistem de
+operare compatibil cu procesorul Intel fără nici o modificare.
 
 \begin{figure}[!htbp]
 	\centering
@@ -793,30 +816,12 @@ multe forme ce oferă performanțe diferite (viteză de comunicație):
 \footnotetext{\url{https://commons.wikimedia.org/wiki/File:Blue_USB_port_without_USB_3.0_contacts.jpg}
 \textbf{CC0}}
 
-Până în acest punct am discutat despre formele de conectare ale plăcilor de
-extensie la unitatea de calcul. Plăcile de extensie au un element central de
-aceeași importanță cu unitatea de procesare dintr-un sistem de calcul. Acel
-element central poartă numele de \textit{chipset}. Chipsetul implementează logica
-centrală a dispozitivului, este cel care comunică cu sistemul de calcul.
-
-În
-general, driverele de care am discutat anterior sunt dezvoltate pentru un anumit
-chipset, și nu pentru o placă anume. Pot exista plăci de la mai mulți vendori,
-care au același chipset. În acest caz același driver este compatibil și va fi
-dezvoltat de producătorul chipset-ului, nu te integratorul plăcii. Dăm un
-exemplu legat de o placă de rețea de 100 mbps cu chipset RTL8139 (Realtek este
-producătorul chipset-ului): există cel puțin 2 producători (TP-Link și D-link)
-pentru această placă. Plăcile arată diferit, au serii diferite, dar au același
-chipset. Prin comparație putem lua două laptopuri produse de HP și Dell care au
-același procesor Intel. Aceste laptopuri vor putea rula același sistem de
-operare compatibil cu procesorul Intel fără nici o modificare.
-
 Accentuăm faptul că o placa de extensie conține un
 chipset care implementează logica necesară. De multe ori nu e suficient să
-căutăm un vendor de renume, ci trebuie să ne uităm și la chipset de renume.
+căutăm un vendor de renume, ci trebuie să ne uităm și la un chipset de renume.
 
 În continuare vom trece prin trei dintre cele mai importante plăci de extensie:
-video, sunet, și rețea.
+video, sunet și rețea.
 
 \subsection{Placa video}
 \label{sec:hw:extension:gpu}
@@ -830,11 +835,11 @@ făcute.
 Pentru acest lucru, placa grafică este echipată cu unități specializate
 de calcul matematic. Pe lângă unitățile de calcul, placa grafică mai dispune și
 de propria memorie pentru a eficientiza timpul de procesare a datelor. La
-achiziția unei plăci video (sau mai poartă denumirea de placă grafică - GPU, \textit{Graphical Porcessing Unit}) trebuie avute în vedere următoarele
+achiziția unei plăci video (sau mai poartă denumirea de placă grafică - GPU, \textit{Graphics Processing Unit}) trebuie avute în vedere următoarele
 aspecte: portul de conectare al plăcii (PCIe și la ce viteză), capacitatea
 memoriei, frecvența de procesare, numărul de nuclee, precum și porturile de
 ieșire. În \labelindexref{Figura}{fig:hw:gpu} sunt prezentate formatul
-porturilor de ieșire ale unei plăci grafice: VGA, HDMI, DVI, DisplayPort. În
+porturilor de ieșire ale unei plăci grafice: HDMI, DVI-I, DVI-D, DisplayPort. În
 general plăcile grafice sunt produse cu o combinație între aceste porturi,
 existând adaptoare la nevoie.
 
@@ -872,16 +877,17 @@ inspectați următoarele caracteristici:
 \begin{itemize}
 	\item puterea cu care poate emite (în general în watt)
 	\item numărul de canale, implicit și numărul de porturi disponibile:
-		cele mai des întâlnite sunt cele denumite 2.1 care au 2 boxe sau
-		căști (stânga - dreapta) și cele denumite 5.1 care au 4 boxe (2
-		spate stânga-dreapta, 2 față stânga - dreapta, 1 boxă centru)
+		cele mai des întâlnite sunt cele denumite 2.0 care au 2 boxe sau
+		căști (stânga - dreapta) și cele denumite 5.1 care au 5 sateliți (2
+		spate stânga-dreapta, 2 față stânga - dreapta, 1 față centru) și un difuzor
+		pentru sunete joase (subwoofer).
 	\item modalitatea de conectare la calculator (internă pe PCI/PCIe sau
 		externă pe USB)
 \end{itemize}
 
 În \labelindexref{Figura}{fig:hw:audio} este reprezentată o placă de sunet 5.1
 ce se conectează pe portul intern PCI. Există câte un port de ieșire pentru
-fiecare zonă (față, spate, centru), un port de intrare pentru microfon și un
+fiecare zonă (față, spate, centru + subwoofer), un port de intrare pentru microfon și un
 port de intrare generic (pentru alte dispozitive).
 
 \begin{figure}[!htbp]
@@ -922,11 +928,11 @@ La achiziția unei plăci de rețea, trebuie ținut cont de următoarele caracte
 		echipamentul în care vă conectați trebuie să suporte modul de
 		fibră optică. În concluzie, în general veți alege portul de tip
 		RJ-45.
-	\item viteza de transmisie: 100mbps, 1gbps, 10gbps. Cea mai răspândită
+	\item viteza de transmisie: 100Mbps, 1Gbps, 10Gbps. Cea mai răspândită
 		în ziua de astăzi este viteza de 1Gbps.
 \end{itemize}
 
-În \labelindexref{Figura}{fig:hw:audio} este reprezentată o placă de rețea 3Com cu interfață RJ45 cu viteza 100mbps.
+În \labelindexref{Figura}{fig:hw:audio} este reprezentată o placă de rețea 3Com cu interfață RJ-45 cu viteza 100Mbps.
 
 Un lucru bun de menționat este acela că veți găsi diferențe foarte mari de preț
 pentru o placă de rețea ce funcționează la viteza de 1Gbps. De exemplu o placă
@@ -938,16 +944,6 @@ vin/pleacă în comparație cu TP-Link unde procesarea este lăsată în grija
 unității de procesare. Pentru o performanță sporită, mai ales în medii unde se
 realizează transmisii de date cu volum ridicat, sunt recomandate plăcile de
 rețea ce nu se bazează pe CPU atunci când trebuie să trimită/primească date.
-
-\begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=6cm]{chapters/08-hw/img/nic-img.jpg}
-	\caption{Placă de rețea\protect\footnotemark}
-	\label{fig:hw:nic}
-\end{figure}
-
-\footnotetext{\url{https://commons.wikimedia.org/wiki/File:3Com-Etherlink-Network-Interface-Card-05.jpg}}
-\textbf{CC BY SA 3.0}
 
 \section{Facilități moderne în hardware}
 \label{sec:hw:features}
@@ -976,7 +972,7 @@ Pentru a putea rula
 mai multe sisteme de operare în același timp s-a introdus conceptul de
 \textbf{virtualizare} (\textit{virtualization}): dacă se rulează mai multe sisteme de
 operare în același timp, fiecare din ele va vedea o instanță virtuală a fiecărei
-componente a sistemului (CPU virtual, memorie virtuală, disc virtual etc). Se
+componente a sistemului (CPU virtual, memorie virtuală, disc virtual, etc.). Se
 realizează practic o multiplexare a fiecărei componente hardware. În anii
 2005-2008 această multiplexare se realiza doar în software, fiind foarte lentă.
 Din anii 2007-2009 s-a introdus conceptul de virtualizare în hardware, acesta
@@ -989,6 +985,16 @@ funcționa indicând un mesaj de eroare corespunzător.
 
 Vom discuta mai multe despre virtualizare în \labelindexref{Capitolul}{chapter:vm}.
 
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=6cm]{chapters/08-hw/img/nic-img.jpg}
+	\caption{Placă de rețea\protect\footnotemark}
+	\label{fig:hw:nic}
+\end{figure}
+
+\footnotetext{\url{https://commons.wikimedia.org/wiki/File:3Com-Etherlink-Network-Interface-Card-05.jpg}
+\textbf{CC BY-SA 3.0}}
+
 \subsection{Trusted Platform Module}
 \label{sec:hw:features:tpm}
 
@@ -998,7 +1004,7 @@ securității sistemelor a devenit o prioritate pentru fiecare companie din lume
 (indiferent de domeniul de activitate). Instalarea de firewall-uri și antiviruși
 este utilă pentru protecția atacurilor din exterior (din Internet), dar nu
 protejează unitatea de calcul împotriva furtului fizic de date (ex.: dacă un
-laptop este furat, hoțul are acces la datele de pe laptop fără nici o problemă).
+laptop este furat, hoțul are acces la datele de pe laptop fără nicio problemă).
 
 Pentru a preveni astfel de pierderi de date, unitățile de stocare ale
 calculatoarele sunt criptate integral folosind algoritmi specifici. Pentru
@@ -1228,7 +1234,7 @@ atașate sistemului se poate folosi modulul \textit{Device Manager} (\texttt{Sta
 
 După cum se poate observa în \labelindexref{Figura}{fig:hw:devmanager}
 componentele sunt grupate, dispuse arborescent (asemănător comenzii \cmd{lshw}
-din Linux). Pentru a vedea ce dispozitive, respectiv modelul acestora, se
+din Linux). Pentru a vedea dispozitivele, respectiv modelul acestora, se
 extinde grupul de interes. Pentru exemplu, vom extinde grupul
 \textit{Processors}.
 
@@ -1272,7 +1278,7 @@ dispozitivele atașate, respectiv driverele instalate pentru acestea. Este util
 de știut cum vizualizăm ce drivere sunt active la un moment dat în sistem și
 care e versiunea acestora.
 
-\subsection{Vizualizarea driverele pe Linux}
+\subsection{Vizualizarea driverelor pe Linux}
 \label{sec:hw:driver-view:linux}
 
 Pe un sistem de operare cu nucleu Linux, vizualizarea driverelor se face cu
@@ -1329,7 +1335,7 @@ tot din \textit{Device Manager} (\texttt{Start -$>$ Run -$>$ devmgmt.msc}).
 Pentru a vizualiza informații despre driverul procesorului, vom da click pe unul
 din procesoarele listate în \labelindexref{Figura}{fig:hw:devmanager-cpu}. Va
 apărea o nouă fereastră ca în \labelindexref{Figura}{fig:hw:devmanager-driver} ce va avea
-un tab denumit \textit{Driver}. Acesta ne va afișa toate informațiile relevant
+un tab denumit \textit{Driver}. Acesta ne va afișa toate informațiile relevante
 despre driver:
 
 \begin{itemize}
@@ -1355,10 +1361,10 @@ Sistemul de calcul este format din componente hardware necesare ca să rulăm so
 Componentele hardware sunt formate din unitatea de procesare (CPU), unitatea de memorie și dispozitive de intrare/ieșire.
 
 Sistemele de calcul se clasifică în funcție de arhitectura procesorului și de formatul constructiv (\textit{form factor}).
-Fiecare arhitectură (x86, ARM) și fiecare format constructiv (server, desktop, laptop, embedded) sunt destinate unui anumit caz de utilizare.
+Fiecare arhitectură (x86, ARM) și fiecare format constructiv (server, desktop, laptop, embedded) este destinat unui anumit caz de utilizare.
 
 Dispozitivele de intrare/ieșire îndeplinesc diferite roluri și sunt diverse.
 Procesorul interacționează cu dispozitivele prin intermediul controllerelor.
 Sistemul de operarea controlează dispozitive prin intermediul driverelor, componente software dedicate.
 
-Sistemele de operare moderne oferă utilitare și interfețe dedicate pentru investigarea componentelor hardware și driverelor.
+Sistemele de operare moderne oferă utilitare și interfețe dedicate pentru investigarea componentelor hardware și a driverelor.
