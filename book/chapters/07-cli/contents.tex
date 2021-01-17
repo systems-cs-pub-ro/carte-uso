@@ -2,7 +2,7 @@
 \label{chapter:cli}
 
 O aplicație sau un sistem oferă uzual o interfață de interacțiune cu
-utilizatorul. Cu ajutorul acestei interfețe utilizatorul comandă sistemul sau aplicația pentru a îi rezolva o nevoie.
+utilizatorul. Cu ajutorul acestei interfețe utilizatorul comandă sistemul sau aplicația pentru a-și rezolva o nevoie.
 
 Unele aplicații, numite și programe batch, sunt neinteractive. Adică nu oferă o interfață cu utilizatorul, spunem că rulează în
 background. Aplicațiile interactive, pe de altă parte, oferă o interfață care poate fi grafică (\textit{Graphical User Interface} - GUI), în linia de comandă (\textit{Command Line Interface} - CLI) sau web (WebUI), fiecare cu avantajele sale.
@@ -14,9 +14,9 @@ interfețe CLI pentru a ajunge cât mai rapid la rezultat.
 
 Interfața grafică este folosită pe toate mediile mobile și în cele mai multe medii desktop. Elementele GUI, descrise în \labelindexref{Secțiunea}{sec:ui:gui}, sunt WIMP: Window, Icon, Menu, Pointer. Pe sistemele mobile se folosește un ecran tactil (\textit{touchscreen}).
 
-Interfața în linia de comandă este mai simplă, eficiente și cu facilități complexe. Este folosită
-în medii specializate, în servere și în medii desktop pentru utilizatori cu
-profil tehnic. Interfața în linia de comandă prezintă, în general, un prompt unde utilizatorul introduce comenzi pentru interacționa cu sistemul sau aplicația. Exemple de interfețe în linia de comandă sunt: shellul Linux, PowerShell, python shell, game consoles,
+Interfața în linia de comandă este mai simplă, eficientă și cu facilități complexe. Este folosită
+în medii specializate, în servere și în medii desktop de către utilizatori cu
+profil tehnic. Interfața în linia de comandă prezintă, în general, un prompt unde utilizatorul introduce comenzi pentru a interacționa cu sistemul sau aplicația. Exemple de interfețe în linia de comandă sunt: shellul Linux, PowerShell, python shell, game consoles,
 MATLAB/Octave, AutoCAD.
 
 În \labelindexref{Capitolul}{chapter:ui} ne-am concentrat pe interfața grafică (GUI). În acest capitol vom insista pe interfața în linia de comandă (CLI).
@@ -29,7 +29,7 @@ Așa cum am prezentat în \labelindexref{Figura}{fig:ui:system-components}, inte
 \subsection{Interacțiunea cu shellul}
 \label{sec:cli:shell:interact}
 
-În general, un shell CLI oferă un prompt utilizatorului în care acesta introduce comenzi. Un prompt este un șir de caractere care indică utilizatorului unde trebuie să tasteze comanda. Promptul poate conține informații suplimentare utilizatorului, precum numele utilizatorului, numele stației de lucru, directorul curent. Exemple de prompturi sunt în \labelindexref{Listing}{lst:cli:prompt}; acestea pot avea orice formă, utilizatorul trebuie doar să introducă acele comenzi pe care le dorește.
+În general, un shell CLI oferă utilizatorului un prompt în care acesta introduce comenzi. Un prompt este un șir de caractere care indică utilizatorului unde trebuie să tasteze comanda. Promptul poate conține informații suplimentare utilizatorului, precum numele utilizatorului, numele stației de lucru, directorul curent. Exemple de prompturi sunt în \labelindexref{Listing}{lst:cli:prompt}; acestea pot avea orice formă, utilizatorul trebuie doar să introducă acele comenzi pe care le dorește.
 
 \begin{screen}[caption={Prompturi de shell},label={lst:cli:prompt}]
 student@uso:~$
@@ -47,14 +47,14 @@ O comanda este, la fel, un șir de caractere. O dată apăsată tasta \texttt{En
   \label{fig:cli:user-shell-cmd}
 \end{figure}
 
-În cazul unui shell CLI, folosim tastatura ca formă de intrare (\textit{input}) și ecranul ca formă de ieșire (\textit{output}). Adică introducem comenzile de la tastatură pentru a fi transmise shell-ului, iar rezultatul rulării comenzilor este afișat de shell la ecran, unde poate fi urmărit de utilizator.
+În cazul unui shell CLI, folosim tastatura ca formă de intrare (\textit{input}) și ecranul ca formă de ieșire (\textit{output}). Adică introducem comenzile de la tastatură pentru a fi transmise shellului, iar rezultatul rulării comenzilor este afișat de shell la ecran, unde poate fi urmărit de utilizator.
 
 Așa cum am precizat în \labelindexref{Secțiunea}{sec:process:terminal}, un shell rulează în cadrul unui \textbf{terminal}, care este interfața acestuia de
 interacțiune cu utilizatorul. Descriptorii standard ai shellului (intrarea standard, ieșirea standard, ieșirea de eroare standard) referă terminalul.
 Shellul este un proces care primește comenzi la intrarea standard, le
 interpretează și apoi afișează rezultatul la ieșirea standard. Atunci când rulăm
-comenzi spunem că le scriem la terminal. Când shellul interpretează comenzile
-spunem că rezultatul este afișat la terminal. Modul de interacțiune este indicat în \labelindexref{Figura}{fig:process:terminal-shell}.
+comenzi spunem că le scriem în terminal. Când shellul interpretează comenzile
+spunem că rezultatul este afișat în terminal. Modul de interacțiune este indicat în \labelindexref{Figura}{fig:process:terminal-shell}.
 
 Terminalul este, așadar, un dispozitiv reprezentând canalul de comunicare între shell și
 utilizator. Terminalul controlează intrarea și ieșirea unui shell. În general,
@@ -63,7 +63,7 @@ fiecare shell are un terminal.
 \subsection{Facilități shell}
 \label{sec:cli:shell:features}
 
-În folosirea shellului un utilizator urmărește eficacitate și eficiență: să
+În folosirea shellului, un utilizator urmărește eficacitate și eficiență: să
 rezolve sarcina pe care o are de făcut și să facă acest lucru cât mai repede.
 Eficacitatea este atinsă având acces la comenzile adecvate și la parametrii
 corespunzători. Dacă o comandă nu există, un pachet poate fi instalat pentru a
@@ -73,7 +73,7 @@ Pentru eficiență utilizatorul trebuie să tasteze cât mai rapid comenzi. Aces
 lucru poate presupune două tipuri de acțiuni: generarea rapidă a comenzii sau
 editarea rapidă a unei comenzi, modificarea ei.
 
-Pentru generarea rapidă a unei comenzi shellul oferă facilitățile de completarea comenzilor și căutarea în istoricul de comenzi.
+Pentru generarea rapidă a unei comenzi shellul oferă facilitățile de completare a comenzilor și căutare în istoricul de comenzi.
 
 \subsubsection{Completarea comenzilor}
 \label{sec:cli:shell:features:completion}
@@ -83,10 +83,10 @@ completarea (expandarea) automată a unei comenzi sau a unui argument fără a f
 nevoie de tastarea acesteia în totalitate. Acest lucru se întâmplă folosind
 tasta \texttt{Tab}. Cu ajutorul tastei \texttt{Tab} putem completa fie numele unei comenzi, fie numele unui argument.
 
-Adică scriem o parte din comandă sau argument și apoi apăsăm tasta \texttt{Tab}; dacă shellul poate infera ce comandă sau ce argument vrem să folosim, va completa întreg numele său.
-Dacă sunt mai multe posibilități, la apăsarea de două ori a tastei \texttt{TAB} se
+Adică scriem o parte din comandă sau argument și apoi apăsăm tasta \texttt{Tab}; dacă shellul poate deduce ce comandă sau ce argument vrem să folosim, va completa întreg numele său.
+Dacă sunt mai multe posibilități, la apăsarea de două ori a tastei \texttt{Tab} se
 afișează posibilitățile de atunci. În mod uzual, se mai scrie o secvență
-neambiguă și apoi se apasă iar \texttt{TAB}. În felul acesta, scriem foarte repede
+neambiguă și apoi se apasă iar \texttt{Tab}. În felul acesta, scriem foarte repede
 comenzile. Completarea comenzilor este o facilitate esențială în folosirea eficientă a shellului.
 
 \subsubsection{Istoricul de comenzi}
@@ -129,19 +129,19 @@ ls /usr/share/pixmaps/gvim.svg
 Cel mai direct mod de folosirea a istoricului de comenzi este prin intermediul
 tastelor săgeată (sus și jos) care parcurg comenzile din istoric. Aceleași funcționalități (comanda anterioară, comanda următoare) pot fi obținute din combinațiile de taste \texttt{Ctrl+p} sau \texttt{Ctrl+n} (împrumutate din Emacs).
 
-Dacă vrem să refolosim comanda anterioară avem construcția \texttt{!!}. Aceasta e utilă
+Dacă vrem să refolosim comanda anterioară avem construcția \texttt{!!}. Aceasta este utilă
 în special când vrem să folosim comanda anterioară împreună cu altă comandă. De
-exemplu dacă am rulat o comandă fără \cmd{sudo}, așa cum este cazul liniilor \texttt{1-5} din \labelindexref{Listing}{lst:cli:use-history}. Mai general putem folosi comenzi precum \texttt{!-3} sau \texttt{!-2} ca să accesăm a \texttt{N}-a comandă anterioară din istoric; de exemplu, linia \texttt{7} din \labelindexref{Listing}{lst:cli:use-history} refolosește a \texttt{13}-a comandă anterioară din istoricul de comenzi.
+exemplu, dacă am rulat o comandă fără \cmd{sudo}, așa cum este cazul liniilor \texttt{1-5} din \labelindexref{Listing}{lst:cli:use-history}. Mai general putem folosi comenzi precum \texttt{!-3} sau \texttt{!-2} ca să accesăm a \texttt{N}-a comandă anterioară din istoric; de exemplu, linia \texttt{7} din \labelindexref{Listing}{lst:cli:use-history} refolosește a \texttt{13}-a comandă anterioară din istoricul de comenzi.
 
-Mai adesea însă folosim funcționalitatea de căutare înapoi (\textit{reverse search}) în
-istoricul unei comenzi. Atunci căutăm o comandă anterioară, prezentă la un
+Mai adesea, însă, folosim funcționalitatea de căutare înapoi (\textit{reverse search}) în
+istoricul comenzilor. Atunci căutăm o comandă anterioară, prezentă la un
 moment dat în istoric, pe care o putem rula din nou sau edita pentru o nouă
 rulare. Ca să folosim căutarea înapoi în istoric, tastăm \texttt{Ctrl+r}. În acel moment se
 schimbă promptul shellului și putem introduce un șir de caractere. În momentul introducerii șirului, pe măsură ce tastăm, shellul va face căutare
 înapoi și va face match pe acele comenzi care corespund; este cazul liniei \texttt{11} din \labelindexref{Figura}{lst:cli:use-history}. Putem să și ștergem din
-șir dacă dorim. Nu se face match pe începutul comenzii ci pe orice subșir din
-comandă. Dacă mai multe comenzi fac match, putem apăsa în continuare \texttt{Ctrl+r}
-pentru a găsi match-ul rămas. Apoi dacă apăsăm pe taste precum săgeți sau combinații de taste pentru editare
+șir dacă dorim. Nu se face match doar pe începutul comenzii, ci pe orice subșir din
+comandă. Dacă există mai multe comenzi care conțin subșirul introdus, putem apăsa în continuare \texttt{Ctrl+r}
+pentru a găsi comanda căutată. Apoi, dacă apăsăm pe taste precum săgeți sau combinații de taste pentru editare
 se revine în modul normal de lucru, se părăsește modul de căutare înapoi.
 
 Facilitatea de căutare înapoi este, din nou, esențială pentru folosirea
@@ -154,7 +154,7 @@ indispensabile unui utilizator productiv în shell.
 După ce am generat în shell o comandă (folosindu-ne și de facilități de
 completare a comenzii) sau după ce am regăsit o comandă în istoricul
 shellului, de multe ori va trebui să o modificăm. Poate un parametru este
-greșit, poate vrem să schimbăm comanda dar să păstrăm parametru, poate am avem
+greșit, poate vrem să schimbăm comanda dar să păstrăm parametrul, poate avem
 un cuvânt sau o parte a unei căi în plus.
 
 În mod simplist, editarea unei comenzi se face parcurgând comanda cu tastele
@@ -167,7 +167,7 @@ shell. Aceste combinații de taste au două avantaje:
 
 \begin{enumerate}
 	\item Nu îndepărtează degetele de pe tastele comune, așa cum le
-          îndepărtăm când folosim taste săgeți, \texttt{Home}, \texttt{End}.
+          îndepărtăm atunci când folosim tastele săgeți, \texttt{Home}, \texttt{End}.
 	\item Permit editări mai rapide și mai complexe ale comenzii.
 \end{enumerate}
 
@@ -199,17 +199,17 @@ shell. Aceste combinații de taste au două avantaje:
         \texttt{Ctrl+e} &
         plasarea cursorului de editare la sfârșitul comenzii \\
 
-        \texttt{Ctrl+u} &
-        ștergerea din poziția curentă până la începutul comenzii \\
-
-        \texttt{Ctrl+k} &
-        ștergerea din poziția curentă până la sfârșitul comenzii \\
-
         \texttt{Alt+b} &
         plasarea cursorului un cuvânt înapoi \\
 
         \texttt{Alt+f} &
         plasarea cursorului un cuvânt înainte \\
+
+        \texttt{Ctrl+u} &
+        ștergerea din poziția curentă până la începutul comenzii \\
+
+        \texttt{Ctrl+k} &
+        ștergerea din poziția curentă până la sfârșitul comenzii \\
 
         \texttt{Ctrl+d} &
         ștergerea literei de sub cursor (echivalent \texttt{Delete}) \\
@@ -256,7 +256,7 @@ utilizator, adică a comenzilor și parametrilor ei. Biblioteca permite asociere
 
 O listă exhaustivă a comenzilor Readline și a combinației de taste (numită
 \textit{keybinding}) găsiți în documentația bibliotecii Readline (online~\footnote{\url{https://tiswww.case.edu/php/chet/readline/readline.html\#SEC3}} sau pagina de
-manual) sau a shellului Bash (online~\footnote{\url{https://www.gnu.org/software/bash/manual/html\_node/Readline-Interaction.html\#Readline-Interaction}} sau pagina de manual). Pentru accesarea
+manual) sau shellului Bash (online~\footnote{\url{https://www.gnu.org/software/bash/manual/html\_node/Readline-Interaction.html\#Readline-Interaction}} sau pagina de manual). Pentru accesarea
 paginilor de manual folosiți comenzile din \labelindexref{Listing}{lst:cli:man-readline}. Pentru a localiza comabinațiile de taste, căutați șirul \textit{EDITING COMMANDS}, respectiv șirul \textit{Command Names} în pagina de manual pentru \texttt{readline} și \texttt{bash}.
 
 \begin{screen}[caption={Documentație pentru combinațiile de taste din shell (prin Readline)},label={lst:cli:man-readline}]
@@ -271,16 +271,16 @@ student@uso:~$ man bash
 \label{sec:cli:shell:working}
 
 Așa cum am indicat mai sus, shellul primește de la utilizator, prin intermediul terminalului, un șir de caractere pe care îl interpretează ca fiind o
-comandă și argumentele acesteia. Separatorul este spațiu.
+comandă și argumentele acesteia. Acestea sunt separate prin caracterul spațiu.
 
-O dată obținută comanda, shellul va trebui să execute acțiunea aferentă acelei
+Odată obținută comanda, shellul va trebui să execute acțiunea aferentă acelei
 comenzi. Pentru acesta, în mod uzual, găsește un fișier executabil aferent
-comenzii și creează un proces din acel fișier. De exemplu, pentru comanda ls
+comenzii și creează un proces din acel fișier. De exemplu, pentru comanda \cmd{ls}
 fișierul executabil este \file{/bin/ls}, pentru comanda \cmd{sudo}, fișierul executabil este
 \file{/usr/bin/sudo}.
 
 Pentru localizarea fișierului executabil aferent unei comenzi, shellul
-folosește de variabila de mediu \texttt{PATH}.
+folosește variabila de mediu \texttt{PATH}.
 
 \subsubsection{Variabila de mediu PATH}
 \label{sec:cli:shell:working:path}
@@ -301,19 +301,19 @@ student@uso:~$ echo $PATH
 Variabila \texttt{PATH} conține directoarele în care sunt căutate fișiere executabile
 pentru o comandă, separate prin \texttt{:} (două puncte). Shellul va prefixa, în ordine, numele
 comenzii cu numele fiecărui director din variabila \texttt{PATH} și va verifica existența
-unui fișier cu acel nume. Dacă există, va crea un executabil din acel
+unui fișier cu acel nume. Dacă există, va crea un proces din acel
 executabil, altfel trece la următorul director. Astfel, în cazul comenzii \cmd{ls},
 dacă valoarea variabilei \texttt{PATH} e cea din exemplu de mai sus, se caută, pe rând
 existența fișierelor executabile \file{/usr/local/sbin/ls}, \file{/usr/local/bin/ls}, \file{/usr/sbin/ls} și așa mai departe.
 
-Dacă nu găsește nici un fișier executabil, se afișează mesaj de eroare ca în \labelindexref{Listing}{lst:cli:path-error}.
+Dacă nu găsește nici un fișier executabil, se afișează un mesaj de eroare ca în \labelindexref{Listing}{lst:cli:path-error}.
 
 \begin{screen}[caption={Eroare localizare fișier executabil},label={lst:cli:path-error}]
 student@uso:~$ dg
 dg: command not found
 \end{screen}
 
-O dată identificat fișierul executabil aferent comenzii, shellul creează un proces
+Odată identificat fișierul executabil aferent comenzii, shellul creează un proces
 din acel executabil.
 
 Dacă se transmite comanda prin cale (absolută sau relativă), nu se mai caută în
@@ -322,7 +322,7 @@ Dacă se transmite comanda prin cale (absolută sau relativă), nu se mai caută
 Directorul curent este absent din \texttt{PATH,} de aceea trebuie să rulăm explicit un
 executabil \texttt{./nume\_executabil}.
 
-Pentru a afla fără a rula care este fișierul executabil aferente unei comenzi
+Pentru a afla, fără a rula, care este fișierul executabil aferente unei comenzi
 folosim comanda \cmd{which} ca în \labelindexref{Listing}{lst:cli:which}.
 
 \begin{screen}[caption={Aflarea executabilului unei comenzi (which)},label={lst:cli:which}]
@@ -350,7 +350,7 @@ parametru.
 
 Astfel când shellul primește comanda \cmd{ls} și identifică executabilul \file{/bin/ls}, va
 crea un proces copil identic (tot shell) folosind \texttt{fork()} și apoi va înlocui
-imagina de executabil cu \file{/bin/ls} folosind \cmd{exec} așa cum am prezentat în \labelindexref{Figura}{fig:process:create}.
+imagina de executabil cu \file{/bin/ls} folosind \texttt{exec()} așa cum am prezentat în \labelindexref{Figura}{fig:process:create}.
 
 Procesul nou creat are ca proces părinte shellul. De exemplu, dacă într-un
 shell rulăm comanda \cmd{sleep 100} care nu face nimic timp de \texttt{100} de secunde, iar în
@@ -383,6 +383,8 @@ rulăm comanda în background cu ajutorul operatorului \texttt{\&}, așa cum am 
 După ce procesul se încheie, shellul se deblochează. În
 acest moment shellul reține codul de ieșire (\textit{exit code}) al procesului creat.
 Acest cod poate fi afișat cu ajutorul construcției \texttt{\$?}.
+Un cod de ieșire cu valoarea \texttt{0} înseamnă că procesul și-a încheiat execuția cu succes.
+Un cod de ieșire cu altă valoare înseamnă că procesul și-a încheiat execuția cu eroare.
 
 \subsection{Comenzi interne și comenzi externe}
 \label{sec:cli:shell:command-types}
@@ -393,7 +395,7 @@ executabil aferent acelei comenzi. Numim aceste comenzi comenzi externe,
 
 Din rațiuni de viteză și pentru că nu ar fi posibil altfel, unele comenzi sunt
 implementate la nivelul shellului. Adică rularea acelei comenzi nu conduce la
-crearea unui proces nou dintr-un executabil ci duce la rularea unei componente
+crearea unui proces nou dintr-un executabil, ci duce la rularea unei componente
 de program din procesul shell curent. Aceste comenzi sunt numite comenzi interne
 sau \textit{shell builtins}.
 
@@ -446,7 +448,7 @@ externe.
 \end{table}
 
 Pentru a identifica rapid tipul unei comenzi, se poate folosi comanda \cmd{which}
-pentru a vedea dacă pentru o comandă are un fișier executabil. Mai robust de
+pentru a vedea dacă comanda are un fișier executabil asociat. Mai robust de
 folosit este, însă, comanda \cmd{type}, așa cum este folosită în \labelindexref{Listing}{lst:cli:type}.
 
 \begin{screen}[caption={Tipul unei comenzi (type)},label={lst:cli:type}]
@@ -551,7 +553,7 @@ Alți parametri speciali sunt folosiți în special în shell scripting și vor 
 prezentați în \labelindexref{Secțiunea}{sec:auto:script-func:vars}.
 
 Shellul Bash are o serie de variabile predefinite, care au roluri specifice în
-funcționarea shellului; o parte indicate în \labelindexref{Tabelul}{tab:cli:shell-vars}.
+funcționarea shellului; o parte sunt indicate în \labelindexref{Tabelul}{tab:cli:shell-vars}.
 
 \begin{table}[!htb]
   \caption{Variabile predefinite Bash}
@@ -607,6 +609,8 @@ HOSTTYPE=x86_64
 
 Pentru a inițializa o variabilă oarecare în shell folosim o construcție de forma
 \texttt{nume=valoare} ca în exemplele din \labelindexref{Listing}{lst:cli:init-var}.
+Atenție, între \texttt{nume}, \texttt{=} și \texttt{valoare} nu poate exista caracterul spațiu, deoarece acesta este separatorul shellului.
+O construcție de forma \texttt{nume = valoare} va fi interpretată de către shell ca "rulează comanda \texttt{nume} cu argumentele \texttt{= valoare}".
 
 \begin{screen}[caption={Inițializarea variabilelor în shell},label={lst:cli:init-var}]
 student@uso:~$ config=/etc/nsswitch.conf
@@ -647,7 +651,7 @@ declare -x LANG="en_US.UTF-8"
 [...]
 \end{screen}
 
-Pentru a defini o variabilă ca variabilă de mediu folosim comanda \cmd{export} ca în \labelindexref{Listing}{lst:cli:export}.
+Pentru a defini o variabilă de mediu folosim comanda \cmd{export} ca în \labelindexref{Listing}{lst:cli:export}.
 
 \begin{screen}[caption={Definirea unei variabile de mediu},label={lst:cli:export}]
 student@uso:~$ config=/etc/nsswitch.conf
@@ -675,8 +679,8 @@ vm-actions-log.txt
 
 În folosirea variabilelor e de avut în vedere ce variabile există deja și care este rolul lor. Pentru aceasta putem afișa toate variabilele, inclusiv cele de mediu, folosind comanda \cmd{declare} ca în \labelindexref{Listing}{lst:cli:print-vars}.
 
-În general, marcăm o variabilă ca variabilă mediu atunci când dorim ca această să fie moștenită și vizibilă în alt proces. Altfel, dacă dorim să afecteze doar procesul shell, poate fi definită ca variabilă simplă. Dacă dorim ca o variabilă să afecteze un proces, nu este neapărat nevoie să o marcăm ca variabilă de mediu. O variabilă poate fi folosită pentru a porni un program și afectează doar rularea acelui program. De exemplu în folosirea clientului Bittorrent în linia
-de comandă \cmd{transmission-cli}, putem folosi o comandă precum cea din \labelindexref{Listing}{lst:cli:transmission-cli}. Adică prefixând rularea comenzii cu definirea unei variabile, vom crea un proces care va avea acea variabilă definită pe parcursul rulării sale; la încheierea rulării procesului, variabila nu mai există.
+În general, marcăm o variabilă ca variabilă mediu atunci când dorim ca această să fie moștenită și vizibilă în alt proces. Altfel, dacă dorim să afecteze doar procesul shell curent, poate fi definită ca variabilă simplă. Dacă dorim ca o variabilă să afecteze un proces, nu este neapărat nevoie să o marcăm ca variabilă de mediu. O variabilă poate fi folosită pentru a porni un program și afectează doar rularea acelui program. De exemplu în folosirea clientului Bittorrent în linia
+de comandă \cmd{transmission-cli}, putem folosi o comandă precum cea din \labelindexref{Listing}{lst:cli:transmission-cli}. Prefixând rularea comenzii cu definirea unei variabile, vom crea un proces care va avea acea variabilă definită pe parcursul rulării sale; la încheierea rulării procesului, variabila nu mai există.
 
 \begin{screen}[caption={Folosirea unei variabile pentru a afecta funcțîonarea unui program},label={lst:cli:transmission-cli}]
 student@uso:~$ TR_DEBUG=1 transmission-cli
@@ -689,7 +693,7 @@ Un shell primește la intrare comenzi care pot cuprinde parametri, operatori și
 multe tipuri, detaliate în documentația Bash~\footnote{\url{https://www.gnu.org/software/bash/manual/html\_node/Shell-Expansions.html\#Shell-Expansions}}. În \labelindexref{Listing}{lst:cli:expansion} sunt prezentate exemple de comenzi cu cele mai
 importante forme de expandare:
 \begin{itemize}
-  \item Liniile \texttt{1-2} prezintă expandarea cu tildă. Expandarea caracterului \texttt{$\sim$} (tildă) este folosită pentru expandarea directorului home. Caracterul tildă este înlocuită cu valoarea variabilei \texttt{HOME} a shellului curent.
+  \item Liniile \texttt{1-2} prezintă expandarea cu tildă. Expandarea caracterului \texttt{$\sim$} (tildă) este folosită pentru expandarea directorului home. Caracterul tildă este înlocuit cu valoarea variabilei \texttt{HOME} a shellului curent.
   \item Liniile \texttt{4-12} prezintă expandarea cu acolade.
 Expandarea de acolade înseamnă trecerea prin mai multe opțiuni.
   \item Liniile \texttt{14-19} prezintă expandarea unei variabile, caz de expandare parametrică. În cazul simplu se folosește doar caracterul \texttt{\$} (\textit{dollar}). Altfel folosim construcții care încep cu \texttt{\$\{} (dolar-acoladă), ca să fie clar care este numele variabile.
@@ -802,7 +806,7 @@ Globbing folosește de regulă caractere speciale, așa cum sunt indicate în co
         se potrivește cu orice caracter de oricâte ori \\
 
         \verb|[...]| &
-        se potrivește cu setul de caractere dintre parantezele drepte \\
+        se potrivește cu orice caracter din setul de caractere dintre parantezele drepte \\
 
       \bottomrule
     \end{tabular}
@@ -817,7 +821,7 @@ sunt frecvent folosite în operațiile cu sistemul de fișiere.
 \label{sec:cli:shell-func:expansion:commands}
 
 O situație întâlnită frecvent este folosirea outputului unei comenzi ca
-parametru al unei alte comenzi sau ca să reținem într-o variabilă. De exemplu,
+parametru al unei alte comenzi sau reținerea acestuia într-o variabilă. De exemplu,
 atunci când vrem să reținem într-o variabilă numărul de procese ale unui utilizator. În acest caz folosim expandarea comenzilor ca în \labelindexref{Listing}{lst:cli:comm-expansion}.
 
 \begin{screen}[caption={Expandarea comenzilor},label={lst:cli:comm-expansion}]
@@ -832,10 +836,10 @@ student@uso:~/uso.git$ echo $num_proc
 \subsection{Escaping}
 \label{sec:cli:shell-func:escaping}
 
-După cum am văzut shellul folosește caractere cu roluri dedicate în rularea sa:
+După cum am văzut, shellul folosește caractere cu roluri dedicate în rularea sa:
 separare de comenzi și parametri, operatori, expandare. Le numim \textit{metacaractere}. Aceste metacaractere pot
 fi însă parte a unor nume de parametri primiți de comenzi. De exemplu, în \labelindexref{Listing}{lst:cli:space-error} avem
-fișierul \file{USO - Curs 07.pdf} dar comanda rezultă în eroare. Acest lucru se întâmplă deoarece shellul interpretează intrarea primită ca fiind o comandă și 3 parametri. Caracterul spațiu (\textit{blank}) este un metacaracter în shell.
+fișierul \file{USO - Curs 07.pdf} dar comanda rezultă în eroare. Acest lucru se întâmplă deoarece shellul interpretează intrarea primită ca fiind o comandă și trei parametri. Caracterul spațiu (\textit{blank}) este un metacaracter în shell.
 
 \begin{screen}[caption={Caracterul spațiu în numele unui fișier},label={lst:cli:space-error}]
 student@uso:~/uso.git$ ls USO - Curs 07.pdf
@@ -868,7 +872,7 @@ student@uso:~/uso.git$ ls USO\ -\ Curs\ 07.pdf
 'USO - Curs 07.pdf'
 \end{screen}
 
-Fiecare formă poate fi la rândul său folosită pentru a escapa celelalte forme, așa cum apare în \labelindexref{Listing}{lst:cli:escaping-create}. Este similar cu escaping-ul ghilimelelor într-un șir dintr-un limbaj de programare (precum C sau Python)
+Fiecare formă poate fi la rândul său folosită pentru a escapa celelalte forme, așa cum apare în \labelindexref{Listing}{lst:cli:escaping-create}. Este similar cu escapingul ghilimelelor într-un șir dintr-un limbaj de programare (precum C sau Python)
 
 \begin{screen}[caption={Forme de escaping în shell},escapechar=,label={lst:cli:escaping-create}]
 student@uso:~/test$ touch "ana'are'mere"
@@ -945,7 +949,7 @@ export PROMPT_DIRTRIM=3
 export LC_COLLATE=POSIX
 \end{screen}
 
-La închiderea unei sesiuni de shell aceasta interpretează fișierul \file{$\sim$/.bash\_logout}.
+La închiderea unei sesiuni de shell acesta interpretează fișierul \file{$\sim$/.bash\_logout}.
 
 \subsection{Personalizarea promptului}
 \label{sec:cli:shell-start:prompt}
@@ -955,12 +959,16 @@ Personalizarea acestuia poate înseamna personalizarea conținutului sau a
 aspectului (culorilor).
 
 Promptul afișat de shellul Bash este definit de variabila \texttt{PS1}. De exemplu pe
-mașina virtuală USO promptul arată ca în liniile TODO din \labelindexref{Listing}{lst:cli:custom-prompt} cu valoarea \texttt{PS1} cea indicată. Liniile TODO-TODO conțin exemple de prompt-uri personalizate prin modificarea variabilei \texttt{PS1}.
+mașina virtuală USO promptul arată ca în liniile \texttt{1-2} din \labelindexref{Listing}{lst:cli:custom-prompt} cu valoarea \texttt{PS1} cea indicată. Liniile \texttt{4-7} conțin exemple de prompt-uri personalizate prin modificarea variabilei \texttt{PS1}.
 
 \begin{screen}[caption={Personalizarea prompt-ului},label={lst:cli:custom-prompt}]
 student@uso:~$
 student@uso:~$ echo $PS1
 ${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$
+student@uso:[23:00:06]:~$ echo $PS1
+${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:[\t]:\[\033[01;34m\]\w\[\033[00m\]\$
+student@uso:[11:02 PM]:~$ echo $PS1
+${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:[\@]:\[\033[01;34m\]\w\[\033[00m\]\$
 \end{screen}
 
 Conținutul promptului din variabila \texttt{PS1} reprezintă elemente care sunt apoi
@@ -988,7 +996,10 @@ interpretate de shell, precum cele din \labelindexref{Tabelul}{tab:cli:prompt}.
         caracterul dollar \\
 
         \verb|\t| &
-        data curentă \\
+        data curentă, în format 24H \\
+
+        \verb|\@| &
+        data curentă, în format 12H, urmată de AM / PM \\
 
         \verb|\[\033[COLORm\]| &
         schimbarea culorii textului din prompt \\
@@ -1017,7 +1028,7 @@ folosim multiplexoare de terminal precum \cmd{screen}, \cmd{tmux} pe care le-am 
 Multiplexoarele de terminal sunt utile în situația în care vrem să rulăm
 aplicații interactive și apoi să ne detașăm de la terminal.
 
-\cmd{tmux}, \cmd{byobu} și \cmd{screen} au fișiere de configurare specifice în care pot configura
+\cmd{tmux}, \cmd{byobu} și \cmd{screen} au fișiere de configurare specifice în care putem configura
 aspectul terminalului, combinații de taste și au facilități dedicate, precum
 salvarea sesiunii curente și restaurarea acesteia la alt moment de timp, detaliate în \labelindexref{Tabelul}{tab:process:tmux-screen-byobu}.
 
@@ -1035,7 +1046,7 @@ folosită pentru a îngloba reprezentarea mai multor șiruri. De exemplu expresi
 
 Expresiile regulate sunt prezente în majoritatea limbajelor, într-o formă sau
 alta: Python, Perl, PHP, Ruby, JavaScript, în biblioteci C. În shell, utilitare specializate folosesc expresii regulate, cel mai cunoscut fiind \cmd{grep}; \cmd{grep}
-extrage linii de conțin o anumită expresie regulată, ca în \labelindexref{Listing}{lst:cli:grep}.
+extrage linii ce conțin o anumită expresie regulată, ca în \labelindexref{Listing}{lst:cli:grep}.
 
 \begin{screen}[caption={Expresii regulate în grep},label={lst:cli:grep}]
 student@uso:~$ grep printf /usr/include/stdio.h
@@ -1055,7 +1066,7 @@ student   1224  1222  0 Oct01 tty1     00:00:00 /usr/lib/xorg/Xorg vt1 -displayf
 [...]
 \end{screen}
 
-Expresiile regulate conțin metacaractere prezentate în \labelindexref{Tabelul}{tab:cli:regex-chars}.
+Expresiile regulate pot conține unul sau mai multe dintre metacaracterele prezentate în \labelindexref{Tabelul}{tab:cli:regex-chars}.
 
 \begin{table}[!htb]
   \caption{Metacaractere în expresii regulate}
@@ -1084,7 +1095,7 @@ Expresiile regulate conțin metacaractere prezentate în \labelindexref{Tabelul}
         sfârșit de linie \\
 
         \verb|[...]| &
-        un set de caractere \\
+        orice caracter din setul de caractere dintre parantezele drepte \\
 
         \texttt{\textbackslash{}} &
         escaping \\
@@ -1113,7 +1124,7 @@ Dacă dorim să folosim într-o expresie regulată un metacaracter în sensul s�
         \verb|[A-Z][a-z]+ [A-Z][a-z]+| &
         prenume și nume \\
 
-        \verb|[a-zA-Z_][a-zA-Z_0-9]| &
+        \verb|[a-zA-Z_][a-zA-Z_0-9]*| &
         nume de variabilă \\
 
         \verb|[0-9]{10}| &
@@ -1165,7 +1176,7 @@ numim \textbf{filtre de text}. Un filtru de text primește la intrare text, îl 
 \subsection{Generatoare de text}
 \label{sec:cli:basic-proc:gen}
 
-Exemple de generatoare text sunt \cmd{ps}, \cmd{pstree}, \cmd{ls}, \cmd{find}, \cmd{stat}, \cmd{df}, \cmd{lsblk}, \cmd{tree}, \cmd{strace}, \cmd{diff} și în general orice comenzi care afișează informații. Aceste comenzi afișează informații la ieșirea standard. Aceste informații sunt utile fie utilizatorului fie altor comenzi care le pot prelucra, sau amândurora. Spunem, astfel, că generatoarele de comenzi au două scenarii de utilizare:
+Exemple de generatoare text sunt \cmd{ps}, \cmd{pstree}, \cmd{ls}, \cmd{find}, \cmd{stat}, \cmd{df}, \cmd{lsblk}, \cmd{tree}, \cmd{strace}, \cmd{diff} și în general orice comenzi care afișează informații. Aceste comenzi afișează informații la ieșirea standard. Aceste informații sunt utile fie utilizatorului, fie altor comenzi care le pot prelucra, sau amândurora. Spunem, astfel, că generatoarele de comenzi au două scenarii de utilizare:
 
 \begin{enumerate}
   \item rezultatul rulării este util în special utilizatorului
@@ -1174,7 +1185,7 @@ Exemple de generatoare text sunt \cmd{ps}, \cmd{pstree}, \cmd{ls}, \cmd{find}, \
 
 În scenariile de utilizare, dacă dorim ca rezultatul unei comenzi să fie prelucrat, vom prefera a
 doua categorie de utilitare. Atunci când construim one-linere sau când folosim
-scripturi, în general e recomandat să fie folosită a doua categorie de
+scripturi, în general este recomandat să fie folosită a doua categorie de
 generatoare.
 
 \subsubsection{Prelucratoare de text}
@@ -1409,20 +1420,20 @@ de
 pui
 \end{screen}
 
-În forma sa cea mai simplă, din linia 1, utilitarul înlocuiește o secvență cu altă secvență. Caracterul \texttt{s} înseamnă \textit{substitute}. Utilitarul \texttt{sed} are în spate un limbaj de programare și are și alte comenzi în afară de substituire, precum comanda \texttt{p} (\textit{print}), pentru afișare, sau comanda \texttt{d} (\textit{delete}) pentru ștergere.
+În forma sa cea mai simplă, din linia \texttt{1}, utilitarul înlocuiește o secvență cu altă secvență. Caracterul \texttt{s} înseamnă \textit{substitute}. Utilitarul \texttt{sed} are în spate un limbaj de programare și are și alte comenzi în afară de substituire, precum comanda \texttt{p} (\textit{print}), pentru afișare, sau comanda \texttt{d} (\textit{delete}) pentru ștergere.
 
 Interesante sunt de parcurs sed oneliners~\footnote{\url{http://sed.sourceforge.net/sed1line.txt}}. Și mai interesant e de parcurs sed Sokoban~\footnote{\url{https://github.com/aureliojargas/sokoban.sed/blob/master/sokoban.sed}}.
 
 \subsection{awk}
 \label{sec:cli:advanced:awk}
 
-awk este un esență un limbaj de programare care poate fi folosit ca filtru de
+awk este în esență un limbaj de programare care poate fi folosit ca filtru de
 text. Putem considera awk ca fiind un limbaj intermediar între utilitarele de
 tip filtru de text și un limbaj de programare precum Perl sau Python. Dacă dorim
 să facem prelucrări text fără a intra într-un limbaj de programare complet
 precum Perl sau Python vom folosi awk.
 
-În forma sa simplă un one-liner awk are forma din \labelindexref{Listing}{lst:cli:awk}, cu utilitatea unui
+În forma sa simplă, un one-liner awk are forma din \labelindexref{Listing}{lst:cli:awk}, cu utilitatea unui
 separator care poate fi o expresie regulată.
 
 \begin{screen}[caption={Folosirea awk},label={lst:cli:awk}]
@@ -1480,6 +1491,6 @@ Shellul oferă funcționalități precum reverse history search, command complet
 
 Shellul poate fi configurat pentru a eficientiza și personaliza experiența utilizatorului.
 
-Comenzile shell și fișierele din Linux sunt centrate pe folosire textului. Multe
+Comenzile shell și fișierele din Linux sunt centrate pe folosirea textului. Multe
 comenzi sunt filtre de text, comenzi care prelucrează text, la baza prelucrării
 textului stând expresiile regulate.
