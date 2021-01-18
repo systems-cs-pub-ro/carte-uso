@@ -1,0 +1,34 @@
+---
+name: "pre-release"
+
+on:
+  push:
+    - "master"
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    container: sweisz/book-latex-container:1.0
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - run: |
+          cd book; make
+        name: Build book
+      - uses: meeDamian/github-release@2.0
+        name: Deploy book
+        with:
+          token: ${{ secrets.ACCESS_TOKEN }}
+          tag: latest
+          name: Development build
+          allow_override: true
+          prerelease: true
+          gzip: false
+          body: >
+            Aceasta este varianta electronică a cărții "Utilizarea sistemelor de
+            operare". Mai jos găsiți fișierul PDF, sursele LaTeX și
+            codul sursă de suport al cărții.
+
+            Mulțumim că o citiți. Sperăm să o găsiți utilă.
+          files: >
+            uso.pdf:book/uso.pdf
