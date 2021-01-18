@@ -424,7 +424,7 @@ O problemă poate apărea dacă doi utilizatori doresc să citească sau să mod
 
 Pentru a afișa directorul curent folosim comand \cmd{pwd} (\textit{print working directory}). De asemenea, dacă nu s-au efectuat manual schimbări asupra prompt-ului bash, aceste va afișa implict directorul în care ne aflăm. Dacă dorim să ne mutăm în alt director, vom folosi comanda \cmd{cd $<$cale$>$}. Comanda \cmd{cd} are ca parametru o cale absolută sau relativă către destinația în care vrem să ajungem.
 
-Urmărim cum funcționează cele două comenzi -- \cmd{pwd} și \cmd{cd} -- în \labelindexref{Listing}{lst:fs:pwd-cd}. Vedem cum se modifică prompt-ul shell-ului atunci când schimbăm directorul curent.  tunci când schimbăm directorul,
+Urmărim cum funcționează cele două comenzi -- \cmd{pwd} și \cmd{cd} -- în \labelindexref{Listing}{lst:fs:pwd-cd}. Vedem cum se modifică prompt-ul shellului atunci când schimbăm directorul curent. Atunci când schimbăm directorul,
 
 \begin{screen}[caption={Schimbarea directorului curent},label={lst:fs:pwd-cd}]
 student@uso:~$ pwd
@@ -612,7 +612,7 @@ Comanda \cmd{less} are o interfață asemănătoare cu cea a editorului \cmd{vim
 \subsection{Crearea fișierelor/directoarelor}
 \label{sec:fs:file-create}
 
-Pentru a crea un fișier gol, avem două metode. Prima metoda este utilizarea comenzii \cmd{touch $<$nume fișier$>$}, iar a doua se bazează pe o funcționalitate a shell-ului numită redirectare în fișier, ca în \labelindexref{Listing}{lst:fs:create-file}, cu următoarele explicații:
+Pentru a crea un fișier gol, avem două metode. Prima metoda este utilizarea comenzii \cmd{touch $<$nume fișier$>$}, iar a doua se bazează pe o funcționalitate a shellului numită redirectare în fișier, ca în \labelindexref{Listing}{lst:fs:create-file}, cu următoarele explicații:
 \begin{itemize}
   \item comanda de la linia 1 folosește prima metodă; creează un fișier gol cu numele \file{cats.txt} în directorul curent
   \item comanda de la linia 2 folosește a doua metodă; redirectează (\texttt{>}) ieșirea unei comenzi nule într-un fișier, ducând la trunchierea fișierului, dacă există, sau, în cazul nostru, ducând la crearea fișierului gol \file{dogs.txt}
@@ -1322,7 +1322,7 @@ Atunci când alegem un sistem de fișiere, criteriile cele mai căutate sunt:
   \midrule
     \cmd{vim} & \cmd{edit} & editează un fișier text \\
   \midrule
-    \cmd{exit} & \cmd{exit} & închide shell-ul curent \\
+    \cmd{exit} & \cmd{exit} & închide shellul curent \\
   \midrule
     \cmd{diff} & \cmd{fc} & compară două fișiere și afișează diferențele între ele \\
   \midrule
