@@ -20,7 +20,7 @@ general, de dispozitiv de stocare.
 Dispozitivele de stocare au ca principal
 dezavantaj viteza de operare, de aceea nu le folosim direct în relația cu
 unitatea de procesare (datele trec prin memorie înainte de a ajunge la
-procesor). Un alt dezavantaj al dispozitivelor de stocare îl reprezintă modul
+procesor). Un alt dezavantaj al dispozitivelor de stocare îl reprezintă
 modul de organizare a datelor pe acesta: capacitatea este net superioară
 comparativ cu a unei memorii (gigabytes vs. terabytes/petabytes) iar o adresare
 liniară, ca în cazul memoriei, nu ar fi posibilă. În cadrul acestui capitol vom
@@ -118,7 +118,7 @@ interfețe de conectare:
 
 \begin{itemize}
 	\item SATA - Serial ATA \abbrev{SATA}{Serial Advanced Technology
-          Attachment} (\textit{Serial Advanced Technology Attachment}
+          Attachment} (\textit{Serial Advanced Technology Attachment})
 	\item SAS - Serial Attached SCSI \abbrev{SAS}{Serial attached SCSI} (sau
           \textit{Serial Attached Small Computer System Interface})
 \end{itemize}
@@ -303,7 +303,7 @@ GPT este asociat în general cu standardul UEFI care dorește înlocuirea
 BIOS în sistemele de calcul, despre care am discutat în \labelindexref{Capitolul}{chapter:boot}. BIOS și UEFI sunt componente low-level care
 se execută la pornirea sistemelor de calcul pentru a realiza testarea și
 inițializarea componentelor. UEFI este un nou standard, menit să înlocuiască
-BIOS pentru a acoperi neajunsurile acestuia
+BIOS pentru a acoperi neajunsurile acestuia.
 
 În \labelindexref{Figura}{fig:storage:gpt} este reprezentată schema de
 partiționare GPT. Se observă asemănarea cu partiționarea de tip MBR: la
@@ -338,7 +338,7 @@ includ:
 	\item Crearea unei partiții pentru utilizatorii sistemului - atunci când
 		reinstalăm sistemul de operare, să putem păstra ușor datele
                 utilizatorilor (pentru Linux este \file{/home}, iar pentru Windows de
-                obicei literele de la file{D:} în sus)
+                obicei literele de la \file{D:} în sus)
 	\item Crearea unei partiții pentru sistemele cu suport EFI/UEFI
           (specific Linux în \file{/boot/efi} și conține fișierele necesare să
 		fie executate la încărcarea sistemului de operare de către
@@ -400,7 +400,7 @@ Mai multe detalii legate de fișiere și directoare (modul în care se creează,
 folosește comandă \cmd{mkfs} urmată de sufixul sistemului de operare dorit și
 partiția dorită (ex. \cmd{mkfs.ext4 /dev/sda2}). \textbf{Atenție}: procesul de
 formatare a unui sistem de fișiere distruge datele prezente pe acea partiție. O
-greșeală frecventă este aplicarea procesului de formatare pe între discul (ex.
+greșeală frecventă este aplicarea procesului de formatare pe întreg discul (ex.
 \cmd{mkfs.ext4 /dev/sda}). Acest lucru va șterge \textbf{toate} partițiile de pe
 acel disc. Un exemplu complet de folosire a utilitarelor de formatare și
 partiționare îl puteți găsi la finalul capitolului, la studii de caz.
@@ -496,7 +496,7 @@ resurse care nu au implementat un mecanism de verificare a integrității; un as
 manual, se poate folosi utilitarul \cmd{fsck}, ca în \labelindexref{Listing}{lst:storage:fsck}.
 Se observă că nu se poate verifica sistemul de fișiere când acesta este deja montat. Vom demonta sistemul de fișiere iar apoi vom verifica integritatea.
 
-\begin{screen}[caption={Veirifcarea integrității sistemului de fișiere},label={lst:storage:fsck}]
+\begin{screen}[caption={Verificarea integrității sistemului de fișiere},label={lst:storage:fsck}]
 student@uso:~$ sudo fsck /dev/sdb2
 fsck from util-linux 2.31.1
 e2fsck 1.44.1 (24-Mar-2018)
@@ -539,7 +539,8 @@ Spunem că discul este un disc virtual.
 
 Pentru a adăuga un disc mașinii virtuale USO și, în general, pentru a adăuga un disc nou unei mașini virtuale VirtualBox, se urmează pașii:
 \begin{enumerate}
-  \item click dreapta pe intrarea mașinii virtuale în VirtualBox și deschiderea meniului contextul
+  \item click dreapta pe intrarea mașinii virtuale în VirtualBox și
+deschiderea meniului contextual
   \item selectarea opțiunii \texttt{Settings} din meniul contextual deschis
   \item în fereastra nou deschisă (\texttt{Settings}), navigarea la intrarea \texttt{Storage}
   \item în noul ecran se folosește iconul \texttt{Adds hard disk} pentru adăugarea unui nou disc la controllerul SATA, ca în \labelindexref{Figura}{fig:storage:vm-new-disk}
@@ -1075,8 +1076,8 @@ controla opțiunile și versiunile replicate. La baza BackupPC stă utilitarul
 În cazul sistemelor Windows, există o multitudine de aplicații de replicare a
 datelor, atât plătite cât și gratuite. Un exemplu îl constituie utilitarul
 Cobian Backup\footnote{\url{http://www.cobiansoft.com/cobianbackup.htm}}. Cu ajutorul
-acestuia putem configura replicarea unui directorul sau a unui disc local pe un
 stick USB sau la distanță peste rețea. În
+acestuia putem configura replicarea unui director sau a unui disc local pe un
 \labelindexref{Figura}{fig:storage:cobian} se află fereastra principală a
 aplicației. În coloana din stânga sunt sarcinile de backup pe care le creați. În
 figură avem o sarcină denumită \textit{Backup D}, care va face replicarea
@@ -1131,9 +1132,9 @@ sd 5:0:0:0: [sdb] Assuming drive cache: write through
 sd 5:0:0:0: [sdb] Attached SCSI removable disk
 \end{screen}
 
-Stickurile USB sunt, în general, montat automat de sistemul de operare.
 În Linux, montarea se face în general în subdirectoare din \texttt{/media}.
 Dacă nu, atunci folosim utilitarul \file{mount} pentru a monta discul USB (ex. \file{/dev/sdb}) într-un punct de montare la alegerea noastră.
+Stickurile USB sunt, în general, montate automat de sistemul de operare.
 
 Deseori companiile care produc software ne pun la dispoziție produsele sub
 forma unui fișier cu extensia \texttt{.iso} destinat scrierii pe un CD/DVD.
@@ -1195,7 +1196,7 @@ Astfel de fișiere sunt folosite ca discuri pentru mașina virtuală, cum este c
 Pașii pe care îi vom urma sunt prezentați în \labelindexref{Listing}{lst:storage:disk-in-file}:
 \begin{enumerate}
   \item crearea discului - folosind utilitarul \cmd{dd} (liniile 1-4)
-  \item formatarea discului - folosind utilitarul \cmd{mkfs.ext4} (liniile
+  \item formatarea discului - folosind utilitarul \cmd{mkfs.ext4} (liniile 5-17)
   \item montarea discului - folosind utilitarul \cmd{mount} (liniile 18-19)
   \item verificarea montării (liniile 20-24)
 \end{enumerate}
@@ -1245,7 +1246,7 @@ Procesul de partiționare se poate aplica doar asupra unui disc fizic. Dacă în
 sistem sunt montate două discuri, pentru fiecare din acestea trebuie realizată
 partiționarea. În sisteme de tip Linux, pentru a rezolva acest neajuns, a fost
 introdus conceptul de LVM \abbrev{LVM}{Logical Volume Manager} (\textit{Logical Volume
-Manager}. În cadrul acestuia există următoarele obiecte:
+Manager}). În cadrul acestuia există următoarele obiecte:
 
 \begin{itemize}
   \item \textit{Physical Volume} - sunt discurile fizice alte sistemului asociate LVM
