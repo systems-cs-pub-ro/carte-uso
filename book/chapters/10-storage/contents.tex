@@ -1028,9 +1028,9 @@ două caracteristici principale:
 
 Comanda \cmd{rsync} are opțiuni care controlează atributele
 replicate și are două argumente care specifică sursa și destinația datelor.
-Sursa și destinația datelor poate fi locală, în sistemul de fișiere curent sau
-poate exista peste rețea iar rsync le accesează folosind protocolul SSH. Vom
-apela la un exemplu complex pentru backupul întregului sisteme de fișiere:
+Sursa și destinația datelor poate fi locală, în sistemul de fișiere curent, sau
+poate exista peste rețea, iar rsync le accesează folosind protocolul SSH. Vom
+apela la un exemplu complex pentru backupul întregului sistem de fișiere:
 \begin{screen}
 rsync -aAXv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"} / root@nas:/backup
 \end{screen}
@@ -1074,10 +1074,10 @@ controla opțiunile și versiunile replicate. La baza BackupPC stă utilitarul
 \label{sec:storage:backup:windows}
 
 În cazul sistemelor Windows, există o multitudine de aplicații de replicare a
-datelor, atât plătite cât și gratuite. Un exemplu îl constituie utilitarul
+datelor, atât plătite, cât și gratuite. Un exemplu îl constituie utilitarul
 Cobian Backup\footnote{\url{http://www.cobiansoft.com/cobianbackup.htm}}. Cu ajutorul
-stick USB sau la distanță peste rețea. În
 acestuia putem configura replicarea unui director sau a unui disc local pe un
+stick USB, sau la distanță peste rețea. În
 \labelindexref{Figura}{fig:storage:cobian} se află fereastra principală a
 aplicației. În coloana din stânga sunt sarcinile de backup pe care le creați. În
 figură avem o sarcină denumită \textit{Backup D}, care va face replicarea
