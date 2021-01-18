@@ -603,7 +603,7 @@ stage bootloader} este în MBR, iar \textit{1.5 stage bootloader} este pe disc �
 Acesta, precum și alte module GRUB se află într-un subdirector al \textit{/boot/grub}, \textit{i386-pc} pentru
 platforme BIOS, și \textit{x86_64-efi} sau \textit{i386-efi} pentru platforme UEFI.
 Din acest motiv, se recomandă rezervarea a cel puțin 2MiB intre acestea.
-Dacă sistemul avea instalat și Windows, instalarea GRUB va
+Dacă sistemul are instalat și Windows, instalarea GRUB va
 detecta acest lucru și va configura chainloading pentru a permite bootarea
 Windows. Când folosim UEFI, GRUB va plasa un fișier imagine \texttt{.efi} în
 \file{/efi/boot/bootx64.efi}.
