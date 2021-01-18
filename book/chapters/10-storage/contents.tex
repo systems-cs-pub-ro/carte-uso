@@ -334,7 +334,7 @@ includ:
 		Windows swap-ul este alocat din partiția sistemului de operare)
 	\item Crearea unei partiții pentru sistemul de operare (pentru Linux
           este \file{/}, denumită și partiția rădăcină - \textit{root partition}, iar pentru Windows de obicei este
-                discul \file{C:}).
+                discul \file{C:})
 	\item Crearea unei partiții pentru utilizatorii sistemului - atunci când
 		reinstalăm sistemul de operare, să putem păstra ușor datele
                 utilizatorilor (pentru Linux este \file{/home}, iar pentru Windows de
@@ -381,7 +381,7 @@ Sistemul de fișiere oferă următoarele obiecte vizibile utilizatorului final:
 \begin{itemize}
 	\item fișierul - entitatea care conține date utile în diverse formate
 	\item directorul - entitatea care organizează fișierele într-un formă
-		arborescentă ușor de folosit de către utilizator.
+		arborescentă ușor de folosit de către utilizator
 \end{itemize}
 
 Mai multe detalii legate de fișiere și directoare (modul în care se creează, se
@@ -1039,11 +1039,11 @@ Comanda \cmd{rsync} are opțiunile:
 
 \begin{itemize}
   \item \texttt{a} - modul de arhivare; păstrează și replică toate atributele
-		fișierelor și directoarelor cu excepția linkurilor hard,
+		fișierelor și directoarelor cu excepția link-urilor hard,
                 atributelor extinse și listelor de acces (ACL - \textit{Access Control List})
   \item \texttt{A} - replică listele de acces (ACL)
   \item \texttt{X} - replică atributele extinse
-  \item \texttt{H} - replică linkurile hard
+  \item \texttt{H} - replică link-urile hard
   \item \texttt{-{}-exclude} - se vor exclude din backup căile specificate (toate
 		acele căi nu conțin în mod normal date utile utilizatorului, ci
 		sunt căi virtuale populate la bootare de către sistemul de
