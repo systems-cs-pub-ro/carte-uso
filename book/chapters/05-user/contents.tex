@@ -17,8 +17,7 @@ Sistemele de operare moderne sunt în general multi-utilizator
 (\textit{multi-user}), adică permit existența mai multor conturi de utilizator
 pe un sistem și rularea simultană a mai multor procese aparținând diferiților
 utilizatori. Mai mulți utilizatori pot simultan deschide shelluri locale și rula comenzi
-pe un sistem prin conexiuni de rețea la sistem, precum folosind SSH
-\abbrev{SSH}{Secure shell}, despre care vom discuta în \labelindexref{Capitolul}{chapter:sec}. Un
+pe un sistem prin conexiuni de rețea la sistem, precum folosind SSH\abbrev{SSH}{Secure shell}, despre care vom discuta în \labelindexref{Capitolul}{chapter:sec}. Un
 cont de utilizator este separat de alt cont astfel că procesele unui utilizator
 sunt separate/izolate de procesele altuia, la fel și resursele folosite de procese (precum
 fișierele).
@@ -77,12 +76,12 @@ aplicație.
 \section{Utilizatori de sistem}
 \label{sec:user:system-users}
 
-Așa cum am precizat mai sus conturile de utilizator de sistem sunt folosite
+Așa cum am precizat mai sus, conturile de utilizator de sistem sunt folosite
 pentru a obține acces la resursele gestionate de sistemul de operare. Conturile
 de utilizator permit obținerea unui shell și rularea de comenzi care creează
 procese.
 
-De obicei un sistem de operare oferă un prompt grafic sau text de autentificare
+De obicei, un sistem de operare oferă un prompt grafic sau text de autentificare
 unde vor fi completate numele de utilizator și apoi, uzual, parola.
 
 În momentul autentificării unui utilizator de sistem, acesta are acces complet
@@ -103,7 +102,7 @@ alt utilizator poate avea permisiunea de a instala pachete. Sistemul de operare,
 pe baza unor configurări, permite unui utilizator anumite acțiuni.
 
 În unele sisteme și aplicații există noțiunea de rol. Un utilizator poate avea
-un rol care îi conferă anumite permisiuni. De exemplu, rolul de \texttt{Administrator}
+un rol care îi atribuie anumite permisiuni. De exemplu, rolul de \texttt{Administrator}
 înseamnă, în general, într-o instalare de platformă precum Moodle\footnote{\url{http://www.moodle.org}}, permisiuni complete în cadrul platformei; un rol de
 \texttt{Profesor} înseamnă controlul conținutului cursurilor; un rol de
 \texttt{Student} înseamnă posibilitatea accesării conținutului.
@@ -118,7 +117,7 @@ provoacă vor fi proporționale cu permisiunile utilizatorului.
 Din punctul de vedere al conceptelor de securitate, utilizatorul este un \textbf{agent}
 iar resursele puse la dispoziție de sistem sunt \textbf{obiecte}. \textbf{Politica de securitate}
 (\textit{security policy}) a sistemului precizează permisiunile și dictează ce
-agenți au acces la ce obiecte. În acest context apar adesea termenii de
+agenți au acces la ce obiecte. În acest context, apar adesea termenii de
 \textbf{permisiune} și \textbf{privilegiu}.
 
 \begin{definition}{Permisiuni și privilegii}
@@ -247,7 +246,7 @@ student@uso:~$
 
 Utilitarul \cmd{su} este folosit pentru schimbarea utilizatorului, nu neapărat în
 \texttt{root}. Dacă \cmd{su} nu primește nici un argument sau primește ca argument \texttt{root}, va
-schimba utilizatorul în \texttt{root}. Altfel va schimba în utilizatorul primit ca
+schimba utilizatorul în \texttt{root}. Altfel, va schimba în utilizatorul primit ca
 parametru. Așa cum apare în \labelindexref{Listing}{lst:user:su}, la rularea comenzii \cmd{su} se cere parola noului utilizator; fără
 introducerea parolei acelui utilizator nu se poate schimba utilizatorul.
 
@@ -333,7 +332,7 @@ Exemple de capabilități pe Linux sunt:
 \begin{note}[Documentație despre capabilități]
 Suportul de capabilități este o componentă avansată a sistemului de
 operare, care permite dezvoltatorilor de aplicații configurarea de privilegii
-granulare. Pentru mai multe detalii urmăriți pagina de manual, folosind comanda \cmd{man 7 capabilities}.
+granulare. Pentru mai multe detalii, urmăriți pagina de manual, folosind comanda \cmd{man 7 capabilities}.
 \end{note}
 
 \subsubsection{Utilitarul sudo}
@@ -391,7 +390,7 @@ adăugăm în grupul admin sau în grupul \cmd{sudo}, nu este nevoie de editarea
 fișierului \file{/etc/sudoers}.
 
 \begin{note}[Folosirea contului de root]
-E important când e folosit \texttt{root} si când se obține consolă de \texttt{root} și ce
+E important când e folosit \texttt{root} și când se obține consolă de \texttt{root} și ce
 utilizatori au acces la \cmd{sudo}. Avem grijă când acordăm unui utilizator
 \textit{permisiuni de sudo}, adică posibilitatea de a rula comenzi ca \texttt{root}, lucru care
 poate duce la compromiterea sistemului.
@@ -526,7 +525,7 @@ shell}). Este programul care este rulat în momentul autentificării utilizatoru
 pe un sistem; programul este, de obicei, un shell în linia de comandă.
 
 Pentru gestiunea mai flexibilă a accesului la resurse, \textbf{utilizatorii sunt
-grupați}. Un utilizator face parte din unul sau mai multe grupuri. Astfel că un
+grupați}. Un utilizator face parte din unul sau mai multe grupuri. Astfel că, un
 administrator care dorește ca mai mulți utilizatori să aibă acces la o anumită
 resursă va crea un grup, va adăuga utilizatorii la acel grup și va oferi
 grupului permisiuni asupra resursei respective. Un grup poate conține 0 sau mai
@@ -986,7 +985,7 @@ accesează \textit{Control Panel $\rightarrow$ User Accounts $\rightarrow$ User 
 
 În Linux, modul uzual de gestiune a parolei este prin linia de comandă folosind
 utilitarul \cmd{passwd}. Cu ajutorul utilitarului \cmd{passwd}, un utilizator neprivilegiat
-își poate gestiona parola proprie iar unul privilegiat parola tuturor
+își poate gestiona parola proprie, iar unul privilegiat parola tuturor
 utilizatorilor. Atunci când un utilizator neprivilegiat își gestionează parola
 folosind utilitarul \cmd{passwd} trebuie să introducă parola la promptul afișat. În \labelindexref{Listing}{lst:user:passwd}
 avem exemple de folosire a comenzii \cmd{passwd} pentru gestiunea conturilor.
@@ -1067,7 +1066,7 @@ Pentru o gestiune corespunzătoare a parolelor există următoarele recomandări
 		ușor citite.
         \item Folosiți un utilitar de tipul \textit{password manager} care să rețină
 		parolele și să minimizeze riscul expunerii lor la un atacator.
-		În același timp să ajute să fie accesibile de pe dispozitive
+		În același timp, să ajute să fie accesibile de pe dispozitive
 		multiple.
 \end{itemize}
 
@@ -1116,9 +1115,15 @@ are permisiuni complete.
 
 În general, unui utilizator i se asociază permisiuni pentru o anumită resursă.
 De exemplu, utilizatorul \texttt{ana} poate modifica fișierul \file{note.xls} dacă îi sunt
-asociate permisiuni de modificare a acelui fișier. La nivel conceptual, un agent
-sau un subiect are anumite permisiuni de acces al unei resurse sau un obiect,
+asociate permisiuni de modificare ale acelui fișier. La nivel conceptual, un agent
+sau un subiect are anumite permisiuni de acces al unei resurse sau unui obiect,
 așa cum este descris în \labelindexref{Figura}{fig:user:user-file-perm}.
+
+Schema de mai jos este o schemă generală. În cazul particular al secțiunii
+curente, agentul este utilizatorul, iar resursa este fișierul. Mai precis,
+agentul este un proces aparținând unui utilizator. Spunem că un proces poate
+accesa un anumit fișier dacă utilizatorul căruia aparține procesul are
+permisiunile aferente la acel fișier.
 
 \begin{figure}[htbp]
 	\centering
@@ -1127,12 +1132,6 @@ așa cum este descris în \labelindexref{Figura}{fig:user:user-file-perm}.
         \caption{Utilizatori, fișiere, permisiuni}
         \label{fig:user:user-file-perm}
 \end{figure}
-
-Schema de mai sus este o schemă generală. În cazul particular al secțiunii
-curente, agentul este utilizatorul, iar resursa este fișierul. Mai precis,
-agentul este un proces aparținând unui utilizator. Spunem că un proces poate
-accesa un anumit fișier dacă utilizatorul căruia aparține procesul are
-permisiunile aferente la acel fișier.
 
 În multe dintre sistemele de operare moderne, informațiile despre permisiuni sunt reținute în
 fiecare fișier. În cadrul fișierului se rețin metadate, printre care și
@@ -1155,7 +1154,7 @@ de utilizatori sau grupuri de utilizatori și permisiuni aferente, ca în \label
 \end{figure}
 
 În momentul accesului unui fișier de către un proces, se obține utilizatorul
-căruia aparține procesul. Apoi se caută utilizatorul în lista de acces a
+căruia aparține procesul. Apoi, se caută utilizatorul în lista de acces a
 fișierului. Dacă există și are asociate permisiuni adecvate, atunci se permite
 accesul procesului la fișier. Dacă nu există sau dacă nu are permisiuni, accesul
 nu este permis. De obicei în Windows, există o intrare în lista de acces numită
@@ -1172,11 +1171,10 @@ analizate permisiunile în Windows.
 	\label{fig:user:windows-check-perm}
 \end{figure}
 
-În Windows permisiunile sunt prezente doar pe sistemul de fișiere NTFS
-\abbrev{NTFS}{New Technology File System}, nu și pe FAT32 \abbrev{FAT32}{File
+În Windows permisiunile sunt prezente doar pe sistemul de fișiere NTFS\abbrev{NTFS}{New Technology File System}, nu și pe FAT32\abbrev{FAT32}{File
 Allocation Table 32}. Permisiunile sunt în mod tipic configurate folosind
 interfața grafică: \textit{click dreapta pe fișier $\rightarrow$ Properties $\rightarrow$ Security}, obținând o
-fereastră ca cea din \labelindexref{Figura}{fig:user:windows-permissions}.
+fereastră precum cea din \labelindexref{Figura}{fig:user:windows-permissions}.
 
 \begin{figure}[!htbp]
 	\centering
@@ -1227,7 +1225,7 @@ Permisiunile în Linux sunt, de asemenea, simplificate la 3 tipuri:
 
 \begin{itemize}
   \item \texttt{read} (citire): fișierul poate fi citit, directorul poate fi listat
-  \item \texttt{item} write (scriere): fișierul poate fi modificat, pot fi adăugate /
+  \item \texttt{write} (scriere): fișierul poate fi modificat, pot fi adăugate /
 		șterse intrări în director
   \item \texttt{execute} (execuție): fișierul poate fi executat, directorul poate
 		fi parcurs
@@ -1276,7 +1274,7 @@ Utilizatorul \texttt{corina} încearcă accesarea pentru citire a fișierului fo
                 pentru grup (citire), și atunci comanda \cmd{cat curs.txt} reușește.
 \end{enumerate}
 
-În situația de mai sus dacă am fi rulat o comandă care modifica fișierul
+În situația de mai sus, dacă am fi rulat o comandă care modifica fișierul
 \file{curs.txt}, nu am fi reușit, pentru că permisiunile pentru grup nu includeau
 \textit{scriere}.
 
@@ -1377,7 +1375,7 @@ Astfel, în \labelindexref{Listing}{lst:user:list-perm} avem următoarele:
 	\item nici o permisiune pentru ceilalți
 \end{itemize}
 
-Pentru gestiunea mai rapidă a permisiunilor acestea sunt gestionate în format pe
+Pentru gestiunea mai rapidă a permisiunilor, acestea sunt gestionate în format pe
 biți. Adică fiecare dintre cele nouă caractere de permisiuni ocupă un bit; bitul
 este 1 dacă permisiunea este activă și pe 0 dacă este inactivă. Adică avem
 corespondențe de forma:
