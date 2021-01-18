@@ -106,4 +106,4 @@ Pentru a reveni înapoi la utilizatorul **student** vom folosi comanda ''exit''.
 
 ----
 \\
-Acum o să lucrăm la partea cea mai vizibilă dintr-un sistem de operare: sistemul de fișiere. Adică vom crea, șterge, modifica și afișa fișiere, directoare, link-uri. Să începem!
+Acum o să lucrăm la partea cea mai vizibilă dintr-un sistem de operare: sistemul de fișiere. Adică vom crea, șterge, modifica și afișa fișiere, directoare, linkuri. Să începem!
