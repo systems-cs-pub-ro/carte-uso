@@ -40,7 +40,7 @@ calcul. Orice informație procesată ar trebui stocată persistent pe un
 dispozitiv de stocare, după cum a fost prezentat și în
 \labelindexref{Capitolul}{chapter:hw}.
 
-Componentele hardware de stocare sunt alcătuite
+Dispozitivele hardware de stocare sunt alcătuite
 din două componente: controller și disc. Controllerul este asemenea unei
 unități de procesare din cadrul unui sistem de calcul, dar specializat în
 controlul și managementul unităților de stocare efective (discului). Controllerele au
@@ -53,8 +53,8 @@ anunță unitatea principală de execuție (procesorul). Astfel procesorul nu
 așteaptă după unitățile de stocare, ci execută alte operații relevante în tot
 acest timp.
 
-În \labelindexref{Figura}{fig:storage:concurrent-access} este reprezentat un
-exemplu de transfer de date din Internet în timp de
+În \labelindexref{Figura}{fig:storage:concurrent-access} este prezentat un
+exemplu de transfer de date din Internet în timp ce
 utilizatorul folosește aplicația \textit{Calculator}. Discurile sunt cele ce
 stochează efectiv informația. Luăm ca exemplu aplicațiile Google Drive și
 Dropbox: acestea oferă servicii de stocare a informațiilor pentru utilizatori.
@@ -171,8 +171,8 @@ de interfețe: în stânga sunt interfețe de tip SATA, iar în dreapta de tip S
 O altă clasificare a discurilor este legată de mărimea fizică a acestora:
 
 \begin{itemize}
-  \item 2.5 inch (discurile de deasupra din \labelindexref{Figura}{fig:storage:size-comp})
-  \item 3.5 inch (discurile de dedesubt din \labelindexref{Figura}{fig:storage:size-comp})
+  \item 2.5 inch (discurile din partea de sus din \labelindexref{Figura}{fig:storage:size-comp})
+  \item 3.5 inch (discurile din partea de jos din \labelindexref{Figura}{fig:storage:size-comp})
 \end{itemize}
 
 Discurile de 2.5 inch se folosesc de obicei în sisteme enterprise, unde se
@@ -242,7 +242,7 @@ SSD și HDD. O caracteristică principală a acestora este capacitatea mare de
 stocare (mult mai care decât a memoriei RAM). Așadar o adresare liniară nu este
 suficientă pentru a gestiona spațiul de stocare oferit de un disc. Mai mult, un
 alt motiv este constituit de faptul că administrarea spațiului de stocare este
-făcută de către utilizator; în schimb administrarea zonei de memorie RAM este
+făcută de către utilizator; în schimb gestionarea zonei de memorie RAM este
 făcută de către sistemul de operare. Astfel administrarea spațiului de stocare
 trebuie să fie simplă și facilă.
 
@@ -252,7 +252,7 @@ corupem date). Există două niveluri de administrare: partiționare și sisteme
 fișiere. Aceste niveluri sunt interdependente și se aplică iterativ.
 
 Partiționarea împarte spațiul disponibil în zone continue fizic (numite \textbf{zone contigue}), fiecare zonă
-având un specific definit de la creare (partiție de boot, partiție pentru
+având un specific definit la creare (partiție de boot, partiție pentru
 utilizatori, partiție pentru sistemul de de operare). Există două tipuri de
 partiționări în sistemele din ziua de astăzi, așa cum am prezentat în
 \labelindexref{Capitolul}{chapter:boot}:
@@ -1060,9 +1060,9 @@ Comanda \cmd{rsync} primește următoarele argumente:
 
 
 Dacă rulăm de mai multe ori comanda de mai sus, aceasta va realiza automat
-backup incremental. \texttt{-{}-delete} este un parametru ce nu l-am folosit
+backup incremental. \texttt{-{}-delete} este un parametru pe care nu l-am folosit
 anterior, dar este de obicei util: dacă la destinația menționată există fișiere
-care nu sunt la sursă acestea vor fi șterse, astfel obținem consistență 100\%
+care nu sunt la sursă, acestea vor fi șterse; astfel obținem consistență 100\%
 între sursă și destinație.
 
 Folosirea \cmd{rsync} din CLI și managementul versiunilor replicate este de obicei
@@ -1081,7 +1081,7 @@ acestuia putem configura replicarea unui director sau a unui disc local pe un
 \labelindexref{Figura}{fig:storage:cobian} se află fereastra principală a
 aplicației. În coloana din stânga sunt sarcinile de backup pe care le creați. În
 figură avem o sarcină denumită \textit{Backup D}, care va face replicarea
-întregii partiții D. Printre proprietățile sarcinii de replicare avem:
+întregii partiții \file{D:}. Printre proprietățile sarcinii de replicare avem:
 
 \begin{itemize}
   \item \texttt{General} - aici se configurează setări generale (dacă vor fi
@@ -1132,9 +1132,10 @@ sd 5:0:0:0: [sdb] Assuming drive cache: write through
 sd 5:0:0:0: [sdb] Attached SCSI removable disk
 \end{screen}
 
-În Linux, montarea se face în general în subdirectoare din \texttt{/media}.
-Dacă nu, atunci folosim utilitarul \file{mount} pentru a monta discul USB (ex. \file{/dev/sdb}) într-un punct de montare la alegerea noastră.
 Stickurile USB sunt, în general, montate automat de sistemul de operare.
+În Linux, montarea se face de regulă în subdirectoare din \texttt{/media}.
+Dacă montarea nu se face automat, atunci folosim utilitarul \file{mount} pentru a
+monta discul USB (ex. \file{/dev/sdb}) într-un punct de montare la alegerea noastră.
 
 Deseori companiile care produc software ne pun la dispoziție produsele sub
 forma unui fișier cu extensia \texttt{.iso} destinat scrierii pe un CD/DVD.
@@ -1364,7 +1365,7 @@ RAID dispune de mai multe moduri de funcționare:
 		există nici un nivel de replicare (dacă avem două discuri
 		configurate în RAID0 va rezulta un volum ce are capacitatea
 		celor două discuri însumată, fără nici un nivel de replicare)
-	\item RAID1 - datele sunt scrise pe 2 din discurile configurate. Dacă un
+	\item RAID1 - datele sunt scrise simultan pe 2 din discurile configurate. Dacă un
 		disc se va defecta, celălalt va deține informația (dacă avem
 		două discuri configurate în RAID1 va rezulta un volum ce are
 		capacitatea celui mai mic dintre discuri, cu un nivel de
@@ -1420,7 +1421,7 @@ folosesc alte mecanisme de backup / replicare cum ar fi:
 \end{itemize}
 
 Crearea unei imagini a întregului disc este utilă atunci când dorim să refacem
-un sistem rapid ce a fost afectat de un defect hardware sau de un virus (ex.
+rapid un sistem ce a fost afectat de un defect hardware sau de un virus (ex.
 \texttt{crypto-locker} - tot discul a fost criptat). Un alt caz în care este util să
 folosim imaginea unui disc este atunci când dorim replicarea aceleiași
 configurații pe mai multe sisteme identice. Un program ce vă poate ajuta să
@@ -1432,12 +1433,13 @@ sistemele server.
 
 Copierea fișierelor pe un disc extern sau pe un alt dispozitiv peste rețea este
 o altă modalitate de replicare a datelor. Această metodă este utilă atunci când
-dorim salvarea unui director din tot sistemul de fișiere sau atunci când dorim
+dorim salvarea unui director din tot sistemul de fișiere, sau atunci când dorim
 să facem replicare incrementală. Replicarea incrementală va transfera doar
-diferențele între fișiere, iar în acest mod se poate realiza și o versionare a
+diferențele dintre fișiere, iar în acest mod se poate realiza și o versionare a
 acestora (se pot reține mai multe versiuni ale aceluiași fișier). Cel mai
 cunoscut utilitar pentru Linux în rezolvarea acestui lucru este \cmd{rsync}. Un
-exemplu pentru Windows gratuit îl constituie \cmd{Cobian}. Am prezentat aceste utilitare, respectiv, \labelindexref{Secțiunea}{sec:storage:backup:linux} și \labelindexref{Secțiunea}{sec:storage:backup:windows}.
+exemplu gratuit pentru Windows îl constituie \cmd{Cobian}. Am prezentat aceste
+utilitare în \labelindexref{Secțiunea}{sec:storage:backup:linux}, respectiv \labelindexref{Secțiunea}{sec:storage:backup:windows}.
 
 Copierea datelor se poate realiza pe un disc extern conectat pe USB sau pe un
 alt dispozitiv în rețea. În general în rețea avem alte servere pe care copiem
