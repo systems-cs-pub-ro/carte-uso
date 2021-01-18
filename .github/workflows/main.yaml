@@ -24,9 +24,9 @@ jobs:
           prerelease: true
           gzip: false
           body: >
-            Aceasta este versiunea PDF a cărții "Utilizarea sistemelor de
-            operare". Mai jos găsiți fișierul PDF și sursele LaTeX și
-            codul sursă de suport a cărții.
+            Aceasta este varianta electronică a cărții "Utilizarea sistemelor de
+            operare". Mai jos găsiți fișierul PDF, sursele LaTeX și
+            codul sursă de suport al cărții.
 
             Mulțumim că o citiți. Sperăm să o găsiți utilă.
           files: >
