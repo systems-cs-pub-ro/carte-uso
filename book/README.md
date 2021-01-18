@@ -5,10 +5,9 @@ Oferim două metode de compilare a cărții în format PDF:
 
 ## Compilarea nativă
 
-Pentru a compila fișierele pe sistemul vostru veți avea nevoie de următoarele
-pachete:
-```
+Pentru a compila fișierele nativ pe un sistem Linux, veți avea nevoie de următoarele pachete:
 
+```
 texlive-latex-base
 texlive-latex-extra
 texworks
@@ -17,22 +16,19 @@ inkscape
 texlive-latex-recommended
 highlight
 build-essential
-
 ```
 
-Pe sistemele bazate pe distribuția Ubuntu, puteți folosi următoarea comandă
-pentru a instala dependențele:
+Pe sistemele Debian / Ubuntu, puteți folosi următoarea comandă pentru a instala pachetele necesare:
 
 ```
-apt-get install -y texlive-latex-base texlive-latex-extra texworks \
+apt install -y texlive-latex-base texlive-latex-extra texworks \
     texlive-lang-european inkscape \
     texlive-latex-recommended highlight build-essential
 ```
 
 # Compilarea folosind Docker
 
-Pentru a compila cartea folosind containere este suficient să rulați următoarea
-comandă:
+Pentru a compila cartea într-un container Docker, rulați următoarea comandă:
 
 ```
 make container-build
