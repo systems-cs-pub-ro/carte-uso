@@ -188,16 +188,13 @@ plăcuțe simple care se folosesc pentru prototipare sau în educație:
 		programare al dispozitivului. Arduino și-a câștigat
 		popularitatea chiar datorită IDE-ul foarte ușor de folosit, nu
 		neapărat datorită produsului hardware.
-	\item Seeeduino - Este un dispozitiv similar cu Arduino, produs de Seeed
-		Studio. Dispozitivul poate fi programat prin intermediul
-		IDE-ului Arduino.
-	\item MSP430 LaunchPad - Este o placă cu un microcontroler MSP430
-		dezvoltat de Texas Instruments. Dispozitivul se caracterizează
-		prin consumul mic de energie.
-	\item Netduino - Este o placă cu un microcontroler ce poate fi programat
-		în .NET.
-	\item Particle - Este o placă cu un microcontroler ce poate fi programat
-		prin Wi-Fi.
+	\item ESP32 - Este un microcontroler foarte ieftin cu WiFi integrat care este folosit
+		în general ca \textit{placa de rețea pentru microcontrolere}. Acestă placă se conectează la
+		alte microcontrolere prin portul serial și permite acestora accesul la Internet.
+	\item MicroBit - Este o placă dezvoltata de BBC în scopuri educaționale ce are 
+		un microcontroler nRF52 produs de Nordic Semiconductor. Este mai adecvat pentru
+		a începe programarea pe microcontrolere, dar poate fi folosit și pentru
+		proiecte mai mari.
 \end{itemize}
 
 \subsection{Calculatoare integrate}
@@ -275,12 +272,6 @@ cadrul sistemelor inteligente:
 		Dispozitivul costă în jur de 45 de dolari.
 	\item Raspberry Pi Compute Module - Este un Raspberry Pi pentru uz
 		industrial.
-	\item Dragon Board 410c - Este o placă de prototipare dezvoltată de
-		Qualcomm. Dispozitivul are același procesor și aceleași
-		caracteristici pe care le are un smartphone.
-	\item Geniatech Board - Este un alt dispozitiv dezvoltat de Qualcomm,
-		dar spre deosebire de Dragon Board, acesta este conceput pentru
-		uz industrial.
 \end{itemize}
 
 \subsubsection{Sisteme de operare pentru calculatoarele integrate}
@@ -309,65 +300,28 @@ distribuții Linux pentru calculatoare integrate:
 		Pi. A fost dezvoltat de Fundația Raspberry Pi. Ca orice alt
 		sistem de operare, Raspbian suportă controlul dispozitivului
 		prin Shell, folosind comenzile standard Linux. Raspbian vine în
-		două versiuni: Stretch și Stretch Lite.
-	\item Stretch este bazat pe Debian Linux și este optimizat pentru
+		două versiuni: Desktop și Lite.
+	\item Desktop este bazat pe Debian Linux și este optimizat pentru
 		Raspberry Pi. Distribuția oferă inclusiv o interfață grafică de
 		utilizator (GUI) și câteva aplicații, cum ar fi Chromium,
-		LibreOffice și Claws Mail.
-	\item Stretch Lite este versiunea Stretch fără GUI, având dimensiuni
+		LibreOffice și Claws Mail. Există și o versiunea Desktop care include
+		preinstalate mai multe aplicații.
+	\item Lite este versiunea Stretch fără GUI, având dimensiuni
 		reduse. Interacțiunea cu sistemul se realizează doar prin linie
 		de comandă.
-	\item Pidora - Este un sistem de operare bazat pe Fedora. Spre deosebire
-		de Raspbian, Pidora are mai multe aplicații, cum ar fi editoare
-		de text, și suportă un număr mai mare de limbaje de programare
-		fără a necesita instalarea pachetelor.
-	\item Android Things - Este un sistem dezvoltat de Google, bazat pe
-		sistemul de operare Android. Acesta include servicii Google
-		Cloud, cum ar fi Firebase.
-	\item Yocto - Este un set de instrumente open-source pentru
+	\item Ubuntu Server - Este sistemul Ubuntu Server compilat pentru Raspberry Pi, 
+		practic identic cu sistemul destinat calculatoarelor server sau desktop.
+	\item Ubuntu Core - Este un sistem de operare bazat pe Ubuntu. Spre deosebire
+		de Ubuntu Server, Core este special realizat pentru sisteme IoT.
+		Acesta include doar sistemul de pachete \textit{snap} si oferă posibilitatea
+		aducerii la zi a sistemului de la distanță. Este în general utilizat 
+		în scopuri industriale.
+	\item Yocto - Yocto este un set de instrumente open source pentru
 		crearea de imagini de sisteme de operare bazate pe Linux pentru
 		dispozitivele încorporate. Sistemul include medii de emulare și
 		depanatoare. Yocto a devenit popular pe piața hobbyștilor când
 		Intel a lansat dispozitivele Edison și Galileo, ambele având o
 		distribuție Yocto. Este un sistem compatibil cu Raspberry Pi.
-\end{itemize}
-
-\textbf{Windows}
-
-Odată cu lansarea Windows 10, Microsoft a lansat o versiune a sistemului de
-operare pentru sisteme încorporate. Nu este prima astfel de versiune, deoarece
-compania a lansat o ediție încorporată împreună cu versiunea standard a unui
-sistem de operare de multă vreme. Spre deosebire de distribuțiile Linux,
-sistemele de operare pentru IoT oferite de Microsoft sunt programe profesionale,
-proiectate pentru uz industrial. Prin urmare, acestea nu sunt gratis, iar
-Microsoft oferă suport pentru software-ul pe care îl furnizează.
-
-Când vine vorba de Windows 10, Microsoft și-a schimbat puțin abordarea și a
-lansat un set de trei ediții diferite, fiecare cu un anumit obiectiv:
-
-\begin{itemize}
-	\item Windows 10 IoT Enterprise - Se bazează pe versiunile anterioare
-		ale sistemului de operare Windows Embedded. Este în principiu o
-		versiune a Windows 10 care poate rula pe perioade lungi de timp,
-		pe dispozitive de genul celor folosite în interiorul
-		chioșcurilor de informații. Acest sistem de operare este
-		compatibil cu versiunile mai vechi ale familiei Windows
-		Embedded. Sistemul de operare a fost dezvoltat pentru a fi
-		utilizat în sisteme profesionale, având o securitate superioară
-		și permițând un control bun al dispozitivelor industriale.
-	\item Windows 10 IoT Mobile Enterprise - Se bazează pe sistemul de
-		operare Windows 10 Mobile și pe sistemele de operare anterioare
-		pe care Microsoft le-a dezvoltat pentru a rula pe dispozitivele
-		mobile. Fiind succesorul Embedded Handheld, acesta este
-		optimizat pentru a fi utilizat în dispozitive portabile, cum ar
-		fi scanerele de coduri de bare. Această versiune nu suportă
-		aplicații desktop, deși oferă o interfață grafică.
-	\item Windows 10 IoT Core - Este singurul sistem de operare gratuit.
-		Acest sistem de operare este compatibil cu dispozitive ARM, cum
-		ar fi Raspberry Pi sau DragonBoard 410c. În plus, poate rula și
-		pe procesoarele Intel. Este gândit pentru a fi folosit pentru
-		prototipuri, după care să se facă trecerea la una din cele două
-		distribuții anterioare.
 \end{itemize}
 
 \textbf{Sisteme de operare în timp real (Real-time Operating Systems - RTOS)}
@@ -382,7 +336,15 @@ scop. În contrast cu cele două categorii anterioare, exemplele pe care le vom
 menționa nu împărtășesc același nucleu:
 
 \begin{itemize}
-	\item RIOT este un sistem de operare open-source. Arhitectura acestuia îl face ușor de
+	\item FreeRTOS este un sistem de operare open source mențiunt de către Amazon. 
+		Este cel mai vechi sistem de acest gen, considerat ca fiind cel mai potrivit
+		pentru uz industrial. Este scris in C și este axat pe performanță.
+	\item Zephyr Project este un sistem de operare open source insiprat din Linux și realizat
+		inițial de către Intel. Este considerat \textit{fratele mai mic al Linuxului}.
+		Deși este inspirat din Linux, funcționarea acestuia este foarte diferită, acesta fiind
+		conceput ca un sistem de operare în timp real. Fiind mai nou decât FreeRTOS și având 
+		un API similar cu Linux, acesta este recomandarea actuală pentru folosirea în industrie.
+	\item RIOT este un sistem de operare open source. Arhitectura acestuia îl face ușor de
 		adaptat la sistemele cu memorie redusă. RIOT este compatibil cu
 		Raspberry Pi, Beagle Board, unele tipuri de Arduino (modele mai
 		avansate care sunt mai mult decât un microcontroler și au o
@@ -391,6 +353,11 @@ menționa nu împărtășesc același nucleu:
 		special pentru sisteme IoT de Texas Instruments. Principalul său
 		avantaj față de alte sisteme de operare similare este consumul
 		redus de energie și de memorie.
+	\item Tock este primul sistem de operare folosit în industrie scris într-un alt
+		limbaj decât C, mai exact Rust. De asemenea, este primul sistem de operare
+		pentru micrcontrolere care face o separare clară între kernel și aplicații.
+		Tock este folosit de către Google în proiectul OpenSK și de către 
+		proiectul OpenTitan.
 \end{itemize}
 
 \section{Sisteme simple de intrare ieșire}

@@ -19,6 +19,9 @@ STY_DIR = sty
 
 all: $(PDF) clean-tmp
 
+container-build:
+	docker run -it --user $(id -u):$(id -g) -v "$(shell pwd)/":/src sweisz/book-latex-container:latest bash -c "cd src; make"
+
 .PHONY: $(PDF)
 $(PDF):
 	TEXINPUTS=$(STY_DIR)//: $(PDFLATEX) --shell-escape -interaction=scrollmode --src-specials $(BASENAME)
