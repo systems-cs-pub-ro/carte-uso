@@ -270,7 +270,7 @@ lucru al viitoarei comenzi, incluzând directorul home. După cum se poate obser
 
 Utilitarul \cmd{su} permite rularea unei comenzi fără a deschide un shell prin
 intermediul opțiunii \texttt{-c}, ca în liniile \texttt{10--12} din \labelindexref{Listing}{lst:user:su}. În felul acesta se rulează direct comanda primită ca
-argument și apoi se revine la shell-ul utilizatorului curent, fără a se deschide
+argument și apoi se revine la shellul utilizatorului curent, fără a se deschide
 un shell al noului utilizator.
 
 \subsection{Alternative la root în Linux}
@@ -1535,7 +1535,7 @@ fișiere și directoare.
 \subsection{Biți speciali de acces: setuid, setgid, sticky}
 \label{sec:user:special-bits}
 
-Atunci când afișăm masca de creare a shell-ului, observăm că sunt patru cifre octale
+Atunci când afișăm masca de creare a shellului, observăm că sunt patru cifre octale
 afișate. În mod normal ar trebui să fie trei cifre afișate, cu permisiuni pentru
 \texttt{user}, \texttt{group} și \texttt{others}. Prima cifră afișată reprezintă un set special de trei de
 biți numiți \texttt{setuid}, \texttt{setgid} și \texttt{sticky}, și sunt activați în această ordine.
@@ -1657,7 +1657,7 @@ această situație primul proces pornit de sistem nu va fi init ci va fi un shel
 cu permisiuni de \texttt{root}. În acest shell vom rula comenzile din \labelindexref{Listing}{lst:user:change-root-pw} pentru
 schimbarea parolei utilizatorului \texttt{root}.
 
-\begin{screen}[caption={Schimbarea parolei contului root în shell-ul privilegiat},label={lst:user:change-root-pw}]
+\begin{screen}[caption={Schimbarea parolei contului root în shellul privilegiat},label={lst:user:change-root-pw}]
 root@none:~# mount -o remount /
 root@none:~# passwd
 [...]
@@ -1683,7 +1683,7 @@ următorii pași:
   \item Folosim comanda \cmd{passwd} pentru a schimba parola contului \texttt{root} în
 		sistemul de fișiere rădăcină al sistemului Linux instalat.
   \item Revenim la sistemul de fișiere al sistemului live, părăsind
-        shell-ul obținut prin \cmd{chroot}.
+        shellul obținut prin \cmd{chroot}.
   \item Demontăm sistemul de fișiere rădăcină al sistemului Linux
 		instalat.
   \item Repornim sistemul.
