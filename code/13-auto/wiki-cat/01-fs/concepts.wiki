@@ -3,11 +3,11 @@
 ==== Prezentare generală ====
 
 Orice calculator are nevoie să stocheze date de diferite tipuri undeva, de exemplu pe un hard drive (HDD), un stick de memorie USB, etc.
-Aceste date sunt organizate sub formă de fișiere, directoare și legături (link-uri). 
+Aceste date sunt organizate sub formă de fișiere, directoare și legături (linkuri).
 
 Un director este de fapt tot un fișier ce conține adresele altor fișiere. În Linux, totul este reprezentat ca un fișier sau un director: hard-drive-ul, display-ul, keyboard-ul, etc.
 
-Link-urile sunt legături între două puncte ale sistemului de fișiere. În general le folosim când vrem să ne ușurăm accesul la un fișier sau director, sau pentru a uniformiza accesul.
+Linkurile sunt legături între două puncte ale sistemului de fișiere. În general le folosim când vrem să ne ușurăm accesul la un fișier sau director, sau pentru a uniformiza accesul.
 
 Sistemul de fișiere este folosit pentru a organiza ierarhic toate datele stocate pe un sistem.
 
