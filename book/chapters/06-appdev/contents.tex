@@ -17,7 +17,7 @@ acest proces. Astfel, putem face alegerile corecte pentru a dezvolta eficient o
 aplicație adaptată dispozitivului fizic pe care va rula.
 
 De exemplu, dacă dezvoltăm o aplicație ce va rula pe un ceas inteligent, trebuie
-să ținem cont că avem resurse limitate comparativ la o aplicație ce va rula pe
+să ținem cont că avem resurse limitate comparativ cu o aplicație ce va rula pe
 un sistem desktop. În cazul unui ceas inteligent, avem mai puțină memorie și putere de
 procesare și, mai mult, trebuie să ținem cont de consumul de energie pe care îl
 are dispozitivul.
@@ -37,7 +37,7 @@ cuvinte cheie, instrucțiuni care pot fi folosite și gramatica acestora, care s
 mai numește și sintaxă.
 
 Folosind un limbaj de programare, putem defini operații pe care dorim să le
-executăm într-o anumite ordine. Acesta este practic programul pe care îl scriem.
+executăm într-o anumită ordine. Acesta este practic programul pe care îl scriem.
 Operațiile sunt rulate pe procesorul sistemului pe care dorim sa îl programăm,
 dar înainte de a fi executate, ele trec printr-un proces de transformare.
 Fiecare procesor cunoaște un anumit set de instrucțiuni pe care le poate
@@ -262,7 +262,7 @@ pentru că există alte limbaje mai moderne, poate fi în continuare luat în ca
 
 Alte limbaje compilate sunt D, Go (folosit pentru scrierea sistemului de
 containere Docker) și Rust (folosit de Firefox pentru Servo, motorul de randare
-a paginilor web)
+a paginilor web).
 
 \section{Limbaje interpretate}
 \label{sec:appdev-langs-int}
@@ -274,7 +274,7 @@ Pentru a putea rula o aplicație dezvoltată într-un limbaj de programare
 interpretat, avem nevoie de un program care ia fiecare linie din codul sursă și
 o transformă în cod mașină. Acest program se numește interpretor.
 
-Diferența între o aplicație compilată și una interpretată este că spre deosebire
+Diferența între o aplicație compilată și una interpretată este că, spre deosebire
 de compilator, care generează un întreg fișier executabil care poate fi apoi
 rulat, interpretorul ia fiecare linie, generează codul mașină aferent ei, codul
 este rulat pe procesor, după care operația este reluată. Deși acest proces
@@ -341,7 +341,7 @@ bytecode și se transformă în cod mașină în timpul rulării (compilare
 \textit{just-in-time}).
 
 Compilarea \textit{ahead-of-time} funcționează ca procesul normal de compilare, doar că
-se transformă bytecode în cod mașină. Odată generat codul mașină acesta este
+se transformă bytecode în cod mașină. Odată generat codul mașină, acesta este
 executat. Avantajul acestei metode este timpul rapid de execuție. În schimb,
 timpul de pornire a aplicației crește (timpul necesar pentru a transforma
 bytecode în cod mașină).
@@ -471,7 +471,7 @@ programelor.
 
 Vim este un editor care funcționează în linie de comandă, fiind versiunea
 îmbunătățită a vi, editor care se găsește pe toate sistemele Unix. Este un editor foarte configurabil, dar nu foarte ușor de
-folosit pentru începători. Acest lucru este datorat lipsei interfeței grafice,
+folosit pentru începători. Acest lucru este cauzat de lipsa interfeței grafice,
 tot meniul fiind transpus prin comenzi. Deși pentru utilizatorii experimentați
 acest lucru poate reprezenta un avantaj aducând rapiditate în folosire, pentru
 începători, lipsa cursorului și necesitatea de a memora comenzi îngreunează
@@ -1079,7 +1079,7 @@ variabilele sau adresele de memorie la care se găsesc, ca în \labelindexref{Fi
 \begin{figure}[!htbp]
   \centering
   \includegraphics[width=\textwidth]{chapters/06-appdev/img/codeblocks-debug.png}
-  \caption{Interfață de depanare într-un IDE (coblocks)}
+  \caption{Interfață de depanare într-un IDE (codeblocks)}
   \label{fig:appdev:ide-debug}
 \end{figure}
 
@@ -1142,7 +1142,7 @@ realiza toate acestea avem la dispoziție următoarele operații de bază:
 		online, acestea nu sunt vizibile colaboratorilor;
   \item \cmd{push}: se publică modificările salvate prin commit; odată
 		publicate aceste modificări, colaboratorii pot să vizualizeze
-		cine le-a adus și pot să urmărească schimbările linie cu linie
+		cine le-a adus și pot să urmărească schimbările linie cu linie;
   \item \cmd{pull}: se descarcă local ultimele modificări publicate de ceilalți
 		colaboratori și se integrează în versiunea locală a proiectului.
 \end{itemize}
