@@ -1,7 +1,7 @@
 \chapter{Interfața cu utilizatorul}
 \label{chapter:ui}
 
-Un sistem de calcul oferă resurse de calcul utilizatorului. Utilizatorul folosește o interfață de lucru furnizată de sistemul de calcul pentru activitățile sale: navigare pe Internet, dezvoltare de aplicații, creare de conținut, scriere de documente. Interfața cu utilizatorul este oferită de o aplicație a sistemului de operare numită \textbf{shell}. Prin interacțiunea cu shellul utilizatorul își realizează activitățile și folosește resursele sistemului de calcul. De exemplu un shell grafic va prezenta utilizatorului butoane, meniuri și ferestre pe care acesta le va folosi; un shell text va prezenta utilizatorului un prompt unde acesta va introduce comenzi. Cu aceste elemente (butoane, meniuri, ferestre, comenzi), utilizatorul va interacțiunea cu sistemul de operare și cu aplicațiile.
+Un sistem de calcul oferă resurse de calcul utilizatorului. Utilizatorul folosește o interfață de lucru furnizată de sistemul de calcul pentru activitățile sale: navigare pe Internet, dezvoltare de aplicații, creare de conținut, scriere de documente. Interfața cu utilizatorul este oferită de o aplicație a sistemului de operare numită \textbf{shell}. Prin interacțiunea cu shellul utilizatorul își realizează activitățile și folosește resursele sistemului de calcul. De exemplu, un shell grafic va prezenta utilizatorului butoane, meniuri și ferestre pe care acesta le va folosi; un shell text va prezenta utilizatorului un prompt, unde acesta va introduce comenzi. Cu aceste elemente (butoane, meniuri, ferestre, comenzi), utilizatorul va interacțiunea cu sistemul de operare și cu aplicațiile.
 
 \labelindexref{Figura}{fig:ui:system-components} prezintă legătura dintre componentele sistemului de calcul. Componentele hardware sunt gestionate de sistemul de operare; peste sistemul de operare rulează aplicații, una dintre aplicații fiind shellul, aplicația care interfațează utilizatorul cu celelalte aplicații, cu serviciile sistemului de operare și resursele hardware.
 
@@ -17,7 +17,7 @@ Majoritatea aplicațiilor au la rândul lor o interfață. De exemplu jocurile p
 
 Interfețele cu utilizatorul, shellurile, vin de obicei în două moduri: \textbf{shelluri grafice} (\textit{Graphical User Interface} - GUI) și \textbf{shelluri text/linie de comandă} (\textit{Command Line Interface} - CLI). În general, interfața grafică este mai intuitivă, are avantajul ușurinței în utilizare și acomodare, un aspect mai plăcut, ușor personalizabil. Interfața în linia de comandă este ceva mai dificil de învățat și de folosit, mai anostă ca aspect, dar oferă acces mai complet și mai detaliat la serviciile sistemului. Interfața în linia de comandă permite automatizarea prin scripturi, lucru pe care îl vom discuta în \labelindexref{Capitolul}{chapter:auto}.
 
-În \labelindexref{Figura}{fig:ui:shell-gui-cli} avem două screenshoturi: unul cu un shell GUI și unul cu shell CLI din distribuția Ubuntu 18.04. Shellul GUI oferă meniuri, butoane și ferestre, în vreme ce shellul CLI oferă un prompt unde se pot introduce comenzi. Shellul GUI este, în fapt, interfața grafică pe care o vedem într-o instalare obișnuită Ubuntu.
+În \labelindexref{Figura}{fig:ui:shell-gui-cli} avem două capturi de ecran: una cu un shell GUI și una cu shell CLI din distribuția Ubuntu 18.04. Shellul GUI oferă meniuri, butoane și ferestre, în vreme ce shellul CLI oferă un prompt unde se pot introduce comenzi. Shellul GUI este, în fapt, interfața grafică pe care o vedem într-o instalare obișnuită Ubuntu.
 
 \begin{figure}[htbp]
   \centering
@@ -37,7 +37,7 @@ Interfețele cu utilizatorul, shellurile, vin de obicei în două moduri: \textb
   \label{fig:ui:shell-gui-cli}
 \end{figure}
 
-În capitolul curent ne vom concentra pe interfața grafică. Interfața în linia de comandă o vom discuta detaliat în \labelindexref{Capitolul}{chapter:cli}.
+În capitolul curent, ne vom concentra pe interfața grafică. Interfața în linia de comandă o vom discuta detaliat în \labelindexref{Capitolul}{chapter:cli}.
 
 \section{Interfața grafică}
 \label{sec:ui:gui}
@@ -52,7 +52,7 @@ Interfața grafică poate fi personalizată: scheme de culori, fonturi, dimensiu
 
 Pentru accelerarea acțiunilor în interfața grafică, există în mod uzual scurtături de tastatură. Este o practică frecventă în lumea jocurilor de calculator (unde celebrele actions-per-minute (APM)) se bazează pe folosirea scurtăturilor din tastatură. În interfața în linia de comandă scurtăturilor sunt folosite pentru gestiunea ferestrelor, accesarea rapidă a unor elemente din meniuri.
 
-În instalările implicite, sistemele de operare desktop oferă interfața grafică. Pentru tipurile de acțiuni care necesită interfața în linia de comandă (precum acțiuni mai specifice, sau acțiuni de automatizare sau acțiuni care nu se pot realiza altfel), se pot porni shelluri CLI din interfața grafică. Într-un mediu GNOME se poate porni o fereastră GNOME Terminal, în într-un mediu grafic Windows se poate porni o fereastră PowerShell. În \labelindexref{Figura}{fig:ui:shell-cli-linux-windows} sunt screenshot-uri cu două ferestre din mediul GUI în care rulează un shell CLI, una în Linux și alta în Windows. Este modul uzual în care rulăm comenzi în sistemele desktop moderne.
+În instalările implicite, sistemele de operare desktop oferă interfața grafică. Pentru tipurile de acțiuni care necesită interfața în linia de comandă (precum acțiuni mai specifice, sau acțiuni de automatizare sau acțiuni care nu se pot realiza altfel), se pot porni shelluri CLI din interfața grafică. Într-un mediu GNOME se poate porni o fereastră GNOME Terminal, într-un mediu grafic Windows se poate porni o fereastră PowerShell. În \labelindexref{Figura}{fig:ui:shell-cli-linux-windows} sunt capturi de ecran cu două ferestre din mediul GUI în care rulează un shell CLI, una în Linux și alta în Windows. Este modul uzual în care rulăm comenzi în sistemele desktop moderne.
 
 \begin{figure}[!htbp]
   \centering
@@ -72,6 +72,8 @@ Pentru accelerarea acțiunilor în interfața grafică, există în mod uzual sc
   \label{fig:ui:shell-cli-linux-windows}
 \end{figure}
 
+\newpage
+
 \subsection{Interfețe native și interfețe web}
 \label{sec:ui:native-web}
 
@@ -88,7 +90,7 @@ Motivul migrării aplicațiilor desktop în aplicații web este portabilitatea: 
 
 În proiectarea interfeței grafice este esențial ca aceasta să fie cât mai intuitivă și ușor de folosit. Noțiunea de experiența utilizatorului (\textit{user experience} - UX) este centrală pentru aplicațiile și dispozitivele cu interfața grafică. O interfața încărcată, cu elemente greu accesibile sau neintuitiv plasate va fi respinsă de utilizator care va alege altă aplicație sau altă platformă.
 
-Organizațiile care dezvoltă interfețe grafice stabilesc principii și recomandări de urmat. Acest principii țin cont de natura umană și comportamentul utilizatorilor, în general din studii specifice, și se regăsesc în documente numite \textit{Human Interface Guidelines} (Ghiduri de interfațare om-calculator). Exemple de organizații și astfel de documente sunt:
+Organizațiile care dezvoltă interfețe grafice stabilesc principii și recomandări de urmat. Aceste principii țin cont de natura umană și comportamentul utilizatorilor, în general din studii specifice, și se regăsesc în documente numite \textit{Human Interface Guidelines} (Ghiduri de interfațare om-calculator). Exemple de organizații și astfel de documente sunt:
 
 \begin{itemize}
   \item GNOME: \textit{GNOME Human Interface Guidelines}\footnote{\url{https://developer.gnome.org/hig/stable/}}
@@ -97,7 +99,7 @@ Organizațiile care dezvoltă interfețe grafice stabilesc principii și recoman
   \item Microsoft: \textit{Microsoft User Interface Principles}\footnote{\url{https://docs.microsoft.com/en-us/windows/win32/appuistart/-user-interface-principles}}
 \end{itemize}
 
-O aplicație sau un dispozitiv de succes va trebuie să țină cont și de interfața grafică, nu numai de funcționalitățile și performanța sa. Aspectele ce țin de experiența utilizatorului sunt cu atât mai importante pe dispozitivele mobile unde interfața grafică tactilă este universală. În aceeași măsură, aplicațiile și site-urile web necesită interfețe intuitive pentru satisfacția utilizatorilor acestora. Un utilizator nemulțumit sau încurcat de interfață nu va folosi aplicația, lucru care se traduce în general în pierderi financiare. De aceea, aspectele ce țin de experiența utilizatorului sunt esențiale pentru dezvoltatorii de aplicații pe dispozitive mobile sau aplicații web.
+O aplicație sau un dispozitiv de succes, va trebuie să țină cont și de interfața grafică, nu numai de funcționalitățile și performanța sa. Aspectele ce țin de experiența utilizatorului sunt cu atât mai importante pe dispozitivele mobile unde interfața grafică tactilă este universală. În aceeași măsură, aplicațiile și site-urile web necesită interfețe intuitive pentru satisfacția utilizatorilor acestora. Un utilizator nemulțumit sau încurcat de interfață nu va folosi aplicația, lucru care se traduce în general în pierderi financiare. De aceea, aspectele ce țin de experiența utilizatorului sunt esențiale pentru dezvoltatorii de aplicații pe dispozitive mobile sau aplicații web.
 
 \section{Interfața grafică în Linux}
 \label{sec:ui:linux-gui}
@@ -119,11 +121,11 @@ Așa cum am precizat și în \labelindexref{Capitolul}{chapter:intro}, Linux (sa
 
 Suita de componente software care oferă interfața grafică utilizatorului într-un sistem de operare formează un mediu desktop (\textit{desktop environment}), așa numitul shell GUI. Putem spune că toate sistemele de operare oferă un desktop environment pe majoritatea tipurilor de dispozitive. Termenul a fost însă popularizat și este folosit cu precădere în sistemele de operare din lumea Unix/Linux.
 
-În lumea Linux posibilitatea de personalizare a distribuțiilor software este foarte mare, inclusiv a mediului desktop folosit. O distribuție Linux oferă o configurație implicită de mediu desktop, care poate fi însă modificată.
+În lumea Linux, posibilitatea de personalizare a distribuțiilor software este foarte mare, inclusiv a mediului desktop folosit. O distribuție Linux oferă o configurație implicită de mediu desktop, care poate fi însă modificată.
 
 Alegerea unui mediu desktop ține de consumul de resurse, de posibilitățile de personalizare și preferința și istoricul utilizatorului. Un mediu desktop oferă un anume aspect, o selecție și configurare a componentelor software, și aplicații specifice pentru acțiuni uzuale (navigare în sistemul de fișiere, navigare web, redare multimedia, editor text, emulator de terminal).
 
-Exemple de medii desktop în Linux sunt GNOME, KDE, MATE, Cinnamon, Budgie, Xfce. O comparație a acestora și referințe la articole comparative se găsește pe Wikipedia\footnote{\url{https://en.wikipedia.org/wiki/Comparison\_of\_X\_Window\_System\_desktop\_environments}}. Aplicațiile grafice de bază (precum browerul în sistemul de fișiere, editor text, player multimedia) sunt parte a fiecărui mediu desktop, fiecare mediu cu particularitățile sale. Alte aplicații grafice sunt instalate, majoritatea nefiind specifice unui mediu desktop; de exemplu, Mozilla Firefox este un browser web iar VLC este un player multimedia care nu sunt specifice unei anumite distribuții.
+Exemple de medii desktop în Linux sunt GNOME, KDE, MATE, Cinnamon, Budgie, Xfce. O comparație a acestora și referințe la articole comparative se găsește pe Wikipedia\footnote{\url{https://en.wikipedia.org/wiki/Comparison\_of\_X\_Window\_System\_desktop\_environments}}. Aplicațiile grafice de bază (precum browerul în sistemul de fișiere, editor text, player multimedia) sunt parte a fiecărui mediu desktop, fiecare mediu cu particularitățile sale. Alte aplicații grafice sunt instalate, majoritatea nefiind specifice unui mediu desktop; de exemplu, Mozilla Firefox este un browser web, iar VLC este un player multimedia care nu sunt specifice unei anumite distribuții.
 
 \subsection{Sistemul de ferestre (Window System)}
 \label{sec:ui:window-system}
@@ -150,7 +152,7 @@ Schematic, componentele sistemului de ferestre sunt indicate în \labelindexref{
 
 Delimitarea între componentele sistemului de ferestre din \labelindexref{Figura}{fig:ui:window-system} nu este strictă, mai ales în sistemele de operare diferite de Linux.
 
-În mod implicit, managerii de ferestre folosiți implicit pe majoritatea distribuțiilor Linux sunt flotanți (\textit{floating/stacking window manager}). Adică ferestrele pot fi suprapuse și mișcate în funcție de preferințele utilizatorilor. Un alt tip de manager de ferestre este cel bazat pe secțiuni (\textit{tiling window manager}); în acest caz fiecare fereastră ocupă un spațiu fix în ecran, fără a se suprapune cu alte ferestre; ecranul este secționat cu ferestre diferite ocupând un spațiu nesupraspus cu altele. Exemple de tiling window managers sunt i3\footnote{\url{https://i3wm.org/}}, awesome\footnote{https://awesomewm.org/}, bspwm\footnote{https://github.com/baskerville/bspwm}. Unii manageri sunt dinamici permițând tranziția între modul floating și modul tiling.
+În mod implicit, managerii de ferestre folosiți implicit pe majoritatea distribuțiilor Linux sunt flotanți (\textit{floating/stacking window manager}). Adică ferestrele pot fi suprapuse și mișcate în funcție de preferințele utilizatorilor. Un alt tip de manager de ferestre este cel bazat pe secțiuni (\textit{tiling window manager}); în acest caz, fiecare fereastră ocupă un spațiu fix în ecran, fără a se suprapune cu alte ferestre; ecranul este secționat cu ferestre diferite ocupând un spațiu nesupraspus cu altele. Exemple de tiling window managers sunt i3\footnote{\url{https://i3wm.org/}}, awesome\footnote{https://awesomewm.org/}, bspwm\footnote{https://github.com/baskerville/bspwm}. Unii manageri sunt dinamici permițând tranziția între modul floating și modul tiling.
 
 În Linux, în mod tradițional, sistemul de ferestre folosit este X Window System\footnote{\url{https://www.x.org/wiki/}}, sau, mai simplu, X. În ultima perioadă a căpătat tracțiune alternativa Weyland/Weston\footnote{\url{https://wayland.freedesktop.org/}}, apărută ca reacție la complexitatea X. Weyland/Weston se dorește a fi o soluție mai simplă și cu proiectare mai sigură. Weyland/Weston nu este încă adoptat pe scară largă, astfel că multe distribuții sau medii desktop preferă folosirea X, care este mai stabil.
 
@@ -364,7 +366,7 @@ Interfața grafică este compusă din elemente grafice acționate cu mouse-ul sa
 
 Interfața grafică trebuie să fie simplă și intuitivă. Aplicațiile și sistemele de operare urmăresc recomandări de proiectare a interfeței pentru a oferi o experiență bună utilizatorului.
 
-În Linux interfața grafică vine în formă de mediu desktop (\textit{desktop environment}), o suită software cu shell grafic, aplicații grafice și opțiuni de configurare specifice. Exemple sunt GNOME și KDE.
+În Linux, interfața grafică vine în formă de mediu desktop (\textit{desktop environment}), o suită software cu shell grafic, aplicații grafice și opțiuni de configurare specifice. Exemple sunt GNOME și KDE.
 
 Mediul grafic se bazează pe un sistem de ferestre. În Linux, în mod tradițional este folosit sistemul de ferestre X. În ultimi ani, a prins tracțiune sistemul de ferestre Weyland/Weston.
 
