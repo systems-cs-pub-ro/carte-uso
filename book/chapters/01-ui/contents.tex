@@ -154,22 +154,22 @@ Delimitarea între componentele sistemului de ferestre din \labelindexref{Figura
 
 În mod implicit, managerii de ferestre folosiți implicit pe majoritatea distribuțiilor Linux sunt flotanți (\textit{floating/stacking window manager}). Adică ferestrele pot fi suprapuse și mișcate în funcție de preferințele utilizatorilor. Un alt tip de manager de ferestre este cel bazat pe secțiuni (\textit{tiling window manager}); în acest caz, fiecare fereastră ocupă un spațiu fix în ecran, fără a se suprapune cu alte ferestre; ecranul este secționat cu ferestre diferite ocupând un spațiu nesupraspus cu altele. Exemple de tiling window managers sunt i3\footnote{\url{https://i3wm.org/}}, awesome\footnote{https://awesomewm.org/}, bspwm\footnote{https://github.com/baskerville/bspwm}. Unii manageri sunt dinamici permițând tranziția între modul floating și modul tiling.
 
-În Linux, în mod tradițional, sistemul de ferestre folosit este X Window System\footnote{\url{https://www.x.org/wiki/}}, sau, mai simplu, X. În ultima perioadă a căpătat tracțiune alternativa Weyland/Weston\footnote{\url{https://wayland.freedesktop.org/}}, apărută ca reacție la complexitatea X. Weyland/Weston se dorește a fi o soluție mai simplă și cu proiectare mai sigură. Weyland/Weston nu este încă adoptat pe scară largă, astfel că multe distribuții sau medii desktop preferă folosirea X, care este mai stabil.
+În Linux, în mod tradițional, sistemul de ferestre folosit este X Window System\footnote{\url{https://www.x.org/wiki/}}, sau, mai simplu, X. În ultima perioadă a căpătat tracțiune alternativa Wayland/Weston\footnote{\url{https://wayland.freedesktop.org/}}, apărută ca reacție la complexitatea X. Wayland/Weston se dorește a fi o soluție mai simplă și cu proiectare mai sigură. Wayland/Weston nu este încă adoptat pe scară largă, astfel că multe distribuții sau medii desktop preferă folosirea X, care este mai stabil.
 
-Aspectul comun al X și Weyland este interacțiunea componentelor. X și Weyland sunt de fapt specificații de protocoale și implementări de referință ale acestora pentru interacțiunea între serverul de ferestre (window server) și aplicațiile grafice (clienți grafici).
+Aspectul comun al X și Wayland este interacțiunea componentelor. X și Wayland sunt de fapt specificații de protocoale și implementări de referință ale acestora pentru interacțiunea între serverul de ferestre (window server) și aplicațiile grafice (clienți grafici).
 
-Schema de funcționare a X/Weyland este prezentată în \labelindexref{Figura}{fig:ui:x-window-system}\footnote{\url{https://commons.wikimedia.org/wiki/File:X_client_server_example.svg} (CC BY-SA 3.0)}
+Schema de funcționare a X/Wayland este prezentată în \labelindexref{Figura}{fig:ui:x-window-system}\footnote{\url{https://commons.wikimedia.org/wiki/File:X_client_server_example.svg} (CC BY-SA 3.0)}
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=0.3\textwidth]{chapters/01-ui/img/x-window-system.pdf}
-  \caption{Funcționarea sistemului de ferestre în Linux (X sau Weyland)}
+  \caption{Funcționarea sistemului de ferestre în Linux (X sau Wayland)}
   \label{fig:ui:x-window-system}
 \end{figure}
 
-În interacțiunea indicată în \labelindexref{Figura}{fig:ui:x-window-system}, o aplicație precum Mozilla Firefox este client grafic (\textit{X client} în figură). Folosind protocolul X/Weyland, aplicația transmite către serverul X/Weyland (\textit{X server} în figură) cerințele sale de afișare grafică pe ecran (\textit{Screen} în figură). Aceste cerințe sunt rezultate de obicei din acțiunile utilizatorului, cu ajutorul mouse-ului sau tastaturii (\textit{Keyboard} și \textit{Mouse} în figură) sau a altor dispozitive. Aceste acțiuni ajung la aplicație ștot prin intermediul serverului X. Practic, aplicația client se ocupă de resursele sale de calcul lăsând serverului grafic responsabilitatea interacțiunii cu utilizatorul.
+În interacțiunea indicată în \labelindexref{Figura}{fig:ui:x-window-system}, o aplicație precum Mozilla Firefox este client grafic (\textit{X client} în figură). Folosind protocolul X/Wayland, aplicația transmite către serverul X/Wayland (\textit{X server} în figură) cerințele sale de afișare grafică pe ecran (\textit{Screen} în figură). Aceste cerințe sunt rezultate de obicei din acțiunile utilizatorului, cu ajutorul mouse-ului sau tastaturii (\textit{Keyboard} și \textit{Mouse} în figură) sau a altor dispozitive. Aceste acțiuni ajung la aplicație ștot prin intermediul serverului X. Practic, aplicația client se ocupă de resursele sale de calcul lăsând serverului grafic responsabilitatea interacțiunii cu utilizatorul.
 
-Una dintre funcționalitățile X, absentă din Weyland, este folosirea peste rețea, indicată în \labelindexref{Figura}{fig:ui:x-window-system} (\textit{Network}). În această situație, aplicația client rulează pe un sistem la distanță (\textit{Remote machine} în figură), iar serverul X rulează pe sistemul local (\textit{User's workstation} în figură). Interacțiunea între aplicația client și aplicația server are loc prin rețea prin intermediul protocolului X. Practic, pașii urmați sunt:
+Una dintre funcționalitățile X, absentă din Wayland, este folosirea peste rețea, indicată în \labelindexref{Figura}{fig:ui:x-window-system} (\textit{Network}). În această situație, aplicația client rulează pe un sistem la distanță (\textit{Remote machine} în figură), iar serverul X rulează pe sistemul local (\textit{User's workstation} în figură). Interacțiunea între aplicația client și aplicația server are loc prin rețea prin intermediul protocolului X. Practic, pașii urmați sunt:
 \begin{enumerate}
   \item Utilizatorul folosește echipamentele locale (mouse, tastatură) pentru a executa acțiuni.
   \item Acțiunile utilizatorului sunt capturate de serverul X local.
@@ -368,6 +368,6 @@ Interfața grafică trebuie să fie simplă și intuitivă. Aplicațiile și sis
 
 În Linux, interfața grafică vine în formă de mediu desktop (\textit{desktop environment}), o suită software cu shell grafic, aplicații grafice și opțiuni de configurare specifice. Exemple sunt GNOME și KDE.
 
-Mediul grafic se bazează pe un sistem de ferestre. În Linux, în mod tradițional este folosit sistemul de ferestre X. În ultimi ani, a prins tracțiune sistemul de ferestre Weyland/Weston.
+Mediul grafic se bazează pe un sistem de ferestre. În Linux, în mod tradițional este folosit sistemul de ferestre X. În ultimi ani, a prins tracțiune sistemul de ferestre Wayland/Weston.
 
 Mașina virtuală de suport a acestei cărți folosește un sistem de operare Ubuntu 18.04 cu interfață grafică GNOME.
