@@ -446,7 +446,6 @@ Diferență constă în escaparea celor două construcții prin ghilimele.
 Astfel, construcția \texttt{\$*} se va expanda la o singură valoare care conține spații între parametrii scriptului, în vreme ce construcția \texttt{\$@} se va expanda la o listă de valori escapate fiecare prin ghilimele.
 
 \begin{table}[!htb]
-  \caption{Construcții pentru parametrii unui script shell}
   \begin{center}
     \begin{tabular}{ p{0.25\textwidth} p{0.65\textwidth} }
       \toprule
@@ -470,8 +469,9 @@ Astfel, construcția \texttt{\$*} se va expanda la o singură valoare care conț
 
       \bottomrule
     \end{tabular}
-    \label{tab:auto:script-params}
   \end{center}
+  \caption{Construcții pentru parametrii unui script shell}
+  \label{tab:auto:script-params}
 \end{table}
 
 În lucrul cu parametrii, shellul oferă comanda \cmd{shift}.
@@ -555,7 +555,6 @@ Condiția poate fi comparație între numere, între șiruri de caractere, verif
 O listă completă găsiți în pagina de manual a comenzii \cmd{test}.
 
 \begin{table}[!htb]
-  \caption{Condiții folosite de comanda test}
   \begin{center}
     \renewcommand*\arraystretch{1.3}  % Altfel liniile tabelului sunt imposibil de diferențiat.
     \begin{tabular}{ p{0.5\textwidth} p{0.45\textwidth} }
@@ -592,8 +591,9 @@ O listă completă găsiți în pagina de manual a comenzii \cmd{test}.
 
       \bottomrule
     \end{tabular}
-    \label{tab:auto:test}
   \end{center}
+  \caption{Condiții folosite de comanda test}
+  \label{tab:auto:test}
 \end{table}
 
 Comanda \cmd{test} are ca echivalent comanda \cmd{$[$} (paranteză dreaptă deschisă).

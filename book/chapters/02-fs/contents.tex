@@ -115,7 +115,6 @@ Prezentăm în continuare exemple concrete de organizare a fișierelor în siste
 În \labelindexref{Tabelul}{table:fs:linux-fs} este prezentată structura ierarhică în Linux.
 
 \begin{table}[!htb]
-\caption{Ierarhia într-un sistem de fișiere din mediul Linux}
 \begin{center}
   \begin{tabular}{ p{0.2\textwidth} p{0.7\textwidth} }
   \toprule
@@ -153,8 +152,9 @@ Prezentăm în continuare exemple concrete de organizare a fișierelor în siste
     \file{/var} & fișiere al căror conținut se schimbă foarte des, precum log-uri, fișiere temporare, cache (date reutilizabile), spool (date neprocesate)\\
   \bottomrule
   \end{tabular}
-  \label{table:fs:linux-fs}
 \end{center}
+\caption{Ierarhia într-un sistem de fișiere din mediul Linux}
+\label{table:fs:linux-fs}
 \end{table}
 
 În \labelindexref{Figura}{fig:fs:linux-fs} prezentăm cum arată grafic o ierarhie a sistemului de fișiere. Observăm că în rădăcină se află directoarele \file{home/}, \file{bin/}, \file{usr/} etc. În directorul \file{home/} se află subdirectoarele \file{ubuntu/} și \file{myuser/} ș.a.m.d.
@@ -176,7 +176,6 @@ Ierarhia sistemului de fișiere în macOS este apropiată celei din Linux.
 Structura fișierelor în Windows diferă față de cea din Linux. Aceasta este mai simplă și majoritatea directoarelor importante se află în \file{C:\textbackslash{}Windows}, așa cum se observă în \labelindexref{Tabelul}{table:fs:windows-fs}.
 
 \begin{table}[htb]
-\caption{Ierarhia într-un sistem de fișiere din Windows}
 \begin{center}
   \begin{tabular}{ p{0.32\textwidth} p{0.62\textwidth} }
   \toprule
@@ -195,8 +194,9 @@ Structura fișierelor în Windows diferă față de cea din Linux. Aceasta este 
     \file{C:\textbackslash{}Documents and Settings\textbackslash{}username\textbackslash{}My Documents} & datele unui utilizator (aceasta este calea implicită, ea poate fi modificată) \\
   \bottomrule
   \end{tabular}
-  \label{table:fs:windows-fs}
 \end{center}
+\caption{Ierarhia într-un sistem de fișiere din Windows}
+\label{table:fs:windows-fs}
 \end{table}
 
 Deși în Linux și în macOS avem un singur director rădăcină, Windows are simultan pentru fiecare sistem de fișiere câte un director rădăcină:
@@ -212,7 +212,6 @@ Windows alocă literele în funcție de partiții, nu după sistemul de fișiere
 În \labelindexref{Tabelul}{table:fs:compare-lin-win} de mai jos avem o comparație între căile importante din sistemele de operare cele mai cunoscute.
 
 \begin{table}[htb]
-\caption{Comparație între căile sistemelor de operare}
 {\scriptsize
 \begin{center}
   \begin{tabular}{ p{0.15\textwidth} p{0.25\textwidth} p{0.25\textwidth} p{0.25\textwidth} }
@@ -228,9 +227,10 @@ Windows alocă literele în funcție de partiții, nu după sistemul de fișiere
     configurări ale sistemului & Windows Registry & directoare specifice fiecărei \ aplicații, aflate în home-ul utilizatorului; \file{/etc} & \file{/Users/username/ Library}; \file{/etc} \\
   \bottomrule
   \end{tabular}
-  \label{table:fs:compare-lin-win}
 \end{center}
 }
+\caption{Comparație între căile sistemelor de operare}
+\label{table:fs:compare-lin-win}
 \end{table}
 
 Observăm că în Linux înșiruirea de directoare este separată de caracterul \file{/} (\textit{slash}), în timp ce în mediile Windows se folosește \file{\textbackslash{}} (\textit{backslash}).
@@ -691,7 +691,6 @@ drwxrwxr-x 2 student student 4096 sep 30 17:32 games/heroes/3/nighon/mutare
 În \labelindexref{Tabelul}{table:fs:create} sunt sumarizate comenzile de creare a tipurilor de intrări în sistemul de fișiere.
 
 \begin{table}[htb]
-\caption{Comenzi pentru crearea intrărilor în sistemul de fișere}
 \begin{center}
   \begin{tabular}{ p{0.3\textwidth} p{0.6\textwidth} }
   \toprule
@@ -704,8 +703,9 @@ drwxrwxr-x 2 student student 4096 sep 30 17:32 games/heroes/3/nighon/mutare
     legătură (link) & \cmd{ln -s \textless{}destinatie> [\textless{}nume\_legătură>]} \\
   \bottomrule
   \end{tabular}
-  \label{table:fs:create}
 \end{center}
+\caption{Comenzi pentru crearea intrărilor în sistemul de fișere}
+\label{table:fs:create}
 \end{table}
 
 \subsection{Copiere / mutare / redenumire / ștergere}
@@ -1018,7 +1018,6 @@ Chiar dacă realizăm sincronizarea automată prin Cloud, este util să creăm �
 potrivite.
 
 \begin{table}[htb]
-\caption{Metode pentru backup}
 \begin{center}
   \begin{tabular}{ p{0.2\textwidth} p{0.7\textwidth} }
   \toprule
@@ -1035,8 +1034,9 @@ potrivite.
     rdiff-backup & Este un wrapper peste rsync. Adaugă suport pentru backupuri incrementale, adică: la un moment dat se realizează un backup complet pentru un director (asemănător rsync-ului); backup-urile incrementale salvează doar modificările ce s-au făcut de la ultimul backup pana în prezent, indiferent de tipul backup-ului; în acest fel se poate reveni la orice stare anterioara, în măsura în care s-a realizat cel puțin un backup incremental la acea stare. \\
   \bottomrule
   \end{tabular}
-  \label{table:file-system-backup-cmd}
 \end{center}
+\caption{Metode pentru backup}
+\label{table:file-system-backup-cmd}
 \end{table}
 
 Informații detaliate despre backupuri periodice folosind \cmd{rsync} vor fi prezentate în \labelindexref{Secțiunea}{sec:storage:backup:linux}.
@@ -1067,7 +1067,6 @@ Restul fișierelor deschise de aplicații au un descriptor de fișier mai mare s
 În unele situații, utilizatorul poate dori să modifice intrarea sau ieșirea pentru o aplicație. De exemplu, utilizatorul își poate dori ca în loc să obțină datele de intrare de la tastatură pentru un program, să le obțină dintr-un fișier. Aceste operații se pot realiza doar la nivelul descriptorilor. În shell sunt permise comenzi cu o sintaxă specială asupra descriptorilor standard modificați; pot fi întâlnite cazurile de redirectare din \labelindexref{Tabelul}{table:fs:redirect}.
 
 \begin{table}[htb]
-\caption{Metode de redirectare}
 \begin{center}
   \begin{tabular}{ p{0.2\textwidth} p{0.2\textwidth} p{0.5\textwidth}}
   \toprule
@@ -1084,8 +1083,9 @@ Restul fișierelor deschise de aplicații au un descriptor de fișier mai mare s
     eroare \& ieșire & Fișier & \cmd{./program $>$ fișier\_ieșire\_și\_erori 2$>$\&1} \\
   \bottomrule
   \end{tabular}
-  \label{table:fs:redirect}
 \end{center}
+\caption{Metode de redirectare}
+\label{table:fs:redirect}
 \end{table}
 
 Pentru a redirecta ieșirea (către exteriorul programului) se folosește caracterul \texttt{$>$} (semnul \textit{mai mare}), în timp ce pentru a redirecta intrarea se folosește caracterul \texttt{$<$} (semnul \textit{mai mic}) (către program), iar pentru redirectarea ieșirii de erori se folosește descriptorul \texttt{2} de fișier urmat de caracterul \texttt{$>$}.
@@ -1158,7 +1158,6 @@ fstat(3, {st_mode=S_IFREG|0644, st_size=91329, ...}) = 0
 \labelindexref{Tabelul}{table:file-system-redirect-special} prezintă câteva redirectări folosind fișiere speciale.
 
 \begin{table}[htb]
-\caption{Redirectări folosind fișiere speciale}
   {\scriptsize
 \begin{center}
   \begin{tabular}{ p{0.4\textwidth} p{0.5\textwidth}}
@@ -1174,9 +1173,10 @@ fstat(3, {st_mode=S_IFREG|0644, st_size=91329, ...}) = 0
     \cmd{cat /dev/null $>$ new\_file} & creează un fișier cu același conținut ca \file{/dev/null}, adică un fișier gol, indentic ca mai sus \\
   \bottomrule
   \end{tabular}
-  \label{table:file-system-redirect-special}
 \end{center}
   }
+\caption{Redirectări folosind fișiere speciale}
+\label{table:file-system-redirect-special}
 \end{table}
 
 Detalii despre internele redirectării și ce se întâmplă la nivelul unei aplicații găsiți în \labelindexref{Secțiunea}{sec:process:redirect}.
@@ -1189,7 +1189,6 @@ Detalii despre internele redirectării și ce se întâmplă la nivelul unei apl
 Pentru mai multe informații despre crearea, montarea și repararea unui sistem de fișiere, precum și lucrul cu partiții, citiți \labelindexref{Capitolul}{chapter:storage}. În \labelindexref{Tabelul}{table:fs:os-fs} de mai jos se găsesc unele dintre cele mai importante sisteme de fișiere utilizate în prezent, alături de sistemele de operare în care operează.
 
 \begin{table}[htb]
-\caption{Sisteme de operare și sisteme de fișiere}
 \begin{center}
   \begin{tabular}{ p{0.18\textwidth} p{0.23\textwidth} p{0.23\textwidth} p{0.23\textwidth} }
   \toprule
@@ -1211,8 +1210,9 @@ Pentru mai multe informații despre crearea, montarea și repararea unui sistem 
     UDF & Nativ & Nativ & Nativ \\
   \bottomrule
   \end{tabular}
-  \label{table:fs:os-fs}
 \end{center}
+\caption{Sisteme de operare și sisteme de fișiere}
+\label{table:fs:os-fs}
 \end{table}
 
 Termenul ,,nativ'' semnifică faptul că suportul este oferit de driverele ce însoțesc sistemul de operare.
@@ -1220,7 +1220,6 @@ Termenul ,,nativ'' semnifică faptul că suportul este oferit de driverele ce î
 Sistemele de fișiere pot fi clasificate după locul în care datele sunt stocate. \labelindexref{Tabelul}{table:fs:fs-storage} prezintă succint această clasificare.
 
 \begin{table}[htb]
-\caption{Clasificarea sistemelor de fișiere după suportul datelor}
 \begin{center}
   \begin{tabular}{ p{0.25\textwidth} p{0.25\textwidth} p{0.4\textwidth} }
   \toprule
@@ -1233,8 +1232,9 @@ Sistemele de fișiere pot fi clasificate după locul în care datele sunt stocat
     sisteme de fișiere pentru rețea & NFS, SMB & utilizate pentru accesul la fișiere aflate în rețea \\
   \bottomrule
   \end{tabular}
-  \label{table:fs:fs-storage}
 \end{center}
+\caption{Clasificarea sistemelor de fișiere după suportul datelor}
+\label{table:fs:fs-storage}
 \end{table}
 
 Sistemele de fișiere virtuale (precum \texttt{procfs}) sunt sisteme care nu au suport fizic pe disc. Accesul prin comenzi la aceste sisteme de fișiere duce de obicei la date care se găsesc în memorie. Despre sistemul de fișiere \texttt{procfs} vor fi prezentate detalii în \labelindexref{Secțiunea}{sec:process:proc}.
@@ -1265,9 +1265,9 @@ Atunci când alegem un sistem de fișiere, criteriile cele mai căutate sunt:
 \labelindexref{Tabelul}{table:fs:details} realizează o analiză sumară a caracteristicilor sistemelor de fișiere. Unitatea TiB reprezintă un tebibyte, adică $2^{40}$ octeți, iar un EiB reprezintă un exbibyte, adică $2^{60}$ octeți.
 
 \begin{table}[htb]
-\caption{Caracteristici ale sistemelor de fișiere mai cunoscute}
+  \scriptsize
 \begin{center}
-  \begin{tabular}{ p{0.1\textwidth} p{0.15\textwidth} p{0.2\textwidth} p{0.15\textwidth} p{0.35\textwidth} }
+  \begin{tabular}{ p{0.07\textwidth} p{0.15\textwidth} p{0.2\textwidth} p{0.07\textwidth} p{0.35\textwidth} }
   \toprule
     \textbf{Nume} & \textbf{Sisteme de operare} &
     \textbf{Dimensiune maximă fișier} & \textbf{Jurnalizare} &
@@ -1281,7 +1281,7 @@ Atunci când alegem un sistem de fișiere, criteriile cele mai căutate sunt:
   \midrule
     Ext4 & Linux / Windows / MacOS & 16TiB & da & Succesorul lui Ext3, îmbunătățind performanța, stabilitatea și capacitatea de stocare. Este adecvat și pentru stocarea datelor critice, datorită preciziei ridicate ale marcajelor temporale. \\
   \midrule
-    HFS+ & Mac OS / Linux & 16 EiB & da* & * în Linux, HFS+ este suportat fără jurnalizare \\
+    HFS+ & Mac OS / Linux & 16 EiB & da* & * în Linux, HFS+ are suport fără jurnalizare \\
   \midrule
     APFS & MacOS, iOS & 8 EiB & da & Este optimizat pentru dispozitivele de stocare tip flash și solid drive, și pune accentul pe criptare. \\
   \midrule
@@ -1290,8 +1290,9 @@ Atunci când alegem un sistem de fișiere, criteriile cele mai căutate sunt:
     UDF & Win / Linux / Mac OS & 16 EiB & da & Sistem de fișiere utilizat în principal pe mediile optice, cu suport atât pentru scriere cât și pentru citire \\
   \bottomrule
   \end{tabular}
-  \label{table:fs:details}
 \end{center}
+\caption{Caracteristici ale sistemelor de fișiere mai cunoscute}
+\label{table:fs:details}
 \end{table}
 
 \section{Anexă: Comenzi pentru lucrul cu fișiere în Windows}
@@ -1300,7 +1301,6 @@ Atunci când alegem un sistem de fișiere, criteriile cele mai căutate sunt:
 \labelindexref{Tabelul}{table:fs:compare-lin-win-cmd} prezintă comenzile echivalente în Windows pentru operațiile de lucru cu sistemul de fișiere. Acestea pot fi folosite în prompt-urile Windows precum PowerShell sau Command Prompt.
 
 \begin{table}[htb]
-\caption{Echivalențe comenzi Linux și Windows}
 \begin{center}
   \begin{tabular}{ p{0.2\textwidth} p{0.2\textwidth} p{0.4\textwidth} }
   \toprule
@@ -1343,8 +1343,9 @@ Atunci când alegem un sistem de fișiere, criteriile cele mai căutate sunt:
     \cmd{diff} & \cmd{fc} & afișează diferențele dintre două fișiere \\
   \bottomrule
   \end{tabular}
-  \label{table:fs:compare-lin-win-cmd}
 \end{center}
+\caption{Echivalențe comenzi Linux și Windows}
+\label{table:fs:compare-lin-win-cmd}
 \end{table}
 
 \section{Sumar}

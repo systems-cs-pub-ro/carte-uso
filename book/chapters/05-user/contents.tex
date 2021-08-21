@@ -569,7 +569,6 @@ configurare în care sunt reținute informații despre utilizatori sunt indicate
 \labelindexref{Tabelul}{table:user:info-files}.
 
 \begin{table}[!htb]
-\caption{Informații despre utilizatori}
 \begin{center}
   \begin{tabular}{ p{0.18\textwidth} p{0.22\textwidth} p{0.55\textwidth} }
 	\toprule
@@ -582,8 +581,9 @@ configurare în care sunt reținute informații despre utilizatori sunt indicate
                 \file{/etc/group} & informații grupuri & nume grup, GID, utilizatori aferenți \\
 	\bottomrule
 	\end{tabular}
-        \label{table:user:info-files}
 \end{center}
+\caption{Informații despre utilizatori}
+\label{table:user:info-files}
 \end{table}
 
 Fișierele de configurare au formă tabelară cu coloane: fiecare linie este o
@@ -616,7 +616,6 @@ Altfel, informații despre utilizatori obținem folosind utilitare precum cele d
 \labelindexref{Tabelul}{table:user:tools-files}. Aceste utilitare investighează fișierele de configurare din \labelindexref{Tabelul}{table:user:info-files}.
 
 \begin{table}[!htb]
-\caption{Utilitare de investigare utilizatori}
 \begin{center}
   \begin{tabular}{ p{0.20\textwidth} p{0.35\textwidth} p{0.35\textwidth} }
 	\toprule
@@ -633,8 +632,9 @@ Altfel, informații despre utilizatori obținem folosind utilitare precum cele d
                 \cmd{finger}, \cmd{pinky} & informații complete despre un utilizator & \file{/etc/passwd}, \file{/etc/group} \\
 	\bottomrule
 	\end{tabular}
-        \label{table:user:tools-files}
 \end{center}
+\caption{Utilitare de investigare utilizatori}
+\label{table:user:tools-files}
 \end{table}
 
 În \labelindexref{Listing}{lst:user:commands} sunt câteva exemple de folosire ale comenzilor de mai sus.
@@ -749,7 +749,6 @@ mediul desktop folosit (GNOME, KDE, XFCE etc.) În mod tradițional, gestiunea s
 face în linia de comandă cu ajutorul utilitarelor specifice, indicate în \labelindexref{Tabelul}{table:user:tools-manage}.
 
 \begin{table}[!htb]
-\caption{Utilitare de gestiune a utilizatorilor}
 \begin{center}
   \begin{tabular}{ p{0.30\textwidth} p{0.20\textwidth} p{0.35\textwidth} }
 	\toprule
@@ -774,8 +773,9 @@ face în linia de comandă cu ajutorul utilitarelor specifice, indicate în \lab
                 schimbare parolă & \cmd{passwd} & \file{/etc/shadow} \\
 	\bottomrule
 	\end{tabular}
-        \label{table:user:tools-manage}
 \end{center}
+\caption{Utilitare de gestiune a utilizatorilor}
+\label{table:user:tools-manage}
 \end{table}
 
 Pe distribuțiile bazate pe Debian (Debian, Ubuntu, Linux Mint etc.) există un
@@ -783,7 +783,6 @@ set de utilitare mai ușor de folosit care înglobează comenzile de mai sus,
 indicate în \labelindexref{Tabelul}{table:user:debian-wrapper}
 
 \begin{table}[!htb]
-\caption{Utilitare wrapper Debian}
 \begin{center}
   \begin{tabular}{ p{0.40\textwidth} p{0.40\textwidth} }
 	\toprule
@@ -798,8 +797,9 @@ indicate în \labelindexref{Tabelul}{table:user:debian-wrapper}
                 \cmd{delgroup} & \cmd{groupdel} \\
 	\bottomrule
 	\end{tabular}
-        \label{table:user:debian-wrapper}
 \end{center}
+\caption{Utilitare wrapper Debian}
+\label{table:user:debian-wrapper}
 \end{table}
 
 În Linux/Unix există două tipuri de grupuri: \textbf{grupuri primare} și \textbf{grupuri secundare}. Un utilizator
@@ -813,7 +813,6 @@ informații proprii: shellul de login, numele de utilizator, datele personale,
 parola. Pentru aceasta folosește utilitarele din \labelindexref{Tabelul}{table:user:self-manage}.
 
 \begin{table}[!htb]
-\caption{Utilitare pentru modificare informații proprii}
 \begin{center}
   \begin{tabular}{ p{0.40\textwidth} p{0.40\textwidth} }
 	\toprule
@@ -826,8 +825,9 @@ parola. Pentru aceasta folosește utilitarele din \labelindexref{Tabelul}{table:
                 schimbare parolă & \cmd{passwd} \\
 	\bottomrule
 	\end{tabular}
-        \label{table:user:self-manage}
 \end{center}
+\caption{Utilitare pentru modificare informații proprii}
+\label{table:user:self-manage}
 \end{table}
 
 Un grup care este grupul primar al unui utilizator nu poate fi șters. Întâi trebuie să fie șters utilizatorul, apoi grupul.
@@ -1486,7 +1486,6 @@ este cazul acestea trebuie acordate explicit.
 Exemple sunt prezente în \labelindexref{Tabelul}{table:user:umask}.
 
 \begin{table}[!htb]
-\caption{Permisiuni de creare fișier în funcție de mască}
 \begin{center}
   \begin{tabular}{ p{0.20\textwidth} p{0.20\textwidth} p{0.20\textwidth} p{0.20\textwidth} }
 	\toprule
@@ -1499,8 +1498,9 @@ Exemple sunt prezente în \labelindexref{Tabelul}{table:user:umask}.
                 \texttt{077} & \texttt{700} & \texttt{600} & \texttt{700} \\
 	\bottomrule
 	\end{tabular}
-        \label{table:user:umask}
 \end{center}
+\caption{Permisiuni de creare fișier în funcție de mască}
+\label{table:user:umask}
 \end{table}
 
 Afișarea și modificarea măștii shellului se face folosind comanda \cmd{umask}. Fără
