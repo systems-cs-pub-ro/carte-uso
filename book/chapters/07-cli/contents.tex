@@ -699,7 +699,7 @@ Expandarea de acolade înseamnă trecerea prin mai multe opțiuni.
   \item Liniile \texttt{14-19} prezintă expandarea unei variabile, caz de expandare parametrică. În cazul simplu se folosește doar caracterul \texttt{\$} (\textit{dollar}). Altfel folosim construcții care încep cu \texttt{\$\{} (dolar-acoladă), ca să fie clar care este numele variabile.
     De exemplu, linia \texttt{16} va încerca afișarea valorii variabilei \texttt{config\_test}, nu a valorii variabilei \texttt{config} urmată de
     șirul \texttt{\_test}. Pentru aceasta o rulare corectă este cea de la linia \texttt{18}.
-  \item Liniile \texttt{21-24} prezintă expandarea aritmetică. Dacă nu am folosi construcția \verb|$((...))| pentru expandare aritmetică, nu s-ar realiza calculul matematic, ci doar s-ar afișa expresia în cauză, ca un șir.
+  \item Liniile \texttt{21-24} prezintă expandarea aritmetică. Dacă nu am folosi construcția \verb|$((...))| pentru expandare aritmetică, nu s-ar realiza calculul matematic, ci doar s-ar afișa expresia în cauză, ca un șir de caractere.
 \end{itemize}
 
 \begin{screen}[caption={Forme de expandare în shell},label={lst:cli:expansion}]
@@ -872,7 +872,7 @@ student@uso:~/uso.git$ ls USO\ -\ Curs\ 07.pdf
 'USO - Curs 07.pdf'
 \end{screen}
 
-Fiecare formă poate fi la rândul său folosită pentru a escapa celelalte forme, așa cum apare în \labelindexref{Listing}{lst:cli:escaping-create}. Este similar cu escapingul ghilimelelor într-un șir dintr-un limbaj de programare (precum C sau Python)
+Fiecare formă poate fi la rândul său folosită pentru a escapa celelalte forme, așa cum apare în \labelindexref{Listing}{lst:cli:escaping-create}. Este similar cu escapingul ghilimelelor într-un șir de caractere dintr-un limbaj de programare (precum C sau Python)
 
 \begin{screen}[caption={Forme de escaping în shell},escapechar=,label={lst:cli:escaping-create}]
 student@uso:~/test$ touch "ana'are'mere"
