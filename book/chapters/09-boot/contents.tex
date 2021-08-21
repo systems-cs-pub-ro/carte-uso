@@ -924,7 +924,7 @@ apparmor   console-setup.sh  dbus          hddtemp        [...]
 \end{screen}
 
 În systemd, serviciile, împreună cu alte componente, sunt numite \texttt{units}. Pentru a
-vizualiza toate unitățile systemd, folosim comanda \cmd{systemd -{}-list-units}:
+vizualiza toate unitățile systemd, folosim comanda \cmd{systemctl list-units}:
 
 \begin{screen}
 student@uso:~$ systemctl list-units | head -100
@@ -1039,7 +1039,7 @@ root sau a contului Administrator și să fie nevoie de resetarea acesteia. În
 \labelindexref{Secțiunea}{sec:user:linux-password-recovery} și \labelindexref{Secțiunea}{sec:user:windows-password-recovery} am precizat modurile
 uzuale de resetare a parolei administrative și în Linux și în Windows. În Linux
 folosim opțiunea \texttt{init=/bin/bash} la bootarea sistemului de operare, editând
-intrarea în bootloader, sau folosim unui USB stick bootabil sau CD-ROM. În
+intrarea în bootloader, sau folosim un USB stick bootabil sau CD-ROM. În
 Windows folosim Ultimate Boot CD.
 
 În Linux este posibil să configurăm parolă de acces la bootloader (GRUB) și
