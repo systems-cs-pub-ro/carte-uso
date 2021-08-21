@@ -585,7 +585,7 @@ O listă completă găsiți în pagina de manual a comenzii \cmd{test}.
         verifică dacă primul parametru al scriptului are ca valoare șirul \texttt{/etc/passwd} \\
 
         \cmd{test -z "\$store"} &
-        verifică dacă variabila \texttt{store} nu conține nici o informație (este un șir vid) \\
+        verifică dacă variabila \texttt{store} nu conține nici o informație (este un șir de caractere vid) \\
 
         \cmd{test !\@ -z "\$store"} &  % \@ este necesar după !, altfel LaTeX consideră că se termină o frază și bugetează spațiu în plus.
         verifică opusul condiției de mai sus \\
@@ -631,8 +631,8 @@ Aceleași verificări realizate cu \cmd{test} și \cmd{$[$} pot fi realizate și
 Pe lângă acestea, \cmd{$[[$} permite verificări suplimentare, ca cele prezentate în \labelindexref{Listing}{lst:auto:shell-builtin-bracket}:
 \begin{itemize}
   \item liniile \texttt{1-2}: verificare de condiții compuse, folosind operatorul \texttt{\&\&} (ȘI logic - \textit{logical AND})
-  \item liniile \texttt{4-5}: comparația unui șir cu o construcție de tip pattern / globbing (prezentate în \labelindexref{Secțiunea}{sec:cli:shell-func:expansion:globbing}), folosind operatorul \texttt{==}
-  \item liniile \texttt{7-8}: comparația unui șir cu o construcție de tip expresie regulată (prezentate în \labelindexref{Secțiunea}{sec:cli:regex}), folosind operatorul \texttt{=$\sim$}
+  \item liniile \texttt{4-5}: comparația unui șir de caractere cu o construcție de tip pattern / globbing (prezentate în \labelindexref{Secțiunea}{sec:cli:shell-func:expansion:globbing}), folosind operatorul \texttt{==}
+  \item liniile \texttt{7-8}: comparația unui șir de caractere cu o construcție de tip expresie regulată (prezentate în \labelindexref{Secțiunea}{sec:cli:regex}), folosind operatorul \texttt{=$\sim$}
 \end{itemize}
 
 \begin{screen}[caption={Folosirea comenzii interne {[[}},label={lst:auto:shell-builtin-bracket}]
@@ -661,7 +661,7 @@ Sintaxa comenzii \cmd{case} este indicată în \labelindexref{Listing}{lst:auto:
 Valoarea variabilei \texttt{var} este comparată cu diferite patternuri, precum \texttt{abc*} sau \texttt{*$[$de$]$fg*}.
 În cazul fiecărei potriviri, se execută comenzile corespunzătoare.
 De avut în vedere construcția \texttt{;;} pentru închiderea unei opțiuni \cmd{case}.
-Construcția \texttt{*} definește echivalentul etichetei \texttt{default} din programarea în C: se potrivește cu orice șir.
+Construcția \texttt{*} definește echivalentul etichetei \texttt{default} din programarea în C: se potrivește cu orice șir de caractere.
 În mod obișnuit, se plasează ca ultima opțiune pentru \cmd{case}, iar comenzile corespunzătoare sunt executate dacă nu s-au potrivit cu nici o altă opțiune.
 
 \begin{screen}[caption={Sintaxa comenzii case},label={lst:auto:case-syntax}]
