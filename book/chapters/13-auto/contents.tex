@@ -529,13 +529,13 @@ Codul de ieșire al unei comenzi este reținut de construcția \texttt{\$?}, aș
 Astfel că cele trei construcții din \labelindexref{Listing}{lst:auto:if-test-exit-code} sunt echivalente.
 
 \begin{screen}[caption={Verificarea codului de ieșire al unei comenzi},label={lst:auto:if-test-exit-code}]
-grep "ana" /etc/passwd > /dev/null && echo "found"
+grep -q "ana" /etc/passwd && echo "found"
 
-if grep "ana" /etc/passwd > /dev/null; then
+if grep -q "ana" /etc/passwd; then
     echo "found"
 fi
 
-grep "ana" /etc/passwd > /dev/null
+grep -q "ana" /etc/passwd
 if test $? -eq 0; then
     echo "found"
 fi
@@ -543,6 +543,11 @@ fi
 
 Folosim \cmd{if} în locul operatorilor de secvențiere condiționată (\texttt{\&\&}, \texttt{$\textbar\textbar$}) atunci când executăm mai multe comenzi sau pentru lizibilitate.
 Folosim \cmd{if} cu \cmd{test} și verificarea codului de ieșire \texttt{\$?} din rațiuni de lizibilitate; dar e discutabil și probabil chestiune de gust care dintre variantele (liniile \texttt{3-5}, respectiv \texttt{7-10}) este preferabilă.
+
+\begin{note}[\cmd{grep -q}]
+  Folosim opțiunea \texttt{-q} (\textit{quiet}) la comanda \cmd{grep} pentru a dezactiva afișarea liniilor care se potrivesc.
+  Această opțiune este utilă atunci când ne interesează doar codul de ieșire al comenzii \cmd{grep}, adică încheierea cu succes sau nu, cum e cazul în \labelindexref{Listing}{lst:auto:if-test-exit-code}.
+\end{note}
 
 Comanda \cmd{test} primește ca argument o specificare de condiție care poate avea diferite forme.
 Condiția poate fi comparație între numere, între șiruri de caractere, verificarea tipului unui fișier și altele.
