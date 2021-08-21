@@ -38,7 +38,7 @@ mai numește și sintaxă.
 
 Folosind un limbaj de programare, putem defini operații pe care dorim să le
 executăm într-o anumită ordine. Acesta este practic programul pe care îl scriem.
-Operațiile sunt rulate pe procesorul sistemului pe care dorim sa îl programăm,
+Operațiile sunt rulate pe procesorul sistemului pe care dorim să îl programăm,
 dar înainte de a fi executate, ele trec printr-un proces de transformare.
 Fiecare procesor cunoaște un anumit set de instrucțiuni pe care le poate
 executa. Codul scris folosind aceste instrucțiuni se numește \textbf{cod mașină} și este
@@ -70,7 +70,7 @@ mașină de un asamblor.
 În general, producătorul unui procesor definește și limbajul de asamblare
 specific acestuia, pentru a oferi o variantă lizibilă a instrucțiunilor
 procesorului. Scopul limbajului de asamblare a fost de a permite scrierea de
-aplicații într-o manieră ușoară, la început acesta fiind singura modalitatea de
+aplicații într-o manieră ușoară, la început acesta fiind singura modalitate de
 a dezvolta programe. Deși mai ușor de folosit decât codul binar, și limbajul de
 asamblare este dificil de urmărit mai ales pentru programe lungi. De aceea, în
 timp, au apărut limbajele mai complexe din punct de vedere al logicii, limbaje
@@ -90,7 +90,7 @@ cazurile acestea sunt destul de rare.
 de nivel înalt. Astfel, programatorii folosesc o sintaxă apropiată de limbajul
 natural pentru dezvoltarea aplicațiilor, ceea ce ușurează întregul proces (se
 folosesc cuvinte precum \textit{while}, \textit{if}, \textit{else}). Atunci
-când scriem un program, totul pornește de la ideea clară a ce vrem să obținem
+când scriem un program, totul pornește de la ideea clară a ceea ce vrem să obținem
 prin acel program. Mai exact, trebuie să stabilim clar ce vrem să facă
 programul. După aceea, următorul pas este să structurăm ideea și să o
 \textit{traducem} în limbajul de programare folosit. Așa obținem programul final
@@ -119,7 +119,7 @@ interpretate. Diferența între cele două este că pentru a rula un limbaj
 compilat, acesta este întâi transformat în cod mașină, rezultând un fișier
 executabil, care apoi poate fi rulat oricând. Pe de altă parte, un limbaj
 interpretat este executat direct, prin intermediul unui interpretor.
-Interpretorul este cel care ia fiecare instrucțiune, o transformă în cod mașină
+Interpretorul este cel care ia fiecare instrucțiune, o transformă în cod mașină,
 iar aceasta este executată imediat.
 
 Fiecare dintre cele două tipuri de a rula cod sursă, compilare sau interpretare,
@@ -154,8 +154,8 @@ Este important de reținut că indiferent de limbaj (compilat, interpretat sau
 hibrid), procesorul știe să ruleze doar cod mașină, așa că orice cod sursă va fi
 la un moment dat transformat în cod mașină, iar pentru programatori este
 important dacă limbajul folosit este unul compilat, interpretat sau hibrid. Este
-important să cunoaștem tipul unui limbaj de programare și avantaje și
-dezavantaje sale pentru a putea alege în funcție de nevoile pe care le avem.
+important să cunoaștem tipul unui limbaj de programare, avantajele și
+dezavantajele sale pentru a putea alege în funcție de nevoile pe care le avem.
 
 De exemplu, dacă ne dorim să dezvoltăm un joc tip curse de mașini, avem nevoie
 de rapiditate în execuție, față de o aplicație de organizare a lucrului în
@@ -197,9 +197,9 @@ specifice unui procesor și care să facă transformarea din cod sursă în cod
 mașină.
 
 Pentru că există un număr foarte mare de limbaje și un număr mare de procesoare
-diferite, în practică, nu avem cate un compilator diferit. În general, există
+diferite, în practică, nu avem câte un compilator diferit. În general, există
 framework-uri de compilator care au suport pentru mai multe limbaje de programare (de exemplu C sau C++ sau D), respectiv alte
-componente care au suport pentru mai multe arhitecturi de procesor (de exemplu x86 sau ARM sau MIPS). Astfel, un compilator poate genera cod pentru diferite arhitecturi pornind de la diferite tipuri de limbaje. În general aceste compilatoare au un limbaj intern, numit limbaj intermediar care facilitează aceste traduceri din limbaj în cod mașină de procesor, așa cum este indicat în \labelindexref{Figura}{fig:appdev:intermediary}.
+componente care au suport pentru mai multe arhitecturi de procesor (de exemplu x86 sau ARM sau MIPS). Astfel, un compilator poate genera cod pentru diferite arhitecturi pornind de la diferite tipuri de limbaje. În general, aceste compilatoare au un limbaj intern, numit limbaj intermediar, care facilitează aceste traduceri din limbaj în cod mașină de procesor, așa cum este indicat în \labelindexref{Figura}{fig:appdev:intermediary}.
 
 \begin{figure}[htbp]
   \centering
@@ -215,7 +215,7 @@ componente care au suport pentru mai multe arhitecturi de procesor (de exemplu x
 Deși am prezentat avantajele și dezavantajele folosirii unui limbaj de
 programare compilat, dacă alegem că aceasta este opțiunea potrivită, avem un
 număr mare de limbaje compilate din care putem alege. În continuare vom descrie
-câteva din cele mai folosite și particularitățile de care trebuie să ținem cont
+câteva dintre cele mai folosite și particularitățile de care trebuie să ținem cont
 în luarea unei decizii.
 
 \subsubsection{C}
@@ -282,12 +282,12 @@ crește timpul de execuție al aplicației, sunt avantaje pe care limbajele
 interpretate le au față de cele compilate.
 
 În primul rând, programele scrise în astfel de limbaje pot fi direct rulate pe
-orice arhitectură, atâta timp cât există un interpretor instalat. Acest lucru înseamnă
+orice arhitectură, atât timp cât există un interpretor instalat. Acest lucru înseamnă
 că putem copia codul sursă de pe un sistem care rulează Windows pe unul care
 rulează macOS. În plus, pentru că toate instrucțiunile trec prin interpretor,
 limbajele interpretate nu oferă acces direct la resursele hardware, ceea ce le
 face mai sigure, dar și mai ineficiente. De aceea astfel de limbaje sunt
-recomande pentru dezvoltarea de aplicații care nu țin de sistemul de operare.
+recomandate pentru dezvoltarea de aplicații care nu țin de sistemul de operare.
 
 Pe de altă parte, limbajele interpretate presupun ca orice mașină care va rula
 aplicația dezvoltată, trebuie să conțină codul sursă ce va fi rulat. Sunt cazuri
@@ -317,7 +317,7 @@ Limbajele de programare hibride îmbină elemente de compilare cu elemente de
 interpretare, pentru a rezulta în aplicații portabile, rapide și sigure.
 
 Pentru că principalul dezavantaj al programelor interpretate este timpul mare de
-execuție, una din îmbunătățirile aduse interpretoarelor este posibilitatea de a
+execuție, una dintre îmbunătățirile aduse interpretoarelor este posibilitatea de a
 transforma codul sursă într-un cod intermediar, care se numește \textbf{bytecode}, care
 va fi apoi interpretat. Bytecode-ul este practic codul mașină al
 interpretorului, deci transformarea acestuia în cod mașină este mult mai rapidă.
@@ -374,11 +374,11 @@ Microsystems, așa că astăzi Java este întreținut de către Oracle. Paradigm
 care se bazează Java este programarea orientată pe obiecte. Acesta facilitează
 scrierea unui cod cât mai modularizat și refolosibil.
 
-Idee de bază care a stat la baza limbajului Java a fost portabilitatea. Se dorea
+Ideea de bază care a stat la baza limbajului Java a fost portabilitatea. Se dorea
 scrierea unui program o singură dată și rularea lui pe multe platforme diferite
 fără a face vreo modificare și fără a fi necesară distribuirea sursei. Inițial a
 fost folosit în programe de navigare sub forma de \textit{Java Applets}, mici
-aplicații scrie care se putea include într-o pagină.
+aplicații scrise care se puteau include într-o pagină.
 
 Fiind destinat dezvoltării de aplicații pentru companii, platforma Java este are
 două componente, compilatorul care generează bytecode-ul (Java Development Kit -
@@ -397,9 +397,9 @@ inclusiv în motoare de jocuri (de exemplu Unity).
 \label{sec:appdev:hybrid-lang:python}
 
 Python este un limbaj dezvoltat inițial cu scopul de a fi folosit pentru a
-învăța programare, principalul avantaj fiind ca oferă o lizibilitatea mare
+învăța programare, principalul avantaj fiind că oferă o lizibilitate mare
 codului. A devenit foarte cunoscut datorită unor proiecte precum GNOME (inițial)
-și OpenStack, precum și datorita bibliotecilor de matematică avansate.
+și OpenStack, precum și datorită bibliotecilor de matematică avansate.
 
 Python este folosit pentru automatizarea administrării sistemului, prin
 scripturi simple. Este de asemenea foarte folosit în educație, codul sursă fiind
@@ -486,14 +486,14 @@ tutorialului \cmd{vimtutor}. Este suficient să rulați comanda \cmd{vimtutor} �
 tutorialul va începe.
 
 Deși putem găsi vi pe orice sistem Unix, doar unele distribuții vin cu editorul
-vim instalat. Pentru a instala Vim pe sistemele Debian/Ubuntu, rulăm comanda \cmd{sudo apt
+Vim instalat. Pentru a instala Vim pe sistemele Debian/Ubuntu, rulăm comanda \cmd{sudo apt
 install vim}.
 
 \subsubsection{Alte editoare}
 \label{sec:appdev:dev:editor:other}
 
 Alte editoare similare cu Vim, care funcționează tot în linie de comandă, sunt
-Nano, Pico și Emacs. La fel ca Vim, este se găsesc frecvent pe sistemele Unix, sunt
+Nano, Pico și Emacs. La fel ca Vim, ele se găsesc frecvent pe sistemele Unix, sunt
 folosite la editarea rapidă, cum ar fi editarea unor fișiere de configurare.
 
 \subsection{Editoare în interfață grafică}
@@ -618,7 +618,7 @@ dezvoltarea de aplicații Android, prin instalarea unei extensii.
 \subsubsection{NetBeans}
 \label{sec:appdev:dev:ide:netbeans}
 
-NeatBeans e un IDE cu sursă deschisă specializat pentru limbajul Java. El oferă
+NetBeans e un IDE cu sursă deschisă specializat pentru limbajul Java. El oferă
 o modalitate ușoară de a crea interfețe grafice pentru aplicații Java, împreună
 cu editorul pentru dezvoltarea programelor.
 
@@ -649,7 +649,7 @@ folosirea bibliotecilor și a framework-urilor.
 
 Bibliotecile sunt colecții de resurse pe care le integrăm în aplicațiile noastre
 pentru a ne ușura procesul de dezvoltare. De exemplu, dacă dorim să dezvoltăm o
-aplicație Python care face cereri HTTP \abbrev{HTTP}{Hypertex Transfer
+aplicație Python care face cereri HTTP \abbrev{HTTP}{Hypertext Transfer
 Protocol}, vom folosi biblioteca \textit{requests} care expune funcția
 \textit{get()} pentru a face o cerere. Fără a folosi biblioteca, ar trebui să
 scriem noi tot codul care se conectează la un server, generează pachetul pentru
@@ -765,9 +765,9 @@ Pentru C++ se poate folosi aceeași colecție de compilatoare ca pentru limbajul
 C, adică GCC. Cum am menționat mai sus, în momentul de față GCC suportă
 compilarea limbajului C++.
 
-La folosirea gcc, sistemul analizează fișierele de intrare și hotărăște dacă
+La folosirea cmd\{gcc}, sistemul analizează fișierele de intrare și hotărăște dacă
 limbajul compilat este C sau C++. Pentru a eficientiza procesul, se poate folosi
-direct g++, adică compilatorul de C++ integrat în gcc, ca în \labelindexref{Listing}{lst:appdev:simple-cpp}.
+direct cmd\{g++}, adică compilatorul de C++ integrat în gcc, ca în \labelindexref{Listing}{lst:appdev:simple-cpp}.
 
 \begin{screen}[caption={Exemplu compilare si rulare C++},label={lst:appdev:simple-cpp}]
 student@uso:~$ g++ main.cpp -o main
@@ -781,7 +781,7 @@ C++.
 \subsubsection{Dezvoltarea în C/C++}
 \label{sec:appdev:dev-env:c-dev}
 
-Cum mai menționat anterior, compilatorul cel mai folosit pentru C și C++ este
+Cum am menționat anterior, compilatorul cel mai folosit pentru C și C++ este
 gcc/g++. Pentru folosirea compilatorului este suficient să rulăm comanda
 \cmd{gcc} cu parametrii aferenți.
 
@@ -866,7 +866,7 @@ fișiere și să presupunem că am schimbat o linie într-un fișier. La rularea
 comenzii \cmd{make}, toate fișierele ar fi refăcute, ceea ce nu este eficient. De
 aceea, \cmd{make} ține cont de încă un aspect la verificarea dependențelor. Dacă
 dependența (fișierul) există, \cmd{make} va urmări lanțul de dependențe până ajunge la
-fișierele de baza ale acesteia. Dacă fișierele au fost modificate după ce
+fișierele de bază ale acesteia. Dacă fișierele au fost modificate după ce
 dependența a fost creată, aceasta va fi regenerată, în caz contrar nu se va
 regenera dependența.
 
