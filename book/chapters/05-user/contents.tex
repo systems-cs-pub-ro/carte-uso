@@ -62,11 +62,11 @@ caz afirmativ se oferă accesul la resurse. Acest mod de folosire este descris �
 \labelindexref{Figura}{fig:user:db-access}.
 
 \begin{figure}[htbp]
-	\centering
-	\def\svgwidth{0.9\columnwidth}
-	\includesvg{chapters/05-user/img/acces-bd.svg}
-        \caption{Bază de date de access}
-        \label{fig:user:db-access}
+  \centering
+  \def\svgwidth{0.9\columnwidth}
+  \includesvg{chapters/05-user/img/acces-bd.svg}
+  \caption{Bază de date de access}
+  \label{fig:user:db-access}
 \end{figure}
 
 În continuare ne vom referi în general la conturile de utilizator de sistem, cu
@@ -215,10 +215,10 @@ root@uso:/home/student#
 Accesarea unui cont (inclusiv a contului \texttt{root}) se poate face în două moduri:
 
 \begin{itemize}
-	\item autentificarea în sistem cu acel cont (la un prompt de login în
-		linia de comandă sau în interfața grafică)
-	\item schimbarea utilizatorului curent în linia de comandă prin
-          folosirea comenzii \cmd{su} (\textit{substitute user})
+  \item autentificarea în sistem cu acel cont (la un prompt de login în
+          linia de comandă sau în interfața grafică)
+  \item schimbarea utilizatorului curent în linia de comandă prin
+    folosirea comenzii \cmd{su} (\textit{substitute user})
 \end{itemize}
 
 În general, nu este recomandată autentificarea în sistem folosind contul de
@@ -569,21 +569,21 @@ configurare în care sunt reținute informații despre utilizatori sunt indicate
 \labelindexref{Tabelul}{table:user:info-files}.
 
 \begin{table}[!htb]
-\begin{center}
-  \begin{tabular}{ p{0.18\textwidth} p{0.22\textwidth} p{0.55\textwidth} }
-	\toprule
-                \textbf{Fișier} & \textbf{Rol} & \textbf{Informații} \\
-	\midrule
-                \file{/etc/passwd} & informații utilizatori & nume de utilizator, UID, director home, shell de login, GID \\
-	\midrule
-                \file{/etc/shadow} & parole utilizatori & nume de utilizator, parolă criptată, informații expirare parolă \\
-	\midrule
-                \file{/etc/group} & informații grupuri & nume grup, GID, utilizatori aferenți \\
-	\bottomrule
-	\end{tabular}
-\end{center}
-\caption{Informații despre utilizatori}
-\label{table:user:info-files}
+  \begin{center}
+    \begin{tabular}{ p{0.18\textwidth} p{0.22\textwidth} p{0.55\textwidth} }
+      \toprule
+        \textbf{Fișier} & \textbf{Rol} & \textbf{Informații} \\
+      \midrule
+        \file{/etc/passwd} & informații utilizatori & nume de utilizator, UID, director home, shell de login, GID \\
+      \midrule
+        \file{/etc/shadow} & parole utilizatori & nume de utilizator, parolă criptată, informații expirare parolă \\
+      \midrule
+        \file{/etc/group} & informații grupuri & nume grup, GID, utilizatori aferenți \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+  \caption{Informații despre utilizatori}
+  \label{table:user:info-files}
 \end{table}
 
 Fișierele de configurare au formă tabelară cu coloane: fiecare linie este o
@@ -616,25 +616,25 @@ Altfel, informații despre utilizatori obținem folosind utilitare precum cele d
 \labelindexref{Tabelul}{table:user:tools-files}. Aceste utilitare investighează fișierele de configurare din \labelindexref{Tabelul}{table:user:info-files}.
 
 \begin{table}[!htb]
-\begin{center}
-  \begin{tabular}{ p{0.20\textwidth} p{0.35\textwidth} p{0.35\textwidth} }
-	\toprule
-                \textbf{Utilitar} & \textbf{Rol} & \textbf{Fișiere investigate} \\
-	\midrule
-                \cmd{id} & informații despre utilizator & \file{/etc/passwd}, \file{/etc/group} \\
-	\midrule
-                \cmd{groups} & grupurile utilizatorului curent & \file{/etc/group} \\
-	\midrule
-                \cmd{users}, \cmd{w}, \cmd{who} & utilizatorii autentificați în sistem acum & \file{/var/run/utmp} \\
-	\midrule
-                \cmd{whoami} & numele utilizatorului curent & N/A \\
-	\midrule
-                \cmd{finger}, \cmd{pinky} & informații complete despre un utilizator & \file{/etc/passwd}, \file{/etc/group} \\
-	\bottomrule
-	\end{tabular}
-\end{center}
-\caption{Utilitare de investigare utilizatori}
-\label{table:user:tools-files}
+  \begin{center}
+    \begin{tabular}{ p{0.20\textwidth} p{0.35\textwidth} p{0.35\textwidth} }
+      \toprule
+        \textbf{Utilitar} & \textbf{Rol} & \textbf{Fișiere investigate} \\
+      \midrule
+        \cmd{id} & informații despre utilizator & \file{/etc/passwd}, \file{/etc/group} \\
+      \midrule
+        \cmd{groups} & grupurile utilizatorului curent & \file{/etc/group} \\
+      \midrule
+        \cmd{users}, \cmd{w}, \cmd{who} & utilizatorii autentificați în sistem acum & \file{/var/run/utmp} \\
+      \midrule
+        \cmd{whoami} & numele utilizatorului curent & N/A \\
+      \midrule
+        \cmd{finger}, \cmd{pinky} & informații complete despre un utilizator & \file{/etc/passwd}, \file{/etc/group} \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+  \caption{Utilitare de investigare utilizatori}
+  \label{table:user:tools-files}
 \end{table}
 
 În \labelindexref{Listing}{lst:user:commands} sunt câteva exemple de folosire ale comenzilor de mai sus.
@@ -707,19 +707,19 @@ modificarea utilizatorilor și grupurilor poate fi făcută, în mod normal, doa
 un utilizator privilegiat. Operațiile de gestiune a utilizatorilor sunt:
 
 \begin{itemize}
-	\item crearea unui utilizator: un nou cont de utilizator, identificat de
-          un nume de utilizator (\textit{username}) și un identificator de
-		utilizator (UID) este disponibil în sistem
-	\item ștergerea unui utilizator: un cont de utilizator este șters din
-		sistem, nu mai pot fi create procese cu acest utilizator
-	\item crearea unui grup: este creat un grup nou în care pot fi adăugați
-		utilizatori
-	\item ștergerea unui grup: este șters un grup existent
-	\item adăugarea unui utilizator la un grup
-	\item ștergerea unui utilizator dintr-un grup
-	\item schimbarea parolei unui utilizator
-	\item modificarea atributelor unui utilizator: username, login shell,
-		director home
+  \item crearea unui utilizator: un nou cont de utilizator, identificat de
+    un nume de utilizator (\textit{username}) și un identificator de
+          utilizator (UID) este disponibil în sistem
+  \item ștergerea unui utilizator: un cont de utilizator este șters din
+          sistem, nu mai pot fi create procese cu acest utilizator
+  \item crearea unui grup: este creat un grup nou în care pot fi adăugați
+          utilizatori
+  \item ștergerea unui grup: este șters un grup existent
+  \item adăugarea unui utilizator la un grup
+  \item ștergerea unui utilizator dintr-un grup
+  \item schimbarea parolei unui utilizator
+  \item modificarea atributelor unui utilizator: username, login shell,
+          director home
 \end{itemize}
 
 Aceste operații de gestiune duc la modificarea fișierelor de configurare sau de
@@ -732,10 +732,10 @@ interfața grafică fie din linie de comandă, ca în \labelindexref{Listing}{ls
 panoul de control. Aceasta este uzual accesibilă din \textit{Control Panel $\rightarrow$ User Accounts $\rightarrow$ User Accounts}, ca în \labelindexref{Figura}{fig:user:windows-users}.
 
 \begin{figure}[!htbp]
-	\centering
-        \includegraphics[width=\textwidth]{chapters/05-user/img/windows-user-accounts.png}
-        \caption{Gestiunea utilizatorilor în Windows}
-        \label{fig:user:windows-users}
+  \centering
+  \includegraphics[width=\textwidth]{chapters/05-user/img/windows-user-accounts.png}
+  \caption{Gestiunea utilizatorilor în Windows}
+  \label{fig:user:windows-users}
 \end{figure}
 
 Pe lângă interfața grafică, uzuală, Windows oferă și utilitare în linia de
@@ -749,33 +749,33 @@ mediul desktop folosit (GNOME, KDE, XFCE etc.) În mod tradițional, gestiunea s
 face în linia de comandă cu ajutorul utilitarelor specifice, indicate în \labelindexref{Tabelul}{table:user:tools-manage}.
 
 \begin{table}[!htb]
-\begin{center}
-  \begin{tabular}{ p{0.30\textwidth} p{0.20\textwidth} p{0.35\textwidth} }
-	\toprule
-                \textbf{Operație} & \textbf{Utilitare} & \textbf{Fișiere modificate} \\
-	\midrule
-                adăugare utilizator & \cmd{useradd} & \file{/etc/passwd}, \file{/etc/shadow}, \file{/etc/group} \\
-	\midrule
-                ștergere utilizator & \cmd{userdel} & \file{/etc/passwd}, \file{/etc/shadow}, \file{/etc/group} \\
-	\midrule
-                modificare utilizator & \cmd{usermod} & \file{/etc/passwd}, \file{/etc/shadow}, \file{/etc/group} \\
-	\midrule
-                adăugare grup & \cmd{groupadd} & \file{/etc/group} \\
-	\midrule
-                ștergere grup & \cmd{groupdel} & \file{/etc/group} \\
-	\midrule
-                modificare grup & \cmd{groupmod} & \file{/etc/group} \\
-	\midrule
-                modificare shell & \cmd{chsh} & \file{/etc/passwd} \\
-	\midrule
-                modificare informații utilizator & \cmd{chfn} & \file{/etc/passwd} \\
-	\midrule
-                schimbare parolă & \cmd{passwd} & \file{/etc/shadow} \\
-	\bottomrule
-	\end{tabular}
-\end{center}
-\caption{Utilitare de gestiune a utilizatorilor}
-\label{table:user:tools-manage}
+  \begin{center}
+    \begin{tabular}{ p{0.30\textwidth} p{0.20\textwidth} p{0.35\textwidth} }
+      \toprule
+        \textbf{Operație} & \textbf{Utilitare} & \textbf{Fișiere modificate} \\
+      \midrule
+        adăugare utilizator & \cmd{useradd} & \file{/etc/passwd}, \file{/etc/shadow}, \file{/etc/group} \\
+      \midrule
+        ștergere utilizator & \cmd{userdel} & \file{/etc/passwd}, \file{/etc/shadow}, \file{/etc/group} \\
+      \midrule
+        modificare utilizator & \cmd{usermod} & \file{/etc/passwd}, \file{/etc/shadow}, \file{/etc/group} \\
+      \midrule
+        adăugare grup & \cmd{groupadd} & \file{/etc/group} \\
+      \midrule
+        ștergere grup & \cmd{groupdel} & \file{/etc/group} \\
+      \midrule
+        modificare grup & \cmd{groupmod} & \file{/etc/group} \\
+      \midrule
+        modificare shell & \cmd{chsh} & \file{/etc/passwd} \\
+      \midrule
+        modificare informații utilizator & \cmd{chfn} & \file{/etc/passwd} \\
+      \midrule
+        schimbare parolă & \cmd{passwd} & \file{/etc/shadow} \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+  \caption{Utilitare de gestiune a utilizatorilor}
+  \label{table:user:tools-manage}
 \end{table}
 
 Pe distribuțiile bazate pe Debian (Debian, Ubuntu, Linux Mint etc.) există un
@@ -783,23 +783,23 @@ set de utilitare mai ușor de folosit care înglobează comenzile de mai sus,
 indicate în \labelindexref{Tabelul}{table:user:debian-wrapper}
 
 \begin{table}[!htb]
-\begin{center}
-  \begin{tabular}{ p{0.40\textwidth} p{0.40\textwidth} }
-	\toprule
-                \textbf{Utilitar wrapper} & \textbf{Utilitar de bază} \\
-	\midrule
-                \cmd{adduser} & \cmd{useradd} \\
-	\midrule
-                \cmd{deluser} & \cmd{userdel} \\
-	\midrule
-                \cmd{addgroup} & \cmd{groupadd} \\
-	\midrule
-                \cmd{delgroup} & \cmd{groupdel} \\
-	\bottomrule
-	\end{tabular}
-\end{center}
-\caption{Utilitare wrapper Debian}
-\label{table:user:debian-wrapper}
+  \begin{center}
+    \begin{tabular}{ p{0.40\textwidth} p{0.40\textwidth} }
+      \toprule
+        \textbf{Utilitar wrapper} & \textbf{Utilitar de bază} \\
+      \midrule
+        \cmd{adduser} & \cmd{useradd} \\
+      \midrule
+        \cmd{deluser} & \cmd{userdel} \\
+      \midrule
+        \cmd{addgroup} & \cmd{groupadd} \\
+      \midrule
+        \cmd{delgroup} & \cmd{groupdel} \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+  \caption{Utilitare wrapper Debian}
+  \label{table:user:debian-wrapper}
 \end{table}
 
 În Linux/Unix există două tipuri de grupuri: \textbf{grupuri primare} și \textbf{grupuri secundare}. Un utilizator
@@ -813,21 +813,21 @@ informații proprii: shellul de login, numele de utilizator, datele personale,
 parola. Pentru aceasta folosește utilitarele din \labelindexref{Tabelul}{table:user:self-manage}.
 
 \begin{table}[!htb]
-\begin{center}
-  \begin{tabular}{ p{0.40\textwidth} p{0.40\textwidth} }
-	\toprule
-                \textbf{Operație} & \textbf{Utilitar} \\
-	\midrule
-                schimbare shell de login & \cmd{chsh} \\
-	\midrule
-                schimbare informații & \cmd{chfn} \\
-	\midrule
-                schimbare parolă & \cmd{passwd} \\
-	\bottomrule
-	\end{tabular}
-\end{center}
-\caption{Utilitare pentru modificare informații proprii}
-\label{table:user:self-manage}
+  \begin{center}
+    \begin{tabular}{ p{0.40\textwidth} p{0.40\textwidth} }
+      \toprule
+        \textbf{Operație} & \textbf{Utilitar} \\
+      \midrule
+        schimbare shell de login & \cmd{chsh} \\
+      \midrule
+        schimbare informații & \cmd{chfn} \\
+      \midrule
+        schimbare parolă & \cmd{passwd} \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+  \caption{Utilitare pentru modificare informații proprii}
+  \label{table:user:self-manage}
 \end{table}
 
 Un grup care este grupul primar al unui utilizator nu poate fi șters. Întâi trebuie să fie șters utilizatorul, apoi grupul.
@@ -899,13 +899,13 @@ de utilizator se găsesc în baza de date.
 Baza de date de parole este modificată de acțiunile de lucru cu utilizatori. Adică:
 
 \begin{itemize}
-	\item Se adaugă o nouă intrare în baza de date de parole, adică o nouă
-          pereche \textit{(nume de utilizator, parolă)} în momentul adăugării unui
-		utilizator nou în sistem.
-	\item Se șterge o intrare existentă în baza de date de parole în
-		momentul ștergerii unui utilizator în sistem.
-	\item Se modifică o intrare existentă în baza de date atunci când un
-		utilizator își schimbă parola.
+  \item Se adaugă o nouă intrare în baza de date de parole, adică o nouă
+    pereche \textit{(nume de utilizator, parolă)} în momentul adăugării unui
+          utilizator nou în sistem.
+  \item Se șterge o intrare existentă în baza de date de parole în
+          momentul ștergerii unui utilizator în sistem.
+  \item Se modifică o intrare existentă în baza de date atunci când un
+          utilizator își schimbă parola.
 \end{itemize}
 
 Baza de date de parole este o componentă critică a sistemului iar accesul la
@@ -968,19 +968,19 @@ autentificarea cu parolă devine inaccesibilă. Sumarizând, există următoarel
 acțiuni de gestiune a parolelor:
 
 \begin{itemize}
-	\item schimbarea parolei
-	\item stabilirea duratei de viață a unei parole
-	\item blocarea parolei
+  \item schimbarea parolei
+  \item stabilirea duratei de viață a unei parole
+  \item blocarea parolei
 \end{itemize}
 
 În Windows se folosește interfața grafică pentru gestiunea parolelor. Se
 accesează \textit{Control Panel $\rightarrow$ User Accounts $\rightarrow$ User Accounts $\rightarrow$ Manage Accounts $\rightarrow$ Change an Account $\rightarrow$ Channge password} ca în \labelindexref{Figura}{fig:user:windows-password}.
 
 \begin{figure}[!htbp]
-	\centering
-        \includegraphics[width=\textwidth]{chapters/05-user/img/windows-password.png}
-        \caption{Gestiunea parolelor în Windows}
-        \label{fig:user:windows-password}
+  \centering
+  \includegraphics[width=\textwidth]{chapters/05-user/img/windows-password.png}
+  \caption{Gestiunea parolelor în Windows}
+  \label{fig:user:windows-password}
 \end{figure}
 
 În Linux, modul uzual de gestiune a parolei este prin linia de comandă folosind
@@ -1047,27 +1047,27 @@ detaliat în \labelindexref{Secțiunea}{sec:sec:auth:password}, folosirea
 parolelor poate fi problematică pentru că:
 
 \begin{itemize}
-	\item folosim foarte multe parole și, în mod ideal, trebuie să fie
-		diferite între ele
-	\item parolele pot fi slabe și ușor de ghicit
-	\item parolele trebuie să fie schimbate periodic, altfel șansele de fi
-		ghicite/decriptate cresc
-	\item folosim parolele de pe dispozitive multiple: desktop, laptop,
-		dispozitiv mobil
+  \item folosim foarte multe parole și, în mod ideal, trebuie să fie
+          diferite între ele
+  \item parolele pot fi slabe și ușor de ghicit
+  \item parolele trebuie să fie schimbate periodic, altfel șansele de fi
+          ghicite/decriptate cresc
+  \item folosim parolele de pe dispozitive multiple: desktop, laptop,
+          dispozitiv mobil
 \end{itemize}
 
 Pentru o gestiune corespunzătoare a parolelor există următoarele recomandări:
 
 \begin{itemize}
-	\item Parolele să fie lungi (cel puțin 10 caractere) și să conțină
-		caractere diferite. Puteți apela la un generator de parole
-                precum utilitarul \cmd{pwgen}.
-	\item Nu notați parolele în clar pe hârtii sau în fișiere de unde pot fi
-		ușor citite.
-        \item Folosiți un utilitar de tipul \textit{password manager} care să rețină
-		parolele și să minimizeze riscul expunerii lor la un atacator.
-		În același timp, să ajute să fie accesibile de pe dispozitive
-		multiple.
+  \item Parolele să fie lungi (cel puțin 10 caractere) și să conțină
+          caractere diferite. Puteți apela la un generator de parole
+          precum utilitarul \cmd{pwgen}.
+  \item Nu notați parolele în clar pe hârtii sau în fișiere de unde pot fi
+          ușor citite.
+  \item Folosiți un utilitar de tipul \textit{password manager} care să rețină
+          parolele și să minimizeze riscul expunerii lor la un atacator.
+          În același timp, să ajute să fie accesibile de pe dispozitive
+          multiple.
 \end{itemize}
 
 \subsection{Autentificare centralizată}
@@ -1085,11 +1085,11 @@ centralizată presupune existența unui serviciu de autentificare care gestionea
 baza de date de parole, serviciu accesat de diferitele aplicații, ca în \labelindexref{Figura}{fig:user:centralized-auth}.
 
 \begin{figure}[htbp]
-	\centering
-	\def\svgwidth{0.7\columnwidth}
-	\includesvg{chapters/05-user/img/auth-central.svg}
-        \caption{Autentificare centralizată}
-        \label{fig:user:centralized-auth}
+  \centering
+  \def\svgwidth{0.7\columnwidth}
+  \includesvg{chapters/05-user/img/auth-central.svg}
+  \caption{Autentificare centralizată}
+  \label{fig:user:centralized-auth}
 \end{figure}
 
 În situația autentificării centralizate, un utilizator folosește același nume de
@@ -1126,11 +1126,11 @@ accesa un anumit fișier dacă utilizatorul căruia aparține procesul are
 permisiunile aferente la acel fișier.
 
 \begin{figure}[htbp]
-	\centering
-	\def\svgwidth{0.7\columnwidth}
-	\includesvg{chapters/05-user/img/agent-perm.svg}
-        \caption{Utilizatori, fișiere, permisiuni}
-        \label{fig:user:user-file-perm}
+  \centering
+  \def\svgwidth{0.7\columnwidth}
+  \includesvg{chapters/05-user/img/agent-perm.svg}
+  \caption{Utilizatori, fișiere, permisiuni}
+  \label{fig:user:user-file-perm}
 \end{figure}
 
 În multe dintre sistemele de operare moderne, informațiile despre permisiuni sunt reținute în
@@ -1146,11 +1146,11 @@ control lists}, ACL \abbrev{ACL}{Access Control Lists}). Adică se creează o li
 de utilizatori sau grupuri de utilizatori și permisiuni aferente, ca în \labelindexref{Figura}{fig:user:acl}.
 
 \begin{figure}[htbp]
-	\centering
-	\def\svgwidth{0.7\columnwidth}
-	\includesvg{chapters/05-user/img/acl.svg}
-        \caption{Liste de acces (Windows)}
-	\label{fig:user:acl}
+  \centering
+  \def\svgwidth{0.7\columnwidth}
+  \includesvg{chapters/05-user/img/acl.svg}
+  \caption{Liste de acces (Windows)}
+  \label{fig:user:acl}
 \end{figure}
 
 În momentul accesului unui fișier de către un proces, se obține utilizatorul
@@ -1164,11 +1164,11 @@ pentru intrarea \texttt{Everyone}. \labelindexref{Figura}{fig:user:windows-check
 analizate permisiunile în Windows.
 
 \begin{figure}[htbp]
-	\centering
-	\def\svgwidth{0.9\columnwidth}
-	\includesvg{chapters/05-user/img/check-perm.svg}
-	\caption{Verificarea permisiunilor în Windows}
-	\label{fig:user:windows-check-perm}
+  \centering
+  \def\svgwidth{0.9\columnwidth}
+  \includesvg{chapters/05-user/img/check-perm.svg}
+  \caption{Verificarea permisiunilor în Windows}
+  \label{fig:user:windows-check-perm}
 \end{figure}
 
 În Windows permisiunile sunt prezente doar pe sistemul de fișiere NTFS\abbrev{NTFS}{New Technology File System}, nu și pe FAT32\abbrev{FAT32}{File
@@ -1177,10 +1177,10 @@ interfața grafică: \textit{click dreapta pe fișier $\rightarrow$ Properties $
 fereastră precum cea din \labelindexref{Figura}{fig:user:windows-permissions}.
 
 \begin{figure}[!htbp]
-	\centering
-        \includegraphics[width=0.5\textwidth]{chapters/05-user/img/windows-permissions.png}
-        \caption{Permisiuni în Windows}
-        \label{fig:user:windows-permissions}
+  \centering
+  \includegraphics[width=0.5\textwidth]{chapters/05-user/img/windows-permissions.png}
+  \caption{Permisiuni în Windows}
+  \label{fig:user:windows-permissions}
 \end{figure}
 
 Pentru un utilizator dat pot fi precizate mai multe tipuri de permisiuni, dintre
@@ -1188,11 +1188,11 @@ care amintim:
 
 \begin{itemize}
   \item \texttt{List Folder}/\texttt{Read Data}: utilizatorul poate lista conținutul unui
-		director și datele unui fișier
+                director și datele unui fișier
   \item \texttt{Create Files}/\texttt{Write Data}: utilizatorul poate crea fișiere într-un
-		director și poate scrie date într-un fișier
+                director și poate scrie date într-un fișier
   \item \texttt{Traverse Folder}/\texttt{Execute File}: utilizatorul poate traversa un
-		director și poate executa un fișier
+                director și poate executa un fișier
 \end{itemize}
 
 Aceste permisiuni sunt similare permisiunilor \texttt{read}, \texttt{write} și \texttt{execute} pe care le
@@ -1218,7 +1218,7 @@ de metadatele fișierului. Entitățile sunt:
   \item \texttt{user} (utilizator): utilizatorul fișierului
   \item \texttt{group} (grup): grupul fișierului
   \item \texttt{others} (ceilalți): ceilalți utilizatori, diferiți de utilizatorul
-		fișierului și care nu fac parte din grupul fișierului
+    fișierului și care nu fac parte din grupul fișierului
 \end{itemize}
 
 Permisiunile în Linux sunt, de asemenea, simplificate la 3 tipuri:
@@ -1226,31 +1226,31 @@ Permisiunile în Linux sunt, de asemenea, simplificate la 3 tipuri:
 \begin{itemize}
   \item \texttt{read} (citire): fișierul poate fi citit, directorul poate fi listat
   \item \texttt{write} (scriere): fișierul poate fi modificat, pot fi adăugate /
-		șterse intrări în director
+    șterse intrări în director
   \item \texttt{execute} (execuție): fișierul poate fi executat, directorul poate
-		fi parcurs
+    fi parcurs
 \end{itemize}
 
 Permisiunile în Linux sunt verificate în cazul în care un proces accesează un
 fișier, urmând pașii:
 
 \begin{enumerate}
-	\item Se obține utilizatorul procesului care accesează fișierul.
-	\item Se compară utilizatorul procesului cu utilizatorul fișierului.
-          Dacă sunt aceiași atunci se obțin permisiunile pentru \texttt{user}
-		(utilizator) și se verifică dacă acțiunea procesului este
-		acceptată de permisiuni. Dacă da, accesul este permis; dacă nu,
-		se trece la pasul următor.
-	\item Se obțin toate grupurile din care face parte utilizatorul
-		procesului. Se compară, pe rând, fiecare dintre aceste grupuri
-		cu grupul fișierului. Dacă există un grup care să corespundă
-                grupului fișierului, atunci se obțin permisiunile pentru \texttt{group}
-		(grup) și se verifică dacă acțiunea procesului este acceptată de
-		permisiuni. Dacă da, accesul este permis; dacă nu, se trece la
-		pasul următor.
-              \item Se obțin permisiunile pentru \texttt{others} (ceilalți) și se verifică dacă
-		acțiunea procesului este acceptată de permisiuni. Dacă da,
-		accesul este permis; dacă nu, accesul nu este permis.
+  \item Se obține utilizatorul procesului care accesează fișierul.
+  \item Se compară utilizatorul procesului cu utilizatorul fișierului.
+    Dacă sunt aceiași atunci se obțin permisiunile pentru \texttt{user}
+          (utilizator) și se verifică dacă acțiunea procesului este
+          acceptată de permisiuni. Dacă da, accesul este permis; dacă nu,
+          se trece la pasul următor.
+  \item Se obțin toate grupurile din care face parte utilizatorul
+          procesului. Se compară, pe rând, fiecare dintre aceste grupuri
+          cu grupul fișierului. Dacă există un grup care să corespundă
+          grupului fișierului, atunci se obțin permisiunile pentru \texttt{group}
+          (grup) și se verifică dacă acțiunea procesului este acceptată de
+          permisiuni. Dacă da, accesul este permis; dacă nu, se trece la
+          pasul următor.
+  \item Se obțin permisiunile pentru \texttt{others} (ceilalți) și se verifică dacă
+          acțiunea procesului este acceptată de permisiuni. Dacă da,
+          accesul este permis; dacă nu, accesul nu este permis.
 \end{enumerate}
 
 Fie următoarea situație de metadate pentru un fișier \file{curs.txt}:
@@ -1259,7 +1259,7 @@ Fie următoarea situație de metadate pentru un fișier \file{curs.txt}:
   \item utilizator: \texttt{ana}
   \item grup: \texttt{students}
   \item permisiuni: citire, scriere pentru utilizator, citire pentru grup,
-		nici o permisiune pentru ceilalți
+    nici o permisiune pentru ceilalți
 \end{itemize}
 
 Utilizatorul \texttt{corina} încearcă accesarea pentru citire a fișierului folosind comanda \cmd{cat curs.txt}. Presupunem că utilizatorul \texttt{corina} aparține mai multor grupuri între care și \texttt{students}, grupul fișierului \file{curs.txt}. Se urmează pașii:
@@ -1269,9 +1269,9 @@ Utilizatorul \texttt{corina} încearcă accesarea pentru citire a fișierului fo
   \item Se compară utilizatorul procesului (\texttt{corina}) cu utilizatorul
     fișierului (\texttt{ana}). Nu corespund. Se trece la pasul următor.
   \item Se obțin toate grupurile din care face parte utilizatorul
-          procesului (\texttt{corina}). Grupul fișirului \file{curs.txt} este \texttt{students}, grup din care face și utilizatorul \texttt{corina}. În această situație verificăm dacă acțiunea este
-		permisă. Acțiunea este de citire, se găsește în permisiunile
-                pentru grup (citire), și atunci comanda \cmd{cat curs.txt} reușește.
+    procesului (\texttt{corina}). Grupul fișirului \file{curs.txt} este \texttt{students}, grup din care face și utilizatorul \texttt{corina}. În această situație verificăm dacă acțiunea este
+    permisă. Acțiunea este de citire, se găsește în permisiunile
+    pentru grup (citire), și atunci comanda \cmd{cat curs.txt} reușește.
 \end{enumerate}
 
 În situația de mai sus, dacă am fi rulat o comandă care modifica fișierul
@@ -1282,30 +1282,30 @@ Mai jos prezentăm ce permisiuni sunt necesare pentru a putea rula comenzi de
 lucru cu sistemul de fișiere:
 
 \begin{itemize}
-	\item Pentru a putea traversa un director, pentru ca acesta să fie parte
-		a unei căi este suficient ca acesta să aibă permisiuni de
-                execuție. Adică dacă dorim să funcționeze comanda \cmd{cd
-                /a/b/c/d/}, trebuie ca directoarele \file{a}, \file{b}, \file{c} și \file{d} să aibă
-		permisiuni de execuție.
-	\item Pentru a putea lista conținutul unui director, adică folosirea
-          comenzii \cmd{ls}, trebuie ca acel director să aibă permisiuni de
-		citire și de execuție. Pe un director care are doar permisiuni
-                de citire nu se poate folosi comanda \cmd{ls}.
-	\item Pentru a putea afișa conținutul unui fișier, trebuie ca acel
-		fișier să aibă permisiuni de citire iar directorul care-l
-		conține să aibă permisiuni de execuție.
-	\item Pentru a putea edita un fișier, trebuie ca acel fișier să aibă
-		permisiuni de scriere (nu neapărat și de citire) iar directorul
-		care-l conține să aibă permisiuni de execuție.
-	\item Pentru a putea șterge un fișier sau un director, trebuie ca acel
-		fișier sau director să se găsească într-un director care să aibă
-		permisiuni de scriere și execuție.
-	\item Pentru a putea crea un fișier sau un director, trebuie ca acel
-		fișier sau director să fie create într-un director care să aibă
-		permisiuni de scriere și execuție.
-	\item Pentru a putea rula un fișier executabil, trebuie ca acel fișier
-		să aibă permisiuni de citire și execuție iar directorul care-l
-		conține să aibă permisiuni de execuție.
+  \item Pentru a putea traversa un director, pentru ca acesta să fie parte
+          a unei căi este suficient ca acesta să aibă permisiuni de
+          execuție. Adică dacă dorim să funcționeze comanda \cmd{cd
+          /a/b/c/d/}, trebuie ca directoarele \file{a}, \file{b}, \file{c} și \file{d} să aibă
+          permisiuni de execuție.
+  \item Pentru a putea lista conținutul unui director, adică folosirea
+    comenzii \cmd{ls}, trebuie ca acel director să aibă permisiuni de
+          citire și de execuție. Pe un director care are doar permisiuni
+          de citire nu se poate folosi comanda \cmd{ls}.
+  \item Pentru a putea afișa conținutul unui fișier, trebuie ca acel
+          fișier să aibă permisiuni de citire iar directorul care-l
+          conține să aibă permisiuni de execuție.
+  \item Pentru a putea edita un fișier, trebuie ca acel fișier să aibă
+          permisiuni de scriere (nu neapărat și de citire) iar directorul
+          care-l conține să aibă permisiuni de execuție.
+  \item Pentru a putea șterge un fișier sau un director, trebuie ca acel
+          fișier sau director să se găsească într-un director care să aibă
+          permisiuni de scriere și execuție.
+  \item Pentru a putea crea un fișier sau un director, trebuie ca acel
+          fișier sau director să fie create într-un director care să aibă
+          permisiuni de scriere și execuție.
+  \item Pentru a putea rula un fișier executabil, trebuie ca acel fișier
+          să aibă permisiuni de citire și execuție iar directorul care-l
+          conține să aibă permisiuni de execuție.
 \end{itemize}
 
 \subsubsection{Formatul permisiunilor}
@@ -1314,11 +1314,11 @@ lucru cu sistemul de fișiere:
 În mod uzual, permisiunile sunt listate pentru un fișier dat în forma din \labelindexref{Figura}{fig:user:octal-perm}.
 
 \begin{figure}[htbp]
-	\centering
-	\def\svgwidth{0.7\columnwidth}
-	\includesvg{chapters/05-user/img/octal-perm.svg}
-        \caption{Permisiuni în Linux}
-	\label{fig:user:octal-perm}
+  \centering
+  \def\svgwidth{0.7\columnwidth}
+  \includesvg{chapters/05-user/img/octal-perm.svg}
+  \caption{Permisiuni în Linux}
+  \label{fig:user:octal-perm}
 \end{figure}
 
 Adică permisiunile sunt listate ca un șir de nouă caractere:
@@ -1358,21 +1358,21 @@ Astfel, în \labelindexref{Listing}{lst:user:list-perm} avem următoarele:
 
 \begin{itemize}
   \item fișierul \file{invoice.pdf} are:
-	\begin{itemize}
-          \item permisiuni de citire și scriere pentru \texttt{user}, adică pentru
+    \begin{itemize}
+      \item permisiuni de citire și scriere pentru \texttt{user}, adică pentru
                   utilizatorul \texttt{dan}
-                \item permisiuni de citire și scriere pentru \texttt{group}, adică pentru
+      \item permisiuni de citire și scriere pentru \texttt{group}, adică pentru
                   grupul \texttt{staff}
-		\item permisiuni de citire pentru ceilalți
-	\end{itemize}
+      \item permisiuni de citire pentru ceilalți
+    \end{itemize}
   \item fișierul \file{export_grades} are:
-	\begin{itemize}
-          \item permisiuni de citire, scriere și execuție pentru \texttt{user},
+    \begin{itemize}
+      \item permisiuni de citire, scriere și execuție pentru \texttt{user},
                   adică pentru utilizatorul \texttt{dan}
-                \item permisiuni de citire și execuție pentru \texttt{group}, adică
+      \item permisiuni de citire și execuție pentru \texttt{group}, adică
                   pentru grupul \texttt{adm}
-	\end{itemize}
-	\item nici o permisiune pentru ceilalți
+    \end{itemize}
+  \item nici o permisiune pentru ceilalți
 \end{itemize}
 
 Pentru gestiunea mai rapidă a permisiunilor, acestea sunt gestionate în format pe
@@ -1474,9 +1474,9 @@ Masca de creare a shellului este o valoare pe biți care este folosită astfel:
 
 \begin{itemize}
   \item Pentru fișiere se face un \textbf{ȘI logic} între valoarea \texttt{666} (octal) și
-		masca inversată.
+    masca inversată.
   \item Pentru directoare se face un \textbf{ȘI logic} între valoarea \texttt{777} (octal)
-		și masca inversată.
+    și masca inversată.
 \end{itemize}
 
 Deosebirea între fișiere și directoare apare pentru că directoarele au nevoie de permisiuni de execuție pentru
@@ -1486,21 +1486,21 @@ este cazul acestea trebuie acordate explicit.
 Exemple sunt prezente în \labelindexref{Tabelul}{table:user:umask}.
 
 \begin{table}[!htb]
-\begin{center}
-  \begin{tabular}{ p{0.20\textwidth} p{0.20\textwidth} p{0.20\textwidth} p{0.20\textwidth} }
-	\toprule
-                \textbf{Mască de creare} & \textbf{Mască inversată} & \textbf{Permisiuni de creare fișier} & \textbf{Permisiuni de creare director} \\
-	\midrule
-                \texttt{022} & \texttt{755} & \texttt{644} & \texttt{755} \\
-	\midrule
-                \texttt{002} & \texttt{775} & \texttt{664} & \texttt{775} \\
-	\midrule
-                \texttt{077} & \texttt{700} & \texttt{600} & \texttt{700} \\
-	\bottomrule
-	\end{tabular}
-\end{center}
-\caption{Permisiuni de creare fișier în funcție de mască}
-\label{table:user:umask}
+  \begin{center}
+    \begin{tabular}{ p{0.20\textwidth} p{0.20\textwidth} p{0.20\textwidth} p{0.20\textwidth} }
+      \toprule
+              \textbf{Mască de creare} & \textbf{Mască inversată} & \textbf{Permisiuni de creare fișier} & \textbf{Permisiuni de creare director} \\
+      \midrule
+              \texttt{022} & \texttt{755} & \texttt{644} & \texttt{755} \\
+      \midrule
+              \texttt{002} & \texttt{775} & \texttt{664} & \texttt{775} \\
+      \midrule
+              \texttt{077} & \texttt{700} & \texttt{600} & \texttt{700} \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+  \caption{Permisiuni de creare fișier în funcție de mască}
+  \label{table:user:umask}
 \end{table}
 
 Afișarea și modificarea măștii shellului se face folosind comanda \cmd{umask}. Fără
@@ -1543,11 +1543,11 @@ Astfel, pentru permisiunile de mai jos avem explicațiile:
 
 \begin{itemize}
   \item \texttt{4755}: este activat bitul \texttt{setuid}, utilizatorul are permisiuni
-		complete, grupul are permisiuni de citire și execuție, ceilalți
-		au permisiuni de citire și execuție
-              \item \texttt{2755}: este activat bitut \texttt{setgid}, celelalte permisiuni sunt ca mai
-		sus
-              \item \texttt{1755}: este activat bitul \texttt{sticky}, celelalte permisiuni rămân la fel
+    complete, grupul are permisiuni de citire și execuție, ceilalți
+    au permisiuni de citire și execuție
+  \item \texttt{2755}: este activat bitut \texttt{setgid}, celelalte permisiuni sunt ca mai
+    sus
+  \item \texttt{1755}: este activat bitul \texttt{sticky}, celelalte permisiuni rămân la fel
 \end{itemize}
 
 Bitul \texttt{setuid} are sens când este folosit pe fișiere executabile. Adaugă
@@ -1634,9 +1634,9 @@ Linux. În această situație este nevoie de resetarea parolei contului \texttt{
 Pentru aceasta avem două opțiuni:
 
 \begin{itemize}
-	\item modificarea procesului de boot și înlocuirea procesului init
-	\item folosirea unui stick USB \abbrev{USB}{Universal Serial Bus} sau CD
-		bootabil
+  \item modificarea procesului de boot și înlocuirea procesului init
+  \item folosirea unui stick USB \abbrev{USB}{Universal Serial Bus} sau CD
+    bootabil
 \end{itemize}
 
 Procesul de boot va fi prezentat detaliat în \labelindexref{Capitolul}{chapter:boot}.
@@ -1676,16 +1676,16 @@ următorii pași:
 
 \begin{enumerate}
   \item Montăm sistemul de fișiere rădăcină al sistemului Linux instalat
-		(pentru care vrem să resetăm parola contului \texttt{root}).
+    (pentru care vrem să resetăm parola contului \texttt{root}).
   \item Folosim comanda \cmd{chroot} pentru a modifica sistemul de fișiere
-		rădăcină în care rulăm în sistemul de fișiere al sistemului
-		Linux instalat
+    rădăcină în care rulăm în sistemul de fișiere al sistemului
+    Linux instalat
   \item Folosim comanda \cmd{passwd} pentru a schimba parola contului \texttt{root} în
-		sistemul de fișiere rădăcină al sistemului Linux instalat.
+    sistemul de fișiere rădăcină al sistemului Linux instalat.
   \item Revenim la sistemul de fișiere al sistemului live, părăsind
         shellul obținut prin \cmd{chroot}.
   \item Demontăm sistemul de fișiere rădăcină al sistemului Linux
-		instalat.
+    instalat.
   \item Repornim sistemul.
 \end{enumerate}
 

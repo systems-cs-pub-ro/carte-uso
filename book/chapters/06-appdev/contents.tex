@@ -58,10 +58,10 @@ procesorului. Codul sursă scris în limbaj de asamblare este transformat în co
 mașină de un asamblor.
 
 \begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=15cm]{chapters/06-appdev/img/fortran-card-img.png}
-	\caption{Program scris pe cartelă perforată\protect\footnotemark}
-	\label{fig:appdev:card}
+  \centering
+  \includegraphics[width=15cm]{chapters/06-appdev/img/fortran-card-img.png}
+  \caption{Program scris pe cartelă perforată\protect\footnotemark}
+  \label{fig:appdev:card}
 \end{figure}
 
 \footnotetext{\url{https://en.wikipedia.org/wiki/Computer_programming_in_the_punched_card_era\#/media/File:FortranCardPROJ039.agr.jpg}
@@ -97,11 +97,11 @@ programul. După aceea, următorul pas este să structurăm ideea și să o
 ce apoi poate fi rulat, proces sumarizat în \labelindexref{Figura}{fig:appdev:idea-to-program}.
 
 \begin{figure}[htbp]
-	\centering
-	\def\svgwidth{\columnwidth}
-	\includesvg{chapters/06-appdev/img/lang-idea.svg}
-        \caption{De la idee la program}
-	\label{fig:appdev:idea-to-program}
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/06-appdev/img/lang-idea.svg}
+  \caption{De la idee la program}
+  \label{fig:appdev:idea-to-program}
 \end{figure}
 
 Fișierele pe care programatorii le scriu se numesc \textbf{fișiere cod sursă}, ele conțin
@@ -173,14 +173,14 @@ sunt transformate de compilator în instrucțiuni pe care procesorul le înțele
 etape intermediare ca în \labelindexref{Figura}{fig:appdev:compile-phases}.
 
 \begin{enumerate}
-	\item compilare: codul sursă este transformat în cod în limbaj de
-		asamblare
-	\item asamblare: codul în limbaj de asamblare este transformat în cod
-		mașină;
-        \item link-editare (sau linking): se fac legăturile către fișiere externe care conțin
-		simboluri sau funcții apelate din fișierul sursă; dacă avem o
-		funcție definită într-un fișier și folosită în altul,
-		implementarea funcției trebuie legată de apelul ei.
+  \item compilare: codul sursă este transformat în cod în limbaj de
+          asamblare
+  \item asamblare: codul în limbaj de asamblare este transformat în cod
+          mașină;
+  \item link-editare (sau linking): se fac legăturile către fișiere externe care conțin
+          simboluri sau funcții apelate din fișierul sursă; dacă avem o
+          funcție definită într-un fișier și folosită în altul,
+          implementarea funcției trebuie legată de apelul ei.
 \end{enumerate}
 
 \begin{figure}[htbp]
@@ -789,16 +789,16 @@ gcc/g++. Pentru folosirea compilatorului este suficient să rulăm comanda
 etape intermediare:
 
 \begin{enumerate}
-	\item preprocesare: se înlocuiesc macro-uri, se numerotează fiecare
-		linie de cod; rezultatul e un fișier cu extensia \textbf{.i}
-	\item compilare: codul sursă este transformat în cod în limbaj de
-		asamblare; rezultatul e un fișier cu extensia \textbf{.s}
-	\item asamblare: codul în limbaj de asamblare este transformat în cod
-		mașină; rezultatul e un fișier cu extensia \textbf{.o}
-	\item link-editare: se fac legăturile către fișiere externe care conțin
-		simboluri sau funcții apelate din fișierul sursă; dacă avem o
-		funcție definită într-un fișier și folosită în altul,
-		implementarea funcției trebuie legată de apelul ei;
+  \item preprocesare: se înlocuiesc macro-uri, se numerotează fiecare
+          linie de cod; rezultatul e un fișier cu extensia \textbf{.i}
+  \item compilare: codul sursă este transformat în cod în limbaj de
+          asamblare; rezultatul e un fișier cu extensia \textbf{.s}
+  \item asamblare: codul în limbaj de asamblare este transformat în cod
+          mașină; rezultatul e un fișier cu extensia \textbf{.o}
+  \item link-editare: se fac legăturile către fișiere externe care conțin
+          simboluri sau funcții apelate din fișierul sursă; dacă avem o
+          funcție definită într-un fișier și folosită în altul,
+          implementarea funcției trebuie legată de apelul ei;
 \end{enumerate}
 
 La simpla rulare a comenzii \cmd{gcc}, se trece prin toate etapele menționate.
@@ -1133,18 +1133,18 @@ realiza toate acestea avem la dispoziție următoarele operații de bază:
 
 \begin{itemize}
   \item \cmd{clone}: se clonează întreg repository-ul pe sistemul local;
-		practic se va crea un director care conține toate fișierele
-		aferente programului, plus niște fișiere care stochează
-		informații despre proiect (ex, cine a creat repository-ul, ce
-		modificări au fost aduse etc. );
+                practic se va crea un director care conține toate fișierele
+                aferente programului, plus niște fișiere care stochează
+                informații despre proiect (ex, cine a creat repository-ul, ce
+                modificări au fost aduse etc. );
   \item \cmd{commit}: se salvează toate modificările aduse proiectului; starea
-		actuală este salvată local; dacă modificările nu sunt publicate
-		online, acestea nu sunt vizibile colaboratorilor;
+                actuală este salvată local; dacă modificările nu sunt publicate
+                online, acestea nu sunt vizibile colaboratorilor;
   \item \cmd{push}: se publică modificările salvate prin commit; odată
-		publicate aceste modificări, colaboratorii pot să vizualizeze
-		cine le-a adus și pot să urmărească schimbările linie cu linie;
+                publicate aceste modificări, colaboratorii pot să vizualizeze
+                cine le-a adus și pot să urmărească schimbările linie cu linie;
   \item \cmd{pull}: se descarcă local ultimele modificări publicate de ceilalți
-		colaboratori și se integrează în versiunea locală a proiectului.
+                colaboratori și se integrează în versiunea locală a proiectului.
 \end{itemize}
 
 \section{Licențe pentru programe}

@@ -28,11 +28,11 @@ studia tehnici de organizare a datelor pe dispozitivele de stocare (vezi
 \labelindexref{Figura}{fig:storage:mem-struct}).
 
 \begin{figure}[htbp]
-	\centering
-	\def\svgwidth{\columnwidth}
-	\includesvg{chapters/10-storage/img/mem-struct.svg}
-	\caption{Ierarhia de memorie în cadrul unui sistem de calcul}
-	\label{fig:storage:mem-struct}
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/10-storage/img/mem-struct.svg}
+  \caption{Ierarhia de memorie în cadrul unui sistem de calcul}
+  \label{fig:storage:mem-struct}
 \end{figure}
 
 Așadar, stocarea este și ea un element central în operațiile cu sistemul de
@@ -63,10 +63,10 @@ aplicații folosesc sisteme de stocare. În secțiunea următoare vom descrie ș
 realiza o clasificare a discurilor.
 
 \begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=15cm]{chapters/10-storage/img/concurrent-img.png}
-	\caption{Executarea concomitentă a transferului de date și a unei aplicații}
-	\label{fig:storage:concurrent-access}
+  \centering
+  \includegraphics[width=15cm]{chapters/10-storage/img/concurrent-img.png}
+  \caption{Executarea concomitentă a transferului de date și a unei aplicații}
+  \label{fig:storage:concurrent-access}
 \end{figure}
 
 \section{Tipuri de discuri}
@@ -78,20 +78,20 @@ sau mai multe discuri care stochează efectiv informația. Dispozitivele de
 stocare au următoarele atribute principale:
 
 \begin{itemize}
-	\item spațiul disponibil - câtă informație se poate stoca pe disc
-		(măsurat de obicei în gigabytes - GB sau terabytes
-		\abbrev{TB}{terabytes} - TB)
-	\item viteza de acces - cât de repede se pot transfera datele de pe disc
-		în memoria RAM (măsurat de obicei în megabytes pe secundă - MB/s)
-	\item mod de poziționare - intern (în interiorul unității) sau extern
-		(în exteriorul unității)
-	\item mod de conectare - există două tipuri de conectare pentru
-		discurile interne (SATA vs. SAS) și un tip de conectare pentru cele externe (USB)
-	\item fiabilitate - câte ore de funcționare sau câte citiri/scrieri
-		suportă de-a lungul vieții de funcționare. Aceste numere variază
-		mult în funcție de tipul unității de stocare (HDD vs. SSD) și de
-		gama pentru care a fost proiectat (folosirea în desktopuri vs.
-		servere)
+  \item spațiul disponibil - câtă informație se poate stoca pe disc
+    (măsurat de obicei în gigabytes - GB sau terabytes
+    \abbrev{TB}{terabytes} - TB)
+  \item viteza de acces - cât de repede se pot transfera datele de pe disc
+    în memoria RAM (măsurat de obicei în megabytes pe secundă - MB/s)
+  \item mod de poziționare - intern (în interiorul unității) sau extern
+    (în exteriorul unității)
+  \item mod de conectare - există două tipuri de conectare pentru
+    discurile interne (SATA vs. SAS) și un tip de conectare pentru cele externe (USB)
+  \item fiabilitate - câte ore de funcționare sau câte citiri/scrieri
+    suportă de-a lungul vieții de funcționare. Aceste numere variază
+    mult în funcție de tipul unității de stocare (HDD vs. SSD) și de
+    gama pentru care a fost proiectat (folosirea în desktopuri vs.
+    servere)
 \end{itemize}
 
 În zilele noastre există două tipuri de discuri pe sistemele de calcul:
@@ -117,17 +117,17 @@ controller în gigabiți pe secundă. În zilele noastre, există două tipuri d
 interfețe de conectare:
 
 \begin{itemize}
-	\item SATA - Serial ATA \abbrev{SATA}{Serial Advanced Technology
+  \item SATA - Serial ATA \abbrev{SATA}{Serial Advanced Technology
           Attachment} (\textit{Serial Advanced Technology Attachment})
-	\item SAS - Serial Attached SCSI \abbrev{SAS}{Serial attached SCSI} (sau
+  \item SAS - Serial Attached SCSI \abbrev{SAS}{Serial attached SCSI} (sau
           \textit{Serial Attached Small Computer System Interface})
 \end{itemize}
 
 \begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=8cm]{chapters/10-storage/img/hdd-img.png}
-	\caption{HDD\protect\footnotemark}
-	\label{fig:storage:hdd}
+  \centering
+  \includegraphics[width=8cm]{chapters/10-storage/img/hdd-img.png}
+  \caption{HDD\protect\footnotemark}
+  \label{fig:storage:hdd}
 \end{figure}
 
 \footnotetext{\url{https://commons.wikimedia.org/wiki/File:Hard\_Drive\_(11644419853).jpg}
@@ -149,20 +149,20 @@ se folosesc în calculatoarele personale.
 de interfețe: în stânga sunt interfețe de tip SAS, iar în dreapta de tip SATA.
 
 \begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=8cm]{chapters/10-storage/img/sas-sata-img.png}
-	\caption{SAS vs SATA\protect\footnotemark}
-	\label{fig:storage:sas-sata}
+  \centering
+  \includegraphics[width=8cm]{chapters/10-storage/img/sas-sata-img.png}
+  \caption{SAS vs SATA\protect\footnotemark}
+  \label{fig:storage:sas-sata}
 \end{figure}
 
 \footnotetext{\url{https://commons.wikimedia.org/wiki/File:SASvsSATA\_Connector.JPG}
 \textbf{CC BY SA 3.0}}
 
 \begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=8cm]{chapters/10-storage/img/size-comp-img.png}
-	\caption{2.5" vs 3.5"\protect\footnotemark}
-	\label{fig:storage:size-comp}
+  \centering
+  \includegraphics[width=8cm]{chapters/10-storage/img/size-comp-img.png}
+  \caption{2.5" vs 3.5"\protect\footnotemark}
+  \label{fig:storage:size-comp}
 \end{figure}
 
 \footnotetext{\url{https://commons.wikimedia.org/wiki/File:Comparison\_of\_3.5\_and\_2.5\_inch\_hard\_drives.jpg}
@@ -216,19 +216,19 @@ Pentru a prelungi durata de viață a unui disc, trebuie avute
 în vedere următoarele facilități:
 
 \begin{itemize}
-	\item defragmentarea (procesul prin care se rearanjează datele pe disc
-		pentru un acces mai eficient) - este recomandată dezactivarea
-		defragmentării pentru discurile SSD (dupa cum am specificat mai
-		sus)
-	\item swapping - atunci când un sistem rămâne fără memorie RAM, acesta
-		va folosi pe post de memorie discul. Este recomandat să
-		dezactivați swappingul pe discurile SSD dacă doriți prelungirea
-		duratei de viață (mai ales dacă swappingul apare des)
-	\item hibernate - atunci când trecem calculatorul în starea Hibernate
-		acesta scrie întregul conținut al memoriei pe disc (ceea ce va
-		genera foarte multe scrieri). Este recomandat să nu treceți
-		sistemul în Hibernate dacă doriți prelungirea duratei de viață
-		(sau să configurați un disc alternativ pentru Hibernate).
+  \item defragmentarea (procesul prin care se rearanjează datele pe disc
+    pentru un acces mai eficient) - este recomandată dezactivarea
+    defragmentării pentru discurile SSD (dupa cum am specificat mai
+    sus)
+  \item swapping - atunci când un sistem rămâne fără memorie RAM, acesta
+    va folosi pe post de memorie discul. Este recomandat să
+    dezactivați swappingul pe discurile SSD dacă doriți prelungirea
+    duratei de viață (mai ales dacă swappingul apare des)
+  \item hibernate - atunci când trecem calculatorul în starea Hibernate
+    acesta scrie întregul conținut al memoriei pe disc (ceea ce va
+    genera foarte multe scrieri). Este recomandat să nu treceți
+    sistemul în Hibernate dacă doriți prelungirea duratei de viață
+    (sau să configurați un disc alternativ pentru Hibernate).
 \end{itemize}
 
 Alte recomandări pentru creșterea duratei de viață a discului SSD specifice
@@ -258,12 +258,12 @@ partiționări în sistemele din ziua de astăzi, așa cum am prezentat în
 \labelindexref{Capitolul}{chapter:boot}:
 
 \begin{itemize}
-	\item Master Boot Record (referit ca MBR) - acesta a fost introdus în
-		1983 și poartă această denumire deoarece stochează la începutul
-		discului un sector specific procesului de bootare.
-	\item GUID Partition Table (referit ca GPT) - este o metodă mai nouă de
-		partiționare ce va înlocui treptat MBR din cauza limitărilor
-		acestuia.
+  \item Master Boot Record (referit ca MBR) - acesta a fost introdus în
+    1983 și poartă această denumire deoarece stochează la începutul
+    discului un sector specific procesului de bootare.
+  \item GUID Partition Table (referit ca GPT) - este o metodă mai nouă de
+    partiționare ce va înlocui treptat MBR din cauza limitărilor
+    acestuia.
 \end{itemize}
 
 Schema MBR, după cum se menționează anterior, are alocat exact la începutul unui
@@ -280,17 +280,17 @@ bootare. Întreaga schemă de partiționare a MBR este descrisă și în
 \labelindexref{Figura}{fig:storage:mbr}.
 
 \begin{figure}[htbp]
-	\centering
-	\def\svgwidth{\columnwidth}
-	\includesvg{chapters/10-storage/img/mbr-struct.svg}
-	\caption{Schema de partiționare a MBR}
-        \label{fig:storage:mbr}
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/10-storage/img/mbr-struct.svg}
+  \caption{Schema de partiționare a MBR}
+  \label{fig:storage:mbr}
 \end{figure}
 
 MBR a început să fie înlocuit de către GPT din cauza limitărilor acestuia:
 \begin{itemize}
-	\item dimensiunea maximă a unei partiții este de 2TB
-	\item necesitatea unei partiții extinse pentru a crea mai mult de patru partiții
+  \item dimensiunea maximă a unei partiții este de 2TB
+  \item necesitatea unei partiții extinse pentru a crea mai mult de patru partiții
 \end{itemize}
 
 Pentru a rezolva neajunsurile MBR, a fost creată schema de partiționare
@@ -315,11 +315,11 @@ partiții și nici limitarea la 4 partiții primare (din cauza numărului ridica
 disponibil de partiții nu mai există noțiunea de partiții logice).
 
 \begin{figure}[htbp]
-	\centering
-	\def\svgwidth{\columnwidth}
-        \includesvg[width=0.7\textwidth]{chapters/10-storage/img/gpt-struct.svg}
-	\caption{Schema de partiționare a GPT}
-        \label{fig:storage:gpt}
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg[width=0.7\textwidth]{chapters/10-storage/img/gpt-struct.svg}
+  \caption{Schema de partiționare a GPT}
+  \label{fig:storage:gpt}
 \end{figure}
 
 Pentru a utiliza spațiul de stocare eficient, există recomandări din partea
@@ -328,33 +328,33 @@ includ:
 
 \begin{itemize}
   \item Crearea unei partiții de boot (specific Linux \file{/boot} - conține
-		nucleul sistemului de operare și bootloaderul)
-	\item Crearea unei partiții de swap (specific Linux - spațiu utilizat de
-		sistemul de operare atunci când rămâne fără memorie; în cazul
-		Windows swap-ul este alocat din partiția sistemului de operare)
-	\item Crearea unei partiții pentru sistemul de operare (pentru Linux
+    nucleul sistemului de operare și bootloaderul)
+  \item Crearea unei partiții de swap (specific Linux - spațiu utilizat de
+    sistemul de operare atunci când rămâne fără memorie; în cazul
+    Windows swap-ul este alocat din partiția sistemului de operare)
+  \item Crearea unei partiții pentru sistemul de operare (pentru Linux
           este \file{/}, denumită și partiția rădăcină - \textit{root partition}, iar pentru Windows de obicei este
                 discul \file{C:})
-	\item Crearea unei partiții pentru utilizatorii sistemului - atunci când
-		reinstalăm sistemul de operare, să putem păstra ușor datele
+  \item Crearea unei partiții pentru utilizatorii sistemului - atunci când
+    reinstalăm sistemul de operare, să putem păstra ușor datele
                 utilizatorilor (pentru Linux este \file{/home}, iar pentru Windows de
                 obicei literele de la \file{D:} în sus)
-	\item Crearea unei partiții pentru sistemele cu suport EFI/UEFI
+  \item Crearea unei partiții pentru sistemele cu suport EFI/UEFI
           (specific Linux în \file{/boot/efi} și conține fișierele necesare să
-		fie executate la încărcarea sistemului de operare de către
-		subsistemul UEFI)
+    fie executate la încărcarea sistemului de operare de către
+    subsistemul UEFI)
 \end{itemize}
 
 Utilitare ce pot fi folosite pentru administrarea partițiilor sunt:
 
 \begin{itemize}
   \item Pentru Linux: \cmd{fdisk} (doar MBR), \cmd{gdisk} (pentru GPT); \cmd{parted}/\cmd{gparted} (suport extins
-		pentru MBR/GPT și operații avansate). O dată creată o partiție,
+    pentru MBR/GPT și operații avansate). O dată creată o partiție,
                 aceasta poate fi văzută în calea \file{/dev} și poartă numele discului
                 partiționat (ex. \texttt{sda}) urmat de o cifră care reprezintă numărul
                 partiției (ex. \texttt{sda5})
-              \item Pentru Windows: \cmd{Disk Management}. O data creată o partiție, aceasta
-		poate fi văzută în utilitarul menționat.
+  \item Pentru Windows: \cmd{Disk Management}. O data creată o partiție, aceasta
+    poate fi văzută în utilitarul menționat.
 \end{itemize}
 
 \subsection{Sisteme de fișiere}
@@ -370,18 +370,18 @@ apărea un mesaj către utilizator dacă acceptă formatarea lui ca în
 \labelindexref{Figura}{fig:storage:format-disk}.
 
 \begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=8cm]{chapters/10-storage/img/format-disk-img.png}
-	\caption{Fereastră privind formatarea unui disc în Windows}
-	\label{fig:storage:format-disk}
+  \centering
+  \includegraphics[width=8cm]{chapters/10-storage/img/format-disk-img.png}
+  \caption{Fereastră privind formatarea unui disc în Windows}
+  \label{fig:storage:format-disk}
 \end{figure}
 
 Sistemul de fișiere oferă următoarele obiecte vizibile utilizatorului final:
 
 \begin{itemize}
-	\item fișierul - entitatea care conține date utile în diverse formate
-	\item directorul - entitatea care organizează fișierele într-un formă
-		arborescentă ușor de folosit de către utilizator
+  \item fișierul - entitatea care conține date utile în diverse formate
+  \item directorul - entitatea care organizează fișierele într-un formă
+    arborescentă ușor de folosit de către utilizator
 \end{itemize}
 
 Mai multe detalii legate de fișiere și directoare (modul în care se creează, se
@@ -391,9 +391,9 @@ Mai multe detalii legate de fișiere și directoare (modul în care se creează,
 În general sistemele de fișiere sunt specifice sistemelor de operare. Astfel avem următoarea clasificare:
 
 \begin{itemize}
-	\item Linux: cel mai folosit este sistemul de fișiere Ext4, iar mai nou
-		acesta ajunge să fie înlocuit cu XFS
-	\item Windows: principalul sistem de fișiere este NTFS
+  \item Linux: cel mai folosit este sistemul de fișiere Ext4, iar mai nou
+    acesta ajunge să fie înlocuit cu XFS
+  \item Windows: principalul sistem de fișiere este NTFS
 \end{itemize}
 
 În Linux, pentru a formata (instala) un sistem de fișiere pe o partiție se
@@ -406,10 +406,10 @@ acel disc. Un exemplu complet de folosire a utilitarelor de formatare și
 partiționare îl puteți găsi la finalul capitolului, la studii de caz.
 
 \begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=8cm]{chapters/10-storage/img/format-part-img.png}
-	\caption{Formatarea unei partiții în Windows}
-        \label{fig:storage:win-format}
+  \centering
+  \includegraphics[width=8cm]{chapters/10-storage/img/format-part-img.png}
+  \caption{Formatarea unei partiții în Windows}
+  \label{fig:storage:win-format}
 \end{figure}
 
 În Windows, pentru a formata (instala) un sistem de fișiere pe o partiție, se
@@ -467,10 +467,10 @@ de operare. Dacă se doresc operații avansate, acestea pot fi făcute tot din
 \textit{Disk Management}: \texttt{Start $\rightarrow$ Run $\rightarrow$ diskmgmt.msc}, ca în \labelindexref{Figura}{fig:storage:win-disk-manage}.
 
 \begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=0.6\textwidth]{chapters/10-storage/img/admin-img.png}
-	\caption{Administrarea spațiului de stocare în Windows}
-        \label{fig:storage:win-disk-manage}
+  \centering
+  \includegraphics[width=0.6\textwidth]{chapters/10-storage/img/admin-img.png}
+  \caption{Administrarea spațiului de stocare în Windows}
+  \label{fig:storage:win-disk-manage}
 \end{figure}
 
 Anterior, s-a menționat faptul că sistemele de fișiere sunt specifice sistemului
@@ -514,10 +514,10 @@ Ca și schemele de partiționare, sistemele de fișiere au și ele anumite limit
 legate de:
 
 \begin{itemize}
-	\item numărul maxim de fișiere (ex. pentru ext4 - 4 miliarde)
-	\item dimensiunea partiției (ex. pentru ext4 - 1024PB)
-	\item dimensiunea maximă a fișierului (ex. pentru ext4 - 16TB)
-	\item atribute extinse de funcționalitate și securitate
+  \item numărul maxim de fișiere (ex. pentru ext4 - 4 miliarde)
+  \item dimensiunea partiției (ex. pentru ext4 - 1024PB)
+  \item dimensiunea maximă a fișierului (ex. pentru ext4 - 16TB)
+  \item atribute extinse de funcționalitate și securitate
 \end{itemize}
 
 Limitările menționate mai sus variază de la un sistem de operare la altul, sunt precizate în documentația respectivului sistem de fișiere.
@@ -553,17 +553,17 @@ deschiderea meniului contextual
 În sistemul de operare Linux din mașina virtuală, discul va apărea ca \file{/dev/sdb}.
 
 \begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=0.6\textwidth]{chapters/10-storage/img/vm-new-disk.png}
-	\caption{Adăugarea unui nou disc mașinii virtuale}
-        \label{fig:storage:vm-new-disk}
+  \centering
+  \includegraphics[width=0.6\textwidth]{chapters/10-storage/img/vm-new-disk.png}
+  \caption{Adăugarea unui nou disc mașinii virtuale}
+  \label{fig:storage:vm-new-disk}
 \end{figure}
 
 \begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=0.6\textwidth]{chapters/10-storage/img/vm-disk-info.png}
-        \caption{Informații despre un disc virtual}
-        \label{fig:storage:vm-disk-info}
+  \centering
+  \includegraphics[width=0.6\textwidth]{chapters/10-storage/img/vm-disk-info.png}
+  \caption{Informații despre un disc virtual}
+  \label{fig:storage:vm-disk-info}
 \end{figure}
 
 \section{Anexă: Investigarea spațiului de stocare}
@@ -883,7 +883,7 @@ mke2fs 1.44.1 (24-Mar-2018)
 Creating filesystem with 204800 4k blocks and 51296 inodes
 Filesystem UUID: 6ea1370c-b47c-497f-a7b7-556d40d4af97
 Superblock backups stored on blocks:
-	32768, 98304, 163840
+  32768, 98304, 163840
 
 Allocating group tables: done
 Writing inode tables: done
@@ -1018,12 +1018,12 @@ replicarea eficientă a fișierelor și directoarelor este \cmd{rsync}. Acesta a
 două caracteristici principale:
 
 \begin{itemize}
-	\item poate face replicare incrementală (nu este necesar să copiem
-		întreaga cale de fiecare dată), ceea ce duce la o îmbunătățire
-		semnificativă a timpului de backup
-	\item dispune de un control granular al atributelor replicate: owneri,
-		grupuri, atribute extinse, poate sau nu urmări linkurile
-		simbolice
+  \item poate face replicare incrementală (nu este necesar să copiem
+    întreaga cale de fiecare dată), ceea ce duce la o îmbunătățire
+    semnificativă a timpului de backup
+  \item dispune de un control granular al atributelor replicate: owneri,
+    grupuri, atribute extinse, poate sau nu urmări linkurile
+    simbolice
 \end{itemize}
 
 Comanda \cmd{rsync} are opțiuni care controlează atributele
@@ -1039,15 +1039,15 @@ Comanda \cmd{rsync} are opțiunile:
 
 \begin{itemize}
   \item \texttt{a} - modul de arhivare; păstrează și replică toate atributele
-		fișierelor și directoarelor cu excepția linkurilor hard,
+    fișierelor și directoarelor cu excepția linkurilor hard,
                 atributelor extinse și listelor de acces (ACL - \textit{Access Control List})
   \item \texttt{A} - replică listele de acces (ACL)
   \item \texttt{X} - replică atributele extinse
   \item \texttt{H} - replică linkurile hard
   \item \texttt{-{}-exclude} - se vor exclude din backup căile specificate (toate
-		acele căi nu conțin în mod normal date utile utilizatorului, ci
-		sunt căi virtuale populate la bootare de către sistemul de
-		operare)
+    acele căi nu conțin în mod normal date utile utilizatorului, ci
+    sunt căi virtuale populate la bootare de către sistemul de
+    operare)
 \end{itemize}
 
 Comanda \cmd{rsync} primește următoarele argumente:
@@ -1085,17 +1085,17 @@ figură avem o sarcină denumită \textit{Backup D}, care va face replicarea
 
 \begin{itemize}
   \item \texttt{General} - aici se configurează setări generale (dacă vor fi
-		incluse subdirectoarele, ce atribute vor fi replicate)
-              \item \texttt{Files} - ce fișiere vor fi replicate și unde
-              \item \texttt{Schedule} - când se va realiza replicarea
-              \item \texttt{Archive} - dacă datele vor fi arhivate înainte de replicare
+    incluse subdirectoarele, ce atribute vor fi replicate)
+  \item \texttt{Files} - ce fișiere vor fi replicate și unde
+  \item \texttt{Schedule} - când se va realiza replicarea
+  \item \texttt{Archive} - dacă datele vor fi arhivate înainte de replicare
 \end{itemize}
 
 \begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=8cm]{chapters/10-storage/img/cobian-img.png}
-	\caption{Aplicația pentru replicarea datelor în Windows: Cobian Backup}
-	\label{fig:storage:cobian}
+  \centering
+  \includegraphics[width=8cm]{chapters/10-storage/img/cobian-img.png}
+  \caption{Aplicația pentru replicarea datelor în Windows: Cobian Backup}
+  \label{fig:storage:cobian}
 \end{figure}
 
 \section{Anexă: Montarea dispozitivelor}
@@ -1213,7 +1213,7 @@ Discarding device blocks: done
 Creating filesystem with 102400 1k blocks and 25688 inodes
 Filesystem UUID: 23673b79-b27e-4792-b597-9028012586c3
 Superblock backups stored on blocks:
-	8193, 24577, 40961, 57345, 73729
+  8193, 24577, 40961, 57345, 73729
 
 Allocating group tables: done
 Writing inode tables: done
@@ -1253,9 +1253,9 @@ Manager}). În cadrul acestuia există următoarele obiecte:
   \item \textit{Physical Volume} - sunt discurile fizice alte sistemului asociate LVM
   \item \textit{Volume Group} - format din unul sau mai multe discuri asociate anterior
   \item \textit{Logical Volume} - alocate din spațiul disponibil într-unul din
-		Volume Group-urile create anterior. Doar acesta este vizibil în
-		sistemul de operare și poate fi formatat cu un sistem de
-		fișiere
+    Volume Group-urile create anterior. Doar acesta este vizibil în
+    sistemul de operare și poate fi formatat cu un sistem de
+    fișiere
 \end{itemize}
 
 Atunci când instalați o distribuție de Linux, aveți opțiunea de a activa LVM.
@@ -1265,7 +1265,7 @@ dimensiunea partițiilor existente.
 În exemplul următor vom investiga configurația unui sistem (numit \texttt{mamba}) care are activat LVM:
 
 \begin{itemize}
-	\item Vom lista discurile fizice:
+  \item Vom lista discurile fizice:
 
 \begin{screen}
 mamba:~# pvs
@@ -1274,7 +1274,7 @@ mamba:~# pvs
 \end{screen}
 
         \item Se observă un disc denumit \cmd{/dev/md2} cu capacitatea \texttt{1.14TB}. Vom
-		lista acum volumele:
+    lista acum volumele:
 
 \begin{screen}
 mamba:~# vgs
@@ -1282,8 +1282,8 @@ mamba:~# vgs
   storage   1   6   0 wz--n- 1.14t 130.47g
 \end{screen}
 
-	\item Se observă un singur volum denumit \texttt{storage}. Observați din
-		ce discuri fizice este compus:
+  \item Se observă un singur volum denumit \texttt{storage}. Observați din
+    ce discuri fizice este compus:
 
 \begin{screen}
 mamba:~# pvdisplay /dev/md2
@@ -1299,8 +1299,8 @@ mamba:~# pvdisplay /dev/md2
   PV UUID               M9WAFG-pf9x-Uo0j-7r8N-spOy-5evy-tt0cyc
 \end{screen}
 
-	\item Vom lista acum volumele logice, cele care sunt vizibile sistemului
-		de operare:
+  \item Vom lista acum volumele logice, cele care sunt vizibile sistemului
+    de operare:
 
 \begin{screen}
 mamba:~# lvs
@@ -1332,11 +1332,11 @@ lrwxrwxrwx 1 root root 7 Aug  9 07:18 /dev/mapper/storage-titan -> ../dm-4
 dintre \textit{Physical Volume}, \textit{Volume Group} și \textit{Logical Volume}.
 
 \begin{figure}[htbp]
-	\centering
-	\def\svgwidth{\columnwidth}
-        \includesvg[width=0.7\textwidth]{chapters/10-storage/img/lvm-struct.svg}
-	\caption{Componentele LVM}
-        \label{fig:storage:lvm}
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg[width=0.7\textwidth]{chapters/10-storage/img/lvm-struct.svg}
+  \caption{Componentele LVM}
+  \label{fig:storage:lvm}
 \end{figure}
 
 \section{Anexă: Replicarea datelor}
@@ -1361,23 +1361,23 @@ poate fi mutat pe un alt sistem.
 RAID dispune de mai multe moduri de funcționare:
 
 \begin{itemize}
-	\item RAID0 - datele sunt distribuite pe toate discurile configurate. Nu
-		există nici un nivel de replicare (dacă avem două discuri
-		configurate în RAID0 va rezulta un volum ce are capacitatea
-		celor două discuri însumată, fără nici un nivel de replicare)
-	\item RAID1 - datele sunt scrise simultan pe 2 din discurile configurate. Dacă un
-		disc se va defecta, celălalt va deține informația (dacă avem
-		două discuri configurate în RAID1 va rezulta un volum ce are
-		capacitatea celui mai mic dintre discuri, cu un nivel de
-		replicare a datelor)
-	\item RAID5 - datele sunt scrise pe 1 disc și se mai scrie o sumă de
-		control pe un alt disc. Cu ajutorul sumelor de control, datele
-		pot fi recuperate dacă un disc pică. Necesită cel puțin 3
-		discuri. Poate pica un singur disc, iar datele rămân
-		disponibile.
-	\item RAID10 - combinația dintre RAID0 și RAID1 (datele sunt distribuite
-		și replicate). Acesta asigură unul dintre cele mai bune niveluri
-		de protecție și performanță crescută, cu dezavantajul unui cost mai crescut.
+  \item RAID0 - datele sunt distribuite pe toate discurile configurate. Nu
+    există nici un nivel de replicare (dacă avem două discuri
+    configurate în RAID0 va rezulta un volum ce are capacitatea
+    celor două discuri însumată, fără nici un nivel de replicare)
+  \item RAID1 - datele sunt scrise simultan pe 2 din discurile configurate. Dacă un
+    disc se va defecta, celălalt va deține informația (dacă avem
+    două discuri configurate în RAID1 va rezulta un volum ce are
+    capacitatea celui mai mic dintre discuri, cu un nivel de
+    replicare a datelor)
+  \item RAID5 - datele sunt scrise pe 1 disc și se mai scrie o sumă de
+    control pe un alt disc. Cu ajutorul sumelor de control, datele
+    pot fi recuperate dacă un disc pică. Necesită cel puțin 3
+    discuri. Poate pica un singur disc, iar datele rămân
+    disponibile.
+  \item RAID10 - combinația dintre RAID0 și RAID1 (datele sunt distribuite
+    și replicate). Acesta asigură unul dintre cele mai bune niveluri
+    de protecție și performanță crescută, cu dezavantajul unui cost mai crescut.
 \end{itemize}
 
 În \labelindexref{Figura}{fig:storage:raid} sunt reprezentate grafic modurile de
@@ -1386,11 +1386,11 @@ este asemănător RAID5, dar are două discuri pe care se rețin sumele de contr
 pot pica 2 discuri la un moment dat, iar datele sunt disponibile în continuare.
 
 \begin{figure}[htbp]
-	\centering
-	\def\svgwidth{\columnwidth}
-	\includesvg{chapters/10-storage/img/raid-types.svg}
-	\caption{Niveluri RAID}
-        \label{fig:storage:raid}
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/10-storage/img/raid-types.svg}
+  \caption{Niveluri RAID}
+  \label{fig:storage:raid}
 \end{figure}
 
 În sistemele bazate pe Linux, software RAID este implementat prin modulul \texttt{md}
@@ -1414,10 +1414,10 @@ precădere în sistemele de tip server. Pentru sistemele desktop/laptop se
 folosesc alte mecanisme de backup / replicare cum ar fi:
 
 \begin{itemize}
-	\item crearea unei imagini a întregului disc
-	\item snapshot folosind sistemul de fișiere
-	\item copierea fișierelor pe un disc extern sau pe un alt dispozitiv
-		peste rețea
+  \item crearea unei imagini a întregului disc
+  \item snapshot folosind sistemul de fișiere
+  \item copierea fișierelor pe un disc extern sau pe un alt dispozitiv
+    peste rețea
 \end{itemize}
 
 Crearea unei imagini a întregului disc este utilă atunci când dorim să refacem

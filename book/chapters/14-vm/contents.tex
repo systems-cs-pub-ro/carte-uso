@@ -50,12 +50,12 @@ pe același sistem de calcul.
 În nomenclatura virtualizării, avem următoarele cuvinte cheie:
 
 \begin{itemize}
-	\item \textit{sistem gazdă} sau \textit{host} sau \textit{mașină
-		fizică}: cel care a fost instalat prima dată și deasupra căruia
-		rulăm un alt sistem de operare.
-	\item \textit{sistem oaspete} sau \textit{guest} sau \textit{mașină
-		virtuală}: sistem de operare ce îl rulăm în cadrul sistemului
-		gazdă.
+  \item \textit{sistem gazdă} sau \textit{host} sau \textit{mașină
+    fizică}: cel care a fost instalat prima dată și deasupra căruia
+    rulăm un alt sistem de operare.
+  \item \textit{sistem oaspete} sau \textit{guest} sau \textit{mașină
+    virtuală}: sistem de operare ce îl rulăm în cadrul sistemului
+    gazdă.
 \end{itemize}
 
 Necesitățile prezentate anterior pentru rularea concomitentă a mai multor
@@ -106,22 +106,22 @@ serverelor pentru a rezolva câteva probleme importante:
 
 \begin{itemize}
   \item \textbf{consolidarea resurselor}: de multe ori un server este alocat doar
-		unei aplicații, iar această aplicație nu folosește întreaga
-		capacitate a serverului. Astfel, resursele rămân nefolosite.
-		Rularea unei alte aplicații pe același server este considerată
-		de multe ori o problemă de securitate (dacă una din aplicații e
-		compromisă, o afectează inevitabil și pe cealaltă). Folosind
-		conceptul de virtualizare împreună cu extensiile hardware de
-		virtualizare, putem rula mai multe mașini virtuale, câte una
-		pentru fiecare aplicație dorită.
+    unei aplicații, iar această aplicație nu folosește întreaga
+    capacitate a serverului. Astfel, resursele rămân nefolosite.
+    Rularea unei alte aplicații pe același server este considerată
+    de multe ori o problemă de securitate (dacă una din aplicații e
+    compromisă, o afectează inevitabil și pe cealaltă). Folosind
+    conceptul de virtualizare împreună cu extensiile hardware de
+    virtualizare, putem rula mai multe mașini virtuale, câte una
+    pentru fiecare aplicație dorită.
   \item \textbf{securitate}: izolarea fiecărei aplicații într-o mașină virtuală
-		pentru a preveni furtul de date de la una la alta.
+    pentru a preveni furtul de date de la una la alta.
   \item \textbf{mentenanță}: fără a întrerupe funcționarea acestora,
-		mașinile virtuale pot fi migrate (mutate) de pe o mașină fizică
-		pe alta. Astfel, se pot aplica actualizările necesare pentru
-		sistemul fizic (e.g. \textit{Cluster Aware Updating} de la
-		Microsoft) sau se poate face mentenanța hardware dorită (ex.
-		upgrade de memorie).
+    mașinile virtuale pot fi migrate (mutate) de pe o mașină fizică
+    pe alta. Astfel, se pot aplica actualizările necesare pentru
+    sistemul fizic (e.g. \textit{Cluster Aware Updating} de la
+    Microsoft) sau se poate face mentenanța hardware dorită (ex.
+    upgrade de memorie).
 \end{itemize}
 
 \subsection{Clasificarea virtualizării}
@@ -142,13 +142,13 @@ astăzi două tipuri de virtualizare:
 
 \begin{itemize}
   \item \textbf{hosted} - virtualizarea se realizează în cadrul unui sistem de
-		operare existent. În cadrul acestui tip de
-		virtualizare, hipervizorul se mai numește și \textit{Type-2 hypervisor}
-		(hipervizor de tipul 2). Este tipul de virtualizare folosit de VirtualBox, VMware Workstation.
+    operare existent. În cadrul acestui tip de
+    virtualizare, hipervizorul se mai numește și \textit{Type-2 hypervisor}
+    (hipervizor de tipul 2). Este tipul de virtualizare folosit de VirtualBox, VMware Workstation.
   \item \textbf{baremetal} - este dezvoltat un nou sistem de operare, numai pentru
-		a realiza virtualizarea, care rulează deasupra hardware-ului.
-		În cadrul acestui tip de virtualizare, hipervizorul se mai
-		numește și \textit{Type-1 hypervisor} (hipervizor de tipul 1). Este tipul de virtualizare realizat de VMware ESX, Xen.
+    a realiza virtualizarea, care rulează deasupra hardware-ului.
+    În cadrul acestui tip de virtualizare, hipervizorul se mai
+    numește și \textit{Type-1 hypervisor} (hipervizor de tipul 1). Este tipul de virtualizare realizat de VMware ESX, Xen.
 \end{itemize}
 
 În \labelindexref{Figura}{fig:vm:hosted-baremetal} sunt reprezentate cele două tipuri
@@ -175,19 +175,19 @@ un code-base (numărul de linii de cod) mult mai mic decât al unui sistem de
 operare și are riscuri mai mici de securitate.
 
 \begin{figure}[htbp]
-	\centering
-	\def\svgwidth{\columnwidth}
-	\includesvg{chapters/14-vm/img/hosted-baremetal.svg}
-	\caption{Virtualizare de tip hosted vs. baremetal}
-	\label{fig:vm:hosted-baremetal}
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/14-vm/img/hosted-baremetal.svg}
+  \caption{Virtualizare de tip hosted vs. baremetal}
+  \label{fig:vm:hosted-baremetal}
 \end{figure}
 
 \begin{figure}[htbp]
-	\centering
-	\def\svgwidth{\columnwidth}
-	\includesvg{chapters/14-vm/img/hypervisor-types.svg}
-	\caption{Hipervizor tip 2 vs. tip 1}
-	\label{fig:vm:hypervisor-types}
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/14-vm/img/hypervisor-types.svg}
+  \caption{Hipervizor tip 2 vs. tip 1}
+  \label{fig:vm:hypervisor-types}
 \end{figure}
 
 În ambele figuri, se observă că pentru virtualizarea baremetal și
@@ -206,45 +206,45 @@ semnificativă) hipervizoare din ziua de astăzi. Astfel, avem hipervizoare de
 tipul 2:
 
 \begin{itemize}
-	\item \textit{Virtual Box} - este un hipervizor de tipul 2 adresat
-		sistemelor desktop. Acesta se instalează pe majoritatea
-		sistemelor de
-		operare (Windows, Linux sau MacOS). Poate rula orice
-		sistem de operare gazdă, are opțiuni de snapshot (salvarea
-		stării unei mașini virtuale), posibilități avansate de a controla
-		configurațiile de rețea. Poate fi folosit în mod gratuit.
-	\item \textit{VMware Workstation/Player/Fusion} - este un hipervizor de
-		tipul 2 adresat, de asemenea, sistemelor desktop. VMware
-		Workstation se instalează pe sistemele Windows și Linux și oferă
-		aceleași facilități ca și VirtualBox. VMware Fusion se adresează
-		sistemelor de operare gazdă MacOS oferind aceleași
-		funcționalități ca VMware Workstation. Ambele versiuni necesită
-		achiziționarea unei licențe. Cu ajutorul versiunii VMware Player
-		se pot rula mașinile virtuale create cu VMware
-		Workstation, dar
-		aceasta nu deține facilități avansate (ex. snapshot). VMware Player este
-		distribuit gratuit.
+  \item \textit{Virtual Box} - este un hipervizor de tipul 2 adresat
+    sistemelor desktop. Acesta se instalează pe majoritatea
+    sistemelor de
+    operare (Windows, Linux sau MacOS). Poate rula orice
+    sistem de operare gazdă, are opțiuni de snapshot (salvarea
+    stării unei mașini virtuale), posibilități avansate de a controla
+    configurațiile de rețea. Poate fi folosit în mod gratuit.
+  \item \textit{VMware Workstation/Player/Fusion} - este un hipervizor de
+    tipul 2 adresat, de asemenea, sistemelor desktop. VMware
+    Workstation se instalează pe sistemele Windows și Linux și oferă
+    aceleași facilități ca și VirtualBox. VMware Fusion se adresează
+    sistemelor de operare gazdă MacOS oferind aceleași
+    funcționalități ca VMware Workstation. Ambele versiuni necesită
+    achiziționarea unei licențe. Cu ajutorul versiunii VMware Player
+    se pot rula mașinile virtuale create cu VMware
+    Workstation, dar
+    aceasta nu deține facilități avansate (ex. snapshot). VMware Player este
+    distribuit gratuit.
 \end{itemize}
 
 Hipervizoarele de tip 1 sunt folosite și au aplicabilitate în domeniul centrelor
 de date (datacenter). Printre acestea putem enumera:
 
 \begin{itemize}
-	\item \textit{Xen} - dezvoltat de Universitatea din Cambridge, rulează
-		direct peste hardware și are nevoie de o mașină virtuală pentru
-		management și pentru a rula driverele virtualizate. Mașina de
+  \item \textit{Xen} - dezvoltat de Universitatea din Cambridge, rulează
+    direct peste hardware și are nevoie de o mașină virtuală pentru
+    management și pentru a rula driverele virtualizate. Mașina de
                 management poartă denumirea de \texttt{Dom0} (\textit{Domain 0} - în terminologia
-		Xen mașinile virtuale poartă denumirea de domenii). Xen oferă suport de virtualizare atât pentru procesoarele cu
-		arhitectură x86, cât și ARM (vezi \labelindexref{Capitolul}{chapter:hw}).
-	\item \textit{VMware ESXi} - hipervizorul de tip 1 al celor de la
-		VMware. Acesta se instalează direct peste hardware și oferă
-		suport doar pentru procesoarele cu arhitectură x86. Varianta
-		gratuită oferă un set limitat de funcționalități (e.g. nu oferă
-		posibilitatea de a migra o mașină virtuală de pe un nod fizic pe
-		altul). Pentru a beneficia de toate facilitățile, trebuie
-		achiziționată varianta comercială denumită \textit{VMware
-		vShpere} împreună cu aplicația de management \textit{VMware
-		vCenter}.
+    Xen mașinile virtuale poartă denumirea de domenii). Xen oferă suport de virtualizare atât pentru procesoarele cu
+    arhitectură x86, cât și ARM (vezi \labelindexref{Capitolul}{chapter:hw}).
+  \item \textit{VMware ESXi} - hipervizorul de tip 1 al celor de la
+    VMware. Acesta se instalează direct peste hardware și oferă
+    suport doar pentru procesoarele cu arhitectură x86. Varianta
+    gratuită oferă un set limitat de funcționalități (e.g. nu oferă
+    posibilitatea de a migra o mașină virtuală de pe un nod fizic pe
+    altul). Pentru a beneficia de toate facilitățile, trebuie
+    achiziționată varianta comercială denumită \textit{VMware
+    vShpere} împreună cu aplicația de management \textit{VMware
+    vCenter}.
 \end{itemize}
 
 Două soluții de virtualizare folosite frecvent în mediile Linux,
@@ -294,22 +294,22 @@ peste care rulează direct aplicațiile. Se observă că mecanismul de container
 conține propriul nucleu.
 
 \begin{figure}[htbp]
-	\centering
-	\def\svgwidth{\columnwidth}
-	\includesvg{chapters/14-vm/img/vm-container.svg}
-	\caption{Mașini virtuale vs. containere}
-	\label{fig:vm:vm-container}
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/14-vm/img/vm-container.svg}
+  \caption{Mașini virtuale vs. containere}
+  \label{fig:vm:vm-container}
 \end{figure}
 
 Tehnologii ce implementează mecanismul de container în sistemele Linux sunt:
 
 \begin{itemize}
-	\item LXC \abbrev{LXC}{Linux Containers} (Linux Containers) - oferă posibilitatea
-		rulării unor servicii intr-un mediu izolat de sistemul de bază.
-	\item OpenVZ - similar LXC, dar nu este prezent în mod implicit în
-		nucleul Linux.
-	\item Docker - oferă posibilitatea rulării într-un container doar a unei
-		singure aplicații.
+  \item LXC \abbrev{LXC}{Linux Containers} (Linux Containers) - oferă posibilitatea
+    rulării unor servicii intr-un mediu izolat de sistemul de bază.
+  \item OpenVZ - similar LXC, dar nu este prezent în mod implicit în
+    nucleul Linux.
+  \item Docker - oferă posibilitatea rulării într-un container doar a unei
+    singure aplicații.
 \end{itemize}
 
 \section{Operații cu mașini virtuale}
@@ -321,13 +321,13 @@ se precizează mai mulți parametri care să descrie configurația
 virtualizată a hardware-ului acesteia:
 
 \begin{itemize}
-	\item numele mașinii virtuale;
-	\item numărul de procesoare (nuclee/core-uri);
-	\item cantitatea de memorie care va fi disponibilă;
-	\item mărimea discului;
-	\item dacă va avea CD-ROM și ce imagine .iso va fi asociată (întocmai
-		unui CD/DVD fizic);
-        \item tipul de rețea (detaliat în  \labelindexref{Secțiunea}{sec:vm:ops:net}).
+  \item numele mașinii virtuale;
+  \item numărul de procesoare (nuclee/core-uri);
+  \item cantitatea de memorie care va fi disponibilă;
+  \item mărimea discului;
+  \item dacă va avea CD-ROM și ce imagine .iso va fi asociată (întocmai
+    unui CD/DVD fizic);
+  \item tipul de rețea (detaliat în \labelindexref{Secțiunea}{sec:vm:ops:net}).
 \end{itemize}
 
 O dată creată, mașina virtuală poate fi pornită.
@@ -402,11 +402,11 @@ văzută ca o altă stație normală în cadrul rețelei externe și poate fi ac
 faptul că pachetele nu sunt modificate.
 
 \begin{figure}[htbp]
-	\centering
-	\def\svgwidth{\columnwidth}
-	\includesvg{chapters/14-vm/img/vm-net.svg}
-	\caption{Moduri de funcționare a plăcii de rețea virtualizate}
-	\label{fig:vm:net}
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/14-vm/img/vm-net.svg}
+  \caption{Moduri de funcționare a plăcii de rețea virtualizate}
+  \label{fig:vm:net}
 \end{figure}
 
 \subsection{Servicii de integrare}
@@ -456,20 +456,20 @@ Există două tipuri de servicii cloud:
 
 \begin{itemize}
   \item \textbf{private} (numite și \textit{on-premise}): o organizație deține multe servere pe care dorește să
-		ruleze mașini virtuale. Pentru a facilita managementul acestora
-		va instala o soluție de cloud și o va configura să ruleze pe
-		acele servere. Printre soluțiile de cloud private sunt OpenStack și OpenNebula. În
-		general, soluțiile de cloud privat pot interacționa cu oricare
-		tip de hipervizor prezentat anterior (KVM, Xen, Hyper-V).
-              \item \textbf{publice}: organizațiile care nu dețin suficient hardware și nu vor
-		să cheltuie bani pe achiziția și mentenanța acestuia,
-		pot apela la serviciile cloud publice. Companii specializate
+    ruleze mașini virtuale. Pentru a facilita managementul acestora
+    va instala o soluție de cloud și o va configura să ruleze pe
+    acele servere. Printre soluțiile de cloud private sunt OpenStack și OpenNebula. În
+    general, soluțiile de cloud privat pot interacționa cu oricare
+    tip de hipervizor prezentat anterior (KVM, Xen, Hyper-V).
+  \item \textbf{publice}: organizațiile care nu dețin suficient hardware și nu vor
+    să cheltuie bani pe achiziția și mentenanța acestuia,
+    pot apela la serviciile cloud publice. Companii specializate
                 care oferă sevicii publice de cloud sunt Amazon AWS-EC2\footnote{\url{https://aws.amazon.com/ec2/}}, Google
                 Cloud\footnote{\url{https://cloud.google.com/}}, Oracle
-		OCI\footnote{\url{https://cloud.oracle.com/cloud-infrastructure}},
-		DigitalOcean\footnote{\url{https://www.digitalocean.com}}.
-		Acestea oferă posibilitatea creării unor mașini virtuale, rulând
-		sistemul de operare dorit și având alocate resursele dorite.
+    OCI\footnote{\url{https://cloud.oracle.com/cloud-infrastructure}},
+    DigitalOcean\footnote{\url{https://www.digitalocean.com}}.
+    Acestea oferă posibilitatea creării unor mașini virtuale, rulând
+    sistemul de operare dorit și având alocate resursele dorite.
 \end{itemize}
 
 Cloudul nu oferă doar mașini virtuale, ci oferă și servicii specifice: servicii
@@ -483,17 +483,17 @@ Pornind de la cele enumerate mai sus, serviciile de cloud poate fi clasificate �
 
 \begin{itemize}
   \item IaaS (\textit{infrastructure as a service}) - oferirea atât de mașini
-		virtuale utilizatorilor, precum și a unui mijloc prin care pot
-		să își gestioneze singuri infrastructura de cloud pusă la
-		dispoziție. Ca exemplu, aici intră operatorii de public cloud
-		prezentați anterior (AWS-EC2, OCI, DigitalOcean).
+    virtuale utilizatorilor, precum și a unui mijloc prin care pot
+    să își gestioneze singuri infrastructura de cloud pusă la
+    dispoziție. Ca exemplu, aici intră operatorii de public cloud
+    prezentați anterior (AWS-EC2, OCI, DigitalOcean).
   \item PaaS (\textit{platform as a service}) - servicii ce pun la dispoziție un
-		framework pentru dezvoltarea aplicațiilor (tool-uri de
-		dezvoltare) fără a mai fi nevoie să realizăm instalarea acestora
+    framework pentru dezvoltarea aplicațiilor (tool-uri de
+    dezvoltare) fără a mai fi nevoie să realizăm instalarea acestora
                 local. Un astfel de serviciu este Google App Engine\footnote{\url{https://cloud.google.com/appengine}}, cu ajutorul căruia dezvoltatorii pot crea aplicații web în limbaje de programare precum PHP, Python, Ruby, JavaScript, Go.
   \item SaaS (\textit{software as a service}) - oferirea de servicii/aplicații care
-		sunt găzduite în medii cloud și utilizatorul nu trebuie să știe
-		detalii despre platformă, sisteme de operare, mod de stocare,
+    sunt găzduite în medii cloud și utilizatorul nu trebuie să știe
+    detalii despre platformă, sisteme de operare, mod de stocare,
                 etc. Un astfel de serviciu este Overleaf\footnote{\url{https://www.overleaf.com/}}, un serviciu pentru scrierea de documente în \LaTeX  în mod colaborativ.
 \end{itemize}
 
@@ -545,10 +545,10 @@ principală a aplicației VirtualBox. Se observă că există o mașină virtual
 creată denumită Windows 7 care este închisă (\textit{Powered Off}).
 
 \begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=0.7\textwidth]{chapters/14-vm/img/vbox-main-img.png}
-	\caption{Fereastra principală VirtualBox}
-	\label{fig:vm:vbox-main}
+  \centering
+  \includegraphics[width=0.7\textwidth]{chapters/14-vm/img/vbox-main-img.png}
+  \caption{Fereastra principală VirtualBox}
+  \label{fig:vm:vbox-main}
 \end{figure}
 
 Pentru a crea o mașină virtuală nouă, mergeți pe meniul \texttt{Machine $\rightarrow$ New}. O nouă
@@ -559,10 +559,10 @@ mașini virtuale ce va rula un sistem de operare Linux, baza pe distribuția
 Debian pe 64 de biți.
 
 \begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=0.5\textwidth]{chapters/14-vm/img/vbox-create-img.png}
-	\caption{Meniul de creare a unei mașini virtuale în VirtualBox}
-	\label{fig:vm:vbox-create}
+  \centering
+  \includegraphics[width=0.5\textwidth]{chapters/14-vm/img/vbox-create-img.png}
+  \caption{Meniul de creare a unei mașini virtuale în VirtualBox}
+  \label{fig:vm:vbox-create}
 \end{figure}
 
 După selectarea sistemului de operare, trebuie să specificați cantitatea de
@@ -575,12 +575,12 @@ tipului discului, avem două alte opțiuni:
 
 \begin{itemize}
   \item \textit{fixed size} (dimensiune fixă): tot spațiul va fi alocat pe disc de
-		la crearea mașinii virtuale. Acest mod oferă performanță mai
-		bună, dar spațiul trebuie să fie disponibil de la creare.
+    la crearea mașinii virtuale. Acest mod oferă performanță mai
+    bună, dar spațiul trebuie să fie disponibil de la creare.
   \item \textit{dynamically allocated} (alocat dinamic): spațiul va fi alocat pe
-		disc pe măsură ce mașina virtuală va scrie date. În acest fel
-		putem crea discuri oricât de mari la început, fără să avem
-		spațiu disponibil pe discul fizic.
+    disc pe măsură ce mașina virtuală va scrie date. În acest fel
+    putem crea discuri oricât de mari la început, fără să avem
+    spațiu disponibil pe discul fizic.
 \end{itemize}
 
 În ultimă fază, trebuie să indicați dimensiunea pe care o doriți pentru disc.
@@ -594,41 +594,41 @@ nou deschis puteți configura fiecare componentă hardware virtualizată (vezi
 \labelindexref{Figura}{fig:vm:vbox-settings}).
 
 \begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=0.7\textwidth]{chapters/14-vm/img/vbox-settings-img.png}
-	\caption{Configurarea unei mașini virtuale VirtualBox}
-	\label{fig:vm:vbox-settings}
+  \centering
+  \includegraphics[width=0.7\textwidth]{chapters/14-vm/img/vbox-settings-img.png}
+  \caption{Configurarea unei mașini virtuale VirtualBox}
+  \label{fig:vm:vbox-settings}
 \end{figure}
 
 Printre cele mai relevante opțiuni de configurare sunt:
 
 \begin{itemize}
   \item \texttt{System} - cantitatea de memoriei, numărul de
-		procesoare.
+    procesoare.
   \item \texttt{Display} - cantitatea de memorie utilizată de placa video.
   \item \texttt{Storage} - discurile atașate și proprietățile lor.
-		Tot aici putem adăuga și un disc virtual necesar instalării
-		mașinii virtuale. În \labelindexref{Figura}{fig:vm:vbox-iso}
-		este reprezentat modul prin care puteți selecta o imagine de tip
-		ISO pentru a fi montată ca un disc virtual în mașina virtuală
-		cu scopul de a instala sistemul de operare.
+    Tot aici putem adăuga și un disc virtual necesar instalării
+    mașinii virtuale. În \labelindexref{Figura}{fig:vm:vbox-iso}
+    este reprezentat modul prin care puteți selecta o imagine de tip
+    ISO pentru a fi montată ca un disc virtual în mașina virtuală
+    cu scopul de a instala sistemul de operare.
   \item \texttt{Audio} - activarea / dezactivarea plăcii audio pentru mașina virtuală.
   \item \texttt{Network} - configurarea plăcii / plăcilor de rețea pe care mașina
-		virtuală le poate folosi. Implicit doar prima placă de rețea virtuală
-		(\textit{Adapter 1}) este activată în modul NAT (vedeți
-		\labelindexref{Secțiunea}{sec:vm:ops:net} pentru mai multe
-		detalii despre modurile de funcționare). Recomandăm folosirea
-		parametrilor impliciți.
+    virtuală le poate folosi. Implicit doar prima placă de rețea virtuală
+    (\textit{Adapter 1}) este activată în modul NAT (vedeți
+    \labelindexref{Secțiunea}{sec:vm:ops:net} pentru mai multe
+    detalii despre modurile de funcționare). Recomandăm folosirea
+    parametrilor impliciți.
   \item \texttt{USB} - configurarea dispozitivelor USB disponibile mașinii
-		virtuale. Se poate oferi acces dispozitivelor USB hardware direct
-		mașinii virtuale. Procesul se numește \textit{USB passthrough}.
+    virtuale. Se poate oferi acces dispozitivelor USB hardware direct
+    mașinii virtuale. Procesul se numește \textit{USB passthrough}.
 \end{itemize}
 
 \begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=0.7\textwidth]{chapters/14-vm/img/vbox-iso-img.png}
-	\caption{Introducere unei imagini ISO ca disc virtual într-o mașină virtuală}
-	\label{fig:vm:vbox-iso}
+  \centering
+  \includegraphics[width=0.7\textwidth]{chapters/14-vm/img/vbox-iso-img.png}
+  \caption{Introducere unei imagini ISO ca disc virtual într-o mașină virtuală}
+  \label{fig:vm:vbox-iso}
 \end{figure}
 
 După configurarea mașinii virtuale, aceasta poate fi pornită. Selectați mașina
@@ -638,10 +638,10 @@ de pe discul virtual inserat. În
 virtuale și pornirea sistemului de operare Windows în vedere instalării.
 
 \begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=0.7\textwidth]{chapters/14-vm/img/vbox-install-img.png}
-	\caption{Instalarea unui sistem de operare în VirtualBox}
-	\label{fig:vm:vbox-install}
+  \centering
+  \includegraphics[width=0.7\textwidth]{chapters/14-vm/img/vbox-install-img.png}
+  \caption{Instalarea unui sistem de operare în VirtualBox}
+  \label{fig:vm:vbox-install}
 \end{figure}
 
 După instalarea sistemului de operare, este important să instalați serviciile de
@@ -655,10 +655,10 @@ veți putea face copy/paste din/în mașina virtuală atât a fișierelor cât �
 textului.
 
 \begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=0.7\textwidth]{chapters/14-vm/img/vbox-additions-img.png}
-	\caption{Guest Additions pentru mașini virtuale VirtualBox}
-	\label{fig:vm:vbox-additions}
+  \centering
+  \includegraphics[width=0.7\textwidth]{chapters/14-vm/img/vbox-additions-img.png}
+  \caption{Guest Additions pentru mașini virtuale VirtualBox}
+  \label{fig:vm:vbox-additions}
 \end{figure}
 
 O operație foarte utilă cu o mașină virtuală este cea de snapshot, prezentată
@@ -669,10 +669,10 @@ selectați butonul \textit{Snapshot}, ca în
 apăsați butonul \textit{Take}.
 
 \begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=0.7\textwidth]{chapters/14-vm/img/vbox-snapshot-img.png}
-	\caption{Snapshotul unei mașini virtuale în VirtualBox}
-	\label{fig:vm:vbox-snapshot}
+  \centering
+  \includegraphics[width=0.7\textwidth]{chapters/14-vm/img/vbox-snapshot-img.png}
+  \caption{Snapshotul unei mașini virtuale în VirtualBox}
+  \label{fig:vm:vbox-snapshot}
 \end{figure}
 
 Va apărea un meniu în care trebuie să introduceți numele snapshotului și o
@@ -682,10 +682,10 @@ folosim click dreapta și selectăm opțiunea \textit{Restore}.
 Se poate observa după aceea că mașina a revenit la starea anterioară.
 
 \begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=0.7\textwidth]{chapters/14-vm/img/vbox-view-snapshot-img.png}
-	\caption{Snapshot creat în cadrul VirtualBox}
-	\label{fig:vm:vbox-view-snapshot}
+  \centering
+  \includegraphics[width=0.7\textwidth]{chapters/14-vm/img/vbox-view-snapshot-img.png}
+  \caption{Snapshot creat în cadrul VirtualBox}
+  \label{fig:vm:vbox-view-snapshot}
 \end{figure}
 
 \section{Anexă: OpenStack în UPB}
@@ -700,10 +700,10 @@ aflat în blocul OpenStack de pe platforma Moodle a Universității POLITEHNICA 
 creat tenantul, putem accesa \texttt{Dashboard} pentru crearea mașinilor virtuale.
 
 \begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=0.4\textwidth]{chapters/14-vm/img/openstack-project-img.png}
-	\caption{Crearea proiect OpenStack}
-	\label{fig:vm:openstack-project}
+  \centering
+  \includegraphics[width=0.4\textwidth]{chapters/14-vm/img/openstack-project-img.png}
+  \caption{Crearea proiect OpenStack}
+  \label{fig:vm:openstack-project}
 \end{figure}
 
 \subsection{Accesarea OpenStack Dashboard}
@@ -714,10 +714,10 @@ folosind linkul \url{https://cloud-controller.grid.pub.ro/}. Autentificarea se f
 folosind utilizatorul și parola furnizate de universitate.
 
 \begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=0.5\textwidth]{chapters/14-vm/img/openstack-dashboard-img.png}
-	\caption{Interfața de admininstrare OpenStack}
-	\label{fig:vm:openstack-dashboard}
+  \centering
+  \includegraphics[width=0.5\textwidth]{chapters/14-vm/img/openstack-dashboard-img.png}
+  \caption{Interfața de admininstrare OpenStack}
+  \label{fig:vm:openstack-dashboard}
 \end{figure}
 
 \subsection{Crearea unei perechi de chei SSH}
@@ -752,10 +752,10 @@ publică creată la pasul anterior trebuie încărcată în OpenStack. Acest luc
 face din OpenStack Dashboard, accesând \texttt{Project $\rightarrow$ Compute $\rightarrow$ Access \& Security $\rightarrow$ Key Pairs $\rightarrow$ Import Key Pair}, ca în \labelindexref{Figura}{fig:vm:openstack-keypair}.
 
 \begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=0.7\textwidth]{chapters/14-vm/img/openstack-keypair-img.png}
-	\caption{Importarea unei perechi de chei în OpenStack}
-	\label{fig:vm:openstack-keypair}
+  \centering
+  \includegraphics[width=0.7\textwidth]{chapters/14-vm/img/openstack-keypair-img.png}
+  \caption{Importarea unei perechi de chei în OpenStack}
+  \label{fig:vm:openstack-keypair}
 \end{figure}
 
 \subsection{Crearea unei mașini virtuale}
@@ -767,10 +767,10 @@ OpenStack Dashboard. Pentru a lansa o instanță, accesați, în OpenStack Dashb
 \texttt{Project $\rightarrow$ Compute $\rightarrow$ Instances $\rightarrow$ Launch Instance} ca în \labelindexref{Figura}{fig:vm:openstack-info-img}.
 
 \begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=0.7\textwidth]{chapters/14-vm/img/openstack-info-img.png}
-	\caption{Crearea unei instanțe OpenStack}
-	\label{fig:vm:openstack-info-img}
+  \centering
+  \includegraphics[width=0.7\textwidth]{chapters/14-vm/img/openstack-info-img.png}
+  \caption{Crearea unei instanțe OpenStack}
+  \label{fig:vm:openstack-info-img}
 \end{figure}
 
 În \labelindexref{Figura}{fig:vm:openstack-info-img}, am folosit template-ul \texttt{Ubuntu 14.04}. Un flavor reprezintă
@@ -780,10 +780,10 @@ procesoare, memorie și spatiu pe disk.
 În final, din tabul \texttt{Access \& Security}, alegeți keypairul creat anterior, ca în \labelindexref{Figura}{fig:vm:openstack-keychoice}. În final, apăsați pe \texttt{Launch} pentru a crea mașina virtuală.
 
 \begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=0.7\textwidth]{chapters/14-vm/img/openstack-keychoice-img.png}
-	\caption{Alegerea unui keypair la crearea unei instanțe}
-	\label{fig:vm:openstack-keychoice}
+  \centering
+  \includegraphics[width=0.7\textwidth]{chapters/14-vm/img/openstack-keychoice-img.png}
+  \caption{Alegerea unui keypair la crearea unei instanțe}
+  \label{fig:vm:openstack-keychoice}
 \end{figure}
 
 \subsection{Accesarea mașinii virtuale}
@@ -799,10 +799,10 @@ student@uso:~$ ssh <upb_account>@fep.grid.pub.ro
 \end{screen}
 
 \begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=0.5\textwidth]{chapters/14-vm/img/openstack-short-info-img.png}
-	\caption{Informații despre mașina virtuală}
-	\label{fig:vm:openstack-info}
+  \centering
+  \includegraphics[width=0.5\textwidth]{chapters/14-vm/img/openstack-short-info-img.png}
+  \caption{Informații despre mașina virtuală}
+  \label{fig:vm:openstack-info}
 \end{figure}
 
 \subsection{Ștergerea mașinii virtuale}
@@ -853,10 +853,10 @@ operare emulat. Pornirea acestuia durează în jur de 60 de secunde, mai lent
 decât pornirea unei mașini virtuale.
 
 \begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=0.5\textwidth]{chapters/14-vm/img/qemu-bootup-img.png}
-	\caption{Pornirea unui sistem de operare emulat}
-	\label{fig:vm:qemu-bootup}
+  \centering
+  \includegraphics[width=0.5\textwidth]{chapters/14-vm/img/qemu-bootup-img.png}
+  \caption{Pornirea unui sistem de operare emulat}
+  \label{fig:vm:qemu-bootup}
 \end{figure}
 
 Pentru a vă autentifica în consola sistemului de operare emulat, folosiți

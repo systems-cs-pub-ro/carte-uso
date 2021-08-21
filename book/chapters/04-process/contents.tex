@@ -1810,28 +1810,28 @@ pornirii unui client Bittorrent la distanță, într-o conexiune SSH.
 recomandăm în defavoarea \cmd{screen}. De avut în vedere că multe opțiuni pot fi personalizate.
 
 \begin{table}[!htb]
-\scriptsize
-\begin{center}
-	\begin{tabular}{ p{0.20\textwidth} p{0.23\textwidth} p{0.23\textwidth} p{0.23\textwidth} }
-	\toprule
-                \textbf{funcționalitate} & \textbf{tmux} & \textbf{byobu} & \textbf{screen} \\
-	\midrule
-          creare fereastră nouă & \texttt{Ctrl+b c} & \texttt{F2} & \texttt{Ctrl+a c} \\
-	\midrule
-          detașare & \texttt{Ctrl+b d} & \texttt{Shift+F6} & \texttt{Ctrl+b c} \\
-	\midrule
-          listare sesiuni & \texttt{tmux list-sessions} & \texttt{byobu list-sessions} & \texttt{screen -ls} \\
-	\midrule
-          reatașare sesiune & \texttt{tmux attach $[$session-name$]$} & \texttt{byobu attach $[$session-name$]$} & \texttt{screen -r $[$session-id$]$} \\
-	\midrule
-          schimbare fereastră & \texttt{Ctrl+b \textless{}window-id>} & \texttt{F3, F4} & \texttt{Ctrl+a \textless{}window-id>} \\
-	\midrule
-          închidere sesiune & \texttt{Ctrl+b :kill-session} & \texttt{Ctrl+a \textbackslash{}} & \texttt{Ctrl+a \textbackslash{}} \\
-	\bottomrule
-	\end{tabular}
-\end{center}
-\caption{Comparație de comenzi de multiplexor de terminal}
-\label{tab:process:tmux-screen-byobu}
+  \scriptsize
+  \begin{center}
+    \begin{tabular}{ p{0.20\textwidth} p{0.23\textwidth} p{0.23\textwidth} p{0.23\textwidth} }
+      \toprule
+        \textbf{funcționalitate} & \textbf{tmux} & \textbf{byobu} & \textbf{screen} \\
+      \midrule
+        creare fereastră nouă & \texttt{Ctrl+b c} & \texttt{F2} & \texttt{Ctrl+a c} \\
+      \midrule
+        detașare & \texttt{Ctrl+b d} & \texttt{Shift+F6} & \texttt{Ctrl+b c} \\
+      \midrule
+        listare sesiuni & \texttt{tmux list-sessions} & \texttt{byobu list-sessions} & \texttt{screen -ls} \\
+      \midrule
+        reatașare sesiune & \texttt{tmux attach $[$session-name$]$} & \texttt{byobu attach $[$session-name$]$} & \texttt{screen -r $[$session-id$]$} \\
+      \midrule
+        schimbare fereastră & \texttt{Ctrl+b \textless{}window-id>} & \texttt{F3, F4} & \texttt{Ctrl+a \textless{}window-id>} \\
+      \midrule
+        închidere sesiune & \texttt{Ctrl+b :kill-session} & \texttt{Ctrl+a \textbackslash{}} & \texttt{Ctrl+a \textbackslash{}} \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+  \caption{Comparație de comenzi de multiplexor de terminal}
+  \label{tab:process:tmux-screen-byobu}
 \end{table}
 
 Dacă ne interesează strict rularea unei sesiuni de terminal, nu și partea de
@@ -2000,11 +2000,11 @@ un procesor.
 Acțiunille unui loader sunt prezentate în \labelindexref{Figura}{fig:process:loader}.
 
 \begin{figure}[!htbp]
-	\centering
-	\def\svgwidth{0.8\textwidth}
-	\includesvg{chapters/04-process/img/loader-actions.svg}
-	\caption{Acțiunile loader-ului}
-	\label{fig:process:loader}
+  \centering
+  \def\svgwidth{0.8\textwidth}
+  \includesvg{chapters/04-process/img/loader-actions.svg}
+  \caption{Acțiunile loader-ului}
+  \label{fig:process:loader}
 \end{figure}
 
 Două sau mai multe procese pot fi rulate din același program executabil.

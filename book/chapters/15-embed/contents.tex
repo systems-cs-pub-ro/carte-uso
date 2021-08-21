@@ -138,28 +138,28 @@ Cei mai simpli pini pe care îi putem găsi pe dispozitivele încorporate sunt:
 
 \begin{itemize}
   \item \texttt{Vcc} - Acești pini sunt practic o sursă de tensiune cu o valoare
-		fixă. Ne putem gândi la ei ca la polul pozitiv al unei baterii.
-		Nu pot fi controlați din firmware.
-              \item \texttt{GND} - Acești pini sunt cei opuși celor \textit{Vcc}. Ei sunt masa
+    fixă. Ne putem gândi la ei ca la polul pozitiv al unei baterii.
+    Nu pot fi controlați din firmware.
+  \item \texttt{GND} - Acești pini sunt cei opuși celor \textit{Vcc}. Ei sunt masa
                 dispozitivului, de aceea se numesc pini \textit{ground}; ei sunt
-		referința față de care se calculează orice cădere de tensiune.
-		Nu pot fi controlați din firmware.
-              \item \texttt{GPIO} \abbrev{GPIO}{General Purpose Input Output} (\textit{General Purpose
+    referința față de care se calculează orice cădere de tensiune.
+    Nu pot fi controlați din firmware.
+  \item \texttt{GPIO} \abbrev{GPIO}{General Purpose Input Output} (\textit{General Purpose
                 Input Output}) - Sunt pini simpli care pot fi controlați din
-		firmware. În funcție de starea lor, ei pot să funcționeze fie ca
+    firmware. În funcție de starea lor, ei pot să funcționeze fie ca
                 pini \texttt{Vcc} sau \texttt{GND}, fie ca un voltmetru, citind date de la senzori.
-              \item \texttt{ADC} \abbrev{ADC}{Analog to Digital Converter} (Analog to Digital
-		Converter) - Sunt pini care preiau date de la senzori și le
-		transformă în valori digitale. Valorile pot fi citite din
-		firmware.
-              \item \texttt{DAC} \abbrev{DAC}{Digital to Analog Converter} (Digital to Analog
+  \item \texttt{ADC} \abbrev{ADC}{Analog to Digital Converter} (Analog to Digital
+    Converter) - Sunt pini care preiau date de la senzori și le
+    transformă în valori digitale. Valorile pot fi citite din
+    firmware.
+  \item \texttt{DAC} \abbrev{DAC}{Digital to Analog Converter} (Digital to Analog
                 Converter) - Sunt pini asemănători cu cei de \texttt{Vcc}, dar care pot
                 fi controlați din firmware să expună un voltaj între \texttt{0} și \texttt{Vcc};
-		sunt folosiți pentru a controla periferice, cum ar fi motoare.
-              \item \texttt{PWM} \abbrev{PWC}{Pulse Width Modulation} (\textit{Pulse Width Modulation})
-		- Sunt pini care simulează comportamentul pinilor DAC, fiind mai
-		ieftini. Aceștia oscilează între GND și Vcc, simulând o tensiune
-		variabilă.
+    sunt folosiți pentru a controla periferice, cum ar fi motoare.
+  \item \texttt{PWM} \abbrev{PWC}{Pulse Width Modulation} (\textit{Pulse Width Modulation})
+    - Sunt pini care simulează comportamentul pinilor DAC, fiind mai
+    ieftini. Aceștia oscilează între GND și Vcc, simulând o tensiune
+    variabilă.
 \end{itemize}
 
 Pe de altă parte, există pini care controlează periferice mai complexe, ce
@@ -180,21 +180,21 @@ piață, de la cele dezvoltate pentru a fi integrate în sisteme industriale, la
 plăcuțe simple care se folosesc pentru prototipare sau în educație:
 
 \begin{itemize}
-	\item Arduino - Este o placă cu un microcontroler ATMega produs de o
-		companie italiană. Este cel mai popular sistem de microcontroler
-		utilizat pentru prototipuri și în scopuri educaționale. De fapt,
-		Arduino constă atât în plăcuța efectivă, cât și în mediul
-		integrat de dezvoltare (IDE), care ușurează procesul de
-		programare al dispozitivului. Arduino și-a câștigat
-		popularitatea chiar datorită IDE-ul foarte ușor de folosit, nu
-		neapărat datorită produsului hardware.
-	\item ESP32 - Este un microcontroler foarte ieftin cu WiFi integrat care este folosit
-		în general ca \textit{placa de rețea pentru microcontrolere}. Acestă placă se conectează la
-		alte microcontrolere prin portul serial și permite acestora accesul la Internet.
-	\item MicroBit - Este o placă dezvoltata de BBC în scopuri educaționale ce are 
-		un microcontroler nRF52 produs de Nordic Semiconductor. Este mai adecvat pentru
-		a începe programarea pe microcontrolere, dar poate fi folosit și pentru
-		proiecte mai mari.
+  \item Arduino - Este o placă cu un microcontroler ATMega produs de o
+    companie italiană. Este cel mai popular sistem de microcontroler
+    utilizat pentru prototipuri și în scopuri educaționale. De fapt,
+    Arduino constă atât în plăcuța efectivă, cât și în mediul
+    integrat de dezvoltare (IDE), care ușurează procesul de
+    programare al dispozitivului. Arduino și-a câștigat
+    popularitatea chiar datorită IDE-ul foarte ușor de folosit, nu
+    neapărat datorită produsului hardware.
+  \item ESP32 - Este un microcontroler foarte ieftin cu WiFi integrat care este folosit
+    în general ca \textit{placa de rețea pentru microcontrolere}. Acestă placă se conectează la
+    alte microcontrolere prin portul serial și permite acestora accesul la Internet.
+  \item MicroBit - Este o placă dezvoltata de BBC în scopuri educaționale ce are 
+    un microcontroler nRF52 produs de Nordic Semiconductor. Este mai adecvat pentru
+    a începe programarea pe microcontrolere, dar poate fi folosit și pentru
+    proiecte mai mari.
 \end{itemize}
 
 \subsection{Calculatoare integrate}
@@ -256,22 +256,22 @@ Avem o diversitate mare de calculatoare integrate pe care le putem folosi în
 cadrul sistemelor inteligente:
 
 \begin{itemize}
-	\item Raspberry Pi - Deși nu a fost primul calculator integrat,
-		Raspberry Pi este cel mai cunoscut și a fost dispozitivul care a
-		revoluționat domeniul IoT. Este primul calculator integrat
-		dedicat publicului larg, având un preț scăzut, ceea ce a dus la
-		o scădere generală a prețurilor la alte dispozitive similare și
-		a făcut domeniul IoT accesibil pasionaților de tehnologie și în
-		educație. Dispozitivul costă aproximativ 35 de dolari.
-	\item BeagleBone Black - BeagleBone Black este un dispozitiv cu
-		capabilități de procesare mai scăzute în comparație cu Raspberry
-		Pi. Cu toate acestea, dispozitivul expune un număr mai mare și
-		mai variat de pini. BeagleBone Black poate fi folosit cu
-		ușurință pentru prototipuri, dar poate fi integrat și în aparate
-		inteligente, cum ar fi cabine foto sau frigidere inteligente.
-		Dispozitivul costă în jur de 45 de dolari.
-	\item Raspberry Pi Compute Module - Este un Raspberry Pi pentru uz
-		industrial.
+  \item Raspberry Pi - Deși nu a fost primul calculator integrat,
+    Raspberry Pi este cel mai cunoscut și a fost dispozitivul care a
+    revoluționat domeniul IoT. Este primul calculator integrat
+    dedicat publicului larg, având un preț scăzut, ceea ce a dus la
+    o scădere generală a prețurilor la alte dispozitive similare și
+    a făcut domeniul IoT accesibil pasionaților de tehnologie și în
+    educație. Dispozitivul costă aproximativ 35 de dolari.
+  \item BeagleBone Black - BeagleBone Black este un dispozitiv cu
+    capabilități de procesare mai scăzute în comparație cu Raspberry
+    Pi. Cu toate acestea, dispozitivul expune un număr mai mare și
+    mai variat de pini. BeagleBone Black poate fi folosit cu
+    ușurință pentru prototipuri, dar poate fi integrat și în aparate
+    inteligente, cum ar fi cabine foto sau frigidere inteligente.
+    Dispozitivul costă în jur de 45 de dolari.
+  \item Raspberry Pi Compute Module - Este un Raspberry Pi pentru uz
+    industrial.
 \end{itemize}
 
 \subsubsection{Sisteme de operare pentru calculatoarele integrate}
@@ -296,32 +296,32 @@ personale. În timp, odată cu evoluția IoT, s-au dezvoltat foarte multe
 distribuții Linux pentru calculatoare integrate:
 
 \begin{itemize}
-	\item Raspbian - Este sistemul de operare recomandat pentru Raspberry
-		Pi. A fost dezvoltat de Fundația Raspberry Pi. Ca orice alt
-		sistem de operare, Raspbian suportă controlul dispozitivului
-		prin Shell, folosind comenzile standard Linux. Raspbian vine în
-		două versiuni: Desktop și Lite.
-	\item Desktop este bazat pe Debian Linux și este optimizat pentru
-		Raspberry Pi. Distribuția oferă inclusiv o interfață grafică de
-		utilizator (GUI) și câteva aplicații, cum ar fi Chromium,
-		LibreOffice și Claws Mail. Există și o versiunea Desktop care include
-		preinstalate mai multe aplicații.
-	\item Lite este versiunea Stretch fără GUI, având dimensiuni
-		reduse. Interacțiunea cu sistemul se realizează doar prin linie
-		de comandă.
-	\item Ubuntu Server - Este sistemul Ubuntu Server compilat pentru Raspberry Pi, 
-		practic identic cu sistemul destinat calculatoarelor server sau desktop.
-	\item Ubuntu Core - Este un sistem de operare bazat pe Ubuntu. Spre deosebire
-		de Ubuntu Server, Core este special realizat pentru sisteme IoT.
-		Acesta include doar sistemul de pachete \textit{snap} si oferă posibilitatea
-		aducerii la zi a sistemului de la distanță. Este în general utilizat 
-		în scopuri industriale.
-	\item Yocto - Yocto este un set de instrumente open source pentru
-		crearea de imagini de sisteme de operare bazate pe Linux pentru
-		dispozitivele încorporate. Sistemul include medii de emulare și
-		depanatoare. Yocto a devenit popular pe piața hobbyștilor când
-		Intel a lansat dispozitivele Edison și Galileo, ambele având o
-		distribuție Yocto. Este un sistem compatibil cu Raspberry Pi.
+  \item Raspbian - Este sistemul de operare recomandat pentru Raspberry
+    Pi. A fost dezvoltat de Fundația Raspberry Pi. Ca orice alt
+    sistem de operare, Raspbian suportă controlul dispozitivului
+    prin Shell, folosind comenzile standard Linux. Raspbian vine în
+    două versiuni: Desktop și Lite.
+  \item Desktop este bazat pe Debian Linux și este optimizat pentru
+    Raspberry Pi. Distribuția oferă inclusiv o interfață grafică de
+    utilizator (GUI) și câteva aplicații, cum ar fi Chromium,
+    LibreOffice și Claws Mail. Există și o versiunea Desktop care include
+    preinstalate mai multe aplicații.
+  \item Lite este versiunea Stretch fără GUI, având dimensiuni
+    reduse. Interacțiunea cu sistemul se realizează doar prin linie
+    de comandă.
+  \item Ubuntu Server - Este sistemul Ubuntu Server compilat pentru Raspberry Pi, 
+    practic identic cu sistemul destinat calculatoarelor server sau desktop.
+  \item Ubuntu Core - Este un sistem de operare bazat pe Ubuntu. Spre deosebire
+    de Ubuntu Server, Core este special realizat pentru sisteme IoT.
+    Acesta include doar sistemul de pachete \textit{snap} si oferă posibilitatea
+    aducerii la zi a sistemului de la distanță. Este în general utilizat 
+    în scopuri industriale.
+  \item Yocto - Yocto este un set de instrumente open source pentru
+    crearea de imagini de sisteme de operare bazate pe Linux pentru
+    dispozitivele încorporate. Sistemul include medii de emulare și
+    depanatoare. Yocto a devenit popular pe piața hobbyștilor când
+    Intel a lansat dispozitivele Edison și Galileo, ambele având o
+    distribuție Yocto. Este un sistem compatibil cu Raspberry Pi.
 \end{itemize}
 
 \textbf{Sisteme de operare în timp real (Real-time Operating Systems - RTOS)}
@@ -336,28 +336,28 @@ scop. În contrast cu cele două categorii anterioare, exemplele pe care le vom
 menționa nu împărtășesc același nucleu:
 
 \begin{itemize}
-	\item FreeRTOS este un sistem de operare open source mențiunt de către Amazon. 
-		Este cel mai vechi sistem de acest gen, considerat ca fiind cel mai potrivit
-		pentru uz industrial. Este scris in C și este axat pe performanță.
-	\item Zephyr Project este un sistem de operare open source insiprat din Linux și realizat
-		inițial de către Intel. Este considerat \textit{fratele mai mic al Linuxului}.
-		Deși este inspirat din Linux, funcționarea acestuia este foarte diferită, acesta fiind
-		conceput ca un sistem de operare în timp real. Fiind mai nou decât FreeRTOS și având 
-		un API similar cu Linux, acesta este recomandarea actuală pentru folosirea în industrie.
-	\item RIOT este un sistem de operare open source. Arhitectura acestuia îl face ușor de
-		adaptat la sistemele cu memorie redusă. RIOT este compatibil cu
-		Raspberry Pi, Beagle Board, unele tipuri de Arduino (modele mai
-		avansate care sunt mai mult decât un microcontroler și au o
-		putere de calcul mai mare).
-	\item Contiki - Contiki este un sistem de operare open source dezvoltat
-		special pentru sisteme IoT de Texas Instruments. Principalul său
-		avantaj față de alte sisteme de operare similare este consumul
-		redus de energie și de memorie.
-	\item Tock este primul sistem de operare folosit în industrie scris într-un alt
-		limbaj decât C, mai exact Rust. De asemenea, este primul sistem de operare
-		pentru micrcontrolere care face o separare clară între kernel și aplicații.
-		Tock este folosit de către Google în proiectul OpenSK și de către 
-		proiectul OpenTitan.
+  \item FreeRTOS este un sistem de operare open source mențiunt de către Amazon. 
+    Este cel mai vechi sistem de acest gen, considerat ca fiind cel mai potrivit
+    pentru uz industrial. Este scris in C și este axat pe performanță.
+  \item Zephyr Project este un sistem de operare open source insiprat din Linux și realizat
+    inițial de către Intel. Este considerat \textit{fratele mai mic al Linuxului}.
+    Deși este inspirat din Linux, funcționarea acestuia este foarte diferită, acesta fiind
+    conceput ca un sistem de operare în timp real. Fiind mai nou decât FreeRTOS și având 
+    un API similar cu Linux, acesta este recomandarea actuală pentru folosirea în industrie.
+  \item RIOT este un sistem de operare open source. Arhitectura acestuia îl face ușor de
+    adaptat la sistemele cu memorie redusă. RIOT este compatibil cu
+    Raspberry Pi, Beagle Board, unele tipuri de Arduino (modele mai
+    avansate care sunt mai mult decât un microcontroler și au o
+    putere de calcul mai mare).
+  \item Contiki - Contiki este un sistem de operare open source dezvoltat
+    special pentru sisteme IoT de Texas Instruments. Principalul său
+    avantaj față de alte sisteme de operare similare este consumul
+    redus de energie și de memorie.
+  \item Tock este primul sistem de operare folosit în industrie scris într-un alt
+    limbaj decât C, mai exact Rust. De asemenea, este primul sistem de operare
+    pentru micrcontrolere care face o separare clară între kernel și aplicații.
+    Tock este folosit de către Google în proiectul OpenSK și de către 
+    proiectul OpenTitan.
 \end{itemize}
 
 \section{Sisteme simple de intrare ieșire}
@@ -402,11 +402,11 @@ semnalul nostru poate lua doar valorile {1; 0} (pornit / oprit) sau poate lua
 doar valorile {2; 3; 4; 5; 100}, el este digital.
 
 \begin{figure}[htbp]
-	\centering
-	\def\svgwidth{\columnwidth}
-	\includesvg{chapters/15-embed/img/analog-digiat.svg}
-	\caption{Semnal analogic vs. semnal digital}
-	\label{fig:embed-analog-digital}
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/15-embed/img/analog-digiat.svg}
+  \caption{Semnal analogic vs. semnal digital}
+  \label{fig:embed-analog-digital}
 \end{figure}
 
 Cum am precizat mai sus, dispozitivele încorporate, cum ar fi Raspberry Pi sau
@@ -432,10 +432,10 @@ străbătută de curent. Deci, pentru a face un LED să lumineze, e suficient s�
 conectăm la o baterie.
 
 \begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=0.6\textwidth]{chapters/15-embed/img/raspberry-img.png}
-        \caption{LED conectat la Raspberry Pi}
-	\label{fig:embed:raspberry}
+  \centering
+  \includegraphics[width=0.6\textwidth]{chapters/15-embed/img/raspberry-img.png}
+  \caption{LED conectat la Raspberry Pi}
+  \label{fig:embed:raspberry}
 \end{figure}
 
 \labelindexref{Figura}{fig:embed:raspberry} conține un LED conectat la pinii
@@ -504,11 +504,11 @@ percepe ca un LED ce luminează la o anumită intensitate. În funcție de rapor
 este stins, lumina va fi percepută la o intensitate mai mare sau mai joasă.
 
 \begin{figure}[htbp]
-	\centering
-	\def\svgwidth{\columnwidth}
-        \includesvg[width=0.7\textwidth]{chapters/15-embed/img/pwm.svg}
-        \caption{Pulse Width Modulation (PWM)}
-	\label{fig:embed-pwm}
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg[width=0.7\textwidth]{chapters/15-embed/img/pwm.svg}
+  \caption{Pulse Width Modulation (PWM)}
+  \label{fig:embed-pwm}
 \end{figure}
 
 Acești pini pot fi folosiți pentru a controla LED-uri sau chiar motoare.
@@ -557,29 +557,29 @@ conectăm două dispozitive, linia RX a unuia se va conecta la linia TX a
 celuilalt și invers.
 
 \begin{figure}[htbp]
-	\centering
-	\def\svgwidth{\columnwidth}
-        \includesvg[width=0.7\textwidth]{chapters/15-embed/img/serial.svg}
-	\caption{Conexiune serială}
-	\label{fig:embed:serial}
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg[width=0.7\textwidth]{chapters/15-embed/img/serial.svg}
+  \caption{Conexiune serială}
+  \label{fig:embed:serial}
 \end{figure}
 
 Pentru a se asigura un transfer corect de date, protocolul serial se bazează pe
 următoarele elemente:
 
 \begin{itemize}
-	\item biți de date - datele efective transmise între dispozitive;
-	\item biți de sincronizare - sunt biți transmiși înaintea și după biții
-		de date, pentru a marca începutul și sfârșitul blocului de date;
-	\item biți de paritate - e o modalitate simplă de a face verificarea
-		datelor transmise (o sumă de control foarte simplă); dacă trimitem 8
-		biți de date și din acei 8 biți 5 conțin valoarea 1, datele
-		trimise conțin un număr impar de valori de 1, deci bitul de
-		paritate va fi setat la 1, dacă numărul de valori de 1 este par,
-		bitul de paritate va fi setat la 0;
-	\item baud rate - specifică viteza de transmitere a datelor; este foarte
-		important ca ambele dispozitive conectate să transmită date la
-		aceeași viteză.
+  \item biți de date - datele efective transmise între dispozitive;
+  \item biți de sincronizare - sunt biți transmiși înaintea și după biții
+    de date, pentru a marca începutul și sfârșitul blocului de date;
+  \item biți de paritate - e o modalitate simplă de a face verificarea
+    datelor transmise (o sumă de control foarte simplă); dacă trimitem 8
+    biți de date și din acei 8 biți 5 conțin valoarea 1, datele
+    trimise conțin un număr impar de valori de 1, deci bitul de
+    paritate va fi setat la 1, dacă numărul de valori de 1 este par,
+    bitul de paritate va fi setat la 0;
+  \item baud rate - specifică viteza de transmitere a datelor; este foarte
+    important ca ambele dispozitive conectate să transmită date la
+    aceeași viteză.
 \end{itemize}
 
 Protocolul serial poate fi folosit doar la comunicarea între două dispozitive.
@@ -720,10 +720,10 @@ Putem identifica următorii pași în dezvoltarea programelor pentru aceste
 sisteme:
 
 \begin{enumerate}
-	\item scrierea programului
-	\item testarea pe mai multe dispozitive
-	\item instalarea aplicației pe toate dispozitivele necesare
-	\item aducerea la zi a aplicației
+  \item scrierea programului
+  \item testarea pe mai multe dispozitive
+  \item instalarea aplicației pe toate dispozitivele necesare
+  \item aducerea la zi a aplicației
 \end{enumerate}
 
 În ceea ce privește scrierea programului, procesul nu este diferit de cel pentru
@@ -839,10 +839,10 @@ nu este definită ca un standard, se consideră, în general, că majoritatea
 sistemelor Internet of Things au următoarea structură:
 
 \begin{itemize}
-	\item senzori și actuatori
-	\item procesare și stocare locală
-	\item conexiunea la Internet
-	\item cloud
+  \item senzori și actuatori
+  \item procesare și stocare locală
+  \item conexiunea la Internet
+  \item cloud
 \end{itemize}
 
 Acum, că suntem familiarizați cu caracteristicile unui sistem IoT, să aruncăm o

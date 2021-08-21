@@ -166,9 +166,9 @@ O formă mai bună de editare este folosind combinațiile de taste furnizate de
 shell. Aceste combinații de taste au două avantaje:
 
 \begin{enumerate}
-	\item Nu îndepărtează degetele de pe tastele comune, așa cum le
-          îndepărtăm atunci când folosim tastele săgeți, \texttt{Home}, \texttt{End}.
-	\item Permit editări mai rapide și mai complexe ale comenzii.
+  \item Nu îndepărtează degetele de pe tastele comune, așa cum le
+    îndepărtăm atunci când folosim tastele săgeți, \texttt{Home}, \texttt{End}.
+  \item Permit editări mai rapide și mai complexe ale comenzii.
 \end{enumerate}
 
 \labelindexref{Tabelul}{tab:cli:key-bindings} prezintă cele mai comune astfel de combinații de taste și efectul lor.
@@ -733,7 +733,6 @@ Expandarea parametrică are mai multe forme, le amintim pe cele relevante în \l
 
 \begin{table}[!htb]
   \scriptsize
-  \caption{Expandarea parametrică în shell}
   \begin{center}
     \begin{tabular}{ p{0.18\textwidth} p{0.33\textwidth} p{0.18\textwidth} p{0.2\textwidth} }
       \toprule
@@ -768,8 +767,9 @@ Expandarea parametrică are mai multe forme, le amintim pe cele relevante în \l
         \texttt{/etc} \\
       \bottomrule
     \end{tabular}
-    \label{tab:cli:param-expansion}
   \end{center}
+  \caption{Expandarea parametrică în shell}
+  \label{tab:cli:param-expansion}
 \end{table}
 
 \subsubsection{Globbing}
@@ -792,7 +792,6 @@ student@uso:~/uso.git$ ls /bin/*w
 Globbing folosește de regulă caractere speciale, așa cum sunt indicate în construcțiile din \labelindexref{Tabelul}{tab:cli:globbing}.
 
 \begin{table}[!htb]
-  \caption{Caractere speciale în globbing}
   \begin{center}
     \begin{tabular}{ p{0.25\textwidth} p{0.65\textwidth} }
       \toprule
@@ -810,8 +809,9 @@ Globbing folosește de regulă caractere speciale, așa cum sunt indicate în co
 
       \bottomrule
     \end{tabular}
-    \label{tab:cli:globbing}
   \end{center}
+  \caption{Caractere speciale în globbing}
+  \label{tab:cli:globbing}
 \end{table}
 
 Construcțiile ce folosesc globbing, expandarea cu acolade și expandarea tildei
@@ -975,7 +975,6 @@ Conținutul promptului din variabila \texttt{PS1} reprezintă elemente care sunt
 interpretate de shell, precum cele din \labelindexref{Tabelul}{tab:cli:prompt}.
 
 \begin{table}[!htb]
-  \caption{Elemente pentru personalizarea prompt-ului}
   \begin{center}
     \begin{tabular}{ p{0.25\textwidth} p{0.65\textwidth} }
       \toprule
@@ -1005,8 +1004,9 @@ interpretate de shell, precum cele din \labelindexref{Tabelul}{tab:cli:prompt}.
         schimbarea culorii textului din prompt \\
       \bottomrule
     \end{tabular}
-    \label{tab:cli:prompt}
   \end{center}
+  \caption{Elemente pentru personalizarea prompt-ului}
+  \label{tab:cli:prompt}
 \end{table}
 
 O listă completă a elementelor ce pot fi parte din variabila PS1 găsiți în
@@ -1069,7 +1069,6 @@ student   1224  1222  0 Oct01 tty1     00:00:00 /usr/lib/xorg/Xorg vt1 -displayf
 Expresiile regulate pot conține unul sau mai multe dintre metacaracterele prezentate în \labelindexref{Tabelul}{tab:cli:regex-chars}.
 
 \begin{table}[!htb]
-  \caption{Metacaractere în expresii regulate}
   \begin{center}
     \begin{tabular}{ p{0.25\textwidth} p{0.65\textwidth} }
       \toprule
@@ -1102,8 +1101,9 @@ Expresiile regulate pot conține unul sau mai multe dintre metacaracterele preze
 
       \bottomrule
     \end{tabular}
-    \label{tab:cli:regex-chars}
   \end{center}
+  \caption{Metacaractere în expresii regulate}
+  \label{tab:cli:regex-chars}
 \end{table}
 
 Dacă dorim să folosim într-o expresie regulată un metacaracter în sensul său literal, adică escaping, vom folosi backslash.
@@ -1111,7 +1111,6 @@ Dacă dorim să folosim într-o expresie regulată un metacaracter în sensul s�
 \labelindexref{Tabelul}{tab:cli:regex-example} conține exemple de expresii regulate.
 
 \begin{table}[!htb]
-  \caption{Exemple de construcții cu expresii regulate}
   \begin{center}
     \begin{tabular}{ p{0.40\textwidth} p{0.50\textwidth} }
       \toprule
@@ -1135,8 +1134,9 @@ Dacă dorim să folosim într-o expresie regulată un metacaracter în sensul s�
 
       \bottomrule
     \end{tabular}
-    \label{tab:cli:regex-example}
   \end{center}
+  \caption{Exemple de construcții cu expresii regulate}
+  \label{tab:cli:regex-example}
 \end{table}
 
 În cazul \cmd{grep}, în mod special, anumite caractere trebuie prefixate de backslash
@@ -1194,20 +1194,19 @@ generatoare.
 Prelucrarea text presupune acțiuni de forma:
 
 \begin{itemize}
-	\item selecție: linii sau coloane
-	\item înlocuire: înlocuirea unor părți cu alte părți
-	\item extragere: doar anumite părți din text
-	\item ordonare: ordonarea rezultatelor după un criteriu dat, de exemplu
-		ordonare alfabetică
-	\item sumarizare: obținerea unor informații numerice sau statistice
-	\item reformatare: plasarea unor caractere în plus, reordonarea unor
-		elemente pe o linie
+  \item selecție: linii sau coloane
+  \item înlocuire: înlocuirea unor părți cu alte părți
+  \item extragere: doar anumite părți din text
+  \item ordonare: ordonarea rezultatelor după un criteriu dat, de exemplu
+          ordonare alfabetică
+  \item sumarizare: obținerea unor informații numerice sau statistice
+  \item reformatare: plasarea unor caractere în plus, reordonarea unor
+          elemente pe o linie
 \end{itemize}
 
 \labelindexref{Tabelul}{tab:cli:text-processing} prezintă comenzi de prelucrare și rolul lor din acțiunile de mai sus.
 
 \begin{table}[!htb]
-  \caption{Prelucratoare de text}
   \begin{center}
     \begin{tabular}{ p{0.15\textwidth} p{0.45\textwidth} p{0.3\textwidth} }
       \toprule
@@ -1285,8 +1284,9 @@ Prelucrarea text presupune acțiuni de forma:
 
       \bottomrule
     \end{tabular}
-    \label{tab:cli:text-processing}
   \end{center}
+  \caption{Prelucratoare de text}
+  \label{tab:cli:text-processing}
 \end{table}
 
 \subsubsection{One-linere}

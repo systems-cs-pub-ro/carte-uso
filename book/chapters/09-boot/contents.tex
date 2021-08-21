@@ -25,19 +25,19 @@ pașilor urmați în secvența de boot, urmând să îi detaliem în secțiunile
 jos:
 
 \begin{figure}[htbp]
-	\centering
-	\def\svgwidth{0.5\columnwidth}
-	\includesvg{chapters/09-boot/img/boot-seq.svg}
-        \caption{Secvența de boot pe PC}
-	\label{fig:boot:sequence}
+  \centering
+  \def\svgwidth{0.5\columnwidth}
+  \includesvg{chapters/09-boot/img/boot-seq.svg}
+  \caption{Secvența de boot pe PC}
+  \label{fig:boot:sequence}
 \end{figure}
 
 \begin{enumerate}
-	\item firmware de boot (BIOS)
-	\item dispozitiv bootabil
-	\item bootloader
-	\item sistem de operare (kernel) și drivere de dispozitiv
-	\item procese inițiale
+  \item firmware de boot (BIOS)
+  \item dispozitiv bootabil
+  \item bootloader
+  \item sistem de operare (kernel) și drivere de dispozitiv
+  \item procese inițiale
 \end{enumerate}
 
 \section{Secvența de boot}
@@ -129,15 +129,15 @@ de a integra bootloaderul în acesta. Un exemplu este combinația dintre coreboo
 
 Pe platforme Intel, BIOS-ul are următoarele responsabilități:
 \begin{itemize}
-	\item inițializează și verifică componentele hardware ale sistemului
-	\item permite configurarea componentelor și opțiunilor hardware ale
-		sistemului
-	\item blochează acele configurații astfel încât să nu poată fi schimbate
-	        de sistemul de operare
-	\item generează configurația pentru descoperirea și inițializarea
-		hardware-lui de către sistemul de operare
-	\item descoperă dispozitivele ce furnizează un bootloader
-	\item lansează, posibil automat, bootloaderul
+  \item inițializează și verifică componentele hardware ale sistemului
+  \item permite configurarea componentelor și opțiunilor hardware ale
+    sistemului
+  \item blochează acele configurații astfel încât să nu poată fi schimbate
+          de sistemul de operare
+  \item generează configurația pentru descoperirea și inițializarea
+    hardware-lui de către sistemul de operare
+  \item descoperă dispozitivele ce furnizează un bootloader
+  \item lansează, posibil automat, bootloaderul
 \end{itemize}
 
 Firmware-ul de boot este rulat în momentul pornirii sistemului (adică la
@@ -155,13 +155,13 @@ hardware-ului. Mai jos sunt o serie de configurări permise de firmware-ul de
 boot:
 
 \begin{itemize}
-	\item stabilirea unei parole de protejare a meniului de configurare
-	\item configurarea timpul sistemului
-	\item activarea suportului hardware de virtualizare
-	\item stabilirea viteză de acces la memorie
-	\item activarea bootării de pe stick USB
-	\item configurarea ordinii de boot
-	\item activarea/dezactivarea folosirii porturilor USB
+  \item stabilirea unei parole de protejare a meniului de configurare
+  \item configurarea timpul sistemului
+  \item activarea suportului hardware de virtualizare
+  \item stabilirea viteză de acces la memorie
+  \item activarea bootării de pe stick USB
+  \item configurarea ordinii de boot
+  \item activarea/dezactivarea folosirii porturilor USB
 \end{itemize}
 
 \subsection{BIOS și UEFI}
@@ -672,19 +672,19 @@ după rularea comenzii \cmd{update-grub}. Opțiunile de mai sus reprezintă:
 
 \begin{itemize}
   \item \texttt{GRUB\_DEFAULT}: indexul opțiunii implicite de boot a GRUB; în
-		ecranul afișat către utilizator la bootare, dacă utilizatorul nu
-		alege o opțiune, opțiunea implicită va fi aleasă
+    ecranul afișat către utilizator la bootare, dacă utilizatorul nu
+    alege o opțiune, opțiunea implicită va fi aleasă
   \item \texttt{GRUB\_TIMEOUT}: după cât timp de la afișarea ecranului GRUB, timp în
-		care utilizatorul nu a atins nici o tastă, se bootează în
+    care utilizatorul nu a atins nici o tastă, se bootează în
                 opțiunea implicită; valoarea \texttt{-1} înseamnă așteptare infinită până la alegerea explicită a unei opțiuni
   \item \texttt{GRUB\_TIMEOUT\_STYLE}: precizează cum va fi afișat ecranul de boot
     până la expirarea timpului de afișare; valoarea \texttt{hidden}
-		înseamnă că nu se afișează nici un ecran, și după 10 secunde se
-		bootează opțiunea implicită; în acel interval de 10 secunde
+    înseamnă că nu se afișează nici un ecran, și după 10 secunde se
+    bootează opțiunea implicită; în acel interval de 10 secunde
                 utilizatorul poate apăsa tasta \texttt{Esc} pentru a cauza afișarea
-		ecranului de boot
+    ecranului de boot
   \item \texttt{GRUB\_TIMEOUT\_LINUX\_DEFAULT}: adaugă opțiunile respective nucleului
-		când bootează
+    când bootează
 \end{itemize}
 
 În directorul \file{/etc/grub.d/} sunt fișiere de configurare pentru opțiuni GRUB.
@@ -844,13 +844,13 @@ Dintre opțiunile de boot ale nucleului, precizăm:
 
 \begin{itemize}
   \item opțiunile \texttt{debug}, \texttt{verbose}, \texttt{quiet} care configurează nivelul de
-		detaliu al mesajelor de boot afișate la pornirea kernelului
+    detaliu al mesajelor de boot afișate la pornirea kernelului
   \item opțiunea \texttt{splash} activează splashscreenul la pornirea sistemului,
-		în loc să afișeze mesajele de boot
+    în loc să afișeze mesajele de boot
   \item opțiunea \texttt{noacpi} dezactivează ACPI \abbrev{ACPI}{Advanced
     Configuration and Power Interface} (\textit{Advanced Configuration and
                 Power Interface}) o componentă PC care uneori este cauzatoare de
-		probleme
+    probleme
 \end{itemize}
 
 O listă completă a acestor opțiuni găsiți în documentația nucleului\footnote{\url{https://www.kernel.org/doc/html/v5.9/admin-guide/kernel-parameters.html}}.
@@ -981,21 +981,21 @@ Terminalele virtuale sunt pornite și gestionate de init/systemd prin următorul
 
 \begin{enumerate}
   \item systemd pornește procese numite \cmd{getty} care reprezintă interfața de
-		comunicare cu terminalul virtual.
+    comunicare cu terminalul virtual.
   \item \cmd{getty} afișează un prompt de utilizator unde se introduce
-		numele de utilizator și parola.
+    numele de utilizator și parola.
   \item \cmd{getty} pornește procesul \cmd{login} care citește parola
           utilizatorului și o verifică în fișierul \file{/etc/shadow}
-        \item dacă parola este corectă, procesul \cmd{login} pornește shellul descris ca
+  \item dacă parola este corectă, procesul \cmd{login} pornește shellul descris ca
           ultima coloana din linia corespunzătoare utilizatorului în fișierul \file{/etc/passwd}
 \end{enumerate}
 
 \begin{figure}[htbp]
-	\centering
-	\def\svgwidth{\columnwidth}
-	\includesvg{chapters/09-boot/img/systemd-login.svg}
-	\caption{Pornirea terminalelor virtuale și a shellurilor}
-        \label{fig:boot:login}
+  \centering
+  \def\svgwidth{\columnwidth}
+  \includesvg{chapters/09-boot/img/systemd-login.svg}
+  \caption{Pornirea terminalelor virtuale și a shellurilor}
+  \label{fig:boot:login}
 \end{figure}
 
 Putem vizualiza unitățile gestionate de systemd pentru terminalele virtuale folosind comanda de mai jos:
@@ -1072,26 +1072,25 @@ acest stick trebuie să fie partiționat și apoi marcată partiția principală
 fiind bootabilă. Pașii de pregătire ai mediului de boot sunt:
 
 \begin{enumerate}
-	\item Ștergerea vechilor componentele de pe stickul USB. Presupunând că
+  \item Ștergerea vechilor componentele de pe stickul USB. Presupunând că
           stickul USB este accesibil prin intrarea \file{/dev/sdb}, rulăm
-		comanda
+    comanda
 
 \begin{screen}
 wipefs -a /dev/sdb
 \end{screen}
 
         \cmd{wipefs} va detecta și va șterge toate semnăturile de sisteme de fișiere
-	și tabelele de partiții prezente pe \file{/dev/sdb}.
+  și tabelele de partiții prezente pe \file{/dev/sdb}.
 
-	\item Crearea tabelei de partiții și apoi unei partiții FAT32 și
-		marcarea acesteia ca fiind bootabilă. Pentru aceasta folosim
+  \item Crearea tabelei de partiții și apoi unei partiții FAT32 și
+    marcarea acesteia ca fiind bootabilă. Pentru aceasta folosim
                 utilitarul \cmd{gparted} (cu interfața grafică), accesând opțiunile:
-                \begin{enumerate}
-                  \item \texttt{Device} $\rightarrow$ \texttt{Create Partition Table}
-                  \item click dreapta pe spațiu $\rightarrow$ \texttt{New}
-                  \item click dreapta pe partiție $\rightarrow$ \texttt{Manage Flags} $\rightarrow$ \texttt{boot}
-                \end{enumerate}
-
+    \begin{enumerate}
+      \item \texttt{Device} $\rightarrow$ \texttt{Create Partition Table}
+      \item click dreapta pe spațiu $\rightarrow$ \texttt{New}
+      \item click dreapta pe partiție $\rightarrow$ \texttt{Manage Flags} $\rightarrow$ \texttt{boot}
+    \end{enumerate}
 \end{enumerate}
 
 În acest moment avem un stick USB cu o partiție FAT32 bootabilă.
@@ -1119,7 +1118,7 @@ aici\footnote{\url{https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-s
 Având în vedere că majoritatea distribuțiilor de Linux oferă imagini ISO hibride, care pot fi scrise
 și pe mediu optic (CD-ROM, DVD-ROM) și pe dispoztive de stocare în masă (stick USB, HDD, SSD), se mai poate folosi comanda:
 \begin{screen}
-	dd if=my.iso of=/dev/sdb bs=1M
+  dd if=my.iso of=/dev/sdb bs=1M
 \end{screen}
 
 \section{Anexă: Crearea unui stick USB bootabil cu Windows}
@@ -1140,28 +1139,28 @@ student@uso:~$ mkdir iso-mnt/
 student@uso:~$ sudo mount -o loop windows.iso iso-mnt/
 \end{screen}
 
-	\item Se montează stickul USB:
+  \item Se montează stickul USB:
 
 \begin{screen}
 student@uso:~$ sudo mkdir /mnt/sdb1
 student@uso:~$ sudo mount /dev/sdb1 /mnt/sdb1
 \end{screen}
 
-	\item Se copiază tot conținutul din imaginea de Windows pe stickul
-		USB:
+  \item Se copiază tot conținutul din imaginea de Windows pe stickul
+    USB:
 
 \begin{screen}
 student@uso:~$ sudo cp -r iso-mnt/* /mnt/sdb1/
 \end{screen}
 
-	\item Se instalează GRUB pe stickul USB:
+  \item Se instalează GRUB pe stickul USB:
 
 \begin{screen}
 sudo grub-install --target=i386-pc --boot-directory="/mnt/sdb1/boot" /dev/sdb
 \end{screen}
 
-        \item Se generează fișierul \file{/mnt/sdb1/boot/grub/grub.cfg} cu următorul
-		conținut:
+  \item Se generează fișierul \file{/mnt/sdb1/boot/grub/grub.cfg} cu următorul
+    conținut:
 
 \begin{screen}
 echo "If you see this, you have successfully booted from USB :)"
@@ -1177,7 +1176,7 @@ boot
 \begin{screen}
 student@uso:~$ sudo blkid /dev/sdb1
 \end{screen}
-        \item Demontăm stickul USB și fișierul \texttt{.iso}:
+  \item Demontăm stickul USB și fișierul \texttt{.iso}:
 
 \begin{screen}
 student@uso:~$ sudo umount /mnt/sdb1
@@ -1207,7 +1206,7 @@ GRUB fără a fi nevoie de un stick USB sau un CD-ROM bootabil, urmăm pașii:
 student@uso:~$ wget http://www.udpcast.linux.lu/20120424/udpcd.iso
 \end{screen}
 
-        \item Montăm fișierul \texttt{.iso}:
+  \item Montăm fișierul \texttt{.iso}:
 
 \begin{screen}
 student@uso:~$ mkdir iso-mnt/
@@ -1219,7 +1218,7 @@ ISOLINUX.BIN  ISOLINUX.CFG boot.catalog  initrd  linux pxelinux.0
     Din conținutul fișierului \texttt{.iso} ne interesează fișierele \texttt{initrd} și \texttt{linux}, adică
 imaginea de ram disk și imaginea de kernel.
 
-        \item Copiem imaginea de ram disk si cea de kernel într-un director din \file{/boot}:
+  \item Copiem imaginea de ram disk si cea de kernel într-un director din \file{/boot}:
 
 \begin{screen}
 student@uso:~$ sudo mkdir /boot/udpcast
@@ -1228,7 +1227,7 @@ student@uso:~$ ls /boot/udpcast
 initrd linux
 \end{screen}
 
-        \item Adăugăm configurarea corespunzătoare în fișierul \file{/etc/grub.d/40\_custom}
+  \item Adăugăm configurarea corespunzătoare în fișierul \file{/etc/grub.d/40\_custom}
 
 \begin{screen}
 student@uso:~$ sudo blkid /dev/sda1
@@ -1257,7 +1256,7 @@ pe care l-am descoperit cu ajutorul comenzii blkid. Am folosit
     construcția \texttt{(hd0,msdos1)} pentru a identifica prima partiție din
     primul hard disk, adică \file{/dev/sda1}.
 
-	\item Actualizăm configurația GRUB:
+  \item Actualizăm configurația GRUB:
 
 \begin{screen}
 student@uso:~$ sudo update-grub
@@ -1270,14 +1269,14 @@ menuentry 'UDPCast' {
 
 În ultima comandă am verificat că intrarea a fost adăugată în fișierul de configurare GRUB: \file{/boot/grub/grub.cfg}.
 
-        \item Demontăm fișierul \texttt{.iso}:
+  \item Demontăm fișierul \texttt{.iso}:
 
 \begin{screen}
 student@uso:~$ sudo umount iso-mnt
 student@uso:~$ sudo rmdir iso-mnt
 \end{screen}
 
-	\item Repornim sistemul și apoi vom avea în GRUB intrarea aferentă UDPCast.
+  \item Repornim sistemul și apoi vom avea în GRUB intrarea aferentă UDPCast.
 \end{enumerate}
 
 \section{Anexă: Booting în Windows}
