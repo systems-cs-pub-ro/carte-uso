@@ -374,22 +374,17 @@ frame=single,rulecolor=\color{red},framerule=0.8mm}
 \lstnewenvironment{screen}[1][]
 {
 \definecolor{screentext}{rgb}{0,0,0}
-\definecolor{screenback}{rgb}{0.87,0.87,1}
+\definecolor{screenback}{rgb}{0.95,0.95,0.92}
 \color{screentext}
 \lstset{
 	numberstyle=\scriptsize,
 	basicstyle=\ttfamily\footnotesize,
 	numbers=left,
-	%numbersep=2mm,
 	breaklines=true,
-	showlines=true, % show empty lines at the end of the listing
 	nolol=true, % do not appear in list of listings
-	%frameround=tttt,
 	frame=single,
-	framerule=0mm,
-	framesep=2mm,
 	rulecolor=\color{screentext},
-	backgroundcolor=\color{screenback},
+        backgroundcolor=\color{screenback},
 	breakautoindent=false,
 	breakindent=0pt,
 	escapechar=^,
