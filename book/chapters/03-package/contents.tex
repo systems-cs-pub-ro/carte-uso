@@ -116,7 +116,7 @@ Managerul de pachete este instalat într-un sistem de operare/distribuție de la
 
 În momentul instalării pachetelor managerul de pachete reține fișierele care au fost instalate pentru a putea să le șteargă la dezinstalare. Tot în momentul instalării, managerul de pachete va investiga dependențele pachetului care se dorește instalat pentru a le instala și pe acestea. Tipurile de operații efectuate de managerul de pachete, la comanda utilizatorului, sunt descrise în \labelindexref{Secțiunea}{sec:package:ops}.
 
-Noțiunea de manager de pachete este răspândită îndeosebi în distribuții Linux/BSD. Cu toate acestea există soluții de acest tip pe Windows, precum Chocolatey~\footnote{\url{https://chocolatey.org/}}. Pe macOS se poate folosi Homebrew~\footnote{\url{https://brew.sh/}} sau MacPorts~\footnote{\url{https://www.macports.org/}}. Spre deosebire de distribuțiile Linux/BSD, soluțiile de tip manager de pachete de pe Windows și macOS nu sunt distribuite oficiale de companiile producătoare, Microsoft și Apple.
+Noțiunea de manager de pachete este răspândită îndeosebi în distribuții Linux/BSD. Cu toate acestea există soluții de acest tip pe Windows, precum Chocolatey\footnote{\url{https://chocolatey.org/}}. Pe macOS se poate folosi Homebrew\footnote{\url{https://brew.sh/}} sau MacPorts\footnote{\url{https://www.macports.org/}}. Spre deosebire de distribuțiile Linux/BSD, soluțiile de tip manager de pachete de pe Windows și macOS nu sunt distribuite oficiale de companiile producătoare, Microsoft și Apple.
 
 \labelindexref{Tabelul}{tab:package:types} conține cele mai cunoscute tipuri de managere de pachete cu tipurile de pachete și distribuțiile pe care le folosesc, împreună cu aplicațiile și comenzile specifice.
 
@@ -208,11 +208,11 @@ Aceste acțiuni au comenzi și opțiuni specifice fiecărui manager de pachete.
 \subsection{Pachete în sistemele de operare mobile}
 \label{sec:package:mobile}
 
-Operațiile de mai sus au corespondent și în cazul sistemelor de operare mobile. Prin intermediul aplicațiilor GooglePlay~\footnote{\url{https://play.google.com/store}} și AppStore~\footnote{\url{https://www.apple.com/ios/app-store/}} utilizatorii interacționează cu depozitele de pachete oferite de Google și de Apple, numite magazine de aplicații (\textit{app store}). Într-un magazin de aplicații, utilizatorii caută pachete sau instalează pachete.
+Operațiile de mai sus au corespondent și în cazul sistemelor de operare mobile. Prin intermediul aplicațiilor GooglePlay\footnote{\url{https://play.google.com/store}} și AppStore\footnote{\url{https://www.apple.com/ios/app-store/}} utilizatorii interacționează cu depozitele de pachete oferite de Google și de Apple, numite magazine de aplicații (\textit{app store}). Într-un magazin de aplicații, utilizatorii caută pachete sau instalează pachete.
 
 În urma unei comenzi de instalare, transparent utilizatorului, aplicația GooglePlay sau AppStore descarcă din depozit pachetul în format respectiv (\texttt{.apk} sau \texttt{.ipa}). După instalare, aplicația arele fișiere executabile, de date, de configurare, de documentație în sistemul de fișiere și este, în general, accesibilă prin intermediul unei icoane pe ecranul telefonului mobil.
 
-Depozitele de pachete folosite de aplicațiile GooglePlay și AppStore nu pot fi configurate, sunt preconfigurate în aplicație. Cu toate acestea pot fi folosite aplicații cu depozite neoficiale de aplicații, precum Cydia pe iOS~\footnote{\url{https://cydia-app.com/}}. De avut în vedere, însă, că folosirea unor depozite neaprobate de producătorul dispozitivului mobil reprezintă un risc de securitate; instalarea acestor aplicații poate însemna instalarea de aplicații malițioase (\textit{malware}).
+Depozitele de pachete folosite de aplicațiile GooglePlay și AppStore nu pot fi configurate, sunt preconfigurate în aplicație. Cu toate acestea pot fi folosite aplicații cu depozite neoficiale de aplicații, precum Cydia pe iOS\footnote{\url{https://cydia-app.com/}}. De avut în vedere, însă, că folosirea unor depozite neaprobate de producătorul dispozitivului mobil reprezintă un risc de securitate; instalarea acestor aplicații poate însemna instalarea de aplicații malițioase (\textit{malware}).
 
 \section{Gestiunea pachetelor în Linux}
 \label{sec:package:linux}
@@ -663,7 +663,7 @@ Un caz de utilizare pentru aceste sisteme de gestiune a pachetelor sunt soluții
 
 În aceste sisteme există un pachet (o arhivă) care conține toate informațiile necesare rulării aplicație: aplicația, depdendențe, metadate, scripturi de instalare și configurare.
 
-Sistemele Ubuntu folosesc Snapcraft~\footnote{\url{https://snapcraft.io/}}, o soluție care înglobează aplicațiile în pachete; un pachet se numește \textbf{snap}. Un serviciu local numit \cmd{snapd} este responsabil de instalarea unei aplicații folosind utilitarul \cmd{snap}. \labelindexref{Listing}{lst:package:snap-list} prezintă aplicațiile instalate implicit în format \textbf{snap} pe Ubuntu 18.04.
+Sistemele Ubuntu folosesc Snapcraft\footnote{\url{https://snapcraft.io/}}, o soluție care înglobează aplicațiile în pachete; un pachet se numește \textbf{snap}. Un serviciu local numit \cmd{snapd} este responsabil de instalarea unei aplicații folosind utilitarul \cmd{snap}. \labelindexref{Listing}{lst:package:snap-list} prezintă aplicațiile instalate implicit în format \textbf{snap} pe Ubuntu 18.04.
 
 \begin{screen}[caption={Pachete instalate în format snap pe Ubuntu 18.04},label={lst:package:snap-list}]
 student@uso:~$ snap list
@@ -707,7 +707,7 @@ student@uso:~$ sudo snap refresh
 student@uso:~$ snap download inkscape
 \end{screen}
 
-Alte soluții de tip all-in-one sunt Flatpak~\footnote{\url{https://www.flatpak.org/}} și AppImage~\footnote{\url{https://appimage.org/}}. Flatpak creează un mediu izolat folosind o formă de virtualizare de aplicație, similar unui container, descris în \labelindexref{Secțiunea}{sec:vm:concepts:containers}. În acest mediu izolat rulează aplicații. AppImage este o soluție care permite instalarea unei aplicații fără a fi nevoie de cont privilegiat; există aplicații care sunt descărcabile în format de pachet AppImage și instalabile astfel de un utilizator neprivilegiat.
+Alte soluții de tip all-in-one sunt Flatpak\footnote{\url{https://www.flatpak.org/}} și AppImage\footnote{\url{https://appimage.org/}}. Flatpak creează un mediu izolat folosind o formă de virtualizare de aplicație, similar unui container, descris în \labelindexref{Secțiunea}{sec:vm:concepts:containers}. În acest mediu izolat rulează aplicații. AppImage este o soluție care permite instalarea unei aplicații fără a fi nevoie de cont privilegiat; există aplicații care sunt descărcabile în format de pachet AppImage și instalabile astfel de un utilizator neprivilegiat.
 
 Un avantaj al folosirii soluțiilor all-in-one este că folosesc versiuni mai recente ale aplicațiilor. În vreme ce aplicațiile care folosesc managerul de pachete al sistemului vor folosi versiunea disponibilă în repository, care ține de versiunea curentă a distribuției.
 
@@ -832,7 +832,7 @@ bin/grip
 student@uso:~/myenv$
 \end{screen}
 
-O soluție similară pentru JavaScript (Node.js~\footnote{\url{https://nodejs.org/en/}}) folosește utilitarul \cmd{npm}~\footnote{\url{https://www.npmjs.com/}} ca sistem de gestiune a pachetelor și \cmd{nvm}~\footnote{\url{https://github.com/nvm-sh/nvm}} pentru crearea unui mediu izolat.
+O soluție similară pentru JavaScript (Node.js\footnote{\url{https://nodejs.org/en/}}) folosește utilitarul \cmd{npm}\footnote{\url{https://www.npmjs.com/}} ca sistem de gestiune a pachetelor și \cmd{nvm}\footnote{\url{https://github.com/nvm-sh/nvm}} pentru crearea unui mediu izolat.
 
 \section{Anexă: Instalarea unui pachet din surse}
 \label{sec:package:source}
@@ -854,7 +854,7 @@ Instalarea din codul sursă presupune obținerea unei arhive care are codul surs
 
 În cazul aplicațiilor scrise în limbajele C/C++ cel mai frecvent sistem de build este cel bazat pe Make, împreună cu utilitarele complementare. Acest sistem se numește Autotool, sau sistemul de build GNU.
 
-Ca exaemplu, \labelindexref{Listing}{lst:package:src-install} conține secvența de comenzi care duce la instalarea OpenSC~\footnote{\url{https://github.com/OpenSC/OpenSC/wiki}}, un set de aplicații și biblioteci pentru a lucra cu smart carduri.
+Ca exaemplu, \labelindexref{Listing}{lst:package:src-install} conține secvența de comenzi care duce la instalarea OpenSC\footnote{\url{https://github.com/OpenSC/OpenSC/wiki}}, un set de aplicații și biblioteci pentru a lucra cu smart carduri.
 
 \begin{screen}[caption={Instalarea OpenSC din surse},label={lst:package:src-install}]
 student@uso:~$ cd Downloads/

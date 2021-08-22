@@ -695,8 +695,7 @@ Tehnologia cloud folosită la nivelul Universității POLITEHNICA din București
 Din perspectiva OpenStack, un student face parte dintr-un \textit{tenant}.
 În acest context, noțiunea de tenant poate fi asociata cu un
 proiect. Crearea proiectului se face prin apăsarea butonului \texttt{Create user}, buton
-aflat în blocul OpenStack de pe platforma Moodle a Universității POLITEHNICA din București
-\footnote{\url{https://curs.upb.ro/}}, ca în \labelindexref{Figura}{fig:vm:openstack-project}. Odată
+aflat în blocul OpenStack de pe platforma Moodle a Universității POLITEHNICA din București\footnote{\url{https://curs.upb.ro/}}, ca în \labelindexref{Figura}{fig:vm:openstack-project}. Odată
 creat tenantul, putem accesa \texttt{Dashboard} pentru crearea mașinilor virtuale.
 
 \begin{figure}[!htbp]
@@ -790,7 +789,7 @@ procesoare, memorie și spatiu pe disk.
 \label{sec:vm:upb-openstack:vm-access}
 
 Accesarea mașinii virtuale se face prin SSH de pe \texttt{fep.grid.pub.ro} ca în \labelindexref{Listing}{lst:vm:access-vm}.
-În loc de \texttt{$<$vm\_ip\_address$>$} folosim adresa IP a mașinii virtuale, adresă pe care o obținem din Dashboardul OpenStack, ca în \labelindexref{Figura}{fig:vm:openstack-info}.  Utilizatorul folosit la autentificare este \texttt{student}.\footnote{Alte template-uri pot folosi alte nume de utilizator. Lista lor este la adresa \url{https://cloud.curs.pub.ro/2014/12/17/username-uri-implicite/}}
+În loc de \texttt{$<$vm\_ip\_address$>$} folosim adresa IP a mașinii virtuale, adresă pe care o obținem din Dashboardul OpenStack, ca în \labelindexref{Figura}{fig:vm:openstack-info}.  Utilizatorul folosit la autentificare este \texttt{student}\footnote{Alte template-uri pot folosi alte nume de utilizator. Lista lor este la adresa \url{https://cloud.curs.pub.ro/2014/12/17/username-uri-implicite/}}.
 
 \begin{screen}[caption={Accesarea mașinii virtuale prin intermediul fep.grid.pub.ro},label={lst:vm:access-vm}]
 student@uso:~$ ssh <upb_account>@fep.grid.pub.ro

@@ -246,7 +246,7 @@ MySQL shell sau SQlite shell sau altceva. Toate combinațiile de taste prezentat
 aceste interfețe.
 
 Acest lucru se întâmplă pentru că funcționalitatea de editare de comenzi este
-oferită de biblioteca Readline~\footnote{\url{https://tiswww.case.edu/php/chet/readline/rltop.html}}, bibliotecă la care sunt legate majoritatea
+oferită de biblioteca Readline\footnote{\url{https://tiswww.case.edu/php/chet/readline/rltop.html}}, bibliotecă la care sunt legate majoritatea
 shellurilor și a interfețelor în linia de comandă.
 
 Facilitățile Readline sunt apelate de shell pentru prelucrarea intrării de la
@@ -255,8 +255,8 @@ utilizator, adică a comenzilor și parametrilor ei. Biblioteca permite asociere
 (C-a)} înseamnă că pentru a ajunge la începutul liniei, vom tasta \texttt{Ctrl+a}.
 
 O listă exhaustivă a comenzilor Readline și a combinației de taste (numită
-\textit{keybinding}) găsiți în documentația bibliotecii Readline (online~\footnote{\url{https://tiswww.case.edu/php/chet/readline/readline.html\#SEC3}} sau pagina de
-manual) sau documentația shellului Bash (online~\footnote{\url{https://www.gnu.org/software/bash/manual/html\_node/Readline-Interaction.html\#Readline-Interaction}} sau pagina de manual). Pentru accesarea
+\textit{keybinding}) găsiți în documentația bibliotecii Readline (online\footnote{\url{https://tiswww.case.edu/php/chet/readline/readline.html\#SEC3}} sau pagina de
+manual) sau documentația shellului Bash (online\footnote{\url{https://www.gnu.org/software/bash/manual/html\_node/Readline-Interaction.html\#Readline-Interaction}} sau pagina de manual). Pentru accesarea
 paginilor de manual folosiți comenzile din \labelindexref{Listing}{lst:cli:man-readline}. Pentru a localiza comabinațiile de taste, căutați șirul \textit{EDITING COMMANDS}, respectiv șirul \textit{Command Names} în pagina de manual pentru \texttt{readline} și \texttt{bash}.
 
 \begin{screen}[caption={Documentație pentru combinațiile de taste din shell (prin Readline)},label={lst:cli:man-readline}]
@@ -690,7 +690,7 @@ student@uso:~$ TR_DEBUG=1 transmission-cli
 \label{sec:cli:shell-func:expansion}
 
 Un shell primește la intrare comenzi care pot cuprinde parametri, operatori și variabile. După ce face separația elementelor comenzii (\textit{parsing}), shellul realizează operațiile de expandare. Expandarea este de mai
-multe tipuri, detaliate în documentația Bash~\footnote{\url{https://www.gnu.org/software/bash/manual/html\_node/Shell-Expansions.html\#Shell-Expansions}}. În \labelindexref{Listing}{lst:cli:expansion} sunt prezentate exemple de comenzi cu cele mai
+multe tipuri, detaliate în documentația Bash\footnote{\url{https://www.gnu.org/software/bash/manual/html\_node/Shell-Expansions.html\#Shell-Expansions}}. În \labelindexref{Listing}{lst:cli:expansion} sunt prezentate exemple de comenzi cu cele mai
 importante forme de expandare:
 \begin{itemize}
   \item Liniile \texttt{1-2} prezintă expandarea cu tildă. Expandarea caracterului \texttt{$\sim$} (tildă) este folosită pentru expandarea directorului home. Caracterul tildă este înlocuit cu valoarea variabilei \texttt{HOME} a shellului curent.
@@ -902,7 +902,7 @@ Locul unde se găsesc fișierele de configurare globale și locale depind de tip
 
 Există mai multe moduri de pornire a shellului Bash: login/non-login sau
 interactiv/neinteractiv. Aceste diferențe nu le vom detalia aici, sunt
-prezentate în documentația Bash online~\footnote{\url{https://www.gnu.org/software/bash/manual/html\_node/Invoking-Bash.html}} sau folosind comanda \texttt{man bash} și căutând în manual după șirul \texttt{INVOCATION}.
+prezentate în documentația Bash online\footnote{\url{https://www.gnu.org/software/bash/manual/html\_node/Invoking-Bash.html}} sau folosind comanda \texttt{man bash} și căutând în manual după șirul \texttt{INVOCATION}.
 
 În cazul cel mai uzual (shell de login și interactiv), shellul Bash parcurge
 întâi fișierul global de configurare \file{/etc/profile}, apoi primul fișier găsit dintre
@@ -1010,11 +1010,11 @@ interpretate de shell, precum cele din \labelindexref{Tabelul}{tab:cli:prompt}.
 \end{table}
 
 O listă completă a elementelor ce pot fi parte din variabila PS1 găsiți în
-documentație~\footnote{\url{https://www.gnu.org/software/bash/manual/html_node/Controlling-the-Prompt.html}}~\footnote{\url{https://www.howtogeek.com/307701/how-to-customize-and-colorize-your-bash-prompt/}} sau în pagina de manual Bash în secțiunea \texttt{PROMPTING}.
+documentație\footnote{\url{https://www.gnu.org/software/bash/manual/html_node/Controlling-the-Prompt.html}}\footnote{\url{https://www.howtogeek.com/307701/how-to-customize-and-colorize-your-bash-prompt/}} sau în pagina de manual Bash în secțiunea \texttt{PROMPTING}.
 
 Dacă doriți să personalizați permanent promptul, va trebui să modificați valoarea
 variabilei \texttt{PS1} într-un fișier de configurare a shellului așa cum am precizat în \labelindexref{Secțiunea}{sec:cli:shell-start:config}. Puteți încerca site-ul Easy Bash Prompt
-Generator~\footnote{\url{http://ezprompt.net/}} pentru o formă interactivă și vizuală de
+Generator\footnote{\url{http://ezprompt.net/}} pentru o formă interactivă și vizuală de
 generare de conținut \texttt{PS1} pentru personalizarea promptului.
 
 \subsection{Multiplexoare de terminal}
@@ -1320,7 +1320,7 @@ student@uso:~/test$ stat -c "%n,%s" /etc/* | sort -n -k 2 -t ',' | tail -5
 /etc/ld.so.cache,96247
 \end{screen}
 
-Exemple de one-linere găsiți pe Internet folosind șirul de căutare ,,bash one-liners''~\footnote{\url{http://www.bashoneliners.com/}}~\footnote{\url{https://onceupon.github.io/Bash-Oneliner/}}.
+Exemple de one-linere găsiți pe Internet folosind șirul de căutare ,,bash one-liners''\footnote{\url{http://www.bashoneliners.com/}}\footnote{\url{https://onceupon.github.io/Bash-Oneliner/}}.
 
 \section{Utilitare avansate}
 \label{sec:cli:advanced}
@@ -1422,7 +1422,7 @@ pui
 
 În forma sa cea mai simplă, din linia \texttt{1}, utilitarul înlocuiește o secvență cu altă secvență. Caracterul \texttt{s} înseamnă \textit{substitute}. Utilitarul \texttt{sed} are în spate un limbaj de programare și are și alte comenzi în afară de substituire, precum comanda \texttt{p} (\textit{print}), pentru afișare, sau comanda \texttt{d} (\textit{delete}) pentru ștergere.
 
-Interesante sunt de parcurs sed oneliners~\footnote{\url{http://sed.sourceforge.net/sed1line.txt}}. Și mai interesant e de parcurs sed Sokoban~\footnote{\url{https://github.com/aureliojargas/sokoban.sed/blob/master/sokoban.sed}}.
+Interesante sunt de parcurs sed oneliners\footnote{\url{http://sed.sourceforge.net/sed1line.txt}}. Și mai interesant e de parcurs sed Sokoban\footnote{\url{https://github.com/aureliojargas/sokoban.sed/blob/master/sokoban.sed}}.
 
 \subsection{awk}
 \label{sec:cli:advanced:awk}
@@ -1478,7 +1478,7 @@ BEGIN {
         [...]
 \end{screen}
 
-Detalii complete despre awk se găsesc parcurgând documentația~\footnote{\url{https://www.gnu.org/software/gawk/manual/}}.
+Detalii complete despre awk se găsesc parcurgând documentația\footnote{\url{https://www.gnu.org/software/gawk/manual/}}.
 
 \section{Sumar}
 \label{sec:cli:summary}
