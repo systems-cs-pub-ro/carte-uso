@@ -1,7 +1,7 @@
 \chapter{Pachete software}
-\label{chapter:package}
+\label{ch:package}
 
-Spre deosebire de hardware, software-ul are marele avantaj al flexibilității: pe un sistem hardware putem rula diferite tipuri de software, putem adăuga și șterge software, putem modifica ușor. Atunci când avem o nevoie, putem fie să dezvoltăm software nou sau putem instala software existent în sistem. Vom prezenta partea de dezvoltare software, de aplicații, în \labelindexref{Capitolul}{chapter:appdev}, și ne vom concentra în acest capitol pe partea de instalare și configurare de aplicații existente.
+Spre deosebire de hardware, software-ul are marele avantaj al flexibilității: pe un sistem hardware putem rula diferite tipuri de software, putem adăuga și șterge software, putem modifica ușor. Atunci când avem o nevoie, putem fie să dezvoltăm software nou sau putem instala software existent în sistem. Vom prezenta partea de dezvoltare software, de aplicații, în \labelindexref{Capitolul}{ch:appdev}, și ne vom concentra în acest capitol pe partea de instalare și configurare de aplicații existente.
 
 Atunci când un dezvoltator sau o firmă software produce o aplicație nouă, este interesul acestora să ajungă cât mai eficient la utilizator. Această acțiune, de distribuire a software-ului, necesită ca aplicația și datele sale să fie agregate într-o formă care să fie instalabilă de utilizator. Această formă este numită pachet software. După instalarea unui pachet software utilizatorul va putea să ruleze aplicația pe sistemul său.
 
@@ -659,7 +659,7 @@ Atunci când instalăm un pachet pe un sistem trebuie să avem grijă să fie co
 
 Această abordare de instalare numită \textit{all-in-one} folosește un alt sistem de gestiune decât cel al sistemului. Sistemul de gestiune a pachetelor sistemului este la nivelul global al sistemului; soluțiile all-in-one lucrează independent de acesta. Soluțiile all-in-one permit actualizarea (\textit{update}) mai facilă a pachetelor prin actualizarea directorului în care sunt instalate. Suplimentar permit configurări de securitate care pot fi realizate granular, doar la nivelul pachetului în cauză, nu la nivelul sistemului.
 
-Un caz de utilizare pentru aceste sisteme de gestiune a pachetelor sunt soluțiile IoT (Internet of Things) despre care vom discuta în \labelindexref{Capitolul}{chapter:embed}. Aceasta pentru că sistemele IoT au de obicei roluri foarte bine definite și dorim să instalăm ușor o aplicație software cu toate dependențele sale.
+Un caz de utilizare pentru aceste sisteme de gestiune a pachetelor sunt soluțiile IoT (Internet of Things) despre care vom discuta în \labelindexref{Capitolul}{ch:embed}. Aceasta pentru că sistemele IoT au de obicei roluri foarte bine definite și dorim să instalăm ușor o aplicație software cu toate dependențele sale.
 
 În aceste sisteme există un pachet (o arhivă) care conține toate informațiile necesare rulării aplicație: aplicația, depdendențe, metadate, scripturi de instalare și configurare.
 
@@ -850,7 +850,7 @@ Cu toate acestea, există situații în care suntem interesați de obținerea co
 
 Instalarea din codul sursă presupune obținerea unei arhive care are codul sursă al aplicației sau clonarea repository-ului sursă al aplicației. În cadrul codului sursă astfel obținut se regăsesc în mod uzual un fișier \file{README} cu indicații de instalare și scripturi sau componente de compilare.
 
-În general pentru compilare se folosesc sisteme de build care automatizează procesul. Acestea pot fi Make, Cmake, Scons, Maven, Ant, Gradle depinzând de limbajul de programare folosit și de preferințele dezvoltatorului. Mai multe informații despre sistemele de build se găsesc în \labelindexref{Capitolul}{chapter:appdev}.
+În general pentru compilare se folosesc sisteme de build care automatizează procesul. Acestea pot fi Make, Cmake, Scons, Maven, Ant, Gradle depinzând de limbajul de programare folosit și de preferințele dezvoltatorului. Mai multe informații despre sistemele de build se găsesc în \labelindexref{Capitolul}{ch:appdev}.
 
 În cazul aplicațiilor scrise în limbajele C/C++ cel mai frecvent sistem de build este cel bazat pe Make, împreună cu utilitarele complementare. Acest sistem se numește Autotool, sau sistemul de build GNU.
 
@@ -933,7 +933,7 @@ Options:
   \item liniile \texttt{X-Y}: am instalat pachetele în sistem folosind comanda \cmd{make install} și actualizând cacheul de biblioteci (\cmd{ldconfig}), astfel că executabilele generate (\cmd{cardos-tool}, \cmd{pkcs15-tool} sunt acum folosibile)
 \end{enumerate}
 
-După cum se observă, compilarea din surse necesită cunoștințe tehnice mai avansate legate de sisteme de build, despre care vom discuta în \labelindexref{Capitolul}{chapter:appdev}. De aceea sunt de evitat pentru majoritatea utilizatorilor. Pentru aproape toate scenariile acestora, sistemele de gestiune ale pachetelor prezentate mai sus vor fi suficiente.
+După cum se observă, compilarea din surse necesită cunoștințe tehnice mai avansate legate de sisteme de build, despre care vom discuta în \labelindexref{Capitolul}{ch:appdev}. De aceea sunt de evitat pentru majoritatea utilizatorilor. Pentru aproape toate scenariile acestora, sistemele de gestiune ale pachetelor prezentate mai sus vor fi suficiente.
 
 \section{Sumar}
 \label{sec:package:summary}

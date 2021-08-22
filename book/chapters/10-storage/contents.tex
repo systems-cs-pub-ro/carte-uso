@@ -1,5 +1,5 @@
 \chapter{Administrarea spațiului de stocare}
-\label{chapter:storage}
+\label{ch:storage}
 
 În cadrul unui sistem de calcul, unitatea de procesare (procesorul, CPU) este elementul central,
 cel care realizează operațiile necesare, respectiv cerute, de către utilizator.
@@ -38,7 +38,7 @@ studia tehnici de organizare a datelor pe dispozitivele de stocare (vezi
 Așadar, stocarea este și ea un element central în operațiile cu sistemul de
 calcul. Orice informație procesată ar trebui stocată persistent pe un
 dispozitiv de stocare, după cum a fost prezentat și în
-\labelindexref{Capitolul}{chapter:hw}.
+\labelindexref{Capitolul}{ch:hw}.
 
 Dispozitivele hardware de stocare sunt alcătuite
 din două componente: controller și disc. Controllerul este asemenea unei
@@ -255,7 +255,7 @@ Partiționarea împarte spațiul disponibil în zone continue fizic (numite \tex
 având un specific definit la creare (partiție de boot, partiție pentru
 utilizatori, partiție pentru sistemul de de operare). Există două tipuri de
 partiționări în sistemele din ziua de astăzi, așa cum am prezentat în
-\labelindexref{Capitolul}{chapter:boot}:
+\labelindexref{Capitolul}{ch:boot}:
 
 \begin{itemize}
   \item Master Boot Record (referit ca MBR) - acesta a fost introdus în
@@ -268,7 +268,7 @@ partiționări în sistemele din ziua de astăzi, așa cum am prezentat în
 
 Schema MBR, după cum se menționează anterior, are alocat exact la începutul unui
 disc un sector special de boot care reține schema de partiționare precum și o
-versiune minimală a bootloaderului care va încărca sistemul de operare, așa cum am precizat în \labelindexref{Capitolul}{chapter:boot}.
+versiune minimală a bootloaderului care va încărca sistemul de operare, așa cum am precizat în \labelindexref{Capitolul}{ch:boot}.
 Schema de partiționare MBR este formată din maxim 4
 partiții, denumite \textbf{partiții primare}. Pentru a acoperi aceste neajunsuri, au fost
 introduse \textbf{partițiile logice}: una din partițiile primare va fi alocată pe întreg
@@ -300,7 +300,7 @@ care garantează că fiecare partiție de pe glob va avea propriul identificator
 unic.
 
 GPT este asociat în general cu standardul UEFI care dorește înlocuirea
-BIOS în sistemele de calcul, despre care am discutat în \labelindexref{Capitolul}{chapter:boot}. BIOS și UEFI sunt componente low-level care
+BIOS în sistemele de calcul, despre care am discutat în \labelindexref{Capitolul}{ch:boot}. BIOS și UEFI sunt componente low-level care
 se execută la pornirea sistemelor de calcul pentru a realiza testarea și
 inițializarea componentelor. UEFI este un nou standard, menit să înlocuiască
 BIOS pentru a acoperi neajunsurile acestuia.
@@ -386,7 +386,7 @@ Sistemul de fișiere oferă următoarele obiecte vizibile utilizatorului final:
 
 Mai multe detalii legate de fișiere și directoare (modul în care se creează, se
 șterg, permisiuni de acces) se găsesc în
-\labelindexref{Capitolul}{chapter:fs}.
+\labelindexref{Capitolul}{ch:fs}.
 
 În general sistemele de fișiere sunt specifice sistemelor de operare. Astfel avem următoarea clasificare:
 

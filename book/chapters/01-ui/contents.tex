@@ -1,5 +1,5 @@
 \chapter{Interfața cu utilizatorul}
-\label{chapter:ui}
+\label{ch:ui}
 
 Un sistem de calcul oferă resurse de calcul utilizatorului. Utilizatorul folosește o interfață de lucru furnizată de sistemul de calcul pentru activitățile sale: navigare pe Internet, dezvoltare de aplicații, creare de conținut, scriere de documente. Interfața cu utilizatorul este oferită de o aplicație a sistemului de operare numită \textbf{shell}. Prin interacțiunea cu shellul utilizatorul își realizează activitățile și folosește resursele sistemului de calcul. De exemplu, un shell grafic va prezenta utilizatorului butoane, meniuri și ferestre pe care acesta le va folosi; un shell text va prezenta utilizatorului un prompt, unde acesta va introduce comenzi. Cu aceste elemente (butoane, meniuri, ferestre, comenzi), utilizatorul va interacțiunea cu sistemul de operare și cu aplicațiile.
 
@@ -15,7 +15,7 @@ Un sistem de calcul oferă resurse de calcul utilizatorului. Utilizatorul folose
 
 Majoritatea aplicațiilor au la rândul lor o interfață. De exemplu jocurile pe calculator au o interfață grafică unde utilizatorul/jucătorul își gestionează resurse, creează unități, navighează harta; un browser web are o interfață în care se introduce adresa unui site și are zonă de redare a componentelor paginii web (text, butoane, imagini); aplicația Matlab, pentru calcule matematice complexe, oferă un prompt în care dezvoltatorul introduce comenzi specifice. În general, numim shell aplicația care mediază interacțiunea utilizatorului cu sistemul de operare; într-un sens mai larg, putem spune și că aplicațiile de mai sus (jocul, browser-ul web, Matlab) oferă un shell, acea interfață.
 
-Interfețele cu utilizatorul, shellurile, vin de obicei în două moduri: \textbf{shelluri grafice} (\textit{Graphical User Interface} - GUI) și \textbf{shelluri text/linie de comandă} (\textit{Command Line Interface} - CLI). În general, interfața grafică este mai intuitivă, are avantajul ușurinței în utilizare și acomodare, un aspect mai plăcut, ușor personalizabil. Interfața în linia de comandă este ceva mai dificil de învățat și de folosit, mai anostă ca aspect, dar oferă acces mai complet și mai detaliat la serviciile sistemului. Interfața în linia de comandă permite automatizarea prin scripturi, lucru pe care îl vom discuta în \labelindexref{Capitolul}{chapter:auto}.
+Interfețele cu utilizatorul, shellurile, vin de obicei în două moduri: \textbf{shelluri grafice} (\textit{Graphical User Interface} - GUI) și \textbf{shelluri text/linie de comandă} (\textit{Command Line Interface} - CLI). În general, interfața grafică este mai intuitivă, are avantajul ușurinței în utilizare și acomodare, un aspect mai plăcut, ușor personalizabil. Interfața în linia de comandă este ceva mai dificil de învățat și de folosit, mai anostă ca aspect, dar oferă acces mai complet și mai detaliat la serviciile sistemului. Interfața în linia de comandă permite automatizarea prin scripturi, lucru pe care îl vom discuta în \labelindexref{Capitolul}{ch:auto}.
 
 În \labelindexref{Figura}{fig:ui:shell-gui-cli} avem două capturi de ecran: una cu un shell GUI și una cu shell CLI din distribuția Ubuntu 18.04. Shellul GUI oferă meniuri, butoane și ferestre, în vreme ce shellul CLI oferă un prompt unde se pot introduce comenzi. Shellul GUI este, în fapt, interfața grafică pe care o vedem într-o instalare obișnuită Ubuntu.
 
@@ -37,7 +37,7 @@ Interfețele cu utilizatorul, shellurile, vin de obicei în două moduri: \textb
   \label{fig:ui:shell-gui-cli}
 \end{figure}
 
-În capitolul curent, ne vom concentra pe interfața grafică. Interfața în linia de comandă o vom discuta detaliat în \labelindexref{Capitolul}{chapter:cli}.
+În capitolul curent, ne vom concentra pe interfața grafică. Interfața în linia de comandă o vom discuta detaliat în \labelindexref{Capitolul}{ch:cli}.
 
 \section{Interfața grafică}
 \label{sec:ui:gui}
@@ -104,7 +104,7 @@ O aplicație sau un dispozitiv de succes, va trebuie să țină cont și de inte
 \section{Interfața grafică în Linux}
 \label{sec:ui:linux-gui}
 
-Așa cum am precizat și în \labelindexref{Capitolul}{chapter:intro}, Linux (sau mai bine spus, distribuțiile software bazate pe Linux) rulează pe o plajă largă de sisteme și dispozitive: server, desktop/laptop, mobile (Android), smart TV, smart watch, rutere/echipamente de rețea etc. Fiecare dintre aceste sisteme oferă o interfață utilizatorului:
+Așa cum am precizat și în \labelindexref{Capitolul}{ch:intro}, Linux (sau mai bine spus, distribuțiile software bazate pe Linux) rulează pe o plajă largă de sisteme și dispozitive: server, desktop/laptop, mobile (Android), smart TV, smart watch, rutere/echipamente de rețea etc. Fiecare dintre aceste sisteme oferă o interfață utilizatorului:
 
 \begin{itemize}
   \item interfață grafică tactilă, în cazul dispozitivelor mobile sau smart watch
@@ -114,7 +114,7 @@ Așa cum am precizat și în \labelindexref{Capitolul}{chapter:intro}, Linux (sa
   \item interfață grafică și în linie de comandă, în cazul sistemelor desktop/laptop
 \end{itemize}
 
-În cele ce urmează vom prezenta interfața grafică în cazul sistemelor desktop/laptop. Deși nu este obișnuit, această interfață poate fi prezentă și în cazul sistemelor server. Interfața în linia de comandă va fi prezentată în formă de comenzi Linux în restul capitolelor și detaliat în \labelindexref{Capitolul}{chapter:cli}.
+În cele ce urmează vom prezenta interfața grafică în cazul sistemelor desktop/laptop. Deși nu este obișnuit, această interfață poate fi prezentă și în cazul sistemelor server. Interfața în linia de comandă va fi prezentată în formă de comenzi Linux în restul capitolelor și detaliat în \labelindexref{Capitolul}{ch:cli}.
 
 \subsection{Desktop Environments}
 \label{sec:ui:desktop-environments}
@@ -195,7 +195,7 @@ O astfel de funcționalitate este prezența de de spații de lucru (\textit{work
 
 Pentru a executa acțiuni rapide în mediul grafic sunt utile scurtăture de tastatură (\textit{keyboard shortcuts}). În general, orice mediu grafic oferă scurtături pentru pornire de aplicații, închidere de aplicații, deschidere și închidere de tab-uri de aplicație, minimizat ferestre, accesat meniuri, schimbat între ferestre. Aceste scurtături depind de sistemul de operare și mediul desktop folosit. O listă a scurtăturilor folosite pe mașina virtuală de suport a acestei cărți (Ubuntu 18.04) este în \labelindexref{Tabelul}{tab:ui:vm-shortcuts}.
 
-O parte dintre acțiunile utilizatorului pot fi realizate doar sau mai rapid în interfața în linia de comandă. Pentru acesta, din mediul grafic se pot porni rapid aplicații shell în linia de comandă, în forma emulatoarelor de terminal \textit{terminal emulator}. Un emulator de terminal este o aplicație care prezintă utilizatorului o fereastră. În această fereastră rulează un shell CLI unde utilizatorul poate rula comenzi. De exemplu, în \labelindexref{Figura}{fig:ui:shell-cli-linux-windows}, prima imagine este o fereastră de emulator de terminal în GNOME (aplicația \texttt{gnome-terminal}) în care rulează shellul Bash; în mod similar, cealaltă imagine este o fereastră Windows în care rulează shellul PowerShell. În macOS acest rol în are aplicația Terminal, care este preinstalată în sistemul de operare. Sunt și alte emulatoare de terminal care pot fi instalate în locul sau pe lângă cele implicite. Mai multe informații despre terminale, emulatoare de terminal și shell vom prezenta în \labelindexref{Capitolul}{chapter:cli}.
+O parte dintre acțiunile utilizatorului pot fi realizate doar sau mai rapid în interfața în linia de comandă. Pentru acesta, din mediul grafic se pot porni rapid aplicații shell în linia de comandă, în forma emulatoarelor de terminal \textit{terminal emulator}. Un emulator de terminal este o aplicație care prezintă utilizatorului o fereastră. În această fereastră rulează un shell CLI unde utilizatorul poate rula comenzi. De exemplu, în \labelindexref{Figura}{fig:ui:shell-cli-linux-windows}, prima imagine este o fereastră de emulator de terminal în GNOME (aplicația \texttt{gnome-terminal}) în care rulează shellul Bash; în mod similar, cealaltă imagine este o fereastră Windows în care rulează shellul PowerShell. În macOS acest rol în are aplicația Terminal, care este preinstalată în sistemul de operare. Sunt și alte emulatoare de terminal care pot fi instalate în locul sau pe lângă cele implicite. Mai multe informații despre terminale, emulatoare de terminal și shell vom prezenta în \labelindexref{Capitolul}{ch:cli}.
 
 \section{Interfața grafică în mașina virtuală de suport}
 \label{sec:ui:vm}

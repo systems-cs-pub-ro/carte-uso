@@ -1,5 +1,5 @@
 \chapter{Mașini virtuale}
-\label{chapter:vm}
+\label{ch:vm}
 
 În operațiunile de zi cu zi, deseori avem nevoie să rulăm mai multe tipuri de
 sisteme de operare (ex. Linux și Windows) și avem la dispoziție un singur
@@ -8,7 +8,7 @@ atunci când unele aplicații funcționează doar pe unul sau pe altul.
 
 Pentru a rula mai multe sisteme de operare pe același sistem de calcul, trebuie
 să instalăm fiecare sistem de operare pe câte partiție într-o configurație
-dual-boot (vezi \labelindexref{Capitolul}{chapter:boot}), și când dorim să
+dual-boot (vezi \labelindexref{Capitolul}{ch:boot}), și când dorim să
 comutăm de pe unul pe altul, trebuie să resetăm calculatorul și să alegem
 sistemul de operare ce va porni. Această operațiune este consumatoare de timp,
 iar tot lucrul efectuat până în acel moment trebuie salvat. Pentru a
@@ -94,7 +94,7 @@ software suplimentare pentru a diminua overheadul indus de excepțiile cauzate
 de execuția instrucțiunilor privilegiate. De aceea, în zilele noastre, atunci
 când porniți o aplicație de virtualizare (fie că e vorba de VMware, fie că e
 vorba de VirtualBox), primiți o notificare în cazul în care nu aveți activate din BIOS
-aceste extensii de virtualizare (vedeți \labelindexref{Capitolul}{chapter:boot}
+aceste extensii de virtualizare (vedeți \labelindexref{Capitolul}{ch:boot}
 pentru detalii despre configurarea BIOS-ului). Majoritatea versiunilor
 aplicațiilor de virtualizare nu mai oferă suport de rulare fără prezența acestor
 extensii.
@@ -235,7 +235,7 @@ de date (datacenter). Printre acestea putem enumera:
     management și pentru a rula driverele virtualizate. Mașina de
                 management poartă denumirea de \texttt{Dom0} (\textit{Domain 0} - în terminologia
     Xen mașinile virtuale poartă denumirea de domenii). Xen oferă suport de virtualizare atât pentru procesoarele cu
-    arhitectură x86, cât și ARM (vezi \labelindexref{Capitolul}{chapter:hw}).
+    arhitectură x86, cât și ARM (vezi \labelindexref{Capitolul}{ch:hw}).
   \item \textit{VMware ESXi} - hipervizorul de tip 1 al celor de la
     VMware. Acesta se instalează direct peste hardware și oferă
     suport doar pentru procesoarele cu arhitectură x86. Varianta
@@ -280,7 +280,7 @@ mașinii gazdă pentru a efectua apeluri privilegiate către hardware și nu num
 Containerele, în comparație cu mașinile virtuale, sunt mai rapide, consumă mai
 puține resurse întrucât nu trebuie decât să pornească o nouă ierarhie de procese
 (practic, un nou proces \textit{init}, precum și procesele daemon aferente - vezi
-\labelindexref{Capitolul}{chapter:process}). Dezavantajul containerelor îl
+\labelindexref{Capitolul}{ch:process}). Dezavantajul containerelor îl
 reprezintă faptul că nu putem rula sisteme de operare diferite (Windows în
 cadrul unei mașini fizice ce rulează Linux) întrucât este nevoie de același tip
 de nucleu.
@@ -346,7 +346,7 @@ virtuală, apoi modificate resursele alocate (număr procesoare, cantitate memor
 mărime disc, adăugare disc nou). Dacă a fost modificată mărimea discului,
 aceasta nu se va reflecta automat în sistemul de operare întrucât partiționarea
 a fost făcută folosind dimensiunea inițială. De asemenea, adăugarea unui nou disc
-implică partiționarea și formatarea acestuia, așa cum este prezentat în \labelindexref{Capitolul}{chapter:storage}. În general, modificarea numărului
+implică partiționarea și formatarea acestuia, așa cum este prezentat în \labelindexref{Capitolul}{ch:storage}. În general, modificarea numărului
 de procesoare, precum și a cantității de memorie se va reflecta automat în mașina
 virtuală după pornire.
 
@@ -372,7 +372,7 @@ virtualizare oferă opțiunea de a adăuga o placă de rețea virtuală. Acestă
 de rețea face în general legătura între mașina virtuală și mașina fizică (este,
 practic, un fir logic între acestea două). Mașina fizică trebuie să ofere o
 modalitate de conectare a firului logic la rețeaua fizică, precum și alocarea
-unei adrese IP\abbrev{IP}{Internet Protocol}, așa cum am precizat în \labelindexref{Capitolul}{chapter:net}. Soluțiile de
+unei adrese IP\abbrev{IP}{Internet Protocol}, așa cum am precizat în \labelindexref{Capitolul}{ch:net}. Soluțiile de
 virtualizare oferă, în general, trei tipuri de configurații (sau moduri) ale
 plăcii de rețea virtuale, ilustrate și în \labelindexref{Figura}{fig:vm:net}:
 

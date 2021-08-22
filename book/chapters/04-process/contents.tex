@@ -1,5 +1,5 @@
 \chapter{Procese}
-\label{chapter:process}
+\label{ch:process}
 
 Un proces este o aplicație ce se execută în sistemul de operare, folosind resursele sistemului, pentru a realiza o acțiune cerută de utilizator. Acțiunile utilizatorului pot fi să deschidă o pagină web, să creeze o imagine, să asculte o melodie. Utilizatorul face aceste acțiuni folosind aplicații precum un browser web, o suită Office, un player audio.
 
@@ -313,7 +313,7 @@ Atributul UID \abbrev{UID}{User Id} este identificatorul utilizatorului ce
 deține procesul. Un proces cu un anumit UID va avea acces la resursele acelui
 utilizator. În mod normal, procesele aceluiași utilizator au acces la aceleași
 resurse. Utilizatorii sunt modul principal de separare/izolare între procese.
-Mai multe detalii vom prezenta în \labelindexref{Capitolul}{chapter:user}.
+Mai multe detalii vom prezenta în \labelindexref{Capitolul}{ch:user}.
 
 \subsection{Utilitare pentru urmărirea proceselor}
 \label{sec:process:monitoring}
@@ -713,7 +713,7 @@ fi grafic (precum \textbf{Windows Explorer}) sau poate fi în linia de comandă 
 de pe ecran, pornim un proces; acel proces este creat de shellul grafic, care
 define procesul părinte al noului proces. Altfel, în linia de comandă, shellul
 creează un proces nou la introducerea unei comenzi. Prezentăm mai multe detalii
-în \labelindexref{Capitolul}{chapter:cli}.
+în \labelindexref{Capitolul}{ch:cli}.
 
 Legătura proces părinte - proces copil este utilă pentru a afla informații legate
 de încheierea unui proces. Un proces își poate încheia execuția în mai multe
@@ -999,7 +999,7 @@ indirect din procesul init. Spunem că un sistem Linux a bootat în momentul
 creării procesului init. În această secțiune discutăm minimal despre init, cu
 accent pe rolul său în gestiunea proceselor sistemului. Detalii despre pornirea
 sistemului până la pornirea init, și detalii despre init și configurarea sa
-prezentăm în \labelindexref{Capitolul}{chapter:boot}.
+prezentăm în \labelindexref{Capitolul}{ch:boot}.
 
 Pe lângă rolul în pornirea proceselor inițiale, init are și rol în întreținerea
 sistemului prin adoptarea proceselor orfane. Un proces orfan este un proces al
@@ -1043,7 +1043,7 @@ sesiune. Mai multe despre această caracteristică sunt prezentate în \labelind
 \section{Procese și fișiere}
 \label{sec:process:files}
 
-Așa cum am precizat în \labelindexref{Capitolul}{chapter:fs},
+Așa cum am precizat în \labelindexref{Capitolul}{ch:fs},
 fișierele sunt componenta cea mai vizibilă din sistemul de operare. Fișierele
 sunt folosite pentru a stoca informații care sunt ulterior accesate, prelucrate
 sau transferate.
@@ -1519,7 +1519,7 @@ apoi sistemul de operare sau alte procese. Un shell poate fi grafic sau în lini
 shell în linia de comandă (numit interpretor de comenzi) va primi un șir de caractere de la
 intrare de la utilizator, va interpreta acel șir de caractere într-o comandă (sau mai multe
 comenzi înlănțuite) și va crea un proces sau mai multe procese. Vom detalia
-funcționarea shellului în \labelindexref{Capitolul}{chapter:cli}.
+funcționarea shellului în \labelindexref{Capitolul}{ch:cli}.
 
 \subsection{Terminale}
 \label{sec:process:terminal}
@@ -1610,7 +1610,7 @@ planificarea execuției unui proces la un moment dat). Din acest motiv, procesel
 daemon se mai numesc servicii; în Windows procesele care rulează neinteractiv,
 în background, detașate de terminal, se numesc servicii. De asemenea, în Linux,
 gestiunea serviciilor se face folosind comanda \cmd{service}, așa cum vom prezenta în
-\labelindexref{Capitolul}{chapter:boot}.
+\labelindexref{Capitolul}{ch:boot}.
 
 Interacțiunea cu aceste procese se face prin intermediul semnalelor, fișierelor
 de configurare și fișierelor de tip jurnal (\textit{log}). Exemple de procese daemon
@@ -1885,7 +1885,7 @@ familia \cmd{sysstat}. Acestea afișează periodic informații despre procentul 
 procesor ocupat, procentul de memorie ocupată, utilizarea de I/O. Monitorizarea
 (continuă) este utilă pentru a verifica trenduri în utilizarea resurselor.
 Monitorizarea este o formă de asigurare a securității unui sistem de calcul, așa
-cum vom prezenta în \labelindexref{Capitolul}{chapter:sec}.
+cum vom prezenta în \labelindexref{Capitolul}{ch:sec}.
 
 În cazul în care dorim o investigare amănunțită a funcționării unui
 program/proces putem urmări apelurile de bibliotecă sau de sistem realizate.
@@ -2012,7 +2012,7 @@ Funcționarea acestora diferă însă încă de la load-time în funcție de doi
 factori: argumentele programului și variabilele de mediu. Argumentele sunt
 transmise de utilizator/shell în momentul rulării unei comenzi. Iar variabilele
 de mediu sunt variabile proprii shellului care sunt moștenite de procesele
-create de acesta. Mai multe informații vom prezenta în \labelindexref{Capitolul}{chapter:cli}.
+create de acesta. Mai multe informații vom prezenta în \labelindexref{Capitolul}{ch:cli}.
 
 Astfel, pe lângă pașii descriși mai sus, loaderul plasează pe stiva procesului
 (accesibil funcției \texttt{main()}) argumentele programului și variabilele de mediu.

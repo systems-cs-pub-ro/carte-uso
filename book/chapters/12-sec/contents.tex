@@ -1,5 +1,5 @@
 \chapter{Securitatea sistemului}
-\label{chapter:sec}
+\label{ch:sec}
 
 Noțiunea de securitate a devenit din ce în ce mai importantă în ultimii ani. Dezvoltarea tehnologiei, împreună cu o creștere alertă a conectivității datorate Internetului, au condus la mărirea numărului de atacuri informatice. În prezența tehnologiei și a conectivității, date digitale și informații confidențiale pot fi disponibile unui atacator la distanță, nefiind nevoie de prezența sa fizică lângă dispozitivul atacat. Interesul crescut pentru securitate vine din partea companiilor, utilizatorilor și entităților guvernamentale pentru protejarea datelor digitale și a infrastructurilor informatice.
 
@@ -771,7 +771,7 @@ O măsură suplimentară este folosirea de mecanisme de jailing de tipul chroot,
 
 Mecanismele de tipul chroot sunt mecanisme de \textbf{izolare a procesului}. Cu ajutorul chroot izolăm accesul procesului la sistemul de fișiere. Pentru a extinde izolarea și în alte zone (comunicarea cu alte procese, accesul la rețea, accesul la hardware), putem folosi \textbf{sandboxing}. Sandboxing presupune crearea unor reguli de acces la resurse și atașarea acelor reguli la un proces; procesul va putea accesa doar resursele permise în acele reguli. Sandboxingul este implementat în sistemele de operare de pe dispozitivele mobile (Android, iOS) pentru a limita potențialele daune create de aplicații instalate de un utilizator pe dispozitivul mobil.
 
-O formă extinsă de izolare este \textbf{folosirea containerelor sau mașinilor virtuale}, descrise în \labelindexref{Capitolul}{chapter:vm}. Containerele oferă reguli complexe de izolare a unei aplicații sau a unui set de aplicații, extinzând astfel mecanismul de sandboxing. Mașinile virtuale adaugă, față de containere, partiționarea resurselor hardware și izolarea inclusiv a sistemului de operare al mașinii virtuale; în cazul unui sistem de operare compromis, doar mașina virtuală respectivă va fi afectată.
+O formă extinsă de izolare este \textbf{folosirea containerelor sau mașinilor virtuale}, descrise în \labelindexref{Capitolul}{ch:vm}. Containerele oferă reguli complexe de izolare a unei aplicații sau a unui set de aplicații, extinzând astfel mecanismul de sandboxing. Mașinile virtuale adaugă, față de containere, partiționarea resurselor hardware și izolarea inclusiv a sistemului de operare al mașinii virtuale; în cazul unui sistem de operare compromis, doar mașina virtuală respectivă va fi afectată.
 
 Prezența metodelor de izolare duce la diminuarea daunelor produse de un potențial atac. Dar izolarea unui proces limitează plaja de acțiuni a acestuia. Este posibil ca un proces să aibă nevoie, la un moment dat, de o acțiune privilegiată care nu poate fi realizată conform regulilor de izolare. Pentru această acțiuni este nevoie de escaladarea nivelului de privilegiu (\textit{privilege escalation}), adică obținerea (temporară) de privilegii care să permită acțiunea.
 

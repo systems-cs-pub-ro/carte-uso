@@ -1,5 +1,5 @@
 \chapter{Automatizarea sarcinilor}
-\label{chapter:auto}
+\label{ch:auto}
 
 În utilizarea și administrarea sistemului de operare sau a unei rețele sau infrastructuri informatice mai ample, avem adesea acțiuni pe care le repetăm.
 Fie că avem de compilat o aplicație, de pornit o mașină virtuală, de prelucrat datele dintr-o bază de date, de testat o aplicație desktop, mobilă sau web, de generat un raport de folosire a rețelei, este util să avem moduri prin care să
@@ -86,7 +86,7 @@ Atunci când automatizăm acțiuni în linia de comandă folosim scripturi în d
 Scriptul are avantajul de a agrega acele comenzi, iar utilizatorul doar rulează scriptul.
 
 În a doua categorie intră acțiuni precum crearea unui raport sau a unei diagrame din datele existente într-o bază de date, dintr-un fișier jurnal sau din date afișate de o aplicație.
-În general aceste scripturi conțin comenzi specifice pentru prelucrarea datelor (text), adică filtre de text, așa cum le-am denumit în \labelindexref{Capitolul}{chapter:cli}.
+În general aceste scripturi conțin comenzi specifice pentru prelucrarea datelor (text), adică filtre de text, așa cum le-am denumit în \labelindexref{Capitolul}{ch:cli}.
 
 Putem spune că ambele cazuri automatizează acțiuni și că acele acțiuni sunt repetitive.
 Cea mai importantă diferență între cele două este însă tipul de comenzi și utilitare pe care scripturile le folosesc: comenzi obișnuite, dar acum folosite agregat, în cazul automatizării de acțiuni repetitive, și filtre de text în cazul prelucrării datelor.
@@ -1352,7 +1352,7 @@ Pentru sfaturi practice despre dezvoltarea shell scripturilor (și folosirea Bas
 \subsection{Gestiunea serviciilor}
 \label{sec:auto:system:service}
 
-În \labelindexref{Capitolul}{chapter:boot} am precizat că procesul \texttt{init} (de obicei implementat folosind \texttt{systemd} în distribuțiile Linux moderne) este responsabil pentru pornirea primelor procese ale sistemului, majoritatea fiind serviciile.
+În \labelindexref{Capitolul}{ch:boot} am precizat că procesul \texttt{init} (de obicei implementat folosind \texttt{systemd} în distribuțiile Linux moderne) este responsabil pentru pornirea primelor procese ale sistemului, majoritatea fiind serviciile.
 Serviciile sunt procese de tip daemon, care rulează în background și care gestionează sistemul sau oferă funcționalități pentru alte aplicații.
 Serviciile sunt gestionate de \texttt{systemd} fie în modul compatibil System V (folosind intrările din directorul \file{/etc/init.d/}) fie în modul specific \texttt{systemd}, așa cum am precizat în \labelindexref{Secțiunea}{sec:boot:init-linux}.
 

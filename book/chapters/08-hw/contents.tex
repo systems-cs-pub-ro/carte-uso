@@ -1,5 +1,5 @@
 \chapter{Componente hardware}
-\label{chapter:hw}
+\label{ch:hw}
 
 Hardware-ul reprezintă partea fizică a unui sistem informatic constituită din
 diverse componente mecanice, electronice și optice. Cu ajutorul hardware-ului
@@ -293,7 +293,7 @@ integrare a componentelor:
   \item ARM are o arhitectură integrată denumită și SoC (\textit{System on Chip}):
           integratorii pun toate componentele (procesorul, memoria,
           plăcile de procesare) pe aceeași plăcuță, iar acestea nu pot fi
-          schimbate separat. Vom detalia aceste sisteme în \labelindexref{Capitolul}{chapter:embed}.
+          schimbate separat. Vom detalia aceste sisteme în \labelindexref{Capitolul}{ch:embed}.
 \end{itemize}
 
 \subsection{Forme constructive ale hardware-ului}
@@ -367,7 +367,7 @@ obicei acestea conțin din fabrică toate componentele dorite și este mai dific
 de personalizat (în general se poate adăuga mai multă memorie, se poate schimba
 unitatea de stocare, dar cam atât).
 
-\textit{Sistemele embedded} (detaliate în \labelindexref{Capitolul}{chapter:embed}), de obicei,
+\textit{Sistemele embedded} (detaliate în \labelindexref{Capitolul}{ch:embed}), de obicei,
 nu au o carcasă cu care vin de la producător. Acestea sunt niște plăcuțe care
 conțin toate perifericele integrate (SoC - \textit{System on Chip}).
 \labelindexref{Figura}{fig:hw:embed} prezintă un astfel de sistem embedded
@@ -560,7 +560,7 @@ Descoperirea dispozitivelor se face folosind următoarele procedee:
                   - în general pe x86 - la pornirea sistemului rulează un program
                   proprietar al plăcii de bază denumit BIOS \abbrev{BIOS}{Basic
                   Input/Output System} (Basic Input/Output System - vezi
-                  \labelindexref{Capitolul}{chapter:boot}) care testează toate
+                  \labelindexref{Capitolul}{ch:boot}) care testează toate
                   componentele conectate la placa de bază și certifică
                   compatibilitatea acestora (între ele și cu placa de bază). Cel
                   mai important lucru este dat de faptul că încarcă sistemul de
@@ -594,7 +594,7 @@ loaderul are rolul de a încărca sistemul de operare în memorie. În cazul x86
 cel mai folosit boot loader pe sistemele Linux este GRUB, iar pe sistemele
 Windows este unul proprietar. În cazul ARM avem un singur boot loader numit
 U-BOOT. Mai multe detalii despre boot loader, motivul pentru care acesta a fost
-introdus și ce opțiuni de configurare oferă, sunt prezentate în \labelindexref{Capitolul}{chapter:boot}.
+introdus și ce opțiuni de configurare oferă, sunt prezentate în \labelindexref{Capitolul}{ch:boot}.
 
 Un exemplu simplu, care apare proeminent în viața de zi cu zi este folosirea
 unei imprimante. În general pentru a putea folosi imprimanta, spunem că aceasta
@@ -966,11 +966,11 @@ Din anii 2007-2009 s-a introdus conceptul de virtualizare în hardware, acesta
 fiind suportat de către CPU. Viteza de rulare a sistemelor de operare
 virtualizate a crescut, având aproape aceleași performanțe ca un sistem de
 operare care rulează direct peste hardware. Pentru a beneficia de virtualizare,
-aceasta trebuie activată din BIOS (vezi \labelindexref{Capitolul}{chapter:boot}).
+aceasta trebuie activată din BIOS (vezi \labelindexref{Capitolul}{ch:boot}).
 De multe ori, fără activarea acestei opțiuni, soluțiile de virtualizare nu vor
 funcționa indicând un mesaj de eroare corespunzător.
 
-Vom discuta mai multe despre virtualizare în \labelindexref{Capitolul}{chapter:vm}.
+Vom discuta mai multe despre virtualizare în \labelindexref{Capitolul}{ch:vm}.
 
 \begin{figure}[!htbp]
   \centering
@@ -1006,7 +1006,7 @@ criptare). O dată criptat discul, cheile vor fi stocate în acesta și protejat
 pe baza unei parole. Dacă unitatea de stocare va fi mutată pe alt calculator,
 atacatorul nu va putea vedea datele. Doar modulul TPM ce stochează acele chei va
 putea vizualiza conținutul unității de stocare. Modulul TPM trebuie activat din
-BIOS, ca și virtualizarea (vezi \labelindexref{Capitolul}{chapter:boot}).
+BIOS, ca și virtualizarea (vezi \labelindexref{Capitolul}{ch:boot}).
 
 \section{Abstractizarea dispozitivelor în Linux}
 \label{sec:hw:abstraction}

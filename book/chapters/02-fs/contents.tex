@@ -1,5 +1,5 @@
 \chapter{Utilizarea sistemului de fișiere}
-\label{chapter:fs}
+\label{ch:fs}
 
 În fiecare zi lucrăm cu diverse fișiere, precum poze, texte sau melodii. De exemplu, le
 căutăm prin directoare, le deschidem, le modificăm, le închidem, le ștergem, le
@@ -81,7 +81,7 @@ Sistemul de fișiere ajută astfel utilizatorul să stocheze și să organizeze 
 
 Fișierele sunt folosite de sistemul de operare pentru a organiza atât datele provenite de la utilizator, cât și cele generate de sistem. În sistemul de fișiere sunt stocate și organizate poze, documente, notițe ale utilizatorului, dar și fișiere de configurare, fișiere de tip jurnal (\textit{log files}), baze de date necesare funcționării sistemului.
 
-Deoarece este important ca utilizatorii să poată accesa fișierele stocate, sistemul de operare pune la dispoziție o interfață pentru a putea lucra cu sistemul de fișiere. În funcție de preferințe, există două tipuri de interfețe, așa cum descris în \labelindexref{Capitolul}{chapter:ui}: interfața în linia de comandă (CLI) expusă de interpretorul de comenzi (shellul CLI) și interfața grafică (GUI) prezentată de exemplu de un browser de sistem de fișiere.
+Deoarece este important ca utilizatorii să poată accesa fișierele stocate, sistemul de operare pune la dispoziție o interfață pentru a putea lucra cu sistemul de fișiere. În funcție de preferințe, există două tipuri de interfețe, așa cum descris în \labelindexref{Capitolul}{ch:ui}: interfața în linia de comandă (CLI) expusă de interpretorul de comenzi (shellul CLI) și interfața grafică (GUI) prezentată de exemplu de un browser de sistem de fișiere.
 
 \subsection{Structura ierarhică a sistemului de fișiere}
 \label{sec:fs:filesystem}
@@ -402,7 +402,7 @@ Cele mai simple atribute ale unui fișier sunt numele, dimensiunea și tipul. Ti
 
 În rularea din \labelindexref{Listing}{lst:fs:long-listing} avem fișiere (primul caracter este \texttt{-}) și directoare (primul caracter este \texttt{d}).
 
-Alte atribute importante descriu permisiunile, adică operațiile pe care diferite tipuri de utilizatori le pot realiza asupra respectivului fișier. Informații detaliate privind \textbf{tipurile de utilizatori} și configurarea permisiunilor acestora se regăsesc în \labelindexref{Capitolul}{chapter:user}.
+Alte atribute importante descriu permisiunile, adică operațiile pe care diferite tipuri de utilizatori le pot realiza asupra respectivului fișier. Informații detaliate privind \textbf{tipurile de utilizatori} și configurarea permisiunilor acestora se regăsesc în \labelindexref{Capitolul}{ch:user}.
 
 \begin{itemize}
   \item \texttt{r} = permisiunea de a citi fișierul
@@ -416,7 +416,7 @@ Alte atribute importante descriu permisiunile, adică operațiile pe care diferi
 
 Sistemul de fișiere ne permite realizarea mai multor tipuri de operațiuni asupra fișierelor. Operațiile uzuale asupra fișierelor includ: afișarea și schimbarea directorului, afișarea conținutului fișierului, listarea fișierelor dintr-un director, crearea fișierelor sau a directoarelor, copierea, mutarea, redenumirea sau ștergerea acestora, precum și arhivarea/dezarhivarea și realizarea unei versiuni de backup.
 
-O problemă poate apărea dacă doi utilizatori doresc să citească sau să modifice același fișier simultan, deoarece nu este clar dacă acțiunile celor doi nu se vor încurca reciproc. De aceea, una dintre responsabilitățile sistemului de fișiere este să mențină separarea resurselor resurselor între utilizatori. Vom prezenta detaliat aceste aspecte în \labelindexref{Capitolul}{chapter:user}.
+O problemă poate apărea dacă doi utilizatori doresc să citească sau să modifice același fișier simultan, deoarece nu este clar dacă acțiunile celor doi nu se vor încurca reciproc. De aceea, una dintre responsabilitățile sistemului de fișiere este să mențină separarea resurselor resurselor între utilizatori. Vom prezenta detaliat aceste aspecte în \labelindexref{Capitolul}{ch:user}.
 
 \subsection{Afișarea și schimbarea directorului curent}
 \label{sec:fs:pwd-cd}
@@ -499,7 +499,7 @@ student@uso:~$ ls -l uso.git/README.md
 
 \begin{itemize}
   \item primul caracter ne spune tipul fișierului, în cazul de față fișier obișnuit
-  \item următoarele 3 grupuri de caractere (\texttt{rwx}) reprezintă permisiunile de acces, pe care le vom detalia în \labelindexref{Capitolul}{chapter:user}
+  \item următoarele 3 grupuri de caractere (\texttt{rwx}) reprezintă permisiunile de acces, pe care le vom detalia în \labelindexref{Capitolul}{ch:user}
   \item \texttt{student} este utilizatorul fișierului \item \texttt{student} (a doua apariție) este grupul de care aparține fișierul
   \item \texttt{146} este dimensiunea fișierului, în octeți
   \item \texttt{aug 20 20:57} este data ultimei modificări a fișierului
@@ -720,7 +720,7 @@ Comenzile de copiere și mutare primesc doi parametri:
 \end{itemize}
 
 \begin{note}[Observație]
-Primul parametru (sursa) al comenzilor din acest subcapitol poate fi reprezentată și prin globbing în sistemul de fișiere, despre care vom discuta detaliat în \labelindexref{Capitolul}{chapter:cli}.
+Primul parametru (sursa) al comenzilor din acest subcapitol poate fi reprezentată și prin globbing în sistemul de fișiere, despre care vom discuta detaliat în \labelindexref{Capitolul}{ch:cli}.
 \end{note}
 
 \subsubsection{Copierea}
@@ -923,7 +923,7 @@ student@uso:~$ which chmod
 /bin/chmod
 \end{screen}
 
-Utilizarea comenzii \cmd{type} duce la determinarea modului de interpretare a altei comenzi, de exemplu comandă integrată în shell (numită și internă sau \textit{builtin}), comandă externă sau alias. Mai multe despre comenzi în shell, interne și externe, vor fi prezentate în \labelindexref{Capitolul}{chapter:cli}.
+Utilizarea comenzii \cmd{type} duce la determinarea modului de interpretare a altei comenzi, de exemplu comandă integrată în shell (numită și internă sau \textit{builtin}), comandă externă sau alias. Mai multe despre comenzi în shell, interne și externe, vor fi prezentate în \labelindexref{Capitolul}{ch:cli}.
 
 Un exemplu de comandă integrată in shell este comanda \cmd{cd} în vreme ce o comanda externă, care are un executabil asociat, este comanda \cmd{cat}, așa cum putem vedea în \labelindexref{Listing}{lst:fs:type}.
 
@@ -1184,7 +1184,7 @@ Detalii despre internele redirectării și ce se întâmplă la nivelul unei apl
 
 În timp au apărut mai multe tipuri de sisteme de fișiere, majoritatea dezvoltându-se în mediul open-source. Utilizatorii au opțiunea de a alege sistemul de fișiere preferat cu care doresc să lucreze, mai ales în cazul în care folosesc partiții multiple pentru mai multe sisteme de operare.
 
-Pentru mai multe informații despre crearea, montarea și repararea unui sistem de fișiere, precum și lucrul cu partiții, citiți \labelindexref{Capitolul}{chapter:storage}. În \labelindexref{Tabelul}{table:fs:os-fs} de mai jos se găsesc unele dintre cele mai importante sisteme de fișiere utilizate în prezent, alături de sistemele de operare în care operează.
+Pentru mai multe informații despre crearea, montarea și repararea unui sistem de fișiere, precum și lucrul cu partiții, citiți \labelindexref{Capitolul}{ch:storage}. În \labelindexref{Tabelul}{table:fs:os-fs} de mai jos se găsesc unele dintre cele mai importante sisteme de fișiere utilizate în prezent, alături de sistemele de operare în care operează.
 
 \begin{table}[htb]
   \begin{center}
