@@ -25,7 +25,7 @@ container-build:
 .PHONY: $(PDF)
 $(PDF):
 	TEXINPUTS=$(STY_DIR)//: $(PDFLATEX) --shell-escape -interaction=scrollmode --src-specials $(BASENAME)
-	$(BIBTEX) $(BASENAME)
+	#$(BIBTEX) $(BASENAME)
 	$(MAKEINDEX) $(NLO) -s $(IST) -o $(NLS)
 	TEXINPUTS=$(STY_DIR)//: $(PDFLATEX) --shell-escape -interaction=scrollmode --src-specials $(BASENAME)
 	$(MAKEINDEX) $(IDX)
