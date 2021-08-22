@@ -15,7 +15,7 @@ Un sistem de calcul oferă resurse de calcul utilizatorului. Utilizatorul folose
 
 Majoritatea aplicațiilor au la rândul lor o interfață. De exemplu jocurile pe calculator au o interfață grafică unde utilizatorul/jucătorul își gestionează resurse, creează unități, navighează harta; un browser web are o interfață în care se introduce adresa unui site și are zonă de redare a componentelor paginii web (text, butoane, imagini); aplicația Matlab, pentru calcule matematice complexe, oferă un prompt în care dezvoltatorul introduce comenzi specifice. În general, numim shell aplicația care mediază interacțiunea utilizatorului cu sistemul de operare; într-un sens mai larg, putem spune și că aplicațiile de mai sus (jocul, browser-ul web, Matlab) oferă un shell, acea interfață.
 
-Interfețele cu utilizatorul, shellurile, vin de obicei în două moduri: \textbf{shelluri grafice} (\textit{Graphical User Interface} - GUI) și \textbf{shelluri text/linie de comandă} (\textit{Command Line Interface} - CLI). În general, interfața grafică este mai intuitivă, are avantajul ușurinței în utilizare și acomodare, un aspect mai plăcut, ușor personalizabil. Interfața în linia de comandă este ceva mai dificil de învățat și de folosit, mai anostă ca aspect, dar oferă acces mai complet și mai detaliat la serviciile sistemului. Interfața în linia de comandă permite automatizarea prin scripturi, lucru pe care îl vom discuta în \labelindexref{Capitolul}{ch:auto}.
+Interfețele cu utilizatorul, shellurile, vin de obicei în două moduri: \textbf{shelluri grafice} (\textit{Graphical User Interface} - GUI \abbrev{GUI}{Graphical User Interface}) și \textbf{shelluri text/linie de comandă} (\textit{Command Line Interface} - CLI \abbrev{CLI}{Command Line Interface}). În general, interfața grafică este mai intuitivă, are avantajul ușurinței în utilizare și acomodare, un aspect mai plăcut, ușor personalizabil. Interfața în linia de comandă este ceva mai dificil de învățat și de folosit, mai anostă ca aspect, dar oferă acces mai complet și mai detaliat la serviciile sistemului. Interfața în linia de comandă permite automatizarea prin scripturi, lucru pe care îl vom discuta în \labelindexref{Capitolul}{ch:auto}.
 
 În \labelindexref{Figura}{fig:ui:shell-gui-cli} avem două capturi de ecran: una cu un shell GUI și una cu shell CLI din distribuția Ubuntu 18.04. Shellul GUI oferă meniuri, butoane și ferestre, în vreme ce shellul CLI oferă un prompt unde se pot introduce comenzi. Shellul GUI este, în fapt, interfața grafică pe care o vedem într-o instalare obișnuită Ubuntu.
 
@@ -44,7 +44,7 @@ Interfețele cu utilizatorul, shellurile, vin de obicei în două moduri: \textb
 
 Interfața grafică este comună pe majoritatea sistemelor desktop și este universală pe dispozitive mobile, dispozitive de tip smartwatch sau smart TV.
 
-În mod clasic interfața grafică este compusă din elementele \textbf{WIMP}: \textit{Window}, \textit{Icon}, \textit{Menu}, \textit{Pointer}. Aceste elemente se regăsesc în interfețele cu ferestre comune sistemelor desktop. Pe sistemele mobile sau pe smart TV sau smartwatch, elementele sunt similare, cu diferența că, în mod uzual, nu sunt prezente mai multe ferestre simultan pe ecranul prezentat utilizatorului.
+În mod clasic interfața grafică este compusă din elementele \textbf{WIMP} \abbrev{WIMP}{Window, Icon, Menu, Pointer}: \textit{Window}, \textit{Icon}, \textit{Menu}, \textit{Pointer}. Aceste elemente se regăsesc în interfețele cu ferestre comune sistemelor desktop. Pe sistemele mobile sau pe smart TV sau smartwatch, elementele sunt similare, cu diferența că, în mod uzual, nu sunt prezente mai multe ferestre simultan pe ecranul prezentat utilizatorului.
 
 Pointerul din interfața grafică este controlat cu mouse-ul sau o telecomandă specifică sau este îndeplinit de deget pe ecranul tactil (\textit{touchscreen}) al dispozitivelor mobile. Cu ajutorul acestuia se activează (prin click) elemente din interfața grafică: iconuri, meniuri, butoane, sau se poate face \textit{drag and drop} sau alte acțiuni de aranjare a interfeței grafice.
 
@@ -77,7 +77,7 @@ Pentru accelerarea acțiunilor în interfața grafică, există în mod uzual sc
 \subsection{Interfețe native și interfețe web}
 \label{sec:ui:native-web}
 
-Interfețele web sunt tot forme de interfața grafică, folosind componente precum meniuri, iconuri, pointer, butoane. Spunem că o aplicație are interfață GUI dacă rulează de sine stătătoare pe un sistem de calcul; o numim \textbf{aplicație nativă}. Altfel, aplicațiile web oferă o interfață grafică web (numită și WebUI - \textit{web user interface}) în cadrul unui browser.
+Interfețele web sunt tot forme de interfața grafică, folosind componente precum meniuri, iconuri, pointer, butoane. Spunem că o aplicație are interfață GUI dacă rulează de sine stătătoare pe un sistem de calcul; o numim \textbf{aplicație nativă}. Altfel, aplicațiile web oferă o interfață grafică web (numită și WebUI - \textit{web user interface} \abbrev{WebUI}{Web User Interface}) în cadrul unui browser.
 
 De avut în vedere că în ultimii ani asistăm la o migrare spre interfețe grafice web. Sistemele de operare desktop moderne oferă mai puține aplicații preinstalate, majoritatea elementele grafice (WIMP) fiind migrate în aplicații web. Adesea, un utilizator va porni un browser și din browser își va executa majoritatea acțiunilor: urmărit filme, ascultat muzică, lucrat la documente folosind suita Google Docs sau Office 360, comunicat online (Facebook Messenger, WhatsApp), publicat conținut (Facebook, Pinterest), inclusiv dezvoltat de aplicații.
 
@@ -88,9 +88,9 @@ Motivul migrării aplicațiilor desktop în aplicații web este portabilitatea: 
 \subsection{Utilizabilitate și experiența utilizatorului}
 \label{sec:ui:ux}
 
-În proiectarea interfeței grafice este esențial ca aceasta să fie cât mai intuitivă și ușor de folosit. Noțiunea de experiența utilizatorului (\textit{user experience} - UX) este centrală pentru aplicațiile și dispozitivele cu interfața grafică. O interfața încărcată, cu elemente greu accesibile sau neintuitiv plasate va fi respinsă de utilizator care va alege altă aplicație sau altă platformă.
+În proiectarea interfeței grafice este esențial ca aceasta să fie cât mai intuitivă și ușor de folosit. Noțiunea de experiența utilizatorului (\textit{user experience} - UX \abbrev{UX}{User Experience}) este centrală pentru aplicațiile și dispozitivele cu interfața grafică. O interfața încărcată, cu elemente greu accesibile sau neintuitiv plasate va fi respinsă de utilizator care va alege altă aplicație sau altă platformă.
 
-Organizațiile care dezvoltă interfețe grafice stabilesc principii și recomandări de urmat. Aceste principii țin cont de natura umană și comportamentul utilizatorilor, în general din studii specifice, și se regăsesc în documente numite \textit{Human Interface Guidelines} (Ghiduri de interfațare om-calculator). Exemple de organizații și astfel de documente sunt:
+Organizațiile care dezvoltă interfețe grafice stabilesc principii și recomandări de urmat. Aceste principii țin cont de natura umană și comportamentul utilizatorilor, în general din studii specifice, și se regăsesc în documente numite \textit{Human Interface Guidelines} \abbrev{HIG}{Human Interface Guidelines} (Ghiduri de interfațare om-calculator). Exemple de organizații și astfel de documente sunt:
 
 \begin{itemize}
   \item GNOME: \textit{GNOME Human Interface Guidelines}\footnote{\url{https://developer.gnome.org/hig/stable/}}

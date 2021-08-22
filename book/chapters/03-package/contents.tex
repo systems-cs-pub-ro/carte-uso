@@ -85,7 +85,7 @@ Un prim tip de pachete software sunt arhive simple care conțin datele aplicați
 
 Atunci când nu se dorește folosirea unei aplicații specifice de gestiunea pachetelor, se pot livra pachetele în format de arhivă auto-extractivă (\textit{self extracting archive}) sau pachet executabil auto-extractiv (\textit{self-extracting executable}). Acest pachet este rulat și apoi are loc instalarea.
 
-Aplicațiile de pe sistemele Windows nu sunt livrate în general, cu un format de instalare. De multe ori aplicațiile au un fișier numit \file{setup.exe} care este folosit pentru instalarea și configurarea aplicației. Alte aplicații pot fi instalate dintr-un pachet software de tip MSI (\textit{Microsoft Install}), folosite de aplicația de instalare numită Windows Installer.
+Aplicațiile de pe sistemele Windows nu sunt livrate în general, cu un format de instalare. De multe ori aplicațiile au un fișier numit \file{setup.exe} care este folosit pentru instalarea și configurarea aplicației. Alte aplicații pot fi instalate dintr-un pachet software de tip MSI \abbrev{MSI}{Microsoft Install} (\textit{Microsoft Install}), folosite de aplicația de instalare numită Windows Installer.
 
 Pe macOS aplicațiile sunt livrate în pachete de tip imagine de disk, fișiere cu extensia \texttt{.dmg} sau fișiere de tip \texttt{.pkg}. Fișierele \texttt{.pkg} au avantajul că pot să conțină scripturi instalare și de configurare; fișiere \texttt{.dmg} sunt imagini de disc care conțin aplicația care se instalează de obicei prin copierea ei, fără o operație de instalare.
 
@@ -102,7 +102,7 @@ Pentru a putea fi instalat pe sistemele utilizatorilor finali, un pachet trebuie
 
 Un \textbf{depozit de pachete} (\textit{package repository}) este locul sunt stocate pachetele software. În general un sistem de operare sau o distribuție de sistem de operare are un repository sau mai multe cu pachetele corespunzătoare. De exemplu, pentru Ubuntu există repository-uri pentru fiecare versiune: un repository pentru Ubuntu 18.04 Bionic Beaver și un repository pentru Ubuntu 18.10 Cosmic Cuttlefish. Pe sistemele de operare mobile putem considera Google Play sau Apple AppStore repository-urile de pachete. Depozitele conțin pachetele în formatul specific distribuției sau sistemului de operare; de exemplu pachete \texttt{.deb} pentru distribuțiile Debian/Ubuntu, pachete \texttt{.rpm} pentru distribuțiile RedHat, sau pachete \texttt{.ipa} în Apple AppStore.
 
-Un repository este identificat printr-un URL (\textit{Uniform Resource Locator}). De exemplu URL-ul pentru un repository Ubuntu este \url{http://archive.ubuntu.com/ubuntu/}. Acest URL este folosit de managerul de pachete pentru a afla lista de pachete și pentru a descărca pachetele.
+Un repository este identificat printr-un URL \abbrev{URL}{Uniform Resource Locator} (\textit{Uniform Resource Locator}). De exemplu URL-ul pentru un repository Ubuntu este \url{http://archive.ubuntu.com/ubuntu/}. Acest URL este folosit de managerul de pachete pentru a afla lista de pachete și pentru a descărca pachetele.
 
 Managerul de pachete este instalat într-un sistem de operare/distribuție de la bun început. Pentru a fi folosit se configurează URL-ul repository-ului / repository-urilor folosite. Apoi utilizatorul folosește managerul pentru a instala sau dezinstala pachete. Managerul ține cont de URL-ul repository-ului și de dependențele pachetelor pentru instalare și dezinstalarea comandată de utilizator la fel ca în \labelindexref{Figura}{fig:package:manager}.
 
@@ -230,7 +230,7 @@ Pentru interacțiunea cu sistemul de gestiune a pachetelor, există aplicații d
 
 Sistemele derivate din Debian folosesc pachete în format DEB, cu extensia \texttt{.deb}. Aceste pachete sunt arhive \texttt{.ar} care conțin datele și metadatele.
 
-Sistemul de gestiune a pachetelor este APT (\textit{Advanced Package Tool}). Configurația acestuia se găsește în directorul \file{/etc/apt/}. În fișierul \file{/etc/apt/sources.list} sunt configurate URL-uri de depozite de pachete.
+Sistemul de gestiune a pachetelor este APT \abbrev{APT}{Advanced Package Tool} (\textit{Advanced Package Tool}). Configurația acestuia se găsește în directorul \file{/etc/apt/}. În fișierul \file{/etc/apt/sources.list} sunt configurate URL-uri de depozite de pachete.
 
 \begin{screen}[caption={Configurație APT (Debian)},label={lst:package:deb-config}]
 student@uso:~$ cat /etc/apt/sources.list
@@ -298,9 +298,9 @@ student@uso:~$ dpkg -L inkscape
 \subsection{Gestiunea pachetelor format RPM}
 \label{sec:package:rpm}
 
-Similar distribuțiilor derivate din Debian, distribuțiile derivate din RedHat folosesc pachete RPM (RPM Package Manager) cu extensia \texttt{.rpm}. Aceste pachete sunt arhive \texttt{cpio} care conțin datele și metadatele.
+Similar distribuțiilor derivate din Debian, distribuțiile derivate din RedHat folosesc pachete RPM \abbrev{RPM}{RPM Package Manager} (\textit{RPM Package Manager}) cu extensia \texttt{.rpm}. Aceste pachete sunt arhive \texttt{cpio} care conțin datele și metadatele.
 
-Sistemul de gestiune a pachetelor pe Fedora este DNF (\textit{Dignified yum}), care este o îmbunătățire a vechiului sistem care numea YUM (\textit{Yellowdog Updater Modified}) care la rândul său era o îmbunătățire de la YUP (\textit{Yellowdog Updater}); Yellowdog a fost o distribuție Linux care a creat sistemul YUP. Versiunile mai vechi (și mai stabile) de Red Hat Enterprise Linux (RHEL) sau CentOS (derivat din RHEL) folosesc în continuare YUM; probabil la un moment dat vor tranzita spre DNF. Configurația DNF se găsește în directorul \file{/etc/dnf/}. În directorul \file{/etc/yum/yum.repos.d/} sunt configurate URL-uri repository-uri depozite de pachete. \labelindexref{Listing}{lst:package:rpm-config} prezintă o configurație uzuală.
+Sistemul de gestiune a pachetelor pe Fedora este DNF \abbrev{DNF}{Dignified YUM} (\textit{Dignified YUM}), care este o îmbunătățire a vechiului sistem care numea YUM \abbrev{YUM}{Yellowdog UPdater Modified} (\textit{Yellowdog Updater Modified}) care la rândul său era o îmbunătățire de la YUP \abbrev{YUP}{Yellowdog Updater} (\textit{Yellowdog Updater}); Yellowdog a fost o distribuție Linux care a creat sistemul YUP. Versiunile mai vechi (și mai stabile) de Red Hat Enterprise Linux (RHEL) sau CentOS (derivat din RHEL) folosesc în continuare YUM; probabil la un moment dat vor tranzita spre DNF. Configurația DNF se găsește în directorul \file{/etc/dnf/}. În directorul \file{/etc/yum/yum.repos.d/} sunt configurate URL-uri repository-uri depozite de pachete. \labelindexref{Listing}{lst:package:rpm-config} prezintă o configurație uzuală.
 
 \begin{screen}[caption={Configurație de repository YUM/DNF (RedHat)},label={lst:package:rpm-config}]
 [student@uso:~]$ cat /etc/yum.repos.d/fedora.repo

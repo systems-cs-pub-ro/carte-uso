@@ -340,7 +340,7 @@ student@uso:~$ file /usr/share/pixmaps/htop.png
 
 În \labelindexref{Listing}{lst:fs:file} am analizat cinci fișiere folosind comanda \cmd{file} și au rezultat următoarele tipuri:
 \begin{itemize}
-  \item fișierul \file{/bin/ls} este un executabil de tip ELF (\textit{Executable and Linking Format})
+  \item fișierul \file{/bin/ls} este un executabil de tip ELF (\textit{Executable and Linking Format}) \abbrev{ELF}{Executable and Linking Format}
   \item fișierul \file{/boot/vmlinuz-4.15.0-29-generic} este o imagine de nucleu (\textit{kernel}) de sistem de operare
   \item fișierul \file{/etc/init.ssh} este un script shell
   \item fișierul \file{/usr/share/man/man1/cp.1.gz} este un fișier comprimat de format GZIP
@@ -396,7 +396,7 @@ Cele mai simple atribute ale unui fișier sunt numele, dimensiunea și tipul. Ti
   \item \texttt{d} = directory
   \item \texttt{l} = symbolic link
   \item \texttt{n} = network file
-  \item \texttt{p} = fIFO
+  \item \texttt{p} = FIFO
   \item \texttt{s} = socket
 \end{itemize}
 
@@ -1242,7 +1242,7 @@ Sistemele de fișiere virtuale (precum \texttt{procfs}) sunt sisteme care nu au 
 
 Cărțile din bibliotecă se îngălbenesc, caietele se șifonează și scrisul își pierde conturul. Fișierele digitale se pot și ele degrada, datorită unor erori.  Sistemele de fișiere au un rol vital în asigurarea integrității datelor (\textit{data integrity}), adică în prevenirea, detectarea și remedierea coruperii datelor. Coruperea datelor (\textit{data corruption}) se referă la degradarea neintenționată a datelor datorită erorilor umane, erorilor de transmisie, defecțiunilor mediului fizic de stocare sau a diferitelor deficiențe în procesare. Securizarea datelor (\textit{data security}) se referă la prevenirea atacurilor intenționate asupra datelor și de asemenea necesită sprijinul sistemului de fișiere.
 
-Un exemplu de metodă prin care sistemele de fișiere pot asigura integritatea datelor se referă la calcularea unei sume de control (\textit{checksum}).  Pentru un anumit set de date, o sumă de control este un număr care descrie pe scurt acel set, diferențiindu-l suficient de mult de un set foarte similar dar un pic diferit. De exemplu, o sumă de control poate consta efectiv în însumarea valorilor numerice asociate cu caracterele respective într-un cod, precum valorile lor numerice din codul ASCII. Dacă se modifică o literă din greșeală, suma va diferi și eroarea va fi detectată.
+Un exemplu de metodă prin care sistemele de fișiere pot asigura integritatea datelor se referă la calcularea unei sume de control (\textit{checksum}).  Pentru un anumit set de date, o sumă de control este un număr care descrie pe scurt acel set, diferențiindu-l suficient de mult de un set foarte similar dar un pic diferit. De exemplu, o sumă de control poate consta efectiv în însumarea valorilor numerice asociate cu caracterele respective într-un cod, precum valorile lor numerice din codul ASCII \abbrev{ASCII}{American Standard Code for Information Interchange}. Dacă se modifică o literă din greșeală, suma va diferi și eroarea va fi detectată.
 
 Sistemul de fișiere trebuie să fie capabil să păstreze integritatea datelor și în situația unui eșec (\textit{failure}). În cele mai multe cazuri această funcționalitate se implementează prin \textbf{jurnalizare}, care permite și aducerea sistemului la o stare anterioară eșecului. Prin această activitate se creează un jurnal unde sunt păstrate toate modificările efectuate asupra unui sistem de fișiere, fiecare dintre aceste modificări fiind mai întâi scrisă în jurnal și apoi realizată (modificările putând apărea în mai multe locuri din sistemul de fișiere).
 

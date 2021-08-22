@@ -303,7 +303,7 @@ hibride. Totuși, dacă vom ajunge să lucrăm la aplicații complexe dezvoltate
 ani în urmă, există posibilitatea să ajungem să scriem cod sursă în limbaje
 precum PHP sau Perl.
 
-PHP este un limbaj folosit preponderent pentru dezvoltarea de servere web. Mai
+PHP \abbrev{PHP}{PHP Hypertext Preprocessor} (\textit{PHP Hypertext Preprocessor}) este un limbaj folosit preponderent pentru dezvoltarea de servere web. Mai
 nou este înlocuit de Node.js, dar încă mai putem găsi aplicații web dezvoltate
 în PHP.
 
@@ -336,9 +336,9 @@ aplicației.
 
 Odată generat bytecode-ul, acesta poate fi transformat în cod mașină în două
 moduri diferite. Fie se ia tot bytecode-ul și se transformă în cod mașină, după
-care codul mașină este executat (compilare \textit{ahead-of-time}, sau JIT\abbrev{JIT}{just-in-time}), fie se iau bucăți din
+care codul mașină este executat (compilare \textit{ahead-of-time}), fie se iau bucăți din
 bytecode și se transformă în cod mașină în timpul rulării (compilare
-\textit{just-in-time}).
+JIT\abbrev{JIT}{just-in-time} - \textit{just-in-time}).
 
 Compilarea \textit{ahead-of-time} funcționează ca procesul normal de compilare, doar că
 se transformă bytecode în cod mașină. Odată generat codul mașină, acesta este
@@ -382,8 +382,8 @@ aplicații scrise care se puteau include într-o pagină.
 
 Fiind destinat dezvoltării de aplicații pentru companii, platforma Java este are
 două componente, compilatorul care generează bytecode-ul (Java Development Kit -
-JDK \abbrev{JDK}{Java Development Kit}) și mașina care rulează bytecode-ul (Java
-Runtime Environment - JRE \abbrev{JRE}{Java Runtime Environment}). Astfel pentru
+JDK\abbrev{JDK}{Java Development Kit}) și mașina care rulează bytecode-ul (Java
+Runtime Environment - JRE\abbrev{JRE}{Java Runtime Environment}). Astfel pentru
 distribuția aplicației nu este necesară distribuția codului sursă.
 
 \subsubsection{C\#}
@@ -546,8 +546,7 @@ adresa https://code.visualstudio.com/Download/.
 
 Am vorbit despre editoare și importanța lor în dezvoltarea programelor. Pe lângă
 editoare avansate, avem posibilitatea de a folosi medii integrate de dezvoltare.
-La o primă vedere, acestea sunt similare cu editoarele de text. IDE
-\abbrev{IDE}{Integrated Development Environment}-urile au, în schimb, anumite
+La o primă vedere, acestea sunt similare cu editoarele de text. IDE-urile \abbrev{IDE}{Integrated Development Environment} (\textit{Integrated Development Environment}) au, în schimb, anumite
 funcționalități avansate, multe din ele fiind adaptate unui singur limbaj de
 programare, sau unui număr redus de limbaje. În primul rând, orice IDE are
 integrat un compilator sau interpretor pentru limbajul sau limbajele de
@@ -649,7 +648,7 @@ folosirea bibliotecilor și a framework-urilor.
 
 Bibliotecile sunt colecții de resurse pe care le integrăm în aplicațiile noastre
 pentru a ne ușura procesul de dezvoltare. De exemplu, dacă dorim să dezvoltăm o
-aplicație Python care face cereri HTTP \abbrev{HTTP}{Hypertext Transfer
+aplicație Python care face cereri HTTP\abbrev{HTTP}{Hypertext Transfer
 Protocol}, vom folosi biblioteca \textit{requests} care expune funcția
 \textit{get()} pentru a face o cerere. Fără a folosi biblioteca, ar trebui să
 scriem noi tot codul care se conectează la un server, generează pachetul pentru
@@ -905,12 +904,11 @@ Pentru sisteme care rulează Windows, se recomandă instalarea OracleJDK. Deși 
 găsesc versiuni OpenJDK compatibile cu Windows, acestea nu sunt întreținute și
 prezintă riscuri de securitate.
 
-Pentru a instala OracleJDK pe un sistem Windows, accesați site-ul Oracle și
-urmați instrucțiunile
-(https://www.oracle.com/technetwork/java/javase/overview/install-windows-142126.html).
+Pentru a instala OracleJDK pe un sistem Windows, accesați site-ul Oracle\footnote{\url{https://www.oracle.com/technetwork/java/javase/overview/install-windows-142126.html}} și
+urmați instrucțiunile.
 
 O particularitate a Java este aceea că bibliotecile sunt împachetate ca niște
-arhive (jar - \textit{Java Archive}) care sunt incluse în aplicațiile pe care le
+arhive (jar \abbrev{JAR}{Java Archive} - \textit{Java Archive}) care sunt incluse în aplicațiile pe care le
 dezvoltăm. Fișierul \texttt{.jar} conține resurse diverse, de la definiții de clase la
 imagini sau alte fișiere multimedia. Fiecare astfel de arhivă poate conține un
 fișier manifest ce oferă informații despre pachet și despre utilizarea sa.
@@ -1083,7 +1081,7 @@ variabilele sau adresele de memorie la care se găsesc, ca în \labelindexref{Fi
   \label{fig:appdev:ide-debug}
 \end{figure}
 
-Unul dintre cele mai cunoscute utilitare pentru depanare este GDB. GDB oferă suport pentru
+Unul dintre cele mai cunoscute utilitare pentru depanare este GDB \abbrev{GDB}{GNU Debbuger} (\textit{GNU Debugger}). GDB oferă suport pentru
 toate operațiile menționate mai sus și este compatibil cu toate sistemele de
 operare existente.
 
@@ -1178,7 +1176,7 @@ cele mai cunoscute și folosite licențe software.
 \subsection{GNU GPL}
 \label{sec:appdev-licensing-gpl}
 
-GNU \abbrev{GNU}{GNU's Not Unix} GPL \abbrev{GNU GPL}{GNU General Public
+GNU GPL \abbrev{GNU GPL}{GNU General Public
 License} este prescurtarea de la \textit{GNU General Public License} și de cele mai multe
 ori ne referim la această licență drept GPL.
 
@@ -1202,7 +1200,7 @@ aplicație, biblioteca modificată trebuie publicată sub licență LGPL.
 \subsection{MIT}
 \label{sec:appdev-licensing-mit}
 
-MIT \abbrev{MIT}{Massachusetts Institute of Technology} este o licență mai
+MIT \abbrev{MIT}{Massachusetts Institute of Technology} (\textit{Massachusetts Institute of Technology}) este o licență mai
 permisivă față de GPL. Orice bibliotecă care are licența MIT poate fi integrată
 în orice program și acesta poate fi distribuit, fără necesitatea de a face
 programul public. Singura condiție este ca licența MIT să apară în programul

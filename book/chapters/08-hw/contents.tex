@@ -67,7 +67,7 @@ definirea unor clasificări (tipuri) ale hardware-ului din mai multe perspective
 Vom porni de la o descriere logică a hardware-ului numită și \texttt{Arhitectura
 von Neumann}. Numele arhitecturii provine de la matematicianul și fizicianul
 John von Neumann, care a scris primul draft al raportului EDVAC
-\abbrev{EDVAC}{Electronic Discrete Variable Automatic Computer} în 1945 ce
+\abbrev{EDVAC}{Electronic Discrete Variable Automatic Computer} (\textit{Electronic Discrete Variable Automatic Computer}) în 1945 ce
 descria arhitectura unui sistem de calcul.
 
 \subsection{Arhitectura von Neumann}
@@ -79,7 +79,7 @@ enumeră următoarele tipuri de componente:
 \begin{itemize}
   \item unitate de procesare / procesor (Central Processing Unit - CPU)
                     \abbrev{CPU}{Central Processing Unit}
-  \item unitate de memorie (Memory Unit) \abbrev{MU}{Memorty Unit}
+  \item unitate de memorie (Memory Unit) \abbrev{MU}{Memory Unit}
   \item dispozitive de intrare/ieșire (Input-Output - I/O)
 \end{itemize}
 
@@ -144,7 +144,7 @@ dispozitivele mobile (smartphone-uri, tablete).
 Pornind de la modelul von Neumann prezentat anterior, putem realiza o
 clasificare a unității de procesare în funcție de tipul instrucțiunilor pe care
 îl execută (se mai numește și set de instrucțiuni sau arhitectura sistemului,
-prescurtat deseori ISA \abbrev{ISA}{Instruction Set Architecture}, \textit{Instruction
+prescurtat deseori ISA\abbrev{ISA}{Instruction Set Architecture} (\textit{Instruction
 Set Architecture}).
 
 Astfel, în zilele noastre, sistemele de calcul respectă una din următoarele 2
@@ -419,11 +419,10 @@ Componentele sunt prezentate vizual în \labelindexref{Figura}{fig:hw:components
   \item memorie (\labelindexref{Figura}{fig:hw:ram}) - unitatea de memorie care este de tip RAM
     \abbrev{RAM}{Random Access Memory} (\textit{Random Access Memory}) și
           este reprezentată de o plăcuță îngustă care poate avea diferite
-          dimensiuni exprimate în megaocteți (MB \abbrev{MB}{megabytes} -
-          megabytes) sau gigaocteți (GB \abbrev{GB}{gigabytes} -
+          dimensiuni exprimate în megaocteți (MB -
+          megabytes) sau gigaocteți (GB -
           gigabytes). O altă caracteristică a memorie se referă la
-          frecvența acesteia în general exprimată în megaherți (MHz)
-          \abbrev{MHz}{megaherți}. Frecvența determină viteza cu care
+          frecvența acesteia în general exprimată în megaherți (MHz). Frecvența determină viteza cu care
           se realizează comunicația între memorie și magistrală, respectiv
           procesor.
 
@@ -498,7 +497,7 @@ Componentele sunt prezentate vizual în \labelindexref{Figura}{fig:hw:components
   \item boxe conectate la placa de extensie (numită și placă de sunet)
           pentru a reda sunetul emis de unitatea de calcul
   \item monitor - conectat la placa de extensie (numită și placă grafică
-          sau GPU \abbrev{GPU}{Graphics Processing Unit} în acest caz)
+    sau GPU \abbrev{GPU}{Graphics Processing Unit} în acest caz - \textit{Graphics Processing Unit})
           pentru a reda elementele grafice.
   \item sistem de operare - software-ul ce este responsabil cu
           inițializarea și controlul componentelor hardware
@@ -541,7 +540,7 @@ calcul, am enumerat clasificări în funcție de mai multe criterii (arhitectura
 unității de procesare, forma constructivă a sistemului de calcul), am iterat
 principalele componente ale unui sistem de tip desktop. Toate acestea trebuie
 controlate de o componentă software specializată: \textbf{sistemul de operare}.
-Sistemul de operare (\textit{operating system} - OS) este primul program
+Sistemul de operare (\textit{operating system} - OS\abbrev{OS}{Operating System}) este primul program
 (software) ce rulează la pornirea unui sistem de calcul. Rolurile sistemului de
 operare sunt:
 
@@ -767,7 +766,7 @@ Printre porturile interne putem enumera:
 comparație cu unul PCIe x1 sau x16.
 
 Portul extern cel mai des folosit pentru interconectarea dispozitivelor este
-USB-ul. În \labelindexref{Figura}{fig:hw:usb} se poate observa forma unui port USB. Acesta vine în mai
+USB (\textit{Universal Serial Bus}). În \labelindexref{Figura}{fig:hw:usb} se poate observa forma unui port USB. Acesta vine în mai
 multe forme ce oferă performanțe diferite (viteză de comunicație):
 
 \begin{itemize}
@@ -843,7 +842,7 @@ existând adaptoare la nevoie.
 
 Atunci când veți analiza configurația unei plăci grafice, veți observa că
 dispune de un număr foarte mare de nuclee (de ordinul zecilor/sutelor). Din
-acest motiv, unitățile de prelucrare de pe plăcile grafice (GPU, \textit{Graphics Processing Unit}) sunt folosite și în prelucrarea de date
+acest motiv, unitățile de prelucrare de pe plăcile grafice (GPU) sunt folosite și în prelucrarea de date
 paralele folosind framework-uri specifice (ex. OpenCL). De reținut că nucleele
 prezente în placa grafică (GPU) nu se pot compara cu cele de pe unitatea de
 procesare (CPU). Nucleele de pe GPU sunt optimizate să facă operații simple
@@ -908,8 +907,8 @@ La achiziția unei plăci de rețea, trebuie ținut cont de următoarele caracte
           de funcționare va fi cea mai mică dintre cele două
   \item interfața disponibilă: în general cupru RJ-45 (protocol ethernet).
           Există și plăci cu suport de fibră optică: în descriere veți
-          observa cuvântul cheie SFP \abbrev{SFP}{Small form-factor
-          pluggable transceiver} (SFP+). Atenție pentru a utiliza suportul
+          observa cuvântul cheie SFP \abbrev{SFP}{Small Form-factor
+          Pluggable Transceiver} (SFP+) (\textit{Small Form-factor Pluggable Transceiver}). Atenție pentru a utiliza suportul
           de fibră optică aveți nevoie de module speciale SFP ce au un
           cost mai ridicat decât cablul de cupru și de asemenea
           echipamentul în care vă conectați trebuie să suporte modul de
@@ -984,8 +983,7 @@ Vom discuta mai multe despre virtualizare în \labelindexref{Capitolul}{ch:vm}.
 \subsection{Trusted Platform Module}
 \label{sec:hw:features:tpm}
 
-Securitatea este un alt subiect dezbătut în piața IT\&C
-\abbrev{IT\&C}{Information Technology and Communications}. Asigurarea
+Securitatea este un alt subiect dezbătut în piața IT\&C. Asigurarea
 securității sistemelor a devenit o prioritate pentru fiecare companie din lume
 (indiferent de domeniul de activitate). Instalarea de firewall-uri și antiviruși
 este utilă pentru protecția atacurilor din exterior (din Internet), dar nu

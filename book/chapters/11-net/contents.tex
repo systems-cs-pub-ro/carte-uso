@@ -220,7 +220,7 @@ Vom discuta pe scurt protocolul IP în continuare, iar detaliat, împreună cu s
 \subsection{Internet Protocol (IP)}
 \label{sec:net:internet:ip}
 
-IP (\textit{Internet Protocol}) este cel mai important protocol din Internet. IP oferă \textbf{schema de adresare IP}, pe baza căreia se dirijează datele în Internet, și schema de compartimentare a datelor în unități numite \textbf{pachete IP} (\textit{IP packets}).
+IP \abbrev{IP}{Internet Protocol} (\textit{Internet Protocol}) este cel mai important protocol din Internet. IP oferă \textbf{schema de adresare IP}, pe baza căreia se dirijează datele în Internet, și schema de compartimentare a datelor în unități numite \textbf{pachete IP} (\textit{IP packets}).
 Stația sursă compartimentează datele în pachete, le transferă, iar stația destinație le recepționează și le reasamblează.
 Întrucât pachetele sunt modul universal de transferare a datelor în Internet, de acum încolo vom folosi adesea denumirea de pachete în loc de date.
 
@@ -238,7 +238,7 @@ Un ruter preia un pachet, verifică adresa sursă și adresa destinație și ia 
   \label{fig:net:routing}
 \end{figure}
 
-Fiecare rețea cu stații (numită și \textbf{rețea locală}, sau \textit{Local Area Network} - LAN) are un ruter care intermediază accesul la Internet.
+Fiecare rețea cu stații (numită și \textbf{rețea locală}, sau \textit{Local Area Network} - LAN\abbrev{LAN}{Local Area Network}) are un ruter care intermediază accesul la Internet.
 Acest ruter face primul pas în dirijarea pachetelor către destinație.
 Acest ruter este numit \textbf{gateway} (sau \textit{default gateway}).
 De exemplu, în \labelindexref{Figura}{fig:net:routing}, ruterul \texttt{R} este gateway-ul rețelei locale din care face parte stația \texttt{A}, ruterul \texttt{S} este gateway-ul rețelei locale din care face parte stația \texttt{B}, iar ruterul \texttt{T} este gateway-ul rețelei locale din care face parte stația \texttt{C}.
@@ -256,7 +256,7 @@ Adresele IP sunt în general de forma \texttt{141.85.227.118} sau \texttt{216.58
 Aceste adrese în format numeric sunt greu de reținut, similar numerelor de telefon.
 La fel, similar numerelor de telefon, este nevoie de o agendă prin care să avem intrări cu nume ușor de reținut și numere corespunzătoare.
 
-Această ,,agendă'' este implementată în Internet de \textbf{serviciul DNS} (\textit{Domain Name System}).
+Această ,,agendă'' este implementată în Internet de \textbf{serviciul DNS} \abbrev{DNS}{Domain Name System} (\textit{Domain Name System}).
 Cu ajutorul DNS putem folosi nume de stații (\textit{DNS hostnames}) sau nume de domenii (\textit{DNS domain names}), mai ușor de reținut.
 De exemplu, în loc de adresa \texttt{141.85.227.118} vom folosi numele \texttt{swarm.cs.pub.ro}, în loc de adresa \texttt{69.171.250.35} vom folosi \texttt{facebook.com}, iar în loc de adresa 161.148.164.31 vom folosi www.gov.br.
 
@@ -346,11 +346,11 @@ Informația digitală este transmisă sub formă de semnal în funcție de mediu
 \end{table}
 
 O stație comunică printr-un mediu de transmisie cu un echipament de rețea: prin aer cu un access point, prin cablu sau fibră optică cu un switch sau un ruter.
-Pentru acesta, o stație / un dispozitiv are nevoie de o \textbf{placă de rețea} (\textit{network interface card}, NIC).
+Pentru acesta, o stație / un dispozitiv are nevoie de o \textbf{placă de rețea} (\textit{network interface card}, NIC\abbrev{NIC}{Network Interface Card}).
 O placă de rețea este o componentă hardware parte a unei stații, componentă care preia datele de la aplicații ce rulează pe stație și le convertește în semnal specific mediului de transmisie.
 Astfel, o placă de rețea Ethernet va transmite datele în semnal electric pe un cablu de rețea, iar o placă wireless va transmite datele în semnal electromagnetic (unde) prin aer către un ruter wireless sau access point.
 
-În general, stațiile au placă de rețea de tip Ethernet/LAN (\textit{Local Area Network}) sau placă de rețea de tip WiFi/WLAN (\textit{Wireless Area Network}).
+În general, stațiile au placă de rețea de tip Ethernet/LAN (\textit{Local Area Network}) sau placă de rețea de tip WiFi/WLAN \abbrev{WLAN}{Wireless Area Network} (\textit{Wireless Area Network}).
 Dispozitivele mobile au placă de rețea WiFi integrată.
 \labelindexref{Figura}{fig:net:device-connect} prezintă o comunicare între un telefon mobil și un sistem desktop, în care telefonul mobil folosește o placă de rețea WiFi, iar sistemul desktop folosește o placă de rețea Ethernet.
 
@@ -384,13 +384,13 @@ Fiecare nivel din această stivă are un rol în construirea conexiunii între s
 Fiecare nivel din stivă are o formă de adresare:
 
 \begin{itemize}
-  \item Adresa de la nivelul \textbf{Legătură de date} este adresa MAC (\textit{Media Access Control}).
+  \item Adresa de la nivelul \textbf{Legătură de date} este adresa MAC \abbrev{MAC}{Media Access Control} (\textit{Media Access Control}).
     Este o adresă care identifică unic o placă de rețea, o adresă pe 48 de biți (6 octeți), de obicei definită de fabricantul plăcii de rețea.
   \item Adresa de la nivelul \textbf{Internet} este adresa IP (Internet Protocol), de la numele protocolului. Este o adresă ce poate fi configurată pe stație, identificând stația în Internet și fiind folosită în rutarea pachetelor.
   \item Adresa de la nivelul \textbf{Transport} este portul. Un port este un număr care identifică un proces / o aplicație de rețea pe acel sistem (este diferit de PID-ul procesului).
     Dacă un sistem are mai multe procese de rețea, sistemul va fi identificat de adresa IP, iar fiecare proces de rețea va fi identificat de port.
   \item La nivelul \textbf{Aplicație} adresele depind de protocol.
-    Uzual, aceste adrese iau forma unui URI (\textit{Uniform Resource Identifier}) care identifică o resursă în sistemul fizic, accesibilă prin protocolul respectiv.
+    Uzual, aceste adrese iau forma unui URI \abbrev{URI}{Uniform Resource Identifier} (\textit{Uniform Resource Identifier}) care identifică o resursă în sistemul fizic, accesibilă prin protocolul respectiv.
     Un exemplu de URI este o adresă web de forma \url{https://github.com/longld/peda}.
 \end{itemize}
 
@@ -454,7 +454,7 @@ Vom detalia procesul de configurarea efectuat de utilizator în \labelindexref{S
 
 Adresa IP este folosită pentru a identifica stația în Internet.
 Pentru identificarea unei aplicații de rețea (client sau server) care rulează pe stație folosim \textbf{portul}, o adresă la nivelul Transport din stiva TCP/IP.
-Cel mai cunoscut protocol de la nivelul Transport este protocolul TCP (\textit{Transmission Control Protocol}), iar adresele corespunzătoare sunt porturile TCP.
+Cel mai cunoscut protocol de la nivelul Transport este protocolul TCP \abbrev{TCP}{Transmission Control Protocol} (\textit{Transmission Control Protocol}), iar adresele corespunzătoare sunt porturile TCP.
 De exemplu, o aplicație server web care rulează pe o stație folosește portul TCP 80. La fel, o aplicație server SSH (\textit{Secure Shell}) (pentru conexiune sigură la distanță) folosește portul TCP 22.
 
 Noțiunea de port este folosită adesea în reguli de filtrare prezente pe firewalluri, când vrem să blocăm anumite tipuri de trafic știind portul TCP destinație către care pachetele sunt transmise.
@@ -508,7 +508,7 @@ Pentru a contracara această limitare a protocolului IPv4, sunt prezente simulta
 Prima soluție este folosirea IPv6 (\textit{Internet Protocol version 6}) cu un spațiu de adresare mult mai generos.
 Această soluție are dezavantajul că trebuie să fie folosită de ambele părți; dacă serverul are adresă IPv6 dar clientul nu are (nu a primit de la furnizorul de servicii Internet), nu pot comunica.
 
-O a doua soluție, mai puțin disruptivă, este folosirea NAT (\textit{Network Address Translation}).
+O a doua soluție, mai puțin disruptivă, este folosirea NAT \abbrev{NAT}{Network Address Translation} (\textit{Network Address Translation}).
 Folosirea NAT înseamnă că o rețea locală primește o singură adresă IP.
 Această adresă IP este adresa publică a rețelei, o adresă care poate fi folosită în Internet pentru identificarea rețelei și pentru rutare.
 Toate stațiile din rețea folosesc adrese private, adrese care nu permit identificarea sau rutarea în Internet.
@@ -557,7 +557,7 @@ Pe stație apoi trebuie configurați parametrii de rețea corespunzători:
 În mod normal, elementele de infrastructură sunt instalate de un tehnician sau un angajat al furnizorului de servicii Internet.
 Configurarea, adică stabilirea celor patru parametri de rețea de mai sus, este responsabilitatea utilizatorului.
 
-În mod obișnuit, un utilizator nu este conștient de acești parametri de rețea, configurarea acestora realizându-se automat prin intermediul DHCP (\textit{Dynamic Host Configuration Protocol}) despre care vom discuta în secțiunile de mai jos.
+În mod obișnuit, un utilizator nu este conștient de acești parametri de rețea, configurarea acestora realizându-se automat prin intermediul DHCP \abbrev{DHCP}{Dynamic Host Configuration Protocol} (\textit{Dynamic Host Configuration Protocol}) despre care vom discuta în secțiunile de mai jos.
 Pentru un utilizator cu profil tehnic și administrativ este importantă, însă, cunoașterea acestor parametri, a rolului lor și a modurilor de configurare.
 Cu aceste informații utilizatorul tehnic va putea depana probleme de rețea, va putea realiza configurații particulare, va putea crește nivelul de securitate și de performanță al rețelei.
 
@@ -917,7 +917,7 @@ Cele două sunt utilitare de tip front end pentru serviciul NetworkManager, ofer
 \label{sec:net:linux-config:cli:netplan}
 
 Pe distribuțiile Ubuntu recente (începând cu Ubuntu 18.04), configurarea rețelei în linia de comandă se realizează folosind Netplan\footnote{\url{https://netplan.io/}}.
-Netplan oferă o interfață de fișiere de configurare în format YAML (\textit{YAM Ain't Markup Language}).
+Netplan oferă o interfață de fișiere de configurare în format YAML \abbrev{YAML}{YAML Ain't Markup Language} (\textit{YAM Ain't Markup Language}).
 Utilizatorul / administratorul editează aceste fișiere de configurare, apoi aplică acea configurație.
 Aplicarea configurației duce la stabilirea parametrilor de rețea.
 Pasul de aplicare se realizează prin intermediul unui \textit{renderer}.
@@ -1312,7 +1312,7 @@ Prin canalul de comunicație realizat între stația locală și sistemul de la 
 Interacțiunea cu sistemul aflat la distanță poate fi cu interfață grafică (serviciu numit și \textit{remote desktop} / \textit{desktop sharing}) sau interfață în linie de comandă (serviciu numit și \textit{remote shell}).
 Dat fiind că este sensibilă oferirea accesului la un sistem, serviciile de conexiune la distanță au integrate componente de autentificare și confidențialitate.
 
-Microsoft a dezvoltat protocolul RDP (\textit{Remote Desktop Protocol}) pentru conexiunea la distanță cu interfață grafică;
+Microsoft a dezvoltat protocolul RDP \abbrev{RDP}{Remote Desktop Protocol} (\textit{Remote Desktop Protocol}) pentru conexiunea la distanță cu interfață grafică;
 serviciul RDP este încorporat în sistemul de operare Windows.
 RDP este folosit în principal pentru Windows, dar există aplicații client și server pentru alte sisteme de operare.
 
@@ -1321,8 +1321,8 @@ Aplicația acționează simultan în rol de server și de client.
 Un utilizator care instalează aplicația pe sistem propriu o poate folosi pentru a se conecta la alte sisteme, sau pentru a permite altor utilizatori să se conecteze la sistemul său.
 O aplicație similară este AnyDesk.
 
-VNC (\textit{Virtual Network Computing}) este un alt sistem de tipul \textit{desktop sharing}.
-Cuprinde un server VNC, un client VNC și protocolul RFB (\textit{Remote Frame Buffer}) folosit pentru comunicare.
+VNC \abbrev{VNC}{Virtual Network Computing} (\textit{Virtual Network Computing}) este un alt sistem de tipul \textit{desktop sharing}.
+Cuprinde un server VNC, un client VNC și protocolul RFB \abbrev{RFB}{Remote Frame Buffer} (\textit{Remote Frame Buffer}) folosit pentru comunicare.
 
 Pentru acces la distanță în linia de comandă, cel mai întâlnit protocol este SSH (\textit{Secure Shell}).
 Protocolul SSH creează un canal sigur de comunicare (criptat).
@@ -1384,7 +1384,7 @@ Deși poate face și încărcare de informații (\textit{upload}), protocolul HT
 Protocolul SSH (\textit{Secure Shell}) de care am amintit mai sus permite transferul de fișiere în formă securizată.
 Atunci când avem un cont pe un sistem la distanță este forma preferată de transfer de fișiere.
 
-Protocolul FTP (\textit{File Transfer Protocol}) are ca rol transferul fișierelor.
+Protocolul FTP \abbrev{FTP}{File Transfer Protocol} (\textit{File Transfer Protocol}) are ca rol transferul fișierelor.
 Spre deosebire de HTTP, protocolul FTP permite mai ușor încărcarea de fișiere (\textit{upload}).
 Spre deosebire de SSH, protocolul nu necesită un cont la distanță.
 De aceea, este protocolul preferat folosit de furnizorii de servicii de găzduire (\textit{hosting services}) care nu doresc, din rațiuni de securitate, să ofere un cont pentru acces la distanță.

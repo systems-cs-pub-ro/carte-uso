@@ -963,7 +963,7 @@ student@uso:~$ jobs
 \end{screen}
 
 Un scenariu util pentru trecerea unui proces în background este când pornim un
-proces GUI \abbrev{GUI}{Graphical User Interface} din shell și pierdem în shell
+proces GUI din shell și pierdem în shell
 accesul la terminal. De exemplu am pornit procesul Emacs (grafic) în foreground.
 Pentru a putea readuce shellului controlul terminalului, vom trece procesul
 Emacs în background (suspendat) folosind combinația de taste \texttt{Ctrl+z} și vom muta
@@ -1667,10 +1667,10 @@ complexe la distanță. Să presupunem că ne dorim să pornim o descărcare de 
 prin Bittorrent pe un server la distanță, accesat prin SSH. Vom urma pașii:
 
 \begin{enumerate}
-	\item Ne conectăm prin SSH la serverul de la distanță.
-        \item Pornim procesul \cmd{bittorrent} detașat de terminal.
-        \item Închidem conexiunea la shellul curent. Procesul \cmd{bittorrent} continuă execuția.
-	\item Ulterior ne reconectăm prin SSH și putem investiga rularea procesului.
+  \item Ne conectăm prin SSH la serverul de la distanță.
+  \item Pornim procesul \cmd{bittorrent} detașat de terminal.
+  \item Închidem conexiunea la shellul curent. Procesul \cmd{bittorrent} continuă execuția.
+  \item Ulterior ne reconectăm prin SSH și putem investiga rularea procesului.
 \end{enumerate}
 
 Partea dificilă este punctul 3 în care închiderea shellului nu duce la
@@ -1704,8 +1704,6 @@ Atunci shellul trimite semnalul \texttt{SIGHUP} proceselor aflate în background
 procesele își încheie execuția la primirea acestui semnal. Pentru a preveni ca
 un proces aflat în background să își încheie execuția în momentul închiderii
 terminalului, trebuie ca acesta să ignore semnalul \texttt{SIGHUP}.
-
-% TODO: arhivă cu script sigtracer care capturează semnalele transmise + demo video
 
 Pentru ignorarea semnalului \texttt{SIGHUP} de un proces, putem folosi utilitarul \cmd{nohup}.
 Comanda \cmd{nohup} prefixează o altă comandă care creează un proces ce ignoră

@@ -52,7 +52,7 @@ unor opțiuni specifice în procesul de boot, așa cum vom preciza mai jos.
 
 În momentul pornirii fizice (\textit{power on}), sistemul încarcă firmware-ul de boot dintr-o zonă
 dedicată. Firmware-ul de boot este
-numit BIOS (sau UEFI \abbrev{UEFI}{Unified Extensible Firmware Interface}) pe
+numit BIOS (sau UEFI \abbrev{UEFI}{Unified Extensible Firmware Interface} - \textit{Unified Extensible Firmware Interface}) pe
 arhitectura x86. Firmware-ul de boot există pe sistemul fizic indiferent de
 prezența sau nu a unui sistem de operare sau dispozitiv bootabil. Firmware-ul de
 boot realizează verificări de bază ale funcționării hardware-ului, oferă
@@ -233,7 +233,7 @@ procesul de boot: încărcarea bootloaderului. Vom reveni la schemele de partiț
 În general, UEFI permite și un mod de bootare compatibil cu BIOS. În acest mod,
 procesul de bootare este similar cu cel de BIOS și se folosește tot schema de
 partiționare MBR și modul de încărcare a bootloaderului. Altfel se folosește
-modul nativ de bootare UEFI. UEFI folosește o partiție dedicată numită ESP (\textit{EFI
+modul nativ de bootare UEFI. UEFI folosește o partiție dedicată numită ESP \abbrev{ESP}{EFI System Partition} (\textit{EFI
 System Partition}), formatată cu sistem de fișiere FAT, în care stochează imagini
 de firmware (numite imagini EFI) care rețin codul bootloaderului ce va fi
 încărcat la următorul pas.
@@ -275,7 +275,7 @@ de firmware (numite imagini EFI) care rețin codul bootloaderului ce va fi
   \label{tab:boot:bios-uefi}
 \end{table}
 
-Datorită flexibilității, sistemele PC \abbrev{PC}{Personal Computer} moderne
+Datorită flexibilității, sistemele PC \abbrev{PC}{Personal Computer} (\textit{Personal Computer}) moderne
 folosesc din ce în ce mai mult UEFI, cu probabilitate mică de a mai întâlni, în următorii ani,
 sisteme care folosesc BIOS. BIOS rămâne însă folosit pe
 sistemele mai vechi și înțelegerea modului său de funcționare e utilă pentru a
@@ -286,8 +286,7 @@ vedea evoluția firmware-ului de boot pe arhitectura x86.
 
 Fiecare sistem hardware care rulează un sistem de operare generalist (\textit{general
 purpose}) are un firmware de boot, prima componentă rulată la pornirea
-sistemului. Pe arhitectura x86, de fapt pe sistemele de tipul PC (Personal
-Computer), acest firmware de boot este BIOS-ul, iar în ultimii ani UEFI.
+sistemului. Pe arhitectura x86, de fapt pe sistemele de tipul PC, acest firmware de boot este BIOS-ul, iar în ultimii ani UEFI.
 
 Sistemele care folosesc procesoare ARM sunt mai variate, fără să aibă un format
 unitar de conectare a componentelor hardware. Mai mult, producătorii de sisteme
@@ -469,7 +468,7 @@ Altfel, UEFI folosește modul nativ.
 
 În cazul în care folosim UEFI în modul nativ, una dintre partiții este marcată
 specializat ca fiind partiția EFI. Această partiție se numește ESP
-\abbrev{ESP}{EFI System Partition} (\textit{EFI System Partition}). Această partiție este
+(\textit{EFI System Partition}). Această partiție este
 formatată cu sistem de fișiere FAT (\textit{File Allocation Table}) și conține fișiere
 executabile într-un format specific, numit format EFI. Aceste fișiere
 executabile sunt numite OS loaders, sunt codul echivalent de bootloader pentru
@@ -570,7 +569,7 @@ ale aceluiași sistem de operare, fișiere aflate pe aceeași partiție.
     opțiunile de boot pentru kernel.
 \end{enumerate}
 
-În cazul UEFI, partiția ESP (\textit{EFI System Partition}) conține fișiere executabile
+În cazul UEFI, partiția ESP conține fișiere executabile
 \texttt{.efi}. Aceste fișiere pot conține orice funcționalitate, dar cel mai adesea conțin
 codul unui bootloader sau chiar nucleul sistemului de operare ce trebuie bootat.
 Neavând restricția de spațiu de 512 octeți din MBR, nu necesită înlănțuirea mai multor
@@ -753,7 +752,7 @@ student@uso:~$ file /lib/modules/4.15.0-29-generic/kernel/drivers/net/ethernet/i
 \end{screen}
 
 Observăm că driverul \texttt{e1000}, pentru plăci de rețea Intel, se găsește în fișierul
-\texttt{e1000.ko}, fișier de tipul ELF \abbrev{ELF}{Executable and Linking Format} (\textit{Executable
+\texttt{e1000.ko}, fișier de tipul ELF (\textit{Executable
 and Linking Format}), formatul clasic de executabil pe Linux.
 
 Driverele sunt încărcate fie de kernel la pornirea sistemului, după
@@ -1039,7 +1038,7 @@ root sau a contului Administrator și să fie nevoie de resetarea acesteia. În
 \labelindexref{Secțiunea}{sec:user:linux-password-recovery} și \labelindexref{Secțiunea}{sec:user:windows-password-recovery} am precizat modurile
 uzuale de resetare a parolei administrative și în Linux și în Windows. În Linux
 folosim opțiunea \texttt{init=/bin/bash} la bootarea sistemului de operare, editând
-intrarea în bootloader, sau folosim un USB stick bootabil sau CD-ROM. În
+intrarea în bootloader, sau folosim un USB stick bootabil sau CD-ROM \abbrev{CD-ROM}{Compact Disc - Read-Only Memory} (\textit{Compact Disc - Read-Only Memory}) sau DVD-ROM \abbrev{DVD-ROM}{Digital Video Disc - Read-Only Memory} (\textit{Digital Video Disc - Read-Only Memory}). În
 Windows folosim Ultimate Boot CD.
 
 În Linux este posibil să configurăm parolă de acces la bootloader (GRUB) și
