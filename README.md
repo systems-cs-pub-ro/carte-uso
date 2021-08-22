@@ -1,46 +1,49 @@
-# Utilizarea sistemelor de operare
+# USO Book
 
-Acest repository conține cartea "Utilizarea sistemelor de operare" (cod sursă LaTeX, compilabil PDF) și fișierele de suport.
-Cartea este destinată tuturor celor care vor să facă primii pași în lumea sistemelor de operare, în general, și lumea Linux, în particular, și celor care vor să își fundamenteze concepte și bune practici în folosirea sistemelor de operare.
+This repository hosts the book "Utilizarea sistemelor de operare" (Romanian) as LaTeX source code (generating PDF) and support source code.
+This book targets all those who want to take their first steps in the world of operating systems and Linux.
+And to those who want to strengthen their knowledge and practical skill in using operating systems.
 
-Cartea este suportul oficial pentru cursul omonim (Utilizarea sistemelor de operare) de la Facultatea de Automatică și Calculatoare, Universitatea POLITEHNICA din București.
+The book is the official course material for the ["Utilizarea sistemelor de operare" course](https://ocw.cs.pub.ro/courses/uso) (same name) at the [Faculty of Automatic Control and Computers](https://acs.pub.ro/), [University POLITEHNICA of Bucharest](https://upb.ro/).
 
-## Autori
+At this point, the content is in Romanian, with plans to have it translated in other languages.
 
-Autorii cărții sunt:
+## Authors
+
+The authors of this book are:
 
 * Răzvan Deaconescu, razvan.deaconescu@upb.ro
 * Răzvan Rughiniș, razvan.rughinis@upb.ro
 * Mihai Carabaș, mihai.carabas@upb.ro
 * Alexandru Radovici, alexandru.radovici@upb.ro
 
-Imaginile folosite în carte au fost realizate de Andrei Stănescu (andrei.stanescu23@gmail.com).
+Images in the book (SVG) have been created by Andrei Stănescu (andrei.stanescu23@gmail.com).
 
-La dezvoltarea cărții au contribuit, cu recenzii și idei un grup larg de colaboratori, menționați în comentarii în fiecare fișier de conținut.
+This book relied on reviews, ideas and contributions from numerous people, mentioned in each content file.
 
-## Structură
+## Structure
 
-Conținutul cărții se găsește în directorul `book/`.
-Fiecare capitol are un subdirector în care se găsește conținutul respectivului capitol.
-Conțintul este realizat folosind LaTeX.
-Pentru compilare, urmăriți indicațiile din [README.md](book/README.md).
+Actual book content is in the `book/` folder.
+Each chapter uses a subfolder storing its content.
+Content is written and built using [LaTeX](https://www.latex-project.org/).
+To build the book, follow the instructions in [README.md](book/README.md).
 
-Codul sursă de suport se găsește în directorul `code/`.
-În mod similar, fiecare capitol care deține cod sursă de suport are un subdirector.
-Codul sursă este referit în conținutul fiecărui capitol din directorul `book/`.
+Support source code is in the `code/` folder.
+Similarly, there is a subfolder for each chapter with support source code.
+Source code is referenced in each chapter content in the `book/` folder.
 
-## Contribuții
+## Contributing
 
-Cartea este dezvoltată în format deschis (*free / open content*).
-Conținutul este licențiat sub [Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/).
-Codul sursă de suport este licențiat sub [3-Clause BSD](https://opensource.org/licenses/BSD-3-Clause).
-Detalii în [COPYING.md](COPYING.md).
+The book is developed as free / open content.
+Content is licensed under [Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/).
+Support source code is licensed [3-Clause BSD](https://opensource.org/licenses/BSD-3-Clause).
+See details in [COPYING.md](COPYING.md).
 
-Contribuțiile sunt binevenite pentru îmbunătățirea continuă a cărții: raportare de greșeli de exprimare, de inconsecvențe, de conținut greșit, sugestii de îmbunatățire, adăugare conținut nou etc.
-Vă așteptăm să contribuiți prin:
+Contributions are welcome to improve content: reporting typos and inconsistencies, suggesting improvements, adding content, etc.
+You may contribute by:
 
-* deschiderea de [issues](https://github.com/systems-cs-pub-ro/carte-uso/issues) pentru a raporta probleme
-* participarea la [discuții](https://github.com/systems-cs-pub-ro/carte-uso/discussions)
-* realizarea de [pull requests](https://github.com/systems-cs-pub-ro/carte-uso/pulls) pentru a aduce modificări conținutului
+* opening [issues](https://github.com/systems-cs-pub-ro/carte-uso/issues)
+* taking part in [discussions](https://github.com/systems-cs-pub-ro/carte-uso/discussions)
+* creating [pull requests](https://github.com/systems-cs-pub-ro/carte-uso/pulls) to update the content
 
-Detaliat despre contribuții în [CONTRIBUTING.md](CONTRIBUTING.md).
+See more in [CONTRIBUTING.md](CONTRIBUTING.md).
