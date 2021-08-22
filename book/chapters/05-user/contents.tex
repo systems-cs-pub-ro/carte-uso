@@ -572,13 +572,21 @@ configurare în care sunt reținute informații despre utilizatori sunt indicate
   \begin{center}
     \begin{tabular}{ p{0.18\textwidth} p{0.22\textwidth} p{0.55\textwidth} }
       \toprule
-        \textbf{Fișier} & \textbf{Rol} & \textbf{Informații} \\
+        \textbf{Fișier} &
+        \textbf{Rol} &
+        \textbf{Informații} \\
       \midrule
-        \file{/etc/passwd} & informații utilizatori & nume de utilizator, UID, director home, shell de login, GID \\
+        \file{/etc/passwd} &
+        informații utilizatori &
+        nume de utilizator, UID, director home, shell de login, GID \\
       \midrule
-        \file{/etc/shadow} & parole utilizatori & nume de utilizator, parolă criptată, informații expirare parolă \\
+        \file{/etc/shadow} &
+        parole utilizatori &
+        nume de utilizator, parolă criptată, informații expirare parolă \\
       \midrule
-        \file{/etc/group} & informații grupuri & nume grup, GID, utilizatori aferenți \\
+        \file{/etc/group} &
+        informații grupuri &
+        nume grup, GID, utilizatori aferenți \\
       \bottomrule
     \end{tabular}
   \end{center}
@@ -619,17 +627,29 @@ Altfel, informații despre utilizatori obținem folosind utilitare precum cele d
   \begin{center}
     \begin{tabular}{ p{0.20\textwidth} p{0.35\textwidth} p{0.35\textwidth} }
       \toprule
-        \textbf{Utilitar} & \textbf{Rol} & \textbf{Fișiere investigate} \\
+        \textbf{Utilitar} &
+        \textbf{Rol} &
+        \textbf{Fișiere investigate} \\
       \midrule
-        \cmd{id} & informații despre utilizator & \file{/etc/passwd}, \file{/etc/group} \\
+        \cmd{id} &
+        informații despre utilizator &
+        \file{/etc/passwd}, \file{/etc/group} \\
       \midrule
-        \cmd{groups} & grupurile utilizatorului curent & \file{/etc/group} \\
+        \cmd{groups} &
+        grupurile utilizatorului curent &
+        \file{/etc/group} \\
       \midrule
-        \cmd{users}, \cmd{w}, \cmd{who} & utilizatorii autentificați în sistem acum & \file{/var/run/utmp} \\
+        \cmd{users}, \cmd{w}, \cmd{who} &
+        utilizatorii autentificați în sistem acum &
+        \file{/var/run/utmp} \\
       \midrule
-        \cmd{whoami} & numele utilizatorului curent & N/A \\
+        \cmd{whoami} &
+        numele utilizatorului curent &
+        N/A \\
       \midrule
-        \cmd{finger}, \cmd{pinky} & informații complete despre un utilizator & \file{/etc/passwd}, \file{/etc/group} \\
+        \cmd{finger}, \cmd{pinky} &
+        informații complete despre un utilizator &
+        \file{/etc/passwd}, \file{/etc/group} \\
       \bottomrule
     \end{tabular}
   \end{center}
@@ -752,25 +772,45 @@ face în linia de comandă cu ajutorul utilitarelor specifice, indicate în \lab
   \begin{center}
     \begin{tabular}{ p{0.30\textwidth} p{0.20\textwidth} p{0.35\textwidth} }
       \toprule
-        \textbf{Operație} & \textbf{Utilitare} & \textbf{Fișiere modificate} \\
+        \textbf{Operație} &
+        \textbf{Utilitare} &
+        \textbf{Fișiere modificate} \\
       \midrule
-        adăugare utilizator & \cmd{useradd} & \file{/etc/passwd}, \file{/etc/shadow}, \file{/etc/group} \\
+        adăugare utilizator &
+        \cmd{useradd} &
+        \file{/etc/passwd}, \file{/etc/shadow}, \file{/etc/group} \\
       \midrule
-        ștergere utilizator & \cmd{userdel} & \file{/etc/passwd}, \file{/etc/shadow}, \file{/etc/group} \\
+        ștergere utilizator &
+        \cmd{userdel} &
+        \file{/etc/passwd}, \file{/etc/shadow}, \file{/etc/group} \\
       \midrule
-        modificare utilizator & \cmd{usermod} & \file{/etc/passwd}, \file{/etc/shadow}, \file{/etc/group} \\
+        modificare utilizator &
+        \cmd{usermod} &
+        \file{/etc/passwd}, \file{/etc/shadow}, \file{/etc/group} \\
       \midrule
-        adăugare grup & \cmd{groupadd} & \file{/etc/group} \\
+        adăugare grup &
+        \cmd{groupadd} &
+        \file{/etc/group} \\
       \midrule
-        ștergere grup & \cmd{groupdel} & \file{/etc/group} \\
+        ștergere grup &
+        \cmd{groupdel} &
+        \file{/etc/group} \\
       \midrule
-        modificare grup & \cmd{groupmod} & \file{/etc/group} \\
+        modificare grup &
+        \cmd{groupmod} &
+        \file{/etc/group} \\
       \midrule
-        modificare shell & \cmd{chsh} & \file{/etc/passwd} \\
+        modificare shell &
+        \cmd{chsh} &
+        \file{/etc/passwd} \\
       \midrule
-        modificare informații utilizator & \cmd{chfn} & \file{/etc/passwd} \\
+        modificare informații utilizator &
+        \cmd{chfn} &
+        \file{/etc/passwd} \\
       \midrule
-        schimbare parolă & \cmd{passwd} & \file{/etc/shadow} \\
+        schimbare parolă &
+        \cmd{passwd} &
+        \file{/etc/shadow} \\
       \bottomrule
     \end{tabular}
   \end{center}
@@ -786,15 +826,20 @@ indicate în \labelindexref{Tabelul}{table:user:debian-wrapper}
   \begin{center}
     \begin{tabular}{ p{0.40\textwidth} p{0.40\textwidth} }
       \toprule
-        \textbf{Utilitar wrapper} & \textbf{Utilitar de bază} \\
+        \textbf{Utilitar wrapper} &
+        \textbf{Utilitar de bază} \\
       \midrule
-        \cmd{adduser} & \cmd{useradd} \\
+        \cmd{adduser} &
+        \cmd{useradd} \\
       \midrule
-        \cmd{deluser} & \cmd{userdel} \\
+        \cmd{deluser} &
+        \cmd{userdel} \\
       \midrule
-        \cmd{addgroup} & \cmd{groupadd} \\
+        \cmd{addgroup} &
+        \cmd{groupadd} \\
       \midrule
-        \cmd{delgroup} & \cmd{groupdel} \\
+        \cmd{delgroup} &
+        \cmd{groupdel} \\
       \bottomrule
     \end{tabular}
   \end{center}
@@ -816,13 +861,17 @@ parola. Pentru aceasta folosește utilitarele din \labelindexref{Tabelul}{table:
   \begin{center}
     \begin{tabular}{ p{0.40\textwidth} p{0.40\textwidth} }
       \toprule
-        \textbf{Operație} & \textbf{Utilitar} \\
+        \textbf{Operație} &
+        \textbf{Utilitar} \\
       \midrule
-        schimbare shell de login & \cmd{chsh} \\
+        schimbare shell de login &
+        \cmd{chsh} \\
       \midrule
-        schimbare informații & \cmd{chfn} \\
+        schimbare informații &
+        \cmd{chfn} \\
       \midrule
-        schimbare parolă & \cmd{passwd} \\
+        schimbare parolă &
+        \cmd{passwd} \\
       \bottomrule
     \end{tabular}
   \end{center}
@@ -1489,13 +1538,25 @@ Exemple sunt prezente în \labelindexref{Tabelul}{table:user:umask}.
   \begin{center}
     \begin{tabular}{ p{0.20\textwidth} p{0.20\textwidth} p{0.20\textwidth} p{0.20\textwidth} }
       \toprule
-              \textbf{Mască de creare} & \textbf{Mască inversată} & \textbf{Permisiuni de creare fișier} & \textbf{Permisiuni de creare director} \\
+        \textbf{Mască de creare} &
+        \textbf{Mască inversată} &
+        \textbf{Permisiuni de creare fișier} &
+        \textbf{Permisiuni de creare director} \\
       \midrule
-              \texttt{022} & \texttt{755} & \texttt{644} & \texttt{755} \\
+        \texttt{022} &
+        \texttt{755} &
+        \texttt{644} &
+        \texttt{755} \\
       \midrule
-              \texttt{002} & \texttt{775} & \texttt{664} & \texttt{775} \\
+        \texttt{002} &
+        \texttt{775} &
+        \texttt{664} &
+        \texttt{775} \\
       \midrule
-              \texttt{077} & \texttt{700} & \texttt{600} & \texttt{700} \\
+        \texttt{077} &
+        \texttt{700} &
+        \texttt{600} &
+        \texttt{700} \\
       \bottomrule
     \end{tabular}
   \end{center}

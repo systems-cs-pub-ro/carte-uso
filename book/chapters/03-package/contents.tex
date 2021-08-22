@@ -134,47 +134,46 @@ Noțiunea de manager de pachete este răspândită îndeosebi în distribuții L
         \texttt{.deb} &
         distribuții bazate pe Debian &
         \cmd{apt}, \cmd{aptitude}, \cmd{dpkg} \\
-
+      \midrule
         YUM \& DNF &
         \texttt{.rpm} &
         distribuții bazate pe RedHat &
         \cmd{dnf}, \cmd{rpm} \\
-
+      \midrule
         ZYpp &
         \texttt{.rpm} &
         distribuții bazate pe openSUSE &
         \cmd{zypper}, \cmd{rpm} \\
-
+      \midrule
         Pacman &
         \texttt{.tar} &
         Arch &
         \cmd{pacman}, \cmd{pactree}, \cmd{paccache} \\
-
+      \midrule
         Portage &
         \texttt{.tar.gz} &
         Gentoo &
         \cmd{emerge}, \cmd{equery}, \cmd{eix} \\
-
+      \midrule
         Port &
         \texttt{.txz} &
         FreeBSD &
         \cmd{pkg} \\
-
+      \midrule
         Homebrew &
         \texttt{.tar.gz} &
         macOS &
         \cmd{brew} \\
-
+      \midrule
         MacPorts &
         \texttt{.tbz2} &
         macOS &
         \cmd{port} \\
-
+      \midrule
         Chocolatey &
         \texttt{.nupkg} &
         Windows &
         \cmd{choco} \\
-
       \bottomrule
     \end{tabular}
   \end{center}
@@ -389,35 +388,35 @@ Sunt prezente următoarele tabele:
         APT &
         \file{/etc/apt/sources.list} &
         \cmd{apt}, \cmd{dpkg} \\
-
+      \midrule
         DNF / YUM &
         \file{/etc/dnf/dnf.conf}, \file{/etc/yum.repos.d/} &
         \cmd{dnf}, \cmd{rpm} \\
-
+      \midrule
         Pacman &
         \file{/usr/local/etc/pacman.conf} &
         \cmd{pacman} \\
-
+      \midrule
         Portage &
         \file{/etc/portage} &
         \cmd{emerge} \\
-
+      \midrule
         ZYpp &
         \file{/etc/zypp/zypp.conf} &
         \cmd{zypper}, \cmd{rpm} \\
-
+      \midrule
         Port &
         \file{/etc/portsnap.conf} &
         \cmd{portsnap}, \cmd{pkg} \\
-
+      \midrule
         Homebrew &
         N/A &
         \cmd{brew} \\
-
+      \midrule
         MacPorts &
         \file{/etc/macaports/} &
         \cmd{port} \\
-
+      \midrule
         Chocolatey &
         se folosește \cmd{choco config} &
         \cmd{choco} \\
@@ -440,35 +439,35 @@ Sunt prezente următoarele tabele:
         APT &
         \cmd{apt update} &
         \cmd{apt upgrade} \\
-
+      \midrule
         DNF / YUM &
         \cmd{dnf makecache} &
         \cmd{dnf update} \\
-
+      \midrule
         Pacman &
         \cmd{pacman -Fy} &
         \cmd{pacman -Syu} \\
-
+      \midrule
         Portage &
         \cmd{emerge -{}-sync} &
         \cmd{emerge -{}-update -{}-deep world} \\
-
+      \midrule
         ZYpp &
         N/A &
         \cmd{zypper update} \\
-
+      \midrule
         Port &
         \cmd{portsnap fetch update} &
         \cmd{pkg upgrade} \\
-
+      \midrule
         Homebrew &
         \cmd{brew update} &
         \cmd{brew upgrade} \\
-
+      \midrule
         MacPorts &
         \cmd{port selfupdate}, \cmd{port sync} &
         \cmd{port upgrade outdated} \\
-
+      \midrule
         Chocolatey &
         N/A &
         \cmd{choco upgrade all} \\
@@ -493,42 +492,42 @@ Sunt prezente următoarele tabele:
         \cmd{apt search hello} &
         \cmd{apt install hello} &
         \cmd{apt remove hello} \\
-
+      \midrule
         DNF / YUM &
         \cmd{dnf search hello} &
         \cmd{dnf install hello} &
         \cmd{dnf remove hello} \\
-
+      \midrule
         Pacman &
         \cmd{pacman -Ss hello} &
         \cmd{pacman -S hello} &
         \cmd{pacman -R hello} \\
-
+      \midrule
         Portage &
         \cmd{emerge -{}-search hello} &
         \cmd{emerge hello} &
         \cmd{emerge -C hello} \\
-
+      \midrule
         ZYpp &
         \cmd{zypper search hello} &
         \cmd{zypper install hello} &
         \cmd{zypper remove hello} \\
-
+      \midrule
         Port &
         \cmd{pkg search hello} &
         \cmd{pkg install hello} &
         \cmd{pkg remove hello} \\
-
+      \midrule
         Homebrew &
         \cmd{brew search hello} &
         \cmd{brew install hello} &
         \cmd{brew uninstall hello} \\
-
+      \midrule
         MacPorts &
         \cmd{port search hello} &
         \cmd{port install hello} &
         \cmd{port uninstall hello} \\
-
+      \midrule
         Chocolatey &
         \cmd{choco search hello} &
         \cmd{choco install hello} &
@@ -552,35 +551,35 @@ Sunt prezente următoarele tabele:
         APT &
         \cmd{apt install -d hello} &
         \cmd{apt source hello} \\
-
+      \midrule
         DNF / YUM &
         \cmd{dnf download hello} &
         \cmd{dnf download -{}-sourcehello} \\
-
+      \midrule
         Pacman &
         \cmd{pacman -Sw hello} &
         \cmd{asp export hello} \\
-
+      \midrule
         Portage &
         \cmd{emerge -{}-fetchnly hello} &
         N/A \\
-
+      \midrule
         ZYpp &
         \cmd{zypper install -{}-download-only hello} &
         \cmd{zypper source-install hello} \\
-
+      \midrule
         Port &
         \cmd{pkg fetch hello} &
         \cmd{pkg fetch hello} \\
-
+      \midrule
         Homebrew &
         N/A &
         \cmd{brew fetch hello} \\
-
+      \midrule
         MacPorts &
         N/A &
         \cmd{port fetch hello} \\
-
+      \midrule
         Chocolatey &
         \cmd{choco download hello} &
         N/A \\
@@ -605,42 +604,42 @@ Sunt prezente următoarele tabele:
         \cmd{dpkg -l hello} &
         \cmd{dpkg -L hello} &
         \cmd{dpkg -S /usr/bin/hello} \\
-
+      \midrule
         DNF / YUM &
         \cmd{rpm -qi hello} &
         \cmd{rpm -ql hello} &
         \cmd{rpm -qf /usr/bin/hello} \\
-
+      \midrule
         Pacman &
         \cmd{packman -Qs hello} &
         \cmd{packman -Ql hello} &
         \cmd{packman -Qo hello} \\
-
+      \midrule
         Portage &
         N/A &
         \cmd{emerge files hello} &
         \cmd{emerge belongs /usr/bin/hello} \\
-
+      \midrule
         ZYpp &
         \cmd{rpm -qi hello} &
         \cmd{rpm -ql hello} &
         \cmd{rpm -qf /usr/bin/hello} \\
-
+      \midrule
         Port &
         \cmd{pkg info hello} &
         \cmd{pkg info -l hello} &
         \cmd{pkg provides /usr/bin/hello} \\
-
+      \midrule
         Homebrew &
         \cmd{brew ls | grep -i hello} &
         \cmd{brew ls hello} &
         N/A \\
-
+      \midrule
         MacPorts &
         \cmd{port list} &
         \cmd{port contents hello} &
         \cmd{port provides /usr/bin/hello} \\
-
+      \midrule
         Chocolatey &
         \cmd{choco search -{}-local-only hello} &
         N/A &

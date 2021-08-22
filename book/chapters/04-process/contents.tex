@@ -46,11 +46,11 @@ Esențial este că orice aplicație care rulează în sistem, folosește unul sa
 \end{note}
 
 \begin{figure}[!htbp]
-	\centering
-	\def\svgwidth{0.5\textwidth}
-	\includesvg{chapters/04-process/img/proc-overview.svg}
-	\caption{Procese și resursele lor}
-	\label{fig:process:overview}
+  \centering
+  \def\svgwidth{0.5\textwidth}
+  \includesvg{chapters/04-process/img/proc-overview.svg}
+  \caption{Procese și resursele lor}
+  \label{fig:process:overview}
 \end{figure}
 
 Pentru utilizator și sistemul de operare, procesele sunt necesare ca formă de
@@ -65,23 +65,23 @@ proces îl vizualizează. Vom vedea mai multe despre comunicarea și interacțiu
 Concret, sistemul de operare oferă:
 
 \begin{itemize}
-	\item izolare a resurselor proceselor, asigurându-se că, în mod normal,
-		un proces nu poate accesa sau corupe resursele altui proces. În
-		acest fel sistemul este menținut integru și fiecare proces se
-		execută corespunzător.
-	\item arbitrare a accesului la resurse partajate: dacă două sau mai
-		multe procese accesează o resursă comună (de exemplu un fișier),
-		atunci accesele trebuie să fie bine ordonate și, de exemplu, să
-		nu suprascrie un proces informațiile celuilalt.
-	\item mecanisme explicite de comunicare între procese: procesele
-		comunică între ele pentru realizarea unei acțiuni mai complexe.
+  \item izolare a resurselor proceselor, asigurându-se că, în mod normal,
+  	un proces nu poate accesa sau corupe resursele altui proces. În
+  	acest fel sistemul este menținut integru și fiecare proces se
+  	execută corespunzător.
+  \item arbitrare a accesului la resurse partajate: dacă două sau mai
+  	multe procese accesează o resursă comună (de exemplu un fișier),
+  	atunci accesele trebuie să fie bine ordonate și, de exemplu, să
+  	nu suprascrie un proces informațiile celuilalt.
+  \item mecanisme explicite de comunicare între procese: procesele
+  	comunică între ele pentru realizarea unei acțiuni mai complexe.
                 Vom discuta în \labelindexref{Secțiunea}{sec:process:signal}, respectiv \labelindexref{Secțiunea}{sec:process:pipe} despre semnale și pipe-uri,
-		două mecanisme de bază de comunicare între procese.
-	\item comportament echitabil al proceselor, prin asigurarea că un proces
-		nu utiliza prea multe resurse: un proces poate utiliza foarte
-		multă memorie sau foarte mult procesor și împiedica alte procese
-		să ruleze, iar sistemul de operare are grijă să aloce fiecărui
-		proces resurse în mod echitabil
+  	două mecanisme de bază de comunicare între procese.
+  \item comportament echitabil al proceselor, prin asigurarea că un proces
+  	nu utiliza prea multe resurse: un proces poate utiliza foarte
+  	multă memorie sau foarte mult procesor și împiedica alte procese
+  	să ruleze, iar sistemul de operare are grijă să aloce fiecărui
+  	proces resurse în mod echitabil
 \end{itemize}
 
 \section{Programe și procese}
@@ -139,11 +139,11 @@ de la același executabil, adică procese ce au aceeași imagine.
 fișier executabil (imaginea procesului).
 
 \begin{figure}[!htbp]
-	\centering
-	\def\svgwidth{0.7\textwidth}
-	\includesvg{chapters/04-process/img/program-proc.svg}
-	\caption{Procese și programe (executabile)}
-	\label{fig:process:exec}
+  \centering
+  \def\svgwidth{0.7\textwidth}
+  \includesvg{chapters/04-process/img/program-proc.svg}
+  \caption{Procese și programe (executabile)}
+  \label{fig:process:exec}
 \end{figure}
 
 Întrucât mai multe procese pot fi create din același fișier executabil, este
@@ -167,11 +167,11 @@ parcursul execuției, procesul comunică și cu elemente de I/O sau cu alte proc
 sistemului.
 
 \begin{figure}[!htbp]
-	\centering
-	\def\svgwidth{0.8\textwidth}
-	\includesvg{chapters/04-process/img/cpu-resources.svg}
-	\caption{Procese și resursele sistemului}
-	\label{fig:process:resources}
+  \centering
+  \def\svgwidth{0.8\textwidth}
+  \includesvg{chapters/04-process/img/cpu-resources.svg}
+  \caption{Procese și resursele sistemului}
+  \label{fig:process:resources}
 \end{figure}
 
 Unui proces i se alocă resurse (de exemplu zone de memorie) în momentul creării
@@ -229,17 +229,17 @@ student@uso:~$ ps -e -o pid,ppid,user,rss,%cpu
 În \labelindexref{Listing}{lst:process:ps} este folosit utilitarul \cmd{ps} cu diferite opțiuni. Astfel, comanda de la linia 1 adfișează procesele din terminalul curent, la linia 5 se rulează comanda pentru afișarea proceselor de la terminalul curent în format complet (\textit{full}), la linia 9 se rulează comandă pentru afișarea tuturor proceselor (\texttt{-e} pentru \textit{everything} în format complet, la linia 18 se rulează comanda pentru afișarea, pentru procesele din terminalul curent, a atributelor PID, PPID, utilizator, memoria rezidentă și procentul de procesor consumat, iar la linia 22 la fel ca la comanda anterioară doar că pentru toate procesele sistemului.
 
 \begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=0.8\textwidth]{chapters/04-process/img/top.png}
-	\caption{Utilitarul top}
-	\label{fig:process:top}
+  \centering
+  \includegraphics[width=0.8\textwidth]{chapters/04-process/img/top.png}
+  \caption{Utilitarul top}
+  \label{fig:process:top}
 \end{figure}
 
 \begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=0.8\textwidth]{chapters/04-process/img/task-manager.png}
-	\caption{Utilitarul Task Manager}
-	\label{fig:process:task-manager}
+  \centering
+  \includegraphics[width=0.8\textwidth]{chapters/04-process/img/task-manager.png}
+  \caption{Utilitarul Task Manager}
+  \label{fig:process:task-manager}
 \end{figure}
 
 Mai multe informații despre investigarea proceselor și monitorizarea resurselor
@@ -261,37 +261,73 @@ atribute de bază ale unui proces împreună cu o descriere a lor se găsește �
 \labelindexref{Tabelul}{tab:process:attributes}.
 
 \begin{table}[!htb]
-\begin{center}
-  \begin{tabular}{ p{0.20\textwidth} p{0.40\textwidth} p{0.15\textwidth} p{0.10\textwidth}  }
-	\toprule
-                \textbf{atribut} & \textbf{rol} & \textbf{momentul atribuirii} & \textbf{modificabil} \\
-	\midrule
-                PID & identificare proces & pornire & nu \\
-	\midrule
-                PPID & identificare părinte proces & pornire & da \\
-	\midrule
-                program executabil & imaginea procesului (cod și date) & pornire & nu \\
-	\midrule
-                UID/GID (utilizator/grup) & permisiuni proces & pornire & nu (cu excepția unor situații punctuale) \\
-	\midrule
-                prioritate statică (\textit{nice}) & importanța în accesul resurselor & pornire & da \\
-        \midrule
-                terminal & interfața de comunicare cu utilizatorul & pornire & da \\
-        \midrule
-                fișiere deschise & lucrul cu fișiere & rulare & da \\
-        \midrule
-                stare & accesul curent la procesor & rulare & da \\
-        \midrule
-                timp de rulare pe procesor & contabilizare consum de procesor & rulare & da \\
-        \midrule
-                memorie consumată & contabilizare consum de memorie & rulare & da \\
-        \midrule
-                spațiu virtual de adrese & harta memoriei unui proces & pornire & da \\
-	\bottomrule
-	\end{tabular}
-\end{center}
-\caption{Atributele unui proces}
-\label{tab:process:attributes}
+  \begin{center}
+    \begin{tabular}{ p{0.20\textwidth} p{0.40\textwidth} p{0.15\textwidth} p{0.10\textwidth}  }
+      \toprule
+        \textbf{atribut} &
+        \textbf{rol} &
+        \textbf{momentul atribuirii} &
+        \textbf{modificabil} \\
+      \midrule
+        PID &
+        identificare proces &
+        pornire &
+        nu \\
+      \midrule
+        PPID &
+        identificare părinte proces &
+        pornire &
+        da \\
+      \midrule
+        program executabil &
+        imaginea procesului (cod și date) &
+        pornire &
+        nu \\
+      \midrule
+        UID/GID (utilizator/grup) &
+        permisiuni proces &
+        pornire &
+        nu (cu excepția unor situații punctuale) \\
+      \midrule
+        prioritate statică (\textit{nice}) &
+        importanța în accesul resurselor &
+        pornire &
+        da \\
+      \midrule
+        terminal &
+        interfața de comunicare cu utilizatorul &
+        pornire &
+        da \\
+      \midrule
+        fișiere deschise &
+        lucrul cu fișiere &
+        rulare &
+        da \\
+      \midrule
+        stare &
+        accesul curent la procesor &
+        rulare &
+        da \\
+      \midrule
+        timp de rulare pe procesor &
+        contabilizare consum de procesor &
+        rulare &
+        da \\
+      \midrule
+        memorie consumată &
+        contabilizare consum de memorie &
+        rulare &
+        da \\
+      \midrule
+        spațiu virtual de adrese &
+        harta memoriei unui proces &
+        pornire &
+        da \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+  \caption{Atributele unui proces}
+  \label{tab:process:attributes}
 \end{table}
 
 Atributul PID este identificatorul unic al procesului la nivelul sistemului de
@@ -324,9 +360,9 @@ procese și pentru a urmări atributele și resursele lor.
 Utilitarele din această categorie sunt de două tipuri:
 
 \begin{itemize}
-	\item cele care afișează un snapshot al momentului (procese active în
-		acest moment și atribute ale lor)
-	\item cele care monitorizează procesele sistemului
+  \item cele care afișează un snapshot al momentului (procese active în
+          acest moment și atribute ale lor)
+  \item cele care monitorizează procesele sistemului
 \end{itemize}
 
 Din prima categorie fac parte, în Linux, utilitarele \cmd{ps}, \cmd{pgrep}, \cmd{pidof}, \cmd{pstree},
@@ -345,43 +381,43 @@ despre procese:
 
 \begin{itemize}
   \item \cmd{ps} este principalul utilitar de afișare de informații despre
-		procese. La o rulare simplă afișează procesele din terminalul
-		curent. Poate afișa selectiv procese și atribute ale acestora.
+                procese. La o rulare simplă afișează procesele din terminalul
+                curent. Poate afișa selectiv procese și atribute ale acestora.
   \item \cmd{pidof} afișează PID-ul proceselor care au un anumit program
-		(imagine de proces)
+                (imagine de proces)
   \item \cmd{pgrep} are funcționalitatea utilitarului \cmd{pidof} extinsă: afișează procesele
-		care corespund unei anumite condiții. Condiția poate fi
-		,,aparține unui anumit utilizator'', ,,are un anumit program ca
-		imagine'', ,,are un anumit proces părinte'', ,,rulează într-un
-		anumit terminal'', la fel ca în exemplele de mai jos.
+                care corespund unei anumite condiții. Condiția poate fi
+                ,,aparține unui anumit utilizator'', ,,are un anumit program ca
+                imagine'', ,,are un anumit proces părinte'', ,,rulează într-un
+                anumit terminal'', la fel ca în exemplele de mai jos.
   \item \cmd{pstree} afișează ierarhia de procese a sistemului, îl vom detalia
     în \labelindexref{Secțiunea}{sec:process:linux-hierarchy}.
   \item \cmd{pmap} (\textit{process map}) afișează harta memoriei unui proces,
-		adică zonele de memorie ocupate de acesta. Este un utilitar
-		adecvat în special pentru programatori și pentru cei care sunt
-		interesați de internele sistemelor de operare, nu insistăm pe
-		el.
+                adică zonele de memorie ocupate de acesta. Este un utilitar
+                adecvat în special pentru programatori și pentru cei care sunt
+                interesați de internele sistemelor de operare, nu insistăm pe
+                el.
   \item \cmd{lsof} (\textit{list open files}) este utilitarul care afișează
-		fișierele deschise de un proces. Îl vom folosi în
-		\labelindexref{Secțiunea}{sec:process:files}
+                fișierele deschise de un proces. Îl vom folosi în
+                \labelindexref{Secțiunea}{sec:process:files}
 \end{itemize}
 
 Așa cum am precizat, utilitarul \cmd{ps} este utilitarul principal pentru listarea
 proceselor și a atributelor acestora. Am prezentat exemple de investigare a proceselor folosind utilitarul \cmd{ps} în \labelindexref{Listing}{lst:process:ps}. \labelindexref{Listing}{lst:process:ps-extra} conține scenarii frecvente de folosire a comenzii \cmd{ps} cu argumentele aferente. Comenzile rulate în \labelindexref{Listing}{lst:process:ps-extra} au următorul efect:
 \begin{itemize}
-	\item linia 1: listarea tuturor proceselor din sistem
-	\item linia 8: listarea tuturor proceselor fără afișarea capului de tabel
-	\item linia 15: listarea cu mai multe atribute a proceselor din sistem
-        \item linia 22: listarea proceselor ce aparțin utilizatorului \texttt{student}
-        \item linia 29: listarea proceselor ce nu aparțin utilizatorului \texttt{student}
-        \item linia 36: listarea proceselor ce au imagine (program) \cmd{VBoxClient}
-	\item linia 43: listarea doar a PID-urilor, comenzii de pornire, procentul de
-		procesor acaparat și memorie utilizate pentru toate procesele
-	\item linia 50: listarea doar a PID-urilor, comenzii de pornire și a stării pentru
-          procesele ce aparțin utilizatorului \texttt{student}
-	\item linia 57: listarea doar a PID-urilor, comenzii de pornire, procentul de
-		procesor acaparat și memorie utilizate pentru toate procesele
-                sortate după procentul de procesor acaparat pentru procesele ce aparțin utilizatorului \texttt{student}
+  \item linia 1: listarea tuturor proceselor din sistem
+  \item linia 8: listarea tuturor proceselor fără afișarea capului de tabel
+  \item linia 15: listarea cu mai multe atribute a proceselor din sistem
+  \item linia 22: listarea proceselor ce aparțin utilizatorului \texttt{student}
+  \item linia 29: listarea proceselor ce nu aparțin utilizatorului \texttt{student}
+  \item linia 36: listarea proceselor ce au imagine (program) \cmd{VBoxClient}
+  \item linia 43: listarea doar a PID-urilor, comenzii de pornire, procentul de
+          procesor acaparat și memorie utilizate pentru toate procesele
+  \item linia 50: listarea doar a PID-urilor, comenzii de pornire și a stării pentru
+    procesele ce aparțin utilizatorului \texttt{student}
+  \item linia 57: listarea doar a PID-urilor, comenzii de pornire, procentul de
+          procesor acaparat și memorie utilizate pentru toate procesele
+          sortate după procentul de procesor acaparat pentru procesele ce aparțin utilizatorului \texttt{student}
 \end{itemize}
 
 \begin{screen}[caption={Folosirea comenzii ps},label={lst:process:ps-extra}]
@@ -531,11 +567,11 @@ procese pot fi blocate (\textit{sleeping}) în așteptarea unei operații de
 input/output. Simplificat, avem precizate stările și tranzițiile între stările unui proces în \labelindexref{Figura}{fig:process:state}.
 
 \begin{figure}[!htbp]
-	\centering
-	\def\svgwidth{0.8\textwidth}
-	\includesvg{chapters/04-process/img/proc-status.svg}
-	\caption{Starea proceselor}
-	\label{fig:process:state}
+  \centering
+  \def\svgwidth{0.8\textwidth}
+  \includesvg{chapters/04-process/img/proc-status.svg}
+  \caption{Starea proceselor}
+  \label{fig:process:state}
 \end{figure}
 
 Putem investiga starea proceselor cu utilitare de urmărire și monitorizare.
@@ -597,10 +633,10 @@ Prioritatea unui proces este afectată de comportamentul acestuia (procesele mai
 În Windows, utilizatorul poate afecta prioritatea unui proces folosind Task Manager, așa cum apare în \labelindexref{Figura}{fig:process:priority-task-manager}.
 
 \begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=0.8\textwidth]{chapters/04-process/img/task-manager-priority.png}
-	\caption{Priorități de procese în Windows}
-	\label{fig:process:priority-task-manager}
+  \centering
+  \includegraphics[width=0.8\textwidth]{chapters/04-process/img/task-manager-priority.png}
+  \caption{Priorități de procese în Windows}
+  \label{fig:process:priority-task-manager}
 \end{figure}
 
 În Linux, putem modifica prioritatea unui proces prin schimbarea atributului \texttt{nice} al procesului.
@@ -700,11 +736,11 @@ Windows. Nu insistăm pe aceste apeluri în această carte; câteva detalii găs
 crearea unui proces este indicată în \labelindexref{Figura}{fig:process:create}.
 
 \begin{figure}[!htbp]
-	\centering
-	\def\svgwidth{0.5\textwidth}
-	\includesvg{chapters/04-process/img/fork-exec.svg}
-	\caption{Crearea unui proces}
-	\label{fig:process:create}
+  \centering
+  \def\svgwidth{0.5\textwidth}
+  \includesvg{chapters/04-process/img/fork-exec.svg}
+  \caption{Crearea unui proces}
+  \label{fig:process:create}
 \end{figure}
 
 În general, procesul care creează un nou process este un shell. Shellul poate
@@ -788,10 +824,10 @@ O imagine a ierarhiei de procese în Windows putem obține folosind utilitarul
 Process Explorer, așa cum vedem în \labelindexref{Figura}{fig:process:process-explorer-hierarchy}
 
 \begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=0.8\textwidth]{chapters/04-process/img/process-explorer.png}
-	\caption{Vizualizare ierarhie de procese folosind Process Explorer}
-	\label{fig:process:process-explorer-hierarchy}
+  \centering
+  \includegraphics[width=0.8\textwidth]{chapters/04-process/img/process-explorer.png}
+  \caption{Vizualizare ierarhie de procese folosind Process Explorer}
+  \label{fig:process:process-explorer-hierarchy}
 \end{figure}
 
 Shellul Windows este un shell grafic reprezentat de procesul Explorer, prezent în \labelindexref{Figura}{fig:process:process-explorer-hierarchy}. Acest
@@ -814,15 +850,15 @@ intrării standard, adică un singur proces care este în \textbf{foreground}. �
 general, modul de funcționare a shellului, detaliat în \labelindexref{Secțiunea}{sec:cli:shell}, este:
 
 \begin{enumerate}
-	\item shellul citește de la intrarea standard (din terminal) comenzi și
-		opțiuni ale utilizatorului
-	\item shellul creează un nou proces pornind de la comanda introdusă
+  \item shellul citește de la intrarea standard (din terminal) comenzi și
+  	opțiuni ale utilizatorului
+  \item shellul creează un nou proces pornind de la comanda introdusă
         \item procesul nou creat rulează în \textbf{foreground} și are controlul
-		terminalului (și a intrării acestuia)
-	\item procesul nou creat își încheie execuția; shellul, în calitate de
-		proces părinte, reține informații despre încheierea execuției
-	\item shellul redobândește controlul terminalului și reîncepem acțiunea
-		de la punctul 1
+  	terminalului (și a intrării acestuia)
+  \item procesul nou creat își încheie execuția; shellul, în calitate de
+  	proces părinte, reține informații despre încheierea execuției
+  \item shellul redobândește controlul terminalului și reîncepem acțiunea
+  	de la punctul 1
 \end{enumerate}
 
 Acest mod de funcționare devine problematic în momentul în care procesul nou
@@ -920,11 +956,11 @@ stări au procesele și cum pot tranzita între stări (\textit{running}, \texti
 moduri de rulare (foreground, background).
 
 \begin{figure}[!htbp]
-	\centering
-	\def\svgwidth{0.8\textwidth}
-	\includesvg{chapters/04-process/img/status-mov.svg}
-	\caption{Foreground și background}
-	\label{fig:process:fg-bg}
+  \centering
+  \def\svgwidth{0.8\textwidth}
+  \includesvg{chapters/04-process/img/status-mov.svg}
+  \caption{Foreground și background}
+  \label{fig:process:fg-bg}
 \end{figure}
 
 Am precizat că mai multe procese pot rula în background. Procesele care rulează
@@ -1067,11 +1103,11 @@ Indexul intrării din acea tabelă este numit \textbf{descriptor de fișier} și
 fișierului în cadrul procesului.
 
 \begin{figure}[!htbp]
-	\centering
-	\def\svgwidth{0.8\textwidth}
-	\includesvg{chapters/04-process/img/fd-table.svg}
-	\caption{Tabela descriptorilor de fișiere a unui proces}
-	\label{fig:process:fdtab}
+  \centering
+  \def\svgwidth{0.8\textwidth}
+  \includesvg{chapters/04-process/img/fd-table.svg}
+  \caption{Tabela descriptorilor de fișiere a unui proces}
+  \label{fig:process:fdtab}
 \end{figure}
 
 \subsection{Descriptori de fișiere}
@@ -1129,19 +1165,19 @@ indexul 3. Alocarea și eliberarea indecșilor (adică descriptorilor de fișier
 sunt descrise, respectiv, în \labelindexref{Figura}{fig:process:alloc-fd} și \labelindexref{Figura}{fig:process:free-fd}.
 
 \begin{figure}[!htbp]
-	\centering
-	\def\svgwidth{0.8\textwidth}
-	\includesvg{chapters/04-process/img/fd-alloc.svg}
-	\caption{Alocarea unui descriptor de fișier}
-	\label{fig:process:alloc-fd}
+  \centering
+  \def\svgwidth{0.8\textwidth}
+  \includesvg{chapters/04-process/img/fd-alloc.svg}
+  \caption{Alocarea unui descriptor de fișier}
+  \label{fig:process:alloc-fd}
 \end{figure}
 
 \begin{figure}[!htbp]
-	\centering
-	\def\svgwidth{0.8\textwidth}
-	\includesvg{chapters/04-process/img/fd-free.svg}
-	\caption{Eliberarea unui descriptor de fișier}
-	\label{fig:process:free-fd}
+  \centering
+  \def\svgwidth{0.8\textwidth}
+  \includesvg{chapters/04-process/img/fd-free.svg}
+  \caption{Eliberarea unui descriptor de fișier}
+  \label{fig:process:free-fd}
 \end{figure}
 
 Fiecare proces are o tabelă de descriptori de fișier proprie. Astfel că o
@@ -1394,9 +1430,9 @@ curent:
 
 \begin{itemize}
   \item \texttt{Ctrl+c}: transmite semnalul \texttt{SIGINT} (\textit{interrupt}), cu rolul de a
-		întrerupe execuția procesului curent
+  	întrerupe execuția procesului curent
   \item \texttt{Ctrl+z}: transmite semnalul \texttt{SIGTSTP} (\textit{terminal stop}), cu rolul de a suspenda execuția
-		procesului curent și de a-l trece în background
+  	procesului curent și de a-l trece în background
   \item \texttt{Ctrl+textbackslash{}}: transmite semnalul \texttt{SIGQUIT}, cu rol similar
                 semnalului \texttt{SIGINT}, de a întrerupe execuția procesului curent
 \end{itemize}
@@ -1534,11 +1570,11 @@ intermediază transmiterea intrării și ieșirii de la utilizator prin tastatur
 shell. \labelindexref{Figura}{fig:process:terminal-shell} prezintă legătura utilizator, terminal, shell.
 
 \begin{figure}[!htbp]
-	\centering
-	\def\svgwidth{0.4\textwidth}
-	\includesvg{chapters/04-process/img/user-terminal-shell.svg}
-	\caption{Utilizator, terminal, shell}
-	\label{fig:process:terminal-shell}
+  \centering
+  \def\svgwidth{0.4\textwidth}
+  \includesvg{chapters/04-process/img/user-terminal-shell.svg}
+  \caption{Utilizator, terminal, shell}
+  \label{fig:process:terminal-shell}
 \end{figure}
 
 Terminalul este identificat printr-un nume și are asociată, în Linux, o intrare
@@ -1617,18 +1653,18 @@ de configurare și fișierelor de tip jurnal (\textit{log}). Exemple de procese 
 sunt:
 
 \begin{itemize}
-	\item procesul init
+  \item procesul init
         \item procese de tip servicii: \cmd{cron}, servicii de rețea
-	\item alte procese rulate de utilizator pentru a rula fără un terminal asociat
+  \item alte procese rulate de utilizator pentru a rula fără un terminal asociat
 \end{itemize}
 
 Concluzionând, în general un proces daemon are următoarele caracteristici:
 
 \begin{itemize}
-	\item rulează în background, fără o formă de interacțiune directă cu utilizatorul
-	\item oferă un serviciu sistemului: planificare, indexare de fișiere
-	\item nu are un terminal asociat
-	\item are ca proces părinte init
+  \item rulează în background, fără o formă de interacțiune directă cu utilizatorul
+  \item oferă un serviciu sistemului: planificare, indexare de fișiere
+  \item nu are un terminal asociat
+  \item are ca proces părinte init
 \end{itemize}
 
 Pentru a face o listă aproximativă a proceselor daemon într-un sistem Linux, rulăm comanda:
@@ -1794,9 +1830,9 @@ de la terminal. Uzual, urmăm pașii de mai jos:
 
 \begin{enumerate}
   \item Se pornește o sesiune de terminal folosind \cmd{screen}, \cmd{tmux} sau \cmd{byobu}.
-	\item Se rulează comenzile în acel terminal.
-	\item Se face detașarea de la terminal.
-	\item Se poate, ulterior, realizare reconectarea la terminal.
+  \item Se rulează comenzile în acel terminal.
+  \item Se face detașarea de la terminal.
+  \item Se poate, ulterior, realizare reconectarea la terminal.
 \end{enumerate}
 
 Shellul în care a fost pornit terminalul \cmd{screen}, \cmd{tmux} sau \cmd{byobu} poate fi
@@ -1812,19 +1848,40 @@ recomandăm în defavoarea \cmd{screen}. De avut în vedere că multe opțiuni p
   \begin{center}
     \begin{tabular}{ p{0.20\textwidth} p{0.23\textwidth} p{0.23\textwidth} p{0.23\textwidth} }
       \toprule
-        \textbf{funcționalitate} & \textbf{tmux} & \textbf{byobu} & \textbf{screen} \\
+        \textbf{funcționalitate} &
+        \textbf{tmux} &
+        \textbf{byobu} &
+        \textbf{screen} \\
       \midrule
-        creare fereastră nouă & \texttt{Ctrl+b c} & \texttt{F2} & \texttt{Ctrl+a c} \\
+        creare fereastră nouă &
+        \texttt{Ctrl+b c} &
+        \texttt{F2} &
+        \texttt{Ctrl+a c} \\
       \midrule
-        detașare & \texttt{Ctrl+b d} & \texttt{Shift+F6} & \texttt{Ctrl+b c} \\
+        detașare &
+        \texttt{Ctrl+b d} &
+        \texttt{Shift+F6} &
+        \texttt{Ctrl+b c} \\
       \midrule
-        listare sesiuni & \texttt{tmux list-sessions} & \texttt{byobu list-sessions} & \texttt{screen -ls} \\
+        listare sesiuni &
+        \texttt{tmux list-sessions} &
+        \texttt{byobu list-sessions} &
+        \texttt{screen -ls} \\
       \midrule
-        reatașare sesiune & \texttt{tmux attach $[$session-name$]$} & \texttt{byobu attach $[$session-name$]$} & \texttt{screen -r $[$session-id$]$} \\
+        reatașare sesiune &
+        \texttt{tmux attach $[$session-name$]$} &
+        \texttt{byobu attach $[$session-name$]$} &
+        \texttt{screen -r $[$session-id$]$} \\
       \midrule
-        schimbare fereastră & \texttt{Ctrl+b \textless{}window-id>} & \texttt{F3, F4} & \texttt{Ctrl+a \textless{}window-id>} \\
+        schimbare fereastră &
+        \texttt{Ctrl+b \textless{}window-id>} &
+        \texttt{F3, F4} &
+        \texttt{Ctrl+a \textless{}window-id>} \\
       \midrule
-        închidere sesiune & \texttt{Ctrl+b :kill-session} & \texttt{Ctrl+a \textbackslash{}} & \texttt{Ctrl+a \textbackslash{}} \\
+        închidere sesiune &
+        \texttt{Ctrl+b :kill-session} &
+        \texttt{Ctrl+a \textbackslash{}} &
+        \texttt{Ctrl+a \textbackslash{}} \\
       \bottomrule
     \end{tabular}
   \end{center}

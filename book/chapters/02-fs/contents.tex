@@ -118,38 +118,53 @@ Prezentăm în continuare exemple concrete de organizare a fișierelor în siste
   \begin{center}
     \begin{tabular}{ p{0.2\textwidth} p{0.7\textwidth} }
       \toprule
-        \textbf{Director} & \textbf{Conținut} \\
+        \textbf{Director} &
+        \textbf{Conținut} \\
       \midrule
-        \file{/} & directorul rădăcină (\textit{root directory}) -- directorul cel mai cuprinzător, care conține celelalte directoare, considerate analoage trunchiului și ramurilor. \\
+        \file{/} &
+        directorul rădăcină (\textit{root directory}) -- directorul cel mai cuprinzător, care conține celelalte directoare, considerate analoage trunchiului și ramurilor. \\
       \midrule
-        \file{/bin} & comenzi esențiale necesare bootării, întreținerii și depanării sistemului\\
+        \file{/bin} &
+        comenzi esențiale necesare bootării, întreținerii și depanării sistemului \\
       \midrule
-        \file{/boot} & fișiere necesare bootării, precum imaginea kernel-ului\\
+        \file{/boot} &
+        fișiere necesare bootării, precum imaginea kernel-ului \\
       \midrule
-        \file{/dev} & fișiere speciale utilizate pentru accesul direct la dispozitivele hardware sau logice ale sistemului\\
+        \file{/dev} &
+        fișiere speciale utilizate pentru accesul direct la dispozitivele hardware sau logice ale sistemului \\
       \midrule
-        \file{/etc} & fișiere pentru configurarea sistemului, precum \file{inittab}, \file{fstab} și \file{hosts}\\
+        \file{/etc} &
+        fișiere pentru configurarea sistemului, precum \file{inittab}, \file{fstab} și \file{hosts} \\
       \midrule
-        \file{/home} & fișierele fiecărui utilizator din sistem - datele unui utilizator se găsesc în \file{/home/username}\\
+        \file{/home} &
+        fișierele fiecărui utilizator din sistem - datele unui utilizator se găsesc în \file{/home/username} \\
       \midrule
-        \file{/media} & subdirectoare în care se montează unitățile optice, floppy etc.\\
+        \file{/media} &
+        subdirectoare în care se montează unitățile optice, floppy etc. \\
       \midrule
-        \file{/mnt} & subdirectoare în care se montează alte sisteme de fișiere\\
+        \file{/mnt} &
+        subdirectoare în care se montează alte sisteme de fișiere \\
       \midrule
-        \file{/opt} & pachete de aplicații de dimensiuni mari, accesibile tuturor utilizatorilor\\
+        \file{/opt} &
+        pachete de aplicații de dimensiuni mari, accesibile tuturor utilizatorilor \\
       \midrule
-        \file{/proc} & sistem virtual de fișiere din care se obțin informații despre sistem și aplicațiile care rulează la un moment dat\\
+        \file{/proc} &
+        sistem virtual de fișiere din care se obțin informații despre sistem și aplicațiile care rulează la un moment dat \\
       \midrule
-        \file{/root} & directorul home al utilizatorului root\\
+        \file{/root} &
+        directorul home al utilizatorului root \\
       \midrule
-        \file{/sbin} & comenzi de bază accesibile numai utilizatorului
-        root\\
+        \file{/sbin} &
+        comenzi de bază accesibile numai utilizatorului root \\
       \midrule
-        \file{/tmp} & fișiere temporare\\
+        \file{/tmp} &
+        fișiere temporare \\
       \midrule
-        \file{/usr} & aplicații pentru uzul normal al sistemului de operare - \file{/usr/local} conține aplicațiile instalate/compilate de utilizator\\
+        \file{/usr} &
+        aplicații pentru uzul normal al sistemului de operare - \file{/usr/local} conține aplicațiile instalate/compilate de utilizator \\
       \midrule
-        \file{/var} & fișiere al căror conținut se schimbă foarte des, precum log-uri, fișiere temporare, cache (date reutilizabile), spool (date neprocesate)\\
+        \file{/var} &
+        fișiere al căror conținut se schimbă foarte des, precum log-uri, fișiere temporare, cache (date reutilizabile), spool (date neprocesate) \\
       \bottomrule
     \end{tabular}
   \end{center}
@@ -179,19 +194,26 @@ Structura fișierelor în Windows diferă față de cea din Linux. Aceasta este 
   \begin{center}
     \begin{tabular}{ p{0.32\textwidth} p{0.62\textwidth} }
       \toprule
-        \textbf{Director} & \textbf{Conținut} \\
+        \textbf{Director} &
+         \textbf{Conținut} \\
       \midrule
-        \file{C:\textbackslash{}} & directorul rădăcină \\
+        \file{C:\textbackslash{}} &
+        directorul rădăcină \\
       \midrule
-        \file{C:\textbackslash{}Windows} & Windows-ul și fișierele aferente \\
+        \file{C:\textbackslash{}Windows} &
+        Windows-ul și fișierele aferente \\
       \midrule
-        \file{C:\textbackslash{}Documents and Settings} & configurările utilizatorilor și date specifice acestora \\
+        \file{C:\textbackslash{}Documents and Settings} &
+        configurările utilizatorilor și date specifice acestora \\
       \midrule
-        \file{C:\textbackslash{}Program Files} & aplicații \\
+        \file{C:\textbackslash{}Program Files} &
+        aplicații \\
       \midrule
-        \file{C:\textbackslash{}Windows\textbackslash{}System32} & drivere și fișiere de configurare Windows \\
+        \file{C:\textbackslash{}Windows\textbackslash{}System32} &
+        drivere și fișiere de configurare Windows \\
       \midrule
-        \file{C:\textbackslash{}Documents and Settings\textbackslash{}username\textbackslash{}My Documents} & datele unui utilizator (aceasta este calea implicită, ea poate fi modificată) \\
+        \file{C:\textbackslash{}Documents and Settings\textbackslash{}username\textbackslash{}My Documents} &
+        datele unui utilizator (aceasta este calea implicită, ea poate fi modificată) \\
       \bottomrule
     \end{tabular}
   \end{center}
@@ -216,15 +238,30 @@ Windows alocă literele în funcție de partiții, nu după sistemul de fișiere
   \begin{center}
     \begin{tabular}{ p{0.15\textwidth} p{0.25\textwidth} p{0.25\textwidth} p{0.25\textwidth} }
       \toprule
-        \textbf{Descriere} & \textbf{Windows} & \textbf{Linux} & \textbf{Mac OS} \\
+        \textbf{Descriere} &
+        \textbf{Windows} &
+        \textbf{Linux} &
+        \textbf{Mac OS} \\
       \midrule
-        rădăcină & \file{C:} & \file{/} & \file{/} \\
+        rădăcină &
+        \file{C:} &
+        \file{/} &
+        \file{/} \\
       \midrule
-        director home & \file{C:\textbackslash{}Documents and Settings\textbackslash{}username} & \file{/home/username} & \file{/Users/username} \\
+        director home &
+        \file{C:\textbackslash{}Documents and Settings\textbackslash{}username} &
+        \file{/home/username} &
+        \file{/Users/username} \\
       \midrule
-        aplicații & \file{C:\textbackslash{}Program Files} & \file{/bin}; \file{/sbin}; \file{/usr/bin}; \file{/usr/sbin}; \file{/usr/local/bin}; & \file{/opt/*/bin} \file{/Applications}; \file{/bin}; \file{/sbin} \\
+        aplicații &
+        \file{C:\textbackslash{}Program Files} &
+        \file{/bin}; \file{/sbin}; \file{/usr/bin}; \file{/usr/sbin}; \file{/usr/local/bin}; &
+        \file{/opt/*/bin} \file{/Applications}; \file{/bin}; \file{/sbin} \\
       \midrule
-        configurări ale sistemului & Windows Registry & directoare specifice fiecărei \ aplicații, aflate în home-ul utilizatorului; \file{/etc} & \file{/Users/username/ Library}; \file{/etc} \\
+        configurări ale sistemului &
+        Windows Registry &
+        directoare specifice fiecărei \ aplicații, aflate în home-ul utilizatorului; \file{/etc} &
+        \file{/Users/username/ Library}; \file{/etc} \\
       \bottomrule
     \end{tabular}
   \end{center}
@@ -693,13 +730,17 @@ drwxrwxr-x 2 student student 4096 sep 30 17:32 games/heroes/3/nighon/mutare
   \begin{center}
     \begin{tabular}{ p{0.3\textwidth} p{0.6\textwidth} }
       \toprule
-        \textbf{Tip de intrare} & \textbf{Comandă} \\
+        \textbf{Tip de intrare} &
+        \textbf{Comandă} \\
       \midrule
-        fișier obișnuit (regular file) & \cmd{touch \textless{}nume\_fișier>} sau \newline \cmd{> \textless{}nume\_fișier>} \\
+        fișier obișnuit (regular file) &
+        \cmd{touch \textless{}nume\_fișier>} sau \newline \cmd{> \textless{}nume\_fișier>} \\
       \midrule
-        director & \cmd{mkdir \textless{}nume\_director>} \\
+        director &
+        \cmd{mkdir \textless{}nume\_director>} \\
       \midrule
-        legătură (link) & \cmd{ln -s \textless{}destinatie> [\textless{}nume\_legătură>]} \\
+        legătură (link) &
+        \cmd{ln -s \textless{}destinatie> [\textless{}nume\_legătură>]} \\
       \bottomrule
     \end{tabular}
   \end{center}
@@ -1020,17 +1061,22 @@ potrivite.
   \begin{center}
     \begin{tabular}{ p{0.2\textwidth} p{0.7\textwidth} }
       \toprule
-        \textbf{Metoda} & \textbf{Descriere} \\
+        \textbf{Metoda} &
+        \textbf{Descriere} \\
       \midrule
-        tar + gzip/bzip2 & Metodă foarte simplu de aplicat. Devine greu de folosit pentru dimensiuni mari de date. Permite compresia
+        tar + gzip/bzip2 &
+        Metodă foarte simplu de aplicat. Devine greu de folosit pentru dimensiuni mari de date. Permite compresia
         datelor. \\
       \midrule
-        dd & Metoda simplu de folosit și independentă de sistemul de fișiere. Permite păstrarea intactă a structurii sistemului de fișiere. Inflexibilă când vine vorba de recuperarea datelor.  Utilă pentru cantități mari de date. \\
+        dd &
+        Metoda simplu de folosit și independentă de sistemul de fișiere. Permite păstrarea intactă a structurii sistemului de fișiere. Inflexibilă când vine vorba de recuperarea datelor.  Utilă pentru cantități mari de date. \\
       \midrule
-        rsync & E asemănătoare comenzii cp dar la care s-a adăugat suport de sincronizare intre mai multe computere. Permite replicarea structurii de fișiere (inclusiv permisiuni) între 2
+        rsync &
+        E asemănătoare comenzii cp dar la care s-a adăugat suport de sincronizare intre mai multe computere. Permite replicarea structurii de fișiere (inclusiv permisiuni) între 2
         computere. \\
       \midrule
-        rdiff-backup & Este un wrapper peste rsync. Adaugă suport pentru backupuri incrementale, adică: la un moment dat se realizează un backup complet pentru un director (asemănător rsync-ului); backup-urile incrementale salvează doar modificările ce s-au făcut de la ultimul backup pana în prezent, indiferent de tipul backup-ului; în acest fel se poate reveni la orice stare anterioara, în măsura în care s-a realizat cel puțin un backup incremental la acea stare. \\
+        rdiff-backup &
+        Este un wrapper peste rsync. Adaugă suport pentru backupuri incrementale, adică: la un moment dat se realizează un backup complet pentru un director (asemănător rsync-ului); backup-urile incrementale salvează doar modificările ce s-au făcut de la ultimul backup pana în prezent, indiferent de tipul backup-ului; în acest fel se poate reveni la orice stare anterioara, în măsura în care s-a realizat cel puțin un backup incremental la acea stare. \\
       \bottomrule
     \end{tabular}
   \end{center}
@@ -1069,17 +1115,29 @@ Restul fișierelor deschise de aplicații au un descriptor de fișier mai mare s
   \begin{center}
     \begin{tabular}{ p{0.2\textwidth} p{0.2\textwidth} p{0.5\textwidth}}
       \toprule
-        \textbf{Sursă} & \textbf{Destinație} & \textbf{Exemplu comandă} \\
+        \textbf{Sursă} &
+        \textbf{Destinație} &
+        \textbf{Exemplu comandă} \\
       \midrule
-        intrare (\textit{stdin}) & Fișier & \cmd{./program $<$ fișier\_intrare} \\
+        intrare (\textit{stdin}) &
+        Fișier &
+        \cmd{./program $<$ fișier\_intrare} \\
       \midrule
-        ieșire (\textit{stdout}) & Fișier & \cmd{./program $>$ fișier\_ieșire} \\
+        ieșire (\textit{stdout}) &
+        Fișier &
+        \cmd{./program $>$ fișier\_ieșire} \\
       \midrule
-        eroare (\textit{stderr}) & Fișier & \cmd{./program 2$>$ fișier\_erori} \\
+        eroare (\textit{stderr}) &
+        Fișier &
+        \cmd{./program 2$>$ fișier\_erori} \\
       \midrule
-        eroare (\textit{stderr}) & iesire (stdout) & \cmd{./program 2$>$\&1} \\
+        eroare (\textit{stderr}) &
+        iesire (stdout) &
+        \cmd{./program 2$>$\& 1} \\
       \midrule
-        eroare \& ieșire & Fișier & \cmd{./program $>$ fișier\_ieșire\_și\_erori 2$>$\&1} \\
+        eroare \& ieșire &
+        Fișier &
+        \cmd{./program $>$ fișier\_ieșire\_și\_erori 2$>$\& 1} \\
       \bottomrule
     \end{tabular}
   \end{center}
@@ -1161,15 +1219,20 @@ fstat(3, {st_mode=S_IFREG|0644, st_size=91329, ...}) = 0
   \begin{center}
     \begin{tabular}{ p{0.4\textwidth} p{0.5\textwidth}}
       \toprule
-        \textbf{Comanda} & \textbf{Efect} \\
+        \textbf{Comanda} &
+        \textbf{Efect} \\
       \midrule
-        \cmd{./program 2$>$ /dev/null} & mesajele de la ieșirea de eroare standard nu sunt afișate \\
+        \cmd{./program 2$>$ /dev/null} &
+        mesajele de la ieșirea de eroare standard nu sunt afișate \\
       \midrule
-        \cmd{./program $>$ /dev/null 2$>$\&1} & nici un mesaj nu este afișat \\
+        \cmd{./program $>$ /dev/null 2$>$\& 1} &
+        nici un mesaj nu este afișat \\
       \midrule
-        \cmd{$>$ new\_file} & creează un fișier gol cu numele \file{new\_file} \\
+        \cmd{$>$ new\_file} &
+        creează un fișier gol cu numele \file{new\_file} \\
       \midrule
-        \cmd{cat /dev/null $>$ new\_file} & creează un fișier cu același conținut ca \file{/dev/null}, adică un fișier gol, indentic ca mai sus \\
+        \cmd{cat /dev/null $>$ new\_file} &
+        creează un fișier cu același conținut ca \file{/dev/null}, adică un fișier gol, indentic ca mai sus \\
       \bottomrule
     \end{tabular}
   \end{center}
@@ -1190,22 +1253,49 @@ Pentru mai multe informații despre crearea, montarea și repararea unui sistem 
   \begin{center}
     \begin{tabular}{ p{0.18\textwidth} p{0.23\textwidth} p{0.23\textwidth} p{0.23\textwidth} }
       \toprule
-        \textbf{SO} & \textbf{Windows} & \textbf{Linux} & \textbf{Mac OS} \\
-        \textbf{Sistem fișiere} & & & \\
+        \textbf{SO} &
+        \textbf{Windows} &
+        \textbf{Linux} &
+        \textbf{Mac OS} \\
+        \textbf{Sistem fișiere} &
+        &
+        &
+        \\
       \midrule
-        FAT32 & Nativ & Nativ & Nativ \\
+        FAT32 &
+        Nativ &
+        Nativ &
+        Nativ \\
       \midrule
-        NTFS & Nativ (dupa WinNT) & prin ntfs-3g & prin ntfs-3g \\
+        NTFS &
+        Nativ (dupa WinNT) &
+        prin ntfs-3g &
+        prin ntfs-3g \\
       \midrule
-        Ext2/Ext3/Ext4 & Driver third-party & Nativ & - \\
+        Ext2/Ext3/Ext4 &
+        Driver third-party &
+        Nativ &
+        - \\
       \midrule
-        HFS+ & - & Nativ & Nativ \\
+        HFS+ &
+        - &
+        Nativ &
+        Nativ \\
       \midrule
-        APFS & - & - & Nativ \\
+        APFS &
+        - &
+        - &
+        Nativ \\
       \midrule
-        ISO9660 & Nativ & Nativ & Nativ \\
+        ISO9660 &
+        Nativ &
+        Nativ &
+        Nativ \\
       \midrule
-        UDF & Nativ & Nativ & Nativ \\
+        UDF &
+        Nativ &
+        Nativ &
+        Nativ \\
       \bottomrule
     \end{tabular}
   \end{center}
@@ -1221,13 +1311,21 @@ Sistemele de fișiere pot fi clasificate după locul în care datele sunt stocat
   \begin{center}
     \begin{tabular}{ p{0.25\textwidth} p{0.25\textwidth} p{0.4\textwidth} }
       \toprule
-        \textbf{Tip} & \textbf{Exemplu} & \textbf{Descriere} \\
+        \textbf{Tip} &
+        \textbf{Exemplu} &
+        \textbf{Descriere} \\
       \midrule
-        sisteme de fișiere cu suport fizic &  FAT32, NTFS, Ext4, APFS & se regăsesc de obicei pe un mediu de stocare \\
+        sisteme de fișiere cu suport fizic &
+         FAT32, NTFS, Ext4, APFS &
+        se regăsesc de obicei pe un mediu de stocare \\
       \midrule
-        sisteme de fișiere virtuale & procfs, devfs, SSHFS & conțin fișiere/date generate de SO (informații despre sistem) sau de o altă componentă software (alte surse) \\
+        sisteme de fișiere virtuale &
+        procfs, devfs, SSHFS &
+        conțin fișiere/date generate de SO (informații despre sistem) sau de o altă componentă software (alte surse) \\
       \midrule
-        sisteme de fișiere pentru rețea & NFS, SMB & utilizate pentru accesul la fișiere aflate în rețea \\
+        sisteme de fișiere pentru rețea &
+        NFS, SMB &
+        utilizate pentru accesul la fișiere aflate în rețea \\
       \bottomrule
     \end{tabular}
   \end{center}
@@ -1267,25 +1365,59 @@ Atunci când alegem un sistem de fișiere, criteriile cele mai căutate sunt:
   \begin{center}
     \begin{tabular}{ p{0.07\textwidth} p{0.15\textwidth} p{0.2\textwidth} p{0.07\textwidth} p{0.35\textwidth} }
       \toprule
-        \textbf{Nume} & \textbf{Sisteme de operare} &
-        \textbf{Dimensiune maximă fișier} & \textbf{Jurnalizare} &
+        \textbf{Nume} &
+        \textbf{Sisteme de operare} &
+        \textbf{Dimensiune maximă fișier} &
+        \textbf{Jurnalizare} &
         \textbf{Observații} \\
       \midrule
-        FAT32 & Windows / Linux / Mac OS & 4 GB & nu & Cel mai folosit sistem de fișiere - întâlnit în mod special pe USB stick-uri, fără drepturi de acces; Windows-ul limitează la creare dimensiunea unei partiții la 32GB, dar poate citi partiții mai mari realizate și formatate cu aplicații third-party folosit pentru a asigura compatibilitatea cu dispozitive sau sisteme mai vechi \\
+        FAT32 &
+        Windows / Linux / Mac OS &
+        4 GB &
+        nu &
+        Cel mai folosit sistem de fișiere - întâlnit în mod special pe USB stick-uri, fără drepturi de acces; Windows-ul limitează la creare dimensiunea unei partiții la 32GB, dar poate citi partiții mai mari realizate și formatate cu aplicații third-party folosit pentru a asigura compatibilitatea cu dispozitive sau sisteme mai vechi \\
       \midrule
-        NTFS & Windows / Linux / Mac OS & 16TiB & da & Singurul sistem de fișiere pentru Windows recomandat de Microsoft. Singurul sistem de fișiere pentru Windows cu securitate. \\
+        NTFS &
+        Windows / Linux / Mac OS &
+        16TiB &
+        da &
+        Singurul sistem de fișiere pentru Windows recomandat de Microsoft. Singurul sistem de fișiere pentru Windows cu securitate. \\
       \midrule
-        Ext2/Ext3 & Linux / Windows & 16GiB - 64TiB & ext2-nu ext3-da & Sistemul de fișiere considerat cel mai stabil datorită unei istorii de dezvoltare foarte lungi; ext3 e compatibil cu versiunea anterioară ext2, aduce jurnalizare față de ext2 \\
+        Ext2/Ext3 &
+        Linux / Windows &
+        16GiB - 64TiB &
+        ext2-nu ext3-da &
+        Sistemul de fișiere considerat cel mai stabil datorită unei istorii de dezvoltare foarte lungi; ext3 e compatibil cu versiunea anterioară ext2, aduce jurnalizare față de ext2 \\
       \midrule
-        Ext4 & Linux / Windows / MacOS & 16TiB & da & Succesorul lui Ext3, îmbunătățind performanța, stabilitatea și capacitatea de stocare. Este adecvat și pentru stocarea datelor critice, datorită preciziei ridicate ale marcajelor temporale. \\
+        Ext4 &
+        Linux / Windows / MacOS &
+        16TiB &
+        da &
+        Succesorul lui Ext3, îmbunătățind performanța, stabilitatea și capacitatea de stocare. Este adecvat și pentru stocarea datelor critice, datorită preciziei ridicate ale marcajelor temporale. \\
       \midrule
-        HFS+ & Mac OS / Linux & 16 EiB & da* & * în Linux, HFS+ are suport fără jurnalizare \\
+        HFS+ &
+        Mac OS / Linux &
+        16 EiB &
+        da* &
+        * în Linux, HFS+ are suport fără jurnalizare \\
       \midrule
-        APFS & MacOS, iOS & 8 EiB & da & Este optimizat pentru dispozitivele de stocare tip flash și solid drive, și pune accentul pe criptare. \\
+        APFS &
+        MacOS, iOS &
+        8 EiB &
+        da &
+        Este optimizat pentru dispozitivele de stocare tip flash și solid drive, și pune accentul pe criptare. \\
       \midrule
-        ISO9660 & Win / Linux / Mac OS & În funcție de implementare & nu & Sistem de fișiere utilizat în principal pe CD-uri, organizare internă concepută pentru ca datele să fie citibile ușor \\
+        ISO9660 &
+        Win / Linux / Mac OS &
+        În funcție de implementare &
+        nu &
+        Sistem de fișiere utilizat în principal pe CD-uri, organizare internă concepută pentru ca datele să fie citibile ușor \\
       \midrule
-        UDF & Win / Linux / Mac OS & 16 EiB & da & Sistem de fișiere utilizat în principal pe mediile optice, cu suport atât pentru scriere cât și pentru citire \\
+        UDF &
+        Win / Linux / Mac OS &
+        16 EiB &
+        da &
+        Sistem de fișiere utilizat în principal pe mediile optice, cu suport atât pentru scriere cât și pentru citire \\
       \bottomrule
     \end{tabular}
   \end{center}
@@ -1302,43 +1434,81 @@ Atunci când alegem un sistem de fișiere, criteriile cele mai căutate sunt:
   \begin{center}
     \begin{tabular}{ p{0.2\textwidth} p{0.2\textwidth} p{0.4\textwidth} }
       \toprule
-        \textbf{Comanda Linux} & \textbf{Comanda Windows} & \textbf{Descriere} \\
+        \textbf{Comanda Linux} &
+        \textbf{Comanda Windows} &
+        \textbf{Descriere} \\
       \midrule
-        \cmd{comanda -{}-help} & \cmd{comanda /?} & afișează informații despre comandă \\
+        \cmd{comanda -{}-help} &
+        \cmd{comanda /?} &
+        afișează informații despre comandă \\
       \midrule
-        \cmd{cd} & \cmd{cd} & schimbă directorul curent \\
+        \cmd{cd} &
+        \cmd{cd} &
+        schimbă directorul curent \\
       \midrule
-        \cmd{pwd} & \cmd{chdir} & afișează directorul curent \\
+        \cmd{pwd} &
+        \cmd{chdir} &
+        afișează directorul curent \\
       \midrule
-        \cmd{clear} & \cmd{cls} & șterge ecranul consolei curente \\
+        \cmd{clear} &
+        \cmd{cls} &
+        șterge ecranul consolei curente \\
       \midrule
-        \cmd{cp} & \cmd{copy} & copiază un fișier \\
+        \cmd{cp} &
+        \cmd{copy} &
+        copiază un fișier \\
       \midrule
-        \cmd{rm} & \cmd{del} & șterge un fișier \\
+        \cmd{rm} &
+        \cmd{del} &
+        șterge un fișier \\
       \midrule
-        \cmd{ls} & \cmd{dir} & afișează conținutul directorului curent \\
+        \cmd{ls} &
+        \cmd{dir} &
+        afișează conținutul directorului curent \\
       \midrule
-        \cmd{vim} & \cmd{edit} & editează un fișier text \\
+        \cmd{vim} &
+        \cmd{edit} &
+        editează un fișier text \\
       \midrule
-        \cmd{exit} & \cmd{exit} & închide shellul curent \\
+        \cmd{exit} &
+        \cmd{exit} &
+        închide shellul curent \\
       \midrule
-        \cmd{diff} & \cmd{fc} & compară două fișiere și afișează diferențele între ele \\
+        \cmd{diff} &
+        \cmd{fc} &
+        compară două fișiere și afișează diferențele între ele \\
       \midrule
-        \cmd{find} & \cmd{find} & caută fișiere \\
+        \cmd{find} &
+        \cmd{find} &
+        caută fișiere \\
       \midrule
-        \cmd{mkfs (mke2fs)} & \cmd{format} & formatează un disc \\
+        \cmd{mkfs (mke2fs)} &
+        \cmd{format} &
+        formatează un disc \\
       \midrule
-        \cmd{free} & \cmd{mem} & afișează informații despre memoria liberă și cea ocupată \\
+        \cmd{free} &
+        \cmd{mem} &
+        afișează informații despre memoria liberă și cea ocupată \\
       \midrule
-        \cmd{mkdir} & \cmd{mkdir} & creează un nou director \\
+        \cmd{mkdir} &
+        \cmd{mkdir} &
+        creează un nou director \\
       \midrule
-        \cmd{mv} & \cmd{move} & mută un fișier \\
+        \cmd{mv} &
+        \cmd{move} &
+        mută un fișier \\
       \midrule
-        \cmd{mv} & \cmd{ren} & redenumește un fișier \\
+        \cmd{mv} &
+        \cmd{ren} &
+        redenumește un fișier \\
       \midrule
-        \cmd{date} & \cmd{time} & afișează ora sistemului \\
+        \cmd{date} &
+        \cmd{time} &
+        afișează ora sistemului \\
       \midrule
-        \cmd{diff} & \cmd{fc} & afișează diferențele dintre două fișiere \\
+        \cmd{diff} &
+        \cmd{fc} &
+        afișează diferențele dintre două fișiere \\
       \bottomrule
     \end{tabular}
   \end{center}

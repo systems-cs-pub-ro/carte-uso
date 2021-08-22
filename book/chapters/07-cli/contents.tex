@@ -182,40 +182,40 @@ shell. Aceste combinații de taste au două avantaje:
       \midrule
         \texttt{Ctrl+c} &
         terminarea procesului interactiv curent / anularea comenzii tastate în shell \\
-
+      \midrule
         \texttt{Ctrl+\textbackslash{}} &
         terminarea procesului interactiv curent \\
-
+      \midrule
         \texttt{Ctrl+d} &
         livrarea EOF (\textit{End of File}) și închiderea shellului \\
-
+      \midrule
         \texttt{Alt+.} &
         completarea în shell a ultimului argument al ultimei comenzi \\
-
+      \midrule
         \texttt{Ctrl+a} &
         plasarea cursorului de editare la începutul comenzii \\
-
+      \midrule
         \texttt{Ctrl+e} &
         plasarea cursorului de editare la sfârșitul comenzii \\
-
+      \midrule
         \texttt{Alt+b} &
         plasarea cursorului un cuvânt înapoi \\
-
+      \midrule
         \texttt{Alt+f} &
         plasarea cursorului un cuvânt înainte \\
-
+      \midrule
         \texttt{Ctrl+u} &
         ștergerea din poziția curentă până la începutul comenzii \\
-
+      \midrule
         \texttt{Ctrl+k} &
         ștergerea din poziția curentă până la sfârșitul comenzii \\
-
+      \midrule
         \texttt{Ctrl+d} &
         ștergerea literei de sub cursor (echivalent \texttt{Delete}) \\
-
+      \midrule
         \texttt{Alt+d} &
         ștergerea cuvântului din fața cursorului \\
-
+      \midrule
         \texttt{Alt+Backspace} &
         ștergerea cuvântului din spatele cursorului \\
       \bottomrule
@@ -428,15 +428,15 @@ externe.
         parte din shell &
         da &
         nu \\
-
+      \midrule
         executabil dedicat &
         nu &
         da \\
-
+      \midrule
         overhead &
         redus &
         mai mare \\
-
+      \midrule
         modularitate &
         da &
         nu \\
@@ -534,13 +534,13 @@ variabile. Nu pot fi configurați / modificați, doar citiți. Sunt prezentați 
       \midrule
         \texttt{\$} &
         PID-ul procesului shell curent \\
-
+      \midrule
         \texttt{!} &
         PID-ul celui mai recent proces din background \\
-
+      \midrule
         \texttt{?} &
         codul de ieșire al celei mai recente comenzi \\
-
+      \midrule
         \texttt{\_} &
         ultimul argument al celei mai recente comenzi \\
       \bottomrule
@@ -565,19 +565,19 @@ funcționarea shellului; o parte sunt indicate în \labelindexref{Tabelul}{tab:c
       \midrule
         \texttt{PATH} &
         căile de căutare a fișierelor executabile pentru comenzi \\
-
+      \midrule
         \texttt{PWD} &
         directorul curent \\
-
+      \midrule
         \texttt{USER} &
         numele utilizatorului curent \\
-
+      \midrule
         \texttt{HOME} &
         directorul home al utilizatorului curent \\
-
+      \midrule
         \texttt{SHELL} &
         shellul curent \\
-
+      \midrule
         \texttt{TERM} &
         tipul de terminal folosit \\
       \bottomrule
@@ -745,22 +745,22 @@ Expandarea parametrică are mai multe forme, le amintim pe cele relevante în \l
         afișează conținutul variabilei \texttt{var} &
         \verb|${config}| &
         \texttt{/etc/nsswitch.conf} \\
-
+      \midrule
         \verb|${#var}| &
         afișează numărul de caractere ale conținutului variabilei \texttt{var} &
         \verb|${#config}| &
         \texttt{18} \\
-
+      \midrule
         \verb|${var/str1/str2}| &
         înlocuirea șirului \texttt{str1} cu șirul \texttt{str2} în conținutul variabilei \texttt{var} &
         \verb|${config/ns/df}| &
         \texttt{/etc/dfswitch.conf} \\
-
+      \midrule
         \verb|${var#str}| &
         șterge șirul \texttt{str} de la începutul conținutului variabilei \texttt{var} &
         \verb|${config#/*/}| &
         \texttt{nsswitch.conf} \\
-
+      \midrule
         \verb|${var%str}| &
         șterge șirul \texttt{str} de la sfârșitul conținutului variabilei \texttt{var} &
         \verb|${config%/*}| &
@@ -800,13 +800,12 @@ Globbing folosește de regulă caractere speciale, așa cum sunt indicate în co
       \midrule
         \texttt{?} &
         se potrivește cu orice caracter o singură dată \\
-
+      \midrule
         \texttt{*} &
         se potrivește cu orice caracter de oricâte ori \\
-
+      \midrule
         \verb|[...]| &
         se potrivește cu orice caracter din setul de caractere dintre parantezele drepte \\
-
       \bottomrule
     \end{tabular}
   \end{center}
@@ -981,25 +980,24 @@ interpretate de shell, precum cele din \labelindexref{Tabelul}{tab:cli:prompt}.
         \textbf{Construcție} &
         \textbf{Efect} \\
       \midrule
-
         \verb|\u| &
         numele utilizatorului \\
-
+      \midrule
         \verb|\h| &
         numele stației (\textit{hostname}) \\
-
+      \midrule
         \verb|\w| &
         directorul curent \\
-
+      \midrule
         \verb|\$| &
         caracterul dollar \\
-
+      \midrule
         \verb|\t| &
         data curentă, în format 24H \\
-
+      \midrule
         \verb|\@| &
         data curentă, în format 12H, urmată de AM / PM \\
-
+      \midrule
         \verb|\[\033[COLORm\]| &
         schimbarea culorii textului din prompt \\
       \bottomrule
@@ -1077,28 +1075,27 @@ Expresiile regulate pot conține unul sau mai multe dintre metacaracterele preze
       \midrule
         \texttt{.} &
         orice caracter \\
-
+      \midrule
         \texttt{a?} &
         caracterul \texttt{a} o dată sau niciodată \\
-
+      \midrule
         \texttt{a*} &
         caracterul \texttt{a} de oricâte ori, posibil niciodată \\
-
+      \midrule
         \texttt{a+} &
         caracterul \texttt{a} de oricâte ori, cel puțin o dată \\
-
+      \midrule
         \verb|^| &
         început de linie \\
-
+      \midrule
         \texttt{\$} &
         sfârșit de linie \\
-
+      \midrule
         \verb|[...]| &
         orice caracter din setul de caractere dintre parantezele drepte \\
-
+      \midrule
         \texttt{\textbackslash{}} &
         escaping \\
-
       \bottomrule
     \end{tabular}
   \end{center}
@@ -1119,19 +1116,18 @@ Dacă dorim să folosim într-o expresie regulată un metacaracter în sensul s�
       \midrule
         \verb|[A-Z][a-z]+| &
         nume propriu \\
-
+      \midrule
         \verb|[A-Z][a-z]+ [A-Z][a-z]+| &
         prenume și nume \\
-
+      \midrule
         \verb|[a-zA-Z_][a-zA-Z_0-9]*| &
         nume de variabilă \\
-
+      \midrule
         \verb|[0-9]{10}| &
         număr de telefon \\
-
+      \midrule
         \verb|^#include +<[^>]+>$| &
         linie ce conține o directivă \texttt{include} în C \\
-
       \bottomrule
     \end{tabular}
   \end{center}
@@ -1217,71 +1213,70 @@ Prelucrarea text presupune acțiuni de forma:
         \cmd{grep} &
         extrage liniile care se potrivesc cu o expresie regulată &
         extragere \\
-
+      \midrule
         \cmd{cut} &
         extrage anumite coloane &
         selecție \\
-
+      \midrule
         \cmd{nl} &
         afișează numărul liniei pentru fiecare linie &
         reformatare \\
-
+      \midrule
         \cmd{wc} &
         afișează numărul de linii &
         sumarizare \\
-
+      \midrule
         \cmd{sort} &
         sortează liniile &
         ordonare \\
-
+      \midrule
         \cmd{uniq} &
         eliminină liniile duplicate &
         extragere, reformatare \\
-
+      \midrule
         \cmd{fmt} &
         reformatează conținutul &
         reformatare \\
-
+      \midrule
         \cmd{paste} &
         alătură conținutul mai multor fișiere &
         reformatare \\
-
+      \midrule
         \cmd{join} &
         alătură conținutul mai multor fișiere pe baza unor informații comune &
         reformatare \\
-
+      \midrule
         \cmd{rev} &
         inversează conținutul unei linii &
         reformatare \\
-
+      \midrule
         \cmd{tail} &
         afișează doar liniile finale &
         selecție \\
-
+      \midrule
         \cmd{head} &
         afișează doar liniile inițiale &
         selecție \\
-
+      \midrule
         \cmd{tac} &
         inversează liniile unui fișier &
         reformatare \\
-
+      \midrule
         \cmd{tr} &
         translatează caractere &
         înlocuire \\
-
+      \midrule
         \cmd{tee} &
         clonează conținutul într-un alt fișier și la ieșirea standard &
         duplicare \\
-
+      \midrule
         \cmd{sed} &
         utilitare de prelucrări complexe &
         toate tipurile de acțiuni \\
-
+      \midrule
         \cmd{awk} &
         utilitare de prelucrări complexe &
         toate tipurile de acțiuni \\
-
       \bottomrule
     \end{tabular}
   \end{center}
