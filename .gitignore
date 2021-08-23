@@ -19,6 +19,7 @@
 *.ilg
 *.ind
 *.nlo
+*.nls
 
 # Main PDF file
 /book/uso.pdf
