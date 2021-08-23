@@ -1,28 +1,15 @@
 \chapter{Pornirea sistemului}
 \label{ch:boot}
 
-Atunci când un sistem hardware pornește, acesta urmărește încărcarea sistemului
-de operare, pornirea acestuia și a proceselor de bază. Această acțiune se
-cheamă \textit{booting} sau \textit{bootstrapping}: modul în care un sistem, din momentul în care
-este alimentat și pornit fizic, ajunge să ofere o interfață de lucru
-utilizatorului. Procesul de boot/booting se referă la pașii urmați de la
-pornirea electrică (\textit{power on}) până la pornirea proceselor.
+Atunci când un sistem hardware pornește, acesta urmărește încărcarea sistemului de operare, pornirea acestuia și a proceselor de bază.
+Această acțiune se cheamă \textit{booting} sau \textit{bootstrapping}: modul în care un sistem, din momentul în care este alimentat și pornit fizic, ajunge să ofere o interfață de lucru utilizatorului.
+Procesul de boot/booting se referă la pașii urmați de la pornirea electrică (\textit{power on}) până la pornirea proceselor.
 
-Înțelegerea procesului de boot este utilă pentru un utilizator dacă dorește să
-își configureze modul în care este configurat hardware-ul sistemului, ce sistem
-de operare rulează, opțiuni de rulare a sistemului de operare și ce procese sunt
-create la pornire (\textit{startup}). Pentru un utilizator avizat, a ști informații
-despre anatomia procesului de boot și a secvența de pași urmați este important
-pentru a depana probleme ce pot apărea sau pentru a îmbunătăți aspecte precum
-timpul de pornire, securitatea sistemului, consumul de resurse.
+Înțelegerea procesului de boot este utilă pentru un utilizator dacă dorește să își configureze modul în care este configurat hardware-ul sistemului, ce sistem de operare rulează, opțiuni de rulare a sistemului de operare și ce procese sunt create la pornire (\textit{startup}).
+Pentru un utilizator avizat, a ști informații despre anatomia procesului de boot și a secvența de pași urmați este important pentru a depana probleme ce pot apărea sau pentru a îmbunătăți aspecte precum timpul de pornire, securitatea sistemului, consumul de resurse.
 
-După pornirea fizică
-(power on) a sistemului, este încărcat firmware-ul de boot (numit BIOS pe
-arhitectura x86), apoi este identificat un dispozitiv bootabil, este încărcat
-bootloaderul, apoi sistemul de operare și apoi sunt pornite procesele de
-început (\textit{startup processes}). În \labelindexref{Figura}{fig:boot:sequence} este prezentat un sumar al
-pașilor urmați în secvența de boot, urmând să îi detaliem în secțiunile de mai
-jos:
+După pornirea fizică (power on) a sistemului, este încărcat firmware-ul de boot (numit BIOS pe arhitectura x86), apoi este identificat un dispozitiv bootabil, este încărcat bootloaderul, apoi sistemul de operare și apoi sunt pornite procesele de început (\textit{startup processes}).
+În \labelindexref{Figura}{fig:boot:sequence} este prezentat un sumar al pașilor urmați în secvența de boot, urmând să îi detaliem în secțiunile de mai jos:
 
 \begin{figure}[htbp]
   \centering
@@ -43,116 +30,82 @@ jos:
 \section{Secvența de boot}
 \label{sec:boot:sequence}
 
-În cadrul secvenței de boot, fiecare pas, descris în
-\labelindexref{Figura}{fig:boot:sequence}, are rolul său. Unul dintre
-roluri este acela de a transfera controlul următorului pas: fiecare pas are
-capacitate limitată în procesul de pornire, următorul pas preluând rezultatul
-său și realizând alte acțiuni. Alt rol al fiecărui pas este de configurare a
-unor opțiuni specifice în procesul de boot, așa cum vom preciza mai jos.
+În cadrul secvenței de boot, fiecare pas, descris în \labelindexref{Figura}{fig:boot:sequence}, are rolul său.
+Unul dintre roluri este acela de a transfera controlul următorului pas: fiecare pas are capacitate limitată în procesul de pornire, următorul pas preluând rezultatul său și realizând alte acțiuni.
+Alt rol al fiecărui pas este de configurare a unor opțiuni specifice în procesul de boot, așa cum vom preciza mai jos.
 
-În momentul pornirii fizice (\textit{power on}), sistemul încarcă firmware-ul de boot dintr-o zonă
-dedicată. Firmware-ul de boot este
-numit BIOS (sau UEFI \abbrev{UEFI}{Unified Extensible Firmware Interface} - \textit{Unified Extensible Firmware Interface}) pe
-arhitectura x86. Firmware-ul de boot există pe sistemul fizic indiferent de
-prezența sau nu a unui sistem de operare sau dispozitiv bootabil. Firmware-ul de
-boot realizează verificări de bază ale funcționării hardware-ului, oferă
-utilizatorului posibilitatea de configurări aproape de hardware (precum
-activarea/dezactivarea virtualizării, configurarea vitezei de acces la memorie)
-și stabilește ordinea de boot: ce dispozitive și în ce ordine sunt verificate
-pentru a trece la următorul pas.
+În momentul pornirii fizice (\textit{power on}), sistemul încarcă firmware-ul de boot dintr-o zonă dedicată.
+Firmware-ul de boot este numit BIOS (sau UEFI \abbrev{UEFI}{Unified Extensible Firmware Interface} - \textit{Unified Extensible Firmware Interface}) pe arhitectura x86.
+Firmware-ul de boot există pe sistemul fizic indiferent de prezența sau nu a unui sistem de operare sau dispozitiv bootabil.
+Firmware-ul de boot realizează verificări de bază ale funcționării hardware-ului, oferă utilizatorului posibilitatea de configurări aproape de hardware (precum activarea/dezactivarea virtualizării, configurarea vitezei de acces la memorie) și stabilește ordinea de boot: ce dispozitive și în ce ordine sunt verificate pentru a trece la următorul pas.
 
-Firmware-ul de boot identifică dispozitivul de boot și încarcă o secvență
-dedicată de pe acesta. Dispozitivul de boot poate fi hard disk drive, USB flash
-drive, CD-ROM drive. Dispozitivul de boot nu are un rol activ, ci unul de
-stocare. Acesta stochează următoarea secvență de cod care să fie executată, în
-mod tipic bootloaderul. Bootloaderul este încărcat de firmware-ul de
-boot din dispozitivul de boot în memorie. Apoi îi este transferat controlul
-bootloaderului.
+Firmware-ul de boot identifică dispozitivul de boot și încarcă o secvență dedicată de pe acesta.
+Dispozitivul de boot poate fi hard disk drive, USB flash drive, CD-ROM drive.
+Dispozitivul de boot nu are un rol activ, ci unul de stocare.
+Acesta stochează următoarea secvență de cod care să fie executată, în mod tipic bootloaderul.
+Bootloaderul este încărcat de firmware-ul de boot din dispozitivul de boot în memorie.
+Apoi îi este transferat controlul bootloaderului.
 
-Întrucât firmware-ul de boot are, de obicei, capacități limitate de a încărca în
-memorie părți stocate pe un dispozitiv precum hard disk, se transferă controlul
-bootloaderului pentru a gestiona acest lucru. Bootloaderul urmărește
-încărcarea în memorie a sistemului de operare (a imaginii de kernel) de pe un dispozitiv de stocare.
-Bootloaderul poate oferi opțiunea
-utilizatorului de a decide ce sistem de operare să încarce, funcționalitate
-utilă pentru sistemele dual boot (când putem boota și Windows și Linux).
+Întrucât firmware-ul de boot are, de obicei, capacități limitate de a încărca în memorie părți stocate pe un dispozitiv precum hard disk, se transferă controlul bootloaderului pentru a gestiona acest lucru.
+Bootloaderul urmărește încărcarea în memorie a sistemului de operare (a imaginii de kernel) de pe un dispozitiv de stocare.
+ Bootloaderul poate oferi opțiunea utilizatorului de a decide ce sistem de operare să încarce, funcționalitate utilă pentru sistemele dual boot (când putem boota și Windows și Linux).
 
-Sistemul de operare este pornit cu ajutorul bootloaderului din imaginea de
-kernel. Imaginea de kernel este un fișier care se regăsește pe un dispozitiv de
-stocare; din acest dispozitiv este încărcată în memorie și îi este transferat controlul.
-Imaginea de kernel este practic un fișier executabil care conține datele și
-codul sistemului de operare. Transferul controlului înseamnă execuția codului
-sistemului de operare. Din acest punct, sistemul de operare deține controlul
-sistemului și asigură buna funcționare a acestuia.
+Sistemul de operare este pornit cu ajutorul bootloaderului din imaginea de kernel.
+Imaginea de kernel este un fișier care se regăsește pe un dispozitiv de stocare;
+din acest dispozitiv este încărcată în memorie și îi este transferat controlul.
+ Imaginea de kernel este practic un fișier executabil care conține datele și codul sistemului de operare.
+Transferul controlului înseamnă execuția codului sistemului de operare.
+Din acest punct, sistemul de operare deține controlul sistemului și asigură buna funcționare a acestuia.
 
-O dată încărcat sistemul de operare, acesta încarcă și driverele de dispozitiv
-(\textit{device drivers}). Driverele de dispozitiv sunt reținute în fișiere similare
-imaginii de kernel și sunt încărcate în memorie de către sistemul de operare
-pentru gestionarea dispozitivelor hardware: disc, rețea, tastatură etc.
+O dată încărcat sistemul de operare, acesta încarcă și driverele de dispozitiv (\textit{device drivers}).
+Driverele de dispozitiv sunt reținute în fișiere similare imaginii de kernel și sunt încărcate în memorie de către sistemul de operare pentru gestionarea dispozitivelor hardware: disc, rețea, tastatură etc.
 
-După încărcarea driverelor, sistemul de operare pornește primele procese ale
-sistemului (\textit{startup processes}). Aceste procese sunt serviciile de bază ale
-sistemului (precum menținerea timpului sistemului, aplicarea configurațiilor de
-rețea) și aplicațiile de interfață cu utilizatorul (shellurile). Acum
-utilizatorul se poate autentifica în sistemul de operare și poate beneficia de
-serviciile acestuia.
+După încărcarea driverelor, sistemul de operare pornește primele procese ale sistemului (\textit{startup processes}).
+Aceste procese sunt serviciile de bază ale sistemului (precum menținerea timpului sistemului, aplicarea configurațiilor de rețea) și aplicațiile de interfață cu utilizatorul (shellurile).
+Acum utilizatorul se poate autentifica în sistemul de operare și poate beneficia de serviciile acestuia.
 
-Secvența de pași de bootare este comună pentru arhitecturi hardware și sisteme
-de operare diferite, dar fiecare pas are caracteristici și denumiri particulare.
-Pe arhitectura x86 firmware-ul de boot se numește BIOS sau UEFI; pe arhitectura
-ARM nu are o denumire specifică. Bootloaderele cele mai comune folosite pe arhitectura x86 sunt
-GRUB (pentru Linux) sau WinLoader (pentru Windows), în vreme ce Das U-boot e un
-bootloader folosit pentru platforme embedded precum ARM.
+Secvența de pași de bootare este comună pentru arhitecturi hardware și sisteme de operare diferite, dar fiecare pas are caracteristici și denumiri particulare.
+ Pe arhitectura x86 firmware-ul de boot se numește BIOS sau UEFI;
+pe arhitectura ARM nu are o denumire specifică.
+Bootloaderele cele mai comune folosite pe arhitectura x86 sunt GRUB (pentru Linux) sau WinLoader (pentru Windows), în vreme ce Das U-boot e un bootloader folosit pentru platforme embedded precum ARM.
 
 În cele ce urmează vom descrie în detaliu pașii din secvența de boot.
 
 \section{Firmware de boot}
 \label{sec:boot:firmware}
 
-Firmware-ul de boot constă dintr-unul sau mai multe programe ce își înlănțuie execuția
-în diverse etape. Prima etapă constă, în cazul procesoarelor moderne, într-un program
-integrat în procesor(numit \textbf{boot ROM}). Acesta urmând să încarce bootloaderul secundar,
-ulterior ducând la încărcarea sistemului de operare.
+Firmware-ul de boot constă dintr-unul sau mai multe programe ce își înlănțuie execuția în diverse etape.
+Prima etapă constă, în cazul procesoarelor moderne, într-un program integrat în procesor(numit \textbf{boot ROM}).
+Acesta urmând să încarce bootloaderul secundar, ulterior ducând la încărcarea sistemului de operare.
 
-În cazul platformelor Intel 64 și AMD64, firmware-ul de boot încărcat după boot ROM
-se află pe un chip flash de pe placa de bază, putând fi rescris la nevoie.
+În cazul platformelor Intel 64 și AMD64, firmware-ul de boot încărcat după boot ROM se află pe un chip flash de pe placa de bază, putând fi rescris la nevoie.
 
-Protocolul de bootare Intel specifică doar că firmware-ul trebuie să se afle pe un anumit chip
-flash și să își înceapă execuția la o anumită adresă, numită \textit{reset vector}.
-Restul este lăsat la creativitatea dezvoltatorului.
+Protocolul de bootare Intel specifică doar că firmware-ul trebuie să se afle pe un anumit chip flash și să își înceapă execuția la o anumită adresă, numită \textit{reset vector}.
+ Restul este lăsat la creativitatea dezvoltatorului.
 
-Diferența dintre bootloader și BIOS este oarecum vagă, dar, în limbaj comun, BIOS se referă
-la programul din flash de unde procesorul își începe execuția controlată de dezvoltator,
-în timp ce bootloader se referă la un program gestionat de administrator, program ce este lansat
-de BIOS. Dar, având în vedere că BIOS-ul poate fi un program arbitrar, există posibilitatea
-de a integra bootloaderul în acesta. Un exemplu este combinația dintre coreboot și GRUB2.
+Diferența dintre bootloader și BIOS este oarecum vagă, dar, în limbaj comun, BIOS se referă la programul din flash de unde procesorul își începe execuția controlată de dezvoltator, în timp ce bootloader se referă la un program gestionat de administrator, program ce este lansat de BIOS.
+Dar, având în vedere că BIOS-ul poate fi un program arbitrar, există posibilitatea de a integra bootloaderul în acesta.
+Un exemplu este combinația dintre coreboot și GRUB2.
 
 Pe platforme Intel, BIOS-ul are următoarele responsabilități:
 \begin{itemize}
   \item inițializează și verifică componentele hardware ale sistemului
-  \item permite configurarea componentelor și opțiunilor hardware ale
-    sistemului
-  \item blochează acele configurații astfel încât să nu poată fi schimbate
-          de sistemul de operare
-  \item generează configurația pentru descoperirea și inițializarea
-    hardware-lui de către sistemul de operare
+  \item permite configurarea componentelor și opțiunilor hardware ale sistemului
+  \item blochează acele configurații astfel încât să nu poată fi schimbate de sistemul de operare
+  \item generează configurația pentru descoperirea și inițializarea hardware-lui de către sistemul de operare
   \item descoperă dispozitivele ce furnizează un bootloader
   \item lansează, posibil automat, bootloaderul
 \end{itemize}
 
-Firmware-ul de boot este rulat în momentul pornirii sistemului (adică la
-apăsarea pe butonul de pornire). Partea de verificare a componentelor hardware poartă numele
-de POST \abbrev{POST}{Power-On Self Test} (\textit{Power-On Self Test}) pe arhitectura
-x86; dacă sunt defecte hardware acestea vor fi semnalizate de firmware-ul de
-boot, în general prin mesaje sonore sau vizuale simple.
+Firmware-ul de boot este rulat în momentul pornirii sistemului (adică la apăsarea pe butonul de pornire).
+Partea de verificare a componentelor hardware poartă numele de POST \abbrev{POST}{Power-On Self Test} (\textit{Power-On Self Test}) pe arhitectura x86;
+dacă sunt defecte hardware acestea vor fi semnalizate de firmware-ul de boot, în general prin mesaje sonore sau vizuale simple.
 
 Firmware-ul de boot este parte a hardware-ului sistemului și vine ,,preinstalat''.
-În mod obișnuit, firmware-ul de boot este furnizat de producătorul plăcii de bază
-care conține și chipul flash.
+ În mod obișnuit, firmware-ul de boot este furnizat de producătorul plăcii de bază care conține și chipul flash.
 
-Firmware-ul de boot permite realizarea de configurări la nivelul sistemului și
-hardware-ului. Mai jos sunt o serie de configurări permise de firmware-ul de
-boot:
+Firmware-ul de boot permite realizarea de configurări la nivelul sistemului și hardware-ului.
+Mai jos sunt o serie de configurări permise de firmware-ul de boot:
 
 \begin{itemize}
   \item stabilirea unei parole de protejare a meniului de configurare
@@ -167,18 +120,15 @@ boot:
 \subsection{BIOS și UEFI}
 \label{sec:boot:firmware:bios-uefi}
 
-Pe arhitectura x86, firmware-ul de boot poartă numele de BIOS (\textit{Basic
-Input-Output System}). În ultima perioadă, BIOS legacy este înlocuit de UEFI
-(\textit{Unified Extensible Firmware Interface}). UEFI este o formă îmbunătățită de
-firmware de boot. UEFI în sine reprezintă un standard gestionat de UEFI Forum
-din care fac parte producători de software și hardware, ceea ce duce la
-caracteristici comune indiferent de sistemul hardware folosit. Implementarea
-de referință a acestuia este EDK2\footnote{\url{https://github.com/tianocore/tianocore.github.io/wiki/EDK-II}}, o soluție open source. Dar este o implementare
-incompletă, din cauza lipsei de suport hardware. Suportul hardware necesar pentru
-bootarea majorității plăcilor de bază este proprietar.
+Pe arhitectura x86, firmware-ul de boot poartă numele de BIOS (\textit{Basic Input-Output System}).
+În ultima perioadă, BIOS legacy este înlocuit de UEFI (\textit{Unified Extensible Firmware Interface}).
+UEFI este o formă îmbunătățită de firmware de boot.
+UEFI în sine reprezintă un standard gestionat de UEFI Forum din care fac parte producători de software și hardware, ceea ce duce la caracteristici comune indiferent de sistemul hardware folosit.
+Implementarea de referință a acestuia este EDK2\footnote{\url{https://github.com/tianocore/tianocore.github.io/wiki/EDK-II}}, o soluție open source.
+Dar este o implementare incompletă, din cauza lipsei de suport hardware.
+Suportul hardware necesar pentru bootarea majorității plăcilor de bază este proprietar.
 
-\labelindexref{Figura}{fig:boot:bios-uefi} conține screenshoturi cu un ecran de boot BIOS\footnote{\url{https://commons.wikimedia.org/wiki/File:Bios-configuracion-smart-habilitada.png} (CC BY-SA 3.0)} și unul de boot
-UEFI\footnote{\url{https://commons.wikimedia.org/wiki/File:Bios\_asus.jpg} (CC BY-SA 4.0)}.
+\labelindexref{Figura}{fig:boot:bios-uefi} conține screenshoturi cu un ecran de boot BIOS\footnote{\url{https://commons.wikimedia.org/wiki/File:Bios-configuracion-smart-habilitada.png} (CC BY-SA 3.0)} și unul de boot UEFI\footnote{\url{https://commons.wikimedia.org/wiki/File:Bios\_asus.jpg} (CC BY-SA 4.0)}.
 
 \begin{figure}[!htbp]
   \centering
@@ -197,19 +147,13 @@ UEFI\footnote{\url{https://commons.wikimedia.org/wiki/File:Bios\_asus.jpg} (CC B
   \label{fig:boot:bios-uefi}
 \end{figure}
 
-Meniurile de configurare pentru BIOS și UEFI sunt accesate la pornirea sistemului
-folosind o combinație de taste a furnizorului plăcii de bază, cel mai adesea \texttt{F2}, \texttt{F8}, \texttt{F12}
-sau \texttt{Esc}. La apăsarea combinației adecvate se accesează ecranul de configurare
-specific.
+Meniurile de configurare pentru BIOS și UEFI sunt accesate la pornirea sistemului folosind o combinație de taste a furnizorului plăcii de bază, cel mai adesea \texttt{F2}, \texttt{F8}, \texttt{F12} sau \texttt{Esc}.
+La apăsarea combinației adecvate se accesează ecranul de configurare specific.
 
-Configurațiile realizate sunt în mod uzual salvate la părăsirea modului de
-configurare. Aceste configurații sunt salvate într-un chip de memorie dedicat
-numit CMOS \abbrev{CMOS}{Complementary Metal-Oxide-Semiconductor} (de la
-\textit{Complementary Metal-Oxide-Semiconductor}, tehnologia folosită pentru
-tranzistoarele ce compun circuitele integrate moderne). Această memorie este
-nevolatilă și își păstrează informațiile după resetarea sistemului. Chipul de
-memorie este alimentat de o baterie dedicată numită baterie CMOS, similară cu
-cea din \labelindexref{Figura}{fig:boot:cmos-battery}\footnote{\url{https://commons.wikimedia.org/wiki/File:Yakumo\_Notebook\_536S\_-\_CR2032\_backup\_battery\_on\_motherboard-4667.jpg} (\textcopyright{} Raimond Spekking / CC BY-SA 4.0 (via Wikimedia Commons))}.
+Configurațiile realizate sunt în mod uzual salvate la părăsirea modului de configurare.
+Aceste configurații sunt salvate într-un chip de memorie dedicat numit CMOS \abbrev{CMOS}{Complementary Metal-Oxide-Semiconductor} (de la \textit{Complementary Metal-Oxide-Semiconductor}, tehnologia folosită pentru tranzistoarele ce compun circuitele integrate moderne).
+Această memorie este nevolatilă și își păstrează informațiile după resetarea sistemului.
+Chipul de memorie este alimentat de o baterie dedicată numită baterie CMOS, similară cu cea din \labelindexref{Figura}{fig:boot:cmos-battery}\footnote{\url{https://commons.wikimedia.org/wiki/File:Yakumo\_Notebook\_536S\_-\_CR2032\_backup\_battery\_on\_motherboard-4667.jpg} (\textcopyright{} Raimond Spekking / CC BY-SA 4.0 (via Wikimedia Commons))}.
 
 \begin{figure}[!htbp]
   \centering
@@ -218,25 +162,18 @@ cea din \labelindexref{Figura}{fig:boot:cmos-battery}\footnote{\url{https://comm
   \label{fig:boot:cmos-battery}
 \end{figure}
 
-Dacă bateria CMOS este scoasă din soclul ei sau este epuizată, configurația se
-pierd și BIOS-ul bootează la niște valori implicite. Aceasta este o formă facilă
-de resetarea a parolei de BIOS, în cazul în care o astfel de parolă este
-configurată, așa cum vom preciza în \labelindexref{Secțiunea}{sec:boot:pass-reset}.
+Dacă bateria CMOS este scoasă din soclul ei sau este epuizată, configurația se pierd și BIOS-ul bootează la niște valori implicite.
+Aceasta este o formă facilă de resetarea a parolei de BIOS, în cazul în care o astfel de parolă este configurată, așa cum vom preciza în \labelindexref{Secțiunea}{sec:boot:pass-reset}.
 
-Pe lângă interfața grafică mai prietenoasă, UEFI folosește o nouă schemă de
-partiționare a discurilor numită GPT \abbrev{GPT}{GUID Partition Table} (\textit{GUID
-Partition Table}) spre deosebire de schema MBR \abbrev{MBR}{Master Boot Record}
-(\textit{Master Boot Record}) utilizată de BIOS. Aceasta îi permite o flexibilitate
-sporită în accesarea dispozitivului de boot și alegerea următoarei faze din
-procesul de boot: încărcarea bootloaderului. Vom reveni la schemele de partiționare GUID și MBR în \labelindexref{Secțiunea}{sec:boot:bootdev:scheme}; detalii vom prezenta și în \labelindexref{Secțiunea}{sec:storage:partition}.
+Pe lângă interfața grafică mai prietenoasă, UEFI folosește o nouă schemă de partiționare a discurilor numită GPT \abbrev{GPT}{GUID Partition Table} (\textit{GUID Partition Table}) spre deosebire de schema MBR \abbrev{MBR}{Master Boot Record} (\textit{Master Boot Record}) utilizată de BIOS.
+Aceasta îi permite o flexibilitate sporită în accesarea dispozitivului de boot și alegerea următoarei faze din procesul de boot: încărcarea bootloaderului.
+Vom reveni la schemele de partiționare GUID și MBR în \labelindexref{Secțiunea}{sec:boot:bootdev:scheme};
+detalii vom prezenta și în \labelindexref{Secțiunea}{sec:storage:partition}.
 
-În general, UEFI permite și un mod de bootare compatibil cu BIOS. În acest mod,
-procesul de bootare este similar cu cel de BIOS și se folosește tot schema de
-partiționare MBR și modul de încărcare a bootloaderului. Altfel se folosește
-modul nativ de bootare UEFI. UEFI folosește o partiție dedicată numită ESP \abbrev{ESP}{EFI System Partition} (\textit{EFI
-System Partition}), formatată cu sistem de fișiere FAT, în care stochează imagini
-de firmware (numite imagini EFI) care rețin codul bootloaderului ce va fi
-încărcat la următorul pas.
+În general, UEFI permite și un mod de bootare compatibil cu BIOS.
+În acest mod, procesul de bootare este similar cu cel de BIOS și se folosește tot schema de partiționare MBR și modul de încărcare a bootloaderului.
+Altfel se folosește modul nativ de bootare UEFI.
+UEFI folosește o partiție dedicată numită ESP \abbrev{ESP}{EFI System Partition} (\textit{EFI System Partition}), formatată cu sistem de fișiere FAT, în care stochează imagini de firmware (numite imagini EFI) care rețin codul bootloaderului ce va fi încărcat la următorul pas.
 
 \labelindexref{Tabelul}{tab:boot:bios-uefi} prezintă principalele deosebiri\footnote{\url{https://www.freecodecamp.org/news/uefi-vs-bios/}} între BIOS și UEFI:
 
@@ -274,44 +211,32 @@ de firmware (numite imagini EFI) care rețin codul bootloaderului ce va fi
   \label{tab:boot:bios-uefi}
 \end{table}
 
-Datorită flexibilității, sistemele PC \abbrev{PC}{Personal Computer} (\textit{Personal Computer}) moderne
-folosesc din ce în ce mai mult UEFI, cu probabilitate mică de a mai întâlni, în următorii ani,
-sisteme care folosesc BIOS. BIOS rămâne însă folosit pe
-sistemele mai vechi și înțelegerea modului său de funcționare e utilă pentru a
-vedea evoluția firmware-ului de boot pe arhitectura x86.
+Datorită flexibilității, sistemele PC \abbrev{PC}{Personal Computer} (\textit{Personal Computer}) moderne folosesc din ce în ce mai mult UEFI, cu probabilitate mică de a mai întâlni, în următorii ani, sisteme care folosesc BIOS.
+BIOS rămâne însă folosit pe sistemele mai vechi și înțelegerea modului său de funcționare e utilă pentru a vedea evoluția firmware-ului de boot pe arhitectura x86.
 
 \subsection{Alte firmware-uri de boot}
 \label{sec:boot:other}
 
-Fiecare sistem hardware care rulează un sistem de operare generalist (\textit{general
-purpose}) are un firmware de boot, prima componentă rulată la pornirea
-sistemului. Pe arhitectura x86, de fapt pe sistemele de tipul PC, acest firmware de boot este BIOS-ul, iar în ultimii ani UEFI.
+Fiecare sistem hardware care rulează un sistem de operare generalist (\textit{general purpose}) are un firmware de boot, prima componentă rulată la pornirea sistemului.
+Pe arhitectura x86, de fapt pe sistemele de tipul PC, acest firmware de boot este BIOS-ul, iar în ultimii ani UEFI.
 
-Sistemele care folosesc procesoare ARM sunt mai variate, fără să aibă un format
-unitar de conectare a componentelor hardware. Mai mult, producătorii de sisteme
-care folosesc arhitecturi ARM sunt foarte variați. Lucru care face mai dificilă
-dezvoltarea de software de sistem pentru o plajă de dispozitive ARM. Totuși,
-în ultimii ani, EDK2 a căpătat suport pentru anumite platforme ARM.
+Sistemele care folosesc procesoare ARM sunt mai variate, fără să aibă un format unitar de conectare a componentelor hardware.
+Mai mult, producătorii de sisteme care folosesc arhitecturi ARM sunt foarte variați.
+Lucru care face mai dificilă dezvoltarea de software de sistem pentru o plajă de dispozitive ARM.
+Totuși, în ultimii ani, EDK2 a căpătat suport pentru anumite platforme ARM.
 
-Pe sistemele PC o alternativă de firmware de boot este coreboot (și alternativa
-libreboot). coreboot este o versiune liberă/deschisă de firmware de boot, ca o
-reacție la faptul că firmware-ul de BIOS și UEFI este în general furnizată de producător în
-formă binară (\textit{binary blob}). Dincolo de aspecte de filozofie (software liber vs.
-proprietar), dezvoltatorii coreboot invocă posibilitatea ca furnizorii de binare
-BIOS/UEFI să aibă accese ascunse (\textit{backdoor}), iar un firmware de boot deschis
-oferă posibilitatea verificării codului. coreboot încă folosește unele
-componente binare în vreme ce libreboot le înlocuiește pentru o versiune complet
-deschisă (având ca dezavantaj lipsa suportului pentru anumite platforme).
-Dezavantajul coreboot este folosirea sa redusă pe sisteme hardware, doar câteva
-folosind coreboot în loc de UEFI (sau BIOS). coreboot este firmware-ul preferat
-de Chromebook-uri.
+Pe sistemele PC o alternativă de firmware de boot este coreboot (și alternativa libreboot).
+coreboot este o versiune liberă/deschisă de firmware de boot, ca o reacție la faptul că firmware-ul de BIOS și UEFI este în general furnizată de producător în formă binară (\textit{binary blob}).
+Dincolo de aspecte de filozofie (software liber vs. proprietar), dezvoltatorii coreboot invocă posibilitatea ca furnizorii de binare BIOS/UEFI să aibă accese ascunse (\textit{backdoor}), iar un firmware de boot deschis oferă posibilitatea verificării codului.
+coreboot încă folosește unele componente binare în vreme ce libreboot le înlocuiește pentru o versiune complet deschisă (având ca dezavantaj lipsa suportului pentru anumite platforme).
+ Dezavantajul coreboot este folosirea sa redusă pe sisteme hardware, doar câteva folosind coreboot în loc de UEFI (sau BIOS).
+coreboot este firmware-ul preferat de Chromebook-uri.
 
 \subsection{Configurare dispozitive bootabile}
 \label{sec:boot:device-config}
 
-Unul dintre rolurile firmware-ului de boot este configurarea dispozitivelor
-bootabile și selectarea ordinii de boot. \labelindexref{Figura}{fig:boot:bios-boot-order}\footnote{\url{https://commons.wikimedia.org/wiki/File:Bios-configuracion-orden-arranque.png} (CC BY-SA 3.0)} afișează ecranul BIOS
-pentru stabilirea ordinii dispozitivelor bootabile.
+Unul dintre rolurile firmware-ului de boot este configurarea dispozitivelor bootabile și selectarea ordinii de boot.
+\labelindexref{Figura}{fig:boot:bios-boot-order}\footnote{\url{https://commons.wikimedia.org/wiki/File:Bios-configuracion-orden-arranque.png} (CC BY-SA 3.0)} afișează ecranul BIOS pentru stabilirea ordinii dispozitivelor bootabile.
 
 \begin{figure}[!htbp]
   \centering
@@ -320,121 +245,83 @@ pentru stabilirea ordinii dispozitivelor bootabile.
   \label{fig:boot:bios-boot-order}
 \end{figure}
 
-Atunci când firmware-ul va trece la pasul următor va trece, în ordine, prin
-dispozitivele de boot configurate și va boota de pe primul disponibil.
-Dispozitive de boot pot fi discuri, USB flash drive-uri, CD ROM-drive sau poate fi vorba de
-bootare din rețea folosind PXE \abbrev{PXE}{Preboot eXecution Environment}
-(\textit{Preboot eXecution Environment}).
+Atunci când firmware-ul va trece la pasul următor va trece, în ordine, prin dispozitivele de boot configurate și va boota de pe primul disponibil.
+ Dispozitive de boot pot fi discuri, USB flash drive-uri, CD ROM-drive sau poate fi vorba de bootare din rețea folosind PXE \abbrev{PXE}{Preboot eXecution Environment} (\textit{Preboot eXecution Environment}).
 
-Un dispozitiv bootabil, identificat
-ca atare de firmware, are un marcaj specific: conține o secvență de cod care este rulată de firmware și
-care este următoarea fază a procesului de boot. Această secvență este, de
-obicei, bootloaderul, despre care vom discuta detaliat în
-\labelindexref{Secțiunea}{sec:boot:bootloader}.
+Un dispozitiv bootabil, identificat ca atare de firmware, are un marcaj specific: conține o secvență de cod care este rulată de firmware și care este următoarea fază a procesului de boot.
+Această secvență este, de obicei, bootloaderul, despre care vom discuta detaliat în \labelindexref{Secțiunea}{sec:boot:bootloader}.
 
-PXE este o metodă prin care putem configura pornirea unui sistem de operare de
-pe un alt sistem (server) accesibil prin rețea. După o configurare specifică, pe
-care nu o vom detalia aici, o stație poate încărca sistemul de operare de pe
-alt sistem.
+PXE este o metodă prin care putem configura pornirea unui sistem de operare de pe un alt sistem (server) accesibil prin rețea.
+După o configurare specifică, pe care nu o vom detalia aici, o stație poate încărca sistemul de operare de pe alt sistem.
 
-Despre dispozitive bootabile vom discuta mai multe în
-\labelindexref{Secțiunea}{sec:boot:bootdev}.
+Despre dispozitive bootabile vom discuta mai multe în \labelindexref{Secțiunea}{sec:boot:bootdev}.
 
 \subsection{Secure Boot}
 \label{sec:boot:secure-boot}
 
-Procesul de boot al unui sistem poate fi corupt: pot fi modificați / deturnați
-pași din acest proces. Dorim să avem verificare criptografică (semnătură
-criptografică) pentru imaginile de firmware pentru a le garanta integritatea.
+Procesul de boot al unui sistem poate fi corupt: pot fi modificați / deturnați pași din acest proces.
+Dorim să avem verificare criptografică (semnătură criptografică) pentru imaginile de firmware pentru a le garanta integritatea.
 
-Secure Boot este o tehnică ce se asigură că firmware-ul de boot și alte componente
-din procesul de boot sunt securizate. Secure Boot stochează semnătura
-componentelor și verifică la bootare că aceasta este corespunzătoare.
+Secure Boot este o tehnică ce se asigură că firmware-ul de boot și alte componente din procesul de boot sunt securizate.
+Secure Boot stochează semnătura componentelor și verifică la bootare că aceasta este corespunzătoare.
 
-Secure Boot este o tehnologie UEFI, parte din standard. Există un certificat digital al
-entității care furnizează bootloaderul, imaginea de kernel și drivere. Mai
-multe despre certificate digitale vom vorbi în \labelindexref{Capitolul}{ch:sec}.
+Secure Boot este o tehnologie UEFI, parte din standard.
+Există un certificat digital al entității care furnizează bootloaderul, imaginea de kernel și drivere.
+Mai multe despre certificate digitale vom vorbi în \labelindexref{Capitolul}{ch:sec}.
 
-Tehnologia de tipul Secure Boot este utilă în special pe dispozitive mobile de
-tip smartphone, unde bootloaderul și imaginea de kernel sunt furnizate de
-producătorul telefonului și unde se doresc garanții că acestea nu au fost modificate.
-Dispozitivele mobile ce folosesc Android sau iOS folosesc Secure Boot, adică
-mecanisme de verificare criptografică a imaginii de bootloader și a imaginii de
-kernel folosite. Pe Android tehnologia se numește Verified Boot, iar pe iOS se
-numește Secure Boot.
+Tehnologia de tipul Secure Boot este utilă în special pe dispozitive mobile de tip smartphone, unde bootloaderul și imaginea de kernel sunt furnizate de producătorul telefonului și unde se doresc garanții că acestea nu au fost modificate.
+ Dispozitivele mobile ce folosesc Android sau iOS folosesc Secure Boot, adică mecanisme de verificare criptografică a imaginii de bootloader și a imaginii de kernel folosite.
+Pe Android tehnologia se numește Verified Boot, iar pe iOS se numește Secure Boot.
 
 \section{Dispozitiv de boot}
 \label{sec:boot:bootdev}
 
-După ce firmware-ul de boot încheie verificarea componentelor hardware, trece la următorul
-pas: încărcarea bootloaderului. Bootloaderul este o componentă software care
-încarcă sistemul de operare, oferind utilizatorului posibilitatea de selectare a
-sistemului de operare încărcat și de configurare a opțiunilor de pornire a
-acestuia.
+După ce firmware-ul de boot încheie verificarea componentelor hardware, trece la următorul pas: încărcarea bootloaderului.
+Bootloaderul este o componentă software care încarcă sistemul de operare, oferind utilizatorului posibilitatea de selectare a sistemului de operare încărcat și de configurare a opțiunilor de pornire a acestuia.
 
-Bootloaderul se găsește pe un dispozitiv de boot, un suport de stocare pentru
-imaginea de bootloader. Acest dispozitiv trebuie identificat de firmware-ul de
-boot, care apoi localizează și încarcă imaginea de bootloader.
+Bootloaderul se găsește pe un dispozitiv de boot, un suport de stocare pentru imaginea de bootloader.
+Acest dispozitiv trebuie identificat de firmware-ul de boot, care apoi localizează și încarcă imaginea de bootloader.
 
-Firmware-ul de boot oferă utilizatorului posibilitatea configurării dispozitivelor de boot:
-activarea și dezactivarea dispozitive de boot și selectarea ordinii în care acestea sunt consultate pentru bootare.
-Dacă, într-o anumită situație, dispozitive bootabile au fost configurate în ordinea
-CD-ROM drive, USB flash drive, hard disk drive, atunci firmware-ul de boot va investiga pe rând aceste dispozitive.
-Adică va
-investiga dacă există un CD-ROM în CD-ROM drive și dacă este CD-ROM bootabil, va
-investiga dacă porturile USB ale sistemului au conectate un USB flash drive și dacă
-este bootabil, și va verifica dacă hard disk drive-ul sistemului este bootabil.
+Firmware-ul de boot oferă utilizatorului posibilitatea configurării dispozitivelor de boot: activarea și dezactivarea dispozitive de boot și selectarea ordinii în care acestea sunt consultate pentru bootare.
+ Dacă, într-o anumită situație, dispozitive bootabile au fost configurate în ordinea CD-ROM drive, USB flash drive, hard disk drive, atunci firmware-ul de boot va investiga pe rând aceste dispozitive.
+ Adică va investiga dacă există un CD-ROM în CD-ROM drive și dacă este CD-ROM bootabil, va investiga dacă porturile USB ale sistemului au conectate un USB flash drive și dacă este bootabil, și va verifica dacă hard disk drive-ul sistemului este bootabil.
 
-Un dispozitiv este bootabil atunci când conține o imagine de bootloader care să
-fie încărcată în memorie și căreia să îi fie transferat controlul din partea
-firmware-ului de boot. Pe sisteme precum dispozitivele mobile, firmware-ul de
-boot are în general preconfigurat dispozitivul de boot și calea către imaginea
-de bootloader pe care să o încarce. Pe sistemele PC, utilizatorul poate
-configura atât dispozitivul de boot cât și calea către imaginea de bootloader.
-În cazul sistemelor PC diferă modul de încărcare a bootloaderului în funcție de
-firmware-ul de boot (BIOS sau UEFI) și schema de partiționare (MBR sau GPT),
-despre care vorbim în continuare.
+Un dispozitiv este bootabil atunci când conține o imagine de bootloader care să fie încărcată în memorie și căreia să îi fie transferat controlul din partea firmware-ului de boot.
+Pe sisteme precum dispozitivele mobile, firmware-ul de boot are în general preconfigurat dispozitivul de boot și calea către imaginea de bootloader pe care să o încarce.
+Pe sistemele PC, utilizatorul poate configura atât dispozitivul de boot cât și calea către imaginea de bootloader.
+ În cazul sistemelor PC diferă modul de încărcare a bootloaderului în funcție de firmware-ul de boot (BIOS sau UEFI) și schema de partiționare (MBR sau GPT), despre care vorbim în continuare.
 
 \subsection{Scheme de partiționare: MBR și GPT}
 \label{sec:boot:bootdev:scheme}
 
 Schemele de partiționare descriu partițiile pe disc și sunt folosite de firmware-ul de boot.
-Schemele de partiționare folosite pe sistemele PC sunt MBR și GPT.
+ Schemele de partiționare folosite pe sistemele PC sunt MBR și GPT.
 
-MBR (\textit{Master Boot Record}) este schema de partiționare clasică pe PC. În cadrul
-acestei scheme de partiționare primul sector de disc (de 512 octeți) conține
-tabela de partiții și prima parte a bootloaderului (numită 1st stage
-bootloader). Primul sector de disc se mai cheamă și sectorul zero sau \textit{boot
-sector} sau \textit{master boot record}, de unde și denumirea schemei de partiționare.
-Dată fiind dimensiunea redusă a acestui sector, doar patru partiții pot fi
-descrise. Numim aceste patru partiții primare. Pentru a compensa această
-limitare, putem alege o partiție să fie o partiție extinsă și în cadrul acelei
-partiții extinse să creăm oricâte partiții logice.
+MBR (\textit{Master Boot Record}) este schema de partiționare clasică pe PC.
+În cadrul acestei scheme de partiționare primul sector de disc (de 512 octeți) conține tabela de partiții și prima parte a bootloaderului (numită 1st stage bootloader).
+Primul sector de disc se mai cheamă și sectorul zero sau \textit{boot sector} sau \textit{master boot record}, de unde și denumirea schemei de partiționare.
+ Dată fiind dimensiunea redusă a acestui sector, doar patru partiții pot fi descrise.
+Numim aceste patru partiții primare.
+Pentru a compensa această limitare, putem alege o partiție să fie o partiție extinsă și în cadrul acelei partiții extinse să creăm oricâte partiții logice.
 
-GPT (\textit{GUID Partition Table}) este o schemă modernă de partiționare pe PC. În
-cadrul acestei scheme de partiționare există 128 de partiții, identificate în
-mod unic, la nivel global printr-un șir de caractere numit GUID (\textit{global unique id}). Schema de
-partiționare GPT cuprinde 128 de partiții, eliminând limitarea de 4 partiții a
-schemei de partiționare MBR.
+GPT (\textit{GUID Partition Table}) este o schemă modernă de partiționare pe PC.
+În cadrul acestei scheme de partiționare există 128 de partiții, identificate în mod unic, la nivel global printr-un șir de caractere numit GUID (\textit{global unique id}).
+Schema de partiționare GPT cuprinde 128 de partiții, eliminând limitarea de 4 partiții a schemei de partiționare MBR.
 
-Un disc este bootabil dacă sectorul de boot al acestuia are ca ultimi doi octeți
-valoarea în hexazecimal \texttt{0x55AA}. În momentul în care acei ultimi doi octeți au
-acea valoare, firmware-ul de boot va putea folosi acest disc pentru a boota.
+Un disc este bootabil dacă sectorul de boot al acestuia are ca ultimi doi octeți valoarea în hexazecimal \texttt{0x55AA}.
+În momentul în care acei ultimi doi octeți au acea valoare, firmware-ul de boot va putea folosi acest disc pentru a boota.
 
-În general, asociem schema de partiționare MBR cu bootarea folosind BIOS, iar
-schema de partiționare GPT cu bootarea folosind UEFI.
+În general, asociem schema de partiționare MBR cu bootarea folosind BIOS, iar schema de partiționare GPT cu bootarea folosind UEFI.
 
 \subsection{Încărcarea bootloaderului pentru BIOS și MBR}
 \label{sec:boot:bootdev:bootloader}
 
-Atunci când folosim schema de partiționare MBR, BIOS-ul extrage din sectorul de
-boot (marcat cu valoarea \texttt{0x55AA} pe ultimii doi octeți) prima parte din
-bootloader, numită \textit{1st stage bootloader}. Aceasta este o secvență de cod redusă
-cu operații minime; este încărcată de BIOS în memorie și apoi îi este transferat
-controlul.
+Atunci când folosim schema de partiționare MBR, BIOS-ul extrage din sectorul de boot (marcat cu valoarea \texttt{0x55AA} pe ultimii doi octeți) prima parte din bootloader, numită \textit{1st stage bootloader}.
+Aceasta este o secvență de cod redusă cu operații minime;
+este încărcată de BIOS în memorie și apoi îi este transferat controlul.
 
-Dacă analizăm primul sector dintr-un disc, putem observa informații
-despre bootloader și prezența octeților \texttt{0x55AA} ca în \labelindexref{Listing}{lst:boot:magic}. Octeții \texttt{0x55AA} sunt ultimii 2 octeți și în cursul afișării apar referințe la \texttt{GRUB}.
+Dacă analizăm primul sector dintr-un disc, putem observa informații despre bootloader și prezența octeților \texttt{0x55AA} ca în \labelindexref{Listing}{lst:boot:magic}.
+Octeții \texttt{0x55AA} sunt ultimii 2 octeți și în cursul afișării apar referințe la \texttt{GRUB}.
 
 \begin{screen}[caption={Sector bootabil},label={lst:boot:magic}]
 student@uso:~$ sudo xxd -l 512 /dev/sda
@@ -451,65 +338,47 @@ student@uso:~$ sudo xxd -l 512 /dev/sda
   000001f0: 0000 0000 0000 0000 0000 0000 0000 55aa  ..............U.
 \end{screen}
 
-Spațiul disponibil în primul sector este limitat, doar \texttt{512} octeți. De
-aceea, această primă parte de bootloader poate face operații minime. Astfel că rolul său este
-să încarce partea principală din bootloader, numită și \textit{2nd stage bootloader},
-care realizează apoi încărcarea sistemului de operare, așa cum vom preciza în
-\labelindexref{Secțiunea}{sec:boot:bootloader}.
+Spațiul disponibil în primul sector este limitat, doar \texttt{512} octeți.
+De aceea, această primă parte de bootloader poate face operații minime.
+Astfel că rolul său este să încarce partea principală din bootloader, numită și \textit{2nd stage bootloader}, care realizează apoi încărcarea sistemului de operare, așa cum vom preciza în \labelindexref{Secțiunea}{sec:boot:bootloader}.
 
 \subsection{Încărcarea bootloaderului pentru UEFI}
 \label{sec:boot:bootdev:uefi}
 
-UEFI are un mod compatibil BIOS numit și CSM \abbrev{CSM}{Compatibility Support
-Module} (\textit{Compatibility Support Module}) care duce la bootarea într-un mod similar BIOS:
-încărcare \textit{1st stage bootloader} din MBR, apoi încărcare \textit{2nd stage bootloader}.
-Altfel, UEFI folosește modul nativ.
+UEFI are un mod compatibil BIOS numit și CSM \abbrev{CSM}{Compatibility Support Module} (\textit{Compatibility Support Module}) care duce la bootarea într-un mod similar BIOS: încărcare \textit{1st stage bootloader} din MBR, apoi încărcare \textit{2nd stage bootloader}.
+ Altfel, UEFI folosește modul nativ.
 
-În cazul în care folosim UEFI în modul nativ, una dintre partiții este marcată
-specializat ca fiind partiția EFI. Această partiție se numește ESP
-(\textit{EFI System Partition}). Această partiție este
-formatată cu sistem de fișiere FAT (\textit{File Allocation Table}) și conține fișiere
-executabile într-un format specific, numit format EFI. Aceste fișiere
-executabile sunt numite OS loaders, sunt codul echivalent de bootloader pentru
-pornirea sistemului de operare. De exemplu, putem avea fișierul
-\file{/efi/boot/bootx64.efi} pentru booting pe un sistem PC.
+În cazul în care folosim UEFI în modul nativ, una dintre partiții este marcată specializat ca fiind partiția EFI.
+Această partiție se numește ESP (\textit{EFI System Partition}).
+Această partiție este formatată cu sistem de fișiere FAT (\textit{File Allocation Table}) și conține fișiere executabile într-un format specific, numit format EFI.
+Aceste fișiere executabile sunt numite OS loaders, sunt codul echivalent de bootloader pentru pornirea sistemului de operare.
+De exemplu, putem avea fișierul \file{/efi/boot/bootx64.efi} pentru booting pe un sistem PC.
 
-În UEFI putem adăuga intrări pentru alte loadere. Pentru aceasta adăugăm căi
-către executabile EFI și acestea vor putea fi selectate cu ajutorul EFI. De exemplu,
-vom adăuga \file{/efi/fedora/grubx64.efi} pentru porni bootloaderul GRUB care va încărca
-imaginea de sistem de operare pentru o instalare Fedora Linux.
+În UEFI putem adăuga intrări pentru alte loadere.
+Pentru aceasta adăugăm căi către executabile EFI și acestea vor putea fi selectate cu ajutorul EFI.
+De exemplu, vom adăuga \file{/efi/fedora/grubx64.efi} pentru porni bootloaderul GRUB care va încărca imaginea de sistem de operare pentru o instalare Fedora Linux.
 
-În Linux, pentru gestiunea intrărilor din partiția EFI se poate folosi utilitarul
-\cmd{efibootmanager}.
+În Linux, pentru gestiunea intrărilor din partiția EFI se poate folosi utilitarul \cmd{efibootmanager}.
 
 \subsection{Denumiri discuri și partiții}
 \label{sec:boot:bootdev:naming}
 
 În general, discurile și partițiile sunt, în Linux, intrări în directorul \file{/dev}.
-De exemplu \file{/dev/sda} este primul disc al sistemului, \file{/dev/sdb} al doilea disc,
-\file{/dev/sdc} al treilea disc. Apoi partițiile sunt numerotări ale acestor discuri:
-\file{/dev/sda1} este prima partiție a primului disc, \file{/dev/sdb3} este a treia partiție a
-celui de-al doilea disc.
+ De exemplu \file{/dev/sda} este primul disc al sistemului, \file{/dev/sdb} al doilea disc, \file{/dev/sdc} al treilea disc.
+Apoi partițiile sunt numerotări ale acestor discuri: \file{/dev/sda1} este prima partiție a primului disc, \file{/dev/sdb3} este a treia partiție a celui de-al doilea disc.
 
-Atunci când folosim GRUB ca bootloader, numele discurilor au alt format,
-pe echivalentul celor de mai jos:
+Atunci când folosim GRUB ca bootloader, numele discurilor au alt format, pe echivalentul celor de mai jos:
 
 \begin{itemize}
   \item \texttt{(hd0)} este primul disc, echivalentul \file{/dev/sda}
   \item \texttt{(hd1)} este al doilea disc, echivalentul \file{/dev/sdb}
-  \item \texttt{(hd0,1)} sau \texttt{hd0,msdos1} este prima partiție a primului disc,
-    echivalentul \file{/dev/sda1}
-  \item \texttt{(hd1,3)} sau \texttt{hd1,msdo3} este a treia partiție a celui de-al doilea
-    disc, echivalentul \file{/dev/sdb3}
+  \item \texttt{(hd0,1)} sau \texttt{hd0,msdos1} este prima partiție a primului disc, echivalentul \file{/dev/sda1}
+  \item \texttt{(hd1,3)} sau \texttt{hd1,msdo3} este a treia partiție a celui de-al doilea disc, echivalentul \file{/dev/sdb3}
 \end{itemize}
 
-Întrucât ordinea discurilor poate diferi prin mutarea discurilor sau prin
-adăugarea unui disc nou, cele două moduri de denumire de mai sus sunt variabile.
-Pentru a menține o denumire fixă, se folosește un identificator unic al
-partiției un șir de caractere numit UUID \abbrev{UUID}{Universally Unique Identifier}
-(Universally Unique Identifier). Pe Linux putem obține acest identificator cu
-ajutorul comenzii \cmd{blkid} sau listând conținutul directorului \file{/dev/disk/by-uuid},
-ca în \labelindexref{Listing}{lst:boot:dev-name}.
+Întrucât ordinea discurilor poate diferi prin mutarea discurilor sau prin adăugarea unui disc nou, cele două moduri de denumire de mai sus sunt variabile.
+ Pentru a menține o denumire fixă, se folosește un identificator unic al partiției un șir de caractere numit UUID \abbrev{UUID}{Universally Unique Identifier} (Universally Unique Identifier).
+Pe Linux putem obține acest identificator cu ajutorul comenzii \cmd{blkid} sau listând conținutul directorului \file{/dev/disk/by-uuid}, ca în \labelindexref{Listing}{lst:boot:dev-name}.
 
 \begin{screen}[caption={Identificare discuri},label={lst:boot:dev-name}]
 student@uso:~$ sudo blkid /dev/sda1
@@ -532,79 +401,53 @@ UUID=a14d0991-a3d8-48d6-ac8c-327d1a524501 /               ext4    errors=remount
 /swapfile                                 none            swap    sw             0       0
 \end{screen}
 
-În \labelindexref{Listing}{lst:boot:dev-name} de mai sus, se observă că sistemul de fișiere aflat pe partiția \file{/dev/sda1} are ca
-identificator \texttt{a14d0991-a3d8-48d6-ac8c-327d1a524501}. Acest identificator
-este folosit și în fișierul \file{/etc/fstab}, fișier unde se configurează
-sistemele de fișiere ce vor fi montate, așa cum vom detalia în
-\labelindexref{Secțiunea}{sec:storage:fs}.
+În \labelindexref{Listing}{lst:boot:dev-name} de mai sus, se observă că sistemul de fișiere aflat pe partiția \file{/dev/sda1} are ca identificator \texttt{a14d0991-a3d8-48d6-ac8c-327d1a524501}.
+Acest identificator este folosit și în fișierul \file{/etc/fstab}, fișier unde se configurează sistemele de fișiere ce vor fi montate, așa cum vom detalia în \labelindexref{Secțiunea}{sec:storage:fs}.
 
 \section{Bootloader}
 \label{sec:boot:bootloader}
 
-Atunci când firmware-ul de boot trebuie să treacă la următorul pas din procesul
-de boot, va încărca în memorie bootloaderul sau boot managerul și îi va
-transfera controlul procesului de boot. Bootloaderul este un program cu rolul
-de încărcare a sistemului de operare.
+Atunci când firmware-ul de boot trebuie să treacă la următorul pas din procesul de boot, va încărca în memorie bootloaderul sau boot managerul și îi va transfera controlul procesului de boot.
+Bootloaderul este un program cu rolul de încărcare a sistemului de operare.
 
-Înainte de încărcarea sistemului de operare, bootloaderul poate oferi
-utilizatorului opțiunea de a alege între diferite sisteme de operare și va oferi
-posibilitatea configurării opțiunilor de bootare a kernelului.
+Înainte de încărcarea sistemului de operare, bootloaderul poate oferi utilizatorului opțiunea de a alege între diferite sisteme de operare și va oferi posibilitatea configurării opțiunilor de bootare a kernelului.
 
-Când vorbim despre diferite sisteme de operare ne referim atât la sisteme de operare
-diferite, precum Linux sau Windows, aflate pe partiții distincte, cât și la
-versiuni diferite de imagini de kernel (fișiere ce conțin sistemul de operare)
-ale aceluiași sistem de operare, fișiere aflate pe aceeași partiție.
+Când vorbim despre diferite sisteme de operare ne referim atât la sisteme de operare diferite, precum Linux sau Windows, aflate pe partiții distincte, cât și la versiuni diferite de imagini de kernel (fișiere ce conțin sistemul de operare) ale aceluiași sistem de operare, fișiere aflate pe aceeași partiție.
 
 În cazul folosirii BIOS, încărcarea bootloaderului se face în doi pași:
 
 \begin{enumerate}
-  \item întâi se încarcă prima fază din bootloader (numită \textit{1st stage bootloader}), o secvență scurtă care se găsește în MBR (\textit{Master
-    Boot Record})
-  \item ulterior, \textit{1st stage bootloader} încarcă a doua fază din bootloader
-    (\textit{2nd stage bootloader}), o secvență mai detaliată care se poate afla
-    într-un fișier pe disc, în metadatele unui sistem de fișiere sau în spațiul dintre MBR și prima partiție.
-    Și care deține codul pentru a putea opta
-    între diferite sisteme de operare și pentru a configura
-    opțiunile de boot pentru kernel.
+  \item întâi se încarcă prima fază din bootloader (numită \textit{1st stage bootloader}), o secvență scurtă care se găsește în MBR (\textit{Master Boot Record})
+  \item ulterior, \textit{1st stage bootloader} încarcă a doua fază din bootloader (\textit{2nd stage bootloader}), o secvență mai detaliată care se poate afla într-un fișier pe disc, în metadatele unui sistem de fișiere sau în spațiul dintre MBR și prima partiție.
+    Și care deține codul pentru a putea opta între diferite sisteme de operare și pentru a configura opțiunile de boot pentru kernel.
 \end{enumerate}
 
-În cazul UEFI, partiția ESP conține fișiere executabile
-\texttt{.efi}. Aceste fișiere pot conține orice funcționalitate, dar cel mai adesea conțin
-codul unui bootloader sau chiar nucleul sistemului de operare ce trebuie bootat.
-Neavând restricția de spațiu de 512 octeți din MBR, nu necesită înlănțuirea mai multor
-etape pentru încărcarea bootloaderului.
+În cazul UEFI, partiția ESP conține fișiere executabile \texttt{.efi}.
+Aceste fișiere pot conține orice funcționalitate, dar cel mai adesea conțin codul unui bootloader sau chiar nucleul sistemului de operare ce trebuie bootat.
+ Neavând restricția de spațiu de 512 octeți din MBR, nu necesită înlănțuirea mai multor etape pentru încărcarea bootloaderului.
 
-În general, un sistem de operare are un bootloader aferent. În cazul UEFI, la
-bootare, se poate selecta direct acel bootloader din partiția ESP. În cazul BIOS,
-însă, se încarcă mereu același 1st stage și 2nd stage bootloader. De aceea, dacă
-dorim să folosim două sisteme de operare diferite, bootloaderul încărcat va
-oferi opțiune să booteze sistemul de operare nativ, sau să încarce un alt
-bootloader. Opțiunea de încărcare a unui bootloader din alte bootloader se
-numește \textit{chainloading}.
+În general, un sistem de operare are un bootloader aferent.
+În cazul UEFI, la bootare, se poate selecta direct acel bootloader din partiția ESP.
+În cazul BIOS, însă, se încarcă mereu același 1st stage și 2nd stage bootloader.
+De aceea, dacă dorim să folosim două sisteme de operare diferite, bootloaderul încărcat va oferi opțiune să booteze sistemul de operare nativ, sau să încarce un alt bootloader.
+Opțiunea de încărcare a unui bootloader din alte bootloader se numește \textit{chainloading}.
 
-Concret, dacă un sistem are instalat Linux și Windows, sistemul va avea configurat
-bootloaderul specific Linux (GRUB) ca 1st stage și 2nd stage bootloader. Dacă
-utilizatorul va opta să booteze în Linux, atunci bootloaderul GRUB va încărca
-Linux; altfel, bootloaderul GRUB va încărca, prin chainloading, bootloaderul
-bootmgr care încarcă Windows.
+Concret, dacă un sistem are instalat Linux și Windows, sistemul va avea configurat bootloaderul specific Linux (GRUB) ca 1st stage și 2nd stage bootloader.
+Dacă utilizatorul va opta să booteze în Linux, atunci bootloaderul GRUB va încărca Linux;
+altfel, bootloaderul GRUB va încărca, prin chainloading, bootloaderul bootmgr care încarcă Windows.
 
 \subsection{GRUB}
 \label{sec:boot:bootloader:grub}
 
-În Linux, bootloaderul folosit cel mai adesea pe PC este GRUB (\textit{GRand Unified
-Bootloader}). Mai există și alte bootloadere, precum Das uBoot, folosit în
-sisteme încorporate.
+În Linux, bootloaderul folosit cel mai adesea pe PC este GRUB (\textit{GRand Unified Bootloader}).
+Mai există și alte bootloadere, precum Das uBoot, folosit în sisteme încorporate.
 
-Atunci când instalăm Linux, bootloaderul GRUB este instalat astfel: \textit{1st
-stage bootloader} este în MBR, iar \textit{1.5 stage bootloader} este pe disc în spațiul dintre MBR și prima partiție.
-\textit{2nd stage bootloader} își începe execuția prin încărcarea fișierului \textit{normal.mod}.
-Acesta, precum și alte module GRUB se află într-un subdirector al \textit{/boot/grub}, \textit{i386-pc} pentru
-platforme BIOS, și \textit{x86_64-efi} sau \textit{i386-efi} pentru platforme UEFI.
-Din acest motiv, se recomandă rezervarea a cel puțin 2MiB intre acestea.
-Dacă sistemul are instalat și Windows, instalarea GRUB va
-detecta acest lucru și va configura chainloading pentru a permite bootarea
-Windows. Când folosim UEFI, GRUB va plasa un fișier imagine \texttt{.efi} în
-\file{/efi/boot/bootx64.efi}.
+Atunci când instalăm Linux, bootloaderul GRUB este instalat astfel: \textit{1st stage bootloader} este în MBR, iar \textit{1.5 stage bootloader} este pe disc în spațiul dintre MBR și prima partiție.
+ \textit{2nd stage bootloader} își începe execuția prin încărcarea fișierului \textit{normal.mod}.
+ Acesta, precum și alte module GRUB se află într-un subdirector al \textit{/boot/grub}, \textit{i386-pc} pentru platforme BIOS, și \textit{x86_64-efi} sau \textit{i386-efi} pentru platforme UEFI.
+ Din acest motiv, se recomandă rezervarea a cel puțin 2MiB intre acestea.
+ Dacă sistemul are instalat și Windows, instalarea GRUB va detecta acest lucru și va configura chainloading pentru a permite bootarea Windows.
+Când folosim UEFI, GRUB va plasa un fișier imagine \texttt{.efi} în \file{/efi/boot/bootx64.efi}.
 
 Instalarea corespunzătoare a GRUB va duce la afișarea unui ecran precum cel din \labelindexref{Figura}{fig:boot:boot-grub}.
 
@@ -615,19 +458,16 @@ Instalarea corespunzătoare a GRUB va duce la afișarea unui ecran precum cel di
   \label{fig:boot:boot-grub}
 \end{figure}
 
-În acest ecran observăm opțiunile de boot pentru GRUB. În mod tipic, un
-utilizator selectează una dintre intrări și apoi apasă tasta \texttt{Enter} pentru a
-boota folosind acea opțiune. În \labelindexref{Figura}{fig:boot:boot-grub} avem doar opțiuni de boot pentru Linux (Ubuntu). Pe un sistem de tip dual-boot, ecranul de boot GRUB va afișa intrări și pentru Windows.
+În acest ecran observăm opțiunile de boot pentru GRUB.
+În mod tipic, un utilizator selectează una dintre intrări și apoi apasă tasta \texttt{Enter} pentru a boota folosind acea opțiune.
+În \labelindexref{Figura}{fig:boot:boot-grub} avem doar opțiuni de boot pentru Linux (Ubuntu).
+Pe un sistem de tip dual-boot, ecranul de boot GRUB va afișa intrări și pentru Windows.
 
-Un utilizator poate alege să editeze o intrare GRUB. În acest caz utilizatorul
-va apăsa tasta \texttt{e} și va accesa o nouă interfață ca în \labelindexref{Figura}{fig:boot:edit-grub}.
-În interfața nouă putem modifica imaginea de kernel (de nucleu de sistem de operare)
-folosită, putem modifica partiția rădăcină folosită sau opțiuni de boot pentru
-kernel. O utilizare a editării opțiunilor de boot este recuperarea parolei
-contului \texttt{root} folosind opțiunea \texttt{init=/bin/bash} așa cum am precizat în
-\labelindexref{Secțiunea}{sec:user:linux-password-recovery}. Detalii despre
-opțiunile de boot corespunzătoare nucleului sistemului de operare prezentăm în
-\labelindexref{Secțiunea}{sec:boot:os}.
+Un utilizator poate alege să editeze o intrare GRUB.
+În acest caz utilizatorul va apăsa tasta \texttt{e} și va accesa o nouă interfață ca în \labelindexref{Figura}{fig:boot:edit-grub}.
+ În interfața nouă putem modifica imaginea de kernel (de nucleu de sistem de operare) folosită, putem modifica partiția rădăcină folosită sau opțiuni de boot pentru kernel.
+O utilizare a editării opțiunilor de boot este recuperarea parolei contului \texttt{root} folosind opțiunea \texttt{init=/bin/bash} așa cum am precizat în \labelindexref{Secțiunea}{sec:user:linux-password-recovery}.
+Detalii despre opțiunile de boot corespunzătoare nucleului sistemului de operare prezentăm în \labelindexref{Secțiunea}{sec:boot:os}.
 
 \begin{figure}[!htbp]
   \centering
@@ -636,18 +476,14 @@ opțiunile de boot corespunzătoare nucleului sistemului de operare prezentăm �
   \label{fig:boot:edit-grub}
 \end{figure}
 
-Opțiunile afișate de GRUB sunt încărcate din fișierul \file{/boot/grub/grub.cfg},
-fișierul de configurare GRUB. Acest fișier nu se recomandă să fie editat manual;
+Opțiunile afișate de GRUB sunt încărcate din fișierul \file{/boot/grub/grub.cfg}, fișierul de configurare GRUB.
+Acest fișier nu se recomandă să fie editat manual;
 fișierul este generat de comanda \cmd{update-grub} din analiza automată a sistemului și a configurărilor.
-Comanda \cmd{update-grub} consultă
-partițiile sistemului, detectează sisteme de operare și imagini de kernel,
-consultă configurările din sistem și apoi generează fișierul
-\file{/boot/grub/grub.cfg}.
+ Comanda \cmd{update-grub} consultă partițiile sistemului, detectează sisteme de operare și imagini de kernel, consultă configurările din sistem și apoi generează fișierul \file{/boot/grub/grub.cfg}.
 
-Configurările GRUB, care devin persistente după rularea comenzii \cmd{update-grub}, se
-realizează în fișierul \file{/etc/default/grub} și în fișierele din \file{/etc/grub.d/}. În
-fișierul \file{/etc/default/grub} sunt variabile GRUB care afectează comportamentul
-acestuia. \labelindexref{Listing}{lst:boot:grub-cfg} din fișierul \file{/etc/default/grub}.
+Configurările GRUB, care devin persistente după rularea comenzii \cmd{update-grub}, se realizează în fișierul \file{/etc/default/grub} și în fișierele din \file{/etc/grub.d/}.
+În fișierul \file{/etc/default/grub} sunt variabile GRUB care afectează comportamentul acestuia.
+\labelindexref{Listing}{lst:boot:grub-cfg} din fișierul \file{/etc/default/grub}.
 
 \begin{screen}[caption={Configurare GRUB: /etc/default/grub},label={lst:boot:grub-cfg}]
 student@uso:~$ cat /etc/default/grub
@@ -664,107 +500,78 @@ GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
 GRUB_CMDLINE_LINUX=""
 \end{screen}
 
-Observăm la începutul fișierului comentariul care spune că aceste configurări
-sunt apoi marcate persistente în fișierul de configurare \file{/boot/grub/grub.cfg}
-după rularea comenzii \cmd{update-grub}. Opțiunile de mai sus reprezintă:
+Observăm la începutul fișierului comentariul care spune că aceste configurări sunt apoi marcate persistente în fișierul de configurare \file{/boot/grub/grub.cfg} după rularea comenzii \cmd{update-grub}.
+Opțiunile de mai sus reprezintă:
 
 \begin{itemize}
-  \item \texttt{GRUB\_DEFAULT}: indexul opțiunii implicite de boot a GRUB; în
-    ecranul afișat către utilizator la bootare, dacă utilizatorul nu
-    alege o opțiune, opțiunea implicită va fi aleasă
-  \item \texttt{GRUB\_TIMEOUT}: după cât timp de la afișarea ecranului GRUB, timp în
-    care utilizatorul nu a atins nici o tastă, se bootează în
-                opțiunea implicită; valoarea \texttt{-1} înseamnă așteptare infinită până la alegerea explicită a unei opțiuni
-  \item \texttt{GRUB\_TIMEOUT\_STYLE}: precizează cum va fi afișat ecranul de boot
-    până la expirarea timpului de afișare; valoarea \texttt{hidden}
-    înseamnă că nu se afișează nici un ecran, și după 10 secunde se
-    bootează opțiunea implicită; în acel interval de 10 secunde
-                utilizatorul poate apăsa tasta \texttt{Esc} pentru a cauza afișarea
-    ecranului de boot
-  \item \texttt{GRUB\_TIMEOUT\_LINUX\_DEFAULT}: adaugă opțiunile respective nucleului
-    când bootează
+  \item \texttt{GRUB\_DEFAULT}: indexul opțiunii implicite de boot a GRUB;
+    în ecranul afișat către utilizator la bootare, dacă utilizatorul nu alege o opțiune, opțiunea implicită va fi aleasă
+  \item \texttt{GRUB\_TIMEOUT}: după cât timp de la afișarea ecranului GRUB, timp în care utilizatorul nu a atins nici o tastă, se bootează în opțiunea implicită;
+    valoarea \texttt{-1} înseamnă așteptare infinită până la alegerea explicită a unei opțiuni
+  \item \texttt{GRUB\_TIMEOUT\_STYLE}: precizează cum va fi afișat ecranul de boot până la expirarea timpului de afișare;
+    valoarea \texttt{hidden} înseamnă că nu se afișează nici un ecran, și după 10 secunde se bootează opțiunea implicită;
+    în acel interval de 10 secunde utilizatorul poate apăsa tasta \texttt{Esc} pentru a cauza afișarea ecranului de boot
+  \item \texttt{GRUB\_TIMEOUT\_LINUX\_DEFAULT}: adaugă opțiunile respective nucleului când bootează
 \end{itemize}
 
 În directorul \file{/etc/grub.d/} sunt fișiere de configurare pentru opțiuni GRUB.
-Multe fișiere sunt predefinite pentru configurări dedicate. Dacă dorim să facem
-configurări personale vom completa fișierele \file{/etc/grub.d/40\_custom} sau
-\file{/etc/grub.d/41\_custom}. Aceste fișiere sunt citite literal și adăugate la
-sfârșitul fișierului \file{/boot/grub/grub.cfg}.
+ Multe fișiere sunt predefinite pentru configurări dedicate.
+Dacă dorim să facem configurări personale vom completa fișierele \file{/etc/grub.d/40\_custom} sau \file{/etc/grub.d/41\_custom}.
+Aceste fișiere sunt citite literal și adăugate la sfârșitul fișierului \file{/boot/grub/grub.cfg}.
 
 Pentru detalii despre configurarea GRUB consultați documentația, fie online\footnote{\url{https://www.gnu.org/software/grub/manual/grub/}}, fie accesând pagina \cmd{info}: \cmd{info grub "Configuration"}.
 
 \section{Pornirea kernelului și drivere}
 \label{sec:boot:os}
 
-Rolul bootloaderului este de a permite utilizatorului să selecteze un sistem de
-operare în care să booteze, să configureze opțiunile acelui sistem de operare și
-apoi să booteze în sistemul de operare.
+Rolul bootloaderului este de a permite utilizatorului să selecteze un sistem de operare în care să booteze, să configureze opțiunile acelui sistem de operare și apoi să booteze în sistemul de operare.
 
-Bootloaderul va încărca un fișier numit \textbf{imagine de kernel}, care conține codul
-și datele sistemului de operare, și apoi va transfera controlul către acesta. Imaginea de
-kernel (sau imaginea de nucleu de sisteme de operare) este practic un executabil
-care conține implementarea nucleului (kernelului), componenta critică în
-funcționarea sistemului.
+Bootloaderul va încărca un fișier numit \textbf{imagine de kernel}, care conține codul și datele sistemului de operare, și apoi va transfera controlul către acesta.
+Imaginea de kernel (sau imaginea de nucleu de sisteme de operare) este practic un executabil care conține implementarea nucleului (kernelului), componenta critică în funcționarea sistemului.
 
-Nucleul realizează configurarea componentelor hardware ale sistemului, încarcă
-driverele de dispozitiv (\textit{device drivere}), montează sistemul de fișiere rădăcină
-și apoi pornește procesul \texttt{init}, primul proces al sistemului, care, la rândul său,
-va porni alte procese. Un driver este un fișier ce conține codul
-pentru utilizarea și configurarea unui dispozitiv hardware. După investigarea
-hardware-ului sistemului, nucleul sistemului de operare va anunța un program dedicat
-de prezența noului dispozitiv, iar acest program va asigura integrarea dispozitivului în sistem.
+Nucleul realizează configurarea componentelor hardware ale sistemului, încarcă driverele de dispozitiv (\textit{device drivere}), montează sistemul de fișiere rădăcină și apoi pornește procesul \texttt{init}, primul proces al sistemului, care, la rândul său, va porni alte procese.
+Un driver este un fișier ce conține codul pentru utilizarea și configurarea unui dispozitiv hardware.
+După investigarea hardware-ului sistemului, nucleul sistemului de operare va anunța un program dedicat de prezența noului dispozitiv, iar acest program va asigura integrarea dispozitivului în sistem.
 
 \subsection{Kernelul și driverele în Linux}
 \label{sec:boot:os-linux}
 
-Într-o configurație tipică, fișierul reprezentând imaginea de kernel în Linux se
-găsește în \file{/boot/vmlinuz-$<$versiune$>$}, unde \texttt{$<$versiune$>$} este versiunea de sistem de
-operare. Un exemplu este \file{/boot/vmlinuz-4.15.0-29-generic}. Acest fișier este
-configurat să fie încărcat de bootloader. Este încărcat în memorie și apoi
-executat, transferându-se controlul sistemului de operare. O investigație în
-linia de comandă ne oferă informații despre această imagine:
+Într-o configurație tipică, fișierul reprezentând imaginea de kernel în Linux se găsește în \file{/boot/vmlinuz-$<$versiune$>$}, unde \texttt{$<$versiune$>$} este versiunea de sistem de operare.
+Un exemplu este \file{/boot/vmlinuz-4.15.0-29-generic}.
+Acest fișier este configurat să fie încărcat de bootloader.
+Este încărcat în memorie și apoi executat, transferându-se controlul sistemului de operare.
+O investigație în linia de comandă ne oferă informații despre această imagine:
 
 \begin{screen}
 student@uso:~$ file /boot/vmlinuz-4.15.0-29-generic
 /boot/vmlinuz-4.15.0-29-generic: Linux kernel x86 boot executable bzImage, version 4.15.0-29-generic (buildd@lgw01-amd64-057) #31-Ubuntu SMP Tue Jul 17 15:39:52 UTC 2018, RO-rootFS, swap_dev 0x7, Normal VGA
 \end{screen}
 
-În cazul de față avem o imagine de kernel comprimată,
-de unde și precizarea \texttt{executable bzImage}(big zip Image); tot ca referință la faptul că este
-comprimată este și folosirea literei \texttt{z} în numele fișierului
-\texttt{vmlinuz-4.15.0-29-generic}. Imaginea este de tip self-extracting: după ce este
-încărcată în memorie de bootloader, se transferă controlul imaginii care conține
-o secvență inițială de cod ce decomprimă restul fișierului și apoi îl execută.
+În cazul de față avem o imagine de kernel comprimată, de unde și precizarea \texttt{executable bzImage}(big zip Image);
+tot ca referință la faptul că este comprimată este și folosirea literei \texttt{z} în numele fișierului \texttt{vmlinuz-4.15.0-29-generic}.
+Imaginea este de tip self-extracting: după ce este încărcată în memorie de bootloader, se transferă controlul imaginii care conține o secvență inițială de cod ce decomprimă restul fișierului și apoi îl execută.
 
-Driverele sunt localizate, în Linux, în directorul \file{/lib/modules/$<$version$>$/kernel}
-unde \texttt{$<$version$>$} este versiunea de sistem de operare. Driverele
-corespunzătoare imaginii \file{/boot/vmlinuz-4.15.0-29-generic} se găsesc în directorul
-\file{/lib/modules/4.15.0-29-generic/kernel/}. De fapt, în acel director se
-găsesc modulele de kernel, componente externe nucleului care pot fi încărcate în
-cadrul acestuia pentru a-i extinde funcționalitatea. Numim modul de kernel orice program
-încărcabil în nucleu care extinde funcționalitatea acestuia. Numim drivere acele module de kernel al căror rol este de a permite
-utilizarea și configurarea componentelor hardware.  În Linux, un modul de kernel / driver este un fișier cu extensia \texttt{.ko}:
+Driverele sunt localizate, în Linux, în directorul \file{/lib/modules/$<$version$>$/kernel} unde \texttt{$<$version$>$} este versiunea de sistem de operare.
+Driverele corespunzătoare imaginii \file{/boot/vmlinuz-4.15.0-29-generic} se găsesc în directorul \file{/lib/modules/4.15.0-29-generic/kernel/}.
+De fapt, în acel director se găsesc modulele de kernel, componente externe nucleului care pot fi încărcate în cadrul acestuia pentru a-i extinde funcționalitatea.
+Numim modul de kernel orice program încărcabil în nucleu care extinde funcționalitatea acestuia.
+Numim drivere acele module de kernel al căror rol este de a permite utilizarea și configurarea componentelor hardware.
+ În Linux, un modul de kernel / driver este un fișier cu extensia \texttt{.ko}:
 
 \begin{screen}
 student@uso:~$ file /lib/modules/4.15.0-29-generic/kernel/drivers/net/ethernet/intel/e1000/e1000.ko
 /lib/modules/4.15.0-29-generic/kernel/drivers/net/ethernet/intel/e1000/e1000.ko: ELF 64-bit LSB relocatable, x86-64, version 1 (SYSV), BuildID[sha1]=c2bcba22a6d98cf9d4c3735248bc48674ead034b, not stripped
 \end{screen}
 
-Observăm că driverul \texttt{e1000}, pentru plăci de rețea Intel, se găsește în fișierul
-\texttt{e1000.ko}, fișier de tipul ELF (\textit{Executable
-and Linking Format}), formatul clasic de executabil pe Linux.
+Observăm că driverul \texttt{e1000}, pentru plăci de rețea Intel, se găsește în fișierul \texttt{e1000.ko}, fișier de tipul ELF (\textit{Executable and Linking Format}), formatul clasic de executabil pe Linux.
 
-Driverele sunt încărcate fie de kernel la pornirea sistemului, după
-identificarea componentelor hardware, fie în timp real, de programe dedicate sau
-de utilizator. În lucrul cu module sau drivere, utilizatorul poate realiza
-următoarele operații:
+Driverele sunt încărcate fie de kernel la pornirea sistemului, după identificarea componentelor hardware, fie în timp real, de programe dedicate sau de utilizator.
+În lucrul cu module sau drivere, utilizatorul poate realiza următoarele operații:
 
 \begin{itemize}
   \item listarea modulelor încărcate în nucleu, folosind utilitarul \cmd{lsmod}
-  \item încărcarea unui modul de kernel nou, folosind utilitarul \cmd{insmod} sau
-    utilitarul \cmd{modprobe}
-  \item descărcarea unui modul de kernel existent, folosind utilitarul \cmd{rmmod}
-    sau comanda \cmd{modprobe -r}
+  \item încărcarea unui modul de kernel nou, folosind utilitarul \cmd{insmod} sau utilitarul \cmd{modprobe}
+  \item descărcarea unui modul de kernel existent, folosind utilitarul \cmd{rmmod} sau comanda \cmd{modprobe -r}
   \item afișarea de informații despre un modul de kernel folosind utilitarul \cmd{modinfo}
 \end{itemize}
 
@@ -798,40 +605,27 @@ student@uso:~$ sudo modprobe -r ntfs
 student@uso:~$ sudo insmod /lib/modules/4.15.0-118-generic/kernel/fs/ntfs/ntfs.ko
 \end{screen}
 
-Comanda \cmd{insmod} primește ca argumente calea completă către fișierul ce conține
-modulul de kernel în vreme ce comanda modprobe primește numele modulului și apoi
-îl caută în directorul \file{/lib/modules/$<$version$>$}.
+Comanda \cmd{insmod} primește ca argumente calea completă către fișierul ce conține modulul de kernel în vreme ce comanda modprobe primește numele modulului și apoi îl caută în directorul \file{/lib/modules/$<$version$>$}.
 
-Dacă dorim încărcate anumite versiuni de module de kernel la pornirea
-sistemului, sau dacă dorim să împiedicăm încărcarea anumitor module
-(\textit{blacklisting}) atunci vom realiza configurări în fișierul \file{/etc/modules} sau în
-directorul \file{/etc/modprobe.d/}.
+Dacă dorim încărcate anumite versiuni de module de kernel la pornirea sistemului, sau dacă dorim să împiedicăm încărcarea anumitor module (\textit{blacklisting}) atunci vom realiza configurări în fișierul \file{/etc/modules} sau în directorul \file{/etc/modprobe.d/}.
 
-În directorul \file{/boot/} pe lângă imagini de kernel, apar fișiere numite
-\file{initrd.img-$<$version$>$}. De exemplu fișierul \texttt{/boot/initrd.img-4.15.0-29-generic}.
-Acest fișier este numit \textit{ram disk image} și conține o serie de drivere
-necesare pentru pornirea nucleului. Atunci când nucleul pornește trebuie să
-încarce informații de pe disc. Pentru a le accesa are însă nevoie de driverul de
-disc și de driverul de sistem de fișiere. O soluție ar fi să fie adăugate în
-imaginea de kernel; dar, dat fiind numărul mare de discuri și de sisteme de
-fișiere, ar rezulta o imagine de kernel mult prea mare și cu multe drivere
-inutile pe sistemul curent. Soluția este adăugarea acestor drivere într-o
-imagine separată: \textit{ram disk image}.
+În directorul \file{/boot/} pe lângă imagini de kernel, apar fișiere numite \file{initrd.img-$<$version$>$}.
+De exemplu fișierul \texttt{/boot/initrd.img-4.15.0-29-generic}.
+ Acest fișier este numit \textit{ram disk image} și conține o serie de drivere necesare pentru pornirea nucleului.
+Atunci când nucleul pornește trebuie să încarce informații de pe disc.
+Pentru a le accesa are însă nevoie de driverul de disc și de driverul de sistem de fișiere.
+O soluție ar fi să fie adăugate în imaginea de kernel;
+dar, dat fiind numărul mare de discuri și de sisteme de fișiere, ar rezulta o imagine de kernel mult prea mare și cu multe drivere inutile pe sistemul curent.
+Soluția este adăugarea acestor drivere într-o imagine separată: \textit{ram disk image}.
 
-Imaginea de ram disk este încărcată de bootloader, așa cum am văzut în ecranul
-de configurare a opțiunii GRUB din \labelindexref{Figura}{fig:boot:edit-grub}. Când nucleul
-bootează, are referință la această imagine în memorie și poate folosi driverul de
-disc și de sistem de fișiere corespunzător pentru a putea folosi discul.
+Imaginea de ram disk este încărcată de bootloader, așa cum am văzut în ecranul de configurare a opțiunii GRUB din \labelindexref{Figura}{fig:boot:edit-grub}.
+Când nucleul bootează, are referință la această imagine în memorie și poate folosi driverul de disc și de sistem de fișiere corespunzător pentru a putea folosi discul.
 
-Imaginea de ram disk este generată la instalarea unei versiuni noi de kernel și
-poate fi generată la nevoie cu ajutorul comenzii \cmd{mkinitramfs}. Nu vom detalia
-aici această comandă, puteți urmări pagina sa de manual sau exemple pe Internet.
+Imaginea de ram disk este generată la instalarea unei versiuni noi de kernel și poate fi generată la nevoie cu ajutorul comenzii \cmd{mkinitramfs}.
+Nu vom detalia aici această comandă, puteți urmări pagina sa de manual sau exemple pe Internet.
 
-După cum spuneam mai sus, în ecranul de bootloader sau în cadrul opțiunii
-\texttt{GRUB\_CMDLINE\_DEFAULT} putem preciza opțiuni pentru kernel care afectează modul în
-care acesta bootează și rulează. Comanda echivalentă folosită pentru bootarea
-kernelului, împreună cu opțiunile aferente, se găsește în fișierul
-\file{/proc/cmdline}:
+După cum spuneam mai sus, în ecranul de bootloader sau în cadrul opțiunii \texttt{GRUB\_CMDLINE\_DEFAULT} putem preciza opțiuni pentru kernel care afectează modul în care acesta bootează și rulează.
+Comanda echivalentă folosită pentru bootarea kernelului, împreună cu opțiunile aferente, se găsește în fișierul \file{/proc/cmdline}:
 
 \begin{screen}
 student@uso:~$ cat /proc/cmdline
@@ -841,29 +635,23 @@ BOOT_IMAGE=/boot/vmlinuz-4.15.0-34-generic root=UUID=a14d0991-a3d8-48d6-ac8c-327
 Dintre opțiunile de boot ale nucleului, precizăm:
 
 \begin{itemize}
-  \item opțiunile \texttt{debug}, \texttt{verbose}, \texttt{quiet} care configurează nivelul de
-    detaliu al mesajelor de boot afișate la pornirea kernelului
-  \item opțiunea \texttt{splash} activează splashscreenul la pornirea sistemului,
-    în loc să afișeze mesajele de boot
-  \item opțiunea \texttt{noacpi} dezactivează ACPI \abbrev{ACPI}{Advanced
-    Configuration and Power Interface} (\textit{Advanced Configuration and
-                Power Interface}) o componentă PC care uneori este cauzatoare de
-    probleme
+  \item opțiunile \texttt{debug}, \texttt{verbose}, \texttt{quiet} care configurează nivelul de detaliu al mesajelor de boot afișate la pornirea kernelului
+  \item opțiunea \texttt{splash} activează splashscreenul la pornirea sistemului, în loc să afișeze mesajele de boot
+  \item opțiunea \texttt{noacpi} dezactivează ACPI \abbrev{ACPI}{Advanced Configuration and Power Interface} (\textit{Advanced Configuration and Power Interface}) o componentă PC care uneori este cauzatoare de probleme
 \end{itemize}
 
 O listă completă a acestor opțiuni găsiți în documentația nucleului\footnote{\url{https://www.kernel.org/doc/html/v5.9/admin-guide/kernel-parameters.html}}.
 
-După ce sistemul de operare a pornit, putem afla informații despre acesta. Pe
-lângă aflarea liniei de comandă echivalente din fișierul \file{/proc/cmdline}, mai
-putem afla versiunea nucleului care rulează folosind \cmd{uname}:
+După ce sistemul de operare a pornit, putem afla informații despre acesta.
+Pe lângă aflarea liniei de comandă echivalente din fișierul \file{/proc/cmdline}, mai putem afla versiunea nucleului care rulează folosind \cmd{uname}:
 
 \begin{screen}
 student@uso:~$ uname -a
 Linux uso 4.15.0-34-generic #37-Ubuntu SMP Mon Aug 27 15:21:48 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux
 \end{screen}
 
-De asemenea, pentru depanare sau informare, nucleul transmite informații care se
-jurnalizează. Pentru accesarea jurnalului folosim comanda \cmd{dmesg}, ca mai jos:
+De asemenea, pentru depanare sau informare, nucleul transmite informații care se jurnalizează.
+Pentru accesarea jurnalului folosim comanda \cmd{dmesg}, ca mai jos:
 
 \begin{screen}
 student@uso:~$ dmesg
@@ -878,40 +666,30 @@ student@uso:~$ dmesg
 \section{Pornirea init și a serviciilor de startup în Linux}
 \label{sec:boot:init-linux}
 
-După ce nucleul și driverele sunt încărcate și sistemul de operare este
-inițializat, trebuie pornite primele procese. Pentru început se pornește primul
-proces, numit generic \textbf{init}, care apoi pornește alte procese. Așa cum am precizat în
-\labelindexref{Secțiunea}{sec:process:linux-hierarchy}, procesul init este în vârful
-ierarhiei proceselor având ca roluri crearea primelor procese din sistemul de
-operare și adoptarea proceselor orfane.
+După ce nucleul și driverele sunt încărcate și sistemul de operare este inițializat, trebuie pornite primele procese.
+Pentru început se pornește primul proces, numit generic \textbf{init}, care apoi pornește alte procese.
+Așa cum am precizat în \labelindexref{Secțiunea}{sec:process:linux-hierarchy}, procesul init este în vârful ierarhiei proceselor având ca roluri crearea primelor procese din sistemul de operare și adoptarea proceselor orfane.
 
-În mod tradițional, init era procesul pornit din executabilul \file{/sbin/init} și se
-numea System V init, după numele unei variante importante de UNIX (UNIX System
-V). În mod curent implementarea cea mai răspândită de init este \textbf{systemd}, cu
-executabilul aflat în \file{/lib/systemd/systemd}:
+În mod tradițional, init era procesul pornit din executabilul \file{/sbin/init} și se numea System V init, după numele unei variante importante de UNIX (UNIX System V).
+În mod curent implementarea cea mai răspândită de init este \textbf{systemd}, cu executabilul aflat în \file{/lib/systemd/systemd}:
 
 \begin{screen}
 student@uso:~$ ls -l /sbin/init
 lrwxrwxrwx 1 root root 20 aug  6 17:34 /sbin/init -> /lib/systemd/systemd
 \end{screen}
 
-Observăm că \file{/sbin/init} este, pe sistemele Linux moderne, un fișier de tipul
-legătură simbolică la fișierul \file{/lib/systemd/systemd}. Astfel că, pe sistemele
-moderne, configurarea init echivalează configurării systemd.
+Observăm că \file{/sbin/init} este, pe sistemele Linux moderne, un fișier de tipul legătură simbolică la fișierul \file{/lib/systemd/systemd}.
+Astfel că, pe sistemele moderne, configurarea init echivalează configurării systemd.
 
-Procesul principal systemd rulează ca procesul cu PID-ul 1. Există posibilitatea
-creării unui proces per utilizator prin transmiterea opțiunii \texttt{-{}-user} comenzii
-\texttt{systemd}. Acest lucru este util atunci când dorim să creăm și să gestionăm
-servicii la nivelul utilizatorului, la la nivelul sistemului.
+Procesul principal systemd rulează ca procesul cu PID-ul 1.
+Există posibilitatea creării unui proces per utilizator prin transmiterea opțiunii \texttt{-{}-user} comenzii \texttt{systemd}.
+Acest lucru este util atunci când dorim să creăm și să gestionăm servicii la nivelul utilizatorului, la la nivelul sistemului.
 
-Serviciile sunt procese dedicate, de obicei procese daemon (revedeți \labelindexref{Secțiunea}{sec:process:daemon}), care oferă
-funcționalități suplimentare sistemului sau care gestionează buna funcționare a
-acestuia. Serviciile sunt în general pornite și gestionate de systemd.
+Serviciile sunt procese dedicate, de obicei procese daemon (revedeți \labelindexref{Secțiunea}{sec:process:daemon}), care oferă funcționalități suplimentare sistemului sau care gestionează buna funcționare a acestuia.
+Serviciile sunt în general pornite și gestionate de systemd.
 
-În mod tradițional, în implementarea veche (System V) de init, serviciile se
-configurau și rulau cu ajutorul scripturilor de inițializare din directorul \file{/etc/init.d/}.
-Pentru a menține compatibilitatea, systemd folosește în continuare acele
-scripturi de inițializare, pe care le le putem localiza pe sistemele moderne:
+În mod tradițional, în implementarea veche (System V) de init, serviciile se configurau și rulau cu ajutorul scripturilor de inițializare din directorul \file{/etc/init.d/}.
+ Pentru a menține compatibilitatea, systemd folosește în continuare acele scripturi de inițializare, pe care le le putem localiza pe sistemele moderne:
 
 \begin{screen}
 student@uso:~$ ls /etc/init.d/
@@ -921,8 +699,8 @@ anacron    bluetooth         cups-browsed  grub-common    [...]
 apparmor   console-setup.sh  dbus          hddtemp        [...]
 \end{screen}
 
-În systemd, serviciile, împreună cu alte componente, sunt numite \texttt{units}. Pentru a
-vizualiza toate unitățile systemd, folosim comanda \cmd{systemctl list-units}:
+În systemd, serviciile, împreună cu alte componente, sunt numite \texttt{units}.
+Pentru a vizualiza toate unitățile systemd, folosim comanda \cmd{systemctl list-units}:
 
 \begin{screen}
 student@uso:~$ systemctl list-units | head -100
@@ -937,10 +715,8 @@ sys-devices-[...]        loaded active plugged   VBOX_HARDDISK
 sys-devices-[...]        loaded active plugged   VBOX_HARDDISK 1
 \end{screen}
 
-Dacă dorim să afișăm informații, oprim, porni sau reporni servicii, putem folosi
-fie interfața clasică \file{/etc/init.d/}, fie comanda \cmd{service}, fie comanda \cmd{systemctl}.
-Mai jos sunt comenzile în toate formele pentru afișarea stării serviciului SSH (pentru conexiune
-la distanță) și pentru pornirea serviciului:
+Dacă dorim să afișăm informații, oprim, porni sau reporni servicii, putem folosi fie interfața clasică \file{/etc/init.d/}, fie comanda \cmd{service}, fie comanda \cmd{systemctl}.
+ Mai jos sunt comenzile în toate formele pentru afișarea stării serviciului SSH (pentru conexiune la distanță) și pentru pornirea serviciului:
 
 \begin{screen}
 student@uso:~$ /etc/init.d/ssh status
@@ -951,41 +727,30 @@ student@uso:~$ sudo service ssh start
 student@uso:~$ sudo systemctl start ssh.service
 \end{screen}
 
-Dacă dorim să oprim sau să repornim serviciul, folosim parametrul \texttt{stop},
-respectiv \texttt{restart}, în loc de \texttt{start}.
+Dacă dorim să oprim sau să repornim serviciul, folosim parametrul \texttt{stop}, respectiv \texttt{restart}, în loc de \texttt{start}.
 
-Dacă dorim adăugarea de servicii în sistem putem să le adăugăm în configurarea
-\cmd{systemd} sau putem folosi \cmd{supervisor}. Vom detalia în
-\labelindexref{Secțiunea}{sec:auto:system:service}.
+Dacă dorim adăugarea de servicii în sistem putem să le adăugăm în configurarea \cmd{systemd} sau putem folosi \cmd{supervisor}.
+Vom detalia în \labelindexref{Secțiunea}{sec:auto:system:service}.
 
 \subsection{Pornirea terminalelor de login}
 \label{sec:boot:init-linux:login}
 
-Ulterior pornirii serviciilor inițiale (\textit{startup processes}), init/systemd trebuie să
-configureze terminalele virtuale, unde utilizatorul se va putea autentifica. Aceste terminale
-pot fi inițializate în mod text sau în mod grafic.
-De obicei prin combinațiile de taste \texttt{Ctrl+Alt+F1}, \texttt{Ctrl+Alt+F2}, \ldots,
-\texttt{Ctrl+Alt+F6}. Pe un sistem fără interfață grafică se
-vede implicit primul terminal putându-se accesa celelalte terminale folosind
-combinațiile de taste \texttt{Ctrl+Alt+F2}, \ldots, \texttt{Ctrl+Alt+F6}.
-Terminalul virtual curent poate fi schimbat și cu ajutorul comenzii \cmd{chvt n}, unde \texttt{n} ia
-valori de la 1 la numărul de terminale virtuale alocate de kernel.
+Ulterior pornirii serviciilor inițiale (\textit{startup processes}), init/systemd trebuie să configureze terminalele virtuale, unde utilizatorul se va putea autentifica.
+Aceste terminale pot fi inițializate în mod text sau în mod grafic.
+ De obicei prin combinațiile de taste \texttt{Ctrl+Alt+F1}, \texttt{Ctrl+Alt+F2}, \ldots, \texttt{Ctrl+Alt+F6}.
+Pe un sistem fără interfață grafică se vede implicit primul terminal putându-se accesa celelalte terminale folosind combinațiile de taste \texttt{Ctrl+Alt+F2}, \ldots, \texttt{Ctrl+Alt+F6}.
+ Terminalul virtual curent poate fi schimbat și cu ajutorul comenzii \cmd{chvt n}, unde \texttt{n} ia valori de la 1 la numărul de terminale virtuale alocate de kernel.
 
 Mediul grafic, în cazul în care este prezent, poate porni în locul consolei text.
-Acesta va fi accesibil de obicei prin \texttt{Ctrl+Alt+F1} sau \texttt{Ctrl+Alt+F7}, dar
-orice configurație este posibilă.
+ Acesta va fi accesibil de obicei prin \texttt{Ctrl+Alt+F1} sau \texttt{Ctrl+Alt+F7}, dar orice configurație este posibilă.
 
 Terminalele virtuale sunt pornite și gestionate de init/systemd prin următorul flux, prezentat în \labelindexref{Figura}{fig:boot:login}.
 
 \begin{enumerate}
-  \item systemd pornește procese numite \cmd{getty} care reprezintă interfața de
-    comunicare cu terminalul virtual.
-  \item \cmd{getty} afișează un prompt de utilizator unde se introduce
-    numele de utilizator și parola.
-  \item \cmd{getty} pornește procesul \cmd{login} care citește parola
-          utilizatorului și o verifică în fișierul \file{/etc/shadow}
-  \item dacă parola este corectă, procesul \cmd{login} pornește shellul descris ca
-          ultima coloana din linia corespunzătoare utilizatorului în fișierul \file{/etc/passwd}
+  \item systemd pornește procese numite \cmd{getty} care reprezintă interfața de comunicare cu terminalul virtual.
+  \item \cmd{getty} afișează un prompt de utilizator unde se introduce numele de utilizator și parola.
+  \item \cmd{getty} pornește procesul \cmd{login} care citește parola utilizatorului și o verifică în fișierul \file{/etc/shadow}
+  \item dacă parola este corectă, procesul \cmd{login} pornește shellul descris ca ultima coloana din linia corespunzătoare utilizatorului în fișierul \file{/etc/passwd}
 \end{enumerate}
 
 \begin{figure}[htbp]
@@ -1009,9 +774,8 @@ system-getty.slice           loaded active active    system-getty.slice
 getty.target                 loaded active active    Login Prompts
 \end{screen}
 
-Observăm în cadrul comenzii că sunt cinci terminale virtuale, de la \texttt{tty2} până la
-\texttt{tty6}. Putem observa și procesele aferente celor cinci terminale virtuale, gestionate
-de procesul \cmd{agetty}, o implementare de \cmd{getty}.
+Observăm în cadrul comenzii că sunt cinci terminale virtuale, de la \texttt{tty2} până la \texttt{tty6}.
+Putem observa și procesele aferente celor cinci terminale virtuale, gestionate de procesul \cmd{agetty}, o implementare de \cmd{getty}.
 
 \begin{screen}
 student@uso:~$ ps -f -C agetty
@@ -1024,66 +788,50 @@ root     4457     1  0 14:27 tty6     00:00:00 /sbin/agetty [...]
 \end{screen}
 
 După o autentificare corectă la un terminal virtual este pornit shellul.
-Shellul poate fi pornit și dintr-un emulator de terminal din interfața grafică
-și dintr-un pseudo-terminal creat printr-o conexiune SSH. În toate situațiile
-shellul folosește niște fișiere de configurare specifice care personalizează
-experiența utilizatorului în linia de comandă, așa cum am prezentat în \labelindexref{Secțiunea}{sec:cli:shell-start:config}.
+ Shellul poate fi pornit și dintr-un emulator de terminal din interfața grafică și dintr-un pseudo-terminal creat printr-o conexiune SSH.
+În toate situațiile shellul folosește niște fișiere de configurare specifice care personalizează experiența utilizatorului în linia de comandă, așa cum am prezentat în \labelindexref{Secțiunea}{sec:cli:shell-start:config}.
 
 \section{Anexă: Resetarea parolei administrative}
 \label{sec:boot:pass-reset}
 
-Este posibil ca pentru un sistem să pierdem parola administrativă, a contului
-root sau a contului Administrator și să fie nevoie de resetarea acesteia. În
-\labelindexref{Secțiunea}{sec:user:linux-password-recovery} și \labelindexref{Secțiunea}{sec:user:windows-password-recovery} am precizat modurile
-uzuale de resetare a parolei administrative și în Linux și în Windows. În Linux
-folosim opțiunea \texttt{init=/bin/bash} la bootarea sistemului de operare, editând
-intrarea în bootloader, sau folosim un USB stick bootabil sau CD-ROM \abbrev{CD-ROM}{Compact Disc - Read-Only Memory} (\textit{Compact Disc - Read-Only Memory}) sau DVD-ROM \abbrev{DVD-ROM}{Digital Video Disc - Read-Only Memory} (\textit{Digital Video Disc - Read-Only Memory}). În
-Windows folosim Ultimate Boot CD.
+Este posibil ca pentru un sistem să pierdem parola administrativă, a contului root sau a contului Administrator și să fie nevoie de resetarea acesteia.
+În \labelindexref{Secțiunea}{sec:user:linux-password-recovery} și \labelindexref{Secțiunea}{sec:user:windows-password-recovery} am precizat modurile uzuale de resetare a parolei administrative și în Linux și în Windows.
+În Linux folosim opțiunea \texttt{init=/bin/bash} la bootarea sistemului de operare, editând intrarea în bootloader, sau folosim un USB stick bootabil sau CD-ROM \abbrev{CD-ROM}{Compact Disc - Read-Only Memory} (\textit{Compact Disc - Read-Only Memory}) sau DVD-ROM \abbrev{DVD-ROM}{Digital Video Disc - Read-Only Memory} (\textit{Digital Video Disc - Read-Only Memory}).
+În Windows folosim Ultimate Boot CD.
 
-În Linux este posibil să configurăm parolă de acces la bootloader (GRUB) și
-atunci opțiunea cu editarea intrării în bootloader nu funcționează. Rămâne însă
-o opțiune folosirea unui USB stick bootabil care nu necesită editarea
-opțiunilor.
+În Linux este posibil să configurăm parolă de acces la bootloader (GRUB) și atunci opțiunea cu editarea intrării în bootloader nu funcționează.
+Rămâne însă o opțiune folosirea unui USB stick bootabil care nu necesită editarea opțiunilor.
 
-Chiar și așa, este posibil să fie dezactivat din firmware-ul de boot folosirea
-USB sau CD-ROM pentru bootare. Sau să fie configurată parolă de acces la firmware
-care nu permite editarea opțiunilor și, deci, adăugarea opțiunii de boot USB sau
-CD-ROM. Pentru aceasta avem soluția desfacerii unității fizice a sistemului și extragerea bateriei
-CMOS care va duce la resetarea configurării firmware-ului de boot la o valoare
-implicită, fără parolă. Ulterior vom activa bootarea de pe USB sau CD-ROM și vom
-reseta parola administrativă folosind un USB stick sau CD-ROM bootabil. Evident,
-resetarea parolei firmware-ului de boot prin extragerea bateriei CMOS necesită
-acces fizic la sistem.
+Chiar și așa, este posibil să fie dezactivat din firmware-ul de boot folosirea USB sau CD-ROM pentru bootare.
+Sau să fie configurată parolă de acces la firmware care nu permite editarea opțiunilor și, deci, adăugarea opțiunii de boot USB sau CD-ROM.
+Pentru aceasta avem soluția desfacerii unității fizice a sistemului și extragerea bateriei CMOS care va duce la resetarea configurării firmware-ului de boot la o valoare implicită, fără parolă.
+Ulterior vom activa bootarea de pe USB sau CD-ROM și vom reseta parola administrativă folosind un USB stick sau CD-ROM bootabil.
+Evident, resetarea parolei firmware-ului de boot prin extragerea bateriei CMOS necesită acces fizic la sistem.
 
-O formă mai directă de a trece de parola de firmware de boot sau cea de
-bootloader este detașarea discului din unitate și atașarea acestuia la o altă
-unitate. Apoi se bootează acel sistem cu un stick USB sau CD-ROM bootabil și se
-resetează parola. Pentru a preveni acest lucru o soluție este criptarea
-discului, lucru ce face imposibilă orice modificare fără accesul la parolă.
+O formă mai directă de a trece de parola de firmware de boot sau cea de bootloader este detașarea discului din unitate și atașarea acestuia la o altă unitate.
+Apoi se bootează acel sistem cu un stick USB sau CD-ROM bootabil și se resetează parola.
+Pentru a preveni acest lucru o soluție este criptarea discului, lucru ce face imposibilă orice modificare fără accesul la parolă.
 
 \section{Anexă: Crearea unui stick USB bootabil cu Linux}
 \label{sec:boot:usb-linux}
 
-Pentru a instala un sistem de operare Linux pe un PC, avem nevoie de un mediu de
-boot. În mod obișnuit, acest mediu va fi un stick USB bootabil. Pentru început
-acest stick trebuie să fie partiționat și apoi marcată partiția principală ca
-fiind bootabilă. Pașii de pregătire ai mediului de boot sunt:
+Pentru a instala un sistem de operare Linux pe un PC, avem nevoie de un mediu de boot.
+În mod obișnuit, acest mediu va fi un stick USB bootabil.
+Pentru început acest stick trebuie să fie partiționat și apoi marcată partiția principală ca fiind bootabilă.
+Pașii de pregătire ai mediului de boot sunt:
 
 \begin{enumerate}
-  \item Ștergerea vechilor componentele de pe stickul USB. Presupunând că
-          stickul USB este accesibil prin intrarea \file{/dev/sdb}, rulăm
-    comanda
+  \item Ștergerea vechilor componentele de pe stickul USB.
+    Presupunând că stickul USB este accesibil prin intrarea \file{/dev/sdb}, rulăm comanda
 
 \begin{screen}
 wipefs -a /dev/sdb
 \end{screen}
 
-        \cmd{wipefs} va detecta și va șterge toate semnăturile de sisteme de fișiere
-  și tabelele de partiții prezente pe \file{/dev/sdb}.
+    \cmd{wipefs} va detecta și va șterge toate semnăturile de sisteme de fișiere și tabelele de partiții prezente pe \file{/dev/sdb}.
 
-  \item Crearea tabelei de partiții și apoi unei partiții FAT32 și
-    marcarea acesteia ca fiind bootabilă. Pentru aceasta folosim
-                utilitarul \cmd{gparted} (cu interfața grafică), accesând opțiunile:
+  \item Crearea tabelei de partiții și apoi unei partiții FAT32 și marcarea acesteia ca fiind bootabilă.
+    Pentru aceasta folosim utilitarul \cmd{gparted} (cu interfața grafică), accesând opțiunile:
     \begin{enumerate}
       \item \texttt{Device} $\rightarrow$ \texttt{Create Partition Table}
       \item click dreapta pe spațiu $\rightarrow$ \texttt{New}
@@ -1093,41 +841,31 @@ wipefs -a /dev/sdb
 
 În acest moment avem un stick USB cu o partiție FAT32 bootabilă.
 
-Pentru scrierea de informații pe stickul USB, descărcăm un fișier \texttt{.iso}
-cu distribuția
-Linux dorită. Apoi folosim utilitarul \cmd{unetbootin} (pe orice
-platformă)\footnote{\url{https://unetbootin.github.io}}, cu interfață grafică.
-Înainte de folosirea sa, trebuie să fie montat stickul USB, fie automat fie
-printr-o comandă de forma:
+Pentru scrierea de informații pe stickul USB, descărcăm un fișier \texttt{.iso} cu distribuția Linux dorită.
+Apoi folosim utilitarul \cmd{unetbootin} (pe orice platformă)\footnote{\url{https://unetbootin.github.io}}, cu interfață grafică.
+ Înainte de folosirea sa, trebuie să fie montat stickul USB, fie automat fie printr-o comandă de forma:
 
 \begin{screen}
 student@uso:~$ sudo mkdir /mnt/sdb1
 student@uso:~$ sudo mount /dev/sdb1 /mnt/sdb1
 \end{screen}
 
-În interfața \cmd{unetbootin} selectăm fișierul \texttt{.iso} pe care dorim să îl scriem și
-destinația unde este montat stickul, adică \file{/mnt/sdb1} în cazul nostru.
+În interfața \cmd{unetbootin} selectăm fișierul \texttt{.iso} pe care dorim să îl scriem și destinația unde este montat stickul, adică \file{/mnt/sdb1} în cazul nostru.
 
-O alternativă, care permite crearea unui stick USB cu Linux folosind Windows,
-este folosirea utilitarului Rufus\footnote{\url{https://rufus.akeo.ie}} urmărind
-indicațiile de
-aici\footnote{\url{https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-stick-on-windows}}.
+O alternativă, care permite crearea unui stick USB cu Linux folosind Windows, este folosirea utilitarului Rufus\footnote{\url{https://rufus.akeo.ie}} urmărind indicațiile de aici\footnote{\url{https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-stick-on-windows}}.
 
-Având în vedere că majoritatea distribuțiilor de Linux oferă imagini ISO hibride, care pot fi scrise
-și pe mediu optic (CD-ROM, DVD-ROM) și pe dispoztive de stocare în masă (stick USB, HDD, SSD), se mai poate folosi comanda:
+Având în vedere că majoritatea distribuțiilor de Linux oferă imagini ISO hibride, care pot fi scrise și pe mediu optic (CD-ROM, DVD-ROM) și pe dispoztive de stocare în masă (stick USB, HDD, SSD), se mai poate folosi comanda:
+
 \begin{screen}
-  dd if=my.iso of=/dev/sdb bs=1M
+dd if=my.iso of=/dev/sdb bs=1M
 \end{screen}
 
 \section{Anexă: Crearea unui stick USB bootabil cu Windows}
 \label{sec:boot:usb-windows}
 
-Pentru crearea unui stick bootabil cu Windows, pregătim mediul de instalare
-(stickul USB) în mod similar cu instalarea Linux, cu o diferență: partiția
-trebuie să fie formatată NTFS.
+Pentru crearea unui stick bootabil cu Windows, pregătim mediul de instalare (stickul USB) în mod similar cu instalarea Linux, cu o diferență: partiția trebuie să fie formatată NTFS.
 
-Apoi se urmează pașii de mai jos, detaliați și
-aici\footnote{\url{https://askubuntu.com/a/487970}}:
+Apoi se urmează pașii de mai jos, detaliați și aici\footnote{\url{https://askubuntu.com/a/487970}}:
 
 \begin{enumerate}
   \item Se montează fișierul \texttt{.iso} cu imaginea de Windows.
@@ -1144,8 +882,7 @@ student@uso:~$ sudo mkdir /mnt/sdb1
 student@uso:~$ sudo mount /dev/sdb1 /mnt/sdb1
 \end{screen}
 
-  \item Se copiază tot conținutul din imaginea de Windows pe stickul
-    USB:
+  \item Se copiază tot conținutul din imaginea de Windows pe stickul USB:
 
 \begin{screen}
 student@uso:~$ sudo cp -r iso-mnt/* /mnt/sdb1/
@@ -1157,8 +894,7 @@ student@uso:~$ sudo cp -r iso-mnt/* /mnt/sdb1/
 sudo grub-install --target=i386-pc --boot-directory="/mnt/sdb1/boot" /dev/sdb
 \end{screen}
 
-  \item Se generează fișierul \file{/mnt/sdb1/boot/grub/grub.cfg} cu următorul
-    conținut:
+  \item Se generează fișierul \file{/mnt/sdb1/boot/grub/grub.cfg} cu următorul conținut:
 
 \begin{screen}
 echo "If you see this, you have successfully booted from USB :)"
@@ -1174,6 +910,7 @@ boot
 \begin{screen}
 student@uso:~$ sudo blkid /dev/sdb1
 \end{screen}
+
   \item Demontăm stickul USB și fișierul \texttt{.iso}:
 
 \begin{screen}
@@ -1188,14 +925,11 @@ Acum putem folosi stickul pentru a boota Windows.
 \section{Anexă: Adăugarea unei intrări GRUB pentru UDPCast}
 \label{sec:boot:updcast}
 
-Pentru a demonstra o configurare particulară pentru GRUB, vom descrie instalarea
-UDPcast pe disc. Va putea fi bootat de pe disc prin GRUB.
-UDPCast\footnote{\url{http://www.udpcast.linux.lu}} este o imagine bootabilă de
-CD care permite transferul prin rețea al unui disc de la o sursă către mai multe
-destinații, asigurând astfel o clonare a discului.
+Pentru a demonstra o configurare particulară pentru GRUB, vom descrie instalarea UDPcast pe disc.
+Va putea fi bootat de pe disc prin GRUB.
+ UDPCast\footnote{\url{http://www.udpcast.linux.lu}} este o imagine bootabilă de CD care permite transferul prin rețea al unui disc de la o sursă către mai multe destinații, asigurând astfel o clonare a discului.
 
-Pentru a adăuga o intrare în GRUB pentru UDPCast și pentru a boota astfel în
-GRUB fără a fi nevoie de un stick USB sau un CD-ROM bootabil, urmăm pașii:
+Pentru a adăuga o intrare în GRUB pentru UDPCast și pentru a boota astfel în GRUB fără a fi nevoie de un stick USB sau un CD-ROM bootabil, urmăm pașii:
 
 \begin{enumerate}
   \item Obținem fișierul \texttt{.iso} UDPCast:
@@ -1213,8 +947,7 @@ student@uso:~$ ls iso-mnt/
 ISOLINUX.BIN  ISOLINUX.CFG boot.catalog  initrd  linux pxelinux.0
 \end{screen}
 
-    Din conținutul fișierului \texttt{.iso} ne interesează fișierele \texttt{initrd} și \texttt{linux}, adică
-imaginea de ram disk și imaginea de kernel.
+    Din conținutul fișierului \texttt{.iso} ne interesează fișierele \texttt{initrd} și \texttt{linux}, adică imaginea de ram disk și imaginea de kernel.
 
   \item Copiem imaginea de ram disk si cea de kernel într-un director din \file{/boot}:
 
@@ -1248,11 +981,8 @@ menuentry 'UDPCast' {
 }
 \end{screen}
 
-    În configurarea GRUB am folosit UUID-ul partiției \file{/dev/sda1}, partiția unde se
-    găsește directorul \file{/boot} (\texttt{a14d0991-a3d8-48d6-ac8c-327d1a524501})
-pe care l-am descoperit cu ajutorul comenzii blkid. Am folosit
-    construcția \texttt{(hd0,msdos1)} pentru a identifica prima partiție din
-    primul hard disk, adică \file{/dev/sda1}.
+    În configurarea GRUB am folosit UUID-ul partiției \file{/dev/sda1}, partiția unde se găsește directorul \file{/boot} (\texttt{a14d0991-a3d8-48d6-ac8c-327d1a524501}) pe care l-am descoperit cu ajutorul comenzii blkid.
+Am folosit construcția \texttt{(hd0,msdos1)} pentru a identifica prima partiție din primul hard disk, adică \file{/dev/sda1}.
 
   \item Actualizăm configurația GRUB:
 
@@ -1265,7 +995,7 @@ student@uso:~$ grep UDPCast /boot/grub/grub.cfg
 menuentry 'UDPCast' {
 \end{screen}
 
-În ultima comandă am verificat că intrarea a fost adăugată în fișierul de configurare GRUB: \file{/boot/grub/grub.cfg}.
+    În ultima comandă am verificat că intrarea a fost adăugată în fișierul de configurare GRUB: \file{/boot/grub/grub.cfg}.
 
   \item Demontăm fișierul \texttt{.iso}:
 
@@ -1290,36 +1020,24 @@ student@uso:~$ sudo rmdir iso-mnt
 
 A treia componentă este folosită doar pentru încărcarea unui sistem de operare suspendat/hibernat.
 
-Windows Boot Manager este o componentă generică ce permite selectarea între mai
-multe instanțe de sistem de operare Windows de pe un sistem dat. Windows Boot
-Manager prezintă utilizatorului opțiunile de sistem de operare pe care să
-booteze; după ce utilizatorul alege opțiunea respectivă, Windows Boot Manager
-încarcă bootloaderul aferent și acesta, ulterior, va încărca sistemul de
-operare.
+Windows Boot Manager este o componentă generică ce permite selectarea între mai multe instanțe de sistem de operare Windows de pe un sistem dat.
+Windows Boot Manager prezintă utilizatorului opțiunile de sistem de operare pe care să booteze;
+după ce utilizatorul alege opțiunea respectivă, Windows Boot Manager încarcă bootloaderul aferent și acesta, ulterior, va încărca sistemul de operare.
 
-Opțiunile de boot, însemnând ce sisteme de operare sunt disponibile și ce
-opțiuni de boot sunt folosite pentru un sistem de operare, sunt reținute într-o
-zonă numită BCD \abbrev{BCD}{Boot Configuration Data} (\textit{Boot Configuration Data}),
-zonă ce poate fi editată folosind \cmd{BCDEdit.exe}, un utilitar inclus în Windows.
+Opțiunile de boot, însemnând ce sisteme de operare sunt disponibile și ce opțiuni de boot sunt folosite pentru un sistem de operare, sunt reținute într-o zonă numită BCD \abbrev{BCD}{Boot Configuration Data} (\textit{Boot Configuration Data}), zonă ce poate fi editată folosind \cmd{BCDEdit.exe}, un utilitar inclus în Windows.
 
-Detalii despre procesul de boot în Windows găsiți în
-documentație\footnote{\url{https://docs.microsoft.com/en-us/windows-hardware/drivers/devtest/introduction-to-boot-options}}.
+Detalii despre procesul de boot în Windows găsiți în documentație\footnote{\url{https://docs.microsoft.com/en-us/windows-hardware/drivers/devtest/introduction-to-boot-options}}.
 
 \section{Concluzii}
 \label{sec:boot:conclusion}
 
-Un sistem de calcul parcurge mai mulți pași din momentul pornirii acestuia
-(apăsării pe butonul de \textit{power-on}) până la pornirea primelor procese interactive,
-în general shellul.
+Un sistem de calcul parcurge mai mulți pași din momentul pornirii acestuia (apăsării pe butonul de \textit{power-on}) până la pornirea primelor procese interactive, în general shellul.
 
-Un utilizator are nevoie să știe procesul de boot pentru a putea depana probleme
-ce pot apărea, pentru a configura componentele pornite și opțiunile acestora.
+Un utilizator are nevoie să știe procesul de boot pentru a putea depana probleme ce pot apărea, pentru a configura componentele pornite și opțiunile acestora.
 
-În general un sistem de calcul dispune de un firmware de boot, încărcat în
-memorie și rulat imediat după pornirea sistemului. Acesta încarcă și transferă
-controlul unui bootloader care încarcă și transferă controlul sistemului de
-operare. Sistemul de operare configurează hardware-ul și pornește primele
-procese din sistem. Procesul de boot se consideră încheiat când utilizatorul are acces la sistem, prin intermediul unui shell (CLI sau GUI).
+În general un sistem de calcul dispune de un firmware de boot, încărcat în memorie și rulat imediat după pornirea sistemului.
+Acesta încarcă și transferă controlul unui bootloader care încarcă și transferă controlul sistemului de operare.
+Sistemul de operare configurează hardware-ul și pornește primele procese din sistem.
+Procesul de boot se consideră încheiat când utilizatorul are acces la sistem, prin intermediul unui shell (CLI sau GUI).
 
-Conceptual pașii sunt similari, dar la nivel practic apar diferențe între
-tipurile de sisteme de calcul și sisteme de operare.
+Conceptual pașii sunt similari, dar la nivel practic apar diferențe între tipurile de sisteme de calcul și sisteme de operare.

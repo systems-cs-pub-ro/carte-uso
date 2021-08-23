@@ -943,7 +943,8 @@ MĂNOIU I. Ioana-Veronica,315CC
 
 Prin inițializarea variabilei \texttt{IFS} la un separator dat (Tab sau virgulă) am putut să afișăm numele complet al studenților, nu doar numele de familie, cum era cazul în scriptul \file{extract-10}.
 În scriptul \file{extract-10} am folosit o versiune modificată a fișierului de intrare, în care prima coloană a fișierului conține doar numele de familie.
-Dacă ar fi conținut și inițiala tatălui și prenumele, atunci acestea ar fi fost câmpuri parsate de comanda \cmd{read} la folosirea implicită a separatorului \texttt{IFS} (care conține caractere albe: spațiu, Tab, linie nouă); caz în care valorile câmpurilor \texttt{group}, \texttt{final\_grade} și altele ar fi fost necorespunzătoare.
+Dacă ar fi conținut și inițiala tatălui și prenumele, atunci acestea ar fi fost câmpuri parsate de comanda \cmd{read} la folosirea implicită a separatorului \texttt{IFS} (care conține caractere albe: spațiu, Tab, linie nouă);
+caz în care valorile câmpurilor \texttt{group}, \texttt{final\_grade} și altele ar fi fost necorespunzătoare.
 
 Așa cum am văzut în exemplele de mai sus, construcția \cmd{while read} este utilă atunci când dorim să prelucrăm date în format tabelar, putând rula comenzi pe câmpurile parsate din fiecare linie de la intrare.
 Putem privi construcția \cmd{while read} ca o comandă \cmd{cut} extinsă.
@@ -957,7 +958,8 @@ La fel ca \cmd{for}, comanda \cmd{while} poate fi folosită necorespunzător în
 \label{sec:auto:script-func:func}
 
 Atunci când avem secvențe de comenzi pe care vrem să le folosim modular, putem folosi funcții.
-La fel ca într-un limbaj de programare, o funcție are un nume și are un conținut; o funcție rulează când este apelată.
+La fel ca într-un limbaj de programare, o funcție are un nume și are un conținut;
+o funcție rulează când este apelată.
 O funcție este apelată folosind numele său, ca în \labelindexref{Listing}{lst:auto:functions}, care prezintă secvențe din scriptul \file{/etc/init.d/ssh}.
 Sunt definite funcțiile \texttt{check\_dev\_null}, \texttt{check\_privsep\_dir} și \texttt{check\_config}, care sunt apoi apelate pe parcursul programului.
 
@@ -1026,13 +1028,16 @@ Scripturi mai complexe sunt scripturile de inițializare din directorul \file{/e
 
 Așa cum am precizat anterior, un script shell este o cale de mijloc între a rula comenzile în linia de comandă și a face un program într-un limbaj de programare.
 Pe lângă acestea, în shell sunt comenzi similare și funcționalități diferite care pot conduce la același rezultat.
-Fiind mai multe modurile de a ajunge la un rezultat în shell, cel mai bine este să creăm scripturi shell folosind cea mai bună abordare dintre cele posibile.Pentru aceasta, pentru fiecare script vom urmări:
+Fiind mai multe modurile de a ajunge la un rezultat în shell, cel mai bine este să creăm scripturi shell folosind cea mai bună abordare dintre cele posibile.
+Pentru aceasta, pentru fiecare script vom urmări:
 
 \begin{itemize}
   \item \textbf{robustețea}: scriptul să ruleze indiferent de condiții, să nu aibă erori de rulare sau rezultate imprevizibile
-  \item \textbf{lizibilitate}: scriptul să fie ușor de citit și de înțeles de altcineva; anumite construcții în shell sunt întortocheate și pot face dificilă înțelegerea scriptului
+  \item \textbf{lizibilitate}: scriptul să fie ușor de citit și de înțeles de altcineva;
+    anumite construcții în shell sunt întortocheate și pot face dificilă înțelegerea scriptului
   \item \textbf{eficiența și performanța}: deși nu poate ajunge la nivelul de performanță al unui program, e indicat ca scriptul să ruleze cât mai repede și să nu consume resurse în mod exagerat
-  \item \textbf{portabilitatea}: există mai multe tipuri de shell (Bash, Dash, ksh, tcsh, zsh) sau diferite versiuni de shell; dacă se știe că un script va rula pe shelluri și în medii diferite trebuie să fie portabil și să ruleze determinist
+  \item \textbf{portabilitatea}: există mai multe tipuri de shell (Bash, Dash, ksh, tcsh, zsh) sau diferite versiuni de shell;
+    dacă se știe că un script va rula pe shelluri și în medii diferite trebuie să fie portabil și să ruleze determinist
 \end{itemize}
 
 Mai jos prezentăm construcții specifice acestor deziderate și recomandări de folosire în scripturi shell.
@@ -1231,7 +1236,8 @@ Pe lângă problemele inerente de robustețe posibile a procesului de parsing, o
 Variantele folosind \cmd{while} și \cmd{for} rămân utile atunci când vrem să rulăm mai multe comenzi; comanda \cmd{find} permite, împreună cu \texttt{-exec} rularea unei singure comenzi\footnote{Se poate trece peste această limitare prin rularea unui shell nou sau a unui script, dar se pierde lizibilitate.}.
 
 Altfel, atunci când folosim \cmd{find} pentru a executa o comandă, avem opțiunile din \labelindexref{Listing}{lst:auto:find-options}.
-Prima variantă (liniile \texttt{1-5}) execută comanda \cmd{stat} pentru fiecare intrare; sunt create astfel 4 procese \cmd{stat}, câte una pentru fiecare fișier.
+Prima variantă (liniile \texttt{1-5}) execută comanda \cmd{stat} pentru fiecare intrare;
+sunt create astfel 4 procese \cmd{stat}, câte una pentru fiecare fișier.
 A doua (liniile \texttt{7-11}) și a treia (liniile \texttt{13-17}) variantă execută o singură comandă \cmd{stat} pentru toate intrările, fiind evident mai performantă.
 A doua și a treia variantă sunt aproape echivalente.
 Prima variantă creează câte un proces pentru fiecare fișier fiind mai costisitoare ca timp.
@@ -1294,7 +1300,8 @@ match
 
 Am văzut în \labelindexref{Listing}{lst:auto:newline-in-names} și în \labelindexref{Listing}{lst:auto:find-options} că, pentru a folosi robust prelucrarea fișierelor cu \cmd{find}, trebuie să folosim opțiunea \texttt{-print0}.
 Opțiunea \texttt{-print0} nu este, însă, în standardul POSIX și este posibil să nu fie prezentă pe anumite sisteme.
-Din păcate, folosirea \cmd{find} cu opțiunea \texttt{-print0} poate ajunge sa fie singura soluție pentru prelucrarea robustă a fișierelor dintr-o ierarhie; așa că aici trebuie optat între portabilitate 100\% și robustețe.
+Din păcate, folosirea \cmd{find} cu opțiunea \texttt{-print0} poate ajunge sa fie singura soluție pentru prelucrarea robustă a fișierelor dintr-o ierarhie;
+așa că aici trebuie optat între portabilitate 100\% și robustețe.
 
 \subsection{Alte funcționalități}
 \label{sec:auto:script-advanced:other}
@@ -1359,7 +1366,7 @@ Putem face acest lucru cu un serviciu la nivelul utilizatorului (nu la nivelul s
 
 \labelindexref{Listing}{lst:auto:systemd-user} conține o secvență de comenzi pentru activarea unui serviciu \texttt{systemd} la nivelul utilizatorului.
 Serviciul este definit în fișierul \texttt{dater.service}, fișier care va fi plasat în directorul de configurare \texttt{systemd} de la nivelul utilizatorului: \file{$\sim$/.config/systemd/user/}.
-În fișierul serviciului, directiva de configurare \texttt{ExecStart} precizează care este comanda executată de serviciu, în cazul de față rularea scriptului \file{/home/student/uso-book/code/13-auto/systemd/\allowbreak{}dater}.  % \allowbreak to allow breaking the line and attempt to unfuck formatting.
+În fișierul serviciului, directiva de configurare \texttt{ExecStart} precizează care este comanda executată de serviciu, în cazul de față rularea scriptului \file{/home/student/uso-book/code/13-auto/systemd/\allowbreak{}dater}. % \allowbreak to allow breaking the line and attempt to unfuck formatting.
 Acest script este unul didactic, care afișează data curentă în fișierul \texttt{/home/student/date} la fiecare \texttt{60} de secunde.
 După activarea și pornirea serviciului, verificăm fișierul \texttt{/home/student/date} (liniile \texttt{40-44}) și validând, astfel, funcționarea corectă a scriptului.
 O dată instalat serviciul în directorul \file{$\sim$/.config/systemd/user/} rulăm comenzile de listare / verificare (linia \texttt{31}) și de activare, pornire, oprire, dezactivare.
