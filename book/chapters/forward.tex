@@ -1,11 +1,46 @@
-De ce o carte de utilizarea sistemelor de operare?
-Despre cursul de utilizarea sistemelor de operare, despre versiunile anterioare
-Grup țintă
-De ce sisteme de operare?
-De ce Linux?
-Licență open, apel la contribuții
-Mulțumiri: Sergiu Weisz, Andrei Stănescu, Bogdan Calapod
-Mulțumiri: recenzori
-Mulțumiri: echipa de USO
-Mulțumiri: colectivul Departamentului de Calculatoare (Țăpuș)
-Mulțumiri: Ixia/Keysight România
+\section*{Cuvânt înainte}
+
+Într-o lume din ce în ce mai digitalizată, competențele de folosire eficientă a sistemelor de calcul și dispozitivelor de tot felul sunt obligatorii.
+Aproape oricine are acces la un telefon mobil inteligent.
+Foarte multe case folosesc televizoare inteligente (smart TV) și alte dispozitive de casă inteligentă (smart home).
+Din ce în ce mai multe persoane folosesc un calculator / laptop în viața profesională.
+În aceste condiții, este de așteptat o persoană cu profil tehnic IT să fie cât mai abilă în folosirea și administrarea sistemelor de calcul.
+
+Cartea de față, ,,Utilizarea sistemelor de operare'', vă ajută să faceți primii pași în lumea calculatoarelor și sistemelor de operare.
+Vă oferă o perspectivă modernă a sistemelor de operare și o trecere practică prin noțiunile esențiale: fișiere, procese / aplicații, pachete software, utilizatori, rețelistică, securitate, virtualizare etc.
+Cu un pronunțat caracter aplicat, cu multe exemple practice, ,,Utilizarea sistemelor de operare'' are simultan rolul de a vă deschide apetitul pentru lumea calculatoarelor și pentru a vă duce la nivelul de utilizator avansat, unul care înțelege, controlează și folosește eficient sistemul de calcul.
+
+După cum reiese și din denumire, această carte este strâns legată de cursul ,,Utilizarea sistemelor de operare''\footnote{\url{https://ocw.cs.pub.ro/courses/uso}}, susținut de noi, autorii, și de echipa noastră la Facultatea de Automatică și Calculatoare, Universitatea POLITEHNICA din București.
+Cartea este suportul oficial al cursului.
+Destinată în special studenților cursului ,,Utilizarea sistemelor de operare'', aflați la primul lor contact cu facultate, am construit cartea pentru a fi utilă oricui dorește să facă primii pașii în lumea calculatoarelor și în lumea Linux și celor care doresc să-și consolideze noțiuni sau cunoștințe tehnice.
+Credem și ne dorim ca această carte să fie una la care veți reveni cu interes în momentul în care o noțiune nu este clară, în momentul în care o rememorare sau o punere în perspectivă este de ajutor.
+
+Cartea are în centru sistemul de operare Linux.
+Această alegere ține de natura Linux care-l face ideal ca suport de învățare: surse deschise (\textit{open source}), comunitate în Internet, documentație la tot pasul, posibilitatea de a investiga mai ușor sistemul.
+Cu toate acestea, prezentăm studii de caz și facem referiri la Windows și macOS.
+Iar partea de concepte a fiecărui capitol este generalistă, cu aplicare pe toate sistemele de operare.
+Deși abordăm subiectul sistemelor încorporate și prezentăm în partea introductivă diferite tipuri de sisteme de calcul, în centrul cărții rămân sistemele desktop / laptop, sisteme care sunt esențiale în viața unui profesionist IT.
+Din nou, partea de concepte este generalistă, făcând referiri și putând fi adaptată la sisteme de operare pentru dispozitive mobile sau alte cazuri (smart TV, smart home, smart car).
+
+Cartea este compusă din 15 capitole care acoperă subiecte specifice de utilizare a sistemului de operare și un capitol introductiv.
+Accentul cade pe utilizare (eficientă), pe gestiunea sistemului.
+Nu intrăm în detalii de proiectare sau de implementare; acestea sunt abordate în alte cursuri și în alte cărți.
+
+Conținutul cărții este disponibil public, în format deschis (\textit{open content}), sub licență liberă (CC BY-SA 4.0) în repository: \url{https://github.com/systems-cs-pub-ro/carte-uso}.
+Oricine poate descărca și urmări cartea și poate contribui la îmbunătățirea ei.
+Sugestii de îmbunătățire, corecții, adăugiri și contribuții de tot felul sunt binevenite și încurajate.
+Folosiți facilitățile GitHub (\textit{pull requests}, \textit{issues}, \textit{discussions}) pentru a ajuta la îmbunătățire conținutului.
+
+Această carte a necesitat un efort întins pe mai mulți ani.
+La acest efort au contribuit un număr mare de colaboratori cărora le mulțumim.
+Mulțumiri merg în primul rând la Andrei Stănescu, care este autorul majorității diagramelor din carte, la Sergiu Weisz, editorul unei bune părți a capitolelor de carte, și la Bogdan Calapod, care a realizat designul coperții.
+În continuare mulțumim unui număr larg de recenzenți care au venit cu sugestii și corecții pe parcursul dezvoltării cărții: Adriana Szekeres, Alex Carp, Alex Eftimie, Alex Văduva, Andreia Ocănoaia, Andrei Buhaiu, Andrei David, Andrei Deftu, Andrei Faur, Cosmin Rațiu, Cristi Bîrsan, Dan Sîrbu, Ebru Resul, Edi Stăniloiu, Elena Mihăilescu, Emma Mirică, Giorgiana Vlăsceanu, Liza Babu, Lorena Balea, Lucian Cojocar, Lucian Mogoșanu, Mihai-Drosi Câju, Mihai Maruseac, Mircea Bardac, Octavian Purdilă, Răzvan Crainea, Răzvan Deaconescu, Răzvan Nițu, Răzvan Vîrtan, Ruxandra Caba, Silviu Popescu, Ștefan Bucur, Teodora Argintaru, Vali Goșu, Vlad Dogaru.
+
+Totodată, această carte este în mod indirect rezultatul implicării extraordinare a echipei cursului ,,Utilizarea sistemelor de operare''.
+O echipă în căutare continuă a unui mod mai bun de a ajunge la studenți ne-a stimulat să construim cea mai bună variantă de suport pentru curs.
+La fel, colectivului Departamentului de Calculatoare a fost mediul în care noi, autorii, ne-am dezvoltat apetitul pentru educație, pentru crearea de comunități și pentru conținut de calitate.
+
+Mulțumiri speciale merg către companie Keysight România, cu care avem o colaborare de peste 15 ani, și care a asigurat sprijin în realizarea efectivă a acestei cărți.
+
+Vă mulțumim vouă, cititorilor, că ați ales să parcurgeți această carte.
+Și vă așteptăm să contribuiți, în spiritul open source, pe GitHub.
