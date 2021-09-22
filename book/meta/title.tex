@@ -1,0 +1,42 @@
+\definecolor{grey}{rgb}{0.9,0.9,0.9}
+
+\begin{titlepage} % Suppresses displaying the page number on the title page and the subsequent page counts as page 1
+
+  %------------------------------------------------
+  %  Grey title box
+  %------------------------------------------------
+
+  \colorbox{grey}{
+    \parbox[t]{0.93\textwidth}{ % Outer full width box
+      \parbox[t]{0.91\textwidth}{ % Inner box for inner right text margin
+        \raggedleft % Right align the text
+        \fontsize{50pt}{80pt}\selectfont % Title font size, the first argument is the font size and the second is the line spacing, adjust depending on title length
+        \vspace{0.7cm} % Space between the start of the title and the top of the grey box
+
+        Utilizarea\\
+        sistemelor\\
+        de operare\\
+
+        \vspace{0.7cm} % Space between the end of the title and the bottom of the grey box
+      }
+    }
+  }
+
+  \vfill % Space between the title box and author information
+
+  %------------------------------------------------
+  %  Author name and information
+  %------------------------------------------------
+
+  \parbox[t]{0.93\textwidth}{ % Box to inset this section slightly
+    \raggedleft % Right align the text
+    \Large % Increase the font size
+    Răzvan Deaconescu\\[4pt] % Extra space after name
+    Răzvan Rughiniș\\[4pt]
+    Mihai Carabaș\\[4pt]
+    Alexandru Radovici\\[4pt]
+
+    \hfill\rule{0.2\linewidth}{1pt}% Horizontal line, first argument width, second thickness
+  }
+
+\end{titlepage}

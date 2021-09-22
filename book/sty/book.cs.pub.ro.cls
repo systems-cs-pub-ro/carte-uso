@@ -193,7 +193,7 @@
 \fancyhead[RO]{\bfseries\thepage} % page number
 \fancyhead[LO]{\bfseries\leftmark} % section name
 \fancyhead[LE]{\bfseries\thepage} % page number
-\fancyhead[RE]{\bfseries{INTRODUCERE ÎN SISTEME DE OPERARE}} % book name
+\fancyhead[RE]{\bfseries{UTILIZAREA SISTEMELOR DE OPERARE}} % book name
 
 % line in header
 \renewcommand{\headrulewidth}{0.5pt}
