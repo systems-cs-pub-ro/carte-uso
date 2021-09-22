@@ -13,6 +13,7 @@
 
 %\input{meta/global}
 
+\pagestyle{empty}
 \frontmatter % roman numbering
 
 %\maketitle
@@ -53,12 +54,16 @@
 %\lstlistoflistings
 
 \printabbrev
+\newpage
+\
+\newpage
 
 \mainmatter % end roman numbering
 
 % 1.5 linespacing for the contents
 % \onehalfspacing
 
+\pagestyle{fancy}
 \input{chapters/main}
 
 %\appendix
