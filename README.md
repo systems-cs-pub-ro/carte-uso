@@ -25,6 +25,8 @@ The book cover was designed by Bogdan Calapod (bogdan.marius.calapod@gmail.com).
 
 This book relied on reviews, ideas and contributions from numerous people, mentioned in each content file.
 
+Many thanks go to [Keysight Technologies Romania](https://www.facebook.com/IxiaRomania/), for their constant support in the making of this book.
+
 ## Structure
 
 Actual book content is in the `book/` folder.
