@@ -43,7 +43,7 @@ We use a virtual machine running Ubuntu Linux 18.04 to run commands and highligh
 It is recommended you used this virtual machine when reading the book and replicating commands and their results.
 
 The virtual machine is available in OVA (*Open Virtual Appliance*) format at http://uso.cs.pub.ro/res/USO.ova.
-Download the virtual machine (2.8 GB) and import in a virtualization solution such as VirtualBox or VMware Workstation Player.
+Download the virtual machine (2.8 GB) and import it in a virtualization solution such as VirtualBox or VMware Workstation Player.
 
 ## Contributing
 
