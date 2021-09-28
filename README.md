@@ -19,6 +19,10 @@ The authors of this book are:
 
 Images in the book (SVG) have been created by Andrei Stănescu (andrei.stanescu23@gmail.com).
 
+Sergiu Weisz (sergiu.weisz@upb.ro) did a large part of the editing.
+
+The book cover was designed by Bogdan Calapod (bogdan.marius.calapod@gmail.com).
+
 This book relied on reviews, ideas and contributions from numerous people, mentioned in each content file.
 
 ## Structure
