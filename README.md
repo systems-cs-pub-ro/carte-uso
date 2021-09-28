@@ -32,6 +32,15 @@ Support source code is in the `code/` folder.
 Similarly, there is a subfolder for each chapter with support source code.
 Source code is referenced in each chapter content in the `book/` folder.
 
+## Virtual Machine
+
+The content in the practical, focused on Linux.
+We use a virtual machine running Ubuntu Linux 18.04 to run commands and highlight practical actions.
+It is recommended you used this virtual machine when reading the book and replicating commands and their results.
+
+The virtual machine is available in OVA (*Open Virtual Appliance*) format at http://uso.cs.pub.ro/res/USO.ova.
+Download the virtual machine (2.8 GB) and import in a virtualization solution such as VirtualBox or VMware Workstation Player.
+
 ## Contributing
 
 The book is developed as free / open content.
